@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://lq37dt6an0ad"]
+
+[ext_resource type="Script" path="res://Environment/HookPoints/SwingHook.gd" id="1_q2o7w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mk1gl"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_8g2t7"]
+material = SubResource("StandardMaterial3D_mk1gl")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0cas4"]
+
+[node name="SwingHook" type="Node3D" groups=["grapplingPoint", "swing"]]
+script = ExtResource("1_q2o7w")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497411, 0)
+mesh = SubResource("SphereMesh_8g2t7")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.549868, 0)
+shape = SubResource("BoxShape3D_0cas4")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+
+[node name="Generic6DOFJoint3D" type="Generic6DOFJoint3D" parent="."]
+node_a = NodePath("../AnimatableBody3D")
+linear_limit_x/softness = 2.0
+linear_limit_x/restitution = 0.9
+linear_limit_x/damping = 0.8
+linear_limit_y/softness = 2.0
+linear_limit_y/restitution = 0.9
+linear_limit_y/damping = 0.8
+linear_limit_z/softness = 2.0
+linear_limit_z/restitution = 0.9
+linear_limit_z/damping = 0.8
+angular_limit_x/enabled = false
+angular_limit_x/upper_angle = -1.13446
+angular_limit_x/lower_angle = -3.14159
+angular_limit_y/enabled = false
+angular_limit_y/upper_angle = 0.0837758
+angular_limit_y/lower_angle = -0.87825
+angular_limit_z/enabled = false
+angular_limit_z/upper_angle = 3.14159
+angular_limit_z/lower_angle = -3.14159

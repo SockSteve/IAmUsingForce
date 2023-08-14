@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://byri0xb26r22v"]
+
+[ext_resource type="Script" path="res://Library/FunctionLibrary.gd" id="1_panud"]
+
+[node name="FunctionLibrary" type="Node"]
+script = ExtResource("1_panud")
