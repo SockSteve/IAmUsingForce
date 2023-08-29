@@ -11,6 +11,9 @@ func update(delta: float) -> void:
 	# the character to fall.
 	if  Input.is_action_pressed("gadget"):
 		state_machine.transition_to("Grapple")
+		
+	if player.grinding:
+		state_machine.transition_to("Grind")
 	
 	if not player.is_on_floor():
 		state_machine.transition_to("Air")

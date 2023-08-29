@@ -38,6 +38,9 @@ func physics_update(delta: float) -> void:
 	# Landing.
 	#	if is_just_on_floor:
 #		_landing_sound.play()
+	if player.grinding:
+		state_machine.transition_to("Grind")
+	
 	if player.is_on_floor():
 		if is_equal_approx(player.velocity.x, 0.0):
 			state_machine.transition_to("Idle")

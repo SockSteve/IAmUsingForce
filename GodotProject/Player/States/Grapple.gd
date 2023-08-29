@@ -34,8 +34,8 @@ func enter(msg := {}) -> void:
 	if closestGrapplingPoint.is_in_group("grab"):
 		mode = PULL
 	elif closestGrapplingPoint.is_in_group("swing"):
-		nearestGrapplingPoint.SwingJoint.node_b = player._physics_body.get_path()
-		print(nearestGrapplingPoint.SwingJoint.node_b)
+		nearestGrapplingPoint.swingJoint.node_b = player._physics_body.get_path()
+		print(nearestGrapplingPoint.swingJoint.node_b)
 		mode = SWING
 	
 #	if msg.has("swing"):
@@ -54,19 +54,9 @@ func physics_update(delta: float) -> void:
 		player.velocity = velocity
 		player.move_and_slide()
 		pass
-		#pass
-		#var tw: Tween = create_tween()
-		#tw.tween_property(owner,"global_transform.origin", nearestGrapplingPoint.get_grapplingpoint_position(), 5)
-		
-		#print(customTime)
-		#Vector3.ZERO.lerp(nearestGrapplingPoint.global_transform.origin)
-		#owner.position = lerp(owner.position, nearestGrapplingPoint.global_transform.origin,.09)#customTime)
-		#owner._physics_body.global_transform.origin = lerp(owner._physics_body.global_transform.origin, nearestGrapplingPoint.global_transform.origin,.09)
-		#print(owner.velocity)
-		#owner.move_and_slide()
 	
 	if mode == SWING:
-		if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right") or Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down"):
+		if Input.is_action_just_pressed("move_left") or Input.is_action_just_pressed("move_right") or Input.is_action_just_pressed("move_up") or Input.is_action_just_pressed("move_down"):
 			player._move_direction = player._get_camera_oriented_input()
 		if player._move_direction.length() > 0.2:
 			player._last_strong_direction = player._move_direction.normalized()
@@ -79,7 +69,7 @@ func physics_update(delta: float) -> void:
 			input_vector = input_vector.normalized()
 			#var swing_direction = player._physics_body.get_global_transform().basis.y.cross(input_vector)
 			var swing_direction = player._move_direction
-			var force = swing_direction * 1.0 #speed
+			var force = swing_direction * .4 #speed
 			player._physics_body.apply_central_impulse(force)
 		
 		pass
@@ -91,10 +81,14 @@ func physics_update(delta: float) -> void:
 
 func end_grapple():
 	if mode == SWING:
-		nearestGrapplingPoint.SwingJoint.node_b = ""
+		nearestGrapplingPoint.swingJoint.node_b = ""
 	player.switchToCharacterBody()
 	owner.enableGravity()
 	mode = NULL
+	
+	if player.grinding:
+		state_machine.transition_to("Grind")
+	
 	if not player.is_on_floor():
 		state_machine.transition_to("Air")
 		return

@@ -23,6 +23,8 @@ class_name Player
 @onready var _attack_animation_player: AnimationPlayer = $CharacterRotationRoot/MeleeAnchor/AnimationPlayer
 @onready var _ground_shapecast: ShapeCast3D = $GroundShapeCast
 @onready var _physics_body: RigidBody3D = $PhysicsBody
+@onready var _grindBoots: PathFollow3D = $Inventory/Gadgets/GrindBoots
+@onready var _currentGrindRail: Path3D = null
 #@onready var _grenade_aim_controller: GrenadeLauncher = $GrenadeLauncher
 #@onready var _character_skin: CharacterSkin = $CharacterRotationRoot/CharacterSkin
 #@onready var _ui_aim_recticle: ColorRect = %AimRecticle
@@ -51,6 +53,7 @@ var physicsBodyEnabled := false
 @onready var state = $StateMachine.state
 
 var grapple_points = []
+var grinding = false
 
 var shortcutRangedWeapons
 
@@ -78,6 +81,12 @@ func _physics_process(delta):
 		velocity = _physics_body.linear_velocity
 		move_and_slide()
 		return
+	if get_last_slide_collision() != null:
+		print(get_last_slide_collision().get_collider().is_in_group("grindRail"))
+		if get_last_slide_collision().get_collider().is_in_group("grindRail"):
+			_currentGrindRail = get_last_slide_collision().get_collider().get_child(0)
+			print(_currentGrindRail)
+			grinding = true
 	# Swap weapons
 #	if Input.is_action_just_pressed("swap_weapons"):
 #		_equipped_weapon = WEAPON_TYPE.DEFAULT if _equipped_weapon == WEAPON_TYPE.GRENADE else WEAPON_TYPE.GRENADE

@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Player/Player.tscn" id="3_us0rm"]
 [ext_resource type="PackedScene" uid="uid://lq37dt6an0ad" path="res://Environment/HookPoints/SwingHook.tscn" id="4_oa1ad"]
 [ext_resource type="PackedScene" uid="uid://v47kxsby14rj" path="res://Environment/HookPoints/GrabHook.tscn" id="5_k2p23"]
+[ext_resource type="AudioStream" uid="uid://dg1u65hw1xmhh" path="res://Music/hip-hop-rock-beats-118000.mp3" id="6_m47fv"]
 
 [sub_resource type="Environment" id="Environment_6axbp"]
 
@@ -16,8 +17,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0)
 }
 point_count = 5
-
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_41q2t"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -35,6 +34,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0533, 84.9297, 27.7762)
 
 [node name="SwingHook" parent="." instance=ExtResource("4_oa1ad")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2829, 12.1472, 31.773)
+
+[node name="Generic6DOFJoint3D" parent="SwingHook" index="2"]
+angular_limit_x/upper_angle = 3.14159
+angular_limit_z/enabled = false
+angular_limit_z/upper_angle = -1.45264
+angular_limit_z/lower_angle = -1.38544
 
 [node name="GrabHook" parent="." instance=ExtResource("5_k2p23")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3731, 15.5312, 38.0132)
@@ -58,17 +63,11 @@ shape = SubResource("BoxShape3D_1jmal")
 
 [node name="Cube" parent="StaticBody3D" instance=ExtResource("1_ke54d")]
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9683, 3.78384, 41.777)
-
-[node name="GrindRail" type="Path3D" parent="StaticBody3D2"]
-curve = SubResource("Curve3D_ssrx5")
-
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.9683, -3.78384, -41.777)
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="." groups=["grindRail"]]
+use_collision = true
 polygon = PackedVector2Array(-0.0626981, -0.00517382, -0.0974762, 0.136789, 0.0834621, 0.146682, 0.0449436, 0.00659476)
 mode = 2
-path_node = NodePath("../GrindRail")
+path_node = NodePath("GrindRail")
 path_interval_type = 0
 path_interval = 0.1
 path_simplify_angle = 0.0
@@ -78,12 +77,18 @@ path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
-shape = SubResource("ConvexPolygonShape3D_41q2t")
+[node name="GrindRail" type="Path3D" parent="CSGPolygon3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9683, 3.78384, 41.777)
+curve = SubResource("Curve3D_ssrx5")
 
 [node name="RayCast3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.92857, 3.29102, -1.31808)
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="RayCast3D"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_m47fv")
+volume_db = -15.928
+autoplay = true
 
 [editable path="SwingHook"]
