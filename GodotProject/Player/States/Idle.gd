@@ -18,6 +18,9 @@ func update(delta: float) -> void:
 	if not player.is_on_floor():
 		state_machine.transition_to("Air")
 		return
+		
+	if Input.is_action_just_pressed("shoot"):
+		player.up_direction = player.up_direction * -1
 
 	if Input.is_action_just_pressed("jump"):
 		# As we'll only have one air state for both jump and fall, we use the `msg` dictionary 

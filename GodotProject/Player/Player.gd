@@ -77,6 +77,7 @@ func _physics_process(delta):
 	if global_position.y < _ground_height:
 		_ground_height = global_position.y
 	
+	
 	if physicsBodyEnabled:
 		velocity = _physics_body.linear_velocity
 		move_and_slide()
@@ -163,9 +164,9 @@ func _physics_process(delta):
 #			_character_skin.set_moving(false)
 
 ###########################################################################
-	var position_before := global_position
-	move_and_slide()
-	var position_after := global_position
+	#var position_before := global_position
+	#move_and_slide()
+	#var position_after := global_position
 #
 #	# If velocity is not 0 but the difference of positions after move_and_slide is,
 #	# character might be stuck somewhere!
