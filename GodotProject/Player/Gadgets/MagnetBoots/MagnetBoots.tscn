@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcqg4lt5matjd"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0qjsk"]
+
+[node name="MagnetBoots" type="Node3D"]
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+shape = SubResource("CylinderShape3D_0qjsk")

@@ -89,6 +89,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.92857, 3.29102, -1.31808)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_m47fv")
 volume_db = -15.928
-autoplay = true
 
 [editable path="SwingHook"]
