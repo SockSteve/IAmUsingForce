@@ -66,7 +66,7 @@ func _ready() -> void:
 	#emit_signal("weapon_switched", WEAPON_TYPE.keys()[0])
 
 func _physics_process(delta):
-	print($StateMachine.state)
+	#print($StateMachine.state)
 	
 	# Calculate ground height for camera controller
 	if _ground_shapecast.get_collision_count() > 0:
@@ -83,10 +83,10 @@ func _physics_process(delta):
 		move_and_slide()
 		return
 	if get_last_slide_collision() != null:
-		print(get_last_slide_collision().get_collider().is_in_group("grindRail"))
+		#print(get_last_slide_collision().get_collider().is_in_group("grindRail"))
 		if get_last_slide_collision().get_collider().is_in_group("grindRail"):
 			_currentGrindRail = get_last_slide_collision().get_collider().get_child(0)
-			print(_currentGrindRail)
+			#print(_currentGrindRail)
 			grinding = true
 	# Swap weapons
 #	if Input.is_action_just_pressed("swap_weapons"):
@@ -230,3 +230,25 @@ func switchToCharacterBody():
 	_physics_body.top_level = false
 	velocity = _physics_body.linear_velocity
 
+func getGadgets():
+	return $Inventory/Gadgets
+
+#var move_speed = 10.0
+var RAY_LENGTH: float = 2.0
+var distance_from_center: float = 2.5
+var position_offset_y: float = .1
+var max_rotation_degrees: float = 5
+
+@onready var space_state = get_world_3d().direct_space_state
+
+
+func positionOnTerrain(left_hit, right_hit):
+	var average_normal = (left_hit.normal + right_hit.normal).normalized()
+	var average_point = (left_hit.position + right_hit.position) / 2
+	
+	var target_rotation = average_normal.rotation_to(Vector3.UP)
+	var current_rotation = global_transform.basis.get_rotation_quaternion()
+	var final_rotation = current_rotation.slerp(target_rotation, max_rotation_degrees * PI / 180.0)
+	
+	global_transform.basis = final_rotation
+	global_transform.origin = average_point + global_transform.basis.y * position_offset_y

@@ -20,6 +20,7 @@ func physics_update(delta: float) -> void:
 		#_last_strong_direction = (_camera_controller.global_transform.basis * Vector3.BACK).normalized()
 
 	player._orient_character_to_direction(player._last_strong_direction, delta)
+	
 
 	# We separate out the y velocity to not interpolate on the gravity
 	var y_velocity := player.velocity.y

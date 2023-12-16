@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c0d3bmprmf8q0"]
+[gd_scene load_steps=23 format=3 uid="uid://c0d3bmprmf8q0"]
 
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_eghjd"]
 [ext_resource type="Script" path="res://Player/CameraController.gd" id="2_7jqee"]
@@ -10,9 +10,10 @@
 [ext_resource type="Script" path="res://Player/States/Air.gd" id="6_wo20p"]
 [ext_resource type="Script" path="res://Player/States/Grind.gd" id="8_82ggy"]
 [ext_resource type="Script" path="res://Player/States/GrindAir.gd" id="9_r2ea2"]
+[ext_resource type="Script" path="res://Player/States/Magnet.gd" id="10_0mhbm"]
 [ext_resource type="PackedScene" uid="uid://ds03o1qebetux" path="res://Player/Gadgets/GrindBoots/GrindBoots.tscn" id="10_8algw"]
-[ext_resource type="Script" path="res://Player/States/Magnet.gd" id="10_5867e"]
-[ext_resource type="Script" path="res://Player/States/MagnetAir.gd" id="11_drlli"]
+[ext_resource type="Script" path="res://Player/States/MagnetAir.gd" id="11_ipe4h"]
+[ext_resource type="PackedScene" uid="uid://bihfxywywukdv" path="res://Player/PlayerModel/CharacterSkin.tscn" id="13_elups"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3srxm"]
 
@@ -30,6 +31,8 @@ height = 1.50214
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8gs1p"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_m26hg"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pkn4w"]
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 axis_lock_angular_x = true
@@ -64,10 +67,10 @@ script = ExtResource("8_82ggy")
 script = ExtResource("9_r2ea2")
 
 [node name="Magnet" type="Node" parent="StateMachine"]
-script = ExtResource("10_5867e")
+script = ExtResource("10_0mhbm")
 
 [node name="MagnetAir" type="Node" parent="StateMachine"]
-script = ExtResource("11_drlli")
+script = ExtResource("11_ipe4h")
 
 [node name="PhysicsBody" type="RigidBody3D" parent="."]
 collision_layer = 0
@@ -111,17 +114,27 @@ top_level = true
 fov = 50.0
 
 [node name="CameraRayCast" type="RayCast3D" parent="CameraController/PlayerCamera"]
+visible = false
 target_position = Vector3(0, 0, -100)
 
 [node name="GroundShapeCast" type="ShapeCast3D" parent="."]
+visible = false
 shape = SubResource("CylinderShape3D_8gs1p")
 debug_shape_custom_color = Color(0, 1, 0, 1)
 
 [node name="CharacterRotationRoot" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterRotationRoot"]
 transform = Transform3D(1, 0, 0, 0, 0.75, 0, 0, 0, 1, 0, 0.75, 0)
 mesh = SubResource("CylinderMesh_m26hg")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CharacterRotationRoot"]
+transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, 0, 1.04419, 0.688587)
+mesh = SubResource("CylinderMesh_pkn4w")
+skeleton = NodePath("")
+
+[node name="CharacterSkin" parent="CharacterRotationRoot" instance=ExtResource("13_elups")]
 
 [node name="Inventory" type="Node" parent="."]
 

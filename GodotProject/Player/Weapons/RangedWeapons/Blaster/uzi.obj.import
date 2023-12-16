@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cmfqnfxa6ygbb"
+path="res://.godot/imported/uzi.obj-5b5f7716153d5eea5e4991176def5dd7.mesh"
+
+[deps]
+
+files=["res://.godot/imported/uzi.obj-5b5f7716153d5eea5e4991176def5dd7.mesh"]
+
+source_file="res://Player/Weapons/RangedWeapons/Blaster/uzi.obj"
+dest_files=["res://.godot/imported/uzi.obj-5b5f7716153d5eea5e4991176def5dd7.mesh", "res://.godot/imported/uzi.obj-5b5f7716153d5eea5e4991176def5dd7.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
