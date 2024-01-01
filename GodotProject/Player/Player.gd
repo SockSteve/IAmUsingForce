@@ -3,7 +3,6 @@ class_name Player
 
 
 @export var move_speed := 8.0 # Character maximum run speed on the ground.
-@export var bullet_speed := 10.0 # Speed of shot bullets.
 @export var attack_impulse := 10.0 # Forward impulse after a melee attack.
 @export var acceleration := 4.0 # Movement acceleration (how fast character achieve maximum speed)
 @export var jump_initial_impulse := 12.0 # Jump impulse
@@ -88,24 +87,6 @@ func _physics_process(delta):
 			_currentGrindRail = get_last_slide_collision().get_collider().get_child(0)
 			#print(_currentGrindRail)
 			grinding = true
-	# Swap weapons
-#	if Input.is_action_just_pressed("swap_weapons"):
-#		_equipped_weapon = WEAPON_TYPE.DEFAULT if _equipped_weapon == WEAPON_TYPE.GRENADE else WEAPON_TYPE.GRENADE
-#		_grenade_aim_controller.visible = _equipped_weapon == WEAPON_TYPE.GRENADE
-#		emit_signal("weapon_switched", WEAPON_TYPE.keys()[_equipped_weapon])
-	#	if physicsBodyEnabled:
-#		position = _physics_body.position
-#		return
-	# Get input and movement state
-	#var is_attacking := Input.is_action_pressed("attack") and not _attack_animation_player.is_playing()
-	#var is_just_attacking := Input.is_action_just_pressed("attack")
-	var is_just_jumping := Input.is_action_just_pressed("jump") and is_on_floor()
-	#var is_aiming := Input.is_action_pressed("aim") and is_on_floor()
-	var is_air_boosting := Input.is_action_pressed("jump") and not is_on_floor() and velocity.y > 0.0
-	var is_just_on_floor := is_on_floor() and not _is_on_floor_buffer
-
-	_is_on_floor_buffer = is_on_floor()
-	_move_direction = _get_camera_oriented_input()
 
 	# To not orient quickly to the last input, we save a last strong direction,
 	# this also ensures a good normalized value for the rotation basis.
@@ -115,38 +96,6 @@ func _physics_process(delta):
 		#_last_strong_direction = (_camera_controller.global_transform.basis * Vector3.BACK).normalized()
 
 	_orient_character_to_direction(_last_strong_direction, delta)
-
-
-	# Set aiming camera and UI
-#	if is_aiming:
-#		_camera_controller.set_pivot(_camera_controller.CAMERA_PIVOT.OVER_SHOULDER)
-#		_grenade_aim_controller.throw_direction = _camera_controller.camera.quaternion * Vector3.FORWARD
-#		_grenade_aim_controller.from_look_position = _camera_controller.camera.global_position
-#		_ui_aim_recticle.visible = true
-#	else:
-#		_camera_controller.set_pivot(_camera_controller.CAMERA_PIVOT.THIRD_PERSON)
-#		_grenade_aim_controller.throw_direction = _last_strong_direction
-#		_grenade_aim_controller.from_look_position = global_position
-#		_ui_aim_recticle.visible = false
-
-	# Update attack state and position
-
-	_shoot_cooldown_tick += delta
-	_grenade_cooldown_tick += delta
-
-#	if is_attacking:
-#		match _equipped_weapon:
-#			WEAPON_TYPE.DEFAULT:
-#				if is_aiming and is_on_floor():
-#					if _shoot_cooldown_tick > shoot_cooldown:
-#						_shoot_cooldown_tick = 0.0
-#						shoot()
-#				elif is_just_attacking:
-#					attack()
-#			WEAPON_TYPE.GRENADE:
-#				if _grenade_cooldown_tick > grenade_cooldown:
-#					_grenade_cooldown_tick = 0.0
-#					_grenade_aim_controller.throw_grenade()
 
 
 
@@ -163,19 +112,7 @@ func _physics_process(delta):
 #		else:
 #			_character_skin.set_moving(false)
 
-###########################################################################
-	#var position_before := global_position
-	#move_and_slide()
-	#var position_after := global_position
-#
-#	# If velocity is not 0 but the difference of positions after move_and_slide is,
-#	# character might be stuck somewhere!
-#	var delta_position := position_after - position_before
-#	var epsilon := 0.001
-#	if delta_position.length() < epsilon and velocity.length() > epsilon:
-#		global_position += get_wall_normal() * 0.1
-################################################################################
-#
+
 func _get_camera_oriented_input() -> Vector3:
 #	if _attack_animation_player.is_playing():
 #		return Vector3.ZERO
@@ -198,9 +135,6 @@ func _orient_character_to_direction(direction: Vector3, delta: float) -> void:
 	_rotation_root.transform.basis = Basis(_rotation_root.transform.basis.get_rotation_quaternion().slerp(rotation_basis, delta * rotation_speed)).scaled(
 		model_scale
 	)
-
-func get_input_direction():
-	pass
 
 func disableGravity():
 	_gravity = 0.0

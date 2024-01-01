@@ -2,9 +2,6 @@
 extends PlayerState
 
 func physics_update(delta: float) -> void:
-	# Notice how we have some code duplication between states. That's inherent to the pattern,
-	# although in production, your states will tend to be more complex and duplicate code
-	# much more rare.
 	if not player.is_on_floor():
 		state_machine.transition_to("Air")
 		return
@@ -29,8 +26,6 @@ func physics_update(delta: float) -> void:
 	if player._move_direction.length() == 0 and player.velocity.length() < player.stopping_speed:
 		player.velocity = Vector3.ZERO
 	player.velocity.y = y_velocity
-#	player.velocity.x = player.speed * Input.get_axis("move_right", "move_left")
-#	player.velocity.z = player.speed * Input.get_axis("move_down", "move_up")
 	player.velocity.y += player.gravity * delta
 	player.move_and_slide()
 
