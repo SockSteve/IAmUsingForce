@@ -1,7 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfv2ecbe68yfi"]
+[gd_scene load_steps=11 format=3 uid="uid://cfv2ecbe68yfi"]
 
 [ext_resource type="PackedScene" uid="uid://dprksnsipfg02" path="res://addons/kenney_prototype_tools/scenes/orange/orange_01.tscn" id="1_ke54d"]
-[ext_resource type="PackedScene" uid="uid://bxe4f4lhnfqk8" path="res://addons/kenney_prototype_tools/scenes/light/light_01.tscn" id="2_enfip"]
 [ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Player/Player.tscn" id="3_us0rm"]
 [ext_resource type="PackedScene" uid="uid://lq37dt6an0ad" path="res://Environment/HookPoints/SwingHook.tscn" id="4_oa1ad"]
 [ext_resource type="PackedScene" uid="uid://v47kxsby14rj" path="res://Environment/HookPoints/GrabHook.tscn" id="5_k2p23"]
@@ -35,12 +34,6 @@ visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6axbp")
-
-[node name="Cube2" parent="." instance=ExtResource("2_enfip")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5363, 1.01552, 19.0589)
-
-[node name="g" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.0533, 84.9297, 27.7762)
 
 [node name="SwingHook" parent="." instance=ExtResource("4_oa1ad")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2829, 12.1472, 31.773)
@@ -84,11 +77,6 @@ path_joined = false
 [node name="GrindRail" type="Path3D" parent="CSGPolygon3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9683, 3.78384, 41.777)
 curve = SubResource("Curve3D_ssrx5")
-
-[node name="RayCast3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.92857, 3.29102, -1.31808)
-
-[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="RayCast3D"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_m47fv")
