@@ -1,0 +1,8 @@
+ForceBooster: LongJump, Airdash (doubleJump)
+GrapplingHook: Hookshot, Hookswing
+Special Gear (GrindBoots and GripGloves): Grinding on Grindrails, Ability to use Monekybars
+Magnet: Walk on Special Surfaces, attract metal Objects
+WirelessBattery: charge nearby machinery and dynamos, electrify surfaces
+
+?
+gas mask

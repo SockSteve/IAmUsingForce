@@ -1,0 +1,3 @@
+pressing the attack button repeatedly will let the knive spin faster. 
+Ammo -> like flame thrower.
+on level up: more knive / faster spin / more damage

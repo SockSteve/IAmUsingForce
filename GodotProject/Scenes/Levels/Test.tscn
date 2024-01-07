@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://lq37dt6an0ad" path="res://Scenes/InteractiveObjects/GrapplingPoints/SwingHook.tscn" id="1_kdsm0"]
 [ext_resource type="PackedScene" uid="uid://v47kxsby14rj" path="res://Scenes/InteractiveObjects/GrapplingPoints/GrabHook.tscn" id="2_22asg"]
-[ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Player/Player.tscn" id="3_t8btd"]
+[ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Scenes/Characters/Player/Player.tscn" id="3_t8btd"]
 [ext_resource type="PackedScene" uid="uid://dprksnsipfg02" path="res://addons/kenney_prototype_tools/scenes/orange/orange_01.tscn" id="4_ysjfm"]
 [ext_resource type="AudioStream" uid="uid://dg1u65hw1xmhh" path="res://Assets/Audio/Music/hip-hop-rock-beats-118000.mp3" id="5_b0j0h"]
 

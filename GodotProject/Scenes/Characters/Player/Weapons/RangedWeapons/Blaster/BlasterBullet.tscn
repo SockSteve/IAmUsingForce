@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://owsxbjhadsho"]
+
+[ext_resource type="Script" path="res://Scenes/Characters/Player/Weapons/RangedWeapons/Blaster/BlasterBullet.gd" id="1_u6qwi"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iuup7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_62vgp"]
+
+[node name="BlasterBullet" type="Node3D"]
+script = ExtResource("1_u6qwi")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_iuup7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_62vgp")
