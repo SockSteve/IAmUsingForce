@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://cfv2ecbe68yfi"]
 
-[ext_resource type="PackedScene" uid="uid://dprksnsipfg02" path="res://addons/kenney_prototype_tools/scenes/orange/orange_01.tscn" id="1_ke54d"]
-[ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Player/Player.tscn" id="3_us0rm"]
-[ext_resource type="PackedScene" uid="uid://lq37dt6an0ad" path="res://Scenes/InteractiveObjects/GrapplingPoints/SwingHook.tscn" id="4_oa1ad"]
-[ext_resource type="PackedScene" uid="uid://v47kxsby14rj" path="res://Scenes/InteractiveObjects/GrapplingPoints/GrabHook.tscn" id="5_k2p23"]
-[ext_resource type="AudioStream" uid="uid://dg1u65hw1xmhh" path="res://Assets/Audio/Music/hip-hop-rock-beats-118000.mp3" id="6_m47fv"]
+[ext_resource type="PackedScene" uid="uid://lq37dt6an0ad" path="res://Scenes/InteractiveObjects/GrapplingPoints/SwingHook.tscn" id="1_kdsm0"]
+[ext_resource type="PackedScene" uid="uid://v47kxsby14rj" path="res://Scenes/InteractiveObjects/GrapplingPoints/GrabHook.tscn" id="2_22asg"]
+[ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Player/Player.tscn" id="3_t8btd"]
+[ext_resource type="PackedScene" uid="uid://dprksnsipfg02" path="res://addons/kenney_prototype_tools/scenes/orange/orange_01.tscn" id="4_ysjfm"]
+[ext_resource type="AudioStream" uid="uid://dg1u65hw1xmhh" path="res://Assets/Audio/Music/hip-hop-rock-beats-118000.mp3" id="5_b0j0h"]
 
 [sub_resource type="Environment" id="Environment_6axbp"]
 
@@ -35,13 +35,13 @@ visible = false
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6axbp")
 
-[node name="SwingHook" parent="." instance=ExtResource("4_oa1ad")]
+[node name="SwingHook" parent="." instance=ExtResource("1_kdsm0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2829, 12.1472, 31.773)
 
-[node name="GrabHook" parent="." instance=ExtResource("5_k2p23")]
+[node name="GrabHook" parent="." instance=ExtResource("2_22asg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3731, 15.5312, 38.0132)
 
-[node name="Player" parent="." instance=ExtResource("3_us0rm")]
+[node name="Player" parent="." instance=ExtResource("3_t8btd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1902, 2.81285, 33.0925)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
@@ -58,7 +58,7 @@ transform = Transform3D(60.1488, 0, 0, 0, 1, 0, 0, 0, 60.563, 0, 0.336246, 0)
 transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.512548, 0.562616, 0.502292)
 shape = SubResource("BoxShape3D_1jmal")
 
-[node name="Cube" parent="StaticBody3D" instance=ExtResource("1_ke54d")]
+[node name="Cube" parent="StaticBody3D" instance=ExtResource("4_ysjfm")]
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="." groups=["grindRail"]]
 use_collision = true
@@ -79,7 +79,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9683, 3.78384, 41.777)
 curve = SubResource("Curve3D_ssrx5")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_m47fv")
+stream = ExtResource("5_b0j0h")
 volume_db = -15.928
 
 [node name="CSGPolygon3D2" type="CSGPolygon3D" parent="." groups=["floor", "magnetized"]]
