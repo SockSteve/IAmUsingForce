@@ -1,4 +1,4 @@
-class_name CharacterSkin
+#class_name CharacterSkin
 extends Node3D
 
 signal foot_step

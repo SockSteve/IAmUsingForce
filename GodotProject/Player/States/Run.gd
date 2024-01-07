@@ -26,7 +26,7 @@ func physics_update(delta: float) -> void:
 	if player._move_direction.length() == 0 and player.velocity.length() < player.stopping_speed:
 		player.velocity = Vector3.ZERO
 	player.velocity.y = y_velocity
-	player.velocity.y += player.gravity * delta
+	player.velocity.y += player._gravity * delta
 	player.move_and_slide()
 
 	if Input.is_action_just_pressed("jump"):
