@@ -1,17 +1,22 @@
-[gd_scene load_steps=21 format=3 uid="uid://c0d3bmprmf8q0"]
+[gd_scene load_steps=26 format=3 uid="uid://c0d3bmprmf8q0"]
 
-[ext_resource type="Script" path="res://Player/Player.gd" id="1_eghjd"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_ld2le"]
 [ext_resource type="Script" path="res://Player/CameraController.gd" id="2_7jqee"]
 [ext_resource type="Script" path="res://Player/States/StateMachine.gd" id="3_82ko5"]
 [ext_resource type="Script" path="res://Player/States/Idle.gd" id="4_h88q0"]
 [ext_resource type="Script" path="res://Player/States/Run.gd" id="5_dheqf"]
-[ext_resource type="Script" path="res://Player/States/Strafe.gd" id="5_temhr"]
+[ext_resource type="Script" path="res://Player/States/Crouch.gd" id="6_q58v3"]
 [ext_resource type="Script" path="res://Player/States/Grapple.gd" id="6_r5qvj"]
 [ext_resource type="Script" path="res://Player/States/Air.gd" id="6_wo20p"]
+[ext_resource type="Script" path="res://Player/States/Hanging.gd" id="7_ycs8f"]
 [ext_resource type="Script" path="res://Player/States/Grind.gd" id="8_82ggy"]
+[ext_resource type="Script" path="res://Player/States/Dodge.gd" id="8_rlkj8"]
+[ext_resource type="Script" path="res://Player/States/Block.gd" id="9_lxqh2"]
 [ext_resource type="Script" path="res://Player/States/Magnet.gd" id="10_0mhbm"]
+[ext_resource type="Script" path="res://Player/States/Melee.gd" id="10_1rkfv"]
 [ext_resource type="PackedScene" uid="uid://ds03o1qebetux" path="res://Player/Gadgets/GrindBoots/GrindBoots.tscn" id="10_8algw"]
 [ext_resource type="PackedScene" uid="uid://bihfxywywukdv" path="res://Player/PlayerModel/CharacterSkin.tscn" id="13_elups"]
+[ext_resource type="PackedScene" uid="uid://cqhn455src0iq" path="res://Player/Gadgets/GrapplingHook/GrapplingHook.tscn" id="13_vujhk"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_p4inm"]
 height = 1.50214
@@ -36,8 +41,7 @@ material = SubResource("StandardMaterial3D_dm5n6")
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
-script = ExtResource("1_eghjd")
-acceleration = 12.0
+script = ExtResource("1_ld2le")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
@@ -53,11 +57,23 @@ script = ExtResource("4_h88q0")
 [node name="Run" type="Node" parent="StateMachine"]
 script = ExtResource("5_dheqf")
 
-[node name="Strafe" type="Node" parent="StateMachine"]
-script = ExtResource("5_temhr")
-
 [node name="Air" type="Node" parent="StateMachine"]
 script = ExtResource("6_wo20p")
+
+[node name="Crouch" type="Node" parent="StateMachine"]
+script = ExtResource("6_q58v3")
+
+[node name="Hanging" type="Node" parent="StateMachine"]
+script = ExtResource("7_ycs8f")
+
+[node name="Dodge" type="Node" parent="StateMachine"]
+script = ExtResource("8_rlkj8")
+
+[node name="Block" type="Node" parent="StateMachine"]
+script = ExtResource("9_lxqh2")
+
+[node name="Melee" type="Node" parent="StateMachine"]
+script = ExtResource("10_1rkfv")
 
 [node name="Grapple" type="Node" parent="StateMachine"]
 script = ExtResource("6_r5qvj")
@@ -139,3 +155,5 @@ skeleton = NodePath("")
 [node name="Gadgets" type="Node" parent="Inventory"]
 
 [node name="GrindBoots" parent="Inventory/Gadgets" instance=ExtResource("10_8algw")]
+
+[node name="GrapplingHook" parent="Inventory/Gadgets" instance=ExtResource("13_vujhk")]

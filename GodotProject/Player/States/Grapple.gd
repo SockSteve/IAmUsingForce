@@ -30,7 +30,6 @@ func enter(msg := {}) -> void:
 		return
 	player.switchToPhysicsBody()
 		
-	#owner.disableGravity()
 	if closestGrapplingPoint.is_in_group("grab"):
 		mode = PULL
 	elif closestGrapplingPoint.is_in_group("swing"):
@@ -43,7 +42,6 @@ func enter(msg := {}) -> void:
 
 
 func physics_update(delta: float) -> void:
-	
 	if mode == NULL:
 		end_grapple()
 	
@@ -65,6 +63,18 @@ func physics_update(delta: float) -> void:
 		player._orient_character_to_direction(player._last_strong_direction, delta)
 		
 		var input_vector =  player._get_camera_oriented_input()
+		
+		#check if player is above the grapple point
+		# Get positions of the two bodies
+		var positionGrapplePoint = nearestGrapplingPoint.global_transform.origin
+		var positionPlayer = player.global_transform.origin
+
+		# Check if body2 is above body1
+		if positionPlayer.y > positionGrapplePoint.y:
+			print("Body2 is above Body1")
+		else:
+			print("Body2 is not above Body1")
+		
 		if input_vector != Vector3.ZERO:
 			input_vector = input_vector.normalized()
 			#var swing_direction = player._physics_body.get_global_transform().basis.y.cross(input_vector)
@@ -83,7 +93,6 @@ func end_grapple():
 	if mode == SWING:
 		nearestGrapplingPoint.swingJoint.node_b = ""
 	player.switchToCharacterBody()
-	owner.enableGravity()
 	mode = NULL
 	
 	if player.grinding:

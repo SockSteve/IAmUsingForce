@@ -1,0 +1,105 @@
+[gd_scene load_steps=11 format=3 uid="uid://cfv2ecbe68yfi"]
+
+[ext_resource type="PackedScene" uid="uid://lq37dt6an0ad" path="res://Scenes/InteractiveObjects/GrapplingPoints/SwingHook.tscn" id="1_kdsm0"]
+[ext_resource type="PackedScene" uid="uid://v47kxsby14rj" path="res://Scenes/InteractiveObjects/GrapplingPoints/GrabHook.tscn" id="2_22asg"]
+[ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Player/Player.tscn" id="3_t8btd"]
+[ext_resource type="PackedScene" uid="uid://dprksnsipfg02" path="res://addons/kenney_prototype_tools/scenes/orange/orange_01.tscn" id="4_ysjfm"]
+[ext_resource type="AudioStream" uid="uid://dg1u65hw1xmhh" path="res://Assets/Audio/Music/hip-hop-rock-beats-118000.mp3" id="5_b0j0h"]
+
+[sub_resource type="Environment" id="Environment_6axbp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1jmal"]
+
+[sub_resource type="Curve3D" id="Curve3D_ssrx5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -7.01188, -1.15111, 7.48149, 0, 0, 0, 0, 0, 0, -1.00019, -2.05225, 0.0086174, 0, 0, 0, 0, 0, 0, 3.72752, -0.557831, -1.50979, 0, 0, 0, 0, 0, 0, 8.19651, 0.261501, -4.82892, 0, 0, 0, 0, 0, 0, 11.1002, -1.12288, -25.7532),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_luy28"]
+albedo_color = Color(1, 0.478431, 0, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_i8skm"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2.3486, -1.07067, -0.246239, 0, 0, 0, 0, 0, 0, -5.787, -0.25, 0, 0, 0, 0, 0, 0, 0, -11.26, 3.783, 0, 0, 0, 0, 0, 0, 0, -13.363, 8.744, 0, 0, 0, 0, 0, 0, 0, -11.837, 13.88, 0, 0, 0, 0, 0, 0, 0, -8.841, 17.926, 0, 0, 0, 0, 0, 0, 0, 0.049, 19.458, 0, 0, 0, 0, 0, 0, 0, 9.194, 19.364, 0),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+visible = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6axbp")
+
+[node name="SwingHook" parent="." instance=ExtResource("1_kdsm0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2829, 12.1472, 31.773)
+
+[node name="GrabHook" parent="." instance=ExtResource("2_22asg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3731, 15.5312, 38.0132)
+
+[node name="Player" parent="." instance=ExtResource("3_t8btd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1902, 2.81285, 33.0925)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.00787138, 0.999969, 0, -0.999969, 0.00787138, 46.5912, 18.8276, 41.777)
+light_energy = 16.0
+light_indirect_energy = 1.355
+spot_range = 19.7856
+spot_angle = 25.7001
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(60.1488, 0, 0, 0, 1, 0, 0, 0, 60.563, 0, 0.336246, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.512548, 0.562616, 0.502292)
+shape = SubResource("BoxShape3D_1jmal")
+
+[node name="Cube" parent="StaticBody3D" instance=ExtResource("4_ysjfm")]
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="." groups=["grindRail"]]
+use_collision = true
+polygon = PackedVector2Array(-0.0626981, -0.00517382, -0.0974762, 0.136789, 0.0834621, 0.146682, 0.0449436, 0.00659476)
+mode = 2
+path_node = NodePath("GrindRail")
+path_interval_type = 0
+path_interval = 0.1
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="GrindRail" type="Path3D" parent="CSGPolygon3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9683, 3.78384, 41.777)
+curve = SubResource("Curve3D_ssrx5")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_b0j0h")
+volume_db = -15.928
+
+[node name="CSGPolygon3D2" type="CSGPolygon3D" parent="." groups=["floor", "magnetized"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.491706, 2.51015, 39.1579)
+material_override = SubResource("StandardMaterial3D_luy28")
+use_collision = true
+polygon = PackedVector2Array(9.3321, -4.89497, 0, -5, 0, 0, 9.50484, 0.0856304)
+mode = 2
+path_node = NodePath("Path3D")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 1.2
+path_rotation = 2
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="Path3D" type="Path3D" parent="CSGPolygon3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215106, -1.8432, 0.2939)
+curve = SubResource("Curve3D_i8skm")
+
+[editable path="SwingHook"]

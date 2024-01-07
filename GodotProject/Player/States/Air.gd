@@ -4,8 +4,11 @@ extends PlayerState
 func enter(msg := {}) -> void:
 	if msg.has("do_jump"):
 		player.velocity.y += player.jump_initial_impulse
+	if msg.has("do_crouch_jump"):
+		player.velocity.y += player.jump_initial_impulse
 
-
+#TODO acending and decending checks for melee attack
+#TODO overhaul jump logic and add support for double jump 
 func physics_update(delta: float) -> void:
 	player._move_direction = player._get_camera_oriented_input()
 
@@ -26,14 +29,13 @@ func physics_update(delta: float) -> void:
 	player.velocity.y = y_velocity
 #	player.velocity.x = player.speed * Input.get_axis("move_right", "move_left")
 #	player.velocity.z = player.speed * Input.get_axis("move_down", "move_up")
-	player.velocity.y += player.gravity * delta
+	player.velocity.y += player._gravity * delta
 	player.move_and_slide()
-	# Vertical movement.
-	#player.velocity.y += player.gravity * delta
+
+
 	if  Input.is_action_pressed("gadget"):
 		state_machine.transition_to("Grapple")
 		
-	player.move_and_slide()
 
 	# Landing.
 	#	if is_just_on_floor:

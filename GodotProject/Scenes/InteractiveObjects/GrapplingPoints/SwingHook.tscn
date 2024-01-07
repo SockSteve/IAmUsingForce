@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://lq37dt6an0ad"]
+
+[ext_resource type="Script" path="res://Scripts/InteractiveObjects/GrapplingPoints/SwingHook.gd" id="1_t3t68"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mk1gl"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_8g2t7"]
+material = SubResource("StandardMaterial3D_mk1gl")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0cas4"]
+
+[node name="SwingHook" type="Node3D" groups=["grapplingPoint", "swing"]]
+script = ExtResource("1_t3t68")
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.497411, 0)
+mesh = SubResource("SphereMesh_8g2t7")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.549868, 0)
+shape = SubResource("BoxShape3D_0cas4")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+
+[node name="SwingJoint" type="JoltGeneric6DOFJoint3D" parent="."]
+angular_limit_x/enabled = false
+angular_limit_x/upper = 0.349066
+angular_limit_x/lower = -3.49066
+angular_limit_y/enabled = false
+angular_limit_y/upper = 0.698132
+angular_limit_y/lower = -3.49066
+angular_limit_z/enabled = false
+angular_limit_z/upper = 0.349066
+angular_limit_z/lower = -3.49066
+node_a = NodePath("../AnimatableBody3D")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.463997, 0)
