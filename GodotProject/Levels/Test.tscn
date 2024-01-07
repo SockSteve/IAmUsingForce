@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://dprksnsipfg02" path="res://addons/kenney_prototype_tools/scenes/orange/orange_01.tscn" id="1_ke54d"]
 [ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Player/Player.tscn" id="3_us0rm"]
-[ext_resource type="PackedScene" uid="uid://lq37dt6an0ad" path="res://Environment/HookPoints/SwingHook.tscn" id="4_oa1ad"]
-[ext_resource type="PackedScene" uid="uid://v47kxsby14rj" path="res://Environment/HookPoints/GrabHook.tscn" id="5_k2p23"]
-[ext_resource type="AudioStream" uid="uid://dg1u65hw1xmhh" path="res://Music/hip-hop-rock-beats-118000.mp3" id="6_m47fv"]
+[ext_resource type="PackedScene" uid="uid://lq37dt6an0ad" path="res://Scenes/InteractiveObjects/GrapplingPoints/SwingHook.tscn" id="4_oa1ad"]
+[ext_resource type="PackedScene" uid="uid://v47kxsby14rj" path="res://Scenes/InteractiveObjects/GrapplingPoints/GrabHook.tscn" id="5_k2p23"]
+[ext_resource type="AudioStream" uid="uid://dg1u65hw1xmhh" path="res://Assets/Audio/Music/hip-hop-rock-beats-118000.mp3" id="6_m47fv"]
 
 [sub_resource type="Environment" id="Environment_6axbp"]
 

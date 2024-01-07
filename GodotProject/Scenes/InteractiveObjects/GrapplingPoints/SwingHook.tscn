@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://lq37dt6an0ad"]
 
-[ext_resource type="Script" path="res://Environment/HookPoints/SwingHook.gd" id="1_q2o7w"]
+[ext_resource type="Script" path="res://Scripts/InteractiveObjects/GrapplingPoints/SwingHook.gd" id="1_t3t68"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mk1gl"]
 albedo_color = Color(0, 1, 0, 1)
@@ -11,7 +11,7 @@ material = SubResource("StandardMaterial3D_mk1gl")
 [sub_resource type="BoxShape3D" id="BoxShape3D_0cas4"]
 
 [node name="SwingHook" type="Node3D" groups=["grapplingPoint", "swing"]]
-script = ExtResource("1_q2o7w")
+script = ExtResource("1_t3t68")
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
 collision_layer = 0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://v47kxsby14rj"]
 
-[ext_resource type="Script" path="res://Environment/HookPoints/GrabHook.gd" id="1_excw5"]
+[ext_resource type="Script" path="res://Scripts/InteractiveObjects/GrapplingPoints/GrabHook.gd" id="1_euhjn"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_k2ec3"]
 lightmap_size_hint = Vector2i(17, 9)
@@ -13,7 +13,7 @@ next_pass = SubResource("ShaderMaterial_1pci1")
 albedo_color = Color(1, 1, 0, 1)
 
 [node name="GrabHook" type="Node3D" groups=["grab", "grapplingPoint"]]
-script = ExtResource("1_excw5")
+script = ExtResource("1_euhjn")
 
 [node name="Marker3D" type="Marker3D" parent="."]
 
