@@ -1,0 +1,16 @@
+when importing scenes and animations, these suffix to the names will make your
+life easier:
+	animatin:
+		Animation loop (-loop, -cycle)
+		example: my_animation-loop
+		
+	Mesh:
+		Create collisions (-col, -convcol, -colonly, -convcolonly)
+		example: my_terrain-col
+		
+		Create navigation (-navmesh)
+		Create a VehicleBody (-vehicle)
+		Create a VehicleWheel (-wheel)
+		Rigid Body (-rigid)
+
+Source: https://docs.godotengine.org/en/stable/tutorials/assets_pipeline/importing_3d_scenes/node_type_customization.html

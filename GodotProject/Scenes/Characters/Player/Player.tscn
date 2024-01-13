@@ -63,7 +63,7 @@ script = ExtResource("6_wo20p")
 [node name="Crouch" type="Node" parent="StateMachine"]
 script = ExtResource("6_q58v3")
 
-[node name="Hanging" type="Node" parent="StateMachine"]
+[node name="Hang" type="Node" parent="StateMachine"]
 script = ExtResource("7_ycs8f")
 
 [node name="Dodge" type="Node" parent="StateMachine"]
@@ -74,6 +74,9 @@ script = ExtResource("9_lxqh2")
 
 [node name="Melee" type="Node" parent="StateMachine"]
 script = ExtResource("10_1rkfv")
+
+[node name="MonkeyBars" type="Node" parent="StateMachine"]
+script = ExtResource("7_ycs8f")
 
 [node name="Grapple" type="Node" parent="StateMachine"]
 script = ExtResource("6_r5qvj")
