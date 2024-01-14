@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ds03o1qebetux"]
-
-[ext_resource type="Script" path="res://Scenes/Characters/Player/Gadgets/GrindBoots/GrindBoots.gd" id="1_qeflw"]
-
-[node name="GrindBoots" type="PathFollow3D"]
-script = ExtResource("1_qeflw")

@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqhn455src0iq"]
-
-[ext_resource type="Script" path="res://Scenes/Characters/Player/Gadgets/GrapplingHook/GrapplingHook.gd" id="1_obj5m"]
-
-[node name="GrapplingHook" type="Node3D"]
-script = ExtResource("1_obj5m")

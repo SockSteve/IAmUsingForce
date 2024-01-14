@@ -14,9 +14,9 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Block.gd" id="9_lxqh2"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Magnet.gd" id="10_0mhbm"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Melee.gd" id="10_1rkfv"]
-[ext_resource type="PackedScene" uid="uid://ds03o1qebetux" path="res://Scenes/Characters/Player/Gadgets/GrindBoots/GrindBoots.tscn" id="10_8algw"]
-[ext_resource type="PackedScene" uid="uid://bihfxywywukdv" path="res://Sandbox/PlayerModel/CharacterSkin.tscn" id="13_elups"]
-[ext_resource type="PackedScene" uid="uid://cqhn455src0iq" path="res://Scenes/Characters/Player/Gadgets/GrapplingHook/GrapplingHook.tscn" id="13_vujhk"]
+[ext_resource type="PackedScene" uid="uid://ds03o1qebetux" path="res://Scenes/Characters/Player/Gadgets/GrindBoots.tscn" id="10_8algw"]
+[ext_resource type="PackedScene" uid="uid://bihfxywywukdv" path="res://Scenes/Characters/Player/CharacterSkin.tscn" id="13_elups"]
+[ext_resource type="PackedScene" uid="uid://cqhn455src0iq" path="res://Scenes/Characters/Player/Gadgets/GrapplingHook.tscn" id="13_vujhk"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_p4inm"]
 height = 1.50214

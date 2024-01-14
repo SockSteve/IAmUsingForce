@@ -27,7 +27,7 @@ func update(delta: float) -> void:
 		state_machine.transition_to("Air")
 		return
 		
-	if Input.is_action_just_pressed("shoot"):
+	if Input.is_action_just_pressed("ranged_attack"):
 		player.up_direction = player.up_direction * -1
 
 	if Input.is_action_just_pressed("jump"):
