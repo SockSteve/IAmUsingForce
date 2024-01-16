@@ -16,10 +16,10 @@ func physics_update(delta: float) -> void:
 	
 func endGrind():
 	print(playerGrindBootsTreePos)
-	#player._currentGrindRail.reparent(playerGrindBootsTreePos)
 	playerGrindBootsTreePos.reparent(player)
 	player._currentGrindRail = null
 	player.grinding = false
+	
 	
 	state_machine.transition_to("Air", {do_jump = true})
 	

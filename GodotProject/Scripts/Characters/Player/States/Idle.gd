@@ -8,12 +8,6 @@ func enter(_msg := {}) -> void:
 
 func update(delta: float) -> void:
 	
-	#check if player is on magnetized ground
-	#if player._ground_shapecast.is_colliding():
-		##print(player._ground_shapecast.get_collider(0))
-		#if player._ground_shapecast.get_collider(0).is_in_group("magnetized"):
-			#state_machine.transition_to("Magnet")
-	
 	if  Input.is_action_pressed("gadget"):
 		state_machine.transition_to("Grapple")
 		
@@ -21,8 +15,6 @@ func update(delta: float) -> void:
 	if player.grinding:
 		state_machine.transition_to("Grind")
 	
-	# If you have platforms that break when standing on them, you need that check for 
-	# the character to fall.
 	if not player.is_on_floor():
 		state_machine.transition_to("Air")
 		return

@@ -39,8 +39,12 @@ class_name Player
 var physicsBodyEnabled := false
 @onready var state = $StateMachine.state
 var grinding = false
+var magnetized = false
+var grappling = false
 @onready var grapplingHook = $Inventory/Gadgets/GrapplingHook
+@onready var GrindBoots = $Inventory/Gadgets/GrindBoots
 var shortcutRangedWeapons
+@onready var current_weapon = null
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -48,7 +52,6 @@ func _ready() -> void:
 
 func _physics_process(delta):
 	#print($StateMachine.state)
-	
 	# Calculate ground height for camera controller
 	if _ground_shapecast.get_collision_count() > 0:
 		for collision_result in _ground_shapecast.collision_result:
@@ -61,15 +64,15 @@ func _physics_process(delta):
 	
 	if physicsBodyEnabled:
 		velocity = _physics_body.linear_velocity
-		move_and_slide()
+		#move_and_slide()
 		return
 		
-	if get_last_slide_collision() != null:
-		#print(get_last_slide_collision().get_collider().is_in_group("grindRail"))
-		if get_last_slide_collision().get_collider().is_in_group("grindRail"):
-			_currentGrindRail = get_last_slide_collision().get_collider().get_child(0)
-			#print(_currentGrindRail)
-			grinding = true
+	#if get_last_slide_collision() != null:
+		##print(get_last_slide_collision().get_collider().is_in_group("grindRail"))
+		#if get_last_slide_collision().get_collider().is_in_group("grindRail"):
+			#_currentGrindRail = get_last_slide_collision().get_collider().get_child(0)
+			##print(_currentGrindRail)
+			#grinding = true
 
 	# To not orient quickly to the last input, we save a last strong direction,
 	# this also ensures a good normalized value for the rotation basis.

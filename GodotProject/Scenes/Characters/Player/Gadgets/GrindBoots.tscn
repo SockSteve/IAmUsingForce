@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://ds03o1qebetux"]
+[gd_scene load_steps=3 format=3 uid="uid://ds03o1qebetux"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Gadgets/GrindBoots.gd" id="1_qeflw"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dm2oi"]
+
 [node name="GrindBoots" type="PathFollow3D"]
 script = ExtResource("1_qeflw")
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+shape = SubResource("CylinderShape3D_dm2oi")
+
+[node name="GrindEndCooldown" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="GrindEndCooldown" to="." method="_on_grind_end_cooldown_timeout"]
