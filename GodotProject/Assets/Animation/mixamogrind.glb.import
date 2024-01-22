@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c0q3u3tt67tsm"
-path="res://.godot/imported/mixamoadvancedmovement.glb-e19c699c547f6e36fa7c91b79de18068.scn"
+uid="uid://drhm0r1mxdj64"
+path="res://.godot/imported/mixamogrind.glb-eb1e7129c13dac2e1c25355a76ff66d1.scn"
 
 [deps]
 
-source_file="res://Assets/Animation/mixamoadvancedmovement.glb"
-dest_files=["res://.godot/imported/mixamoadvancedmovement.glb-e19c699c547f6e36fa7c91b79de18068.scn"]
+source_file="res://Assets/Animation/mixamogrind.glb"
+dest_files=["res://.godot/imported/mixamogrind.glb-eb1e7129c13dac2e1c25355a76ff66d1.scn"]
 
 [params]
 

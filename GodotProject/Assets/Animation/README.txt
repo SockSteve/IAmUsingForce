@@ -24,8 +24,12 @@ These Libraries with its animations are:
 		ledgegrableft
 		ledgegrabright
 		ledgejump
+
+	Misc:
+		takedamage
 		usedevice
-		
+		obtainitem
+
 	Grind:
 		grindidle
 		grindattack
