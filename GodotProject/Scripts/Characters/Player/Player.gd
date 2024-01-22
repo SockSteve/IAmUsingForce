@@ -18,13 +18,9 @@ class_name Player
 
 @onready var _rotation_root: Node3D = $CharacterRotationRoot
 @onready var _camera_controller: CameraController = $CameraController
-@onready var _attack_animation_player: AnimationPlayer = $CharacterRotationRoot/MeleeAnchor/AnimationPlayer
+#@onready var _attack_animation_player: AnimationPlayer = $CharacterRotationRoot/MeleeAnchor/AnimationPlayer
 @onready var _ground_shapecast: ShapeCast3D = $GroundShapeCast
 @onready var _physics_body: RigidBody3D = $PhysicsBody
-@onready var _grindBoots: PathFollow3D = $Inventory/Gadgets/GrindBoots
-@onready var _currentGrindRail: Path3D = null
-
-
 
 @onready var _move_direction := Vector3.ZERO
 @onready var _last_strong_direction := Vector3.FORWARD
@@ -38,7 +34,6 @@ class_name Player
 #debug
 var physicsBodyEnabled := false
 @onready var state = $StateMachine.state
-var grinding = false
 var magnetized = false
 var grappling = false
 @onready var grapplingHook = $Inventory/Gadgets/GrapplingHook
@@ -64,15 +59,10 @@ func _physics_process(delta):
 	
 	if physicsBodyEnabled:
 		velocity = _physics_body.linear_velocity
-		#move_and_slide()
+		move_and_slide()
 		return
 		
-	#if get_last_slide_collision() != null:
-		##print(get_last_slide_collision().get_collider().is_in_group("grindRail"))
-		#if get_last_slide_collision().get_collider().is_in_group("grindRail"):
-			#_currentGrindRail = get_last_slide_collision().get_collider().get_child(0)
-			##print(_currentGrindRail)
-			#grinding = true
+
 
 	# To not orient quickly to the last input, we save a last strong direction,
 	# this also ensures a good normalized value for the rotation basis.
@@ -125,7 +115,8 @@ func switchToCharacterBody():
 	_physics_body.top_level = false
 	velocity = _physics_body.linear_velocity
 
-func getGadgets():
+func getGadget(gadget: String):
+	
 	return $Inventory/Gadgets
 
 func attack():

@@ -40,7 +40,7 @@ func physics_update(delta: float) -> void:
 	# Landing.
 	#	if is_just_on_floor:
 #		_landing_sound.play()
-	if player.grinding:
+	if player.GrindBoots.grinding:
 		state_machine.transition_to("Grind")
 	
 	if player.is_on_floor():

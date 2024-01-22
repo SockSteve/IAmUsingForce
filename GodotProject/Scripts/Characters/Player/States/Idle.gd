@@ -12,7 +12,7 @@ func update(delta: float) -> void:
 		state_machine.transition_to("Grapple")
 		
 	# check if player is grinding
-	if player.grinding:
+	if player.GrindBoots.grinding:
 		state_machine.transition_to("Grind")
 	
 	if not player.is_on_floor():

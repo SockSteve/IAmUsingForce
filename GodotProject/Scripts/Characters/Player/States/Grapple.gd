@@ -11,8 +11,6 @@ var nearestGrapplingPoint
 var swing_origin
 var grappleDistance = 600.0
 
-
-
 func enter(msg := {}) -> void:
 	if grapplePoints.is_empty():
 		return
