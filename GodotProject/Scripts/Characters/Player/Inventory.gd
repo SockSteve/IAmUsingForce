@@ -2,6 +2,9 @@ extends Node3D
 
 @onready var gun = preload("res://Scenes/Characters/Player/Weapons/RangedWeapons/Gun/Gun.tscn")
 
+var weapons: Dictionary = {}  # Store Weapons with their ID as the key
+var gadgets: Dictionary = {}  # Store Gadgets with their ID as the key
+
 var collected_weapons: Dictionary = {"cutter": true, "gun": true, "melee_gear": false, "wave_punder" : false,"hive_knive": false, 
 "shrapnel_cannon": false, "lightning_baller": false, "bad_prank": false, "pocket_rocket": false}
 
@@ -24,3 +27,5 @@ func collect_weapon():
 	
 func collect_gadget():
 	pass
+	
+#inst_to_dict

@@ -11,7 +11,6 @@ func enter(msg := {}) -> void:
 #TODO overhaul jump logic and add support for double jump 
 func physics_update(delta: float) -> void:
 	player._move_direction = player._get_camera_oriented_input()
-
 	# To not orient quickly to the last input, we save a last strong direction,
 	# this also ensures a good normalized value for the rotation basis.
 	if player._move_direction.length() > 0.2:
@@ -29,7 +28,11 @@ func physics_update(delta: float) -> void:
 	player.velocity.y = y_velocity
 #	player.velocity.x = player.speed * Input.get_axis("move_right", "move_left")
 #	player.velocity.z = player.speed * Input.get_axis("move_down", "move_up")
-	player.velocity.y += player._gravity * delta
+	print(player.velocity.y)
+	if player.velocity.y > -3 and player.velocity.y < 3:
+		player.velocity.y += player.jump_apex_gravity * delta
+	else:
+		player.velocity.y += player._gravity * delta
 	player.move_and_slide()
 
 
