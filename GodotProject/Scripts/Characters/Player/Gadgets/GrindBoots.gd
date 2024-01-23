@@ -1,5 +1,7 @@
 extends PathFollow3D
 
+var id = "g00"
+
 @onready var player: Player = find_parent("Player")
 @onready var shapeCast: ShapeCast3D = $ShapeCast3D
 var grind_path: Path3D = null

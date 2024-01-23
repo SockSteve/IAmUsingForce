@@ -1,4 +1,3 @@
-#Grapple.gd
 extends PlayerState
 
 enum {NULL, PULL, SWING}
@@ -26,10 +25,12 @@ func enter(msg := {}) -> void:
 	
 	if closestGrapplingPoint.distance > grappleDistance:
 		return
+		
 	player.switchToPhysicsBody()
 		
 	if closestGrapplingPoint.is_in_group("grab"):
 		mode = PULL
+		
 	elif closestGrapplingPoint.is_in_group("swing"):
 		nearestGrapplingPoint.swingJoint.node_b = player._physics_body.get_path()
 		print(nearestGrapplingPoint.swingJoint.node_b)
@@ -66,12 +67,6 @@ func physics_update(delta: float) -> void:
 		# Get positions of the two bodies
 		var positionGrapplePoint = nearestGrapplingPoint.global_transform.origin
 		var positionPlayer = player.global_transform.origin
-
-		# Check if body2 is above body1
-		if positionPlayer.y > positionGrapplePoint.y:
-			print("Body2 is above Body1")
-		else:
-			print("Body2 is not above Body1")
 		
 		if input_vector != Vector3.ZERO:
 			input_vector = input_vector.normalized()

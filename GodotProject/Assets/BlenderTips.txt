@@ -1,6 +1,5 @@
-when importing scenes and animations, these suffix to the names will make your
-life easier:
-	animatin:
+when importing scenes and animations, these suffix to the names will make your life easier:
+	animation:
 		Animation loop (-loop, -cycle)
 		example: my_animation-loop
 		
