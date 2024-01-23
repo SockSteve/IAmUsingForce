@@ -93,9 +93,6 @@ func end_grapple():
 	player.switchToCharacterBody()
 	mode = NULL
 	
-	if player.grinding:
-		state_machine.transition_to("Grind")
-	
 	if not player.is_on_floor():
 		state_machine.transition_to("Air")
 		return
