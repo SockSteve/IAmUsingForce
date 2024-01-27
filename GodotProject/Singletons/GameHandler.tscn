@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyf72lvw1x27p"]
+
+[ext_resource type="Script" path="res://Singletons/GameHandler.gd" id="1_pg37u"]
+
+[node name="GameHandler" type="Node"]
+script = ExtResource("1_pg37u")

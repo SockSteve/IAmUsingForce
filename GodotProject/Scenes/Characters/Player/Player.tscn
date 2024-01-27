@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c0d3bmprmf8q0"]
+[gd_scene load_steps=25 format=3 uid="uid://c0d3bmprmf8q0"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.gd" id="1_ld2le"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/CameraController.gd" id="2_7jqee"]
@@ -33,10 +33,6 @@ material = SubResource("StandardMaterial3D_dm5n6")
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_w05h1"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8gs1p"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_m26hg"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_pkn4w"]
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 axis_lock_angular_x = true
@@ -89,6 +85,7 @@ script = ExtResource("8_82ggy")
 script = ExtResource("10_0mhbm")
 
 [node name="PhysicsBody" type="RigidBody3D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 0
 freeze = true
@@ -136,22 +133,12 @@ debug_shape_custom_color = Color(0, 1, 0, 1)
 
 [node name="CharacterRotationRoot" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterRotationRoot"]
-transform = Transform3D(1, 0, 0, 0, 0.75, 0, 0, 0, 1, 0, 0.75, 0)
-mesh = SubResource("CylinderMesh_m26hg")
-skeleton = NodePath("../..")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="CharacterRotationRoot"]
-transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, -0.1, 0, 0.1, -4.37114e-09, 0, 1.04419, 0.688587)
-mesh = SubResource("CylinderMesh_pkn4w")
-skeleton = NodePath("")
-
 [node name="CharacterSkin" parent="CharacterRotationRoot" instance=ExtResource("13_elups")]
 
 [node name="Inventory" type="Node3D" parent="."]
 script = ExtResource("16_kqrv3")
 
-[node name="Weapons" type="Node" parent="Inventory"]
+[node name="Weapons" type="Node3D" parent="Inventory"]
 
 [node name="Gadgets" type="Node3D" parent="Inventory"]
 

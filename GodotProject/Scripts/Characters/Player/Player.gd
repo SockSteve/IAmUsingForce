@@ -37,6 +37,7 @@ var physicsBodyEnabled := false
 @onready var state = $StateMachine.state
 var magnetized = false
 var grappling = false
+@onready var inventory = $Inventory
 @onready var grapplingHook = $Inventory/Gadgets/GrapplingHook
 @onready var GrindBoots = $Inventory/Gadgets/GrindBoots
 var shortcutRangedWeapons
@@ -116,9 +117,9 @@ func switchToCharacterBody():
 	_physics_body.top_level = false
 	velocity = _physics_body.linear_velocity
 
-func getGadget(gadget: String):
+func get_gadget(gadget: String):
 	
-	return $Inventory/Gadgets
+	return $Inventory.get_gadget(gadget)
 
 func attack():
 	pass
