@@ -9,14 +9,11 @@ class_name Player
 @export var jump_apex_gravity := -10
 @export var jump_additional_force := 4.5 # Jump impulse when player keeps pressing jump
 @export var rotation_speed := 12.0 # Player model rotaion speed
-
 ## Minimum horizontal speed on the ground. This controls when the character's animation tree changes
 ## between the idle and running states.
 @export var stopping_speed := 1.0
-@export var max_throwback_force := 15.0 # Max throwback force after player takes a hit
-@export var shoot_cooldown := 0.5 # Projectile cooldown
-@export var grenade_cooldown := 0.5 # Grenade cooldown
 
+@export var max_throwback_force := 15.0 # Max throwback force after player takes a hit
 @onready var _rotation_root: Node3D = $CharacterRotationRoot
 @onready var _camera_controller: CameraController = $CameraController
 #@onready var _attack_animation_player: AnimationPlayer = $CharacterRotationRoot/MeleeAnchor/AnimationPlayer
