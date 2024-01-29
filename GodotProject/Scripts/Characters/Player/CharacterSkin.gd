@@ -38,7 +38,7 @@ func set_moving_speed(value : float):
 
 
 func jump():
-	state_machine.travel("jump")
+	state_machine.travel("jumpstart")
 
 
 func fall():

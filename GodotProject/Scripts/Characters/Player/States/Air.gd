@@ -4,8 +4,10 @@ extends PlayerState
 func enter(msg := {}) -> void:
 	if msg.has("do_jump"):
 		player.velocity.y += player.jump_initial_impulse
+		player._character_skin.jump()
 	if msg.has("do_crouch_jump"):
 		player.velocity.y += player.jump_initial_impulse
+		player._character_skin.jump()
 
 #TODO acending and decending checks for melee attack
 #TODO overhaul jump logic and add support for double jump 
