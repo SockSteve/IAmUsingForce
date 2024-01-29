@@ -28,6 +28,7 @@ class_name Player
 @onready var _gravity: float = -30.0
 @onready var _ground_height: float = 0.0
 @onready var _start_position := global_transform.origin
+@onready var _character_skin := $CharacterRotationRoot/CharacterSkin
 
 @onready var _is_on_floor_buffer := false
 @onready var _is_grapple := false
@@ -118,7 +119,6 @@ func switchToCharacterBody():
 	velocity = _physics_body.linear_velocity
 
 func get_gadget(gadget: String):
-	
 	return $Inventory.get_gadget(gadget)
 
 func attack():

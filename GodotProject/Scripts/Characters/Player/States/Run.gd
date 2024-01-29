@@ -6,7 +6,7 @@ func physics_update(delta: float) -> void:
 		state_machine.transition_to("Air")
 		return
 		
-
+	
 	player._move_direction = player._get_camera_oriented_input()
 
 	# To not orient quickly to the last input, we save a last strong direction,
@@ -27,6 +27,11 @@ func physics_update(delta: float) -> void:
 		player.velocity = Vector3.ZERO
 	player.velocity.y = y_velocity
 	player.velocity.y += player._gravity * delta
+	
+	var xz_velocity := Vector3(player.velocity.x, 0, player.velocity.z)
+	player._character_skin.set_moving(true)
+	player._character_skin.set_moving_speed(inverse_lerp(0.0, player.move_speed, xz_velocity.length()))
+	
 	player.move_and_slide()
 
 	if Input.is_action_just_pressed("jump"):
