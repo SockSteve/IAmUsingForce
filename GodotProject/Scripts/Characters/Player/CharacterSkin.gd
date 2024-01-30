@@ -5,8 +5,8 @@ signal foot_step
 
 @export var main_animation_player : AnimationPlayer
 
-var moving_blend_path := "parameters/StateMachine/move/blend_position"
-
+var moving_blend_path := "parameters/sm_normal/move/blend_position"
+var transition_state_mashine_request := "parameters/transition/transition_request"
 # False : set animation to "idle"
 # True : set animation to "move"
 @onready var moving : bool = false : set = set_moving
@@ -15,7 +15,13 @@ var moving_blend_path := "parameters/StateMachine/move/blend_position"
 # 0.0 walk - 1.0 run
 @onready var move_speed : float = 0.0 : set = set_moving_speed
 @onready var animation_tree : AnimationTree = $AnimationTree
-@onready var state_machine : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/StateMachine/playback")
+
+#@onready var transition_state_mashine_request: AnimationNodeTransition = animation_tree.get("parameters/transition/transition_request")
+@onready var state_machine : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_normal/playback")
+@onready var sm_crouch : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_crouch/playback")
+@onready var sm_grind : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_grind/playback")
+@onready var sm_grapple : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_grind/playback")
+@onready var sm_melee : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_grind/playback")
 
 
 func _ready():
@@ -44,7 +50,13 @@ func jump():
 func fall():
 	state_machine.travel("fall")
 
+func crouch():
+	animation_tree.set(transition_state_mashine_request, "state_crouch")
+	sm_crouch.travel("idle")
 
+func uncrouch():
+	pass
+	
 func punch():
 	animation_tree["parameters/PunchOneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 

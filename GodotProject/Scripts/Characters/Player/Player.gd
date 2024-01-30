@@ -11,7 +11,7 @@ class_name Player
 @export var rotation_speed := 12.0 # Player model rotaion speed
 ## Minimum horizontal speed on the ground. This controls when the character's animation tree changes
 ## between the idle and running states.
-@export var stopping_speed := 1.0
+@export var stopping_speed := 4.5
 
 @export var max_throwback_force := 15.0 # Max throwback force after player takes a hit
 @onready var _rotation_root: Node3D = $CharacterRotationRoot

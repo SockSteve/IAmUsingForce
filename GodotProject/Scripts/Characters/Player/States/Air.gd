@@ -25,19 +25,18 @@ func physics_update(delta: float) -> void:
 	var y_velocity := player.velocity.y
 	player.velocity.y = 0.0
 	player.velocity = player.velocity.lerp(player._move_direction * player.move_speed, player.acceleration * delta)
+	
 	if player._move_direction.length() == 0 and player.velocity.length() < player.stopping_speed:
 		player.velocity = Vector3.ZERO
 	player.velocity.y = y_velocity
-#	player.velocity.x = player.speed * Input.get_axis("move_right", "move_left")
-#	player.velocity.z = player.speed * Input.get_axis("move_down", "move_up")
-	print(player.velocity.y)
+
 	if player.velocity.y > -3 and player.velocity.y < 3:
 		player.velocity.y += player.jump_apex_gravity * delta
 	else:
 		player.velocity.y += player._gravity * delta
+	
 	player.move_and_slide()
-
-
+	
 	if  Input.is_action_pressed("gadget"):
 		state_machine.transition_to("Grapple")
 		

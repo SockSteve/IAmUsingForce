@@ -1,11 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfv2ecbe68yfi"]
+[gd_scene load_steps=11 format=3 uid="uid://cfv2ecbe68yfi"]
 
 [ext_resource type="PackedScene" uid="uid://lq37dt6an0ad" path="res://Scenes/InteractiveObjects/GrapplingPoints/SwingHook.tscn" id="1_kdsm0"]
 [ext_resource type="PackedScene" uid="uid://v47kxsby14rj" path="res://Scenes/InteractiveObjects/GrapplingPoints/GrabHook.tscn" id="2_22asg"]
 [ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Scenes/Characters/Player/Player.tscn" id="3_t8btd"]
 [ext_resource type="PackedScene" uid="uid://dprksnsipfg02" path="res://addons/kenney_prototype_tools/scenes/orange/orange_01.tscn" id="4_ysjfm"]
 [ext_resource type="AudioStream" uid="uid://dg1u65hw1xmhh" path="res://Assets/Audio/Music/hip-hop-rock-beats-118000.mp3" id="5_b0j0h"]
-[ext_resource type="PackedScene" uid="uid://ds03o1qebetux" path="res://Scenes/Characters/Player/Gadgets/GrindBoots.tscn" id="6_5okvt"]
 
 [sub_resource type="Environment" id="Environment_6axbp"]
 
@@ -108,8 +107,5 @@ path_joined = false
 [node name="Path3D" type="Path3D" parent="CSGPolygon3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215106, -1.8432, 0.2939)
 curve = SubResource("Curve3D_i8skm")
-
-[node name="GrindBoots" parent="." instance=ExtResource("6_5okvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.304, 3, 7.772)
 
 [editable path="SwingHook"]
