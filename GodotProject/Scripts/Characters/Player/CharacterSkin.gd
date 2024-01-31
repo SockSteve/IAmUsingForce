@@ -6,6 +6,7 @@ signal foot_step
 @export var main_animation_player : AnimationPlayer
 
 var moving_blend_path := "parameters/sm_normal/move/blend_position"
+var crouch_moving_blend_path := "parameters/sm_crouch/move/blend_position"
 var transition_state_mashine_request := "parameters/transition/transition_request"
 # False : set animation to "idle"
 # True : set animation to "move"
@@ -55,7 +56,8 @@ func crouch():
 	sm_crouch.travel("idle")
 
 func uncrouch():
-	pass
+	animation_tree.set(transition_state_mashine_request, "state_crouch")
+	sm_crouch.travel("walk")
 	
 func punch():
 	animation_tree["parameters/PunchOneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
