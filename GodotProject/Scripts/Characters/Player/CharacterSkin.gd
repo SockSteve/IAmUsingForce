@@ -37,12 +37,22 @@ func set_moving(value : bool):
 		state_machine.travel("move")
 	else:
 		state_machine.travel("idle")
+		
+func set_crouch_moving(value : bool):
+	moving = value
+	if moving:
+		sm_crouch.travel("move")
+	else:
+		sm_crouch.travel("idle")
 
 
 func set_moving_speed(value : float):
 	move_speed = clamp(value, 0.0, 1.0)
 	animation_tree.set(moving_blend_path, move_speed)
 
+func set_crouch_moving_speed(value : float):
+	move_speed = clamp(value, 0.0, 1.0)
+	animation_tree.set(crouch_moving_blend_path, move_speed)
 
 func jump():
 	state_machine.travel("jumpstart")
@@ -56,8 +66,8 @@ func crouch():
 	sm_crouch.travel("idle")
 
 func uncrouch():
-	animation_tree.set(transition_state_mashine_request, "state_crouch")
-	sm_crouch.travel("walk")
+	animation_tree.set(transition_state_mashine_request, "state_normal")
+	state_machine.travel("idle")
 	
 func punch():
 	animation_tree["parameters/PunchOneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
