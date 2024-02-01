@@ -4,40 +4,30 @@ enum {NULL, PULL, SWING}
 var mode = NULL
 
 var original_speed = Vector3.ZERO
-@onready var grapplePoints := get_tree().get_nodes_in_group("grapplingPoint")
 var grappling := false
-var nearestGrapplingPoint
+var nearest_grapple_point
 var swing_origin
 var grappleDistance = 600.0
+var grappling_hook
 
 func enter(msg := {}) -> void:
-	if grapplePoints.is_empty():
-		return
-	#player.switchToPhysicsBody()
-	var grappilingPointDistances := {}
-	for grapplingPoint in grapplePoints:
-		grapplingPoint.distance = owner.global_transform.origin.distance_to(grapplingPoint.get_grapplingpoint_position())
-		grappilingPointDistances[grapplingPoint.distance] = grapplingPoint
+	grappling_hook = player.get_gadget("GrapplingHook")
+	grappling_hook.activate()
+	nearest_grapple_point = grappling_hook.nearest_grapple_point
+	swing_origin = grappling_hook.grapple_point_global_position
 	
-	var closestGrapplingPoint = grappilingPointDistances[grappilingPointDistances.keys().min()]
-	nearestGrapplingPoint = closestGrapplingPoint
-	swing_origin = nearestGrapplingPoint.global_position
-	
-	if closestGrapplingPoint.distance > grappleDistance:
+	if nearest_grapple_point.distance > grappleDistance:
 		return
 		
 	player.switchToPhysicsBody()
 		
-	if closestGrapplingPoint.is_in_group("grab"):
+	if nearest_grapple_point.is_in_group("grab"):
 		mode = PULL
 		
-	elif closestGrapplingPoint.is_in_group("swing"):
-		nearestGrapplingPoint.swingJoint.node_b = player._physics_body.get_path()
-		print(nearestGrapplingPoint.swingJoint.node_b)
+	elif nearest_grapple_point.is_in_group("swing"):
+		nearest_grapple_point.swingJoint.node_b = player._physics_body.get_path()
+		print(nearest_grapple_point.swingJoint.node_b)
 		mode = SWING
-	
-#	if msg.has("swing"):
-#		player.velocity.y += player.jump_initial_impulse
 
 
 func physics_update(delta: float) -> void:
@@ -45,7 +35,7 @@ func physics_update(delta: float) -> void:
 		end_grapple()
 	
 	if mode == PULL:
-		var directionVector: Vector3 = (nearestGrapplingPoint.global_position - player.global_position).normalized()
+		var directionVector: Vector3 = (nearest_grapple_point.global_position - player.global_position).normalized()
 		var speed = 30
 		var velocity = directionVector * speed
 		player.velocity = velocity
@@ -65,9 +55,10 @@ func physics_update(delta: float) -> void:
 		
 		#check if player is above the grapple point
 		# Get positions of the two bodies
-		var positionGrapplePoint = nearestGrapplingPoint.global_transform.origin
+		var positionGrapplePoint = nearest_grapple_point.global_transform.origin
 		var positionPlayer = player.global_transform.origin
-		
+		player.velocity = player._physics_body.linear_velocity
+		player.move_and_slide()
 		if input_vector != Vector3.ZERO:
 			input_vector = input_vector.normalized()
 			#var swing_direction = player._physics_body.get_global_transform().basis.y.cross(input_vector)
@@ -76,7 +67,7 @@ func physics_update(delta: float) -> void:
 			player._physics_body.apply_central_impulse(force)
 		
 		pass
-	print(mode)
+	#print(mode)
 		
 	if Input.is_action_just_released("gadget"):
 		end_grapple()
@@ -84,7 +75,8 @@ func physics_update(delta: float) -> void:
 
 func end_grapple():
 	if mode == SWING:
-		nearestGrapplingPoint.swingJoint.node_b = ""
+		nearest_grapple_point.swingJoint.node_b = ""
+	grappling_hook.end_grapple()
 	player.switchToCharacterBody()
 	mode = NULL
 	

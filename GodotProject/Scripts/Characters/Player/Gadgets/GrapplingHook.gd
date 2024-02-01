@@ -26,14 +26,31 @@ func activate():
 	nearest_grapple_point = closestGrapplingPoint
 	
 	grapple_point_global_position = nearest_grapple_point.global_position
+	
+	set_physics_process(true)
+	$Rope.visible = true
+	update_rope_transform(nearest_grapple_point.global_position)
 	if nearest_grapple_point.distance > debug_grapple_distance:
 		return
 
 func _ready():
 	grapple_points.append_array(get_tree().get_nodes_in_group("grapplingPoint"))
 	print(grapple_points)
+	set_physics_process(false)
+
+func end_grapple():
+	set_physics_process(false)
+	$Rope.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+func _physics_process(delta):
+	if nearest_grapple_point != null:
+		update_rope_transform(nearest_grapple_point.global_position)
+
+func update_rope_transform(grapple_point_position: Vector3) -> void:
+	var rope = $Rope # Adjust the path
+	var direction = grapple_point_position - rope.global_transform.origin
+	var distance = direction.length()
+	rope.scale.y = distance #/ rope.initial_length  # 'initial_length' is the original length of your rope mesh
+	rope.look_at_from_position($Rope.global_position, grapple_point_position)#, Vector3.UP)

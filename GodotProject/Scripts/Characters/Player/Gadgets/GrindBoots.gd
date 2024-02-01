@@ -13,7 +13,7 @@ var grinding: bool = false
 #intersection point data from the shapecast3D
 #and we add the player to the exception list
 func _ready():
-	shapeCast.set_max_results(1)
+	shapeCast.set_max_results(6)
 	shapeCast.add_exception(player)
 
 #here we implemented the logic for when a grindrail was detected and the player

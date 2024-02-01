@@ -22,8 +22,6 @@ func update(delta: float) -> void:
 	if Input.is_action_just_pressed("crouch"):
 		state_machine.transition_to("Crouch")
 		
-	if Input.is_action_just_pressed("ranged_attack"):
-		player.up_direction = player.up_direction * -1
 
 	if Input.is_action_just_pressed("jump"):
 		# As we'll only have one air state for both jump and fall, we use the `msg` dictionary 

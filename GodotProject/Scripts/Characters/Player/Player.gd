@@ -31,7 +31,7 @@ class_name Player
 @onready var _is_grapple := false
 
 #debug
-var physicsBodyEnabled := false
+#var physicsBodyEnabled := false
 @onready var state = $StateMachine.state
 var magnetized = false
 var grappling = false
@@ -56,22 +56,14 @@ func _physics_process(delta):
 	if global_position.y < _ground_height:
 		_ground_height = global_position.y
 	
-	
-	if physicsBodyEnabled:
-		velocity = _physics_body.linear_velocity
-		move_and_slide()
-		return
-		
-
-
 	# To not orient quickly to the last input, we save a last strong direction,
 	# this also ensures a good normalized value for the rotation basis.
-	if _move_direction.length() > 0.2:
-		_last_strong_direction = _move_direction.normalized()
+	#if _move_direction.length() > 0.2:
+		#_last_strong_direction = _move_direction.normalized()
 	#if is_aiming:
 		#_last_strong_direction = (_camera_controller.global_transform.basis * Vector3.BACK).normalized()
 
-	_orient_character_to_direction(_last_strong_direction, delta)
+	#_orient_character_to_direction(_last_strong_direction, delta)
 
 func _get_camera_oriented_input() -> Vector3:
 	var raw_input := Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -94,23 +86,12 @@ func _orient_character_to_direction(direction: Vector3, delta: float) -> void:
 	)
 
 func switchToPhysicsBody():
-	self.set_collision_layer_value(1,false)
-	self.set_collision_mask_value(1, false)
-	_physics_body.set_collision_layer_value(1,true)
-	_physics_body.set_collision_mask_value(1,true)
 	_physics_body.linear_velocity = velocity
-	_physics_body.global_position = self.global_transform.origin
+	_physics_body.global_transform = self.global_transform
 	_physics_body.freeze = false
-	physicsBodyEnabled = true
 	_physics_body.top_level = true
 
 func switchToCharacterBody():
-	self.set_collision_layer_value(1,true)
-	self.set_collision_mask_value(1, true)
-	_physics_body.set_collision_layer_value(1,false)
-	_physics_body.set_collision_mask_value(1,false)
-	_physics_body.global_position = self.global_transform.origin
-	physicsBodyEnabled = false
 	_physics_body.freeze = true
 	_physics_body.top_level = false
 	velocity = _physics_body.linear_velocity

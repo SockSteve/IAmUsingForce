@@ -30,10 +30,10 @@ func has_gadget(gadget_name: String):
 	return false
 
 func get_weapon(weapon_name: String):
-	weapon_node.find_child(weapon_name,false,true)
+	return weapon_node.find_child(weapon_name,false,true)
 
 func get_gadget(gadget_name: String):
-	gadget_node.find_child(gadget_name,false,true)
+	return gadget_node.find_child(gadget_name,false,true)
 
 func add_weapon(weapon:Node):
 	weapon_node.add_child(weapon)
