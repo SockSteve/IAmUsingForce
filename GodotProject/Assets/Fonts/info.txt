@@ -1,0 +1,9 @@
+SupplyCenter Font
+	Niskala Huruf
+	license: Freeware
+	link: https://www.fontspace.com/supply-center-font-f89906
+	
+GoldenRooster
+	zafiratype
+	license: Freeware
+	link: https://www.fontspace.com/supply-center-font-f89906

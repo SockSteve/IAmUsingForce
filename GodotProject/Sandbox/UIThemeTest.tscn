@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://df2wl5sx1ocvp"]
+
+[ext_resource type="Theme" uid="uid://d02hntmjt67aj" path="res://UI/UITheme_1.tres" id="1_03pkw"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 430.0
+offset_bottom = 233.0
+theme = ExtResource("1_03pkw")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 238.0
+offset_top = 242.0
+offset_right = 641.0
+offset_bottom = 342.0
+text = "Test"
