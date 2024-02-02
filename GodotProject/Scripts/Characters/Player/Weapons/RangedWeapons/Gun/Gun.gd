@@ -1,16 +1,31 @@
 extends Node3D
 
-const BULLET = preload("res://Scenes/Characters/Player/Weapons/RangedWeapons/Gun/GunBullet.tscn")
+# Export variables allow you to set these in the editor
+@export var bullet_scene : PackedScene
+@export var bullet_speed : float = 100.0
+@export var fire_rate : float = 0.5
 
-# Called when the node enters the scene tree for the first time.
+var can_shoot = true
+
 func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
 	pass
+
+func _process(delta):
+	if can_shoot and Input.is_action_just_pressed("fire"):
+		shoot()
 
 func shoot():
-	pass
-	
+	var bullet = bullet_scene.instance()
+	get_parent().add_child(bullet)
+
+	# Set the bullet's position to the gun's position
+	bullet.global_transform = global_transform
+
+	# Apply velocity to the bullet
+	var direction = global_transform.basis.z.normalized()
+	bullet.linear_velocity = direction * bullet_speed
+
+	# Implement fire rate
+	can_shoot = false
+	await get_tree().create_timer(fire_rate).timeout
+	can_shoot = true

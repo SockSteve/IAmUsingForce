@@ -149,7 +149,92 @@ script = ExtResource("16_kqrv3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
-offset_right = 274.0
-offset_bottom = 86.0
+[node name="PlayerHUD" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Panel" type="Panel" parent="CanvasLayer/PlayerHUD"]
+offset_right = 179.0
+offset_bottom = 61.0
 theme = ExtResource("19_1icc6")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PlayerHUD/Panel"]
+offset_left = 10.0
+offset_top = 6.0
+offset_right = 50.0
+offset_bottom = 46.0
+color = Color(0.796078, 0.796078, 0.796078, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PlayerHUD/Panel"]
+offset_left = 68.0
+offset_right = 177.0
+offset_bottom = 61.0
+theme = ExtResource("19_1icc6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PlayerHUD/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/PlayerHUD/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "100"
+
+[node name="Label2" type="Label" parent="CanvasLayer/PlayerHUD/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "/"
+
+[node name="Label3" type="Label" parent="CanvasLayer/PlayerHUD/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "100"
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/PlayerHUD/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+show_percentage = false
+
+[node name="HP_Display" type="Control" parent="CanvasLayer/PlayerHUD"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 62.0
+offset_right = 179.0
+offset_bottom = 102.0
+
+[node name="HP_0" type="ColorRect" parent="CanvasLayer/PlayerHUD/HP_Display"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = 33.0
+offset_bottom = 30.0
+
+[node name="HP_1" type="ColorRect" parent="CanvasLayer/PlayerHUD/HP_Display"]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 6.0
+offset_right = 63.0
+offset_bottom = 29.0
+
+[node name="HP_2" type="ColorRect" parent="CanvasLayer/PlayerHUD/HP_Display"]
+layout_mode = 0
+offset_left = 67.0
+offset_top = 5.0
+offset_right = 92.0
+offset_bottom = 28.0
+
+[node name="HP_3" type="ColorRect" parent="CanvasLayer/PlayerHUD/HP_Display"]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 6.0
+offset_right = 123.0
+offset_bottom = 29.0
+
+[node name="HP_4" type="ColorRect" parent="CanvasLayer/PlayerHUD/HP_Display"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 6.0
+offset_right = 155.0
+offset_bottom = 29.0

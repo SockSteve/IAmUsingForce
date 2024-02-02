@@ -2,9 +2,11 @@
 extends PlayerState
 
 func physics_update(delta: float) -> void:
+	print(Input.is_action_just_pressed("jump"))
+	print(get_parent().state)
 	if not player.is_on_floor():
 		state_machine.transition_to("Air")
-		return
+		
 		
 	
 	player._move_direction = player._get_camera_oriented_input()

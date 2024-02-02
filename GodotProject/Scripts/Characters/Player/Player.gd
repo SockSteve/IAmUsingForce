@@ -1,12 +1,14 @@
 extends CharacterBody3D
 class_name Player
 
-
+@export_category("test")
+@export_group("test")
 @export var move_speed := 12.0 # Character maximum run speed on the ground.
 @export var attack_impulse := 10.0 # Forward impulse after a melee attack.
 @export var acceleration := 4.0 # Movement acceleration (how fast character achieve maximum speed)
 @export var jump_initial_impulse := 12.0 # Jump impulse
 @export var jump_apex_gravity := -10
+@export_subgroup("sub")
 @export var jump_additional_force := 4.5 # Jump impulse when player keeps pressing jump
 @export var rotation_speed := 12.0 # Player model rotaion speed
 ## Minimum horizontal speed on the ground. This controls when the character's animation tree changes
