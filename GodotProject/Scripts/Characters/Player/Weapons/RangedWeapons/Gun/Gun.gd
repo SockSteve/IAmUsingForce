@@ -11,12 +11,15 @@ func _ready():
 	pass
 
 func _process(delta):
-	if can_shoot and Input.is_action_just_pressed("fire"):
+	if can_shoot and Input.is_action_just_pressed("ranged_attack"):
+		print("ssss")
 		shoot()
 
 func shoot():
-	var bullet = bullet_scene.instance()
-	get_parent().add_child(bullet)
+	var bullet = bullet_scene.instantiate()
+	#get_parent().add_child(bullet)
+	self.add_child(bullet)
+	print(bullet)
 
 	# Set the bullet's position to the gun's position
 	bullet.global_transform = global_transform

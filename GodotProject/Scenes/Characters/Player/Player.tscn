@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c0d3bmprmf8q0"]
+[gd_scene load_steps=28 format=3 uid="uid://c0d3bmprmf8q0"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.gd" id="1_ld2le"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/CameraController.gd" id="2_7jqee"]
@@ -18,6 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://bihfxywywukdv" path="res://Scenes/Characters/Player/CharacterSkin.tscn" id="13_elups"]
 [ext_resource type="PackedScene" uid="uid://cqhn455src0iq" path="res://Scenes/Characters/Player/Gadgets/GrapplingHook.tscn" id="13_vujhk"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Inventory.gd" id="16_kqrv3"]
+[ext_resource type="PackedScene" uid="uid://cfru43w2xfbl2" path="res://Scenes/Characters/Player/Weapons/RangedWeapons/Gun/Gun.tscn" id="17_ntt0n"]
+[ext_resource type="PackedScene" uid="uid://owsxbjhadsho" path="res://Scenes/Characters/Player/Weapons/RangedWeapons/Gun/GunBullet.tscn" id="18_lea13"]
 [ext_resource type="Theme" uid="uid://d02hntmjt67aj" path="res://UI/UITheme_1.tres" id="19_1icc6"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_p4inm"]
@@ -136,16 +138,20 @@ debug_shape_custom_color = Color(0, 1, 0, 1)
 
 [node name="CharacterSkin" parent="CharacterRotationRoot" instance=ExtResource("13_elups")]
 
-[node name="Inventory" type="Node3D" parent="."]
+[node name="Inventory" type="Node3D" parent="CharacterRotationRoot"]
 script = ExtResource("16_kqrv3")
 
-[node name="Weapons" type="Node3D" parent="Inventory"]
+[node name="Weapons" type="Node3D" parent="CharacterRotationRoot/Inventory"]
 
-[node name="Gadgets" type="Node3D" parent="Inventory"]
+[node name="Blaster" parent="CharacterRotationRoot/Inventory/Weapons" instance=ExtResource("17_ntt0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12975, 0.941938)
+bullet_scene = ExtResource("18_lea13")
 
-[node name="GrapplingHook" parent="Inventory/Gadgets" instance=ExtResource("13_vujhk")]
+[node name="Gadgets" type="Node3D" parent="CharacterRotationRoot/Inventory"]
 
-[node name="GrindBoots" parent="Inventory/Gadgets" instance=ExtResource("10_8algw")]
+[node name="GrapplingHook" parent="CharacterRotationRoot/Inventory/Gadgets" instance=ExtResource("13_vujhk")]
+
+[node name="GrindBoots" parent="CharacterRotationRoot/Inventory/Gadgets" instance=ExtResource("10_8algw")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -157,11 +163,13 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Panel" type="Panel" parent="CanvasLayer/PlayerHUD"]
+layout_mode = 0
 offset_right = 179.0
 offset_bottom = 61.0
 theme = ExtResource("19_1icc6")
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/PlayerHUD/Panel"]
+layout_mode = 0
 offset_left = 10.0
 offset_top = 6.0
 offset_right = 50.0
@@ -169,6 +177,7 @@ offset_bottom = 46.0
 color = Color(0.796078, 0.796078, 0.796078, 1)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PlayerHUD/Panel"]
+layout_mode = 0
 offset_left = 68.0
 offset_right = 177.0
 offset_bottom = 61.0
