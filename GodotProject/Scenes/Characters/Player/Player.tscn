@@ -137,19 +137,23 @@ debug_shape_custom_color = Color(0, 1, 0, 1)
 
 [node name="CharacterSkin" parent="CharacterRotationRoot" instance=ExtResource("13_elups")]
 
-[node name="Inventory" type="Node3D" parent="CharacterRotationRoot"]
+[node name="PlayerHand" type="Node3D" parent="CharacterRotationRoot"]
+
+[node name="Blaster" parent="CharacterRotationRoot/PlayerHand" instance=ExtResource("17_ntt0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12975, 0.941938)
+visible = false
+
+[node name="Inventory" type="Node3D" parent="."]
 script = ExtResource("16_kqrv3")
 
-[node name="Weapons" type="Node3D" parent="CharacterRotationRoot/Inventory"]
+[node name="Weapons" type="Node3D" parent="Inventory"]
 
-[node name="Blaster" parent="CharacterRotationRoot/Inventory/Weapons" instance=ExtResource("17_ntt0n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12975, 0.941938)
+[node name="Gadgets" type="Node3D" parent="Inventory"]
 
-[node name="Gadgets" type="Node3D" parent="CharacterRotationRoot/Inventory"]
+[node name="GrapplingHook" parent="Inventory/Gadgets" instance=ExtResource("13_vujhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40527, 0.842724)
 
-[node name="GrapplingHook" parent="CharacterRotationRoot/Inventory/Gadgets" instance=ExtResource("13_vujhk")]
-
-[node name="GrindBoots" parent="CharacterRotationRoot/Inventory/Gadgets" instance=ExtResource("10_8algw")]
+[node name="GrindBoots" parent="Inventory/Gadgets" instance=ExtResource("10_8algw")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

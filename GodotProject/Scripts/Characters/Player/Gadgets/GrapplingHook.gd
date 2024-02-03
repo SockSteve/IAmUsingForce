@@ -19,13 +19,13 @@ func activate():
 		
 	var grappilingPointDistances := {}
 	for grapplingPoint in grapplePoints:
-		grapplingPoint.distance = owner.global_transform.origin.distance_to(grapplingPoint.get_grapplingpoint_position())
+		grapplingPoint.distance = owner.global_transform.origin.distance_to(grapplingPoint.global_position)
 		grappilingPointDistances[grapplingPoint.distance] = grapplingPoint
 		
 	var closestGrapplingPoint = grappilingPointDistances[grappilingPointDistances.keys().min()]
 	nearest_grapple_point = closestGrapplingPoint
 	
-	grapple_point_global_position = nearest_grapple_point.global_position
+	grapple_point_global_position = nearest_grapple_point.global_transform.origin
 	
 	set_physics_process(true)
 	$Rope.visible = true
@@ -37,6 +37,7 @@ func _ready():
 	grapple_points.append_array(get_tree().get_nodes_in_group("grapplingPoint"))
 	print(grapple_points)
 	set_physics_process(false)
+	#$Rope
 
 func end_grapple():
 	set_physics_process(false)
@@ -46,11 +47,21 @@ func end_grapple():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if nearest_grapple_point != null:
-		update_rope_transform(nearest_grapple_point.global_position)
+		update_rope_transform(nearest_grapple_point.global_transform.origin)
 
 func update_rope_transform(grapple_point_position: Vector3) -> void:
 	var rope = $Rope # Adjust the path
-	var direction = grapple_point_position - rope.global_transform.origin
+	var gadget_pos = global_transform.origin
+	var direction = grapple_point_position - gadget_pos
+	
 	var distance = direction.length()
-	rope.scale.y = distance #/ rope.initial_length  # 'initial_length' is the original length of your rope mesh
-	rope.look_at_from_position($Rope.global_position, grapple_point_position)#, Vector3.UP)
+	direction = direction.normalized()
+	#rope.scale = Vector3(rope.scale.x, distance, rope.scale.z)
+	rope.scale = Vector3(rope.scale.x, rope.scale.y, distance)
+	#direction = direction.dot(nearest_grapple_point.transform.basis.z)
+	#rope.scale.y = distance #/ rope.initial_length  # 'initial_length' is the original length of your rope mesh
+	rope.look_at_from_position($Rope.global_position, grapple_point_position, Vector3.UP)
+	#rope.look_at_from_position($Rope.global_position, grapple_point_global_position)
+	#Basis.looking_at(direction, Vector3.UP)
+	
+

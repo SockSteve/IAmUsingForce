@@ -37,7 +37,7 @@ class_name Player
 @onready var state = $StateMachine.state
 var magnetized = false
 var grappling = false
-@onready var inventory = $CharacterRotationRoot/Inventory
+@onready var inventory = $Inventory
 @onready var grapplingHook = $Inventory/Gadgets/GrapplingHook
 @onready var GrindBoots = $Inventory/Gadgets/GrindBoots
 var shortcutRangedWeapons
