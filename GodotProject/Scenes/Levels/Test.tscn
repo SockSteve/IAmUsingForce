@@ -1,17 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://cfv2ecbe68yfi"]
+[gd_scene load_steps=13 format=3 uid="uid://cfv2ecbe68yfi"]
 
 [ext_resource type="PackedScene" uid="uid://lq37dt6an0ad" path="res://Scenes/InteractiveObjects/GrapplingPoints/SwingHook.tscn" id="1_kdsm0"]
 [ext_resource type="PackedScene" uid="uid://v47kxsby14rj" path="res://Scenes/InteractiveObjects/GrapplingPoints/GrabHook.tscn" id="2_22asg"]
 [ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Scenes/Characters/Player/Player.tscn" id="3_t8btd"]
-[ext_resource type="Script" path="res://Scenes/Levels/test.gd" id="4_v7r84"]
 [ext_resource type="PackedScene" uid="uid://dprksnsipfg02" path="res://addons/kenney_prototype_tools/scenes/orange/orange_01.tscn" id="4_ysjfm"]
 [ext_resource type="AudioStream" uid="uid://dg1u65hw1xmhh" path="res://Assets/Audio/Music/hip-hop-rock-beats-118000.mp3" id="5_b0j0h"]
+[ext_resource type="PackedScene" uid="uid://ro280iljuyye" path="res://Assets/Placeholders/Environment/bonfire_free_download/scene.gltf" id="6_ryulc"]
+[ext_resource type="PackedScene" uid="uid://du0ausxn5e6vk" path="res://Assets/Placeholders/Environment/fern_grass_02/scene.gltf" id="7_mr86d"]
 
 [sub_resource type="Environment" id="Environment_6axbp"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_cv582"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_amkcl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1jmal"]
 
@@ -36,10 +33,9 @@ point_count = 8
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.588689, -0.214393, 0.779411, -0.80836, -0.156132, 0.567607, 0, -0.964188, -0.26522, 16.6669, 27.6445, 16.6961)
-visible = false
-light_energy = 7.619
+light_energy = 0.1
 light_indirect_energy = 0.0
-light_volumetric_fog_energy = 4.657
+light_volumetric_fog_energy = 2.524
 light_angular_distance = 9.6
 light_bake_mode = 1
 
@@ -54,16 +50,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3731, 15.5312, 38.0132)
 
 [node name="Player" parent="." instance=ExtResource("3_t8btd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1902, 2.81285, 33.0925)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 1.97919, 0)
-mesh = SubResource("BoxMesh_cv582")
-script = ExtResource("4_v7r84")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Player/MeshInstance3D"]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
-mesh = SubResource("BoxMesh_amkcl")
-skeleton = NodePath("../..")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.00787138, 0.999969, 0, -0.999969, 0.00787138, 46.5912, 18.8276, 41.777)
@@ -122,5 +108,11 @@ path_joined = false
 [node name="Path3D" type="Path3D" parent="CSGPolygon3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.215106, -1.8432, 0.2939)
 curve = SubResource("Curve3D_i8skm")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("6_ryulc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0368, 1.39886, 57.5848)
+
+[node name="Sketchfab_Scene2" parent="." instance=ExtResource("7_mr86d")]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 6.25976, 1.39886, 58.9178)
 
 [editable path="SwingHook"]

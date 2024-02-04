@@ -55,6 +55,7 @@ func update_rope_transform(grapple_point_position: Vector3) -> void:
 	var direction = grapple_point_position - gadget_pos
 	
 	var distance = direction.length()
+	$Rope.global_position = gadget_pos + direction / 2.0
 	direction = direction.normalized()
 	#rope.scale = Vector3(rope.scale.x, distance, rope.scale.z)
 	rope.scale = Vector3(rope.scale.x, rope.scale.y, distance)

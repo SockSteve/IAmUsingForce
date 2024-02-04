@@ -151,7 +151,7 @@ script = ExtResource("16_kqrv3")
 [node name="Gadgets" type="Node3D" parent="Inventory"]
 
 [node name="GrapplingHook" parent="Inventory/Gadgets" instance=ExtResource("13_vujhk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.40527, 0.842724)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91362, 0.0314813)
 
 [node name="GrindBoots" parent="Inventory/Gadgets" instance=ExtResource("10_8algw")]
 
@@ -249,3 +249,5 @@ offset_left = 130.0
 offset_top = 6.0
 offset_right = 155.0
 offset_bottom = 29.0
+
+[node name="SlideTimer" type="Timer" parent="."]

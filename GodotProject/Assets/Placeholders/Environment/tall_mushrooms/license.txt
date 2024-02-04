@@ -1,0 +1,11 @@
+Model Information:
+* title:	Tall mushrooms
+* source:	https://sketchfab.com/3d-models/tall-mushrooms-4edc47815c484b0faf0fe10279180f82
+* author:	caue.oc (https://sketchfab.com/agenteccezar)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Tall mushrooms" (https://sketchfab.com/3d-models/tall-mushrooms-4edc47815c484b0faf0fe10279180f82) by caue.oc (https://sketchfab.com/agenteccezar) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

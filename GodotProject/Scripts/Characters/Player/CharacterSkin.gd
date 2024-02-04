@@ -57,13 +57,17 @@ func set_crouch_moving_speed(value : float):
 func jump():
 	state_machine.travel("jumpstart")
 
-
 func fall():
 	state_machine.travel("fall")
 
 func crouch():
 	animation_tree.set(transition_state_mashine_request, "state_crouch")
 	sm_crouch.travel("idle")
+	
+
+func slide():
+	animation_tree.set(transition_state_mashine_request, "state_crouch")
+	sm_crouch.travel("slide")
 
 func uncrouch():
 	animation_tree.set(transition_state_mashine_request, "state_normal")

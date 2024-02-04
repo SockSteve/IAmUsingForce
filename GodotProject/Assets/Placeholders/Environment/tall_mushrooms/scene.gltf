@@ -1,0 +1,525 @@
+{
+  "accessors": [
+    {
+      "bufferView": 2,
+      "componentType": 5126,
+      "count": 3196,
+      "max": [
+        3.258348226547241,
+        3.4388527870178223,
+        10.632101058959961
+      ],
+      "min": [
+        -3.4911048412323,
+        -3.2914013862609863,
+        -0.2957281172275543
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 38352,
+      "componentType": 5126,
+      "count": 3196,
+      "max": [
+        0.999900221824646,
+        0.9972447156906128,
+        0.9983705282211304
+      ],
+      "min": [
+        -0.9996429085731506,
+        -0.9998573064804077,
+        -0.9999901056289673
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "componentType": 5126,
+      "count": 3196,
+      "max": [
+        0.9986316561698914,
+        0.9996398091316223,
+        0.9999039769172668,
+        1.0
+      ],
+      "min": [
+        -0.9999706149101257,
+        -0.999388575553894,
+        -0.9999539256095886,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 3196,
+      "max": [
+        0.9840409755706787,
+        0.9809994697570801
+      ],
+      "min": [
+        0.02955353632569313,
+        0.053585153073072433
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 17568,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 76704,
+      "componentType": 5126,
+      "count": 3196,
+      "max": [
+        3.3238072395324707,
+        3.522566318511963,
+        15.151139259338379
+      ],
+      "min": [
+        -3.417923927307129,
+        -3.2450027465820313,
+        -0.14037609100341797
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 115056,
+      "componentType": 5126,
+      "count": 3196,
+      "max": [
+        0.9999540448188782,
+        0.9989057779312134,
+        0.9958257675170898
+      ],
+      "min": [
+        -0.9997727274894714,
+        -0.9993858933448792,
+        -0.9999781847000122
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 51136,
+      "componentType": 5126,
+      "count": 3196,
+      "max": [
+        0.9999880194664001,
+        0.9976555109024048,
+        0.9999505281448364,
+        1.0
+      ],
+      "min": [
+        -0.9997900128364563,
+        -0.9999926090240479,
+        -0.9999310374259949,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 25568,
+      "componentType": 5126,
+      "count": 3196,
+      "max": [
+        0.9840409755706787,
+        0.9809994697570801
+      ],
+      "min": [
+        0.02955353632569313,
+        0.053585153073072433
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 70272,
+      "componentType": 5125,
+      "count": 17568,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 153408,
+      "componentType": 5126,
+      "count": 3196,
+      "max": [
+        4.124886512756348,
+        4.307475566864014,
+        9.20143985748291
+      ],
+      "min": [
+        -4.369983673095703,
+        -4.163230895996094,
+        -0.11075013875961304
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 2,
+      "byteOffset": 191760,
+      "componentType": 5126,
+      "count": 3196,
+      "max": [
+        0.9999233484268188,
+        0.9972332715988159,
+        0.9992303252220154
+      ],
+      "min": [
+        -0.9996382594108582,
+        -0.9998397827148438,
+        -0.9999958276748657
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 3,
+      "byteOffset": 102272,
+      "componentType": 5126,
+      "count": 3196,
+      "max": [
+        0.9993655681610107,
+        0.9996639490127563,
+        0.9997926950454712,
+        1.0
+      ],
+      "min": [
+        -0.9999695420265198,
+        -0.9999996423721313,
+        -0.9999358057975769,
+        1.0
+      ],
+      "type": "VEC4"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 51136,
+      "componentType": 5126,
+      "count": 3196,
+      "max": [
+        0.9840409755706787,
+        0.9809994697570801
+      ],
+      "min": [
+        0.02955353632569313,
+        0.053585153073072433
+      ],
+      "type": "VEC2"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 140544,
+      "componentType": 5125,
+      "count": 17568,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "caue.oc (https://sketchfab.com/agenteccezar)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/tall-mushrooms-4edc47815c484b0faf0fe10279180f82",
+      "title": "Tall mushrooms"
+    },
+    "generator": "Sketchfab-13.93.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 210816,
+      "name": "floatBufferViews",
+      "target": 34963
+    },
+    {
+      "buffer": 0,
+      "byteLength": 76704,
+      "byteOffset": 210816,
+      "byteStride": 8,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 230112,
+      "byteOffset": 287520,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    },
+    {
+      "buffer": 0,
+      "byteLength": 153408,
+      "byteOffset": 517632,
+      "byteStride": 16,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "byteLength": 671040,
+      "uri": "scene.bin"
+    }
+  ],
+  "images": [
+    {
+      "uri": "textures/TAllMushroomSimp_baseColor.png"
+    },
+    {
+      "uri": "textures/TAllMushroomSimp_metallicRoughness.png"
+    },
+    {
+      "uri": "textures/TAllMushroomSimp_normal.png"
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "TAllMushroomSimp",
+      "normalTexture": {
+        "index": 2
+      },
+      "pbrMetallicRoughness": {
+        "baseColorTexture": {
+          "index": 0
+        },
+        "metallicFactor": 0.0,
+        "metallicRoughnessTexture": {
+          "index": 1
+        }
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "TallMushroomM_TAllMushroomSimp_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0,
+            "TANGENT": 2,
+            "TEXCOORD_0": 3
+          },
+          "indices": 4,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "TallMushroomM.001_TAllMushroomSimp_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 6,
+            "POSITION": 5,
+            "TANGENT": 7,
+            "TEXCOORD_0": 8
+          },
+          "indices": 9,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "TallMushroomM.002_TAllMushroomSimp_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 11,
+            "POSITION": 10,
+            "TANGENT": 12,
+            "TEXCOORD_0": 13
+          },
+          "indices": 14,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        2.220446049250313e-16,
+        -1.0,
+        0.0,
+        0.0,
+        1.0,
+        2.220446049250313e-16,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.009999999776482582,
+        0.0,
+        0.0,
+        -0.009999999776482582,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "30fa073cea6449928e74664a10fed027.fbx"
+    },
+    {
+      "children": [
+        3,
+        5,
+        7
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4
+      ],
+      "matrix": [
+        100.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.629206793918314e-05,
+        -99.99999999999868,
+        0.0,
+        0.0,
+        99.99999999999868,
+        -1.629206793918314e-05,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "name": "TallMushroomM"
+    },
+    {
+      "mesh": 0,
+      "name": "TallMushroomM_TAllMushroomSimp_0"
+    },
+    {
+      "children": [
+        6
+      ],
+      "matrix": [
+        100.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.629206793918314e-05,
+        -99.99999999999868,
+        0.0,
+        0.0,
+        99.99999999999868,
+        -1.629206793918314e-05,
+        0.0,
+        0.0,
+        0.0,
+        -854.0642700195313,
+        1.0
+      ],
+      "name": "TallMushroomM.001"
+    },
+    {
+      "mesh": 1,
+      "name": "TallMushroomM.001_TAllMushroomSimp_0"
+    },
+    {
+      "children": [
+        8
+      ],
+      "matrix": [
+        100.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        -1.629206793918314e-05,
+        -99.99999999999868,
+        0.0,
+        0.0,
+        99.99999999999868,
+        -1.629206793918314e-05,
+        0.0,
+        0.0,
+        0.0,
+        872.5726318359375,
+        1.0
+      ],
+      "name": "TallMushroomM.002"
+    },
+    {
+      "mesh": 2,
+      "name": "TallMushroomM.002_TAllMushroomSimp_0"
+    }
+  ],
+  "samplers": [
+    {
+      "magFilter": 9729,
+      "minFilter": 9987,
+      "wrapS": 10497,
+      "wrapT": 10497
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "sampler": 0,
+      "source": 0
+    },
+    {
+      "sampler": 0,
+      "source": 1
+    },
+    {
+      "sampler": 0,
+      "source": 2
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+Model Information:
+* title:	Stylized stones minipack
+* source:	https://sketchfab.com/3d-models/stylized-stones-minipack-719d8ee393db4b218ace19ce9124918d
+* author:	Sereda (https://sketchfab.com/delete5020)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Stylized stones minipack" (https://sketchfab.com/3d-models/stylized-stones-minipack-719d8ee393db4b218ace19ce9124918d) by Sereda (https://sketchfab.com/delete5020) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)

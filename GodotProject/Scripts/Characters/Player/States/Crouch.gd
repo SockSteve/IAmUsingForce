@@ -1,9 +1,18 @@
 extends PlayerState
 func enter(_msg := {}) -> void:
-	player._character_skin.crouch()
+	if _msg.has("do_slide"):
+		# Start the slide animation
+		player._character_skin.slide()
+		player.sliding = true
+		slide()
+	else:
+		player._character_skin.crouch()
 
 func physics_update(delta: float) -> void:
-	player._character_skin.crouch()
+	if player.sliding:
+		player.move_and_slide()
+		return
+	#player._character_skin.crouch()
 	
 	if not player.is_on_floor():
 		player._character_skin.uncrouch()
@@ -49,3 +58,14 @@ func physics_update(delta: float) -> void:
 	elif Input.is_action_pressed("gadget"):
 		player._character_skin.uncrouch()
 		state_machine.transition_to("Grapple")
+
+func slide():
+	player.slide_timer.start(player.slide_duration)
+	# Apply an initial forward impulse to the character
+	apply_slide_impulse()
+
+func apply_slide_impulse() -> void:
+	var slide_direction = player.global_transform.basis.z.normalized()  # Assumes the character slides forward
+	var slide_force = slide_direction * player.slide_impulse
+	# Apply the force to the character's physics body
+	# This will vary depending on whether you're using KinematicBody or RigidBody

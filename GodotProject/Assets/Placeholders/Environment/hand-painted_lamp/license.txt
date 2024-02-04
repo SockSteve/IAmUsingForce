@@ -1,0 +1,11 @@
+Model Information:
+* title:	Hand-painted Lamp
+* source:	https://sketchfab.com/3d-models/hand-painted-lamp-fce79955c9224e10ba96efa8d6464c3f
+* author:	Qifan Zhang (https://sketchfab.com/qifanzhang)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Hand-painted Lamp" (https://sketchfab.com/3d-models/hand-painted-lamp-fce79955c9224e10ba96efa8d6464c3f) by Qifan Zhang (https://sketchfab.com/qifanzhang) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
