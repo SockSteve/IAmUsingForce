@@ -10,6 +10,7 @@ func enter(_msg := {}) -> void:
 
 func physics_update(delta: float) -> void:
 	if player.sliding:
+		apply_slide_impulse()
 		player.move_and_slide()
 		return
 	#player._character_skin.crouch()
@@ -63,9 +64,11 @@ func slide():
 	player.slide_timer.start(player.slide_duration)
 	# Apply an initial forward impulse to the character
 	apply_slide_impulse()
+	await get_tree().create_timer(1).timeout 
+	player.sliding = false
 
 func apply_slide_impulse() -> void:
 	var slide_direction = player.global_transform.basis.z.normalized()  # Assumes the character slides forward
-	var slide_force = slide_direction * player.slide_impulse
+	var slide_force = slide_direction * player.slide_impulse * player.slide_strength
 	# Apply the force to the character's physics body
 	# This will vary depending on whether you're using KinematicBody or RigidBody

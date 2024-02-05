@@ -43,7 +43,7 @@ var grappling = false
 var shortcutRangedWeapons
 @onready var current_weapon = null
 #slide
-var slide_strength = 100.0
+var slide_strength = 10000.0
 var slide_impulse = Vector3(0, 0, -slide_strength)  # Adjust the strength and direction
 var slide_duration = 1.0  # Adjust duration as needed
 var sliding: bool = false

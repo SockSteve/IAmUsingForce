@@ -9,7 +9,6 @@
 [sub_resource type="CylinderMesh" id="CylinderMesh_n28p7"]
 
 [node name="GrapplingHook" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_obj5m")
 
 [node name="GadgetSkin" type="MeshInstance3D" parent="."]
