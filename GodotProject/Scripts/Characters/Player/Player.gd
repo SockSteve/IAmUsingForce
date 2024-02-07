@@ -43,8 +43,8 @@ var grappling = false
 var shortcutRangedWeapons
 @onready var current_weapon = null
 #slide
-var slide_strength = 10000.0
-var slide_impulse = Vector3(0, 0, -slide_strength)  # Adjust the strength and direction
+@export var slide_strength = 30.0
+var slide_velocity = Vector3(0, 0, -slide_strength)  # The Z-axis is assumed to be the forward axis.  # Adjust the strength and direction
 var slide_duration = 1.0  # Adjust duration as needed
 var sliding: bool = false
 @onready var slide_timer = $SlideTimer
@@ -97,6 +97,9 @@ func switchToCharacterBody():
 
 func get_gadget(gadget: String):
 	return inventory.get_gadget(gadget)
+	
+func add_gadget(gadget):
+	inventory.add_gadget(gadget)
 
 func attack():
 	pass

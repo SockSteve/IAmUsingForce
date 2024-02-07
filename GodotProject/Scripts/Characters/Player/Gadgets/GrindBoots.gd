@@ -28,8 +28,11 @@ func _physics_process(delta):
 
 #this function gets called by the state machine
 func end_grind():
+	currentGrindrail.remove_child(self)
+	player.add_gadget(self)
 	currentGrindrail = null
 	grinding = false
+	
 	$GrindEndCooldown.start()
 
 #this timer exists so the player doesn't immediately start to grind again after

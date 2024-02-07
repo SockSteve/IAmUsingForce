@@ -11,7 +11,11 @@ func enter(_msg := {}) -> void:
 func physics_update(delta: float) -> void:
 	if player.sliding:
 		apply_slide_impulse()
+		var slide_friction = .1
+		#player.velocity = player.velocity.lerp(Vector3.ZERO, slide_friction * delta)
 		player.move_and_slide()
+		if Input.is_action_just_pressed("jump"):
+			player._character_skin.uncrouch()
 		return
 	#player._character_skin.crouch()
 	
@@ -68,7 +72,22 @@ func slide():
 	player.sliding = false
 
 func apply_slide_impulse() -> void:
-	var slide_direction = player.global_transform.basis.z.normalized()  # Assumes the character slides forward
-	var slide_force = slide_direction * player.slide_impulse * player.slide_strength
+	#var slide_direction = player.global_transform.basis.z.normalized()  # This assumes that the character slides forward.
+	var slide_direction = player._move_direction
+	#var impulse = slide_direction * player.slide_strength  # Calculate the impulse vector.
+
+	# Apply the impulse to the character's velocity
+	player.velocity = player._rotation_root.transform.basis * Vector3.BACK * player.slide_strength
+
+	# Clamp the velocity to a maximum slide speed if necessary
+	#var max_slide_speed = 30.0
+	#player.velocity = player.velocity.clamp(Vector3.ZERO,Vector3(max_slide_speed,max_slide_speed,max_slide_speed))
+
+	# Make sure to handle movement during the slide in your physics processing
+	#player.move_and_slide()
+	
+	#var slide_direction = player.global_transform.basis.z.normalized()  # Assumes the character slides forward
+	#var slide_force = slide_direction * player.slide_impulse #* player.slide_strength
+	#player.velocity = slide_force
 	# Apply the force to the character's physics body
 	# This will vary depending on whether you're using KinematicBody or RigidBody

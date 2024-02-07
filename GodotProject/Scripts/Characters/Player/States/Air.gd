@@ -44,8 +44,9 @@ func physics_update(delta: float) -> void:
 	# Landing.
 	#	if is_just_on_floor:
 #		_landing_sound.play()
-	if player.get_gadget("GrindBoots").grinding:
-		state_machine.transition_to("Grind")
+	if player.get_gadget("GrindBoots") != null:
+		if player.get_gadget("GrindBoots").grinding:
+			state_machine.transition_to("Grind")
 	
 	if player.is_on_floor():
 		if is_equal_approx(player.velocity.x, 0.0):
