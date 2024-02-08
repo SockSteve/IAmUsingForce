@@ -1,24 +1,25 @@
 extends PlayerState
 
-var playerGrindBootsTreePos
-var grind_boots
+var path_3d
+var path_follow_3d
 
 func enter(_msg := {}) -> void:
-	grind_boots = player.get_gadget("GrindBoots")
+	path_follow_3d = PathFollow3D.new()
+	path_3d = player.get_gadget("GrindBootsV2").current_grindrail
+	path_3d.add_child(path_follow_3d)
 	
-	grind_boots.reparent(grind_boots.currentGrindrail)
-	playerGrindBootsTreePos = grind_boots
 
 func physics_update(delta: float) -> void:
-	if grind_boots.currentGrindrail != null:
-		grind_boots.currentGrindrail.get_child(0).progress_ratio += delta
-		player.global_position = grind_boots.currentGrindrail.get_child(0).global_position
-		if grind_boots.currentGrindrail.get_child(0).progress_ratio >= .90:
+	if path_3d != null:
+		path_follow_3d.progress_ratio += delta
+		player.global_position = path_follow_3d.global_position
+		if path_follow_3d.progress_ratio >= .98:
 			endGrind()
+			return
 	
 func endGrind():
-	#print(playerGrindBootsTreePos)
-	#playerGrindBootsTreePos.reparent(playerGrindBootsTreePos)
-	grind_boots.end_grind()
+	path_follow_3d.queue_free()
+	player.get_gadget("GrindBootsV2").end_grind()
+	player.velocity.y = 0.0
 	state_machine.transition_to("Air", {do_jump = true})
 	

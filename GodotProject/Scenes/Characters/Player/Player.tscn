@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c0d3bmprmf8q0"]
+[gd_scene load_steps=28 format=3 uid="uid://c0d3bmprmf8q0"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.gd" id="1_ld2le"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/CameraController.gd" id="2_7jqee"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Inventory.gd" id="16_kqrv3"]
 [ext_resource type="PackedScene" uid="uid://cfru43w2xfbl2" path="res://Scenes/Characters/Player/Weapons/RangedWeapons/Gun/Gun.tscn" id="17_ntt0n"]
 [ext_resource type="Theme" uid="uid://d02hntmjt67aj" path="res://UI/UITheme_1.tres" id="19_1icc6"]
+[ext_resource type="PackedScene" uid="uid://cc6mfpfv1cnw7" path="res://Scenes/Characters/Player/Gadgets/GrindBoots_v2.tscn" id="20_iksty"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_p4inm"]
 height = 1.50214
@@ -154,6 +155,8 @@ script = ExtResource("16_kqrv3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91362, 0.0314813)
 
 [node name="GrindBoots" parent="Inventory/Gadgets" instance=ExtResource("10_8algw")]
+
+[node name="GrindBootsV2" parent="Inventory/Gadgets" instance=ExtResource("20_iksty")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

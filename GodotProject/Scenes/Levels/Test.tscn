@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cfv2ecbe68yfi"]
+[gd_scene load_steps=15 format=3 uid="uid://cfv2ecbe68yfi"]
 
 [ext_resource type="PackedScene" uid="uid://lq37dt6an0ad" path="res://Scenes/InteractiveObjects/GrapplingPoints/SwingHook.tscn" id="1_kdsm0"]
 [ext_resource type="PackedScene" uid="uid://v47kxsby14rj" path="res://Scenes/InteractiveObjects/GrapplingPoints/GrabHook.tscn" id="2_22asg"]
@@ -8,7 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://ro280iljuyye" path="res://Assets/Placeholders/Environment/bonfire_free_download/scene.gltf" id="6_ryulc"]
 [ext_resource type="PackedScene" uid="uid://du0ausxn5e6vk" path="res://Assets/Placeholders/Environment/fern_grass_02/scene.gltf" id="7_mr86d"]
 
+[sub_resource type="Sky" id="Sky_fidjy"]
+
 [sub_resource type="Environment" id="Environment_6axbp"]
+background_color = Color(0.105882, 0.105882, 0.105882, 1)
+background_energy_multiplier = 0.0
+sky = SubResource("Sky_fidjy")
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_4bw5o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1jmal"]
 
@@ -41,6 +48,7 @@ light_bake_mode = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6axbp")
+camera_attributes = SubResource("CameraAttributesPractical_4bw5o")
 
 [node name="SwingHook" parent="." instance=ExtResource("1_kdsm0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2829, 12.1472, 31.773)

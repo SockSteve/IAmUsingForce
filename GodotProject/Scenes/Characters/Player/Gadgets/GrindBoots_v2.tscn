@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc6mfpfv1cnw7"]
+
+[ext_resource type="Script" path="res://Scenes/Characters/Player/Gadgets/GrindBoots_v2.gd" id="1_efira"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8pcjv"]
+height = 0.2
+
+[node name="GrindBootsV2" type="Node3D"]
+script = ExtResource("1_efira")
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+shape = SubResource("CylinderShape3D_8pcjv")
+
+[node name="GrindEndCooldown" type="Timer" parent="."]
+
+[connection signal="timeout" from="GrindEndCooldown" to="." method="_on_grind_end_cooldown_timeout"]

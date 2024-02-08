@@ -1,13 +1,12 @@
-extends PathFollow3D
+extends Node3D
 
 var id = "g00"
 
 @onready var player: Player = find_parent("Player")
 @onready var shapeCast: ShapeCast3D = $ShapeCast3D
-var grind_path: Path3D = null
 var canGrind: bool = true
-var current_grindrail = null
 var grinding: bool = false 
+var current_grindrail
 
 #at the start, we minimize the results array that contains the
 #intersection point data from the shapecast3D
@@ -22,13 +21,12 @@ func _ready():
 func _physics_process(delta):
 	if shapeCast.is_colliding():
 		if shapeCast.get_collider(0).is_in_group("grindRail") and canGrind:
-			canGrind = false
 			current_grindrail = shapeCast.get_collider(0).get_child(0)
+			canGrind = false
 			grinding = true
 
 #this function gets called by the state machine
 func end_grind():
-	current_grindrail = null
 	grinding = false
 	$GrindEndCooldown.start()
 
