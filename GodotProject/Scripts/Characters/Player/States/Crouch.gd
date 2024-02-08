@@ -15,7 +15,9 @@ func physics_update(delta: float) -> void:
 		#player.velocity = player.velocity.lerp(Vector3.ZERO, slide_friction * delta)
 		player.move_and_slide()
 		if Input.is_action_just_pressed("jump"):
+			player.sliding = false
 			player._character_skin.uncrouch()
+			state_machine.transition_to("Air", {do_crouch_jump = true})
 		return
 	#player._character_skin.crouch()
 	
@@ -56,7 +58,7 @@ func physics_update(delta: float) -> void:
 
 	if Input.is_action_just_pressed("jump"):
 		player._character_skin.uncrouch()
-		state_machine.transition_to("Air", {do_jump = true})
+		state_machine.transition_to("Air", {do_crouch_jump = true})
 	#elif is_equal_approx(player.velocity.x, 0.0) and is_equal_approx(player.velocity.z, 0.0):
 		#player._character_skin.uncrouch()
 		#state_machine.transition_to("Idle")
@@ -68,8 +70,7 @@ func slide():
 	player.slide_timer.start(player.slide_duration)
 	# Apply an initial forward impulse to the character
 	apply_slide_impulse()
-	await get_tree().create_timer(1).timeout 
-	player.sliding = false
+	
 
 func apply_slide_impulse() -> void:
 	#var slide_direction = player.global_transform.basis.z.normalized()  # This assumes that the character slides forward.
@@ -91,3 +92,7 @@ func apply_slide_impulse() -> void:
 	#player.velocity = slide_force
 	# Apply the force to the character's physics body
 	# This will vary depending on whether you're using KinematicBody or RigidBody
+
+
+func _on_slide_timer_timeout():
+	player.sliding = false

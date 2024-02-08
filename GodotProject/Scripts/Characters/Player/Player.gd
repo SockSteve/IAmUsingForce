@@ -6,6 +6,7 @@ class_name Player
 @export var move_speed := 12.0 # Character maximum run speed on the ground.
 @export var acceleration := 4.0 # Movement acceleration (how fast character achieve maximum speed)
 @export var jump_initial_impulse := 12.0 # Jump impulse
+@export var crouch_jump_initial_impulse := 24.0 # Jump impulse
 @export var jump_additional_force := 4.5 # Jump impulse when player keeps pressing jump
 @export var jump_apex_gravity := -10
 @export var stopping_speed := 4.5
@@ -85,10 +86,12 @@ func _orient_character_to_direction(direction: Vector3, delta: float) -> void:
 	)
 
 func switchToPhysicsBody():
-	_physics_body.linear_velocity = velocity
+	var stored_player_velocity = velocity
+	_physics_body.linear_velocity 
 	_physics_body.global_transform = self.global_transform
 	_physics_body.freeze = false
 	_physics_body.top_level = true
+	_physics_body.linear_velocity = stored_player_velocity
 
 func switchToCharacterBody():
 	_physics_body.freeze = true

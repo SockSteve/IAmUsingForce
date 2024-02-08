@@ -6,7 +6,7 @@ func enter(msg := {}) -> void:
 		player.velocity.y += player.jump_initial_impulse
 		player._character_skin.jump()
 	if msg.has("do_crouch_jump"):
-		player.velocity.y += player.jump_initial_impulse
+		player.velocity.y += player.crouch_jump_initial_impulse
 		player._character_skin.jump()
 
 #TODO acending and decending checks for melee attack
