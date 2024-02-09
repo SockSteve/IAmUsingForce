@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://cfv2ecbe68yfi"]
+[gd_scene load_steps=17 format=3 uid="uid://cfv2ecbe68yfi"]
 
 [ext_resource type="PackedScene" uid="uid://lq37dt6an0ad" path="res://Scenes/InteractiveObjects/GrapplingPoints/SwingHook.tscn" id="1_kdsm0"]
+[ext_resource type="Texture2D" uid="uid://dk3g261yc4qry" path="res://Assets/Placeholders/Environment/Skyboxes/panorama_image.png" id="1_mhjnm"]
 [ext_resource type="PackedScene" uid="uid://v47kxsby14rj" path="res://Scenes/InteractiveObjects/GrapplingPoints/GrabHook.tscn" id="2_22asg"]
 [ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Scenes/Characters/Player/Player.tscn" id="3_t8btd"]
 [ext_resource type="PackedScene" uid="uid://dprksnsipfg02" path="res://addons/kenney_prototype_tools/scenes/orange/orange_01.tscn" id="4_ysjfm"]
@@ -8,11 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://ro280iljuyye" path="res://Assets/Placeholders/Environment/bonfire_free_download/scene.gltf" id="6_ryulc"]
 [ext_resource type="PackedScene" uid="uid://du0ausxn5e6vk" path="res://Assets/Placeholders/Environment/fern_grass_02/scene.gltf" id="7_mr86d"]
 
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_30l7b"]
+panorama = ExtResource("1_mhjnm")
+
 [sub_resource type="Sky" id="Sky_fidjy"]
+sky_material = SubResource("PanoramaSkyMaterial_30l7b")
+radiance_size = 0
 
 [sub_resource type="Environment" id="Environment_6axbp"]
+background_mode = 2
 background_color = Color(0.105882, 0.105882, 0.105882, 1)
-background_energy_multiplier = 0.0
 sky = SubResource("Sky_fidjy")
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_4bw5o"]
