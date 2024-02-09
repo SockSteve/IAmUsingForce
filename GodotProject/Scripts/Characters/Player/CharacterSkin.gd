@@ -63,6 +63,14 @@ func crouch():
 	animation_tree.set(transition_state_mashine_request, "state_crouch")
 	sm_crouch.travel("idle")
 
+func grind():
+	animation_tree.set(transition_state_mashine_request, "state_grind")
+	sm_grind.travel("idle")
+
+func end_grind():
+	animation_tree.set(transition_state_mashine_request, "state_normal")
+	state_machine.travel("idle")
+
 func slide():
 	animation_tree.set(transition_state_mashine_request, "state_crouch")
 	sm_crouch.travel("slide")
@@ -71,6 +79,6 @@ func uncrouch():
 	animation_tree.set(transition_state_mashine_request, "state_normal")
 	state_machine.travel("idle")
 
-func punch():
+func attack(attack_counter):
 	animation_tree["parameters/PunchOneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 

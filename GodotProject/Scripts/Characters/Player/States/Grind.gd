@@ -4,6 +4,7 @@ var path_3d : Path3D
 var path_follow_3d : PathFollow3D
 
 func enter(_msg := {}) -> void:
+	player._character_skin.grind()
 	path_follow_3d = PathFollow3D.new()
 	path_3d = player.get_gadget("GrindBootsV2").current_grindrail
 	path_3d.add_child(path_follow_3d)
@@ -13,7 +14,9 @@ func enter(_msg := {}) -> void:
 func physics_update(delta: float) -> void:
 	if path_3d != null:
 		path_follow_3d.progress_ratio += delta
-		player.global_position = path_follow_3d.global_position
+		#player.global_position = path_follow_3d.global_position
+		#player.global_rotation = path_follow_3d.global_rotation
+		player.global_transform = path_follow_3d.global_transform
 		if path_follow_3d.progress_ratio >= .98:
 			endGrind()
 			return
@@ -24,6 +27,7 @@ func set_initial_progress(player_position: Vector3) -> void:
 	path_follow_3d.progress = closest_offset
 
 func endGrind():
+	player._character_skin.end_grind()
 	path_follow_3d.queue_free()
 	player.get_gadget("GrindBootsV2").end_grind()
 	player.velocity.y = 0.0

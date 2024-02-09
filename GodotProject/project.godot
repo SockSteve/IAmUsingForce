@@ -19,6 +19,10 @@ config/icon="res://SockSethLogo.png"
 
 GameHandler="*res://Singletons/GameHandler.tscn"
 
+[display]
+
+window/size/mode=2
+
 [editor_plugins]
 
 enabled=PackedStringArray()
