@@ -34,6 +34,10 @@ class_name Player
 
 #debug
 #var physicsBodyEnabled := false
+var combo_step : int = 0 #used for melee attack combo
+var is_attacking : bool = false
+var weapon
+
 @onready var _is_grapple := false
 @onready var state = $StateMachine.state
 var magnetized = false

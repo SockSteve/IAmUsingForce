@@ -4,6 +4,7 @@ extends PlayerState
 func enter(_msg := {}) -> void:
 	# We must declare all the properties we access through `owner` in the `Player.gd` script.
 	player.velocity = Vector3.ZERO
+	player._character_skin.set_moving(false)
 	
 
 func update(delta: float) -> void:

@@ -37,7 +37,7 @@ material = SubResource("StandardMaterial3D_dm5n6")
 
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_w05h1"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_8gs1p"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_grq1b"]
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 axis_lock_angular_x = true
@@ -133,7 +133,7 @@ target_position = Vector3(0, 0, -100)
 
 [node name="GroundShapeCast" type="ShapeCast3D" parent="."]
 visible = false
-shape = SubResource("CylinderShape3D_8gs1p")
+shape = SubResource("CylinderShape3D_grq1b")
 debug_shape_custom_color = Color(0, 1, 0, 1)
 
 [node name="CharacterRotationRoot" type="Node3D" parent="."]
@@ -258,8 +258,11 @@ offset_bottom = 29.0
 [node name="SlideTimer" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="AttackTimer" type="Timer" parent="."]
+
 [node name="DropShadow" type="Decal" parent="."]
-size = Vector3(1, 1, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.998108, 0)
+size = Vector3(1, 5.53796, 1)
 texture_albedo = ExtResource("22_gwf8y")
 albedo_mix = 0.8
 upper_fade = 1.0
