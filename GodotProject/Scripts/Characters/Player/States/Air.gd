@@ -30,7 +30,7 @@ func physics_update(delta: float) -> void:
 		player.velocity = Vector3.ZERO
 	player.velocity.y = y_velocity
 
-	if player.velocity.y > -2 and player.velocity.y < 2 :
+	if player.velocity.y > -1 and player.velocity.y < 1 :
 		player.velocity.y += player.jump_apex_gravity * delta
 	else:
 		player.velocity.y += player._gravity * delta

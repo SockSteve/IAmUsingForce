@@ -71,8 +71,12 @@ depth = 0.5
 material = SubResource("StandardMaterial3D_oo8sc")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Map/Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70785, 3.27889, -2.28857)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70785, 3.27889, -2.73022)
 size = Vector3(3.8559, 2.00305, 5.57715)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.708, 4.15647, -8.726)
+size = Vector3(3.856, 4, 5.577)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.588689, -0.214393, 0.779411, -0.80836, -0.156132, 0.567607, 0, -0.964188, -0.26522, 16.6669, 27.6445, 16.6961)

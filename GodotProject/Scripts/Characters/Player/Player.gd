@@ -6,7 +6,7 @@ class_name Player
 @export var move_speed := 12.0 # Character maximum run speed on the ground.
 @export var acceleration := 4.0 # Movement acceleration (how fast character achieve maximum speed)
 @export var jump_initial_impulse := 12.0 # Jump impulse
-@export var crouch_jump_initial_impulse := 24.0 # Jump impulse
+@export var crouch_jump_initial_impulse := 16.0 # Jump impulse
 @export var jump_additional_force := 4.5 # Jump impulse when player keeps pressing jump
 @export var jump_apex_gravity := -10
 @export var stopping_speed := 4.5
