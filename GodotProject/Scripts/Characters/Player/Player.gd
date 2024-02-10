@@ -44,7 +44,6 @@ var magnetized = false
 var grappling = false
 @onready var inventory = $Inventory
 @onready var grapplingHook = $Inventory/Gadgets/GrapplingHook
-@onready var GrindBoots = $Inventory/Gadgets/GrindBoots
 var shortcutRangedWeapons
 @onready var current_weapon = null
 #slide

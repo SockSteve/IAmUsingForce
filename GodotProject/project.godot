@@ -23,10 +23,6 @@ GameHandler="*res://Singletons/GameHandler.tscn"
 
 window/size/mode=2
 
-[editor_plugins]
-
-enabled=PackedStringArray()
-
 [input]
 
 move_left={

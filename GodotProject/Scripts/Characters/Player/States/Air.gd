@@ -30,10 +30,16 @@ func physics_update(delta: float) -> void:
 		player.velocity = Vector3.ZERO
 	player.velocity.y = y_velocity
 
-	if player.velocity.y > -3 and player.velocity.y < 3:
+	if player.velocity.y > -2 and player.velocity.y < 2 :
 		player.velocity.y += player.jump_apex_gravity * delta
 	else:
 		player.velocity.y += player._gravity * delta
+		
+	
+	if not Input.is_action_pressed("jump") and player.velocity.y > 3:
+		player.velocity.y = 3
+		pass
+		#player.velocity.y = 
 	
 	player.move_and_slide()
 	
@@ -50,6 +56,8 @@ func physics_update(delta: float) -> void:
 	
 	if player.is_on_floor():
 		if is_equal_approx(player.velocity.x, 0.0):
+			player._character_skin.set_moving(false)
 			state_machine.transition_to("Idle")
 		else:
+			player._character_skin.set_moving(true)
 			state_machine.transition_to("Run")
