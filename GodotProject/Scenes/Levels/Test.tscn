@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cfv2ecbe68yfi"]
+[gd_scene load_steps=20 format=3 uid="uid://cfv2ecbe68yfi"]
 
 [ext_resource type="PackedScene" uid="uid://lq37dt6an0ad" path="res://Scenes/InteractiveObjects/GrapplingPoints/SwingHook.tscn" id="1_kdsm0"]
 [ext_resource type="Texture2D" uid="uid://dk3g261yc4qry" path="res://Assets/Placeholders/Environment/Skyboxes/panorama_image.png" id="1_mhjnm"]
@@ -10,14 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://ro280iljuyye" path="res://Assets/Placeholders/Environment/bonfire_free_download/scene.gltf" id="6_ryulc"]
 [ext_resource type="Texture2D" uid="uid://de0wimp7e8g3n" path="res://addons/kenney_prototype_textures/purple/texture_12.png" id="7_eov66"]
 [ext_resource type="PackedScene" uid="uid://du0ausxn5e6vk" path="res://Assets/Placeholders/Environment/fern_grass_02/scene.gltf" id="7_mr86d"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_owx1c"]
-albedo_texture = ExtResource("1_y6805")
-uv1_triplanar = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oo8sc"]
-albedo_texture = ExtResource("2_ibgu5")
-uv1_triplanar = true
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_30l7b"]
 panorama = ExtResource("1_mhjnm")
@@ -37,6 +29,14 @@ tonemap_mode = 1
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_4bw5o"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_owx1c"]
+albedo_texture = ExtResource("1_y6805")
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oo8sc"]
+albedo_texture = ExtResource("2_ibgu5")
+uv1_triplanar = true
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjiwb"]
 albedo_texture = ExtResource("7_eov66")
 uv1_triplanar = true
@@ -48,35 +48,13 @@ _data = {
 }
 point_count = 5
 
+[sub_resource type="BoxMesh" id="BoxMesh_llufc"]
+
 [node name="Node3D" type="Node3D"]
 
-[node name="Map" type="Node3D" parent="."]
-
-[node name="Floor" type="CSGCombiner3D" parent="Map"]
-use_collision = true
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Map/Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.675, 0.178023, 27.8353)
-size = Vector3(100, 1, 100)
-material = SubResource("StandardMaterial3D_owx1c")
-
-[node name="Geometry" type="CSGCombiner3D" parent="Map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.56131, 19.2992)
-use_collision = true
-
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Map/Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0598809, 2.20414, -0.292313)
-polygon = PackedVector2Array(0, 0, 0, 1, 3, 0)
-depth = 0.5
-material = SubResource("StandardMaterial3D_oo8sc")
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Map/Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70785, 3.27889, -2.73022)
-size = Vector3(3.8559, 2.00305, 5.57715)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Map/Geometry"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.708, 4.15647, -8.726)
-size = Vector3(3.856, 4, 5.577)
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6axbp")
+camera_attributes = SubResource("CameraAttributesPractical_4bw5o")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.588689, -0.214393, 0.779411, -0.80836, -0.156132, 0.567607, 0, -0.964188, -0.26522, 16.6669, 27.6445, 16.6961)
@@ -87,27 +65,51 @@ light_volumetric_fog_energy = 2.524
 light_angular_distance = 9.6
 light_bake_mode = 1
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_6axbp")
-camera_attributes = SubResource("CameraAttributesPractical_4bw5o")
+[node name="Map Geometry" type="Node3D" parent="."]
 
-[node name="SwingHook" parent="." instance=ExtResource("1_kdsm0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2829, 12.1472, 31.773)
+[node name="Floor" type="CSGCombiner3D" parent="Map Geometry"]
+use_collision = true
 
-[node name="GrabHook" parent="." instance=ExtResource("2_22asg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3731, 15.5312, 38.0132)
+[node name="CSGBox3D" type="CSGBox3D" parent="Map Geometry/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.675, 0.178023, 27.8353)
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_owx1c")
 
-[node name="Player" parent="." instance=ExtResource("3_t8btd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1906, 0.734918, 33.0767)
+[node name="Geometry" type="CSGCombiner3D" parent="Map Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.56131, 19.2992)
+use_collision = true
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.00787138, 0.999969, 0, -0.999969, 0.00787138, 46.5912, 18.8276, 41.777)
-light_energy = 16.0
-light_indirect_energy = 1.355
-spot_range = 19.7856
-spot_angle = 25.7001
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Map Geometry/Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0598809, 2.20414, -0.292313)
+polygon = PackedVector2Array(0, 0, 0, 1, 3, 0)
+depth = 0.5
+material = SubResource("StandardMaterial3D_oo8sc")
 
-[node name="GrindRail_1" type="CSGPolygon3D" parent="." groups=["grindRail"]]
+[node name="CSGBox3D" type="CSGBox3D" parent="Map Geometry/Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70785, 3.27889, -2.73022)
+size = Vector3(3.8559, 2.00305, 5.57715)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map Geometry/Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.708, 4.15647, -8.726)
+size = Vector3(3.856, 4, 5.577)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Map Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.568421, 3.52807, 38.9822)
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map Geometry/CSGCombiner3D" groups=["floor", "magnetized"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6667, 7.69405, 14.4049)
+size = Vector3(20, 20, 7)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Map Geometry/CSGCombiner3D"]
+transform = Transform3D(1.84584, 0, 0, 0, -4.37114e-08, -1.23353, 0, 1, -5.39195e-08, -5.36373, 7.54768, 14.2437)
+operation = 2
+radius = 7.95505
+height = 8.0
+sides = 30
+smooth_faces = false
+
+[node name="GrindRail_1" type="CSGPolygon3D" parent="Map Geometry" groups=["grindRail"]]
 use_collision = true
 polygon = PackedVector2Array(-0.0626981, -0.00517382, -0.0974762, 0.136789, 0.0834621, 0.146682, 0.0449436, 0.00659476)
 mode = 2
@@ -122,34 +124,40 @@ path_u_distance = 1.0
 path_joined = false
 material = SubResource("StandardMaterial3D_sjiwb")
 
-[node name="GrindRail" type="Path3D" parent="GrindRail_1"]
+[node name="GrindRail" type="Path3D" parent="Map Geometry/GrindRail_1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9683, 3.78384, 41.777)
 curve = SubResource("Curve3D_ssrx5")
+
+[node name="SwingHook" parent="Map Geometry" instance=ExtResource("1_kdsm0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2829, 12.1472, 31.773)
+
+[node name="GrabHook" parent="Map Geometry" instance=ExtResource("2_22asg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3731, 15.5312, 38.0132)
+
+[node name="Sketchfab_Scene" parent="Map Geometry" instance=ExtResource("6_ryulc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0368, 1.39886, 57.5848)
+
+[node name="Sketchfab_Scene2" parent="Map Geometry" instance=ExtResource("7_mr86d")]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 6.25976, 1.39886, 58.9178)
+
+[node name="Player" parent="." instance=ExtResource("3_t8btd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1906, 0.734918, 33.0767)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.00787138, 0.999969, 0, -0.999969, 0.00787138, 46.5912, 18.8276, 41.777)
+light_energy = 16.0
+light_indirect_energy = 1.355
+spot_range = 19.7856
+spot_angle = 25.7001
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_b0j0h")
 volume_db = -15.928
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.568421, 3.52807, 38.9822)
-use_collision = true
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" groups=["floor", "magnetized"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6667, 7.69405, 14.4049)
-size = Vector3(20, 20, 7)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54323, 0)
+mesh = SubResource("BoxMesh_llufc")
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCombiner3D"]
-transform = Transform3D(1.84584, 0, 0, 0, -4.37114e-08, -1.23353, 0, 1, -5.39195e-08, -5.36373, 7.54768, 14.2437)
-operation = 2
-radius = 7.95505
-height = 8.0
-sides = 30
-smooth_faces = false
-
-[node name="Sketchfab_Scene" parent="." instance=ExtResource("6_ryulc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0368, 1.39886, 57.5848)
-
-[node name="Sketchfab_Scene2" parent="." instance=ExtResource("7_mr86d")]
-transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 6.25976, 1.39886, 58.9178)
-
-[editable path="SwingHook"]
+[editable path="Map Geometry/SwingHook"]

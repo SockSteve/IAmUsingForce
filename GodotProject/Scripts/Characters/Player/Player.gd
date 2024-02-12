@@ -5,15 +5,18 @@ class_name Player
 @export_group("Base Movement")
 @export var move_speed := 12.0 # Character maximum run speed on the ground.
 @export var acceleration := 4.0 # Movement acceleration (how fast character achieve maximum speed)
+@export var crouch_move_speed := 6.0
 @export var jump_initial_impulse := 12.0 # Jump impulse
 @export var crouch_jump_initial_impulse := 16.0 # Jump impulse
-@export var jump_additional_force := 4.5 # Jump impulse when player keeps pressing jump
+#@export var jump_additional_force := 4.5 # Jump impulse when player keeps pressing jump
 @export var jump_apex_gravity := -10
 @export var stopping_speed := 4.5
 @export var rotation_speed := 12.0 # Player model rotaion speed
 @export_group("Combat")
 @export var attack_impulse := 10.0 # Forward impulse after a melee attack.
 @export var max_throwback_force := 15.0 # Max throwback force after player takes a hit
+@export var parry_window := .1
+@export var block_time := 2.0
 ## Minimum horizontal speed on the ground. This controls when the character's animation tree changes
 ## between the idle and running states.
 
@@ -49,7 +52,7 @@ var shortcutRangedWeapons
 #slide
 @export var slide_strength = 30.0
 var slide_velocity = Vector3(0, 0, -slide_strength)  # The Z-axis is assumed to be the forward axis.  # Adjust the strength and direction
-var slide_duration = 1.0  # Adjust duration as needed
+var slide_duration = .5  # Adjust duration as needed
 var sliding: bool = false
 @onready var slide_timer = $SlideTimer
 

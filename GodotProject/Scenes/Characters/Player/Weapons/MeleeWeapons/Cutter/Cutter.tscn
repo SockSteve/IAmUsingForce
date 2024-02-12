@@ -1,3 +1,34 @@
-[gd_scene format=3 uid="uid://b0ofcf84vrio1"]
+[gd_scene load_steps=5 format=3 uid="uid://b0ofcf84vrio1"]
+
+[ext_resource type="Script" path="res://Scripts/Characters/Player/Weapons/MeleeWeapons/Cutter/Cutter.gd" id="1_vf8ox"]
+[ext_resource type="PackedScene" uid="uid://bqp21jx4d4l2f" path="res://Scenes/Characters/Player/Weapons/MeleeWeapons/Cutter/CutterBullet.tscn" id="2_hv2fr"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_02pf1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q72rh"]
+size = Vector3(0.25, 2.2, 0.25)
 
 [node name="Cutter" type="Node3D"]
+script = ExtResource("1_vf8ox")
+_id = 1
+damage = 10
+bullet = ExtResource("2_hv2fr")
+
+[node name="WeaponSkin" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 2, 0, 0, 0, 0.1, 0, 1, 0)
+mesh = SubResource("BoxMesh_02pf1")
+
+[node name="HitboxArea" type="Area3D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="HitboxCollision" type="CollisionShape3D" parent="HitboxArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+shape = SubResource("BoxShape3D_q72rh")
+
+[node name="ParryTimer" type="Timer" parent="."]
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="HitboxArea" to="." method="_on_hitbox_area_body_entered"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
