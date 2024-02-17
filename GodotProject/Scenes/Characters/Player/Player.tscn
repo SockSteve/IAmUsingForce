@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cqhn455src0iq" path="res://Scenes/Characters/Player/Gadgets/GrapplingHook.tscn" id="13_vujhk"]
 [ext_resource type="PackedScene" uid="uid://bihfxywywukdv" path="res://Scenes/Characters/CharacterSkin.tscn" id="15_8aog6"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Inventory.gd" id="16_kqrv3"]
-[ext_resource type="PackedScene" uid="uid://b0ofcf84vrio1" path="res://Scenes/Characters/Player/Weapons/MeleeWeapons/Cutter/Cutter.tscn" id="17_5lvar"]
+[ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerHand.gd" id="16_mjyse"]
 [ext_resource type="PackedScene" uid="uid://cfru43w2xfbl2" path="res://Scenes/Characters/Player/Weapons/RangedWeapons/Gun/Gun.tscn" id="17_ntt0n"]
 [ext_resource type="Theme" uid="uid://d02hntmjt67aj" path="res://UI/UITheme_1.tres" id="19_1icc6"]
 [ext_resource type="PackedScene" uid="uid://cc6mfpfv1cnw7" path="res://Scenes/Characters/Player/Gadgets/GrindBoots_v2.tscn" id="20_iksty"]
@@ -142,19 +142,10 @@ debug_shape_custom_color = Color(0, 1, 0, 1)
 [node name="CharacterSkin" parent="CharacterRotationRoot" instance=ExtResource("15_8aog6")]
 
 [node name="PlayerHand" type="Node3D" parent="CharacterRotationRoot"]
+script = ExtResource("16_mjyse")
 
 [node name="Blaster" parent="CharacterRotationRoot/PlayerHand" instance=ExtResource("17_ntt0n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12975, 0.941938)
-visible = false
-
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="CharacterRotationRoot"]
-transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, -0.737829, 1.43559, -0.0617137)
-bone_name = "RightHand"
-bone_idx = 34
-use_external_skeleton = true
-external_skeleton = NodePath("")
-
-[node name="Cutter" parent="CharacterRotationRoot/BoneAttachment3D" instance=ExtResource("17_5lvar")]
 
 [node name="Inventory" type="Node3D" parent="."]
 script = ExtResource("16_kqrv3")
