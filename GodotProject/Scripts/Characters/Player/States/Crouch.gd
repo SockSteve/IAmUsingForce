@@ -80,19 +80,6 @@ func apply_slide_impulse() -> void:
 	# Apply the impulse to the character's velocity
 	player.velocity = player._rotation_root.transform.basis * Vector3.BACK * player.slide_strength
 
-	# Clamp the velocity to a maximum slide speed if necessary
-	#var max_slide_speed = 30.0
-	#player.velocity = player.velocity.clamp(Vector3.ZERO,Vector3(max_slide_speed,max_slide_speed,max_slide_speed))
-
-	# Make sure to handle movement during the slide in your physics processing
-	#player.move_and_slide()
-	
-	#var slide_direction = player.global_transform.basis.z.normalized()  # Assumes the character slides forward
-	#var slide_force = slide_direction * player.slide_impulse #* player.slide_strength
-	#player.velocity = slide_force
-	# Apply the force to the character's physics body
-	# This will vary depending on whether you're using KinematicBody or RigidBody
-
 
 func _on_slide_timer_timeout():
 	player.sliding = false

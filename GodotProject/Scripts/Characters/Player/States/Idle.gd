@@ -12,6 +12,9 @@ func update(delta: float) -> void:
 	if  Input.is_action_pressed("gadget"):
 		state_machine.transition_to("Grapple")
 		
+	if  Input.is_action_pressed("melee_attack"):
+		state_machine.transition_to("Melee")
+		
 	# check if player is grinding
 	if player.get_gadget("GrindBootsV2").grinding:
 		state_machine.transition_to("Grind")

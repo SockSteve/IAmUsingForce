@@ -21,8 +21,8 @@ var transition_state_mashine_request := "parameters/transition/transition_reques
 @onready var state_machine : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_normal/playback")
 @onready var sm_crouch : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_crouch/playback")
 @onready var sm_grind : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_grind/playback")
-@onready var sm_grapple : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_grind/playback")
-@onready var sm_melee : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_grind/playback")
+@onready var sm_grapple : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_grapple/playback")
+@onready var sm_melee : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_melee/playback")
 
 
 func _ready():
@@ -80,5 +80,15 @@ func uncrouch():
 	state_machine.travel("idle")
 
 func attack(attack_counter):
-	animation_tree["parameters/PunchOneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
+	animation_tree.set(transition_state_mashine_request, "state_melee")
+	var current_attack_animation = "attack_" + str(attack_counter)
+	print(current_attack_animation)
+	print(sm_melee.is_playing())
+	sm_melee.travel(current_attack_animation)
+	#sm_melee.travel("attack_1")
+
+func block():
+	animation_tree.set(transition_state_mashine_request, "state_melee")
+	sm_melee.travel("parry")
+	#animation_tree["parameters/PunchOneShot/request"] = AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE
 
