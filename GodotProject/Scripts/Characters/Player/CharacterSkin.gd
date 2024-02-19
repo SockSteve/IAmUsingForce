@@ -82,8 +82,6 @@ func uncrouch():
 func attack(attack_counter):
 	animation_tree.set(transition_state_mashine_request, "state_melee")
 	var current_attack_animation = "attack_" + str(attack_counter)
-	print(current_attack_animation)
-	print(sm_melee.is_playing())
 	sm_melee.travel(current_attack_animation)
 	#sm_melee.travel("attack_1")
 

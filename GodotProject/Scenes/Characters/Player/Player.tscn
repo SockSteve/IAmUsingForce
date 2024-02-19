@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Magnet.gd" id="10_0mhbm"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Melee.gd" id="10_1rkfv"]
 [ext_resource type="PackedScene" uid="uid://cqhn455src0iq" path="res://Scenes/Characters/Player/Gadgets/GrapplingHook.tscn" id="13_vujhk"]
-[ext_resource type="PackedScene" uid="uid://bihfxywywukdv" path="res://Scenes/Characters/CharacterSkin.tscn" id="15_8aog6"]
+[ext_resource type="PackedScene" uid="uid://bihfxywywukdv" path="res://Scenes/Characters/Player/CharacterSkin.tscn" id="15_7yrxv"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Inventory.gd" id="16_kqrv3"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerHand.gd" id="16_mjyse"]
 [ext_resource type="PackedScene" uid="uid://cfru43w2xfbl2" path="res://Scenes/Characters/Player/Weapons/RangedWeapons/Gun/Gun.tscn" id="17_ntt0n"]
@@ -139,7 +139,7 @@ debug_shape_custom_color = Color(0, 1, 0, 1)
 
 [node name="CharacterRotationRoot" type="Node3D" parent="."]
 
-[node name="CharacterSkin" parent="CharacterRotationRoot" instance=ExtResource("15_8aog6")]
+[node name="CharacterSkin" parent="CharacterRotationRoot" instance=ExtResource("15_7yrxv")]
 
 [node name="PlayerHand" type="Node3D" parent="CharacterRotationRoot"]
 script = ExtResource("16_mjyse")

@@ -2,7 +2,8 @@ extends PlayerState
 
 
 func enter(_msg := {}) -> void:
-	player._character_skin.attack(player.combo_step+1)
+	player._character_skin.attack(player.combo_step)
+	player.combo_step += 1
 	#player.attack_timer.connect("timeout", self, "_on_attack_timer_timeout")
 	if _msg.has("do_air_up_attack"):
 		pass
@@ -11,9 +12,13 @@ func enter(_msg := {}) -> void:
 
 func physics_update(delta: float) -> void:
 	if Input.is_action_just_pressed("melee_attack"): #and not player.is_attacking:
-		print("now")
 		attack()
-	pass
+	if Input.is_action_pressed("move_up") and Input.is_action_pressed("crouch"):
+		player.combo_step = 0
+		state_machine.transition_to("Crouch", {do_slide = true})
+	if Input.is_action_just_pressed("jump"):
+		player.combo_step = 0
+		state_machine.transition_to("Air", {do_jump = true})
 
 func attack():
 	player.is_attacking = true
@@ -26,15 +31,15 @@ func attack():
 	match player.combo_step:
 		0:
 			print('debug')
-			player._character_skin.attack(player.combo_step+1)
+			player._character_skin.attack(player.combo_step)
 			move_character(advance_direction, advance_distance)
 			player.combo_step += 1
 		1:
-			player._character_skin.attack(player.combo_step+1)
+			player._character_skin.attack(player.combo_step)
 			move_character(advance_direction, advance_distance)
 			player.combo_step += 1
 		2:
-			player._character_skin.attack(player.combo_step+1)
+			player._character_skin.attack(player.combo_step)
 			move_character(advance_direction, advance_distance)
 			player.combo_step = 0  # Reset combo after third attack
 	

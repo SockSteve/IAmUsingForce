@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cfv2ecbe68yfi"]
+[gd_scene load_steps=21 format=3 uid="uid://cfv2ecbe68yfi"]
 
 [ext_resource type="PackedScene" uid="uid://lq37dt6an0ad" path="res://Scenes/InteractiveObjects/GrapplingPoints/SwingHook.tscn" id="1_kdsm0"]
 [ext_resource type="Texture2D" uid="uid://dk3g261yc4qry" path="res://Assets/Placeholders/Environment/Skyboxes/panorama_image.png" id="1_mhjnm"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ro280iljuyye" path="res://Assets/Placeholders/Environment/bonfire_free_download/scene.gltf" id="6_ryulc"]
 [ext_resource type="Texture2D" uid="uid://de0wimp7e8g3n" path="res://addons/kenney_prototype_textures/purple/texture_12.png" id="7_eov66"]
 [ext_resource type="PackedScene" uid="uid://du0ausxn5e6vk" path="res://Assets/Placeholders/Environment/fern_grass_02/scene.gltf" id="7_mr86d"]
+[ext_resource type="PackedScene" uid="uid://fbpbxpmuqx3g" path="res://Scenes/Characters/Merchants/vendor.tscn" id="11_ahr15"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_30l7b"]
 panorama = ExtResource("1_mhjnm")
@@ -159,5 +160,8 @@ volume_db = -15.928
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54323, 0)
 mesh = SubResource("BoxMesh_llufc")
+
+[node name="Vendor" parent="." instance=ExtResource("11_ahr15")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.2688, 1.30263, 2.59788)
 
 [editable path="Map Geometry/SwingHook"]
