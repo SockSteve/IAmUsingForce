@@ -28,10 +28,12 @@ func _process(delta):
 
 func open_shop():
 	vendor_cam.make_current()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	
 	
 func close_shop():
 	player_cam.make_current()
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
 
 func _on_area_3d_body_entered(body):

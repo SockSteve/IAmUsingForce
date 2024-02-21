@@ -98,6 +98,7 @@ offset_right = 402.76
 offset_bottom = 154.5
 
 [node name="OptionButton" type="OptionButton" parent="SubViewport/Control/Panel"]
+layout_mode = 0
 offset_left = 492.0
 offset_top = 314.0
 offset_right = 537.0

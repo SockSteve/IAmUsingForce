@@ -31,8 +31,8 @@ func _ready():
 	node_area.mouse_entered.connect(_mouse_entered_area)
 
 	# If the material is NOT set to use billboard settings, then avoid running billboard specific code
-	if node_quad.get_surface_material(0).params_billboard_mode == 0:
-		set_process(false)
+	#if node_quad.get_surface_override_material(0).BillboardMode == 0:
+		#set_process(false)
 
 	#if OS.get_current_video_driver() == OS.VIDEO_DRIVER_GLES2:
 		# Required to prevent the texture from being too dark when using GLES2.
@@ -41,9 +41,9 @@ func _ready():
 		#node_quad.get_surface_material(0).flags_albedo_tex_force_srgb = false
 
 
-func _process(_delta):
+#func _process(_delta):
 	# NOTE: Remove this function if you don't plan on using billboard settings.
-	rotate_area_to_billboard()
+	#rotate_area_to_billboard()
 
 
 func _mouse_entered_area():
@@ -66,7 +66,7 @@ func _unhandled_input(event):
 	if is_mouse_event and (is_mouse_inside or is_mouse_held):
 		handle_mouse(event)
 	elif not is_mouse_event:
-		node_viewport.input(event)
+		node_viewport.push_input(event)
 
 
 # Handle mouse events inside Area. (Area.input_event had many issues with dragging)
@@ -129,11 +129,11 @@ func handle_mouse(event):
 	last_mouse_pos2D = mouse_pos2D
 
 	# Finally, send the processed input event to the viewport.
-	node_viewport.input(event)
+	node_viewport.push_input(event)
 
 
 func find_mouse(global_position):
-	var camera = get_viewport().get_camera()
+	var camera = get_viewport().get_camera_3d()
 
 	# From camera center to the mouse position in the Area
 	var from = camera.project_ray_origin(global_position)
@@ -141,7 +141,11 @@ func find_mouse(global_position):
 	var to = from + camera.project_ray_normal(global_position) * dist
 
 	# Manually raycasts the are to find the mouse position
-	var result = get_world_3d().direct_space_state.intersect_ray(from, to, [], node_area.collision_layer,false,true) #for 3.1 changes
+	var ray_query = PhysicsRayQueryParameters3D.create(from, to, node_area.collision_layer,[])
+	var result = get_world_3d().direct_space_state.intersect_ray(ray_query)
+	#var result = get_world_3d().direct_space_state.intersect_ray(from, to, [], node_area.collision_layer,false,true) #for 3.1 changes
+#intersect_ray(from: Vector3, to: Vector3, exclude: Array = [  ], collision_mask: int = 0x7FFFFFFF, collide_with_bodies: bool = true, collide_with_areas: bool = false)
+
 
 	if result.size() > 0:
 		return result.position
