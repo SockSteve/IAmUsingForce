@@ -26,11 +26,13 @@ mesh = SubResource("BoxMesh_3mhll")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Area3D"]
 shape = SubResource("BoxShape3D_uueeb")
 
-[node name="ShopMenu3D" parent="." instance=ExtResource("2_j1xsu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
-
 [node name="VendorCamera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23736, 0, 3.12225)
+near = 0.1
+far = 100.0
+
+[node name="ShopMenu3D" parent="." instance=ExtResource("2_j1xsu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
 
 [connection signal="body_entered" from="StaticBody3D/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="StaticBody3D/Area3D" to="." method="_on_area_3d_body_exited"]

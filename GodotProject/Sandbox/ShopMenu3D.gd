@@ -1,16 +1,6 @@
 extends Node3D
 
 
-# Called when the node enters the scene tree for the first time.
-#func _ready():
-#	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
-
 # The size of the quad mesh itself.
 var quad_mesh_size
 # Used for checking if the mouse is inside the Area
@@ -142,6 +132,8 @@ func find_mouse(global_position):
 
 	# Manually raycasts the are to find the mouse position
 	var ray_query = PhysicsRayQueryParameters3D.create(from, to, node_area.collision_layer,[])
+	ray_query.collide_with_areas = true
+	ray_query.collide_with_bodies = false
 	var result = get_world_3d().direct_space_state.intersect_ray(ray_query)
 	#var result = get_world_3d().direct_space_state.intersect_ray(from, to, [], node_area.collision_layer,false,true) #for 3.1 changes
 #intersect_ray(from: Vector3, to: Vector3, exclude: Array = [  ], collision_mask: int = 0x7FFFFFFF, collide_with_bodies: bool = true, collide_with_areas: bool = false)
