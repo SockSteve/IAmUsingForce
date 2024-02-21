@@ -191,3 +191,7 @@ func rotate_area_to_billboard():
 
 		# Rotate in the Z axis to compensate camera tilt
 		node_area.rotate_object_local(Vector3.BACK, camera.rotation.z)
+
+
+func _on_button_pressed():
+	print("herro") # Replace with function body.
