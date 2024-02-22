@@ -26,6 +26,7 @@ func initialize():
 
 func cleanup():
 	$SubViewport/Control.release_focus()
+	node_viewport.gui_get_focus_owner().release_focus()
 
 func _mouse_entered_area():
 	is_mouse_inside = true

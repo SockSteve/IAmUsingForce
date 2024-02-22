@@ -30,12 +30,12 @@ func open_shop():
 	$ShopMenu3D.initialize()
 	
 func close_shop():
+	$ShopMenu3D.cleanup()
 	customer.freeze = false
 	player_cam.make_current()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	customer._ready()
 	$StaticBody3D/Area3D
-	$ShopMenu3D.cleanup()
 
 func _on_area_3d_body_entered(body):
 	if body.is_in_group("player"):
