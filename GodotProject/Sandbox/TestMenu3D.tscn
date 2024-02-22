@@ -1,0 +1,116 @@
+[gd_scene load_steps=6 format=3 uid="uid://dks0u0nj50spe"]
+
+[ext_resource type="Script" path="res://Sandbox/TestMenu3D.gd" id="1_4k0ly"]
+[ext_resource type="Theme" uid="uid://d02hntmjt67aj" path="res://UI/UITheme_1.tres" id="1_kh1iq"]
+[ext_resource type="Texture2D" uid="uid://dmf404ftfexwl" path="res://Assets/Decals/DropShadow/Shadow.png" id="2_yhehj"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_sqr5r"]
+resource_local_to_scene = true
+size = Vector2(3, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tmjdk"]
+size = Vector3(2.99007, 1.97119, 1)
+
+[node name="Menu3D" type="Node3D"]
+script = ExtResource("1_4k0ly")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(280, 180)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="SubViewport"]
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_kh1iq")
+
+[node name="Panel" type="Panel" parent="SubViewport/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SubViewport/Control/Panel"]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 27.0
+offset_right = 84.0
+offset_bottom = 50.0
+text = "Hello"
+
+[node name="Button" type="Button" parent="SubViewport/Control/Panel"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 46.0
+offset_right = 164.0
+offset_bottom = 77.0
+text = "button"
+
+[node name="TextEdit" type="TextEdit" parent="SubViewport/Control/Panel"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 121.0
+offset_right = 154.0
+offset_bottom = 145.0
+placeholder_text = "fff"
+
+[node name="HSlider" type="HSlider" parent="SubViewport/Control/Panel"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 100.0
+offset_right = 154.0
+offset_bottom = 125.0
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport/Control/Panel"]
+layout_mode = 0
+offset_left = 180.0
+offset_top = 26.0
+offset_right = 244.0
+offset_bottom = 90.0
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport/Control/Panel"]
+layout_mode = 0
+offset_left = 399.0
+offset_top = 103.0
+offset_right = 582.0
+offset_bottom = 266.0
+texture = ExtResource("2_yhehj")
+expand_mode = 1
+
+[node name="VSlider" type="VSlider" parent="SubViewport/Control/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.341
+anchor_bottom = 0.5
+offset_left = 260.0
+offset_top = 26.0
+offset_right = 276.0
+offset_bottom = 166.0
+
+[node name="OptionButton" type="OptionButton" parent="SubViewport/Control/Panel"]
+layout_mode = 0
+offset_left = 492.0
+offset_top = 314.0
+offset_right = 537.0
+offset_bottom = 334.0
+item_count = 3
+selected = 0
+popup/item_0/text = "1"
+popup/item_0/id = 0
+popup/item_1/text = "2"
+popup/item_1/id = 1
+popup/item_2/text = "3"
+popup/item_2/id = 2
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_sqr5r")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
+input_capture_on_drag = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0133133, -0.00122152, 0)
+shape = SubResource("BoxShape3D_tmjdk")
+
+[connection signal="pressed" from="SubViewport/Control/Panel/Button" to="." method="_on_button_pressed"]

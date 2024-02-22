@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://fbpbxpmuqx3g"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Merchants/vendor.gd" id="1_dycj1"]
-[ext_resource type="PackedScene" uid="uid://dks0u0nj50spe" path="res://Sandbox/ShopMenu3D.tscn" id="2_j1xsu"]
+[ext_resource type="PackedScene" uid="uid://bcj7lff1v3mff" path="res://Sandbox/ShopMenu3D.tscn" id="2_j1xsu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e4osp"]
 
@@ -22,17 +22,20 @@ shape = SubResource("BoxShape3D_e4osp")
 mesh = SubResource("BoxMesh_3mhll")
 
 [node name="Area3D" type="Area3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.18891, -0.0110334, -0.144433)
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D/Area3D"]
 shape = SubResource("BoxShape3D_uueeb")
 
 [node name="VendorCamera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23736, 0, 3.12225)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.23736, 0.541379, 2.56472)
+fov = 90.0
 near = 0.1
 far = 100.0
 
 [node name="ShopMenu3D" parent="." instance=ExtResource("2_j1xsu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.28301, 0.717324, 0)
 
 [connection signal="body_entered" from="StaticBody3D/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="StaticBody3D/Area3D" to="." method="_on_area_3d_body_exited"]

@@ -21,11 +21,21 @@ func _ready():
 	node_area.mouse_entered.connect(_mouse_entered_area)
 	_set_viewport_mat(node_quad, node_viewport)
 
-func initialize():
-	$SubViewport/Control/Panel/ScrollContainer/ShopWindow/Button.grab_focus()
+	# If the material is NOT set to use billboard settings, then avoid running billboard specific code
+	#if node_quad.get_surface_override_material(0).BillboardMode == 0:
+		#set_process(false)
 
-func cleanup():
-	$SubViewport/Control.release_focus()
+	#if OS.get_current_video_driver() == OS.VIDEO_DRIVER_GLES2:
+		# Required to prevent the texture from being too dark when using GLES2.
+		# This should be left to `true` in GLES3 to prevent the texture from looking
+		# washed out there.
+		#node_quad.get_surface_material(0).flags_albedo_tex_force_srgb = false
+
+
+#func _process(_delta):
+	# NOTE: Remove this function if you don't plan on using billboard settings.
+	#rotate_area_to_billboard()
+
 
 func _mouse_entered_area():
 	is_mouse_inside = true
@@ -36,6 +46,10 @@ func _unhandled_input(event):
 	var is_mouse_event = false
 	if event is InputEventMouse:
 		is_mouse_event = true
+	#for mouse_event in [InputEventMouseButton, InputEventMouseMotion, InputEventScreenDrag, InputEventScreenTouch]:
+	#	if event is mouse_event:
+	#		is_mouse_event = true
+	#		break
 
 	# If the event is a mouse/touch event and/or the mouse is either held or inside the area, then
 	# we need to do some additional processing in the handle_mouse function before passing the event to the viewport.
@@ -147,6 +161,9 @@ func find_further_distance_to(origin):
 
 	return far_dist
 
+
+func _on_button_pressed():
+	print("herro") # Replace with function body.
 
 #this function setes the material in code
 #this function only exists to remove the get_height and get_width viewport texture error

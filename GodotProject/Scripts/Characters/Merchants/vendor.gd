@@ -4,9 +4,6 @@ var customer : Player = null
 var player_cam : Camera3D = null
 var shop_menu : bool = false
 @onready var vendor_cam : Camera3D = $VendorCamera3D
-#load all weapons and gadgets from folder
-#offer weapons, gadgets and ammo according to flags
-#only sell option
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,14 +24,18 @@ func _process(delta):
 		
 
 func open_shop():
+	customer.freeze = true
 	vendor_cam.make_current()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	
+	$ShopMenu3D.initialize()
 	
 func close_shop():
+	customer.freeze = false
 	player_cam.make_current()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	
+	customer._ready()
+	$StaticBody3D/Area3D
+	$ShopMenu3D.cleanup()
 
 func _on_area_3d_body_entered(body):
 	if body.is_in_group("player"):

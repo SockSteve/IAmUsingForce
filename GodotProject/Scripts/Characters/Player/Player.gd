@@ -54,6 +54,7 @@ var shortcutRangedWeapons
 var slide_velocity = Vector3(0, 0, -slide_strength)  # The Z-axis is assumed to be the forward axis.  # Adjust the strength and direction
 var slide_duration = .5  # Adjust duration as needed
 var sliding: bool = false
+var freeze: bool = false
 @onready var slide_timer = $SlideTimer
 
 func _ready() -> void:

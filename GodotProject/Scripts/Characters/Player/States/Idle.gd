@@ -8,6 +8,9 @@ func enter(_msg := {}) -> void:
 	
 
 func update(delta: float) -> void:
+	if player.freeze:
+		return
+	
 	player._character_skin.set_moving(false)
 	if  Input.is_action_pressed("gadget"):
 		state_machine.transition_to("Grapple")
