@@ -21,7 +21,7 @@ func _ready():
 func _physics_process(delta):
 	if shapeCast.is_colliding():
 		if shapeCast.get_collider(0).is_in_group("grindRail") and canGrind:
-			current_grindrail = shapeCast.get_collider(0).get_child(0)
+			current_grindrail = shapeCast.get_collider(0).get_parent()
 			canGrind = false
 			grinding = true
 

@@ -38,10 +38,6 @@ uv1_triplanar = true
 albedo_texture = ExtResource("2_ibgu5")
 uv1_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjiwb"]
-albedo_texture = ExtResource("7_eov66")
-uv1_triplanar = true
-
 [sub_resource type="Curve3D" id="Curve3D_ssrx5"]
 bake_interval = 0.1
 _data = {
@@ -49,6 +45,10 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjiwb"]
+albedo_texture = ExtResource("7_eov66")
+uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_llufc"]
 
@@ -111,70 +111,12 @@ height = 8.0
 sides = 30
 smooth_faces = false
 
-[node name="GrindRail_1" type="CSGPolygon3D" parent="Map Geometry" groups=["grindRail"]]
-use_collision = true
-polygon = PackedVector2Array(-0.0626981, -0.00517382, -0.0974762, 0.136789, 0.0834621, 0.146682, 0.0449436, 0.00659476)
-mode = 2
-path_node = NodePath("GrindRail")
-path_interval_type = 0
-path_interval = 0.1
-path_simplify_angle = 0.0
-path_rotation = 2
-path_local = false
-path_continuous_u = true
-path_u_distance = 1.0
-path_joined = false
-material = SubResource("StandardMaterial3D_sjiwb")
-
-[node name="GrindRail" type="Path3D" parent="Map Geometry/GrindRail_1"]
+[node name="GrindRail" type="Path3D" parent="Map Geometry"]
 transform = Transform3D(0.852813, 0, -0.522216, 0, 1, 0, 0.522216, 0, 0.852813, 0, 0, 0)
 curve = SubResource("Curve3D_ssrx5")
 
-[node name="GrindRail_2" type="CSGPolygon3D" parent="Map Geometry" groups=["grindRail"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.5103, 2.84581, 37.4143)
-use_collision = true
-polygon = PackedVector2Array(-0.0626981, -0.00517382, -0.0974762, 0.136789, 0.0834621, 0.146682, 0.0449436, 0.00659476)
-mode = 2
-path_node = NodePath("GrindRail")
-path_interval_type = 0
-path_interval = 0.1
-path_simplify_angle = 0.0
-path_rotation = 2
-path_local = false
-path_continuous_u = true
-path_u_distance = 1.0
-path_joined = false
-material = SubResource("StandardMaterial3D_sjiwb")
-
-[node name="GrindRail" type="Path3D" parent="Map Geometry/GrindRail_2"]
-transform = Transform3D(0.852813, 0, -0.522216, 0, 1, 0, 0.522216, 0, 0.852813, 0, 0, 0)
-curve = SubResource("Curve3D_ssrx5")
-
-[node name="GrindRail_3" type="CSGPolygon3D" parent="Map Geometry" groups=["grindRail"]]
-use_collision = true
-polygon = PackedVector2Array(-0.0626981, -0.00517382, -0.0974762, 0.136789, 0.0834621, 0.146682, 0.0449436, 0.00659476)
-mode = 2
-path_node = NodePath("GrindRail")
-path_interval_type = 0
-path_interval = 0.1
-path_simplify_angle = 0.0
-path_rotation = 2
-path_local = false
-path_continuous_u = true
-path_u_distance = 1.0
-path_joined = false
-material = SubResource("StandardMaterial3D_sjiwb")
-
-[node name="GrindRail" type="Path3D" parent="Map Geometry/GrindRail_3"]
-transform = Transform3D(0.852813, 0, -0.522216, 0, 1, 0, 0.522216, 0, 0.852813, 0, 0, 0)
-curve = SubResource("Curve3D_ssrx5")
-
-[node name="GrindRail4" type="Path3D" parent="Map Geometry"]
-transform = Transform3D(0.852813, 0, -0.522216, 0, 1, 0, 0.522216, 0, 0.852813, 29.2348, 1.25634, 53.238)
-curve = SubResource("Curve3D_ssrx5")
-
-[node name="GrindRail_4" type="CSGPolygon3D" parent="Map Geometry/GrindRail4" groups=["grindRail"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+[node name="GrindRail_1" type="CSGPolygon3D" parent="Map Geometry/GrindRail" groups=["grindRail"]]
+transform = Transform3D(0.852813, 0, 0.522216, 0, 1, 0, -0.522216, 0, 0.852813, 0, 0, 0)
 use_collision = true
 polygon = PackedVector2Array(-0.0626981, -0.00517382, -0.0974762, 0.136789, 0.0834621, 0.146682, 0.0449436, 0.00659476)
 mode = 2
@@ -184,6 +126,64 @@ path_interval = 0.1
 path_simplify_angle = 0.0
 path_rotation = 2
 path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_sjiwb")
+
+[node name="GrindRail_2" type="Path3D" parent="Map Geometry"]
+transform = Transform3D(0.766044, 0, -0.642787, 0, 1, 0, 0.642787, 0, 0.766044, 24.5103, 1.45258, 37.4143)
+curve = SubResource("Curve3D_ssrx5")
+
+[node name="GrindRail_2" type="CSGPolygon3D" parent="Map Geometry/GrindRail_2" groups=["grindRail"]]
+use_collision = true
+polygon = PackedVector2Array(-0.0626981, -0.00517382, -0.0974762, 0.136789, 0.0834621, 0.146682, 0.0449436, 0.00659476)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 0.1
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_sjiwb")
+
+[node name="GrindRail_3" type="Path3D" parent="Map Geometry"]
+transform = Transform3D(0.766044, 0, -0.642787, 0, 1, 0, 0.642787, 0, 0.766044, 22.4622, 2.31297, 43.2257)
+curve = SubResource("Curve3D_ssrx5")
+
+[node name="GrindRail_3" type="CSGPolygon3D" parent="Map Geometry/GrindRail_3" groups=["grindRail"]]
+use_collision = true
+polygon = PackedVector2Array(-0.0626981, -0.00517382, -0.0974762, 0.136789, 0.0834621, 0.146682, 0.0449436, 0.00659476)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 0.1
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_sjiwb")
+
+[node name="GrindRail_4" type="Path3D" parent="Map Geometry"]
+transform = Transform3D(0.766044, 0, -0.642787, 0, 1, 0, 0.642787, 0, 0.766044, 24.5406, 1.70556, 40.4879)
+curve = SubResource("Curve3D_ssrx5")
+
+[node name="GrindRail_4" type="CSGPolygon3D" parent="Map Geometry/GrindRail_4" groups=["grindRail"]]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
+use_collision = true
+polygon = PackedVector2Array(-0.0626981, -0.00517382, -0.0974762, 0.136789, 0.0834621, 0.146682, 0.0449436, 0.00659476)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 0.1
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = true
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
