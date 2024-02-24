@@ -159,7 +159,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91362, 0.0314813)
 
 [node name="GrindBootsV2" parent="Inventory/Gadgets" instance=ExtResource("20_iksty")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.982622, 0)
-visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

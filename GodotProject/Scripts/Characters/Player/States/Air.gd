@@ -1,12 +1,24 @@
 # Air.gd
 extends PlayerState
 
+var jumped: bool = false
+
 func enter(msg := {}) -> void:
 	if msg.has("do_jump"):
 		player.velocity.y += player.jump_initial_impulse
 		player._character_skin.jump()
+		jumped = true
+		
 	if msg.has("do_crouch_jump"):
 		player.velocity.y += player.crouch_jump_initial_impulse
+		player._character_skin.jump()
+		
+	if msg.has("do_launch"):
+		player.velocity.y += player.launch_initial_impulse
+		player._character_skin.jump()
+	
+	if msg.has("do_grind_end_launch"):
+		player.velocity.y += player.grind_end_launch_initial_impulse
 		player._character_skin.jump()
 
 #TODO acending and decending checks for melee attack
@@ -36,14 +48,16 @@ func physics_update(delta: float) -> void:
 		player.velocity.y += player._gravity * delta
 		
 	
-	if not Input.is_action_pressed("jump") and player.velocity.y > 3:
-		player.velocity.y = 3
+	if jumped and not Input.is_action_pressed("jump") and player.velocity.y > 7.5:
+		player.velocity.y = 7.5
 		pass
 		#player.velocity.y = 
 	
 	player.move_and_slide()
 	
+	
 	if  Input.is_action_pressed("gadget"):
+		jumped = false
 		state_machine.transition_to("Grapple")
 		
 
@@ -52,9 +66,11 @@ func physics_update(delta: float) -> void:
 #		_landing_sound.play()
 	if player.get_gadget("GrindBootsV2") != null:
 		if player.get_gadget("GrindBootsV2").grinding:
+			jumped = false
 			state_machine.transition_to("Grind")
 	
 	if player.is_on_floor():
+		jumped = false
 		if is_equal_approx(player.velocity.x, 0.0):
 			player._character_skin.set_moving(false)
 			state_machine.transition_to("Idle")

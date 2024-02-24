@@ -45,3 +45,29 @@ func endGrind():
 	player.velocity.y = 0.0
 	state_machine.transition_to("Air", {do_jump = true})
 	
+	
+func start_jump_to_rail(target_rail: Path3D):
+	var start_point = player.global_transform.origin
+	var end_point = target_rail.global_transform.origin  # Simplified; adjust based on actual target position on the rail
+	var apex_point = start_point.linear_interpolate(end_point, 0.5) + Vector3.UP * 10  # Adjust the height
+
+	# Ensure any existing tween is stopped
+	$Tween.stop_all()
+
+	# Animate to the apex
+	$Tween.interpolate_property(player, "global_transform.origin",
+								start_point, apex_point,
+								0.5, Tween.TRANS_QUAD, Tween.EASE_OUT)
+
+	# Chain the animation from the apex to the end point
+	$Tween.interpolate_property(player, "global_transform.origin",
+								apex_point, end_point,
+								0.5, Tween.TRANS_QUAD, Tween.EASE_IN, 0.5)  # Delay start by the duration of the first tween
+
+	$Tween.start()
+	$Tween.connect("tween_all_completed", self, "_on_jump_completed")
+
+func _on_jump_completed():
+	# Reset jump state, allow for new actions
+	is_jumping_between_rails = false
+	# Additional logic to lock onto the new rail, if jumping to one
