@@ -9,8 +9,9 @@ var id = "g00"
 
 var canGrind: bool = true
 var grinding: bool = false 
-var current_grindrail
-var nearby_grindrails_info
+var current_grindrail : Path3D = null
+var left_grindrail : Path3D = null
+var right_grindrail : Path3D = null
 
 #at the start, we minimize the results array that contains the
 #intersection point data from the shape_cast_ground3D
@@ -31,10 +32,26 @@ func _physics_process(delta):
 			grinding = true
 			shape_cast_left.set_enabled(true)
 			shape_cast_right.set_enabled(true)
+			shape_cast_left.add_exception_rid(shape_cast_ground.get_collider(0).get_id())
+			#shape_cast_left.add_exception(shape_cast_ground.get_collider(0))
+			
+		if shape_cast_left.is_colliding():
+			if shape_cast_left.get_collider(0).is_in_group("grindRail"):
+				left_grindrail = shape_cast_left.get_collider(0).get_parent()
+				print(shape_cast_ground.get_collider(0).get_parent())
+				print(shape_cast_left.get_collider(0).get_parent())
+		
+		if shape_cast_right.is_colliding():
+			if shape_cast_right.get_collider(0).is_in_group("grindRail"):
+				right_grindrail = shape_cast_right.get_collider(0).get_parent()
+			
 			
 
 #this function gets called by the state machine
 func end_grind():
+	current_grindrail = null
+	left_grindrail = null
+	right_grindrail = null
 	grinding = false
 	$GrindEndCooldown.start()
 	shape_cast_left.set_enabled(false)
