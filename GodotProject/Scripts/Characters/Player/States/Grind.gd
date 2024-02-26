@@ -49,7 +49,7 @@ func change_grindrail(dir):
 	path_3d = player.get_gadget("GrindBootsV2").left_grindrail
 	 
 	path_follow_3d = PathFollow3D.new()
-	path_3d.add_child(path_follow_3d)
+	player.get_gadget("GrindBootsV2").left_grindrail.add_child(path_follow_3d)
 	set_initial_progress(player.global_transform.origin)
 	#player.get_gadget("GrindBootsV2").end_grind()
 	#player.velocity.y = 0.0

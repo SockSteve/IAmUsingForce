@@ -32,13 +32,14 @@ func _physics_process(delta):
 			grinding = true
 			shape_cast_left.set_enabled(true)
 			shape_cast_right.set_enabled(true)
-			shape_cast_left.add_exception_rid(shape_cast_ground.get_collider(0).get_id())
+			shape_cast_left.add_exception_rid(shape_cast_ground.get_collider_rid(0))d
+			#shape_cast_left.add_exception_rid(shape_cast_ground.get_collider(0).get_id())
 			#shape_cast_left.add_exception(shape_cast_ground.get_collider(0))
 			
 		if shape_cast_left.is_colliding():
-			if shape_cast_left.get_collider(0).is_in_group("grindRail"):
+			if shape_cast_left.get_collider(0).is_in_group("grindRail") and current_grindrail != shape_cast_left.get_collider(0).get_parent():
 				left_grindrail = shape_cast_left.get_collider(0).get_parent()
-				print(shape_cast_ground.get_collider(0).get_parent())
+				
 				print(shape_cast_left.get_collider(0).get_parent())
 		
 		if shape_cast_right.is_colliding():

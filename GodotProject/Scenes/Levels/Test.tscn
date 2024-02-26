@@ -132,7 +132,7 @@ path_joined = false
 material = SubResource("StandardMaterial3D_sjiwb")
 
 [node name="GrindRail_2" type="Path3D" parent="Map Geometry"]
-transform = Transform3D(0.766044, 0, -0.642787, 0, 1, 0, 0.642787, 0, 0.766044, 24.5103, 1.45258, 37.4143)
+transform = Transform3D(0.766044, 0, -0.642787, 0, 1, 0, 0.642787, 0, 0.766044, 24.5103, 2.35705, 37.4143)
 curve = SubResource("Curve3D_ssrx5")
 
 [node name="GrindRail_2" type="CSGPolygon3D" parent="Map Geometry/GrindRail_2" groups=["grindRail"]]
