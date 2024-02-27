@@ -147,18 +147,21 @@ script = ExtResource("16_mjyse")
 [node name="Blaster" parent="CharacterRotationRoot/PlayerHand" instance=ExtResource("17_ntt0n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12975, 0.941938)
 
+[node name="PassiveGadgets" type="Node3D" parent="."]
+
+[node name="GrapplingHook" parent="PassiveGadgets" instance=ExtResource("13_vujhk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91362, 0.0314813)
+
+[node name="GrindBootsV2" parent="PassiveGadgets" instance=ExtResource("20_iksty")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.982622, 0)
+
 [node name="Inventory" type="Node3D" parent="."]
 script = ExtResource("16_kqrv3")
 
 [node name="Weapons" type="Node3D" parent="Inventory"]
+visible = false
 
 [node name="Gadgets" type="Node3D" parent="Inventory"]
-
-[node name="GrapplingHook" parent="Inventory/Gadgets" instance=ExtResource("13_vujhk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91362, 0.0314813)
-
-[node name="GrindBootsV2" parent="Inventory/Gadgets" instance=ExtResource("20_iksty")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.982622, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -261,12 +264,13 @@ wait_time = 0.5
 [node name="AttackTimer" type="Timer" parent="."]
 
 [node name="DropShadow" type="Decal" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.15897, 0)
-size = Vector3(1, 5.21625, 1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.56409, 0)
+layers = 96
+size = Vector3(1, 7.27661, 1)
 texture_albedo = ExtResource("22_gwf8y")
 albedo_mix = 0.8
-upper_fade = 1.0
-lower_fade = 0.01
+upper_fade = 0.0001
+lower_fade = 1.0
 distance_fade_begin = 172.53
 distance_fade_length = 1000.0
 

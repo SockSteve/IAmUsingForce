@@ -1,11 +1,8 @@
 extends Node3D
 class_name Inventory
 
-@onready var gun = preload("res://Scenes/Characters/Player/Weapons/RangedWeapons/Gun/Gun.tscn")
-@onready var cutter = preload("res://Scenes/Characters/Player/Weapons/MeleeWeapons/Cutter/Cutter.tscn")
-
 @onready var weapon_node = $Weapons
-@onready var gadget_node = $Gadgets
+@onready var gadget_node = $"../PassiveGadgets"
 
 func _ready():
 	load_inventory()

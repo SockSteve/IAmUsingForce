@@ -36,9 +36,10 @@ func physics_update(delta: float) -> void:
 	
 	if mode == PULL:
 		var directionVector: Vector3 = (nearest_grapple_point.global_position - player.global_position).normalized()
-		var speed = 30
-		var velocity = directionVector * speed
-		player.velocity = velocity
+		var speed = 1
+		var velocity_force = directionVector * speed
+		player._physics_body.apply_central_impulse(velocity_force)
+		player.velocity = player._physics_body.linear_velocity
 		player.move_and_slide()
 		pass
 	

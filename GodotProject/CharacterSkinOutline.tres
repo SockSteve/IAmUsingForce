@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c68cttfkec2hb"]
+
+[ext_resource type="Shader" path="res://Singletons/OutlineShader.gdshader" id="1_6u8ta"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_6u8ta")
+shader_parameter/outline_threshold = 0.5
+shader_parameter/outline_color = Color(1.5, 1.5, 1.5, 1)

@@ -32,10 +32,7 @@ func set_initial_progress(player_position: Vector3) -> void:
 	var progress_ratio = closest_offset / path_length
 	path_follow_3d.progress_ratio = progress_ratio
 	
-	#var mesh : MeshInstance3D = MeshInstance3D.new()
-	#mesh.mesh = BoxMesh.new()
-	#path_3d.add_child(mesh)
-	#mesh.global_position = path_follow_3d.global_position
+	
 
 func endGrind():
 	player._character_skin.end_grind()

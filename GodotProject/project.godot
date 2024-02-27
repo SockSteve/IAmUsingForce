@@ -18,6 +18,11 @@ config/icon="res://SockSethLogo.png"
 [autoload]
 
 GameHandler="*res://Singletons/GameHandler.tscn"
+DebugLibrary="*res://Singletons/DebugLibrary.tscn"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/ridiculous_coding/plugin.cfg")
 
 [input]
 
@@ -140,6 +145,14 @@ interact={
 
 [layer_names]
 
+3d_render/layer_1="player"
+3d_render/layer_2="enemy"
+3d_render/layer_3="collectible"
+3d_render/layer_4="destructible"
+3d_render/layer_5="wall"
+3d_render/layer_6="floor"
+3d_render/layer_7="platform"
+3d_render/layer_8="interactible"
 3d_physics/layer_1="player"
 3d_physics/layer_2="enemy"
 3d_physics/layer_3="collectible"
