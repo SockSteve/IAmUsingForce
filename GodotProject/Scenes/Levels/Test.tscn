@@ -118,6 +118,8 @@ curve = SubResource("Curve3D_ssrx5")
 [node name="GrindRail_1" type="CSGPolygon3D" parent="Map Geometry/GrindRail" groups=["grindRail"]]
 transform = Transform3D(0.852813, 0, 0.522216, 0, 1, 0, -0.522216, 0, 0.852813, 0, 0, 0)
 use_collision = true
+collision_layer = 128
+collision_mask = 128
 polygon = PackedVector2Array(-0.0626981, -0.00517382, -0.0974762, 0.136789, 0.0834621, 0.146682, 0.0449436, 0.00659476)
 mode = 2
 path_node = NodePath("..")
@@ -137,6 +139,29 @@ curve = SubResource("Curve3D_ssrx5")
 
 [node name="GrindRail_2" type="CSGPolygon3D" parent="Map Geometry/GrindRail_2" groups=["grindRail"]]
 use_collision = true
+collision_layer = 128
+collision_mask = 128
+polygon = PackedVector2Array(-0.0626981, -0.00517382, -0.0974762, 0.136789, 0.0834621, 0.146682, 0.0449436, 0.00659476)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 0.1
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_sjiwb")
+
+[node name="GrindRail_5" type="Path3D" parent="Map Geometry"]
+transform = Transform3D(0.766044, 0, -0.642787, 0, 1, 0, 0.642787, 0, 0.766044, 24.8167, 2.35705, 34.4128)
+curve = SubResource("Curve3D_ssrx5")
+
+[node name="GrindRail_2" type="CSGPolygon3D" parent="Map Geometry/GrindRail_5" groups=["grindRail"]]
+use_collision = true
+collision_layer = 128
+collision_mask = 128
 polygon = PackedVector2Array(-0.0626981, -0.00517382, -0.0974762, 0.136789, 0.0834621, 0.146682, 0.0449436, 0.00659476)
 mode = 2
 path_node = NodePath("..")
@@ -156,6 +181,8 @@ curve = SubResource("Curve3D_ssrx5")
 
 [node name="GrindRail_3" type="CSGPolygon3D" parent="Map Geometry/GrindRail_3" groups=["grindRail"]]
 use_collision = true
+collision_layer = 128
+collision_mask = 128
 polygon = PackedVector2Array(-0.0626981, -0.00517382, -0.0974762, 0.136789, 0.0834621, 0.146682, 0.0449436, 0.00659476)
 mode = 2
 path_node = NodePath("..")
@@ -176,6 +203,8 @@ curve = SubResource("Curve3D_ssrx5")
 [node name="GrindRail_4" type="CSGPolygon3D" parent="Map Geometry/GrindRail_4" groups=["grindRail"]]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
 use_collision = true
+collision_layer = 128
+collision_mask = 128
 polygon = PackedVector2Array(-0.0626981, -0.00517382, -0.0974762, 0.136789, 0.0834621, 0.146682, 0.0449436, 0.00659476)
 mode = 2
 path_node = NodePath("..")

@@ -10,20 +10,11 @@ var id = "g00"
 var canGrind: bool = true
 var grinding: bool = false 
 var current_grindrail : Path3D = null
-var left_grindrail : Path3D = null
-var right_grindrail : Path3D = null
 
-#at the start, we minimize the results array that contains the
-#intersection point data from the shape_cast_ground3D
-#and we add the player to the exception list
-func _ready():
-	shape_cast_ground.add_exception(player)
-	shape_cast_left.add_exception(player)
-	shape_cast_right.add_exception(player)
 
 #here we implemented the logic for when a grindrail was detected and the player
 #should start grinding
-# note that the movement logic lives in the player intern state machine
+#note that the movement logic lives in the player intern state machine
 func _physics_process(delta):
 	if shape_cast_ground.is_colliding():
 		if shape_cast_ground.get_collider(0).is_in_group("grindRail") and canGrind:
@@ -32,27 +23,29 @@ func _physics_process(delta):
 			grinding = true
 			shape_cast_left.set_enabled(true)
 			shape_cast_right.set_enabled(true)
-			shape_cast_left.add_exception_rid(shape_cast_ground.get_collider_rid(0))d
-			#shape_cast_left.add_exception_rid(shape_cast_ground.get_collider(0).get_id())
-			#shape_cast_left.add_exception(shape_cast_ground.get_collider(0))
 			
+			shape_cast_left.add_exception_rid(shape_cast_ground.get_collider_rid(0))
+			shape_cast_right.add_exception_rid(shape_cast_ground.get_collider_rid(0))
+
+func get_side_rail_path3d(direction) -> Path3D:
+	if direction == "left":
 		if shape_cast_left.is_colliding():
-			if shape_cast_left.get_collider(0).is_in_group("grindRail") and current_grindrail != shape_cast_left.get_collider(0).get_parent():
-				left_grindrail = shape_cast_left.get_collider(0).get_parent()
-				
-				print(shape_cast_left.get_collider(0).get_parent())
-		
+			return shape_cast_left.get_collider(0).get_parent()
+	
+	if direction == "right":
 		if shape_cast_right.is_colliding():
-			if shape_cast_right.get_collider(0).is_in_group("grindRail"):
-				right_grindrail = shape_cast_right.get_collider(0).get_parent()
-			
-			
+			return shape_cast_right.get_collider(0).get_parent()
+	
+	return null
+
+func clear_grindrail_exceptions():
+	shape_cast_left.clear_exceptions()
+	shape_cast_right.clear_exceptions()
 
 #this function gets called by the state machine
 func end_grind():
+	clear_grindrail_exceptions()
 	current_grindrail = null
-	left_grindrail = null
-	right_grindrail = null
 	grinding = false
 	$GrindEndCooldown.start()
 	shape_cast_left.set_enabled(false)

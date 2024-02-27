@@ -20,8 +20,10 @@ func physics_update(delta: float) -> void:
 		if path_follow_3d.progress_ratio >= .98:
 			endGrind()
 			return
-		if Input.is_action_pressed("move_left"): #and player.get_gadget("GrindBootsV2").left_grindrail and Input.is_action_just_pressed("jump"):
+		if Input.is_action_pressed("move_left") and player.get_gadget("GrindBootsV2").get_side_rail_path3d("left") != null and Input.is_action_just_pressed("jump"):
 			change_grindrail("left")
+		if Input.is_action_pressed("move_right") and player.get_gadget("GrindBootsV2").get_side_rail_path3d("right") != null and Input.is_action_just_pressed("jump"):
+			change_grindrail("right")
 
 func set_initial_progress(player_position: Vector3) -> void:
 	var local_target_point = path_3d.to_local(player_position)
@@ -45,11 +47,12 @@ func endGrind():
 func change_grindrail(dir):
 	player._character_skin.end_grind()
 	path_follow_3d.queue_free()
-	print(path_3d == player.get_gadget("GrindBootsV2").left_grindrail)
-	path_3d = player.get_gadget("GrindBootsV2").left_grindrail
-	 
+	print(path_3d == player.get_gadget("GrindBootsV2").get_side_rail_path3d(dir))
+	path_3d = player.get_gadget("GrindBootsV2").get_side_rail_path3d(dir)
+	player.get_gadget("GrindBootsV2").clear_grindrail_exceptions()
+	player.get_gadget("GrindBootsV2").canGrind=true
 	path_follow_3d = PathFollow3D.new()
-	player.get_gadget("GrindBootsV2").left_grindrail.add_child(path_follow_3d)
+	path_3d.add_child(path_follow_3d)
 	set_initial_progress(player.global_transform.origin)
 	#player.get_gadget("GrindBootsV2").end_grind()
 	#player.velocity.y = 0.0
