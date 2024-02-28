@@ -60,6 +60,8 @@ func _ready() -> void:
 	_camera_controller.setup(self)
 
 func _physics_process(delta):
+	if Input.is_action_just_pressed("crouch"):
+		_ready()
 	#print($StateMachine.state)
 	# Calculate ground height for camera controller
 	if _ground_shapecast.get_collision_count() > 0:
