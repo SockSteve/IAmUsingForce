@@ -46,7 +46,6 @@ var weapon
 var magnetized = false
 var grappling = false
 @onready var inventory = $Inventory
-var shortcutRangedWeapons
 @onready var current_weapon = null
 #slide
 @export var slide_strength = 30.0
@@ -109,6 +108,9 @@ func get_gadget(gadget: String):
 	
 func add_gadget(gadget):
 	inventory.add_gadget(gadget)
+
+func put_in_hand(weapon_or_gadget):
+	pass
 
 func attack():
 	pass
