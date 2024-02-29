@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://d3loyffobnla4"]
+
+[ext_resource type="Script" path="res://Sandbox/Test.gd" id="1_unjb0"]
+[ext_resource type="PackedScene" uid="uid://csyfq76xi0brq" path="res://Sandbox/subtest.tscn" id="2_iegip"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_thwqf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d0e4d"]
+size = Vector3(1, 1, 0.1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x7xci"]
+
+[node name="Test" type="StaticBody3D"]
+script = ExtResource("1_unjb0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_thwqf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_d0e4d")
+
+[node name="subtest" parent="." instance=ExtResource("2_iegip")]
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.261822, 0.00136846)
+text = "ff"
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.206226, 0.00136846)
+text = "ff"
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_x7xci")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://csyfq76xi0brq"]
+
+[ext_resource type="Script" path="res://Sandbox/subtest.gd" id="1_sv2oa"]
+
+[node name="subtest" type="Node3D"]
+script = ExtResource("1_sv2oa")

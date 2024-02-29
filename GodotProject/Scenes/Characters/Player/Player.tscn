@@ -154,6 +154,9 @@ script = ExtResource("16_mjyse")
 [node name="Blaster" parent="CharacterRotationRoot/PlayerHand" instance=ExtResource("17_ntt0n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12975, 0.941938)
 
+[node name="Inventory" type="Node3D" parent="."]
+script = ExtResource("16_kqrv3")
+
 [node name="PassiveGadgets" type="Node3D" parent="."]
 
 [node name="GrapplingHook" parent="PassiveGadgets" instance=ExtResource("13_vujhk")]
@@ -161,14 +164,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91362, 0.0314813)
 
 [node name="GrindBootsV2" parent="PassiveGadgets" instance=ExtResource("20_iksty")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.982622, 0)
-
-[node name="Inventory" type="Node3D" parent="."]
-script = ExtResource("16_kqrv3")
-
-[node name="Weapons" type="Node3D" parent="Inventory"]
-visible = false
-
-[node name="Gadgets" type="Node3D" parent="Inventory"]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
