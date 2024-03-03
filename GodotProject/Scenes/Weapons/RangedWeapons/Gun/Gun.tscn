@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cfru43w2xfbl2"]
 
-[ext_resource type="Script" path="res://Scripts/Characters/Player/Weapons/RangedWeapons/Gun/Gun.gd" id="1_eansb"]
-[ext_resource type="PackedScene" uid="uid://owsxbjhadsho" path="res://Scenes/Characters/Player/Weapons/RangedWeapons/Gun/GunBullet.tscn" id="2_j5oes"]
+[ext_resource type="Script" path="res://Scripts/Weapons/RangedWeapons/Gun/Gun.gd" id="1_eansb"]
+[ext_resource type="PackedScene" uid="uid://owsxbjhadsho" path="res://Scenes/Weapons/RangedWeapons/Gun/GunBullet.tscn" id="2_j5oes"]
 
 [node name="Blaster" type="Node3D"]
 script = ExtResource("1_eansb")

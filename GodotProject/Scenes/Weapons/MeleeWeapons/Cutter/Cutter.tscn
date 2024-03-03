@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://b0ofcf84vrio1"]
 
-[ext_resource type="Script" path="res://Scripts/Characters/Player/Weapons/MeleeWeapons/Cutter/Cutter.gd" id="1_vf8ox"]
-[ext_resource type="PackedScene" uid="uid://bqp21jx4d4l2f" path="res://Scenes/Characters/Player/Weapons/MeleeWeapons/Cutter/CutterBullet.tscn" id="2_hv2fr"]
+[ext_resource type="Script" path="res://Scripts/Weapons/MeleeWeapons/Cutter/Cutter.gd" id="1_vf8ox"]
+[ext_resource type="PackedScene" uid="uid://bqp21jx4d4l2f" path="res://Scenes/Weapons/MeleeWeapons/Cutter/CutterBullet.tscn" id="2_hv2fr"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_02pf1"]
 

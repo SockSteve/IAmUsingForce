@@ -14,13 +14,13 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Block.gd" id="9_lxqh2"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Magnet.gd" id="10_0mhbm"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Melee.gd" id="10_1rkfv"]
-[ext_resource type="PackedScene" uid="uid://cqhn455src0iq" path="res://Scenes/Characters/Player/Gadgets/GrapplingHook.tscn" id="13_vujhk"]
 [ext_resource type="PackedScene" uid="uid://bihfxywywukdv" path="res://Scenes/Characters/Player/CharacterSkin.tscn" id="15_7yrxv"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Inventory.gd" id="16_kqrv3"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerHand.gd" id="16_mjyse"]
-[ext_resource type="PackedScene" uid="uid://cfru43w2xfbl2" path="res://Scenes/Characters/Player/Weapons/RangedWeapons/Gun/Gun.tscn" id="17_ntt0n"]
+[ext_resource type="PackedScene" uid="uid://b0ofcf84vrio1" path="res://Scenes/Weapons/MeleeWeapons/Cutter/Cutter.tscn" id="17_57deo"]
 [ext_resource type="Theme" uid="uid://d02hntmjt67aj" path="res://UI/UITheme_1.tres" id="19_1icc6"]
-[ext_resource type="PackedScene" uid="uid://cc6mfpfv1cnw7" path="res://Scenes/Characters/Player/Gadgets/GrindBoots_v2.tscn" id="20_iksty"]
+[ext_resource type="PackedScene" uid="uid://cqhn455src0iq" path="res://Scenes/Gadgets/GrapplingHook.tscn" id="19_obt1n"]
+[ext_resource type="PackedScene" uid="uid://cc6mfpfv1cnw7" path="res://Scenes/Gadgets/GrindBoots_v2.tscn" id="20_4qgby"]
 [ext_resource type="Texture2D" uid="uid://20dy3gqyvxc4" path="res://Assets/Textures/Weapons/GunIconPlaceholder.png" id="22_glpdi"]
 [ext_resource type="Texture2D" uid="uid://dmf404ftfexwl" path="res://Assets/Decals/DropShadow/Shadow.png" id="22_gwf8y"]
 [ext_resource type="Texture2D" uid="uid://dgw7m61h14vu7" path="res://Assets/Textures/Weapons/CutterIconPlaceholder.png" id="23_g7wgb"]
@@ -150,19 +150,17 @@ debug_shape_custom_color = Color(0, 1, 0, 1)
 [node name="PlayerHand" type="Node3D" parent="CharacterRotationRoot"]
 unique_name_in_owner = true
 script = ExtResource("16_mjyse")
-
-[node name="Blaster" parent="CharacterRotationRoot/PlayerHand" instance=ExtResource("17_ntt0n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12975, 0.941938)
+default_weapon_in_hand = ExtResource("17_57deo")
 
 [node name="Inventory" type="Node3D" parent="."]
 script = ExtResource("16_kqrv3")
 
 [node name="PassiveGadgets" type="Node3D" parent="."]
 
-[node name="GrapplingHook" parent="PassiveGadgets" instance=ExtResource("13_vujhk")]
+[node name="GrapplingHook" parent="PassiveGadgets" instance=ExtResource("19_obt1n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91362, 0.0314813)
 
-[node name="GrindBootsV2" parent="PassiveGadgets" instance=ExtResource("20_iksty")]
+[node name="GrindBootsV2" parent="PassiveGadgets" instance=ExtResource("20_4qgby")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.982622, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]

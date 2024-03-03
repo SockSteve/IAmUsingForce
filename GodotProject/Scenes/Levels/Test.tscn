@@ -11,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://de0wimp7e8g3n" path="res://addons/kenney_prototype_textures/purple/texture_12.png" id="7_eov66"]
 [ext_resource type="PackedScene" uid="uid://du0ausxn5e6vk" path="res://Assets/Placeholders/Environment/fern_grass_02/scene.gltf" id="7_mr86d"]
 [ext_resource type="PackedScene" uid="uid://fbpbxpmuqx3g" path="res://Scenes/Characters/Merchants/vendor.tscn" id="11_ahr15"]
-[ext_resource type="PackedScene" uid="uid://d3loyffobnla4" path="res://Sandbox/test.tscn" id="13_jv4va"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_30l7b"]
 panorama = ExtResource("1_mhjnm")
@@ -52,6 +51,8 @@ albedo_texture = ExtResource("7_eov66")
 uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_llufc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kbkta"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -254,9 +255,10 @@ mesh = SubResource("BoxMesh_llufc")
 [node name="Vendor" parent="." instance=ExtResource("11_ahr15")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.2688, 1.30263, 2.59788)
 
-[node name="spawnsaved" type="Node3D" parent="."]
+[node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2796, 2.53263, 29.0606)
 
-[node name="Test" parent="spawnsaved" instance=ExtResource("13_jv4va")]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_kbkta")
 
 [editable path="Map Geometry/SwingHook"]

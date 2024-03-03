@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="SaveRes" load_steps=2 format=3]
-
-[ext_resource type="Script" path="res://SaveRes.gd" id="1_jymk8"]
-
-[resource]
-script = ExtResource("1_jymk8")
-test = 10
-test2 = 110

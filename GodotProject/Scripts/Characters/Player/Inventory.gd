@@ -3,14 +3,8 @@ class_name Inventory
 
 var weapons: Dictionary = {} 
 var gadgets: Dictionary = {}
+var weapon_shortcuts: Dictionary = {}
 @onready var gadget_node = $"../PassiveGadgets"
-
-func _ready():
-	load_inventory()
-
-func load_inventory():
-	#load inventory from save file
-	pass
 
 func parameterize_weapon():
 	#initialize weapon with xp
@@ -36,3 +30,10 @@ func add_weapon(weapon_name,weapon_node):
 func add_gadget(gadget:Node):
 	gadget_node.add_child(gadget)
 
+func save():
+	#save inventory to disk
+	pass
+	
+func load():
+	#load inventory from disk
+	pass

@@ -1,12 +1,14 @@
 extends Node3D
 
 @onready var right_hand_bone_attachement = $"../CharacterSkin".find_child("Hand")
-# Called when the node enters the scene tree for the first time.
+@export var default_weapon_in_hand: PackedScene
 
 func _ready():
 	add_weapon_to_hand()
 
 func add_weapon_to_hand():
-	var sword = preload("res://Scenes/Characters/Player/Weapons/MeleeWeapons/Cutter/Cutter.tscn").instantiate()
-	right_hand_bone_attachement.add_child(sword)
+	right_hand_bone_attachement.add_child(default_weapon_in_hand.instantiate())
 	
+func change_weapon_in_hand(weapon_inst):
+	right_hand_bone_attachement.get_child(0).queue_free()
+	right_hand_bone_attachement.add_child(weapon_inst)
