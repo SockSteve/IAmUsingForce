@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://lq37dt6an0ad"]
+[gd_scene load_steps=7 format=3 uid="uid://lq37dt6an0ad"]
 
 [ext_resource type="Script" path="res://Scripts/InteractiveObjects/GrapplingPoints/SwingHook.gd" id="1_t3t68"]
+[ext_resource type="Material" uid="uid://behwclsh1dqlc" path="res://Shader/EnergyShield.tres" id="2_y8rkl"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mk1gl"]
 albedo_color = Color(0, 1, 0, 1)
@@ -10,7 +11,11 @@ material = SubResource("StandardMaterial3D_mk1gl")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0cas4"]
 
-[node name="SwingHook" type="Node3D" groups=["grapplingPoint", "swing"]]
+[sub_resource type="SphereMesh" id="SphereMesh_ys65o"]
+radius = 5.0
+height = 10.0
+
+[node name="SwingHook" type="Node3D" groups=["grapplePoint", "swing"]]
 script = ExtResource("1_t3t68")
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
@@ -40,3 +45,7 @@ angular_limit_z/upper = 0.349066
 angular_limit_z/lower = -3.49066
 node_a = NodePath("../AnimatableBody3D")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.463997, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_ys65o")
+surface_material_override/0 = ExtResource("2_y8rkl")

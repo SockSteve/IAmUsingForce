@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cfv2ecbe68yfi"]
+[gd_scene load_steps=25 format=3 uid="uid://cfv2ecbe68yfi"]
 
 [ext_resource type="PackedScene" uid="uid://lq37dt6an0ad" path="res://Scenes/InteractiveObjects/GrapplingPoints/SwingHook.tscn" id="1_kdsm0"]
 [ext_resource type="Texture2D" uid="uid://dk3g261yc4qry" path="res://Assets/Placeholders/Environment/Skyboxes/panorama_image.png" id="1_mhjnm"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ro280iljuyye" path="res://Assets/Placeholders/Environment/bonfire_free_download/scene.gltf" id="6_ryulc"]
 [ext_resource type="Texture2D" uid="uid://de0wimp7e8g3n" path="res://addons/kenney_prototype_textures/purple/texture_12.png" id="7_eov66"]
 [ext_resource type="PackedScene" uid="uid://du0ausxn5e6vk" path="res://Assets/Placeholders/Environment/fern_grass_02/scene.gltf" id="7_mr86d"]
+[ext_resource type="PackedScene" uid="uid://bllxyncmft2sj" path="res://Scenes/InteractiveObjects/GrapplingPoints/GrapplePoint.tscn" id="7_nwman"]
 [ext_resource type="PackedScene" uid="uid://fbpbxpmuqx3g" path="res://Scenes/Characters/Merchants/vendor.tscn" id="11_ahr15"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_30l7b"]
@@ -41,12 +42,24 @@ uv1_triplanar = true
 [sub_resource type="Curve3D" id="Curve3D_ssrx5"]
 bake_interval = 0.1
 _data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -30),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjiwb"]
+albedo_texture = ExtResource("7_eov66")
+uv1_triplanar = true
+
+[sub_resource type="Curve3D" id="Curve3D_pp05w"]
+bake_interval = 0.1
+_data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, -7.012, 0, 0, 0, 0, 0, 0, 0, 0, 12.5, 0, -17.142, 0, 0, 0, 0, 0, 0, 24.229, 0, -32.822),
 "tilts": PackedFloat32Array(0, 0, 0)
 }
 point_count = 3
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjiwb"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hift0"]
 albedo_texture = ExtResource("7_eov66")
 uv1_triplanar = true
 
@@ -137,7 +150,7 @@ material = SubResource("StandardMaterial3D_sjiwb")
 
 [node name="GrindRail_2" type="Path3D" parent="Map Geometry"]
 transform = Transform3D(0.766044, 0, -0.642787, 0, 1, 0, 0.642787, 0, 0.766044, 24.5103, 2.35705, 37.4143)
-curve = SubResource("Curve3D_ssrx5")
+curve = SubResource("Curve3D_pp05w")
 
 [node name="GrindRail_2" type="CSGPolygon3D" parent="Map Geometry/GrindRail_2" groups=["grindRail"]]
 use_collision = true
@@ -154,11 +167,11 @@ path_local = true
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
-material = SubResource("StandardMaterial3D_sjiwb")
+material = SubResource("StandardMaterial3D_hift0")
 
 [node name="GrindRail_5" type="Path3D" parent="Map Geometry"]
 transform = Transform3D(0.766044, 0, -0.642787, 0, 1, 0, 0.642787, 0, 0.766044, 24.8167, 2.35705, 34.4128)
-curve = SubResource("Curve3D_ssrx5")
+curve = SubResource("Curve3D_pp05w")
 
 [node name="GrindRail_2" type="CSGPolygon3D" parent="Map Geometry/GrindRail_5" groups=["grindRail"]]
 use_collision = true
@@ -175,11 +188,11 @@ path_local = true
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
-material = SubResource("StandardMaterial3D_sjiwb")
+material = SubResource("StandardMaterial3D_hift0")
 
 [node name="GrindRail_3" type="Path3D" parent="Map Geometry"]
 transform = Transform3D(0.766044, 0, -0.642787, 0, 1, 0, 0.642787, 0, 0.766044, 22.4622, 2.31297, 43.2257)
-curve = SubResource("Curve3D_ssrx5")
+curve = SubResource("Curve3D_pp05w")
 
 [node name="GrindRail_3" type="CSGPolygon3D" parent="Map Geometry/GrindRail_3" groups=["grindRail"]]
 use_collision = true
@@ -196,11 +209,11 @@ path_local = true
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
-material = SubResource("StandardMaterial3D_sjiwb")
+material = SubResource("StandardMaterial3D_hift0")
 
 [node name="GrindRail_4" type="Path3D" parent="Map Geometry"]
 transform = Transform3D(0.766044, 0, -0.642787, 0, 1, 0, 0.642787, 0, 0.766044, 24.5406, 1.70556, 40.4879)
-curve = SubResource("Curve3D_ssrx5")
+curve = SubResource("Curve3D_pp05w")
 
 [node name="GrindRail_4" type="CSGPolygon3D" parent="Map Geometry/GrindRail_4" groups=["grindRail"]]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
@@ -218,13 +231,16 @@ path_local = true
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
-material = SubResource("StandardMaterial3D_sjiwb")
+material = SubResource("StandardMaterial3D_hift0")
 
 [node name="SwingHook" parent="Map Geometry" instance=ExtResource("1_kdsm0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2829, 12.1472, 31.773)
 
 [node name="GrabHook" parent="Map Geometry" instance=ExtResource("2_22asg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3731, 15.5312, 38.0132)
+
+[node name="GrapplePoint" parent="Map Geometry" instance=ExtResource("7_nwman")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2829, 12.1472, 47.8072)
 
 [node name="Sketchfab_Scene" parent="Map Geometry" instance=ExtResource("6_ryulc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0368, 1.39886, 57.5848)

@@ -1,68 +1,86 @@
 extends Node3D
 
-
 var id = "g01"
 
-@onready var grapplePoints = get_tree().get_nodes_in_group("grapplingPoint")
 var grapple_points : Array = []
 var nearest_grapple_point
-var grapple_point_global_position
-var grappling: bool = false
-var debug_grapple_distance = 600
 
-enum {NULL, PULL, SWING}
-var mode = NULL
+var grappling: bool = false
+var joint
+
+func _ready():
+	set_physics_process(false)
 
 func activate():
-	if grapplePoints.is_empty():
+	if grapple_points.is_empty():
 		return
-		
-	var grappilingPointDistances := {}
-	for grapplingPoint in grapplePoints:
-		grapplingPoint.distance = owner.global_transform.origin.distance_to(grapplingPoint.global_position)
-		grappilingPointDistances[grapplingPoint.distance] = grapplingPoint
-		
-	var closestGrapplingPoint = grappilingPointDistances[grappilingPointDistances.keys().min()]
-	nearest_grapple_point = closestGrapplingPoint
 	
-	grapple_point_global_position = nearest_grapple_point.global_transform.origin
+	elif grapple_points.size() == 1:
+		nearest_grapple_point = grapple_points.front()
 	
+	else:
+		nearest_grapple_point = grapple_points.front()
+		for grapple_point in grapple_points:
+			if self.global_position.distance_to(nearest_grapple_point.global_position) > self.global_position.distance_to(grapple_point.global_position):
+				nearest_grapple_point = grapple_point
+	
+	initialize_grappling_mode()
+	
+	grappling = true
 	set_physics_process(true)
 	$Rope.visible = true
 	update_rope_transform(nearest_grapple_point.global_position)
-	if nearest_grapple_point.distance > debug_grapple_distance:
-		return
 
-func _ready():
-	grapple_points.append_array(get_tree().get_nodes_in_group("grapplingPoint"))
-	print(grapple_points)
-	set_physics_process(false)
-	#$Rope
-
-func end_grapple():
-	set_physics_process(false)
-	$Rope.visible = false
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if nearest_grapple_point != null:
 		update_rope_transform(nearest_grapple_point.global_transform.origin)
+
+func end_grapple():
+	grappling = false
+	set_physics_process(false)
+	$Rope.visible = false
+	nearest_grapple_point = null
 
 func update_rope_transform(grapple_point_position: Vector3) -> void:
 	var rope = $Rope # Adjust the path
 	var gadget_pos = global_transform.origin
 	var direction = grapple_point_position - gadget_pos
-	
 	var distance = direction.length()
+	
 	$Rope.global_position = gadget_pos + direction / 2.0
 	direction = direction.normalized()
-	#rope.scale = Vector3(rope.scale.x, distance, rope.scale.z)
 	rope.scale = Vector3(rope.scale.x, rope.scale.y, distance)
-	#direction = direction.dot(nearest_grapple_point.transform.basis.z)
-	#rope.scale.y = distance #/ rope.initial_length  # 'initial_length' is the original length of your rope mesh
 	rope.look_at_from_position($Rope.global_position, grapple_point_position, Vector3.UP)
-	#rope.look_at_from_position($Rope.global_position, grapple_point_global_position)
-	#Basis.looking_at(direction, Vector3.UP)
-	
 
+func add_grapple_point(grapple_point):
+	grapple_points.append(grapple_point)
+	
+func remove_grapple_point(grapple_point):
+	grapple_points.erase(grapple_point)
+	#match grappling_action:
+		#grappling_action_enum.PULL:
+			#print(grappling_action_enum.PULL)
+		#grappling_action_enum.SWING:
+			#print(grappling_action_enum.SWING)
+		#grappling_action_enum.TUG:
+			#print(grappling_action_enum.TUG)
+func initialize_grappling_mode():
+	match nearest_grapple_point.grapple_point_type:
+		
+		nearest_grapple_point.grapple_point_type_enum.PULL:
+			print(nearest_grapple_point.grapple_point_type_enum.PULL)
+			#create joint
+			joint = JoltSliderJoint3D.new()
+			joint.node_a = nearest_grapple_point.get_child(%GrappleBody)
+			joint.node_b = get_parent().get_parent()._physics_body.get_path()
+			
+		nearest_grapple_point.grapple_point_type_enum.SWING:
+			print(nearest_grapple_point.grapple_point_type_enum.SWING)
+			#create joint
+			joint = JoltGeneric6DOFJoint3D.new()
+			#connect joint to bodies
+			joint.node_a = nearest_grapple_point.get_child(%GrappleBody)
+			joint.node_b = get_parent().get_parent()._physics_body.get_path()
+			
+		nearest_grapple_point.grapple_point_type_enum.TUG:
+			print(nearest_grapple_point.grapple_point_type_enum.TUG)

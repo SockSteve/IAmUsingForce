@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ccga1hodi1gv2"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/RangedWeapons/Gun/Gun.gd" id="1_eltvo"]
+[ext_resource type="PackedScene" uid="uid://owsxbjhadsho" path="res://Scenes/Weapons/RangedWeapons/Gun/GunBullet.tscn" id="2_jlcrg"]
+
+[node name="Blaster" type="Node3D"]
+script = ExtResource("1_eltvo")
+bullet_scene = ExtResource("2_jlcrg")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(0.1, 0.1, 0.9698)
+
+[node name="Marker3D" type="Marker3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.56142)

@@ -1,3 +1,3 @@
 [gd_scene format=3 uid="uid://cif5wb6s4xmjo"]
 
-[node name="BombGlove" type="Node3D"]
+[node name="BadPrankBullet" type="Node3D"]

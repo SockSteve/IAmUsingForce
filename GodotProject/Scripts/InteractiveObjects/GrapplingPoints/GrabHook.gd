@@ -1,3 +1,3 @@
-extends GrapplingPoint
+extends GrapplePoint
 class_name GrabHook
 
