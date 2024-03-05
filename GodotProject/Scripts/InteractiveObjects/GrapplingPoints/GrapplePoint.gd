@@ -3,6 +3,7 @@ extends Node3D
 ## 
 enum grapple_point_type_enum {PULL, SWING, TUG}
 @export var grapple_point_type: grapple_point_type_enum
+@onready var sdof = $JoltGeneric6DOFJoint3D
 
 ## @monitoring_range describes the maximum range from which the Grapple Point can be detected.
 @export var monitoring_range:= 10.0
@@ -11,14 +12,6 @@ enum grapple_point_type_enum {PULL, SWING, TUG}
 
 func _ready():
 	DebugLibrary.create_debug_3d_sphere_mesh(global_position, target_distance)
-	
-	#match grappling_action:
-		#grappling_action_enum.PULL:
-			#print(grappling_action_enum.PULL)
-		#grappling_action_enum.SWING:
-			#print(grappling_action_enum.SWING)
-		#grappling_action_enum.TUG:
-			#print(grappling_action_enum.TUG)
 
 func _on_area_3d_body_entered(body):
 	if body.is_in_group("player"):

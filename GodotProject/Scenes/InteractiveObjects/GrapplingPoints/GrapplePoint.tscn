@@ -18,13 +18,21 @@ collision_layer = 0
 collision_mask = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="GrappleBody"]
+visible = false
 mesh = SubResource("SphereMesh_bucv0")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GrappleBody"]
+visible = false
 shape = SubResource("SphereShape3D_4so6o")
 
 [node name="TargetJointMarker" type="Marker3D" parent="."]
+
+[node name="JoltGeneric6DOFJoint3D" type="JoltGeneric6DOFJoint3D" parent="."]
+angular_limit_x/enabled = false
+angular_limit_y/enabled = false
+angular_limit_z/enabled = false
+node_a = NodePath("../GrappleBody")
 
 [node name="Area3D" type="Area3D" parent="."]
 monitorable = false

@@ -1,9 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://cfv2ecbe68yfi"]
+[gd_scene load_steps=27 format=3 uid="uid://cfv2ecbe68yfi"]
 
-[ext_resource type="PackedScene" uid="uid://lq37dt6an0ad" path="res://Scenes/InteractiveObjects/GrapplingPoints/SwingHook.tscn" id="1_kdsm0"]
 [ext_resource type="Texture2D" uid="uid://dk3g261yc4qry" path="res://Assets/Placeholders/Environment/Skyboxes/panorama_image.png" id="1_mhjnm"]
 [ext_resource type="Texture2D" uid="uid://bid2isp42co6r" path="res://addons/kenney_prototype_textures/orange/texture_01.png" id="1_y6805"]
-[ext_resource type="PackedScene" uid="uid://v47kxsby14rj" path="res://Scenes/InteractiveObjects/GrapplingPoints/GrabHook.tscn" id="2_22asg"]
 [ext_resource type="Texture2D" uid="uid://k68sjddpo8rx" path="res://addons/kenney_prototype_textures/dark/texture_06.png" id="2_ibgu5"]
 [ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Scenes/Characters/Player/Player.tscn" id="3_t8btd"]
 [ext_resource type="AudioStream" uid="uid://dg1u65hw1xmhh" path="res://Assets/Audio/Music/hip-hop-rock-beats-118000.mp3" id="5_b0j0h"]
@@ -62,6 +60,16 @@ point_count = 3
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hift0"]
 albedo_texture = ExtResource("7_eov66")
 uv1_triplanar = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_f8haw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_o2paa"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ribrg"]
+albedo_color = Color(1, 0.141176, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_dy0nb"]
+material = SubResource("StandardMaterial3D_ribrg")
 
 [sub_resource type="BoxMesh" id="BoxMesh_llufc"]
 
@@ -233,14 +241,36 @@ path_u_distance = 1.0
 path_joined = false
 material = SubResource("StandardMaterial3D_hift0")
 
-[node name="SwingHook" parent="Map Geometry" instance=ExtResource("1_kdsm0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2829, 12.1472, 31.773)
+[node name="StaticBody3D" type="StaticBody3D" parent="Map Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.5185, 8.02117, 47.8072)
 
-[node name="GrabHook" parent="Map Geometry" instance=ExtResource("2_22asg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.3731, 15.5312, 38.0132)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map Geometry/StaticBody3D"]
+mesh = SubResource("SphereMesh_f8haw")
+
+[node name="JoltGeneric6DOFJoint3D" type="JoltGeneric6DOFJoint3D" parent="Map Geometry/StaticBody3D"]
+linear_limit_x/upper = 4.0
+linear_limit_x/lower = -4.0
+linear_limit_y/upper = 4.0
+linear_limit_y/lower = -4.0
+linear_limit_z/upper = 4.0
+linear_limit_z/lower = -4.0
+node_a = NodePath("..")
+node_b = NodePath("../../RigidBody3D")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="Map Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38.4748, 9.08997, 47.8072)
+gravity_scale = -3.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Map Geometry/RigidBody3D"]
+shape = SubResource("SphereShape3D_o2paa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Map Geometry/RigidBody3D"]
+mesh = SubResource("SphereMesh_dy0nb")
 
 [node name="GrapplePoint" parent="Map Geometry" instance=ExtResource("7_nwman")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2829, 12.1472, 47.8072)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2829, 8.02117, 47.8072)
+grapple_point_type = 1
+target_distance = 6.0
 
 [node name="Sketchfab_Scene" parent="Map Geometry" instance=ExtResource("6_ryulc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0368, 1.39886, 57.5848)
@@ -249,7 +279,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0368, 1.39886, 57.5848)
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 6.25976, 1.39886, 58.9178)
 
 [node name="Player" parent="." instance=ExtResource("3_t8btd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1906, 0.734918, 33.0767)
+transform = Transform3D(0.00151844, 0, 0.999999, 0, 1, 0, -0.999999, 0, 0.00151844, 16.336, 0.734918, 47.1278)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.00787138, 0.999969, 0, -0.999969, 0.00787138, 46.5912, 18.8276, 41.777)
@@ -276,5 +306,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.2796, 2.53263, 29.0606)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_kbkta")
-
-[editable path="Map Geometry/SwingHook"]

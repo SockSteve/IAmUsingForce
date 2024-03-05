@@ -24,9 +24,9 @@ func activate():
 			if self.global_position.distance_to(nearest_grapple_point.global_position) > self.global_position.distance_to(grapple_point.global_position):
 				nearest_grapple_point = grapple_point
 	
-	initialize_grappling_mode()
 	
 	grappling = true
+	initialize_grappling_mode()
 	set_physics_process(true)
 	$Rope.visible = true
 	update_rope_transform(nearest_grapple_point.global_position)
@@ -39,6 +39,7 @@ func end_grapple():
 	grappling = false
 	set_physics_process(false)
 	$Rope.visible = false
+	#joint.queue_free()
 	nearest_grapple_point = null
 
 func update_rope_transform(grapple_point_position: Vector3) -> void:
@@ -57,30 +58,28 @@ func add_grapple_point(grapple_point):
 	
 func remove_grapple_point(grapple_point):
 	grapple_points.erase(grapple_point)
-	#match grappling_action:
-		#grappling_action_enum.PULL:
-			#print(grappling_action_enum.PULL)
-		#grappling_action_enum.SWING:
-			#print(grappling_action_enum.SWING)
-		#grappling_action_enum.TUG:
-			#print(grappling_action_enum.TUG)
+
 func initialize_grappling_mode():
 	match nearest_grapple_point.grapple_point_type:
 		
 		nearest_grapple_point.grapple_point_type_enum.PULL:
-			print(nearest_grapple_point.grapple_point_type_enum.PULL)
 			#create joint
 			joint = JoltSliderJoint3D.new()
-			joint.node_a = nearest_grapple_point.get_child(%GrappleBody)
+			nearest_grapple_point.add_child(joint)
+			joint.node_a = nearest_grapple_point.find_child("GrappleBody").get_path()
 			joint.node_b = get_parent().get_parent()._physics_body.get_path()
 			
 		nearest_grapple_point.grapple_point_type_enum.SWING:
-			print(nearest_grapple_point.grapple_point_type_enum.SWING)
 			#create joint
-			joint = JoltGeneric6DOFJoint3D.new()
+			#joint = JoltGeneric6DOFJoint3D.new()
+			#print_debug(joint)
+			joint = nearest_grapple_point.sdof
+			
 			#connect joint to bodies
-			joint.node_a = nearest_grapple_point.get_child(%GrappleBody)
+			#nearest_grapple_point.add_child(joint)
+			#joint.node_a = nearest_grapple_point.find_child("GrappleBody").get_path()
 			joint.node_b = get_parent().get_parent()._physics_body.get_path()
+			print(joint.node_b)
 			
 		nearest_grapple_point.grapple_point_type_enum.TUG:
 			print(nearest_grapple_point.grapple_point_type_enum.TUG)
