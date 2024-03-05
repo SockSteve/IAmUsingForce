@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://20dy3gqyvxc4" path="res://Assets/Textures/Weapons/GunIconPlaceholder.png" id="22_glpdi"]
 [ext_resource type="Texture2D" uid="uid://dmf404ftfexwl" path="res://Assets/Decals/DropShadow/Shadow.png" id="22_gwf8y"]
 [ext_resource type="Texture2D" uid="uid://dgw7m61h14vu7" path="res://Assets/Textures/Weapons/CutterIconPlaceholder.png" id="23_g7wgb"]
-[ext_resource type="Texture2D" uid="uid://bsge2yls5o5jg" path="res://Assets/Textures/UI/HitPointPlaceholder.png" id="24_6g3o4"]
+[ext_resource type="Texture2D" uid="uid://bsge2yls5o5jg" path="res://Assets/Textures/UI/HitPoint.png" id="24_6g3o4"]
 [ext_resource type="Texture2D" uid="uid://c7w5uwta2tc47" path="res://Assets/Textures/Weapons/ShrapnelCannonIconPlaceholder.png" id="25_tbtdg"]
 [ext_resource type="Texture2D" uid="uid://c1knfkq4sxase" path="res://Assets/Textures/Weapons/WavePunderIconPlaceholder.png" id="26_7blup"]
 [ext_resource type="Texture2D" uid="uid://dccgws1gvwa1m" path="res://Assets/Textures/UI/Money.png" id="28_wddji"]

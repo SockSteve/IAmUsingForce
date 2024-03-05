@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bcj7lff1v3mff"]
+[gd_scene load_steps=8 format=3 uid="uid://bcj7lff1v3mff"]
 
 [ext_resource type="Script" path="res://Sandbox/ShopMenu3D.gd" id="1_1ttap"]
 [ext_resource type="Texture2D" uid="uid://dmf404ftfexwl" path="res://Assets/Decals/DropShadow/Shadow.png" id="1_5i4m7"]
+[ext_resource type="Script" path="res://Sandbox/ShopHandler.gd" id="2_72765"]
 [ext_resource type="Theme" uid="uid://d02hntmjt67aj" path="res://UI/UITheme_1.tres" id="2_dpxj1"]
+[ext_resource type="Texture2D" uid="uid://dccgws1gvwa1m" path="res://Assets/Textures/UI/Money.png" id="5_8scl0"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_sqr5r"]
 resource_local_to_scene = true
@@ -14,13 +16,10 @@ size = Vector3(3, 2, 0.1)
 [node name="ShopMenu3D" type="Node3D"]
 script = ExtResource("1_1ttap")
 
-[node name="SubViewport" type="SubViewport" parent="."]
-snap_2d_transforms_to_pixel = true
-snap_2d_vertices_to_pixel = true
-size = Vector2i(280, 180)
-render_target_update_mode = 4
+[node name="ShopHandler" type="Node3D" parent="."]
+script = ExtResource("2_72765")
 
-[node name="Control" type="Control" parent="SubViewport"]
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchor_right = 0.596
 anchor_bottom = 0.625
@@ -28,42 +27,54 @@ offset_right = -166.88
 offset_bottom = -112.5
 theme = ExtResource("2_dpxj1")
 
-[node name="Panel" type="Panel" parent="SubViewport/Control"]
+[node name="Panel" type="Panel" parent="Control"]
 custom_minimum_size = Vector2(280, 180)
 layout_mode = 1
 
-[node name="Panel" type="Panel" parent="SubViewport/Control/Panel"]
+[node name="Panel" type="Panel" parent="Control/Panel"]
 layout_mode = 0
 offset_left = 13.0
 offset_top = 25.0
 offset_right = 129.0
 offset_bottom = 109.0
 
-[node name="Label" type="Label" parent="SubViewport/Control/Panel"]
-layout_mode = 0
-offset_left = 44.0
-offset_top = 27.0
-offset_right = 84.0
-offset_bottom = 50.0
-text = "Hello"
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="SubViewport/Control/Panel"]
+[node name="WeaponInfoLabel" type="Label" parent="Control/Panel/Panel/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_vertical = 1
+text = "test"
+autowrap_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="Control/Panel"]
 layout_mode = 0
 offset_left = 180.0
 offset_top = 26.0
 offset_right = 244.0
 offset_bottom = 90.0
 
-[node name="TextureRect" type="TextureRect" parent="SubViewport/Control/Panel"]
+[node name="WeaponPicture" type="TextureRect" parent="Control/Panel"]
 layout_mode = 0
-offset_left = 169.0
-offset_top = 21.0
+offset_left = 179.0
+offset_top = 26.0
 offset_right = 246.0
-offset_bottom = 97.0
+offset_bottom = 90.0
 texture = ExtResource("1_5i4m7")
 expand_mode = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="SubViewport/Control/Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/Panel"]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 122.0
@@ -71,29 +82,21 @@ offset_right = 265.0
 offset_bottom = 171.0
 follow_focus = true
 
-[node name="ShopWindow" type="HBoxContainer" parent="SubViewport/Control/Panel/ScrollContainer"]
+[node name="ShopHBoxWindow" type="HBoxContainer" parent="Control/Panel/ScrollContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="SubViewport/Control/Panel/ScrollContainer/ShopWindow"]
+[node name="Button" type="Button" parent="Control/Panel/ScrollContainer/ShopHBoxWindow"]
 layout_mode = 2
 text = "button"
+icon = ExtResource("5_8scl0")
 
-[node name="Button2" type="Button" parent="SubViewport/Control/Panel/ScrollContainer/ShopWindow"]
-layout_mode = 2
-text = "button"
-
-[node name="Button3" type="Button" parent="SubViewport/Control/Panel/ScrollContainer/ShopWindow"]
-layout_mode = 2
-text = "button"
-
-[node name="Button4" type="Button" parent="SubViewport/Control/Panel/ScrollContainer/ShopWindow"]
-layout_mode = 2
-text = "button"
-
-[node name="Button5" type="Button" parent="SubViewport/Control/Panel/ScrollContainer/ShopWindow"]
-layout_mode = 2
-text = "button"
+[node name="SubViewport" type="SubViewport" parent="."]
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+size = Vector2i(280, 180)
+render_target_update_mode = 4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_sqr5r")
