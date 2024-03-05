@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://ba26nnesc6o6h"]
+[gd_scene load_steps=3 format=3 uid="uid://dq5hm0lbnsqq"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/RangedWeapons/BadPrank/BadPrank.gd" id="1_nk07d"]
+[ext_resource type="PackedScene" uid="uid://bpfwxaialqgsh" path="res://Scenes/Weapons/RangedWeapons/BadPrank/BadPrankBullet.tscn" id="2_1kdye"]
 
 [node name="BadPrank" type="Node3D"]
+script = ExtResource("1_nk07d")
+bullet = ExtResource("2_1kdye")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(0.1, 0.1, 0.9698)
+
+[node name="Marker3D" type="Marker3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.56142)

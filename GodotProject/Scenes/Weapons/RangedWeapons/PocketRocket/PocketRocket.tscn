@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccga1hodi1gv2"]
+[gd_scene load_steps=4 format=3 uid="uid://bdaml07lkckcs"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/RangedWeapons/Gun/Gun.gd" id="1_eltvo"]
-[ext_resource type="PackedScene" uid="uid://owsxbjhadsho" path="res://Scenes/Weapons/RangedWeapons/Gun/GunBullet.tscn" id="2_jlcrg"]
+[ext_resource type="Script" path="res://Scripts/Weapons/RangedWeapons/PocketRocket/PocketRocket.gd" id="1_hjokh"]
+[ext_resource type="Texture2D" uid="uid://cp75jpjkpetyc" path="res://Assets/Textures/UI/PocketRocketIcon.png" id="2_erw7v"]
+[ext_resource type="PackedScene" uid="uid://cuc4p1cbkxwrn" path="res://Scenes/Weapons/RangedWeapons/PocketRocket/PocketRocketBullet.tscn" id="3_7midi"]
 
-[node name="Blaster" type="Node3D"]
-script = ExtResource("1_eltvo")
-bullet_scene = ExtResource("2_jlcrg")
+[node name="PocketRocket" type="Node3D"]
+script = ExtResource("1_hjokh")
+icon = ExtResource("2_erw7v")
+bullet = ExtResource("3_7midi")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 size = Vector3(0.1, 0.1, 0.9698)

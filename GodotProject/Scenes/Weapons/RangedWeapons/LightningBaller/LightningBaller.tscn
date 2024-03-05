@@ -1,18 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://c06eal5mbx6o4"]
+[gd_scene load_steps=4 format=3 uid="uid://dy2yb3ibm4e4s"]
 
-[ext_resource type="Script" path="res://Scenes/Weapons/RangedWeapons/LightningBaller/LightningBaller.gd" id="1_oeit8"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a1jhe"]
-albedo_color = Color(0.568627, 0.52549, 1, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_ohmwr"]
-material = SubResource("StandardMaterial3D_a1jhe")
+[ext_resource type="Script" path="res://Scripts/Weapons/RangedWeapons/LightningBaller/LightningBaller.gd" id="1_5qxus"]
+[ext_resource type="Texture2D" uid="uid://dojtkvy2iukm8" path="res://Assets/Textures/UI/LightningBallerIcon.png" id="2_gus6n"]
+[ext_resource type="PackedScene" uid="uid://6vdsddthfh3f" path="res://Scenes/Weapons/RangedWeapons/LightningBaller/LightningBallerBullet.tscn" id="3_v0b0t"]
 
 [node name="LightningBaller" type="Node3D"]
-script = ExtResource("1_oeit8")
+script = ExtResource("1_5qxus")
+icon = ExtResource("2_gus6n")
+bullet = ExtResource("3_v0b0t")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_ohmwr")
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+size = Vector3(0.1, 0.1, 0.9698)
 
-[node name="Marker3D" type="Marker3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.31549)
+[node name="Marker3D" type="Marker3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.56142)

@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfru43w2xfbl2"]
+[gd_scene load_steps=4 format=3 uid="uid://cfru43w2xfbl2"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/RangedWeapons/Gun/Gun.gd" id="1_eansb"]
+[ext_resource type="Texture2D" uid="uid://c8stgkhcni7wh" path="res://Assets/Textures/UI/GunIcon.png" id="2_h3xh3"]
 [ext_resource type="PackedScene" uid="uid://owsxbjhadsho" path="res://Scenes/Weapons/RangedWeapons/Gun/GunBullet.tscn" id="2_j5oes"]
 
-[node name="Blaster" type="Node3D"]
+[node name="Gun" type="Node3D"]
 script = ExtResource("1_eansb")
-bullet_scene = ExtResource("2_j5oes")
+icon = ExtResource("2_h3xh3")
+bullet = ExtResource("2_j5oes")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 size = Vector3(0.1, 0.1, 0.9698)

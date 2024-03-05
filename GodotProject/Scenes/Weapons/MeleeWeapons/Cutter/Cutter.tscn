@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b0ofcf84vrio1"]
+[gd_scene load_steps=6 format=3 uid="uid://b0ofcf84vrio1"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/MeleeWeapons/Cutter/Cutter.gd" id="1_vf8ox"]
+[ext_resource type="Texture2D" uid="uid://bns6hgy30x5fy" path="res://Assets/Textures/UI/CutterIcon.png" id="2_6xntn"]
 [ext_resource type="PackedScene" uid="uid://bqp21jx4d4l2f" path="res://Scenes/Weapons/MeleeWeapons/Cutter/CutterBullet.tscn" id="2_hv2fr"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_02pf1"]
@@ -11,6 +12,7 @@ size = Vector3(0.25, 2.2, 0.25)
 [node name="Cutter" type="Node3D"]
 script = ExtResource("1_vf8ox")
 _id = 1
+icon = ExtResource("2_6xntn")
 damage = 10
 bullet = ExtResource("2_hv2fr")
 

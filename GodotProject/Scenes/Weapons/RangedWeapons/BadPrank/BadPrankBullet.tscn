@@ -1,3 +1,18 @@
-[gd_scene format=3 uid="uid://cif5wb6s4xmjo"]
+[gd_scene load_steps=4 format=3 uid="uid://bpfwxaialqgsh"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/RangedWeapons/BadPrank/BadPrankBullet.gd" id="1_kwhmp"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iuup7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_62vgp"]
 
 [node name="BadPrankBullet" type="Node3D"]
+script = ExtResource("1_kwhmp")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_iuup7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_62vgp")

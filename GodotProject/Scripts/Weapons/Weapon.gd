@@ -5,13 +5,16 @@ class_name Weapon
 @export var _base_name : String = ""
 @export var _attributes : Dictionary = {}
 
-@export var upgrade_name : String = ""
-@export var damage := 1
-@export var current_ammunition := 1
-@export var max_ammunition := 1
-@export var current_lvl := 1
-@export var max_lvl := 9
-@export var current_experience := 0
+@export var icon : Texture2D
+@export var shop_price: int = 0
+@export var bullet_price: int = 0
+@export var upgrade_name: String = ""
+@export var damage: int = 1
+@export var current_ammunition: int = 1
+@export var max_ammunition: int = 1
+@export var current_lvl: int = 1
+@export var max_lvl: = 7
+@export var current_experience: int = 0
 
 @export var knockback := 0.0
 @export var stagger := 0.0
@@ -30,8 +33,6 @@ func lvl_up():
 	current_lvl += 1
 	current_experience = 0
 	damage = damage_per_lvl.get(current_lvl, 1)
-	
 
-func setupInputComponent():
-	return
-	
+func gain_experience():
+	pass

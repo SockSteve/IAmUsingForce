@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://2rl3kkijum77"]
+[gd_scene load_steps=4 format=3 uid="uid://cuc4p1cbkxwrn"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/RangedWeapons/Gun/GunBullet.gd" id="1_moo3l"]
+[ext_resource type="Script" path="res://Scripts/Weapons/RangedWeapons/PocketRocket/PocketRocketBullet.gd" id="1_4xn83"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iuup7"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_62vgp"]
 
-[node name="BlasterBullet" type="Node3D"]
-script = ExtResource("1_moo3l")
+[node name="PocketRocketBullet" type="Node3D"]
+script = ExtResource("1_4xn83")
 
 [node name="Area3D" type="Area3D" parent="."]
 

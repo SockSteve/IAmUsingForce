@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://6vdsddthfh3f"]
+[gd_scene load_steps=4 format=3 uid="uid://beq13f8xapqh5"]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/RangedWeapons/LightningBaller/LightningBallerBullet.gd" id="1_hmp61"]
+[ext_resource type="Script" path="res://Scripts/Weapons/RangedWeapons/ShrapnelCannon/ShrapnelCannonBullet.gd" id="1_nb3d7"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iuup7"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_62vgp"]
 
-[node name="LightningBallerBullet" type="Node3D"]
-script = ExtResource("1_hmp61")
+[node name="ShrapnelCannonBullet" type="Node3D"]
+script = ExtResource("1_nb3d7")
 
 [node name="Area3D" type="Area3D" parent="."]
 

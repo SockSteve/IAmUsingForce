@@ -1,3 +1,37 @@
-[gd_scene format=3 uid="uid://dpgj4ykbjlait"]
+[gd_scene load_steps=6 format=3 uid="uid://b6rlckm46ttkw"]
 
-[node name="WaveMaker" type="Node3D"]
+[ext_resource type="Script" path="res://Scripts/Weapons/MeleeWeapons/WavePounder/WavePounder.gd" id="1_njs3y"]
+[ext_resource type="Texture2D" uid="uid://digsq6bc7pjbh" path="res://Assets/Textures/UI/WavePounderIcon.png" id="2_iopr3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_draq8"]
+albedo_color = Color(0.568627, 0.568627, 0.568627, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_02pf1"]
+material = SubResource("StandardMaterial3D_draq8")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q72rh"]
+size = Vector3(0.25, 2.2, 0.25)
+
+[node name="WavePounder" type="Node3D"]
+script = ExtResource("1_njs3y")
+_id = 4
+icon = ExtResource("2_iopr3")
+
+[node name="WeaponSkin" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 2, 0, 0, 0, 0.1, 0, 1, 0)
+mesh = SubResource("BoxMesh_02pf1")
+
+[node name="HitboxArea" type="Area3D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="HitboxCollision" type="CollisionShape3D" parent="HitboxArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+shape = SubResource("BoxShape3D_q72rh")
+
+[node name="ParryTimer" type="Timer" parent="."]
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="HitboxArea" to="." method="_on_hitbox_area_body_entered"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]
