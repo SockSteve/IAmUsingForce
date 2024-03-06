@@ -18,8 +18,17 @@ script = ExtResource("1_1ttap")
 
 [node name="ShopHandler" type="Node3D" parent="."]
 script = ExtResource("2_72765")
+melee_weapon_dir_path = "res://Scenes/Weapons/MeleeWeapons"
+ranged_weapon_dir_path = "res://Scenes/Weapons/RangedWeapons"
+gadget_dir_path = "res://Scenes/Gadgets"
 
-[node name="Control" type="Control" parent="."]
+[node name="SubViewport" type="SubViewport" parent="."]
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+size = Vector2i(280, 180)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="SubViewport"]
 layout_mode = 3
 anchor_right = 0.596
 anchor_bottom = 0.625
@@ -27,18 +36,18 @@ offset_right = -166.88
 offset_bottom = -112.5
 theme = ExtResource("2_dpxj1")
 
-[node name="Panel" type="Panel" parent="Control"]
+[node name="Panel" type="Panel" parent="SubViewport/Control"]
 custom_minimum_size = Vector2(280, 180)
 layout_mode = 1
 
-[node name="Panel" type="Panel" parent="Control/Panel"]
+[node name="Panel" type="Panel" parent="SubViewport/Control/Panel"]
 layout_mode = 0
 offset_left = 13.0
 offset_top = 25.0
 offset_right = 129.0
 offset_bottom = 109.0
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/Panel/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/Control/Panel/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,7 +59,7 @@ offset_bottom = -3.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="WeaponInfoLabel" type="Label" parent="Control/Panel/Panel/MarginContainer"]
+[node name="WeaponInfoLabel" type="Label" parent="SubViewport/Control/Panel/Panel/MarginContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
@@ -58,14 +67,14 @@ size_flags_vertical = 1
 text = "test"
 autowrap_mode = 1
 
-[node name="ColorRect" type="ColorRect" parent="Control/Panel"]
+[node name="ColorRect" type="ColorRect" parent="SubViewport/Control/Panel"]
 layout_mode = 0
 offset_left = 180.0
 offset_top = 26.0
 offset_right = 244.0
 offset_bottom = 90.0
 
-[node name="WeaponPicture" type="TextureRect" parent="Control/Panel"]
+[node name="WeaponPicture" type="TextureRect" parent="SubViewport/Control/Panel"]
 layout_mode = 0
 offset_left = 179.0
 offset_top = 26.0
@@ -74,7 +83,7 @@ offset_bottom = 90.0
 texture = ExtResource("1_5i4m7")
 expand_mode = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Control/Panel"]
+[node name="ScrollContainer" type="ScrollContainer" parent="SubViewport/Control/Panel"]
 layout_mode = 0
 offset_left = 12.0
 offset_top = 122.0
@@ -82,21 +91,15 @@ offset_right = 265.0
 offset_bottom = 171.0
 follow_focus = true
 
-[node name="ShopHBoxWindow" type="HBoxContainer" parent="Control/Panel/ScrollContainer"]
+[node name="ShopHBoxWindow" type="HBoxContainer" parent="SubViewport/Control/Panel/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="Control/Panel/ScrollContainer/ShopHBoxWindow"]
+[node name="Button" type="Button" parent="SubViewport/Control/Panel/ScrollContainer/ShopHBoxWindow"]
 layout_mode = 2
 text = "button"
 icon = ExtResource("5_8scl0")
-
-[node name="SubViewport" type="SubViewport" parent="."]
-snap_2d_transforms_to_pixel = true
-snap_2d_vertices_to_pixel = true
-size = Vector2i(280, 180)
-render_target_update_mode = 4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_sqr5r")
@@ -107,3 +110,5 @@ input_capture_on_drag = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0133133, -0.00122152, 0)
 shape = SubResource("BoxShape3D_tmjdk")
+
+[connection signal="pressed" from="SubViewport/Control/Panel/ScrollContainer/ShopHBoxWindow/Button" to="ShopHandler" method="_on_button_pressed"]

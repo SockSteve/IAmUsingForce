@@ -22,7 +22,7 @@ func _ready():
 	_set_viewport_mat(node_quad, node_viewport)
 
 func initialize():
-	$SubViewport/Control/Panel/ScrollContainer/ShopWindow/Button.grab_focus()
+	$SubViewport/Control/Panel/ScrollContainer/ShopHBoxWindow/Button.grab_focus()
 
 func cleanup():
 	$SubViewport/Control.release_focus()
