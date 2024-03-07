@@ -1,0 +1,18 @@
+video-.mkv
+
+CBR VS CQP
+CBR - constan bitrate - large files - huge wasted space - twitch preferred
+CQP - varying - smartr -  change bitrate as needed - lower number = higher quality
+
+CBR
+bitrate: 8.000 - 18.000
+
+CQP
+CQ Level: 20 - 15
+
+preset
+- high quality
+
+single is good
+
+convert to mp4 -> use remux in obs
