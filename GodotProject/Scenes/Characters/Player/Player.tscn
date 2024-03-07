@@ -51,6 +51,7 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_ld2le")
 acceleration = 8.0
+starting_loadout = PackedStringArray("res://Scenes/Weapons/RangedWeapons/Gun/Gun.tscn", "res://Scenes/Weapons/MeleeWeapons/Cutter/Cutter.tscn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)

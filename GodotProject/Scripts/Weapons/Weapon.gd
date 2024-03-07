@@ -1,8 +1,7 @@
 extends Node3D
 class_name Weapon
 
-@export var _id : int = -1
-@export var _base_name : String = ""
+@export var _name : String = ""
 @export var _attributes : Dictionary = {}
 
 @export var icon : Texture2D
@@ -25,9 +24,11 @@ class_name Weapon
 @export var damage_per_lvl : Dictionary = {}			#dictionary with all dmg values
 
 func init(id, base_name, attributes):
-	_id = id
-	_base_name = base_name
+	_name = base_name
 	_attributes = attributes
+
+func _ready():
+	_name = self.get_name()
 
 func lvl_up():
 	current_lvl += 1

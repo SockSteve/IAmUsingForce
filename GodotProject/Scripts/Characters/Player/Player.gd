@@ -19,6 +19,8 @@ class_name Player
 @export var block_time := 2.0
 ## Minimum horizontal speed on the ground. This controls when the character's animation tree changes
 ## between the idle and running states.
+@export_group("Base Loadout")
+@export var starting_loadout: PackedStringArray
 
 @onready var _rotation_root: Node3D = $CharacterRotationRoot
 @onready var _camera_controller: CameraController = $CameraController
@@ -116,10 +118,9 @@ func put_in_hand(weapon_or_gadget):
 
 func attack():
 	pass
-	
-func performMeleeAttack():
-	pass
 
-func performRangedAttack():
-	pass
-
+func add_starting_loadout_to_inventory():
+	for weapon_path in starting_loadout:
+		var weapon_scene = load(weapon_path)
+		weapon_scene = weapon_scene.instantiate()
+		inventory.add_weapon(weapon_scene.name, weapon_scene)

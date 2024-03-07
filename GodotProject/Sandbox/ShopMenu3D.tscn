@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcj7lff1v3mff"]
+[gd_scene load_steps=7 format=3 uid="uid://bcj7lff1v3mff"]
 
 [ext_resource type="Script" path="res://Sandbox/ShopMenu3D.gd" id="1_1ttap"]
 [ext_resource type="Texture2D" uid="uid://dmf404ftfexwl" path="res://Assets/Decals/DropShadow/Shadow.png" id="1_5i4m7"]
 [ext_resource type="Script" path="res://Sandbox/ShopHandler.gd" id="2_72765"]
 [ext_resource type="Theme" uid="uid://d02hntmjt67aj" path="res://UI/UITheme_1.tres" id="2_dpxj1"]
-[ext_resource type="Texture2D" uid="uid://dccgws1gvwa1m" path="res://Assets/Textures/UI/Money.png" id="5_8scl0"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_sqr5r"]
 resource_local_to_scene = true
@@ -96,11 +95,6 @@ unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 
-[node name="Button" type="Button" parent="SubViewport/Control/Panel/ScrollContainer/ShopHBoxWindow"]
-layout_mode = 2
-text = "button"
-icon = ExtResource("5_8scl0")
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_sqr5r")
 
@@ -110,5 +104,3 @@ input_capture_on_drag = true
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0133133, -0.00122152, 0)
 shape = SubResource("BoxShape3D_tmjdk")
-
-[connection signal="pressed" from="SubViewport/Control/Panel/ScrollContainer/ShopHBoxWindow/Button" to="ShopHandler" method="_on_button_pressed"]

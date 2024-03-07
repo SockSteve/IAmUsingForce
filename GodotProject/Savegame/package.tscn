@@ -1,20 +1,33 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8btq3jmsx6b"]
+[gd_scene load_steps=6 format=3]
 
-[ext_resource type="Script" path="res://Scripts/Weapons/MeleeWeapons/HiveKnive/HiveKnive.gd" id="1_7iu6v"]
-[ext_resource type="Texture2D" uid="uid://dwwlxp66dx1ss" path="res://Assets/Textures/UI/HiveKniveIcon.png" id="2_kgkgl"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_draq8"]
-albedo_color = Color(0, 0, 1, 1)
+[ext_resource type="Script" path="res://Scripts/Weapons/MeleeWeapons/Cutter/Cutter.gd" id="1_f4vke"]
+[ext_resource type="Texture2D" path="res://Assets/Textures/UI/CutterIcon.png" id="2_5w8y1"]
+[ext_resource type="PackedScene" path="res://Scenes/Weapons/MeleeWeapons/Cutter/CutterBullet.tscn" id="3_hu743"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_02pf1"]
-material = SubResource("StandardMaterial3D_draq8")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q72rh"]
 size = Vector3(0.25, 2.2, 0.25)
 
-[node name="HiveKnive" type="Node3D"]
-script = ExtResource("1_7iu6v")
-icon = ExtResource("2_kgkgl")
+[node name="Cutter" type="Node3D"]
+script = ExtResource("1_f4vke")
+_name = ""
+_attributes = {}
+icon = ExtResource("2_5w8y1")
+shop_price = 0
+bullet_price = 0
+upgrade_name = ""
+damage = 10
+current_ammunition = 1
+max_ammunition = 1
+current_lvl = 1
+max_lvl = 7
+current_experience = 0
+knockback = 0.0
+stagger = 0.0
+bullet = ExtResource("3_hu743")
+max_experience_per_lvl = {}
+damage_per_lvl = {}
 
 [node name="WeaponSkin" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 2, 0, 0, 0, 0.1, 0, 1, 0)

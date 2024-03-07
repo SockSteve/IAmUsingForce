@@ -9,16 +9,11 @@ var grappling_hook
 func enter(msg := {}) -> void:
 	grappling_hook = player.get_gadget("GrapplingHook")
 	
-	grappling_hook.activate()
 	player.switchToPhysicsBody()
+	grappling_hook.activate()
 	if not grappling_hook.grappling:
 		end_grapple()
 		return
-	
-	
-	
-	
-	
 
 
 func physics_update(delta: float) -> void:
