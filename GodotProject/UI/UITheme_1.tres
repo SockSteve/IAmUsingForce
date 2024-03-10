@@ -1,7 +1,16 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://d02hntmjt67aj"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://d02hntmjt67aj"]
 
 [ext_resource type="FontFile" uid="uid://dulxyplypt8ww" path="res://Assets/Fonts/SupplyCenter-0W9nz.ttf" id="1_a2jxc"]
 [ext_resource type="FontFile" uid="uid://dpbe3j8quosnt" path="res://Assets/Fonts/GoldenRooster-yYB3m.otf" id="2_1g708"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_78yxn"]
+bg_color = Color(0.286275, 0.254902, 0.207843, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 0.443137, 0, 0.435294)
+border_blend = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_13u1e"]
 bg_color = Color(0.207843, 0.164706, 0.101961, 0.701961)
@@ -27,6 +36,7 @@ shadow_offset = Vector2(1, 1)
 
 [resource]
 default_font = ExtResource("2_1g708")
+Button/styles/focus = SubResource("StyleBoxFlat_78yxn")
 Button/styles/normal = SubResource("StyleBoxFlat_13u1e")
 Fonts/fonts/large = ExtResource("1_a2jxc")
 Fonts/fonts/normal = ExtResource("1_a2jxc")

@@ -27,6 +27,7 @@ class_name Player
 @onready var _ground_shapecast: ShapeCast3D = $GroundShapeCast
 @onready var _physics_body: RigidBody3D = $PhysicsBody
 @onready var _character_skin := $CharacterRotationRoot/CharacterSkin
+@onready var hand = %PlayerHand
 #@onready var _attack_animation_player: AnimationPlayer = $CharacterRotationRoot/MeleeAnchor/AnimationPlayer
 
 @onready var _move_direction := Vector3.ZERO
@@ -34,21 +35,17 @@ class_name Player
 @onready var _gravity: float = -30.0
 @onready var _ground_height: float = 0.0
 @onready var _start_position := global_transform.origin
-
 @onready var _is_on_floor_buffer := false
 
 #debug
-#var physicsBodyEnabled := false
 var combo_step : int = 0 #used for melee attack combo
 var is_attacking : bool = false
-var weapon
 
 @onready var _is_grapple := false
 @onready var state = $StateMachine.state
 var magnetized = false
 var grappling = false
 @onready var inventory = $Inventory
-@onready var current_weapon = null
 #slide
 @export var slide_strength = 30.0
 var slide_velocity = Vector3(0, 0, -slide_strength)  # The Z-axis is assumed to be the forward axis.  # Adjust the strength and direction
@@ -57,9 +54,13 @@ var sliding: bool = false
 var freeze: bool = false
 @onready var slide_timer = $SlideTimer
 
+var current_weapon
+
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_camera_controller.setup(self)
+	add_starting_loadout_to_inventory()
+	put_in_hand(current_weapon)
 
 func _physics_process(delta):
 	if Input.is_action_just_pressed("crouch"):
@@ -114,7 +115,7 @@ func add_gadget(gadget):
 	inventory.add_gadget(gadget)
 
 func put_in_hand(weapon_or_gadget):
-	pass
+	hand.add_or_replace_item_to_hand(weapon_or_gadget)
 
 func attack():
 	pass
@@ -123,4 +124,7 @@ func add_starting_loadout_to_inventory():
 	for weapon_path in starting_loadout:
 		var weapon_scene = load(weapon_path)
 		weapon_scene = weapon_scene.instantiate()
+		if current_weapon == null:
+			current_weapon = weapon_scene
+		
 		inventory.add_weapon(weapon_scene.name, weapon_scene)

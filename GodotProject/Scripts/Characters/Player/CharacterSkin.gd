@@ -30,7 +30,6 @@ func _ready():
 	animation_tree.active = true
 	main_animation_player["playback_default_blend_time"] = 0.1
 
-
 func set_moving(value : bool):
 	moving = value
 	if moving:

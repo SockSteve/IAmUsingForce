@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c0d3bmprmf8q0"]
+[gd_scene load_steps=37 format=3 uid="uid://c0d3bmprmf8q0"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.gd" id="1_ld2le"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/CameraController.gd" id="2_7jqee"]
@@ -17,17 +17,19 @@
 [ext_resource type="PackedScene" uid="uid://bihfxywywukdv" path="res://Scenes/Characters/Player/CharacterSkin.tscn" id="15_7yrxv"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Inventory.gd" id="16_kqrv3"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerHand.gd" id="16_mjyse"]
-[ext_resource type="PackedScene" uid="uid://b0ofcf84vrio1" path="res://Scenes/Weapons/MeleeWeapons/Cutter/Cutter.tscn" id="17_57deo"]
 [ext_resource type="Theme" uid="uid://d02hntmjt67aj" path="res://UI/UITheme_1.tres" id="19_1icc6"]
 [ext_resource type="PackedScene" uid="uid://cqhn455src0iq" path="res://Scenes/Gadgets/GrapplingHook.tscn" id="19_obt1n"]
 [ext_resource type="PackedScene" uid="uid://cc6mfpfv1cnw7" path="res://Scenes/Gadgets/GrindBoots_v2.tscn" id="20_4qgby"]
+[ext_resource type="Script" path="res://Scenes/Characters/Player/PlayerHUD.gd" id="20_6xxyk"]
 [ext_resource type="Texture2D" uid="uid://20dy3gqyvxc4" path="res://Assets/Textures/Weapons/GunIconPlaceholder.png" id="22_glpdi"]
 [ext_resource type="Texture2D" uid="uid://dmf404ftfexwl" path="res://Assets/Decals/DropShadow/Shadow.png" id="22_gwf8y"]
 [ext_resource type="Texture2D" uid="uid://dgw7m61h14vu7" path="res://Assets/Textures/Weapons/CutterIconPlaceholder.png" id="23_g7wgb"]
 [ext_resource type="Texture2D" uid="uid://bsge2yls5o5jg" path="res://Assets/Textures/UI/HitPoint.png" id="24_6g3o4"]
 [ext_resource type="Texture2D" uid="uid://c7w5uwta2tc47" path="res://Assets/Textures/Weapons/ShrapnelCannonIconPlaceholder.png" id="25_tbtdg"]
 [ext_resource type="Texture2D" uid="uid://c1knfkq4sxase" path="res://Assets/Textures/Weapons/WavePunderIconPlaceholder.png" id="26_7blup"]
+[ext_resource type="Script" path="res://Scenes/Characters/Player/StartMenu.gd" id="28_r3h2c"]
 [ext_resource type="Texture2D" uid="uid://dccgws1gvwa1m" path="res://Assets/Textures/UI/Money.png" id="28_wddji"]
+[ext_resource type="Texture2D" uid="uid://cu57pg1cqjpqy" path="res://Assets/Textures/UI/BadPrankIcon.png" id="29_sc2yr"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_p4inm"]
 height = 1.50214
@@ -147,14 +149,11 @@ debug_shape_custom_color = Color(0, 1, 0, 1)
 [node name="CharacterRotationRoot" type="Node3D" parent="."]
 
 [node name="CharacterSkin" parent="CharacterRotationRoot" instance=ExtResource("15_7yrxv")]
+unique_name_in_owner = true
 
-[node name="PlayerHand" type="Node3D" parent="CharacterRotationRoot"]
+[node name="PlayerHand" type="Node3D" parent="CharacterRotationRoot/CharacterSkin"]
 unique_name_in_owner = true
 script = ExtResource("16_mjyse")
-default_weapon_in_hand = ExtResource("17_57deo")
-
-[node name="Inventory" type="Node3D" parent="."]
-script = ExtResource("16_kqrv3")
 
 [node name="PassiveGadgets" type="Node3D" parent="."]
 
@@ -163,6 +162,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.91362, 0.0314813)
 
 [node name="GrindBootsV2" parent="PassiveGadgets" instance=ExtResource("20_4qgby")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.982622, 0)
+
+[node name="Inventory" type="Node3D" parent="."]
+script = ExtResource("16_kqrv3")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -175,6 +177,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("20_6xxyk")
 
 [node name="WeaponInfoPanel" type="Panel" parent="CanvasLayer/PlayerHUD"]
 layout_mode = 0
@@ -352,6 +355,344 @@ offset_right = 168.0
 offset_bottom = 40.0
 text = "1"
 horizontal_alignment = 2
+
+[node name="StartMenu" type="Control" parent="CanvasLayer"]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+theme = ExtResource("19_1icc6")
+script = ExtResource("28_r3h2c")
+
+[node name="StartMenuPanel" type="Panel" parent="CanvasLayer/StartMenu"]
+visible = false
+custom_minimum_size = Vector2(500, 270)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -125.0
+offset_right = 250.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/StartMenu/StartMenuPanel"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/StartMenu/StartMenuPanel/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Label" type="Label" parent="CanvasLayer/StartMenu/StartMenuPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Pause Menu"
+horizontal_alignment = 1
+
+[node name="ResumeGame" type="Button" parent="CanvasLayer/StartMenu/StartMenuPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="WeaponsAndGadgets" type="Button" parent="CanvasLayer/StartMenu/StartMenuPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Weapons and Gadgets"
+
+[node name="Options" type="Button" parent="CanvasLayer/StartMenu/StartMenuPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Options"
+
+[node name="Extras" type="Button" parent="CanvasLayer/StartMenu/StartMenuPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Extras"
+
+[node name="ExitToMainMenu" type="Button" parent="CanvasLayer/StartMenu/StartMenuPanel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit to Main Menu"
+
+[node name="SSMOptionsMenu" type="Control" parent="CanvasLayer/StartMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 17.0
+offset_top = 16.0
+offset_right = 17.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer/StartMenu/SSMOptionsMenu"]
+layout_mode = 0
+offset_left = 153.0
+offset_top = 101.0
+offset_right = 967.0
+offset_bottom = 488.0
+current_tab = 1
+
+[node name="TabBar" type="TabBar" parent="CanvasLayer/StartMenu/SSMOptionsMenu/TabContainer"]
+layout_mode = 2
+
+[node name="TabBar2" type="TabBar" parent="CanvasLayer/StartMenu/SSMOptionsMenu/TabContainer"]
+layout_mode = 2
+
+[node name="SSMWeaponsAndGadgetsMenu" type="Control" parent="CanvasLayer/StartMenu"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button9" type="Button" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/Panel"]
+layout_mode = 2
+offset_left = 459.0
+offset_top = 599.0
+offset_right = 654.0
+offset_bottom = 641.0
+text = "return (circle)"
+
+[node name="WeaponSelect" type="Panel" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/Panel"]
+layout_mode = 2
+offset_left = 45.0
+offset_top = 37.0
+offset_right = 549.0
+offset_bottom = 593.0
+size_flags_horizontal = 4
+
+[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/Panel/WeaponSelect"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 11.0
+offset_right = 467.0
+offset_bottom = 395.0
+
+[node name="ItemList" type="ItemList" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/Panel/WeaponSelect/ScrollContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+item_count = 2
+max_columns = 2
+item_0/text = ""
+item_0/icon = ExtResource("29_sc2yr")
+item_1/text = ""
+item_1/icon = ExtResource("29_sc2yr")
+
+[node name="WeaponInfo" type="Panel" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/Panel"]
+layout_mode = 2
+offset_left = 576.0
+offset_top = 487.0
+offset_right = 1100.0
+offset_bottom = 593.0
+size_flags_horizontal = 4
+
+[node name="Panel3" type="Panel" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/Panel/WeaponInfo"]
+layout_mode = 2
+offset_right = 97.0
+offset_bottom = 106.0
+size_flags_horizontal = 4
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/Panel"]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 461.0
+offset_right = 511.0
+offset_bottom = 572.0
+columns = 10
+
+[node name="Button9" type="Button" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/Panel/GridContainer"]
+layout_mode = 2
+icon = ExtResource("29_sc2yr")
+
+[node name="Button10" type="Button" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/Panel/GridContainer"]
+layout_mode = 2
+icon = ExtResource("29_sc2yr")
+
+[node name="Button11" type="Button" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/Panel/GridContainer"]
+layout_mode = 2
+icon = ExtResource("29_sc2yr")
+
+[node name="Button12" type="Button" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/Panel/GridContainer"]
+layout_mode = 2
+icon = ExtResource("29_sc2yr")
+
+[node name="Button13" type="Button" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/Panel/GridContainer"]
+layout_mode = 2
+icon = ExtResource("29_sc2yr")
+
+[node name="Button14" type="Button" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/Panel/GridContainer"]
+layout_mode = 2
+icon = ExtResource("29_sc2yr")
+
+[node name="Button15" type="Button" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/Panel/GridContainer"]
+layout_mode = 2
+icon = ExtResource("29_sc2yr")
+
+[node name="Button16" type="Button" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/Panel/GridContainer"]
+layout_mode = 2
+icon = ExtResource("29_sc2yr")
+
+[node name="Button17" type="Button" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/Panel/GridContainer"]
+layout_mode = 2
+icon = ExtResource("29_sc2yr")
+
+[node name="Button18" type="Button" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/Panel/GridContainer"]
+layout_mode = 2
+icon = ExtResource("29_sc2yr")
+
+[node name="Button19" type="Button" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/Panel/GridContainer"]
+layout_mode = 2
+icon = ExtResource("29_sc2yr")
+
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu"]
+layout_mode = 0
+offset_left = 601.0
+offset_top = 57.0
+offset_right = 1092.0
+offset_bottom = 437.0
+
+[node name="Selection 1" type="TabBar" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -153.0
+offset_top = -153.0
+offset_right = 153.0
+offset_bottom = 153.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="GridContainer" type="GridContainer" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer"]
+layout_mode = 2
+columns = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("29_sc2yr")
+
+[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer4" type="MarginContainer" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer5" type="MarginContainer" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer6" type="MarginContainer" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Button2" type="Button" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("29_sc2yr")
+
+[node name="MarginContainer7" type="MarginContainer" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer8" type="MarginContainer" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Button3" type="Button" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("29_sc2yr")
+
+[node name="Button4" type="Button" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("29_sc2yr")
+
+[node name="MarginContainer9" type="MarginContainer" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Button5" type="Button" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("29_sc2yr")
+
+[node name="Button6" type="Button" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("29_sc2yr")
+
+[node name="MarginContainer10" type="MarginContainer" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer11" type="MarginContainer" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Button7" type="Button" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("29_sc2yr")
+
+[node name="MarginContainer12" type="MarginContainer" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer13" type="MarginContainer" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer14" type="MarginContainer" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer15" type="MarginContainer" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Button8" type="Button" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+icon = ExtResource("29_sc2yr")
+
+[node name="MarginContainer16" type="MarginContainer" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="MarginContainer17" type="MarginContainer" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1/MarginContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Selection 2" type="TabBar" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Selection 3" type="TabBar" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer"]
+visible = false
+layout_mode = 2
 
 [node name="SlideTimer" type="Timer" parent="."]
 wait_time = 0.5
