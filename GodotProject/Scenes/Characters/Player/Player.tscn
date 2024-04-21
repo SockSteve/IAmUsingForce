@@ -448,6 +448,7 @@ offset_bottom = 488.0
 current_tab = 1
 
 [node name="TabBar" type="TabBar" parent="CanvasLayer/StartMenu/SSMOptionsMenu/TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="TabBar2" type="TabBar" parent="CanvasLayer/StartMenu/SSMOptionsMenu/TabContainer"]

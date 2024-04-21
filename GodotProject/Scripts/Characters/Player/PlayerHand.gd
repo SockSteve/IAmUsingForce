@@ -14,4 +14,4 @@ func remove_weapon_from_hand():
 func change_weapon_in_hand(item_inst):
 	var old_item  = right_hand_bone_attachement.get_child(0)
 	old_item.replace_by(item_inst)
-	old_item.queue_free()
+	

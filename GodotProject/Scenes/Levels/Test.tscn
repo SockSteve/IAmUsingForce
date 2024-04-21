@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cfv2ecbe68yfi"]
+[gd_scene load_steps=26 format=3 uid="uid://cfv2ecbe68yfi"]
 
 [ext_resource type="Texture2D" uid="uid://dk3g261yc4qry" path="res://Assets/Placeholders/Environment/Skyboxes/panorama_image.png" id="1_mhjnm"]
 [ext_resource type="Texture2D" uid="uid://bid2isp42co6r" path="res://addons/kenney_prototype_textures/orange/texture_01.png" id="1_y6805"]
@@ -9,7 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://de0wimp7e8g3n" path="res://addons/kenney_prototype_textures/purple/texture_12.png" id="7_eov66"]
 [ext_resource type="PackedScene" uid="uid://du0ausxn5e6vk" path="res://Assets/Placeholders/Environment/fern_grass_02/scene.gltf" id="7_mr86d"]
 [ext_resource type="PackedScene" uid="uid://bllxyncmft2sj" path="res://Scenes/InteractiveObjects/GrapplingPoints/GrapplePoint.tscn" id="7_nwman"]
+[ext_resource type="ArrayMesh" uid="uid://cgafvgxb7ijbv" path="res://Assets/Models/Weapons/knife_sharp.obj" id="11_7ufr4"]
 [ext_resource type="PackedScene" uid="uid://fbpbxpmuqx3g" path="res://Scenes/Characters/Merchants/vendor.tscn" id="11_ahr15"]
+[ext_resource type="ArrayMesh" uid="uid://5w2uthxujf6a" path="res://Assets/Models/Weapons/knife_smooth.obj" id="12_8u44m"]
+[ext_resource type="ArrayMesh" uid="uid://cw25l0jej84hr" path="res://Assets/Models/Weapons/pistol.obj" id="13_pndr6"]
+[ext_resource type="ArrayMesh" uid="uid://cpjc161jj8kox" path="res://Assets/Models/Weapons/shotgun.obj" id="14_qv7x6"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_30l7b"]
 panorama = ExtResource("1_mhjnm")
@@ -262,3 +266,19 @@ mesh = SubResource("BoxMesh_llufc")
 
 [node name="Vendor" parent="." instance=ExtResource("11_ahr15")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.2688, 1.30263, 2.59788)
+
+[node name="KnifeSharp" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7693, 0.752001, 2.19821)
+mesh = ExtResource("11_7ufr4")
+
+[node name="KnifeSmooth" type="MeshInstance3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 12.764, 0.989102, 2.32419)
+mesh = ExtResource("12_8u44m")
+
+[node name="Pistol" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9173, 0.810467, 2.40762)
+mesh = ExtResource("13_pndr6")
+
+[node name="Shotgun" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0093, 0.821194, 2.37675)
+mesh = ExtResource("14_qv7x6")
