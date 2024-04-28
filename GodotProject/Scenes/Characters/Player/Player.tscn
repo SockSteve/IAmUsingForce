@@ -52,8 +52,20 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_ld2le")
+move_speed = null
 acceleration = 8.0
+crouch_move_speed = null
+jump_initial_impulse = null
+crouch_jump_initial_impulse = null
+jump_apex_gravity = null
+stopping_speed = null
+rotation_speed = null
+attack_impulse = null
+max_throwback_force = null
+parry_window = null
+block_time = null
 starting_loadout = PackedStringArray("res://Scenes/Weapons/RangedWeapons/Gun/Gun.tscn", "res://Scenes/Weapons/MeleeWeapons/Cutter/Cutter.tscn")
+slide_strength = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)

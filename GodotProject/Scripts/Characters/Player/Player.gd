@@ -95,9 +95,20 @@ func _get_camera_oriented_input() -> Vector3:
 	input.y = 0.0
 	return input
 
+"""
+function for smoothly rotating the player towards a given direction
+"""
 func _orient_character_to_direction(direction: Vector3, delta: float) -> void:
 	var left_axis := Vector3.UP.cross(direction)
 	var rotation_basis := Basis(left_axis, Vector3.UP, direction).get_rotation_quaternion()
+	var model_scale := _rotation_root.transform.basis.get_scale()
+	_rotation_root.transform.basis = Basis(_rotation_root.transform.basis.get_rotation_quaternion().slerp(rotation_basis, delta * rotation_speed)).scaled(
+		model_scale
+	)
+
+func _orient_character_to_rotation_and_direction(direction: Vector3, up_vector: Vector3, delta: float) -> void:
+	var left_axis := up_vector.cross(direction)
+	var rotation_basis := Basis(left_axis, up_vector, direction).get_rotation_quaternion()
 	var model_scale := _rotation_root.transform.basis.get_scale()
 	_rotation_root.transform.basis = Basis(_rotation_root.transform.basis.get_rotation_quaternion().slerp(rotation_basis, delta * rotation_speed)).scaled(
 		model_scale
@@ -142,8 +153,8 @@ func attack():
 
 """
 function for adding the initial weapon loadout to the inventory.
-#@param starting_loadout - defined as export PackedStringArray
-#@param weapon_path - path to be loaded, instantiated and added to the inventory
+	#@param starting_loadout - defined as export PackedStringArray
+	#@param weapon_path - path to be loaded, instantiated and added to the inventory
 """
 func add_starting_loadout_to_inventory():
 	for weapon_path in starting_loadout:
