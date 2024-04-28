@@ -54,7 +54,8 @@ var sliding: bool = false
 var freeze: bool = false
 @onready var slide_timer = $SlideTimer
 
-var current_weapon
+var current_weapon: Node
+var is_strafing: bool
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -74,6 +75,13 @@ func _physics_process(delta):
 		_ground_height = global_position.y + _ground_shapecast.target_position.y
 	if global_position.y < _ground_height:
 		_ground_height = global_position.y
+		
+	if Input.is_action_just_pressed("gadget"):
+		var random_weapon = inventory.get_random_weapon()
+		put_in_hand(random_weapon)
+		
+	if Input.is_action_just_pressed("dodge"):
+		is_strafing = !is_strafing
 
 func _get_camera_oriented_input() -> Vector3:
 	var raw_input := Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -95,6 +103,10 @@ func _orient_character_to_direction(direction: Vector3, delta: float) -> void:
 		model_scale
 	)
 
+"""
+function for changing the player physics to that of a ridgidbody (here @PhysicsBody)
+called in - @Node StateMachine
+"""
 func switchToPhysicsBody():
 	var stored_player_velocity = velocity
 	_physics_body.linear_velocity 
@@ -103,6 +115,10 @@ func switchToPhysicsBody():
 	_physics_body.top_level = true
 	_physics_body.linear_velocity = stored_player_velocity
 
+"""
+function to switch the physics back to that of a CharacterBody3D
+called in - @Node StateMachine
+"""
 func switchToCharacterBody():
 	_physics_body.freeze = true
 	_physics_body.top_level = false
@@ -110,16 +126,25 @@ func switchToCharacterBody():
 
 func get_gadget(gadget: String):
 	return inventory.get_gadget(gadget)
-	
+
 func add_gadget(gadget):
 	inventory.add_gadget(gadget)
 
-func put_in_hand(weapon_or_gadget):
+"""
+function for adding a weapon to the hand
+called in - @function _ready()
+"""
+func put_in_hand(weapon_or_gadget: Node):
 	hand.add_or_replace_item_to_hand(weapon_or_gadget)
 
 func attack():
 	pass
 
+"""
+function for adding the initial weapon loadout to the inventory.
+#@param starting_loadout - defined as export PackedStringArray
+#@param weapon_path - path to be loaded, instantiated and added to the inventory
+"""
 func add_starting_loadout_to_inventory():
 	for weapon_path in starting_loadout:
 		var weapon_scene = load(weapon_path)

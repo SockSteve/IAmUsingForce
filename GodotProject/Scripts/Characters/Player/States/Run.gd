@@ -15,8 +15,9 @@ func physics_update(delta: float) -> void:
 	# this also ensures a good normalized value for the rotation basis.
 	if player._move_direction.length() > 0.2:
 		player._last_strong_direction = player._move_direction.normalized()
-	#if is_aiming:
-		#_last_strong_direction = (_camera_controller.global_transform.basis * Vector3.BACK).normalized()
+		
+	if player.is_strafing:
+		player._last_strong_direction = (player._camera_controller.global_transform.basis * Vector3.BACK).normalized()
 
 	player._orient_character_to_direction(player._last_strong_direction, delta)
 	

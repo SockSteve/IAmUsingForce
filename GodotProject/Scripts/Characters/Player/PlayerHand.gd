@@ -2,6 +2,8 @@ extends Node3D
 
 @onready var right_hand_bone_attachement = %CharacterSkin.find_child("Hand")
 
+#function is only called from player script and nowhere else
+#@param item_inst: node to be placed into players hand
 func add_or_replace_item_to_hand(item_inst: Node):
 	if right_hand_bone_attachement.get_child_count() == 0:
 		right_hand_bone_attachement.add_child(item_inst)

@@ -21,6 +21,10 @@ func has_gadget(gadget_name: String):
 func get_weapon(weapon_name: String):
 	return weapons.get(weapon_name)
 
+func get_random_weapon(can_get_same_weapon:bool=true):
+	print(weapons.values())
+	return weapons.values().pick_random()
+
 func get_gadget(gadget_name: String):
 	return gadget_node.find_child(gadget_name)
 
