@@ -41,13 +41,14 @@ func physics_update(delta: float) -> void:
 		if player._move_direction.length() > 0.2:
 			player._last_strong_direction = player._move_direction.normalized()
 		
-		player._orient_character_to_direction(player._last_strong_direction, delta)
+		player._orient_character_to_rotation_and_direction(player._last_strong_direction, grappling_hook.direction_normal_to_origin, delta)
+		#player._orient_character_to_direction(player._last_strong_direction, delta)
 		
 		var input_vector =  player._get_camera_oriented_input()
 		
 		# Get positions of the two bodies
-		var positionGrapplePoint = grappling_hook.nearest_grapple_point.global_transform.origin
-		var positionPlayer = player.global_transform.origin
+		#var positionGrapplePoint = grappling_hook.nearest_grapple_point.global_transform.origin
+		#var positionPlayer = player.global_transform.origin
 		player.velocity = player._physics_body.linear_velocity
 		player.move_and_slide()
 		if input_vector != Vector3.ZERO:

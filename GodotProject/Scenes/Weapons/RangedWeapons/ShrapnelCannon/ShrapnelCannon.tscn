@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://blqyiovspwi7m" path="res://Assets/Textures/UI/Shrapnel_Cannon_Icon.png" id="2_hd7vk"]
 [ext_resource type="PackedScene" uid="uid://beq13f8xapqh5" path="res://Scenes/Weapons/RangedWeapons/ShrapnelCannon/ShrapnelCannonBullet.tscn" id="3_y5qe3"]
 
-[node name="ShrapnelCannon" type="Node3D"]
+[node name="ShrapnelCannon" type="Node3D" groups=["ranged"]]
 script = ExtResource("1_ng84a")
 icon = ExtResource("2_hd7vk")
 bullet = ExtResource("3_y5qe3")

@@ -9,9 +9,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_q72rh"]
 size = Vector3(0.25, 2.2, 0.25)
 
-[node name="Cutter" type="Node3D"]
+[node name="Cutter" type="Node3D" groups=["melee"]]
 script = ExtResource("1_vf8ox")
-_id = 1
 icon = ExtResource("2_6xntn")
 damage = 10
 bullet = ExtResource("2_hv2fr")

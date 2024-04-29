@@ -7,6 +7,7 @@ var nearest_grapple_point
 
 var grappling: bool = false
 var joint
+var direction_normal_to_origin: Vector3 = Vector3.ZERO
 
 func _ready():
 	set_physics_process(false)
@@ -50,6 +51,7 @@ func update_rope_transform(grapple_point_position: Vector3) -> void:
 	
 	$Rope.global_position = gadget_pos + direction / 2.0
 	direction = direction.normalized()
+	direction_normal_to_origin = direction
 	rope.scale = Vector3(rope.scale.x, rope.scale.y, distance)
 	rope.look_at_from_position($Rope.global_position, grapple_point_position, Vector3.UP)
 

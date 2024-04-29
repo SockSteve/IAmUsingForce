@@ -12,9 +12,8 @@ material = SubResource("StandardMaterial3D_draq8")
 [sub_resource type="BoxShape3D" id="BoxShape3D_q72rh"]
 size = Vector3(0.25, 2.2, 0.25)
 
-[node name="WavePounder" type="Node3D"]
+[node name="WavePounder" type="Node3D" groups=["melee"]]
 script = ExtResource("1_njs3y")
-_id = 4
 icon = ExtResource("2_iopr3")
 
 [node name="WeaponSkin" type="MeshInstance3D" parent="."]

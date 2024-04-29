@@ -24,12 +24,12 @@
 [ext_resource type="Texture2D" uid="uid://20dy3gqyvxc4" path="res://Assets/Textures/Weapons/GunIconPlaceholder.png" id="22_glpdi"]
 [ext_resource type="Texture2D" uid="uid://dmf404ftfexwl" path="res://Assets/Decals/DropShadow/Shadow.png" id="22_gwf8y"]
 [ext_resource type="Texture2D" uid="uid://dgw7m61h14vu7" path="res://Assets/Textures/Weapons/CutterIconPlaceholder.png" id="23_g7wgb"]
-[ext_resource type="Texture2D" uid="uid://d1gugcb55vqdk" path="res://Assets/Textures/UI/HitPoint.png" id="24_6g3o4"]
+[ext_resource type="Texture2D" uid="uid://bsge2yls5o5jg" path="res://Assets/Textures/UI/HitPoint.png" id="24_6g3o4"]
 [ext_resource type="Texture2D" uid="uid://c7w5uwta2tc47" path="res://Assets/Textures/Weapons/ShrapnelCannonIconPlaceholder.png" id="25_tbtdg"]
 [ext_resource type="Texture2D" uid="uid://c1knfkq4sxase" path="res://Assets/Textures/Weapons/WavePunderIconPlaceholder.png" id="26_7blup"]
 [ext_resource type="Script" path="res://Scenes/Characters/Player/StartMenu.gd" id="28_r3h2c"]
 [ext_resource type="Texture2D" uid="uid://dccgws1gvwa1m" path="res://Assets/Textures/UI/Money.png" id="28_wddji"]
-[ext_resource type="Texture2D" uid="uid://bkqdlx45ftmvq" path="res://Assets/Textures/UI/BadPrankIcon.png" id="29_sc2yr"]
+[ext_resource type="Texture2D" uid="uid://cu57pg1cqjpqy" path="res://Assets/Textures/UI/BadPrankIcon.png" id="29_sc2yr"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_p4inm"]
 height = 1.50214
@@ -52,20 +52,7 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_ld2le")
-move_speed = null
-acceleration = 8.0
-crouch_move_speed = null
-jump_initial_impulse = null
-crouch_jump_initial_impulse = null
-jump_apex_gravity = null
-stopping_speed = null
-rotation_speed = null
-attack_impulse = null
-max_throwback_force = null
-parry_window = null
-block_time = null
 starting_loadout = PackedStringArray("res://Scenes/Weapons/RangedWeapons/Gun/Gun.tscn", "res://Scenes/Weapons/MeleeWeapons/Cutter/Cutter.tscn")
-slide_strength = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
@@ -162,9 +149,6 @@ debug_shape_custom_color = Color(0, 1, 0, 1)
 
 [node name="CharacterSkin" parent="CharacterRotationRoot" instance=ExtResource("15_7yrxv")]
 unique_name_in_owner = true
-
-[node name="Hand" parent="CharacterRotationRoot/CharacterSkin" index="2"]
-transform = Transform3D(-0.0455863, -0.00217363, 0.998958, 0.998819, -0.0169131, 0.0455431, 0.0167964, 0.999855, 0.00294214, -0.0474307, 1.28806, 0.311383)
 
 [node name="PlayerHand" type="Node3D" parent="CharacterRotationRoot/CharacterSkin"]
 unique_name_in_owner = true

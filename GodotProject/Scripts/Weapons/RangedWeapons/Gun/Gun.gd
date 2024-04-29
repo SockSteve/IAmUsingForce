@@ -16,9 +16,8 @@ func _process(delta):
 func shoot():
 	var bullet = bullet.instantiate()
 	#add child to character out of rotational root detached from any player transform
-	get_parent().get_parent().get_parent().add_child(bullet)
+	get_parent().get_parent().get_parent().get_parent().add_child(bullet)
 	#get_tree().root.add_child(bullet)
-	print(bullet)
 
 	# Set the bullet's position to the gun's position
 	bullet.global_transform.origin = global_transform.origin
