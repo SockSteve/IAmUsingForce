@@ -80,8 +80,8 @@ func end_grapple():
 var interp_time = 0.0
 func move_to_distance(delta) -> bool:
 	if player.global_position.distance_to(grappling_hook.nearest_grapple_point.global_position) >= grappling_hook.nearest_grapple_point.target_distance:
-		print(player.global_position.distance_to(grappling_hook.nearest_grapple_point.global_position))
-		print(grappling_hook.nearest_grapple_point.target_distance)
+		#print(player.global_position.distance_to(grappling_hook.nearest_grapple_point.global_position))
+		#print(grappling_hook.nearest_grapple_point.target_distance)
 		#interpolate to point
 		interp_time += delta
 		player.global_position = player.global_position.lerp(grappling_hook.nearest_grapple_point.global_position,interp_time)

@@ -26,11 +26,8 @@ func attack():
 	#var advance_direction = -player.global_transform.basis.z.normalized()  # Forward direction, -z is forward
 	var advance_direction = -player._rotation_root.transform.basis.z.normalized()
 	
-	print(player.combo_step)
-	
 	match player.combo_step:
 		0:
-			print('debug')
 			player._character_skin.attack(player.combo_step)
 			move_character(advance_direction, advance_distance)
 			player.combo_step += 1

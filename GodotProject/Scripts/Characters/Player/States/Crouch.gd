@@ -78,7 +78,7 @@ func apply_slide_impulse() -> void:
 	#var impulse = slide_direction * player.slide_strength  # Calculate the impulse vector.
 
 	# Apply the impulse to the character's velocity
-	print(player._rotation_root.transform.basis, " VB: ", Vector3.BACK, " slide_strength: ", player.slide_strength )
+	#print(player._rotation_root.transform.basis, " VB: ", Vector3.BACK, " slide_strength: ", player.slide_strength )
 	player.velocity = player._rotation_root.transform.basis * Vector3.BACK * player.slide_strength
 
 

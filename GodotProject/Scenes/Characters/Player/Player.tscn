@@ -1,10 +1,11 @@
-[gd_scene load_steps=37 format=3 uid="uid://c0d3bmprmf8q0"]
+[gd_scene load_steps=38 format=3 uid="uid://c0d3bmprmf8q0"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.gd" id="1_ld2le"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/CameraController.gd" id="2_7jqee"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/StateMachine.gd" id="3_82ko5"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Idle.gd" id="4_h88q0"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Run.gd" id="5_dheqf"]
+[ext_resource type="Script" path="res://Scenes/Characters/Player/Damaged.gd" id="5_h0rer"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Crouch.gd" id="6_q58v3"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Grapple.gd" id="6_r5qvj"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Air.gd" id="6_wo20p"]
@@ -67,6 +68,9 @@ script = ExtResource("4_h88q0")
 
 [node name="Run" type="Node" parent="StateMachine"]
 script = ExtResource("5_dheqf")
+
+[node name="Damaged" type="Node" parent="StateMachine"]
+script = ExtResource("5_h0rer")
 
 [node name="Air" type="Node" parent="StateMachine"]
 script = ExtResource("6_wo20p")
@@ -360,6 +364,7 @@ horizontal_alignment = 2
 
 [node name="StartMenu" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -429,7 +434,6 @@ layout_mode = 2
 text = "Exit to Main Menu"
 
 [node name="SSMOptionsMenu" type="Control" parent="CanvasLayer/StartMenu"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

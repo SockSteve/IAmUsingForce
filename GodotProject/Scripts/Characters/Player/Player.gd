@@ -106,6 +106,14 @@ func _orient_character_to_direction(direction: Vector3, delta: float, up_vector:
 		model_scale
 	)
 
+func _orient_magnetized_character_to_direction(direction: Vector3, delta: float, up_vector: Vector3 = Vector3.UP) -> void:
+	var left_axis := up_vector.cross(direction)
+	var rotation_basis := Basis(left_axis, up_vector, direction).get_rotation_quaternion()
+	var model_scale := _rotation_root.transform.basis.get_scale()
+	self.transform.basis = Basis(_rotation_root.transform.basis.get_rotation_quaternion().slerp(rotation_basis, delta * rotation_speed)).scaled(
+		model_scale
+	)
+
 """
 function for changing the player physics to that of a ridgidbody (here @PhysicsBody)
 called in - @Node StateMachine

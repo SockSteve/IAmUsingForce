@@ -44,7 +44,7 @@ func endGrind():
 func change_grindrail(dir):
 	player._character_skin.end_grind()
 	path_follow_3d.queue_free()
-	print(path_3d == player.get_gadget("GrindBootsV2").get_side_rail_path3d(dir))
+	#print(path_3d == player.get_gadget("GrindBootsV2").get_side_rail_path3d(dir))
 	path_3d = player.get_gadget("GrindBootsV2").get_side_rail_path3d(dir)
 	player.get_gadget("GrindBootsV2").clear_grindrail_exceptions()
 	player.get_gadget("GrindBootsV2").canGrind=true
