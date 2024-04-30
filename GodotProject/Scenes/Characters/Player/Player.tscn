@@ -150,6 +150,9 @@ debug_shape_custom_color = Color(0, 1, 0, 1)
 [node name="CharacterSkin" parent="CharacterRotationRoot" instance=ExtResource("15_7yrxv")]
 unique_name_in_owner = true
 
+[node name="AnimationTree" parent="CharacterRotationRoot/CharacterSkin" index="1"]
+parameters/armtransition/current_state = "hold_gun"
+
 [node name="PlayerHand" type="Node3D" parent="CharacterRotationRoot/CharacterSkin"]
 unique_name_in_owner = true
 script = ExtResource("16_mjyse")

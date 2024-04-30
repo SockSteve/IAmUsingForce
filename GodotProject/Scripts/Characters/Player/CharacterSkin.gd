@@ -8,6 +8,7 @@ signal foot_step
 var moving_blend_path := "parameters/sm_normal/move/blend_position"
 var crouch_moving_blend_path := "parameters/sm_crouch/move/blend_position"
 var transition_state_mashine_request := "parameters/transition/transition_request"
+var arm_transition_state_mashine_request := "parameters/armtransition/transition_request"
 # False : set animation to "idle"
 # True : set animation to "move"
 @onready var moving : bool = false : set = set_moving
@@ -23,7 +24,7 @@ var transition_state_mashine_request := "parameters/transition/transition_reques
 @onready var sm_grind : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_grind/playback")
 @onready var sm_grapple : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_grapple/playback")
 @onready var sm_melee : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_melee/playback")
-
+@onready var sm_armtransitions : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_normal/playback")
 
 func _ready():
 	pass
@@ -77,6 +78,9 @@ func slide():
 func uncrouch():
 	animation_tree.set(transition_state_mashine_request, "state_normal")
 	state_machine.travel("idle")
+
+func change_weapon(weapon:StringName):
+	animation_tree.set(arm_transition_state_mashine_request, weapon.to_lower())
 
 func attack(attack_counter):
 	animation_tree.set(transition_state_mashine_request, "state_melee")

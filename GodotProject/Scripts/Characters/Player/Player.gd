@@ -98,15 +98,7 @@ func _get_camera_oriented_input() -> Vector3:
 """
 function for smoothly rotating the player towards a given direction
 """
-func _orient_character_to_direction(direction: Vector3, delta: float) -> void:
-	var left_axis := Vector3.UP.cross(direction)
-	var rotation_basis := Basis(left_axis, Vector3.UP, direction).get_rotation_quaternion()
-	var model_scale := _rotation_root.transform.basis.get_scale()
-	_rotation_root.transform.basis = Basis(_rotation_root.transform.basis.get_rotation_quaternion().slerp(rotation_basis, delta * rotation_speed)).scaled(
-		model_scale
-	)
-
-func _orient_character_to_rotation_and_direction(direction: Vector3, up_vector: Vector3, delta: float) -> void:
+func _orient_character_to_direction(direction: Vector3, delta: float, up_vector: Vector3 = Vector3.UP) -> void:
 	var left_axis := up_vector.cross(direction)
 	var rotation_basis := Basis(left_axis, up_vector, direction).get_rotation_quaternion()
 	var model_scale := _rotation_root.transform.basis.get_scale()
@@ -147,6 +139,7 @@ called in - @function _ready()
 """
 func put_in_hand(weapon_or_gadget: Node):
 	hand.add_or_replace_item_to_hand(weapon_or_gadget)
+	_character_skin.change_weapon(weapon_or_gadget.name)
 
 func attack():
 	pass
