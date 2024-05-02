@@ -707,7 +707,7 @@ wait_time = 0.5
 [node name="AttackTimer" type="Timer" parent="."]
 
 [node name="DropShadow" type="Decal" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.56409, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.62, 0)
 layers = 96
 size = Vector3(1, 7.27661, 1)
 texture_albedo = ExtResource("22_gwf8y")

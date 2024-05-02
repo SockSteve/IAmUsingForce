@@ -11,8 +11,7 @@ func enter(_msg := {}) -> void:
 func physics_update(delta: float) -> void:
 	if player.sliding:
 		apply_slide_impulse()
-		var slide_friction = .1
-		#player.velocity = player.velocity.lerp(Vector3.ZERO, slide_friction * delta)
+
 		player.move_and_slide()
 		if Input.is_action_just_pressed("jump"):
 			player.sliding = false

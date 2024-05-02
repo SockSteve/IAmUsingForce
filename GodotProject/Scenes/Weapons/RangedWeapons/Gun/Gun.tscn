@@ -8,6 +8,8 @@
 [node name="Gun" type="Node3D" groups=["ranged"]]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.105589, 0, -0.172745)
 script = ExtResource("1_eansb")
+_name = "Gun"
+upgrade_name = "KoiKoi"
 icon = ExtResource("2_h3xh3")
 bullet = ExtResource("2_j5oes")
 

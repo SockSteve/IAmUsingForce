@@ -2,12 +2,13 @@ extends Node3D
 class_name Weapon
 
 @export var _name : String = ""
+@export var upgrade_name: String = ""
 @export var _attributes : Dictionary = {}
 
 @export var icon : Texture2D
 @export var shop_price: int = 0
+@export var upgrade_shop_price: int = 0
 @export var bullet_price: int = 0
-@export var upgrade_name: String = ""
 @export var damage: int = 1
 @export var current_ammunition: int = 1
 @export var max_ammunition: int = 1

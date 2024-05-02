@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7ddlf7ujhwcv"]
+
+[ext_resource type="Script" path="res://Scenes/Characters/Enemies/StationaryTurret/TestEnemyBullet_1.gd" id="1_i0xrh"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_e2hnk"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ilr6n"]
+radius = 0.386744
+
+[node name="TestEnemyBullet_1" type="Node3D"]
+script = ExtResource("1_i0xrh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("SphereMesh_e2hnk")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_ilr6n")
