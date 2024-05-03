@@ -14,7 +14,6 @@ func shoot():
 	var bullet = bullet.instantiate()
 	#add child to character out of rotational root detached from any player transform
 	get_parent().add_child(bullet)
-	#get_tree().root.add_child(bullet)
 
 	# Set the bullet's position to the gun's position
 	bullet.global_transform.origin = $Marker3D.global_transform.origin

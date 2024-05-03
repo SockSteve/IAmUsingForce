@@ -22,12 +22,8 @@ func _physics_process(delta):
 		velocity.y -= gravity * delta
 
 	var direction: Vector3 = Vector3()
-	if player != null:
-		direction = position.direction_to(player.global_position)
-		var left_axis := Vector3.UP.cross(direction)
-		var rotation_basis := Basis(left_axis, Vector3.UP, direction).get_rotation_quaternion()
-		transform.basis = Basis(transform.basis.get_rotation_quaternion().slerp(rotation_basis, delta * 10.0))
-		#transform.basis.z = transform.basis.z * -1
+	if player != null and animation_player.current_animation != "attack":
+		HelperLibrary.smooth_3d_rotate_towards(self, player, 10.0, delta)
 		nav.target_position = player.global_position
 		direction = nav.get_next_path_position() - global_position
 		direction = direction.normalized()
@@ -54,11 +50,9 @@ func _on_attack_hitbox_body_entered(body: Node):
 	if body.is_in_group("player"):
 		print("ouch")
 
-
 func _on_area_3d_body_entered(body):
 	if body.is_in_group("player"):
 		player = body
-
 
 func _on_area_3d_body_exited(body):
 	if body.is_in_group("player"):

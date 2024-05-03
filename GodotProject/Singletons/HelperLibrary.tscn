@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://5r8b5s4gkgev"]
+
+[ext_resource type="Script" path="res://Singletons/HelperLibrary.gd" id="1_ejwk5"]
+
+[node name="GdUtils" type="Node"]
+script = ExtResource("1_ejwk5")
