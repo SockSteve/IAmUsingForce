@@ -15,5 +15,12 @@ func smooth_3d_rotate_towards(rot_source:Node3D, rot_target:Node3D, weight:float
 	var direction = rot_source.position.direction_to(rot_target.global_position)
 	var left_axis := up_vector.cross(direction)
 	var rotation_basis := Basis(left_axis, up_vector, direction).get_rotation_quaternion()
-	rot_source.transform.basis = Basis(rot_source.transform.basis.get_rotation_quaternion().slerp(rotation_basis, delta * 10.0))
+	rot_source.transform.basis = Basis(rot_source.transform.basis.get_rotation_quaternion().slerp(rotation_basis, delta * weight))
+	return direction
+
+func smooth_3d_rotate_towards_Vector(rot_source:Node3D, rot_target:Vector3, weight:float, delta: float, up_vector:Vector3=Vector3.UP):
+	var direction = rot_source.position.direction_to(rot_target)
+	var left_axis := up_vector.cross(direction)
+	var rotation_basis := Basis(left_axis, up_vector, direction).get_rotation_quaternion()
+	rot_source.transform.basis = Basis(rot_source.transform.basis.get_rotation_quaternion().slerp(rotation_basis, delta * weight))
 	return direction
