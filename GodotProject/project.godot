@@ -20,6 +20,7 @@ config/icon="res://SockSethLogo.png"
 GameHandler="*res://Singletons/GameHandler.tscn"
 DebugLibrary="*res://Singletons/DebugLibrary.tscn"
 HelperLibrary="*res://Singletons/HelperLibrary.tscn"
+BulletContainer="*res://Singletons/BulletContainer.tscn"
 
 [editor_plugins]
 

@@ -35,9 +35,5 @@ mesh = SubResource("CylinderMesh_8bik6")
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.825)
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
-debug_shape_custom_color = Color(0, 0, 1, 1)
-debug_shape_thickness = 4
-
 [connection signal="body_entered" from="CollisionShape3D2" to="." method="_on_collision_shape_3d_2_body_entered"]
 [connection signal="body_exited" from="CollisionShape3D2" to="." method="_on_collision_shape_3d_2_body_exited"]

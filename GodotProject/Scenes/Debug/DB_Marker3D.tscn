@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj5j4nrv5loyv"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_kdvcx"]
+
+[node name="DebugMarker3D" type="Marker3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.3, 0, 0, 0)
+mesh = SubResource("SphereMesh_kdvcx")

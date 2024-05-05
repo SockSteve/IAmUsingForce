@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cbg2qc717km4f"]
+[gd_scene load_steps=6 format=3 uid="uid://cbg2qc717km4f"]
 
 [ext_resource type="Script" path="res://Scenes/Characters/Enemies/MovingSmallEnemyRanged/sm_testranged.gd" id="1_7rerk"]
+[ext_resource type="PackedScene" uid="uid://b1nlc7o2d0leo" path="res://Scenes/Characters/Enemies/StationaryTurret/StationaryTurret.tscn" id="2_wnswj"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yduf6"]
 
@@ -15,6 +16,9 @@ script = ExtResource("1_7rerk")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
+[node name="StationaryTurret" parent="." instance=ExtResource("2_wnswj")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.824102, 0)
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_yduf6")
@@ -22,3 +26,8 @@ shape = SubResource("CapsuleShape3D_yduf6")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("CapsuleMesh_hx6w7")
+
+[node name="SleepTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="SleepTimer" to="." method="_on_sleep_timer_timeout"]

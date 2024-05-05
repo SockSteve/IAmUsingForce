@@ -11,7 +11,12 @@ func update(delta: float) -> void:
 	if player.freeze:
 		return
 	
+	if not player.is_on_floor():
+		player.velocity.y -= player._gravity * delta
+	player.move_and_slide()
+	
 	player._character_skin.set_moving(false)
+	
 	if  Input.is_action_pressed("gadget"):
 		state_machine.transition_to("Grapple")
 		

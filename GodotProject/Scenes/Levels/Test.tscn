@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://cfv2ecbe68yfi"]
+[gd_scene load_steps=36 format=3 uid="uid://cfv2ecbe68yfi"]
 
 [ext_resource type="Texture2D" uid="uid://dk3g261yc4qry" path="res://Assets/Placeholders/Environment/Skyboxes/panorama_image.png" id="1_mhjnm"]
 [ext_resource type="Texture2D" uid="uid://bid2isp42co6r" path="res://addons/kenney_prototype_textures/orange/texture_01.png" id="1_y6805"]
@@ -14,9 +14,13 @@
 [ext_resource type="ArrayMesh" uid="uid://5w2uthxujf6a" path="res://Assets/Models/Weapons/knife_smooth.obj" id="12_8u44m"]
 [ext_resource type="ArrayMesh" uid="uid://cw25l0jej84hr" path="res://Assets/Models/Weapons/pistol.obj" id="13_pndr6"]
 [ext_resource type="ArrayMesh" uid="uid://cpjc161jj8kox" path="res://Assets/Models/Weapons/shotgun.obj" id="14_qv7x6"]
-[ext_resource type="PackedScene" uid="uid://b1nlc7o2d0leo" path="res://Scenes/Characters/Enemies/StationaryTurret/TestEnemy_1.tscn" id="15_20i8t"]
+[ext_resource type="PackedScene" uid="uid://b1nlc7o2d0leo" path="res://Scenes/Characters/Enemies/StationaryTurret/StationaryTurret.tscn" id="15_20i8t"]
 [ext_resource type="PackedScene" uid="uid://oun126a7s625" path="res://Scenes/Characters/Enemies/StationaryLookAtTurret/TestEnemy_2.tscn" id="16_a0aqu"]
+[ext_resource type="PackedScene" uid="uid://cbg2qc717km4f" path="res://Scenes/Characters/Enemies/MovingSmallEnemyRanged/sm_testranged.tscn" id="16_bkljh"]
 [ext_resource type="PackedScene" uid="uid://ckkun5xjhksvs" path="res://Scenes/Characters/Enemies/movingSmallEnemyMelee/sm_testenemy.tscn" id="17_5qu7l"]
+[ext_resource type="PackedScene" uid="uid://bv5y01h2xtad" path="res://Sandbox/point_spawner.tscn" id="19_564na"]
+[ext_resource type="PackedScene" uid="uid://bb6l672p5wvsp" path="res://Scenes/Characters/Enemies/MovingMediumEnemyMelee/MM_MeleeEnemy.tscn" id="20_v1cmt"]
+[ext_resource type="PackedScene" uid="uid://ch5epmh7ggis1" path="res://Scenes/Characters/Enemies/MovingMediumEnemyRanged/MM_RangedEnemy.tscn" id="21_x3tu2"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_30l7b"]
 panorama = ExtResource("1_mhjnm")
@@ -68,12 +72,16 @@ point_count = 3
 albedo_texture = ExtResource("7_eov66")
 uv1_triplanar = true
 
-[sub_resource type="BoxMesh" id="BoxMesh_llufc"]
-
 [sub_resource type="NavigationMesh" id="NavigationMesh_2evub"]
-vertices = PackedVector3Array(-6.34192, -3.38376, -8.23501, -6.34192, -3.38376, 0.764994, 3.15808, -3.38376, 0.764994, 3.15808, -3.38376, -8.23501, 12.6581, -3.38376, -8.23501, 3.15808, -3.38376, -8.23501, 3.15808, -3.38376, 0.764994, 12.6581, -3.38376, 0.764994)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5)]
+vertices = PackedVector3Array(-2.59192, -3.38627, -3.23501, -2.34192, -3.38627, -2.23501, -1.09192, -3.38627, -2.23501, -0.84192, -3.38627, -3.23501, -0.84192, -3.38627, -3.23501, 0.40808, -3.38627, -3.23501, 3.15808, -3.38627, -8.23501, -6.34192, -3.38627, -8.23501, -6.34192, -3.38627, -3.48501, 0.40808, -3.38627, -3.23501, 0.65808, -3.38627, -2.23501, 1.90808, -3.38627, -2.23501, 2.15808, -3.38627, -3.23501, 3.15808, -3.38627, -8.23501, -6.34192, -3.38627, -3.48501, -2.59192, -3.38627, -3.23501, -0.84192, -3.38627, -3.23501, -6.34192, -3.38627, -3.48501, -3.84192, -3.38627, -3.23501, -2.59192, -3.38627, -3.23501, 2.15808, -3.38627, -3.23501, 3.15808, -3.38627, -3.23501, 3.15808, -3.38627, -8.23501, 3.65808, -3.38627, -1.48501, 2.90808, -3.38627, -1.23501, 2.90808, -3.38627, 0.76499, 12.6581, -3.38627, 0.76499, 3.15808, -3.38627, -8.23501, 3.15808, -3.38627, -3.23501, 3.65808, -3.38627, -2.98501, 12.6581, -3.38627, 0.76499, 12.6581, -3.38627, -8.23501, 3.65808, -3.38627, -2.98501, 3.65808, -3.38627, -1.48501, 12.6581, -3.38627, 0.76499, 23.4081, -3.38627, -8.23501, 23.4081, -3.38627, 0.76499, 32.9081, -3.38627, 0.76499, 32.9081, -3.38627, -8.23501, 42.4081, -3.38627, -8.23501, 32.9081, -3.38627, -8.23501, 32.9081, -3.38627, 0.76499, 42.4081, -3.38627, 0.76499, 1.90808, -3.38627, -1.48501, 1.90808, -3.38627, -2.23501, 0.65808, -3.38627, -2.23501, 0.40808, -3.38627, -1.23501, 2.90808, -3.38627, 0.76499, -0.84192, -3.38627, -1.23501, -2.59192, -3.38627, -1.23501, -6.34192, -3.38627, 0.76499, -0.84192, -3.38627, -1.23501, -1.09192, -3.38627, -2.23501, -2.34192, -3.38627, -2.23501, -2.59192, -3.38627, -1.23501, 2.90808, -3.38627, 0.76499, 0.40808, -3.38627, -1.23501, -0.84192, -3.38627, -1.23501, 2.90808, -3.38627, 0.76499, 2.90808, -3.38627, -1.23501, 1.90808, -3.38627, -1.48501, 0.40808, -3.38627, -1.23501, -2.59192, -3.38627, -1.23501, -3.84192, -3.38627, -1.23501, -6.34192, -3.38627, 0.76499, -3.84192, -3.38627, -1.23501, -3.84192, -3.38627, -3.23501, -6.34192, -3.38627, -3.48501, -6.34192, -3.38627, 0.76499)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 8), PackedInt32Array(6, 8, 7), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 12), PackedInt32Array(12, 9, 13), PackedInt32Array(16, 15, 14), PackedInt32Array(19, 18, 17), PackedInt32Array(22, 21, 20), PackedInt32Array(24, 23, 25), PackedInt32Array(25, 23, 26), PackedInt32Array(28, 27, 29), PackedInt32Array(29, 27, 31), PackedInt32Array(29, 31, 30), PackedInt32Array(34, 33, 32), PackedInt32Array(38, 37, 35), PackedInt32Array(35, 37, 36), PackedInt32Array(42, 41, 39), PackedInt32Array(39, 41, 40), PackedInt32Array(44, 43, 45), PackedInt32Array(45, 43, 46), PackedInt32Array(48, 47, 49), PackedInt32Array(49, 47, 50), PackedInt32Array(52, 51, 53), PackedInt32Array(53, 51, 54), PackedInt32Array(57, 56, 55), PackedInt32Array(60, 59, 61), PackedInt32Array(61, 59, 58), PackedInt32Array(64, 63, 62), PackedInt32Array(66, 65, 67), PackedInt32Array(67, 65, 68)]
 edge_max_length = 10.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3py54"]
+albedo_color = Color(0.615686, 0.815686, 0.815686, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_llufc"]
+material = SubResource("StandardMaterial3D_3py54")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ibcg5"]
 
@@ -268,12 +276,6 @@ spot_angle = 25.7001
 stream = ExtResource("5_b0j0h")
 volume_db = -15.928
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54323, 0)
-mesh = SubResource("BoxMesh_llufc")
-
 [node name="Vendor" parent="." instance=ExtResource("11_ahr15")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.2688, 1.30263, 2.59788)
 
@@ -293,6 +295,9 @@ mesh = ExtResource("13_pndr6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0093, 0.821194, 2.37675)
 mesh = ExtResource("14_qv7x6")
 
+[node name="SmTestranged" parent="." instance=ExtResource("16_bkljh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.7433, 1.59019, -15.3721)
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7518, 4.88889, -12.5466)
 navigation_mesh = SubResource("NavigationMesh_2evub")
@@ -304,6 +309,24 @@ transform = Transform3D(20, 0, 0, 0, 0.2, 0, 0, 0, 10, 3.15808, -3.78376, -3.735
 mesh = SubResource("BoxMesh_llufc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D2"]
+shape = SubResource("BoxShape3D_ibcg5")
+
+[node name="SmTestenemy" parent="NavigationRegion3D" instance=ExtResource("17_5qu7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.21874, -3.63553, -2.4534)
+
+[node name="SmTestenemy2" parent="NavigationRegion3D" instance=ExtResource("17_5qu7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16467, -3.63553, -2.4534)
+
+[node name="SmTestenemy3" parent="NavigationRegion3D" instance=ExtResource("17_5qu7l")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.80398, -3.63553, -2.4534)
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(20, 0, 0, 0, 0.2, 0, 0, 0, 10, 32.95, -3.78376, -3.735)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D3"]
+mesh = SubResource("BoxMesh_llufc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D3"]
 shape = SubResource("BoxShape3D_ibcg5")
 
 [node name="TestEnemy_1" parent="." instance=ExtResource("15_20i8t")]
@@ -321,11 +344,11 @@ transform = Transform3D(-0.948809, 0, -0.315848, 0, 1, 0, 0.315848, 0, -0.948809
 [node name="TestEnemy_2" parent="." instance=ExtResource("16_a0aqu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.5099, 1.59159, 16.6657)
 
-[node name="SmTestenemy" parent="." instance=ExtResource("17_5qu7l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.53306, 1.25336, -15)
+[node name="pointspawner" parent="." instance=ExtResource("19_564na")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.4345, 1.30768, -2.01003)
 
-[node name="SmTestenemy2" parent="." instance=ExtResource("17_5qu7l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.58713, 1.25336, -15)
+[node name="MM_MeleeEnemy" parent="." instance=ExtResource("20_v1cmt")]
+transform = Transform3D(0.999999, -0.000898777, 0.000713599, 0.000898467, 0.999999, 0.000419381, -0.00071399, -0.000418715, 1, 24.5195, 1.73462, -12.3167)
 
-[node name="SmTestenemy3" parent="." instance=ExtResource("17_5qu7l")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.55578, 1.25336, -15)
+[node name="MmRangedEnemy" parent="." instance=ExtResource("21_x3tu2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.1381, 0.767384, -4.86615)

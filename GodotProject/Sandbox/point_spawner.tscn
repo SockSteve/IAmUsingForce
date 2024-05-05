@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bv5y01h2xtad"]
+
+[ext_resource type="Script" path="res://Sandbox/point_spawner.gd" id="1_ul2kc"]
+[ext_resource type="PackedScene" uid="uid://dj5j4nrv5loyv" path="res://Scenes/Debug/DB_Marker3D.tscn" id="2_kl6aa"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_akka5"]
+size = Vector3(0.2, 1, 0.2)
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_ul2kc")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_akka5")
+
+[node name="Marker3D" parent="MeshInstance3D" instance=ExtResource("2_kl6aa")]
