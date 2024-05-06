@@ -48,7 +48,7 @@ material = SubResource("StandardMaterial3D_dm5n6")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_grq1b"]
 
-[node name="Player" type="CharacterBody3D" groups=["player"]]
+[node name="Player" type="CharacterBody3D" groups=["damageables", "player"]]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://cfv2ecbe68yfi"]
+[gd_scene load_steps=39 format=3 uid="uid://cfv2ecbe68yfi"]
 
 [ext_resource type="Texture2D" uid="uid://dk3g261yc4qry" path="res://Assets/Placeholders/Environment/Skyboxes/panorama_image.png" id="1_mhjnm"]
 [ext_resource type="Texture2D" uid="uid://bid2isp42co6r" path="res://addons/kenney_prototype_textures/orange/texture_01.png" id="1_y6805"]
@@ -21,6 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://bv5y01h2xtad" path="res://Sandbox/point_spawner.tscn" id="19_564na"]
 [ext_resource type="PackedScene" uid="uid://bb6l672p5wvsp" path="res://Scenes/Characters/Enemies/MovingMediumEnemyMelee/MM_MeleeEnemy.tscn" id="20_v1cmt"]
 [ext_resource type="PackedScene" uid="uid://ch5epmh7ggis1" path="res://Scenes/Characters/Enemies/MovingMediumEnemyRanged/MM_RangedEnemy.tscn" id="21_x3tu2"]
+[ext_resource type="PackedScene" uid="uid://beykhmrsswsgc" path="res://Scenes/Characters/Enemies/BigEnemyMeleeRanged/BM_BigEnemy.tscn" id="22_ci7y7"]
+[ext_resource type="PackedScene" uid="uid://3vftd3ge5inj" path="res://Scenes/AlteredBaseScenes/HitBoxArea3D.tscn" id="23_8o1fk"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_30l7b"]
 panorama = ExtResource("1_mhjnm")
@@ -84,6 +86,9 @@ albedo_color = Color(0.615686, 0.815686, 0.815686, 1)
 material = SubResource("StandardMaterial3D_3py54")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ibcg5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qidly"]
+size = Vector3(3.66248, 2.71436, 1.91992)
 
 [node name="Node3D" type="Node3D"]
 
@@ -352,3 +357,13 @@ transform = Transform3D(0.999999, -0.000898777, 0.000713599, 0.000898467, 0.9999
 
 [node name="MmRangedEnemy" parent="." instance=ExtResource("21_x3tu2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.1381, 0.767384, -4.86615)
+
+[node name="BmBigEnemy" parent="." instance=ExtResource("22_ci7y7")]
+transform = Transform3D(-0.0264386, 0, -0.99965, 0, 1, 0, 0.99965, 0, -0.0264386, 29.4519, 0.678023, -5.55456)
+
+[node name="HitBoxArea3D" parent="." instance=ExtResource("23_8o1fk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6684, 0.678023, -2.47581)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBoxArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.256531, 1.36892, -0.459961)
+shape = SubResource("BoxShape3D_qidly")
