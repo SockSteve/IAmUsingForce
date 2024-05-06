@@ -28,6 +28,7 @@ class_name Player
 @onready var _physics_body: RigidBody3D = $PhysicsBody
 @onready var _character_skin := $CharacterRotationRoot/CharacterSkin
 @onready var hand = %PlayerHand
+@onready var collision_shape := $CollisionShape3D
 #@onready var _attack_animation_player: AnimationPlayer = $CharacterRotationRoot/MeleeAnchor/AnimationPlayer
 
 @onready var _move_direction := Vector3.ZERO
@@ -141,10 +142,7 @@ func get_gadget(gadget: String):
 func add_gadget(gadget):
 	inventory.add_gadget(gadget)
 
-"""
-function for adding a weapon to the hand
-called in - @function _ready()
-"""
+#function for putting a weapon in hand - called from player hand
 func put_in_hand(weapon_or_gadget: Node):
 	hand.add_or_replace_item_to_hand(weapon_or_gadget)
 	_character_skin.change_weapon(weapon_or_gadget.name)

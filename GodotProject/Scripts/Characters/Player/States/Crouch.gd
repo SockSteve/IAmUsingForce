@@ -1,16 +1,18 @@
 extends PlayerState
 func enter(_msg := {}) -> void:
+	start_crouch()
 	if _msg.has("do_slide"):
 		# Start the slide animation
 		player._character_skin.slide()
 		player.sliding = true
+		player.slide_timer.start(player.slide_duration)
 		slide()
 	else:
 		player._character_skin.crouch()
 
 func physics_update(delta: float) -> void:
 	if player.sliding:
-		apply_slide_impulse()
+		slide()
 
 		player.move_and_slide()
 		if Input.is_action_just_pressed("jump"):
@@ -66,20 +68,20 @@ func physics_update(delta: float) -> void:
 		state_machine.transition_to("Grapple")
 
 func slide():
-	player.slide_timer.start(player.slide_duration)
 	# Apply an initial forward impulse to the character
-	apply_slide_impulse()
-	
-
-func apply_slide_impulse() -> void:
-	#var slide_direction = player.global_transform.basis.z.normalized()  # This assumes that the character slides forward.
 	var slide_direction = player._move_direction
-	#var impulse = slide_direction * player.slide_strength  # Calculate the impulse vector.
-
-	# Apply the impulse to the character's velocity
-	#print(player._rotation_root.transform.basis, " VB: ", Vector3.BACK, " slide_strength: ", player.slide_strength )
 	player.velocity = player._rotation_root.transform.basis * Vector3.BACK * player.slide_strength
 
+func start_crouch():
+	#func crouch():
+	#var motion_param := PhysicsTestMotionParameters3D.new()
+	#motion_param.motion = Vector3.UP
+	#PhysicsServer3D.body_test_motion(collision_shape,motion_param) 
+	#move_and_collide()
+	pass
+
+func uncrouch():
+	pass
 
 func _on_slide_timer_timeout():
 	player.sliding = false
