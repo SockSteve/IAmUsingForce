@@ -2,18 +2,13 @@ extends PlayerState
 func enter(_msg := {}) -> void:
 	start_crouch()
 	if _msg.has("do_slide"):
-		# Start the slide animation
-		player._character_skin.slide()
-		player.sliding = true
-		player.slide_timer.start(player.slide_duration)
-		slide()
+		start_slide()
 	else:
 		player._character_skin.crouch()
 
 func physics_update(delta: float) -> void:
 	if player.sliding:
 		slide()
-
 		player.move_and_slide()
 		if Input.is_action_just_pressed("jump"):
 			player.sliding = false
@@ -42,8 +37,8 @@ func physics_update(delta: float) -> void:
 
 	# We separate out the y velocity to not interpolate on the gravity
 	var y_velocity := player.velocity.y
-	player.velocity.y = 0.0
-	player.velocity = player.velocity.lerp(player._move_direction * player.move_speed, player.acceleration * delta)
+	#change this to remove durifto
+	player.velocity = player.velocity.lerp(player._move_direction * player.crouch_move_speed, player.crouch_acceleration * delta)
 
 	if player._move_direction.length() == 0 and player.velocity.length() < player.stopping_speed:
 		player.velocity = Vector3.ZERO
@@ -53,7 +48,7 @@ func physics_update(delta: float) -> void:
 	var xz_velocity := Vector3(player.velocity.x, 0, player.velocity.z)
 	
 	player._character_skin.set_crouch_moving(true)
-	player._character_skin.set_crouch_moving_speed(inverse_lerp(0.0, player.move_speed, xz_velocity.length()))
+	player._character_skin.set_crouch_moving_speed(inverse_lerp(0.0, player.crouch_move_speed, xz_velocity.length()))
 	
 	player.move_and_slide()
 
@@ -67,13 +62,12 @@ func physics_update(delta: float) -> void:
 		player._character_skin.uncrouch()
 		state_machine.transition_to("Grapple")
 
-func slide():
-	# Apply an initial forward impulse to the character
-	var slide_direction = player._move_direction
-	player.velocity = player._rotation_root.transform.basis * Vector3.BACK * player.slide_strength
+
 
 func start_crouch():
-	#func crouch():
+	player.collision_shape.shape.height = player.collision_shape.shape.height / 2
+	player.collision_shape.position.y = player.collision_shape.position.y / 2
+	
 	#var motion_param := PhysicsTestMotionParameters3D.new()
 	#motion_param.motion = Vector3.UP
 	#PhysicsServer3D.body_test_motion(collision_shape,motion_param) 
@@ -81,7 +75,20 @@ func start_crouch():
 	pass
 
 func uncrouch():
-	pass
+	player.collision_shape.shape.height = player.collision_shape.shape.height * 2
+	player.collision_shape.position.y = player.collision_shape.position.y * 2
+
+func start_slide():
+	# Start the slide animation
+	player._character_skin.slide()
+	player.sliding = true
+	player.slide_timer.start(player.slide_duration)
+	slide()
+
+func slide():
+	# Apply an initial forward impulse to the character
+	var slide_direction = player._move_direction
+	player.velocity = player._rotation_root.transform.basis * Vector3.BACK * player.slide_strength
 
 func _on_slide_timer_timeout():
 	player.sliding = false

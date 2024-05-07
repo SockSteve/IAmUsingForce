@@ -6,14 +6,18 @@ class_name Player
 @export var move_speed := 12.0 # Character maximum run speed on the ground.
 @export var acceleration := 4.0 # Movement acceleration (how fast character achieve maximum speed)
 @export var crouch_move_speed := 6.0
+@export var crouch_acceleration := 2.0
+@export var crouch_rotation_speed := 16.0
+@export var slide_strength = 30.0
+@export var slide_duration = .5
 @export var jump_initial_impulse := 12.0 # Jump impulse
 @export var crouch_jump_initial_impulse := 16.0 # Jump impulse
 #@export var jump_additional_force := 4.5 # Jump impulse when player keeps pressing jump
 @export var jump_apex_gravity := -10
 @export var stopping_speed := 4.5
-@export var rotation_speed := 12.0 # Player model rotaion speed
+@export var _rotation_speed := 12.0 # Player model rotaion speed
 @export_group("Combat")
-@export var attack_impulse := 10.0 # Forward impulse after a melee attack.
+@export var attack_impulse := 100.0 # Forward impulse after a melee attack.
 @export var max_throwback_force := 15.0 # Max throwback force after player takes a hit
 @export var parry_window := .1
 @export var block_time := 2.0
@@ -28,7 +32,7 @@ class_name Player
 @onready var _physics_body: RigidBody3D = $PhysicsBody
 @onready var _character_skin := $CharacterRotationRoot/CharacterSkin
 @onready var hand = %PlayerHand
-@onready var collision_shape := $CollisionShape3D
+@onready var collision_shape: CollisionShape3D= $CollisionShape3D
 #@onready var _attack_animation_player: AnimationPlayer = $CharacterRotationRoot/MeleeAnchor/AnimationPlayer
 
 @onready var _move_direction := Vector3.ZERO
@@ -47,13 +51,10 @@ var is_attacking : bool = false
 var magnetized = false
 var grappling = false
 @onready var inventory = $Inventory
-#slide
-@export var slide_strength = 30.0
-var slide_velocity = Vector3(0, 0, -slide_strength)  # The Z-axis is assumed to be the forward axis.  # Adjust the strength and direction
-var slide_duration = .5  # Adjust duration as needed
+
 var sliding: bool = false
 var freeze: bool = false
-@onready var slide_timer = $SlideTimer
+@onready var slide_timer: Timer = $SlideTimer
 
 var current_weapon: Node
 var is_strafing: bool
@@ -99,7 +100,7 @@ func _get_camera_oriented_input() -> Vector3:
 """
 function for smoothly rotating the player towards a given direction
 """
-func _orient_character_to_direction(direction: Vector3, delta: float, up_vector: Vector3 = Vector3.UP) -> void:
+func _orient_character_to_direction(direction: Vector3, delta: float,rotation_speed:float=_rotation_speed, up_vector: Vector3 = Vector3.UP) -> void:
 	var left_axis := up_vector.cross(direction)
 	var rotation_basis := Basis(left_axis, up_vector, direction).get_rotation_quaternion()
 	var model_scale := _rotation_root.transform.basis.get_scale()
@@ -107,7 +108,7 @@ func _orient_character_to_direction(direction: Vector3, delta: float, up_vector:
 		model_scale
 	)
 
-func _orient_magnetized_character_to_direction(direction: Vector3, delta: float, up_vector: Vector3 = Vector3.UP) -> void:
+func _orient_magnetized_character_to_direction(direction: Vector3, delta: float,rotation_speed:float=_rotation_speed, up_vector: Vector3 = Vector3.UP) -> void:
 	var left_axis := up_vector.cross(direction)
 	var rotation_basis := Basis(left_axis, up_vector, direction).get_rotation_quaternion()
 	var model_scale := _rotation_root.transform.basis.get_scale()

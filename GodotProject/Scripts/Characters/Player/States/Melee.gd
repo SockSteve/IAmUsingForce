@@ -22,9 +22,9 @@ func physics_update(delta: float) -> void:
 
 func attack():
 	player.is_attacking = true
-	var advance_distance = 1.0  # Adjust as needed
+	var advance_distance = 10.0  # Adjust as needed
 	#var advance_direction = -player.global_transform.basis.z.normalized()  # Forward direction, -z is forward
-	var advance_direction = -player._rotation_root.transform.basis.z.normalized()
+	var advance_direction = player._rotation_root.transform.basis.z.normalized()
 	
 	match player.combo_step:
 		0:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cfv2ecbe68yfi"]
+[gd_scene load_steps=44 format=3 uid="uid://cfv2ecbe68yfi"]
 
 [ext_resource type="Texture2D" uid="uid://dk3g261yc4qry" path="res://Assets/Placeholders/Environment/Skyboxes/panorama_image.png" id="1_mhjnm"]
 [ext_resource type="Texture2D" uid="uid://bid2isp42co6r" path="res://addons/kenney_prototype_textures/orange/texture_01.png" id="1_y6805"]
@@ -20,9 +20,9 @@
 [ext_resource type="PackedScene" uid="uid://ckkun5xjhksvs" path="res://Scenes/Characters/Enemies/movingSmallEnemyMelee/sm_testenemy.tscn" id="17_5qu7l"]
 [ext_resource type="PackedScene" uid="uid://bv5y01h2xtad" path="res://Sandbox/point_spawner.tscn" id="19_564na"]
 [ext_resource type="PackedScene" uid="uid://bb6l672p5wvsp" path="res://Scenes/Characters/Enemies/MovingMediumEnemyMelee/MM_MeleeEnemy.tscn" id="20_v1cmt"]
-[ext_resource type="PackedScene" uid="uid://ch5epmh7ggis1" path="res://Scenes/Characters/Enemies/MovingMediumEnemyRanged/MM_RangedEnemy.tscn" id="21_x3tu2"]
 [ext_resource type="PackedScene" uid="uid://beykhmrsswsgc" path="res://Scenes/Characters/Enemies/BigEnemyMeleeRanged/BM_BigEnemy.tscn" id="22_ci7y7"]
 [ext_resource type="PackedScene" uid="uid://3vftd3ge5inj" path="res://Scenes/AlteredBaseScenes/HitBoxArea3D.tscn" id="23_8o1fk"]
+[ext_resource type="Texture2D" uid="uid://iqdglo4oetrr" path="res://addons/kenney_prototype_textures/orange/texture_04.png" id="24_gakps"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_30l7b"]
 panorama = ExtResource("1_mhjnm")
@@ -90,6 +90,24 @@ material = SubResource("StandardMaterial3D_3py54")
 [sub_resource type="BoxShape3D" id="BoxShape3D_qidly"]
 size = Vector3(3.66248, 2.71436, 1.91992)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_sl5xg"]
+size = Vector3(25, 1, 25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dpsv3"]
+albedo_texture = ExtResource("24_gakps")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_nmiw8"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_dpsv3")
+size = Vector3(25, 1, 25)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u8aat"]
+size = Vector3(5, 2, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_k1eka"]
+size = Vector3(5, 2, 5)
+
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -108,6 +126,7 @@ light_bake_mode = 1
 [node name="Map Geometry" type="Node3D" parent="."]
 
 [node name="Floor" type="CSGCombiner3D" parent="Map Geometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0003227, -0.00295138, 1.90735e-05)
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Map Geometry/Floor"]
@@ -268,7 +287,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0368, 1.39886, 57.5848)
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 6.25976, 1.39886, 58.9178)
 
 [node name="Player" parent="." instance=ExtResource("3_t8btd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6359, 0.734918, 0.962505)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6359, 3.38795, -56.3524)
+crouch_acceleration = 3.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.00787138, 0.999969, 0, -0.999969, 0.00787138, 46.5912, 18.8276, 41.777)
@@ -355,9 +375,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.4345, 1.30768, -2.01003)
 [node name="MM_MeleeEnemy" parent="." instance=ExtResource("20_v1cmt")]
 transform = Transform3D(0.999999, -0.000898777, 0.000713599, 0.000898467, 0.999999, 0.000419381, -0.00071399, -0.000418715, 1, 24.5195, 1.73462, -12.3167)
 
-[node name="MmRangedEnemy" parent="." instance=ExtResource("21_x3tu2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.1381, 0.767384, -4.86615)
-
 [node name="BmBigEnemy" parent="." instance=ExtResource("22_ci7y7")]
 transform = Transform3D(-0.0264386, 0, -0.99965, 0, 1, 0, 0.99965, 0, -0.0264386, 29.4519, 0.678023, -5.55456)
 
@@ -367,3 +384,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.6684, 0.678023, -2.47581)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBoxArea3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.256531, 1.36892, -0.459961)
 shape = SubResource("BoxShape3D_qidly")
+
+[node name="Island_2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.47701, -30.0895)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Island_2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.566, 0, -19.6502)
+shape = SubResource("BoxShape3D_sl5xg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Island_2/CollisionShape3D"]
+mesh = SubResource("BoxMesh_nmiw8")
+
+[node name="CrouchHangBlock" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.62878, 4.99871, -46.5714)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CrouchHangBlock"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000965118, -4.76837e-07, -0.0201187)
+shape = SubResource("BoxShape3D_u8aat")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CrouchHangBlock"]
+mesh = SubResource("BoxMesh_k1eka")
