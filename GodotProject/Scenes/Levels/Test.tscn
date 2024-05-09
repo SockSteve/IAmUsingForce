@@ -287,7 +287,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0368, 1.39886, 57.5848)
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 6.25976, 1.39886, 58.9178)
 
 [node name="Player" parent="." instance=ExtResource("3_t8btd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6359, 3.38795, -56.3524)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6359, 2.98878, -56.3524)
 crouch_acceleration = 3.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
@@ -396,11 +396,20 @@ shape = SubResource("BoxShape3D_sl5xg")
 mesh = SubResource("BoxMesh_nmiw8")
 
 [node name="CrouchHangBlock" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.62878, 4.99871, -46.5714)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.14892, 4.99871, -46.5714)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CrouchHangBlock"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000965118, -4.76837e-07, -0.0201187)
 shape = SubResource("BoxShape3D_u8aat")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CrouchHangBlock"]
+mesh = SubResource("BoxMesh_k1eka")
+
+[node name="CrouchHangBlock2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.409, 6, -53.626)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CrouchHangBlock2"]
+shape = SubResource("BoxShape3D_u8aat")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CrouchHangBlock2"]
 mesh = SubResource("BoxMesh_k1eka")

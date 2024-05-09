@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://cu57pg1cqjpqy" path="res://Assets/Textures/UI/BadPrankIcon.png" id="29_sc2yr"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_p4inm"]
+margin = 4.123
 height = 1.8
 radius = 0.3
 
@@ -51,6 +52,7 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_ld2le")
+slide_duration = 0.25
 starting_loadout = PackedStringArray("res://Scenes/Weapons/RangedWeapons/Gun/Gun.tscn", "res://Scenes/Weapons/MeleeWeapons/Cutter/Cutter.tscn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -747,7 +749,6 @@ visible = false
 layout_mode = 2
 
 [node name="SlideTimer" type="Timer" parent="."]
-wait_time = 0.5
 
 [node name="AttackTimer" type="Timer" parent="."]
 

@@ -5,17 +5,17 @@ class_name Player
 @export_group("Base Movement")
 @export var move_speed := 12.0 # Character maximum run speed on the ground.
 @export var acceleration := 4.0 # Movement acceleration (how fast character achieve maximum speed)
+@export var _rotation_speed := 12.0 # Player model rotaion speed
+@export var stopping_speed := 4.5
+@export var jump_apex_gravity := -10
+@export var jump_initial_impulse := 12.0 # Jump impulse
 @export var crouch_move_speed := 6.0
 @export var crouch_acceleration := 2.0
 @export var crouch_rotation_speed := 16.0
+@export var crouch_jump_initial_impulse := 16.0 # Jump impulse
+@export var slide_start_threshhold := 6
 @export var slide_strength = 30.0
 @export var slide_duration = .5
-@export var jump_initial_impulse := 12.0 # Jump impulse
-@export var crouch_jump_initial_impulse := 16.0 # Jump impulse
-#@export var jump_additional_force := 4.5 # Jump impulse when player keeps pressing jump
-@export var jump_apex_gravity := -10
-@export var stopping_speed := 4.5
-@export var _rotation_speed := 12.0 # Player model rotaion speed
 @export_group("Combat")
 @export var attack_impulse := 100.0 # Forward impulse after a melee attack.
 @export var max_throwback_force := 15.0 # Max throwback force after player takes a hit
@@ -45,6 +45,9 @@ class_name Player
 #debug
 var combo_step : int = 0 #used for melee attack combo
 var is_attacking : bool = false
+var is_crouching = false
+var is_sliding: bool = false
+var freeze: bool = false
 
 @onready var _is_grapple := false
 @onready var state = $StateMachine.state
@@ -52,12 +55,15 @@ var magnetized = false
 var grappling = false
 @onready var inventory = $Inventory
 
-var sliding: bool = false
-var freeze: bool = false
 @onready var slide_timer: Timer = $SlideTimer
 
 var current_weapon: Node
 var is_strafing: bool
+
+var crouching_collision_height: float = .9
+@onready var standing_collision_height: float = collision_shape.shape.height
+@onready var standing_collision_position: Vector3 = Vector3(0,standing_collision_height/2,0)
+@onready var crouching_collision_position: Vector3 = Vector3(0,crouching_collision_height/2,0)
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -66,8 +72,8 @@ func _ready() -> void:
 	put_in_hand(current_weapon)
 
 func _physics_process(delta):
-	if Input.is_action_just_pressed("crouch"):
-		_ready()
+	#if Input.is_action_just_pressed("crouch"):
+		#_ready()
 	#print($StateMachine.state)
 	# Calculate ground height for camera controller
 	if _ground_shapecast.get_collision_count() > 0:
