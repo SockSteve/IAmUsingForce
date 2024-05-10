@@ -1,3 +1,8 @@
+"""
+This is the player
+
+"""
+
 extends CharacterBody3D
 class_name Player
 
@@ -33,6 +38,8 @@ class_name Player
 @onready var _character_skin := $CharacterRotationRoot/CharacterSkin
 @onready var hand = %PlayerHand
 @onready var collision_shape: CollisionShape3D= $CollisionShape3D
+@onready var ledge_ray_vertical: RayCast3D = find_child("LedgeRayVertical")
+@onready var ledge_ray_horizontal: RayCast3D = find_child("LedgeRayHorizontal")
 #@onready var _attack_animation_player: AnimationPlayer = $CharacterRotationRoot/MeleeAnchor/AnimationPlayer
 
 @onready var _move_direction := Vector3.ZERO

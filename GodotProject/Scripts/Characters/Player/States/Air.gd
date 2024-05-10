@@ -24,6 +24,56 @@ func enter(msg := {}) -> void:
 #TODO acending and decending checks for melee attack
 #TODO overhaul jump logic and add support for double jump 
 func physics_update(delta: float) -> void:
+	turn_and_move(delta)
+	
+	if player.velocity.y > -1 and player.velocity.y < 1 :
+		player.velocity.y += player.jump_apex_gravity * delta
+	else:
+		player.velocity.y += player._gravity * delta
+		
+	if jumped and not Input.is_action_pressed("jump") and player.velocity.y > 7.5:
+		player.velocity.y = 7.5
+	
+	player.move_and_slide()
+	
+	#when player is falling down, check if any ledges are nearby
+	if player.velocity.y <= 0:
+		player.ledge_ray_vertical.force_raycast_update()
+		if player.ledge_ray_vertical.is_colliding():
+			player.ledge_ray_horizontal.global_position.y = player.ledge_ray_vertical.get_collision_point().y - 0.01
+			player.ledge_ray_horizontal.force_raycast_update()
+			if player.ledge_ray_horizontal.is_colliding():
+				print("works")
+				state_machine.transition_to("Hang")
+	
+	
+	if Input.is_action_just_pressed("melee_attack"):
+		if player.velocity.y > 0:
+			state_machine.transition_to("Melee", {do_air_up_attack = true})
+		else:
+			state_machine.transition_to("Melee", {do_air_down_attack = true})
+	
+	if  Input.is_action_pressed("gadget"):
+		jumped = false
+		state_machine.transition_to("Grapple")
+		
+
+	if player.get_gadget("GrindBootsV2") != null:
+		if player.get_gadget("GrindBootsV2").grinding:
+			jumped = false
+			state_machine.transition_to("Grind")
+	
+	if player.is_on_floor():
+		jumped = false
+		if is_equal_approx(player.velocity.x, 0.0):
+			player._character_skin.set_moving(false)
+			state_machine.transition_to("Idle")
+		else:
+			player._character_skin.set_moving(true)
+			state_machine.transition_to("Run")
+
+#logic for turning and moving
+func turn_and_move(delta):
 	player._move_direction = player._get_camera_oriented_input()
 	# To not orient quickly to the last input, we save a last strong direction,
 	# this also ensures a good normalized value for the rotation basis.
@@ -41,39 +91,3 @@ func physics_update(delta: float) -> void:
 	if player._move_direction.length() == 0 and player.velocity.length() < player.stopping_speed:
 		player.velocity = Vector3.ZERO
 	player.velocity.y = y_velocity
-
-	if player.velocity.y > -1 and player.velocity.y < 1 :
-		player.velocity.y += player.jump_apex_gravity * delta
-	else:
-		player.velocity.y += player._gravity * delta
-		
-	
-	if jumped and not Input.is_action_pressed("jump") and player.velocity.y > 7.5:
-		player.velocity.y = 7.5
-		pass
-		#player.velocity.y = 
-	
-	player.move_and_slide()
-	
-	
-	if  Input.is_action_pressed("gadget"):
-		jumped = false
-		state_machine.transition_to("Grapple")
-		
-
-	# Landing.
-	#	if is_just_on_floor:
-#		_landing_sound.play()
-	if player.get_gadget("GrindBootsV2") != null:
-		if player.get_gadget("GrindBootsV2").grinding:
-			jumped = false
-			state_machine.transition_to("Grind")
-	
-	if player.is_on_floor():
-		jumped = false
-		if is_equal_approx(player.velocity.x, 0.0):
-			player._character_skin.set_moving(false)
-			state_machine.transition_to("Idle")
-		else:
-			player._character_skin.set_moving(true)
-			state_machine.transition_to("Run")

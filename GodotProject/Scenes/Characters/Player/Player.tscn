@@ -48,9 +48,12 @@ material = SubResource("StandardMaterial3D_dm5n6")
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_grq1b"]
 
 [node name="Player" type="CharacterBody3D" groups=["damageables", "player"]]
+collision_mask = 115
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
+platform_floor_layers = 4294901856
+platform_wall_layers = 16
 script = ExtResource("1_ld2le")
 slide_duration = 0.25
 starting_loadout = PackedStringArray("res://Scenes/Weapons/RangedWeapons/Gun/Gun.tscn", "res://Scenes/Weapons/MeleeWeapons/Cutter/Cutter.tscn")
@@ -213,6 +216,22 @@ transform = Transform3D(-0.0455859, -0.00217348, 0.998958, 0.998819, -0.0169132,
 [node name="PlayerHand" type="Node3D" parent="CharacterRotationRoot/CharacterSkin"]
 unique_name_in_owner = true
 script = ExtResource("16_mjyse")
+
+[node name="LedgeRays" type="Node3D" parent="CharacterRotationRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.383605)
+
+[node name="LedgeRayVertical" type="RayCast3D" parent="CharacterRotationRoot/LedgeRays"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7131, 0.704414)
+enabled = false
+target_position = Vector3(0, -0.1, 0)
+collision_mask = 96
+debug_shape_custom_color = Color(0.454902, 0.682353, 0, 1)
+
+[node name="LedgeRayHorizontal" type="RayCast3D" parent="CharacterRotationRoot/LedgeRays"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72724, 0.677759)
+enabled = false
+target_position = Vector3(0, 0, 0.1)
+debug_shape_custom_color = Color(1, 0.403922, 0.545098, 1)
 
 [node name="PassiveGadgets" type="Node3D" parent="."]
 

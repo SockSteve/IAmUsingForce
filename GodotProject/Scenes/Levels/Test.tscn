@@ -396,13 +396,25 @@ shape = SubResource("BoxShape3D_sl5xg")
 mesh = SubResource("BoxMesh_nmiw8")
 
 [node name="CrouchHangBlock" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.14892, 4.99871, -46.5714)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.14892, 4.46287, -46.5714)
+collision_layer = 64
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CrouchHangBlock"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000965118, -4.76837e-07, -0.0201187)
 shape = SubResource("BoxShape3D_u8aat")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CrouchHangBlock"]
+mesh = SubResource("BoxMesh_k1eka")
+
+[node name="CrouchHangBlock3" type="StaticBody3D" parent="."]
+transform = Transform3D(1.115, 0, 0, 0, 10, 0, 0, 0, 1.115, 3.15334, 12.0785, -46.5714)
+collision_layer = 64
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CrouchHangBlock3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000965118, -4.76837e-07, -0.0201187)
+shape = SubResource("BoxShape3D_u8aat")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CrouchHangBlock3"]
 mesh = SubResource("BoxMesh_k1eka")
 
 [node name="CrouchHangBlock2" type="StaticBody3D" parent="."]
@@ -412,4 +424,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.409, 6, -53.626)
 shape = SubResource("BoxShape3D_u8aat")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CrouchHangBlock2"]
+layers = 64
 mesh = SubResource("BoxMesh_k1eka")
