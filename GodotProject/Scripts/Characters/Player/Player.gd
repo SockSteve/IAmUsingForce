@@ -21,6 +21,7 @@ class_name Player
 @export var slide_start_threshhold := 6
 @export var slide_strength = 30.0
 @export var slide_duration = .5
+@export var slide_curve: Curve
 @export_group("Combat")
 @export var attack_impulse := 100.0 # Forward impulse after a melee attack.
 @export var max_throwback_force := 15.0 # Max throwback force after player takes a hit

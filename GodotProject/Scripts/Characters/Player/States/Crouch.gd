@@ -12,6 +12,7 @@ func physics_update(delta: float) -> void:
 	#when sliding you can only jump out of it
 	if player.is_sliding:
 		slide()
+		player.slide_curve.sample(delta)
 		player.move_and_slide()
 		if Input.is_action_just_pressed("jump"):
 			uncrouch()

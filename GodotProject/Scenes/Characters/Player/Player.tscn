@@ -1,7 +1,8 @@
-[gd_scene load_steps=36 format=3 uid="uid://c0d3bmprmf8q0"]
+[gd_scene load_steps=37 format=3 uid="uid://c0d3bmprmf8q0"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.gd" id="1_ld2le"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/CameraController.gd" id="2_7jqee"]
+[ext_resource type="Curve" uid="uid://dkhyr34syj1ps" path="res://SlideCurve.tres" id="2_w6n6n"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/StateMachine.gd" id="3_82ko5"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Idle.gd" id="4_h88q0"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Run.gd" id="5_dheqf"]
@@ -56,6 +57,7 @@ platform_floor_layers = 4294901856
 platform_wall_layers = 16
 script = ExtResource("1_ld2le")
 slide_duration = 0.25
+slide_curve = ExtResource("2_w6n6n")
 starting_loadout = PackedStringArray("res://Scenes/Weapons/RangedWeapons/Gun/Gun.tscn", "res://Scenes/Weapons/MeleeWeapons/Cutter/Cutter.tscn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
