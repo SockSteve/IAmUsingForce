@@ -40,7 +40,6 @@ func end_grapple():
 	grappling = false
 	set_physics_process(false)
 	$Rope.visible = false
-	#joint.queue_free()
 	nearest_grapple_point = null
 
 func update_rope_transform(grapple_point_position: Vector3) -> void:
@@ -80,7 +79,8 @@ func initialize_grappling_mode():
 			#connect joint to bodies
 			#nearest_grapple_point.add_child(joint)
 			#joint.node_a = nearest_grapple_point.find_child("GrappleBody").get_path()
-			joint.node_b = get_parent().get_parent()._physics_body.get_path()
+			
+			joint.node_b = find_parent("Player")._physics_body.get_path()
 			print(joint.node_b)
 			
 		nearest_grapple_point.grapple_point_type_enum.TUG:

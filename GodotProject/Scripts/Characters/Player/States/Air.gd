@@ -57,11 +57,11 @@ func physics_update(delta: float) -> void:
 		jumped = false
 		state_machine.transition_to("Grapple")
 		
-
-	if player.get_gadget("GrindBootsV2") != null:
-		if player.get_gadget("GrindBootsV2").grinding:
-			jumped = false
-			state_machine.transition_to("Grind")
+	
+	#if player.get_gadget("GrindBoots") != null:
+		#if player.get_gadget("GrindBoots").grinding:
+			#jumped = false
+			#state_machine.transition_to("Grind")
 	
 	if player.is_on_floor():
 		jumped = false

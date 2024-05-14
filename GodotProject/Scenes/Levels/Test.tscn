@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://ro280iljuyye" path="res://Assets/Placeholders/Environment/bonfire_free_download/scene.gltf" id="6_ryulc"]
 [ext_resource type="Texture2D" uid="uid://de0wimp7e8g3n" path="res://addons/kenney_prototype_textures/purple/texture_12.png" id="7_eov66"]
 [ext_resource type="PackedScene" uid="uid://du0ausxn5e6vk" path="res://Assets/Placeholders/Environment/fern_grass_02/scene.gltf" id="7_mr86d"]
-[ext_resource type="PackedScene" uid="uid://bllxyncmft2sj" path="res://Scenes/InteractiveObjects/GrapplingPoints/GrapplePoint.tscn" id="7_nwman"]
+[ext_resource type="PackedScene" uid="uid://bllxyncmft2sj" path="res://Scenes/Interactibles/GrapplingPoints/GrapplePoint.tscn" id="7_nwman"]
 [ext_resource type="ArrayMesh" uid="uid://cgafvgxb7ijbv" path="res://Assets/Models/Weapons/knife_sharp.obj" id="11_7ufr4"]
 [ext_resource type="PackedScene" uid="uid://fbpbxpmuqx3g" path="res://Scenes/Characters/Merchants/vendor.tscn" id="11_ahr15"]
 [ext_resource type="ArrayMesh" uid="uid://5w2uthxujf6a" path="res://Assets/Models/Weapons/knife_smooth.obj" id="12_8u44m"]
@@ -50,13 +50,13 @@ uv1_triplanar = true
 albedo_texture = ExtResource("2_ibgu5")
 uv1_triplanar = true
 
-[sub_resource type="Curve3D" id="Curve3D_ssrx5"]
+[sub_resource type="Curve3D" id="Curve3D_m2hbd"]
 bake_interval = 0.1
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -30),
-"tilts": PackedFloat32Array(0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -30, 0, 0, 0, 0, 0, 0, 0.918463, -2.67029e-05, -40.4073, 0, 0, 0, 0, 0, 0, 1.81832, -2.67029e-05, -69.7587, 0, 0, 0, 0, 0, 0, -8.11574, -2.67029e-05, -73.5239, 0, 0, 0, 0, 0, 0, -21.9951, -2.67029e-05, -72.6829, 0, 0, 0, 0, 0, 0, -54.8165, -2.67029e-05, -70.9846, 0, 0, 0, 0, 0, 0, -56.2812, -2.67029e-05, -77.9036, 0, 0, 0, 0, 0, 0, -54.8635, -2.67029e-05, -89.5176, 0, 0, 0, 0, 0, 0, -46.0913, -2.67029e-05, -99.008, 0, 0, 0, 0, 0, 0, -36.4209, -2.67029e-05, -103.077, 0, 0, 0, 0, 0, 0, -13.5734, -2.67029e-05, -107.34, 0, 0, 0, 0, 0, 0, 0.530826, -2.67029e-05, -105.301, 0, 0, 0, 0, 0, 0, 9.47914, -2.67029e-05, -96.4387, 0, 0, 0, 0, 0, 0, 22.7451, -2.67029e-05, -84.7537, 0, 0, 0, 0, 0, 0, 29.8077, -2.67029e-05, -74.3061, 0, 0, 0, 0, 0, 0, 29.4841, -2.67029e-05, -62.9434, 0, 0, 0, 0, 0, 0, 29.0966, -2.67029e-05, -48.9537, 0, 0, 0, 0, 0, 0, 31.6186, -2.67029e-05, -40.9368, 0, 0, 0, 0, 0, 0, 41.1167, -2.67029e-05, -40.2825, 0, 0, 0, 0, 0, 0, 49.278, -2.67029e-05, -45.2951, 0, 0, 0, 0, 0, 0, 55.8064, -2.67029e-05, -56.801, 0, 0, 0, 0, 0, 0, 59.0027, -2.67029e-05, -65.8451),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 2
+point_count = 23
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjiwb"]
 albedo_texture = ExtResource("7_eov66")
@@ -91,7 +91,7 @@ material = SubResource("StandardMaterial3D_3py54")
 size = Vector3(3.66248, 2.71436, 1.91992)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sl5xg"]
-size = Vector3(25, 1, 25)
+size = Vector3(5, 1, 25)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dpsv3"]
 albedo_texture = ExtResource("24_gakps")
@@ -100,7 +100,7 @@ uv1_triplanar = true
 [sub_resource type="BoxMesh" id="BoxMesh_nmiw8"]
 lightmap_size_hint = Vector2i(14, 21)
 material = SubResource("StandardMaterial3D_dpsv3")
-size = Vector3(25, 1, 25)
+size = Vector3(5, 1, 25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_u8aat"]
 size = Vector3(5, 2, 5)
@@ -169,8 +169,8 @@ sides = 30
 smooth_faces = false
 
 [node name="GrindRail" type="Path3D" parent="Map Geometry"]
-transform = Transform3D(0.852813, 0, -0.522216, 0, 1, 0, 0.522216, 0, 0.852813, 0, 0, 0)
-curve = SubResource("Curve3D_ssrx5")
+transform = Transform3D(-0.986549, 0, 0.163464, 0, 1, 0, -0.163464, 0, -0.986549, 11.1871, 23.4068, -70.7241)
+curve = SubResource("Curve3D_m2hbd")
 
 [node name="GrindRail_1" type="CSGPolygon3D" parent="Map Geometry/GrindRail" groups=["grindRail"]]
 transform = Transform3D(0.852813, 0, 0.522216, 0, 1, 0, -0.522216, 0, 0.852813, 0, 0, 0)
@@ -280,6 +280,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7181, 10.5414, 47.8072)
 grapple_point_type = 1
 target_distance = 6.0
 
+[node name="GrapplePoint2" parent="Map Geometry" instance=ExtResource("7_nwman")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.78884, 23.9679, -102.567)
+grapple_point_type = 1
+target_distance = 6.0
+
 [node name="Sketchfab_Scene" parent="Map Geometry" instance=ExtResource("6_ryulc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0368, 1.39886, 57.5848)
 
@@ -287,7 +292,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0368, 1.39886, 57.5848)
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 6.25976, 1.39886, 58.9178)
 
 [node name="Player" parent="." instance=ExtResource("3_t8btd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.6359, 2.98878, -56.3524)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6679, 2.98878, -56.3524)
 crouch_acceleration = 3.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
@@ -395,8 +400,18 @@ shape = SubResource("BoxShape3D_sl5xg")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Island_2/CollisionShape3D"]
 mesh = SubResource("BoxMesh_nmiw8")
 
+[node name="Island_3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.47701, -62.5342)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Island_3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.566, 0, -19.6502)
+shape = SubResource("BoxShape3D_sl5xg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Island_3/CollisionShape3D"]
+mesh = SubResource("BoxMesh_nmiw8")
+
 [node name="CrouchHangBlock" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.14892, 4.46287, -46.5714)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7497, 5.84388, -95.0211)
 collision_layer = 64
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CrouchHangBlock"]
@@ -407,7 +422,7 @@ shape = SubResource("BoxShape3D_u8aat")
 mesh = SubResource("BoxMesh_k1eka")
 
 [node name="CrouchHangBlock3" type="StaticBody3D" parent="."]
-transform = Transform3D(1.115, 0, 0, 0, 10, 0, 0, 0, 1.115, 3.15334, 12.0785, -46.5714)
+transform = Transform3D(1.115, 0, 0, 0, 10, 0, 0, 0, 1.115, 11.5588, 14.5596, -82.1496)
 collision_layer = 64
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CrouchHangBlock3"]
@@ -418,11 +433,21 @@ shape = SubResource("BoxShape3D_u8aat")
 mesh = SubResource("BoxMesh_k1eka")
 
 [node name="CrouchHangBlock2" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.409, 6, -53.626)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9282, 9.14062, -104.78)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CrouchHangBlock2"]
 shape = SubResource("BoxShape3D_u8aat")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CrouchHangBlock2"]
+layers = 64
+mesh = SubResource("BoxMesh_k1eka")
+
+[node name="CrouchHangBlock4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.88626, 14.5034, -109.433)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CrouchHangBlock4"]
+shape = SubResource("BoxShape3D_u8aat")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CrouchHangBlock4"]
 layers = 64
 mesh = SubResource("BoxMesh_k1eka")

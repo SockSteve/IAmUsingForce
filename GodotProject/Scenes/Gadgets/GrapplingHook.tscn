@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqhn455src0iq"]
+[gd_scene load_steps=6 format=3 uid="uid://cqhn455src0iq"]
 
 [ext_resource type="Script" path="res://Scripts/Gadgets/GrapplingHook.gd" id="1_obj5m"]
 
@@ -6,9 +6,13 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_s4e47"]
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_n28p7"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mscdr"]
+albedo_color = Color(1, 1, 0, 1)
 
-[node name="GrapplingHook" type="Node3D"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_n28p7"]
+material = SubResource("StandardMaterial3D_mscdr")
+
+[node name="GrapplingHook" type="Node3D" groups=["active", "gadget"]]
 script = ExtResource("1_obj5m")
 
 [node name="GadgetSkin" type="MeshInstance3D" parent="."]

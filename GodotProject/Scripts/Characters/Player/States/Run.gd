@@ -48,4 +48,5 @@ func physics_update(delta: float) -> void:
 	elif is_equal_approx(player.velocity.x, 0.0) and is_equal_approx(player.velocity.z, 0.0):
 		state_machine.transition_to("Idle")
 	elif Input.is_action_pressed("gadget"):
+		player.put_in_hand(player.inventory.get_gadget("GrapplingHook"))
 		state_machine.transition_to("Grapple")

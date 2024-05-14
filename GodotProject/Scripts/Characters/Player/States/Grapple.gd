@@ -7,7 +7,7 @@ var target_distance_reached: bool = false
 var grappling_hook
 
 func enter(msg := {}) -> void:
-	grappling_hook = player.get_gadget("GrapplingHook")
+	grappling_hook = player.get_inventory().get_gadget("GrapplingHook")
 	
 	player.switchToPhysicsBody()
 	grappling_hook.activate()
@@ -41,7 +41,7 @@ func physics_update(delta: float) -> void:
 		if player._move_direction.length() > 0.2:
 			player._last_strong_direction = player._move_direction.normalized()
 		
-		player._orient_character_to_direction(player._last_strong_direction, delta, grappling_hook.direction_normal_to_origin)
+		player._orient_character_to_direction(player._last_strong_direction, delta,player._rotation_speed, grappling_hook.direction_normal_to_origin)
 		#player._orient_character_to_direction(player._last_strong_direction, delta)
 		
 		var input_vector =  player._get_camera_oriented_input()

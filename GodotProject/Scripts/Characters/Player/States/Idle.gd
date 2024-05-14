@@ -4,7 +4,8 @@ extends PlayerState
 func enter(_msg := {}) -> void:
 	# We must declare all the properties we access through `owner` in the `Player.gd` script.
 	if not _msg.has("transition"):
-		player.velocity = Vector3.ZERO
+		#player.velocity = Vector3.ZERO
+		pass
 	player._character_skin.set_moving(false)
 	
 
@@ -18,8 +19,8 @@ func update(delta: float) -> void:
 	
 	player._character_skin.set_moving(false)
 	
-	if  Input.is_action_pressed("gadget"):
-		state_machine.transition_to("Grapple")
+	#if  Input.is_action_pressed("gadget"):
+		#state_machine.transition_to("Grapple")
 		
 	if  Input.is_action_pressed("melee_attack"):
 		state_machine.transition_to("Melee")

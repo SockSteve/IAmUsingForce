@@ -769,8 +769,6 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
-[node name="SlideTimer" type="Timer" parent="."]
-
 [node name="AttackTimer" type="Timer" parent="."]
 
 [node name="DropShadow" type="Decal" parent="."]
@@ -783,7 +781,5 @@ upper_fade = 0.0001
 lower_fade = 1.0
 distance_fade_begin = 172.53
 distance_fade_length = 1000.0
-
-[connection signal="timeout" from="SlideTimer" to="StateMachine/Crouch" method="_on_slide_timer_timeout"]
 
 [editable path="CharacterRotationRoot/CharacterSkin"]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcqg4lt5matjd"]
+
+[ext_resource type="Script" path="res://Scripts/Gadgets/Magnet.gd" id="1_h7ard"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0qjsk"]
+
+[node name="Magnet" type="Node3D" groups=["gadget", "passive"]]
+script = ExtResource("1_h7ard")
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+shape = SubResource("CylinderShape3D_0qjsk")
