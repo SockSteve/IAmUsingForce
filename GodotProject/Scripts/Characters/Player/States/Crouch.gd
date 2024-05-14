@@ -1,5 +1,7 @@
 extends PlayerState
 
+var slide_time: float = 0
+
 func enter(_msg := {}) -> void:
 	start_crouch()
 	if _msg.has("do_slide"):
@@ -11,12 +13,14 @@ func physics_update(delta: float) -> void:
 	#check if player sliding
 	#when sliding you can only jump out of it
 	if player.is_sliding:
+		slide_time += delta * player.slide_strength_curve_time_factor
 		slide()
-		player.slide_curve.sample(delta)
+		
 		player.move_and_slide()
 		if Input.is_action_just_pressed("jump"):
 			uncrouch()
 			if not player.is_crouching:
+				slide_time = 0
 				state_machine.transition_to("Air", {do_crouch_jump = true})
 		return
 	
@@ -74,7 +78,6 @@ func uncrouch():
 	#we probe for a collision with no motion, to see if the standing hitbox collides
 	var result = player.move_and_collide(Vector3.ZERO, true)
 	if result!= null:
-		print(result.get_collider())
 		start_crouch()
 		return
 	player.is_crouching = false
@@ -91,13 +94,12 @@ func force_uncrouch():
 func start_slide():
 	player._character_skin.slide()
 	player.is_sliding = true
-	player.slide_timer.start(player.slide_duration)
-	slide()
 
 func slide():
-	var slide_direction = player._move_direction
-	player.velocity = player._rotation_root.transform.basis * Vector3.BACK * player.slide_strength
+	var slide_strength: float = player.slide_strength_curve.sample(slide_time) * player.slide_strength_curve_factor
+	player.velocity = player._rotation_root.transform.basis * Vector3.BACK * slide_strength
 	player._character_skin.slide()
+	if slide_time >= 1:
+		player.is_sliding = false
+		slide_time = 0.0
 
-func _on_slide_timer_timeout():
-	player.is_sliding = false

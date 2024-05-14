@@ -56,8 +56,8 @@ axis_lock_angular_z = true
 platform_floor_layers = 4294901856
 platform_wall_layers = 16
 script = ExtResource("1_ld2le")
-slide_duration = 0.25
-slide_curve = ExtResource("2_w6n6n")
+slide_strength_curve = ExtResource("2_w6n6n")
+slide_strength_curve_time_factor = 3
 starting_loadout = PackedStringArray("res://Scenes/Weapons/RangedWeapons/Gun/Gun.tscn", "res://Scenes/Weapons/MeleeWeapons/Cutter/Cutter.tscn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

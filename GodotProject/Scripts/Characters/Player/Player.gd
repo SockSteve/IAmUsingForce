@@ -19,9 +19,9 @@ class_name Player
 @export var crouch_rotation_speed := 16.0
 @export var crouch_jump_initial_impulse := 16.0 # Jump impulse
 @export var slide_start_threshhold := 6
-@export var slide_strength = 30.0
-@export var slide_duration = .5
-@export var slide_curve: Curve
+@export var slide_strength_curve: Curve
+@export var slide_strength_curve_factor = 1
+@export var slide_strength_curve_time_factor = 1
 @export_group("Combat")
 @export var attack_impulse := 100.0 # Forward impulse after a melee attack.
 @export var max_throwback_force := 15.0 # Max throwback force after player takes a hit
@@ -82,7 +82,7 @@ func _ready() -> void:
 func _physics_process(delta):
 	#if Input.is_action_just_pressed("crouch"):
 		#_ready()
-	#print($StateMachine.state)
+	print($StateMachine.state)
 	# Calculate ground height for camera controller
 	if _ground_shapecast.get_collision_count() > 0:
 		for collision_result in _ground_shapecast.collision_result:

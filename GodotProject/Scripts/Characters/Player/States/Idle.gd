@@ -30,7 +30,9 @@ func update(delta: float) -> void:
 	
 	if not player.is_on_floor():
 		state_machine.transition_to("Air")
-		return
+		
+	if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right") or Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down"):
+		state_machine.transition_to("Run")
 		
 	if Input.is_action_pressed("crouch") and not player.is_crouching:
 		state_machine.transition_to("Crouch")
@@ -40,6 +42,5 @@ func update(delta: float) -> void:
 		state_machine.transition_to("Air", {do_jump = true})
 		# As we'll only have one air state for both jump and fall, we use the `msg` dictionary 
 		# to tell the next state that we want to jump.
-	elif Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right") or Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down"):
-		state_machine.transition_to("Run")
+	
 		

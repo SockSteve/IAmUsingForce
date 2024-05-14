@@ -38,10 +38,11 @@ func physics_update(delta: float) -> void:
 	player._character_skin.set_moving_speed(inverse_lerp(0.0, player.move_speed, xz_velocity.length()))
 	
 	player.move_and_slide()
-	if Input.is_action_pressed("crouch") and not player.is_crouching:
+	if Input.is_action_pressed("crouch"):
 		if player.velocity.length() >= player.slide_start_threshhold:
 			state_machine.transition_to("Crouch",{do_slide = true})
 		state_machine.transition_to("Crouch")
+		return
 	if Input.is_action_just_pressed("jump"):
 		state_machine.transition_to("Air", {do_jump = true})
 	elif is_equal_approx(player.velocity.x, 0.0) and is_equal_approx(player.velocity.z, 0.0):
