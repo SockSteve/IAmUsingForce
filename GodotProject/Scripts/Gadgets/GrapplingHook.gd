@@ -1,7 +1,5 @@
 extends Node3D
 
-var id = "g01"
-
 var grapple_points : Array = []
 var nearest_grapple_point
 

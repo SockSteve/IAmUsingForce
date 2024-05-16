@@ -1,3 +1,7 @@
+"""
+In this class we set up the the logic for initializing and handling the Grind state.
+The grinding logic is housed in the state machine.
+"""
 extends Node3D
 
 @onready var player: Player = find_parent("Player")
@@ -5,27 +9,32 @@ extends Node3D
 @onready var shape_cast_left: ShapeCast3D = $ShapeCast3DLeft
 @onready var shape_cast_right: ShapeCast3D = $ShapeCast3DRight
 
-var canGrind: bool = true
-var grinding: bool = false 
 var current_grindrail : Path3D = null
 
+@export var grind_jump_curve: Curve = load("res://Scripts/Gadgets/GrindJumpCurve.tres")
+@export var grind_curve_time_factor: float = 1
+@export var grind_speed_time_factor: float = .3
 
-#here we implemented the logic for when a grindrail was detected and the player
-#should start grinding
-#note that the movement logic lives in the player intern state machine
+#we probe for grindrails with a shapecast
 func _physics_process(delta):
+	#we test if we collide with a grindrail
 	if shape_cast_ground.is_colliding():
-		if shape_cast_ground.get_collider(0).is_in_group("grindRail") and canGrind:
+		#if we collide with a grindrail and can grind, we set the parameters for the Grinding state
+		if shape_cast_ground.get_collider(0).is_in_group("grindRail") and player.can_grind:
 			current_grindrail = shape_cast_ground.get_collider(0).get_parent()
-			canGrind = false
-			grinding = true
+			player.can_grind = false
+			player.is_grinding = true
+			
+			#here we setup the shapecast for left and right to probe for grindrails where i can jump to
 			shape_cast_left.set_enabled(true)
 			shape_cast_right.set_enabled(true)
 			
 			shape_cast_left.add_exception_rid(shape_cast_ground.get_collider_rid(0))
 			shape_cast_right.add_exception_rid(shape_cast_ground.get_collider_rid(0))
 
-func get_side_rail_path3d(direction) -> Path3D:
+#this function is used for changing the grindrails
+#this function gets called by the state machine
+func get_side_rail_path3d(direction: StringName) -> Path3D:
 	if direction == "left":
 		if shape_cast_left.is_colliding():
 			return shape_cast_left.get_collider(0).get_parent()
@@ -40,11 +49,13 @@ func clear_grindrail_exceptions():
 	shape_cast_left.clear_exceptions()
 	shape_cast_right.clear_exceptions()
 
+#this function is for cleaning up the grind state. We also won't allow the player to grind
+#for a short time so the player can be released from the grindrail
 #this function gets called by the state machine
 func end_grind():
 	clear_grindrail_exceptions()
 	current_grindrail = null
-	grinding = false
+	player.is_grinding = false
 	$GrindEndCooldown.start()
 	shape_cast_left.set_enabled(false)
 	shape_cast_right.set_enabled(false)
@@ -52,4 +63,4 @@ func end_grind():
 #this timer exists so the player doesn't immediately start to grind again after
 #getting off the grindrail
 func _on_grind_end_cooldown_timeout():
-	canGrind = true
+	player.can_grind = true

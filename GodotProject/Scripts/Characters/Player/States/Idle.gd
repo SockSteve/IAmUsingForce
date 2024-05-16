@@ -2,12 +2,12 @@ extends PlayerState
 
 # Upon entering the state, we set the Player node's velocity to zero.
 func enter(_msg := {}) -> void:
-	# We must declare all the properties we access through `owner` in the `Player.gd` script.
+	player.velocity = Vector3.ZERO
 	if not _msg.has("transition"):
 		#player.velocity = Vector3.ZERO
 		pass
 	player._character_skin.set_moving(false)
-	
+
 
 func update(delta: float) -> void:
 	if player.freeze:
@@ -19,15 +19,18 @@ func update(delta: float) -> void:
 	
 	player._character_skin.set_moving(false)
 	
-	#if  Input.is_action_pressed("gadget"):
-		#state_machine.transition_to("Grapple")
-		
 	if  Input.is_action_pressed("melee_attack"):
 		state_machine.transition_to("Melee")
+	
+	
+	# activating gadget specific states are handled through their specific gadget 
+	if player.get_inventory().has_gadget("GrindBoots"):
+		if player.is_grinding:
+			state_machine.transition_to("Grind")
 		
-	# check if player is grinding
-	#if player.get_gadget("GrindBootsV2").grinding:
-		#state_machine.transition_to("Grind")
+	if player.get_inventory().has_gadget("GrapplingHook"):
+		if player.is_grappling:
+			state_machine.transition_to("Grapple")
 	
 	if not player.is_on_floor():
 		state_machine.transition_to("Air")

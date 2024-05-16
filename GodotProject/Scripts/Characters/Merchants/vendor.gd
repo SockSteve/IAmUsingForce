@@ -20,14 +20,14 @@ func _process(delta):
 			
 		if not shop_menu:
 			close_shop()
-		
+
 
 func open_shop():
 	customer.freeze = true
 	vendor_cam.make_current()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	$ShopMenu3D.initialize()
-	
+
 func close_shop():
 	$ShopMenu3D.cleanup()
 	customer.freeze = false
@@ -41,12 +41,9 @@ func _on_area_3d_body_entered(body):
 		customer = body
 		player_cam = body.find_child("PlayerCamera")
 		set_process(true)
-		
 
 func _on_area_3d_body_exited(body):
 	if body.is_in_group("player"):
 		customer = null
 		player_cam = null
 		set_process(false)
-		
-		

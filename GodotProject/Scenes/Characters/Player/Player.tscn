@@ -10,9 +10,9 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Crouch.gd" id="6_q58v3"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Grapple.gd" id="6_r5qvj"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Air.gd" id="6_wo20p"]
-[ext_resource type="Script" path="res://Scripts/Characters/Player/States/Hanging.gd" id="7_ycs8f"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Grind.gd" id="8_82ggy"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Dodge.gd" id="8_rlkj8"]
+[ext_resource type="Script" path="res://Scripts/Characters/Player/States/LedgeHang.gd" id="9_033i6"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Block.gd" id="9_lxqh2"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Magnet.gd" id="10_0mhbm"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Melee.gd" id="10_1rkfv"]
@@ -83,8 +83,8 @@ script = ExtResource("6_wo20p")
 [node name="Crouch" type="Node" parent="StateMachine"]
 script = ExtResource("6_q58v3")
 
-[node name="Hang" type="Node" parent="StateMachine"]
-script = ExtResource("7_ycs8f")
+[node name="LedgeHang" type="Node" parent="StateMachine"]
+script = ExtResource("9_033i6")
 
 [node name="Dodge" type="Node" parent="StateMachine"]
 script = ExtResource("8_rlkj8")
@@ -96,7 +96,7 @@ script = ExtResource("9_lxqh2")
 script = ExtResource("10_1rkfv")
 
 [node name="MonkeyBars" type="Node" parent="StateMachine"]
-script = ExtResource("7_ycs8f")
+script = ExtResource("9_033i6")
 
 [node name="Grapple" type="Node" parent="StateMachine"]
 script = ExtResource("6_r5qvj")
@@ -223,14 +223,14 @@ script = ExtResource("16_mjyse")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.383605)
 
 [node name="LedgeRayVertical" type="RayCast3D" parent="CharacterRotationRoot/LedgeRays"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7131, 0.704414)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.77501, 0.704414)
 enabled = false
 target_position = Vector3(0, -0.1, 0)
 collision_mask = 96
 debug_shape_custom_color = Color(0.454902, 0.682353, 0, 1)
 
 [node name="LedgeRayHorizontal" type="RayCast3D" parent="CharacterRotationRoot/LedgeRays"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72724, 0.677759)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65845, 0.677759)
 enabled = false
 target_position = Vector3(0, 0, 0.1)
 debug_shape_custom_color = Color(1, 0.403922, 0.545098, 1)

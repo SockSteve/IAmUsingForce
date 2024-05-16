@@ -43,8 +43,7 @@ func physics_update(delta: float) -> void:
 			player.ledge_ray_horizontal.global_position.y = player.ledge_ray_vertical.get_collision_point().y - 0.01
 			player.ledge_ray_horizontal.force_raycast_update()
 			if player.ledge_ray_horizontal.is_colliding():
-				print("works")
-				state_machine.transition_to("Hang")
+				state_machine.transition_to("LedgeHang")
 	
 	
 	if Input.is_action_just_pressed("melee_attack"):
@@ -58,10 +57,10 @@ func physics_update(delta: float) -> void:
 		state_machine.transition_to("Grapple")
 		
 	
-	#if player.get_gadget("GrindBoots") != null:
-		#if player.get_gadget("GrindBoots").grinding:
-			#jumped = false
-			#state_machine.transition_to("Grind")
+	if player.get_inventory().has_gadget("GrindBoots"):
+		if player.is_grinding:
+			jumped = false
+			state_machine.transition_to("Grind")
 	
 	if player.is_on_floor():
 		jumped = false
