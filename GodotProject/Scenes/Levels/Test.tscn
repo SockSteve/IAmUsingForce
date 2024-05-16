@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cfv2ecbe68yfi"]
+[gd_scene load_steps=45 format=3 uid="uid://cfv2ecbe68yfi"]
 
 [ext_resource type="Texture2D" uid="uid://dk3g261yc4qry" path="res://Assets/Placeholders/Environment/Skyboxes/panorama_image.png" id="1_mhjnm"]
 [ext_resource type="Texture2D" uid="uid://bid2isp42co6r" path="res://addons/kenney_prototype_textures/orange/texture_01.png" id="1_y6805"]
@@ -9,11 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://de0wimp7e8g3n" path="res://addons/kenney_prototype_textures/purple/texture_12.png" id="7_eov66"]
 [ext_resource type="PackedScene" uid="uid://du0ausxn5e6vk" path="res://Assets/Placeholders/Environment/fern_grass_02/scene.gltf" id="7_mr86d"]
 [ext_resource type="PackedScene" uid="uid://bllxyncmft2sj" path="res://Scenes/Interactibles/GrapplingPoints/GrapplePoint.tscn" id="7_nwman"]
-[ext_resource type="ArrayMesh" uid="uid://cgafvgxb7ijbv" path="res://Assets/Models/Weapons/knife_sharp.obj" id="11_7ufr4"]
+[ext_resource type="ArrayMesh" uid="uid://4hqaxte41hpr" path="res://Assets/Models/Weapons/knife_sharp.obj" id="11_7ufr4"]
 [ext_resource type="PackedScene" uid="uid://fbpbxpmuqx3g" path="res://Scenes/Characters/Merchants/vendor.tscn" id="11_ahr15"]
-[ext_resource type="ArrayMesh" uid="uid://5w2uthxujf6a" path="res://Assets/Models/Weapons/knife_smooth.obj" id="12_8u44m"]
-[ext_resource type="ArrayMesh" uid="uid://cw25l0jej84hr" path="res://Assets/Models/Weapons/pistol.obj" id="13_pndr6"]
-[ext_resource type="ArrayMesh" uid="uid://cpjc161jj8kox" path="res://Assets/Models/Weapons/shotgun.obj" id="14_qv7x6"]
+[ext_resource type="ArrayMesh" uid="uid://csqt340rts0tb" path="res://Assets/Models/Weapons/knife_smooth.obj" id="12_8u44m"]
+[ext_resource type="ArrayMesh" uid="uid://bjnum8tt8hgcb" path="res://Assets/Models/Weapons/pistol.obj" id="13_pndr6"]
+[ext_resource type="ArrayMesh" uid="uid://cfj5gub3k11gj" path="res://Assets/Models/Weapons/shotgun.obj" id="14_qv7x6"]
 [ext_resource type="PackedScene" uid="uid://b1nlc7o2d0leo" path="res://Scenes/Characters/Enemies/StationaryTurret/StationaryTurret.tscn" id="15_20i8t"]
 [ext_resource type="PackedScene" uid="uid://oun126a7s625" path="res://Scenes/Characters/Enemies/StationaryLookAtTurret/TestEnemy_2.tscn" id="16_a0aqu"]
 [ext_resource type="PackedScene" uid="uid://cbg2qc717km4f" path="res://Scenes/Characters/Enemies/MovingSmallEnemyRanged/sm_testranged.tscn" id="16_bkljh"]
@@ -65,14 +65,22 @@ uv1_triplanar = true
 [sub_resource type="Curve3D" id="Curve3D_pp05w"]
 bake_interval = 0.1
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -7.012, 0, 0, 0, 0, 0, 0, 0, 0, 12.5, 0, -17.142, 0, 0, 0, 0, 0, 0, 24.229, 0, -32.822),
-"tilts": PackedFloat32Array(0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -7.012, 0, 0, 0, 0, 0, 0, 0, 0, 12.5, 0, -17.142, 0, 0, 0, 0, 0, 0, 24.229, 0, -32.822, 0, 0, 0, 0, 0, 0, 28.3369, 6.4373e-06, -36.775),
+"tilts": PackedFloat32Array(0, 0, 0, 0)
 }
-point_count = 3
+point_count = 4
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hift0"]
 albedo_texture = ExtResource("7_eov66")
 uv1_triplanar = true
+
+[sub_resource type="Curve3D" id="Curve3D_s5tcg"]
+bake_interval = 0.1
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -7.012, 0, 0, 0, 0, 0, 0, 0, 0, 12.5, 0, -17.142, 0, 0, 0, 0, 0, 0, 24.229, 0, -32.822, 0, 0, 0, 0, 0, 0, 28.3369, 6.4373e-06, -36.775, 0, 0, 0, 0, 0, 0, 27.7202, 6.4373e-06, -14.2219, 0, 0, 0, 0, 0, 0, 23.8964, 6.4373e-06, -11.4291, 0, 0, 0, 0, 0, 0, 27.511, 6.42306, -14.4621, 0, 0, 0, 0, 0, 0, 33.9837, 8.30073, -19.8934, 0, 0, 0, 0, 0, 0, 36.3626, 6.35084, -21.8895, 0, 0, 0, 0, 0, 0, 39.2393, 4.83426, -24.3033, 0, 0, 0, 0, 0, 0, 41.9501, 6.71193, -26.578, 0, 0, 0, 0, 0, 0, 44.329, 9.52844, -28.5741),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 12
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_2evub"]
 vertices = PackedVector3Array(-2.59192, -3.38627, -3.23501, -2.34192, -3.38627, -2.23501, -1.09192, -3.38627, -2.23501, -0.84192, -3.38627, -3.23501, -0.84192, -3.38627, -3.23501, 0.40808, -3.38627, -3.23501, 3.15808, -3.38627, -8.23501, -6.34192, -3.38627, -8.23501, -6.34192, -3.38627, -3.48501, 0.40808, -3.38627, -3.23501, 0.65808, -3.38627, -2.23501, 1.90808, -3.38627, -2.23501, 2.15808, -3.38627, -3.23501, 3.15808, -3.38627, -8.23501, -6.34192, -3.38627, -3.48501, -2.59192, -3.38627, -3.23501, -0.84192, -3.38627, -3.23501, -6.34192, -3.38627, -3.48501, -3.84192, -3.38627, -3.23501, -2.59192, -3.38627, -3.23501, 2.15808, -3.38627, -3.23501, 3.15808, -3.38627, -3.23501, 3.15808, -3.38627, -8.23501, 3.65808, -3.38627, -1.48501, 2.90808, -3.38627, -1.23501, 2.90808, -3.38627, 0.76499, 12.6581, -3.38627, 0.76499, 3.15808, -3.38627, -8.23501, 3.15808, -3.38627, -3.23501, 3.65808, -3.38627, -2.98501, 12.6581, -3.38627, 0.76499, 12.6581, -3.38627, -8.23501, 3.65808, -3.38627, -2.98501, 3.65808, -3.38627, -1.48501, 12.6581, -3.38627, 0.76499, 23.4081, -3.38627, -8.23501, 23.4081, -3.38627, 0.76499, 32.9081, -3.38627, 0.76499, 32.9081, -3.38627, -8.23501, 42.4081, -3.38627, -8.23501, 32.9081, -3.38627, -8.23501, 32.9081, -3.38627, 0.76499, 42.4081, -3.38627, 0.76499, 1.90808, -3.38627, -1.48501, 1.90808, -3.38627, -2.23501, 0.65808, -3.38627, -2.23501, 0.40808, -3.38627, -1.23501, 2.90808, -3.38627, 0.76499, -0.84192, -3.38627, -1.23501, -2.59192, -3.38627, -1.23501, -6.34192, -3.38627, 0.76499, -0.84192, -3.38627, -1.23501, -1.09192, -3.38627, -2.23501, -2.34192, -3.38627, -2.23501, -2.59192, -3.38627, -1.23501, 2.90808, -3.38627, 0.76499, 0.40808, -3.38627, -1.23501, -0.84192, -3.38627, -1.23501, 2.90808, -3.38627, 0.76499, 2.90808, -3.38627, -1.23501, 1.90808, -3.38627, -1.48501, 0.40808, -3.38627, -1.23501, -2.59192, -3.38627, -1.23501, -3.84192, -3.38627, -1.23501, -6.34192, -3.38627, 0.76499, -3.84192, -3.38627, -1.23501, -3.84192, -3.38627, -3.23501, -6.34192, -3.38627, -3.48501, -6.34192, -3.38627, 0.76499)
@@ -275,6 +283,28 @@ path_u_distance = 1.0
 path_joined = false
 material = SubResource("StandardMaterial3D_hift0")
 
+[node name="GrindRail_6" type="Path3D" parent="Map Geometry"]
+transform = Transform3D(0.766044, 0, -0.642787, 0, 1, 0, 0.642787, 0, 0.766044, 24.5406, 1.70556, 63.9144)
+curve = SubResource("Curve3D_s5tcg")
+
+[node name="GrindRail_4" type="CSGPolygon3D" parent="Map Geometry/GrindRail_6" groups=["grindRail"]]
+transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
+use_collision = true
+collision_layer = 128
+collision_mask = 128
+polygon = PackedVector2Array(-0.0626981, -0.00517382, -0.0974762, 0.136789, 0.0834621, 0.146682, 0.0449436, 0.00659476)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 0.5
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+material = SubResource("StandardMaterial3D_hift0")
+
 [node name="GrapplePoint" parent="Map Geometry" instance=ExtResource("7_nwman")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7181, 10.5414, 47.8072)
 grapple_point_type = 1
@@ -292,7 +322,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0368, 1.39886, 57.5848)
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 6.25976, 1.39886, 58.9178)
 
 [node name="Player" parent="." instance=ExtResource("3_t8btd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6679, 2.98878, -56.3524)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2351, 2.98878, 58.712)
 crouch_acceleration = 3.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]

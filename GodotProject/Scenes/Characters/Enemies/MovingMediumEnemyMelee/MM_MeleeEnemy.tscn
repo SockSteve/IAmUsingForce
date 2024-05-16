@@ -26,8 +26,8 @@ height = 1.2
 radius = 0.05
 height = 1.2
 
-[sub_resource type="Animation" id="Animation_0agwl"]
-resource_name = "idle"
+[sub_resource type="Animation" id="Animation_quwvy"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -119,8 +119,8 @@ tracks/3/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_quwvy"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_0agwl"]
+resource_name = "idle"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -185,7 +185,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.213989, 0.389984, -0.334282
 shape = SubResource("BoxShape3D_upc4j")
 
 [node name="MeleeWeaponArea" type="Area3D" parent="."]
-transform = Transform3D(0.958378, -0.28359, -0.0330008, 0.269688, 0.86128, 0.430657, -0.0937074, -0.421632, 0.901912, -0.432359, 0.391885, 0.320255)
+transform = Transform3D(0.958377, -0.283591, -0.0330008, 0.269688, 0.86128, 0.430657, -0.0937075, -0.421632, 0.901912, -0.432359, 0.391885, 0.320255)
 monitoring = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeleeWeaponArea"]

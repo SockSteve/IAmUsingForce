@@ -6,9 +6,14 @@ var nearest_grapple_point
 var grappling: bool = false
 var joint
 var direction_normal_to_origin: Vector3 = Vector3.ZERO
+var player
 
 func _ready():
 	set_physics_process(false)
+
+func _unhandled_input(event):
+	if Input.is_action_just_pressed("interact"):
+		activate()
 
 func activate():
 	if grapple_points.is_empty():
@@ -25,6 +30,7 @@ func activate():
 	
 	
 	grappling = true
+	player.put_in_hand(self)
 	initialize_grappling_mode()
 	set_physics_process(true)
 	$Rope.visible = true
@@ -66,7 +72,7 @@ func initialize_grappling_mode():
 			joint = JoltSliderJoint3D.new()
 			nearest_grapple_point.add_child(joint)
 			joint.node_a = nearest_grapple_point.find_child("GrappleBody").get_path()
-			joint.node_b = get_parent().get_parent()._physics_body.get_path()
+			joint.node_b = player._physics_body.get_path()
 			
 		nearest_grapple_point.grapple_point_type_enum.SWING:
 			#create joint
@@ -78,7 +84,7 @@ func initialize_grappling_mode():
 			#nearest_grapple_point.add_child(joint)
 			#joint.node_a = nearest_grapple_point.find_child("GrappleBody").get_path()
 			
-			joint.node_b = find_parent("Player")._physics_body.get_path()
+			joint.node_b = player._physics_body.get_path()
 			print(joint.node_b)
 			
 		nearest_grapple_point.grapple_point_type_enum.TUG:

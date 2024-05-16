@@ -17,6 +17,7 @@ radius = 1.0
 [node name="GrindBoots" type="Node3D" groups=["gadget", "passive"]]
 script = ExtResource("1_qeflw")
 grind_jump_curve = ExtResource("2_ykxcd")
+grind_speed_time_factor = 20.0
 
 [node name="ShapeCast3D" type="ShapeCast3D" parent="."]
 shape = SubResource("CylinderShape3D_8pcjv")
@@ -29,14 +30,14 @@ collision_mask = 128
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1.48429, -0.767848, 0)
 enabled = false
 shape = SubResource("CylinderShape3D_1voed")
-max_results = 4
+max_results = 8
 collision_mask = 128
 
 [node name="ShapeCast3DRight" type="ShapeCast3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.5653, -0.742876, 0)
 enabled = false
 shape = SubResource("CylinderShape3D_8e3ri")
-max_results = 4
+max_results = 8
 collision_mask = 128
 
 [connection signal="timeout" from="GrindEndCooldown" to="." method="_on_grind_end_cooldown_timeout"]

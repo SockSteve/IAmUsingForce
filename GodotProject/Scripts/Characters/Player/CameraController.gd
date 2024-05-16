@@ -9,6 +9,8 @@ enum CAMERA_PIVOT { OVER_SHOULDER, THIRD_PERSON, AIM }
 @export_range(0.0, 8.0) var joystick_sensitivity := 2.0
 @export var tilt_upper_limit := deg_to_rad(-60.0)
 @export var tilt_lower_limit := deg_to_rad(60.0)
+@export var tilt_speed := 1
+@export var rotation_speed := 1
 
 @onready var camera: Camera3D = $PlayerCamera
 @onready var _over_shoulder_pivot: Node3D = $CameraOverShoulderPivot
@@ -43,6 +45,14 @@ func _physics_process(delta: float) -> void:
 	_rotation_input += Input.get_action_raw_strength("camera_left") - Input.get_action_raw_strength("camera_right")
 	_tilt_input += Input.get_action_raw_strength("camera_up") - Input.get_action_raw_strength("camera_down")
 
+	#mitigate stick drift
+	if _rotation_input < .1  and _rotation_input > -.1:
+		_rotation_input = 0
+	
+	#mitigate stick drift
+	if _tilt_input < .1 and _tilt_input > -.1:
+		_tilt_input = 0
+	
 	if invert_mouse_y:
 		_tilt_input *= -1
 
@@ -59,9 +69,9 @@ func _physics_process(delta: float) -> void:
 	global_position = target_position
 
 	# Rotates camera using euler rotation
-	_euler_rotation.x += _tilt_input * delta
+	_euler_rotation.x += _tilt_input * delta * tilt_speed
 	_euler_rotation.x = clamp(_euler_rotation.x, tilt_lower_limit, tilt_upper_limit)
-	_euler_rotation.y += _rotation_input * delta
+	_euler_rotation.y += _rotation_input * delta * rotation_speed
 
 	transform.basis = Basis.from_euler(_euler_rotation)
 

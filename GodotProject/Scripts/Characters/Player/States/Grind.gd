@@ -20,7 +20,7 @@ func enter(_msg := {}) -> void:
 #here we move the player along the path3d throug a path_follow3d
 func physics_update(delta: float) -> void:
 	if path_3d != null:
-		path_follow_3d.progress_ratio += delta * player.get_inventory().get_gadget("GrindBoots").grind_speed_time_factor
+		path_follow_3d.progress_ratio += (delta * player.get_inventory().get_gadget("GrindBoots").grind_speed_time_factor)/path_3d.curve.get_baked_length()
 		
 		if path_follow_3d.progress_ratio >= .98:
 			endGrind()
@@ -50,9 +50,12 @@ func physics_update(delta: float) -> void:
 		
 		if !grind_jump:
 			player.global_transform = path_follow_3d.global_transform
+			player._rotation_root.rotation = Vector3(0,180,0)
+			#rotate_character_along_the_grindrail(delta)
 		
 		if grind_jump:
 			player.global_transform = path_follow_3d.global_transform
+			player._rotation_root.rotation = Vector3(0,180,0)
 			grind_jump_time += delta * player.get_inventory().get_gadget("GrindBoots").grind_curve_time_factor
 			var jump_y_pos: float =  player.get_inventory().get_gadget("GrindBoots").grind_jump_curve.sample(grind_jump_time)
 			player.global_position.y = path_follow_3d.global_position.y + jump_y_pos
@@ -70,11 +73,23 @@ func set_initial_progress(player_position: Vector3) -> void:
 	path_follow_3d.progress_ratio = progress_ratio
 
 
+func rotate_character_along_the_grindrail(delta):
+	var curve_distance = path_3d.curve.get_baked_length() * path_follow_3d.progress_ratio
+	var position = path_3d.curve.sample_baked(curve_distance,true)
+	
+	var basis = Basis()
+	
+	var transform = Transform3D(basis, position)
+	
+	player.global_basis = basis
+	
+
 #here we end the grind
 #currently the grind state is only exited when the end is reached.
 func endGrind():
 	grind_jump = false
 	grind_jump_time = 0.0
+	player.rotation = Vector3.ZERO
 	player._character_skin.end_grind()
 	path_follow_3d.queue_free()
 	player.get_inventory().get_gadget("GrindBoots").end_grind()
@@ -90,7 +105,7 @@ func change_grindrail(dir):
 	player.can_grind=true
 	path_follow_3d = PathFollow3D.new()
 	path_3d.add_child(path_follow_3d)
-	set_initial_progress(player.global_transform.origin)
+	set_initial_progress(player.global_position)
 	#player.get_inventory().get_gadget("GrindBoots").end_grind()
 	#player.velocity.y = 0.0
 	

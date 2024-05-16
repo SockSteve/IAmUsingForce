@@ -21,6 +21,7 @@ func update(delta: float) -> void:
 	
 	if  Input.is_action_pressed("melee_attack"):
 		state_machine.transition_to("Melee")
+		return
 	
 	
 	# activating gadget specific states are handled through their specific gadget 
@@ -29,18 +30,21 @@ func update(delta: float) -> void:
 			state_machine.transition_to("Grind")
 		
 	if player.get_inventory().has_gadget("GrapplingHook"):
-		if player.is_grappling:
+		if player.get_inventory().get_gadget("GrapplingHook").grappling:
 			state_machine.transition_to("Grapple")
+			return
 	
 	if not player.is_on_floor():
 		state_machine.transition_to("Air")
+		return
 		
 	if Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right") or Input.is_action_pressed("move_up") or Input.is_action_pressed("move_down"):
 		state_machine.transition_to("Run")
+		return
 		
 	if Input.is_action_pressed("crouch") and not player.is_crouching:
 		state_machine.transition_to("Crouch")
-		
+		return
 
 	if Input.is_action_just_pressed("jump"):
 		state_machine.transition_to("Air", {do_jump = true})

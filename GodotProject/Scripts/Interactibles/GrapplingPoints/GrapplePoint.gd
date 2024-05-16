@@ -21,6 +21,7 @@ func _on_area_3d_body_entered(body):
 		var grappling_hook = body.get_inventory().get_gadget("GrapplingHook")
 		if grappling_hook != null:
 			grappling_hook.add_grapple_point(self)
+			grappling_hook.player = body
 
 #when player exits area and has GrapplingHook, remove this GrapplePoint from the detected grapplePoints
 func _on_area_3d_body_exited(body):
@@ -28,3 +29,4 @@ func _on_area_3d_body_exited(body):
 		var grappling_hook = body.get_inventory().get_gadget("GrapplingHook")
 		if grappling_hook != null:
 			grappling_hook.remove_grapple_point(self)
+			grappling_hook.player = null
