@@ -37,9 +37,10 @@ func physics_update(delta: float) -> void:
 		uncrouch()
 		if not player.is_crouching:
 			if player.velocity.length() != 0.0:
-				state_machine.transition_to("Walk")
+				state_machine.transition_to("Run")
 			else:
 				state_machine.transition_to("Idle")
+			return
 		
 	player.move_and_slide()
 

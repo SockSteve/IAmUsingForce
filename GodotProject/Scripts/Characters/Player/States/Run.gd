@@ -2,12 +2,9 @@
 extends PlayerState
 
 func physics_update(delta: float) -> void:
-	#print(Input.is_action_just_pressed("jump"))
-	#print(get_parent().state)
 	if not player.is_on_floor():
 		state_machine.transition_to("Air")
-		
-		
+		return
 	
 	player._move_direction = player._get_camera_oriented_input()
 
@@ -21,7 +18,6 @@ func physics_update(delta: float) -> void:
 
 	player._orient_character_to_direction(player._last_strong_direction, delta)
 	
-
 	# We separate out the y velocity to not interpolate on the gravity
 	var y_velocity := player.velocity.y
 	player.velocity.y = 0.0
@@ -38,15 +34,23 @@ func physics_update(delta: float) -> void:
 	player._character_skin.set_moving_speed(inverse_lerp(0.0, player.move_speed, xz_velocity.length()))
 	
 	player.move_and_slide()
+	
 	if Input.is_action_pressed("crouch"):
 		if player.velocity.length() >= player.slide_start_threshhold:
 			state_machine.transition_to("Crouch",{do_slide = true})
 		state_machine.transition_to("Crouch")
 		return
+		
 	if Input.is_action_just_pressed("jump"):
 		state_machine.transition_to("Air", {do_jump = true})
+		return
+		
 	elif is_equal_approx(player.velocity.x, 0.0) and is_equal_approx(player.velocity.z, 0.0):
 		state_machine.transition_to("Idle")
-	elif Input.is_action_pressed("gadget"):
-		player.put_in_hand(player.inventory.get_gadget("GrapplingHook"))
-		state_machine.transition_to("Grapple")
+		#return
+		
+	if player.get_inventory().has_gadget("GrapplingHook") and Input.is_action_pressed("interact"):
+		player.get_inventory().get_gadget("GrapplingHook").activate()
+		if player.is_grappling:
+			state_machine.transition_to("Grapple")
+		return

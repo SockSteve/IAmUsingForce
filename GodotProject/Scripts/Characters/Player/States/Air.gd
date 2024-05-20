@@ -44,6 +44,7 @@ func physics_update(delta: float) -> void:
 			player.ledge_ray_horizontal.force_raycast_update()
 			if player.ledge_ray_horizontal.is_colliding():
 				state_machine.transition_to("LedgeHang")
+			return
 	
 	
 	if Input.is_action_just_pressed("melee_attack"):
@@ -51,18 +52,23 @@ func physics_update(delta: float) -> void:
 			state_machine.transition_to("Melee", {do_air_up_attack = true})
 		else:
 			state_machine.transition_to("Melee", {do_air_down_attack = true})
+		return
 	
-	if  Input.is_action_pressed("gadget"):
-		jumped = false
-		state_machine.transition_to("Grapple")
+	if player.get_inventory().has_gadget("GrapplingHook") and Input.is_action_pressed("interact"):
+		player.get_inventory().get_gadget("GrapplingHook").activate()
+		if player.is_grappling:
+			state_machine.transition_to("Grapple")
+			return
 		
 	
 	if player.get_inventory().has_gadget("GrindBoots"):
 		if player.is_grinding:
 			jumped = false
 			state_machine.transition_to("Grind")
-	
+			return
+	print("aa")
 	if player.is_on_floor():
+		
 		jumped = false
 		if is_equal_approx(player.velocity.x, 0.0):
 			player._character_skin.set_moving(false)
@@ -70,6 +76,8 @@ func physics_update(delta: float) -> void:
 		else:
 			player._character_skin.set_moving(true)
 			state_machine.transition_to("Run")
+
+
 
 #logic for turning and moving
 func turn_and_move(delta):

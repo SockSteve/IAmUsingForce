@@ -24,12 +24,13 @@ skeleton = NodePath("../..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GrappleBody"]
 shape = SubResource("SphereShape3D_4so6o")
 
-[node name="TargetJointMarker" type="Marker3D" parent="."]
-
 [node name="JoltGeneric6DOFJoint3D" type="JoltGeneric6DOFJoint3D" parent="."]
 angular_limit_x/enabled = false
 angular_limit_y/enabled = false
 angular_limit_z/enabled = false
+node_a = NodePath("../GrappleBody")
+
+[node name="JoltSliderJoint3D" type="JoltSliderJoint3D" parent="."]
 node_a = NodePath("../GrappleBody")
 
 [node name="Area3D" type="Area3D" parent="."]

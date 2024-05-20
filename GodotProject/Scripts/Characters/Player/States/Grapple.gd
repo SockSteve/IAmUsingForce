@@ -11,7 +11,7 @@ func enter(msg := {}) -> void:
 	
 	player.switchToPhysicsBody()
 	grappling_hook.activate()
-	if not grappling_hook.grappling:
+	if not player.is_grappling:
 		end_grapple()
 		return
 
@@ -59,9 +59,8 @@ func physics_update(delta: float) -> void:
 			player._physics_body.apply_central_impulse(force)
 		pass
 	
-	if Input.is_action_just_released("gadget"):
+	if not Input.is_action_pressed("interact"):
 		end_grapple()
-
 
 func end_grapple():
 	grappling_hook.end_grapple()
@@ -70,11 +69,12 @@ func end_grapple():
 	if not player.is_on_floor():
 		state_machine.transition_to("Air")
 		return
-	if player.is_on_floor():
-		if is_equal_approx(player.velocity.x, 0.0):
-			state_machine.transition_to("Idle")
-		else:
-			state_machine.transition_to("Run")
+		
+	#if player.is_on_floor():
+		#if is_equal_approx(player.velocity.x, 0.0):
+			#state_machine.transition_to("Idle")
+		#else:
+			#state_machine.transition_to("Run")
 			
 
 var interp_time = 0.0

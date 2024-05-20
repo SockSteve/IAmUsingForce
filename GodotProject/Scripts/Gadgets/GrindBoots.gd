@@ -4,14 +4,18 @@ The grinding logic is housed in the state machine.
 """
 extends Node3D
 
-@onready var player: Player = find_parent("Player")
+@onready var player: Player = find_parent("Player") #works because this gadget is always in tree upon collecting
+#shapecast for detecting grindrails
 @onready var shape_cast_ground: ShapeCast3D = $ShapeCast3D
 @onready var shape_cast_left: ShapeCast3D = $ShapeCast3DLeft
 @onready var shape_cast_right: ShapeCast3D = $ShapeCast3DRight
 
+#current grindrail
 var current_grindrail : Path3D = null
 
+#grainding variables
 @export var grind_jump_curve: Curve = load("res://Scripts/Gadgets/GrindJumpCurve.tres")
+@export var grindrail_change_jump_curve: Curve = load("res://Scripts/Gadgets/GrindJumpCurve.tres")
 @export var grind_curve_time_factor: float = 1
 @export var grind_speed_time_factor: float = .3
 
@@ -29,6 +33,8 @@ func _physics_process(delta):
 			shape_cast_left.set_enabled(true)
 			shape_cast_right.set_enabled(true)
 			
+			shape_cast_left.force_shapecast_update()
+			shape_cast_right.force_shapecast_update()
 			shape_cast_left.add_exception_rid(shape_cast_ground.get_collider_rid(0))
 			shape_cast_right.add_exception_rid(shape_cast_ground.get_collider_rid(0))
 

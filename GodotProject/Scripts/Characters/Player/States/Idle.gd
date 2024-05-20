@@ -3,11 +3,7 @@ extends PlayerState
 # Upon entering the state, we set the Player node's velocity to zero.
 func enter(_msg := {}) -> void:
 	player.velocity = Vector3.ZERO
-	if not _msg.has("transition"):
-		#player.velocity = Vector3.ZERO
-		pass
 	player._character_skin.set_moving(false)
-
 
 func update(delta: float) -> void:
 	if player.freeze:
@@ -26,11 +22,14 @@ func update(delta: float) -> void:
 	
 	# activating gadget specific states are handled through their specific gadget 
 	if player.get_inventory().has_gadget("GrindBoots"):
+		#when the player has grindboots and the detect a grindrail, the 
+		#player.is_grinding variable is set to true
 		if player.is_grinding:
 			state_machine.transition_to("Grind")
 		
-	if player.get_inventory().has_gadget("GrapplingHook"):
-		if player.get_inventory().get_gadget("GrapplingHook").grappling:
+	if player.get_inventory().has_gadget("GrapplingHook") and Input.is_action_pressed("interact"):
+		player.get_inventory().get_gadget("GrapplingHook").activate()
+		if player.is_grappling:
 			state_machine.transition_to("Grapple")
 			return
 	
@@ -42,13 +41,14 @@ func update(delta: float) -> void:
 		state_machine.transition_to("Run")
 		return
 		
+	
 	if Input.is_action_pressed("crouch") and not player.is_crouching:
 		state_machine.transition_to("Crouch")
 		return
 
 	if Input.is_action_just_pressed("jump"):
-		state_machine.transition_to("Air", {do_jump = true})
 		# As we'll only have one air state for both jump and fall, we use the `msg` dictionary 
 		# to tell the next state that we want to jump.
+		state_machine.transition_to("Air", {do_jump = true})
 	
 		

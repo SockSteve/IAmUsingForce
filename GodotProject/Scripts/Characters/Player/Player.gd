@@ -50,8 +50,14 @@ class_name Player
 @onready var _ground_height: float = 0.0
 @onready var _start_position := global_transform.origin
 @onready var _is_on_floor_buffer := false
+@onready var state = $StateMachine.state
+@onready var inventory = $Inventory
+var crouching_collision_height: float = .9
+@onready var standing_collision_height: float = collision_shape.shape.height
+@onready var standing_collision_position: Vector3 = Vector3(0,standing_collision_height/2,0)
+@onready var crouching_collision_position: Vector3 = Vector3(0,crouching_collision_height/2,0)
 
-#debug
+#state variables
 var combo_step : int = 0 #used for melee attack combo
 var is_attacking : bool = false
 var is_crouching: bool = false
@@ -62,19 +68,13 @@ var is_grappling: bool = false
 var is_ledge_grabbing: bool = false
 var is_hanging: bool = false
 var is_magnetized: bool = false
+var is_strafing: bool
 var freeze: bool = false
 
-@onready var state = $StateMachine.state
-@onready var inventory = $Inventory
-
 var currently_held_weapon_or_gadget: Node
-var is_strafing: bool
+var stored_weapon_on_gadget_use: Node #this variable is only assigned with the active weapon when a gadget is used. it stores the weapon so it can be placed back into the players hand fter the gadget usage is over.
 
-var crouching_collision_height: float = .9
-@onready var standing_collision_height: float = collision_shape.shape.height
-@onready var standing_collision_position: Vector3 = Vector3(0,standing_collision_height/2,0)
-@onready var crouching_collision_position: Vector3 = Vector3(0,crouching_collision_height/2,0)
-
+#debug
 @onready var grappling_hook = preload("res://Scenes/Gadgets/GrapplingHook.tscn").instantiate()
 @onready var grinding_boots = preload("res://Scenes/Gadgets/GrindBoots.tscn").instantiate()
 
@@ -114,7 +114,7 @@ func _get_camera_oriented_input() -> Vector3:
 
 #function for smoothly rotating the player towards a given direction
 func _orient_character_to_direction(direction: Vector3, delta: float,rotation_speed:float=_rotation_speed, up_vector: Vector3 = Vector3.UP) -> void:
-	var left_axis := up_vector.cross(direction)
+	var left_axis := up_vector.cross(direction).normalized()
 	var rotation_basis := Basis(left_axis, up_vector, direction).get_rotation_quaternion()
 	var model_scale := _rotation_root.transform.basis.get_scale()
 	_rotation_root.transform.basis = Basis(_rotation_root.transform.basis.get_rotation_quaternion().slerp(rotation_basis, delta * rotation_speed)).scaled(

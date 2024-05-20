@@ -16,6 +16,7 @@ func physics_update(delta: float) -> void:
 	if Input.is_action_pressed("move_up") and Input.is_action_pressed("crouch"):
 		player.combo_step = 0
 		state_machine.transition_to("Crouch", {do_slide = true})
+	
 	if Input.is_action_just_pressed("jump"):
 		player.combo_step = 0
 		state_machine.transition_to("Air", {do_jump = true})
@@ -54,7 +55,3 @@ func move_character(direction: Vector3, distance: float):
 	var motion = direction * distance
 	player.velocity = motion
 	player.move_and_slide()
-
-	# Depending on your setup, you may want to adjust the parameters of move_and_slide
-	# For example, you might want to use 'stop_on_slope', 'max_slides',
-	# 'floor_max_angle', and other parameters to refine the character's movement

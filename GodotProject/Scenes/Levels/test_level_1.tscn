@@ -1,0 +1,129 @@
+[gd_scene load_steps=6 format=3 uid="uid://dg61cvqlsirpy"]
+
+[ext_resource type="Environment" uid="uid://ct2ypkwlmumhf" path="res://default_env.tres" id="1_0yh5f"]
+[ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Scenes/Characters/Player/Player.tscn" id="2_qdyh7"]
+[ext_resource type="PackedScene" uid="uid://bllxyncmft2sj" path="res://Scenes/Interactibles/GrapplingPoints/GrapplePoint.tscn" id="3_586er"]
+
+[sub_resource type="Curve3D" id="Curve3D_tkxag"]
+bake_interval = 1.0
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0.798612, 0.20395, 3.52652, 0, 0, 0, 0, 0, 0, 6.54768, 0.481445, 10.5389, 0, 0, 0, 0, 0, 0, 10.9531, -0.685547, 23.6131, 0, 0, 0, 0, 0, 0, 6.8319, -0.381714, 30.5766, 0, 0, 0, 0, 0, 0, -0.557877, 0, 36.261, 0, 0, 0, 0, 0, 0, -7.87138, 0, 42.3163, 0, 0, 0, 0, 0, 0, -13.7742, 0, 47.2036, 0, 0, 0, 0, 0, 0, -19.0323, 0, 62.5516, 0, 0, 0, 0, 0, 0, 0.152679, 0, 84.7209),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 10
+
+[sub_resource type="Curve3D" id="Curve3D_c66m3"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -9.4447, 0.0527992, 77.9181, 0, 0, 0, 0, 0, 0, -13.7288, 0.348255, 92.6909, 0, 0, 0, 0, 0, 0, -10.4909, 2.09717, 102.627),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[node name="test_level_1" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_0yh5f")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.590577, 0.806981, 0, -0.806981, 0.590577, 0, 1.476, 0)
+
+[node name="LevelGeometry" type="Node3D" parent="."]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="LevelGeometry"]
+use_collision = true
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="LevelGeometry/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.73452, -0.0612099, 0)
+polygon = PackedVector2Array(-4.51849, -0.0493758, -4.50584, 1.16539, 3.86363, 1.17492, 3.89936, -0.124238)
+mode = 2
+path_node = NodePath("../Path3D")
+path_interval_type = 1
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="Path3D" type="Path3D" parent="LevelGeometry/CSGCombiner3D"]
+curve = SubResource("Curve3D_tkxag")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="LevelGeometry/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.998226, 0.0595329, 0, -0.0595329, 0.998226, 14.7946, 0, 21.7019)
+operation = 2
+radius = 3.81938
+height = 7.68404
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="LevelGeometry/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.998226, 0.0595329, 0, -0.0595329, 0.998226, -3.18494, 0, 34.3292)
+operation = 2
+radius = 3.81938
+height = 7.68404
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="LevelGeometry/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 0.998226, 0.0595329, 0, -0.0595329, 0.998226, -15.2162, 0, 50.8477)
+operation = 2
+radius = 6.60205
+height = 7.68404
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="LevelGeometry/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.62215, 0.171638, 90.8444)
+radius = 18.6974
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="LevelGeometry/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.62215, 0.171638, 90.8444)
+radius = 2.88087
+height = 5.1647
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="LevelGeometry/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9131, 3.1939, 90.8299)
+radius = 2.88087
+height = 4.46347
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="LevelGeometry/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.7947, 5.20638, 91.0039)
+layers = 96
+radius = 2.88087
+height = 9.74382
+
+[node name="CSGCylinder3D11" type="CSGCylinder3D" parent="LevelGeometry/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.3144, 19.9266, 90.9799)
+radius = 5.85763
+height = 45.5335
+
+[node name="CSGCpol" type="CSGPolygon3D" parent="LevelGeometry/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.17947, 0)
+polygon = PackedVector2Array(-1, -4, -1, 6, 3, 6, 1, -4)
+mode = 2
+path_node = NodePath("../Path3D2")
+path_interval_type = 1
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 1
+path_local = true
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="Path3D2" type="Path3D" parent="LevelGeometry/CSGCombiner3D"]
+curve = SubResource("Curve3D_c66m3")
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="LevelGeometry/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.47728, 1.99468, 109.827)
+radius = 4.43288
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="LevelGeometry/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.25029, 3.59065, 116.102)
+radius = 4.43288
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="LevelGeometry/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.57423, 5.25031, 120.706)
+radius = 4.43288
+
+[node name="Player" parent="." instance=ExtResource("2_qdyh7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.106554, 2.26724, 0.264738)
+
+[node name="GrapplePoint" parent="." instance=ExtResource("3_586er")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5518, 14.019, 82.8753)
+grapple_point_type = 1
