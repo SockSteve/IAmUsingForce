@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dg61cvqlsirpy"]
+[gd_scene load_steps=8 format=3 uid="uid://dg61cvqlsirpy"]
 
 [ext_resource type="Environment" uid="uid://ct2ypkwlmumhf" path="res://default_env.tres" id="1_0yh5f"]
 [ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Scenes/Characters/Player/Player.tscn" id="2_qdyh7"]
 [ext_resource type="PackedScene" uid="uid://bllxyncmft2sj" path="res://Scenes/Interactibles/GrapplingPoints/GrapplePoint.tscn" id="3_586er"]
+[ext_resource type="PackedScene" uid="uid://bcvynjajcwmks" path="res://Assets/Models/Interactibles/GoldNugget.glb" id="4_wcjof"]
+[ext_resource type="PackedScene" uid="uid://ctrttq07u1pok" path="res://Assets/Models/Interactibles/SilverNugget.glb" id="5_sps66"]
 
 [sub_resource type="Curve3D" id="Curve3D_tkxag"]
 bake_interval = 1.0
@@ -78,6 +80,7 @@ height = 5.1647
 
 [node name="CSGCylinder3D6" type="CSGCylinder3D" parent="LevelGeometry/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9131, 3.1939, 90.8299)
+layers = 96
 radius = 2.88087
 height = 4.46347
 
@@ -127,3 +130,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.106554, 2.26724, 0.264738)
 [node name="GrapplePoint" parent="." instance=ExtResource("3_586er")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5518, 14.019, 82.8753)
 grapple_point_type = 1
+
+[node name="GoldNugget" parent="." instance=ExtResource("4_wcjof")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.49774, 2.75399, 96.4291)
+
+[node name="SilverNugget" parent="." instance=ExtResource("5_sps66")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.242484, 1.17163, 99.6249)
