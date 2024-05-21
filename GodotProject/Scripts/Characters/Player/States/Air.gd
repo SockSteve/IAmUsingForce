@@ -66,7 +66,7 @@ func physics_update(delta: float) -> void:
 			jumped = false
 			state_machine.transition_to("Grind")
 			return
-	print("aa")
+	
 	if player.is_on_floor():
 		
 		jumped = false

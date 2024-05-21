@@ -86,7 +86,6 @@ func attack(attack_counter):
 	animation_tree.set(transition_state_mashine_request, "state_melee")
 	var current_attack_animation = "attack_" + str(attack_counter)
 	sm_melee.travel(current_attack_animation)
-	#sm_melee.travel("attack_1")
 
 func block():
 	animation_tree.set(transition_state_mashine_request, "state_melee")

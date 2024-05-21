@@ -2,6 +2,8 @@ extends PlayerState
 
 
 func enter(_msg := {}) -> void:
+	player.switch_current_weapon_to_melee(true)
+	player.is_melee = true
 	player._character_skin.attack(player.combo_step)
 	player.combo_step += 1
 	#player.attack_timer.connect("timeout", self, "_on_attack_timer_timeout")
@@ -11,6 +13,7 @@ func enter(_msg := {}) -> void:
 		pass
 
 func physics_update(delta: float) -> void:
+	
 	if Input.is_action_just_pressed("melee_attack"): #and not player.is_attacking:
 		attack()
 	if Input.is_action_pressed("move_up") and Input.is_action_pressed("crouch"):
@@ -22,10 +25,10 @@ func physics_update(delta: float) -> void:
 		state_machine.transition_to("Air", {do_jump = true})
 
 func attack():
-	player.is_attacking = true
+	player.is_melee = true
 	var advance_distance = 10.0  # Adjust as needed
 	#var advance_direction = -player.global_transform.basis.z.normalized()  # Forward direction, -z is forward
-	var advance_direction = player._rotation_root.transform.basis.z.normalized()
+	var advance_direction = player._rotation_root.transform.basis.z.normalized() 
 	
 	match player.combo_step:
 		0:
@@ -46,7 +49,7 @@ func attack():
 func _on_attack_timer_timeout():
 	# If the timer runs out, reset combo
 	player.combo_step = 0
-	player.is_attacking = false
+	player.is_melee = false
 
 func play_attack_animation(animation_name: String):
 	$AnimationPlayer.play(animation_name)

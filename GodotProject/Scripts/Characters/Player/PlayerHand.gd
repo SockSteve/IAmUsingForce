@@ -20,14 +20,20 @@ func remove_weapon_from_hand():
 func change_weapon_in_hand(item_inst: Node):
 	
 	var old_item: Node
-	if right_hand_bone_attachement.get_children().size() > 0:
-		old_item  = right_hand_bone_attachement.get_child(0)
-	else:
-		old_item = ranged_weapon_marker_3d.get_child(0)
-	old_item.get_parent().remove_child(old_item)
+	old_item  = right_hand_bone_attachement.get_child(0)
+	#old_item.get_parent().remove_child(old_item)
+	right_hand_bone_attachement.remove_child(old_item)
+	right_hand_bone_attachement.add_child(item_inst)
+
 	
-	if item_inst.is_in_group("melee"):
-		right_hand_bone_attachement.add_child(item_inst)
-		return
-	ranged_weapon_marker_3d.add_child(item_inst)
-	
+	#var old_item: Node
+	#if right_hand_bone_attachement.get_children().size() > 0:
+		#old_item  = right_hand_bone_attachement.get_child(0)
+	#else:
+		#old_item = ranged_weapon_marker_3d.get_child(0)
+	#old_item.get_parent().remove_child(old_item)
+	#
+	#if item_inst.is_in_group("melee"):
+		#right_hand_bone_attachement.add_child(item_inst)
+		#return
+	#ranged_weapon_marker_3d.add_child(item_inst)

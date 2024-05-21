@@ -59,7 +59,9 @@ var crouching_collision_height: float = .9
 
 #state variables
 var combo_step : int = 0 #used for melee attack combo
-var is_attacking : bool = false
+var can_melee: bool = false
+var is_melee : bool = false
+var attack_step_finished: bool = true
 var is_crouching: bool = false
 var is_sliding: bool = false
 var can_grind: bool = true
@@ -71,8 +73,14 @@ var is_magnetized: bool = false
 var is_strafing: bool
 var freeze: bool = false
 
+#store the active weapons that are not in the scene tree
+var current_ranged_weapon: Node
+var current_melee_weapon: Node
+#weapon that is in the scene tree. there is only one
 var currently_held_weapon_or_gadget: Node
+#store scene_tree weapon on gadget use 
 var stored_weapon_on_gadget_use: Node #this variable is only assigned with the active weapon when a gadget is used. it stores the weapon so it can be placed back into the players hand fter the gadget usage is over.
+
 
 #debug
 @onready var grappling_hook = preload("res://Scenes/Gadgets/GrapplingHook.tscn").instantiate()
@@ -98,6 +106,7 @@ func _physics_process(delta):
 		_ground_height = global_position.y + _ground_shapecast.target_position.y
 	if global_position.y < _ground_height:
 		_ground_height = global_position.y
+
 
 func _get_camera_oriented_input() -> Vector3:
 	var raw_input := Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -129,7 +138,6 @@ func _orient_magnetized_character_to_direction(direction: Vector3, delta: float,
 		model_scale
 	)
 
-
 #function for changing the player physics to that of a ridgidbody (here @PhysicsBody)
 #called in StateMachine
 func switchToPhysicsBody():
@@ -147,6 +155,7 @@ func switchToCharacterBody():
 	_physics_body.top_level = false
 	velocity = _physics_body.linear_velocity
 
+#returns the inventory
 func get_inventory()->Inventory:
 	return inventory
 
@@ -158,9 +167,6 @@ func put_in_hand(weapon_or_gadget: Node)->void:
 	hand.add_or_replace_item_to_hand(weapon_or_gadget)
 	_character_skin.change_weapon(weapon_or_gadget.name)
 
-func attack():
-	pass
-
 #function for adding the initial weapon loadout to the inventory.
 #@param starting_loadout - defined as export PackedStringArray
 #@param weapon_path - path to be loaded and instantiated, then added to the inventory
@@ -170,5 +176,19 @@ func add_starting_loadout_to_inventory()->void:
 		weapon_scene = weapon_scene.instantiate()
 		if currently_held_weapon_or_gadget == null:
 			currently_held_weapon_or_gadget = weapon_scene
+		if current_melee_weapon == null and weapon_scene.is_in_group("melee"):
+			current_melee_weapon = weapon_scene
+		if current_ranged_weapon == null and weapon_scene.is_in_group("ranged"):
+			current_ranged_weapon = weapon_scene
 		
 		inventory.add_weapon(weapon_scene.name, weapon_scene)
+
+#because the player has buttons for melee and ranged, we need to be able to determine which weapon should be used
+func switch_current_weapon_to_melee(melee: bool):
+	print("here")
+	print(currently_held_weapon_or_gadget, "  ", current_melee_weapon, "   ", current_ranged_weapon)
+	if melee and currently_held_weapon_or_gadget != current_melee_weapon:
+		print("true")
+		put_in_hand(current_melee_weapon)
+	if ! melee and currently_held_weapon_or_gadget != current_ranged_weapon:
+		put_in_hand(current_ranged_weapon)

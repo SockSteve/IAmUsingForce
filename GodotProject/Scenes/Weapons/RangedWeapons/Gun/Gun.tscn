@@ -17,5 +17,5 @@ bullet = ExtResource("2_j5oes")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000402287, -0.00851544, 0.0707638)
 
 [node name="Pistol" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0232031, 0.027405)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0296825, 0, 0.0334665)
 mesh = ExtResource("4_wnphd")
