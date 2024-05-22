@@ -97,6 +97,12 @@ func _ready() -> void:
 func _physics_process(delta):
 	#uncomment the following fr debugging
 	#print($StateMachine.state)
+	if Input.is_action_just_pressed("ranged_attack"):
+		print(currently_held_weapon_or_gadget)
+	
+	if Input.is_action_just_pressed("ranged_attack") and currently_held_weapon_or_gadget != current_ranged_weapon:
+		print("ackackack")
+		put_in_hand(current_ranged_weapon)
 	
 	# Calculate ground height for camera controller
 	if _ground_shapecast.get_collision_count() > 0:
@@ -166,6 +172,7 @@ func change_currently_held_weapon_or_gadget_to(weapon_or_gadget_name: StringName
 func put_in_hand(weapon_or_gadget: Node)->void:
 	hand.add_or_replace_item_to_hand(weapon_or_gadget)
 	_character_skin.change_weapon(weapon_or_gadget.name)
+	currently_held_weapon_or_gadget = weapon_or_gadget
 
 #function for adding the initial weapon loadout to the inventory.
 #@param starting_loadout - defined as export PackedStringArray
