@@ -165,6 +165,7 @@ unique_name_in_owner = true
 
 [node name="AnimationTree" parent="CharacterRotationRoot/CharacterSkin" index="1"]
 parameters/armtransition/current_state = "hold_gun"
+parameters/weapon_melee_transition/transition_request = ""
 
 [node name="PlayerHand" type="Node3D" parent="CharacterRotationRoot/CharacterSkin"]
 unique_name_in_owner = true

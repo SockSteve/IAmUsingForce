@@ -14,18 +14,18 @@ func _process(delta):
 		shoot()
 
 func shoot():
-	var bullet = bullet.instantiate()
+	var real_bullet = bullet.instantiate()
 	#add child to character out of rotational root detached from any player transform
-	get_parent().get_parent().get_parent().add_child(bullet)
+	get_parent().get_parent().get_parent().add_child(real_bullet)
 	#get_tree().root.add_child(bullet)
-	print(bullet)
+	print(real_bullet)
 
 	# Set the bullet's position to the gun's position
-	bullet.global_transform.origin = global_transform.origin
+	real_bullet.global_transform.origin = global_transform.origin
 
 	# Apply velocity to the bullet
 	var direction = global_transform.basis.z.normalized()
-	bullet.linear_velocity = direction * bullet_speed
+	real_bullet.linear_velocity = direction * bullet_speed
 
 	# Implement fire rate
 	can_shoot = false
