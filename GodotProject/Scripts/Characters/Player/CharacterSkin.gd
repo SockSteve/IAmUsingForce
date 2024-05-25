@@ -18,12 +18,17 @@ var arm_transition_state_mashine_request := "parameters/armtransition/transition
 @onready var move_speed : float = 0.0 : set = set_moving_speed
 @onready var animation_tree : AnimationTree = $AnimationTree
 
-#@onready var transition_state_mashine_request: AnimationNodeTransition = animation_tree.get("parameters/transition/transition_request")
+#variables to access the statemachines for the indivisuaö states
 @onready var state_machine : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_normal/playback")
+@onready var sm_melee : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_melee/playback")
+@onready var sm_onwall : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_onwall/playback")
+@onready var sm_ledgehanging : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_ledgehanging/playback")
+@onready var sm_takedamage : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_takedamage/playback")
 @onready var sm_crouch : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_crouch/playback")
 @onready var sm_grind : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_grind/playback")
 @onready var sm_grapple : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_grapple/playback")
-@onready var sm_melee : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_melee/playback")
+@onready var sm_monkeybar : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_monkeybar/playback")
+#for holding weapons
 @onready var sm_armtransitions : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_normal/playback")
 
 func _ready():
@@ -31,6 +36,7 @@ func _ready():
 	animation_tree.active = true
 	main_animation_player["playback_default_blend_time"] = 0.1
 
+#is used in the walking and crouching state
 func set_moving(value : bool):
 	moving = value
 	if moving:
