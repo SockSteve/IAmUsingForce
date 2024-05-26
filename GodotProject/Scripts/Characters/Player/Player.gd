@@ -37,12 +37,13 @@ class_name Player
 @onready var _camera_controller: CameraController = $CameraController
 @onready var _ground_shapecast: ShapeCast3D = $GroundShapeCast
 @onready var _physics_body: RigidBody3D = $PhysicsBody
-@onready var _character_skin := $CharacterRotationRoot/CharacterSkin
+@onready var _character_skin: CharacterSkin = $CharacterRotationRoot/CharacterSkin
 @onready var hand = %PlayerHand
 @onready var collision_shape: CollisionShape3D= $CollisionShape3D
 @onready var ledge_ray_vertical: RayCast3D = find_child("LedgeRayVertical")
 @onready var ledge_ray_horizontal: RayCast3D = find_child("LedgeRayHorizontal")
-#@onready var _attack_animation_player: AnimationPlayer = $CharacterRotationRoot/MeleeAnchor/AnimationPlayer
+@onready var attack_timer: Timer = $AttackTimer
+@onready var combo_timer: Timer = $ComboTimer
 
 @onready var _move_direction := Vector3.ZERO
 @onready var _last_strong_direction := Vector3.FORWARD

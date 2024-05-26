@@ -721,8 +721,12 @@ layout_mode = 2
 visible = false
 layout_mode = 2
 
-[node name="AttackTimer" type="Timer" parent="."]
+[node name="ComboTimer" type="Timer" parent="."]
 wait_time = 2.0
+one_shot = true
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 0.5
 one_shot = true
 
 [node name="DropShadow" type="Decal" parent="."]

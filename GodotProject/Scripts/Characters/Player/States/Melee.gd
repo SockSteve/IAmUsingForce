@@ -1,30 +1,51 @@
 extends PlayerState
 
 
+
 func enter(_msg := {}) -> void:
+	$"../../AttackTimer".timeout.connect(attack_ended)
+	$"../../ComboTimer".timeout.connect(combo_ended)
 	player.switch_current_weapon_to_melee(true)
 	player.is_melee = true
+	
+	if _msg.has("do_air_up_attack"):
+		attack("up")
+		print("up")
+		$"../../AttackTimer".start()
+		return
+	if _msg.has("do_air_down_attack"):
+		attack("down")
+		print("down")
+		return
+	
 	player._character_skin.attack(player.combo_step)
 	player.combo_step += 1
-	#player.attack_timer.connect("timeout", self, "_on_attack_timer_timeout")
-	if _msg.has("do_air_up_attack"):
-		pass
-	if _msg.has("do_air_down_attack"):
-		pass
 
 func physics_update(delta: float) -> void:
+	if not player.is_on_floor():
+		player.velocity.y += player._gravity * delta
+	player.move_and_slide()
 	
-	if Input.is_action_just_pressed("melee_attack"): #and not player.is_attacking:
-		attack()
+	if Input.is_action_just_pressed("melee_attack") and not player.is_on_floor(): #and not player.is_attacking:
+		attack("")
+	
 	if Input.is_action_pressed("move_up") and Input.is_action_pressed("crouch"):
 		player.combo_step = 0
 		state_machine.transition_to("Crouch", {do_slide = true})
+
 	
 	if Input.is_action_just_pressed("jump"):
 		player.combo_step = 0
 		state_machine.transition_to("Air", {do_jump = true})
 
-func attack():
+func attack(air_up_down: StringName):
+	if air_up_down == "up":
+		player._character_skin.air_attack("up")
+		return
+	if air_up_down == "down":
+		player._character_skin.air_attack("down")
+		return
+	
 	player.is_melee = true
 	var advance_distance = 10.0  # Adjust as needed
 	#var advance_direction = -player.global_transform.basis.z.normalized()  # Forward direction, -z is forward
@@ -44,17 +65,15 @@ func attack():
 			move_character(advance_direction, advance_distance)
 			player.combo_step = 0  # Reset combo after third attack
 	
-	#player.attack_timer.start(0.5)  # Adjust the duration for how long the combo window is open
-
-func _on_attack_timer_timeout():
-	# If the timer runs out, reset combo
-	player.combo_step = 0
-	player.is_melee = false
-
-func play_attack_animation(animation_name: String):
-	$AnimationPlayer.play(animation_name)
 
 func move_character(direction: Vector3, distance: float):
 	var motion = direction * distance
 	player.velocity = motion
 	player.move_and_slide()
+	
+
+func attack_ended():
+	pass
+	
+func combo_ended():
+	pass
