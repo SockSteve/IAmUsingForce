@@ -200,3 +200,4 @@ func switch_current_weapon_to_melee(melee: bool):
 		put_in_hand(current_melee_weapon)
 	if ! melee and currently_held_weapon_or_gadget != current_ranged_weapon:
 		put_in_hand(current_ranged_weapon)
+

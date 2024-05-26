@@ -99,7 +99,8 @@ func attack(attack_counter:int, weapon_name: StringName = "cutter"):
 	sm_melee_cutter.travel(current_attack_animation)
 
 func air_attack(up_or_down: StringName):
-	animation_tree.set(state_transition_request, "state_melee_cutter")
+	animation_tree.set(state_transition_request, "state_melee")
+	animation_tree.set(weapon_melee_transition_request, "melee_cutter")
 	var current_attack_animation = up_or_down + "_air_attack"
 	sm_melee_cutter.travel(current_attack_animation)
 

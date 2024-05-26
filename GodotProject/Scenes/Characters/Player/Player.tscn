@@ -722,10 +722,12 @@ visible = false
 layout_mode = 2
 
 [node name="ComboTimer" type="Timer" parent="."]
+editor_description = "This Node is used in state melee"
 wait_time = 2.0
 one_shot = true
 
 [node name="AttackTimer" type="Timer" parent="."]
+editor_description = "This Node is used in state melee"
 wait_time = 0.5
 one_shot = true
 
@@ -739,5 +741,8 @@ upper_fade = 0.0001
 lower_fade = 1.0
 distance_fade_begin = 172.53
 distance_fade_length = 1000.0
+
+[connection signal="timeout" from="ComboTimer" to="StateMachine/Melee" method="_on_combo_timer_timeout"]
+[connection signal="timeout" from="AttackTimer" to="StateMachine/Melee" method="_on_attack_timer_timeout"]
 
 [editable path="CharacterRotationRoot/CharacterSkin"]
