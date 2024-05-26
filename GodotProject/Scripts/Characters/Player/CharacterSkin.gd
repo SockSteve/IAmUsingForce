@@ -94,6 +94,7 @@ func change_weapon(weapon:StringName):
 
 func attack(attack_counter:int, weapon_name: StringName = "cutter"):
 	animation_tree.set(state_transition_request, "state_melee")
+	animation_tree.set(weapon_melee_transition_request, "melee_cutter")
 	var current_attack_animation = "attack_" + str(attack_counter)
 	sm_melee_cutter.travel(current_attack_animation)
 

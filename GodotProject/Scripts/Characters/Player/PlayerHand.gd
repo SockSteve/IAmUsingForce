@@ -1,7 +1,8 @@
 extends Node3D
 
+@export var vet: Vector3 = Vector3.ZERO
 @onready var right_hand_bone_attachement: BoneAttachment3D = %CharacterSkin.find_child("MeleeHand")
-#@onready var ranged_weapon_marker_3d = %CharacterSkin.find_child("RangedHand")
+@onready var ranged_weapon_marker_3d = %CharacterSkin.find_child("RangedHand")
 
 #function is only called from player script and nowhere else
 #@param item_inst: node to be placed into players hand

@@ -6,7 +6,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cw25l0jej84hr" path="res://Assets/Models/Weapons/pistol.obj" id="4_wnphd"]
 
 [node name="Gun" type="Node3D" groups=["ranged"]]
-transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -0.105589, 0, -0.172745)
+transform = Transform3D(-2.18557e-07, 5, 0, 2.18557e-07, 9.55343e-15, 5, 5, 2.18557e-07, -2.18557e-07, 0, 0, 0)
 script = ExtResource("1_eansb")
 _name = "Gun"
 upgrade_name = "KoiKoi"
@@ -14,8 +14,7 @@ icon = ExtResource("2_h3xh3")
 bullet = ExtResource("2_j5oes")
 
 [node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000402287, -0.00851544, 0.0707638)
+transform = Transform3D(1, 0, 0, 0, 0.999998, -0.00200713, 0, 0.00200713, 0.999998, 0.00159025, 0.0152566, 0.0455439)
 
 [node name="Pistol" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0296825, 0, 0.0334665)
 mesh = ExtResource("4_wnphd")
