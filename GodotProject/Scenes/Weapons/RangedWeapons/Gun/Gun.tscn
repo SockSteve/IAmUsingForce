@@ -14,7 +14,12 @@ icon = ExtResource("2_h3xh3")
 bullet = ExtResource("2_j5oes")
 
 [node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.999998, -0.00200713, 0, 0.00200713, 0.999998, 0.00159025, 0.0152566, 0.0455439)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00159025, 0.0152566, 0.0455439)
 
 [node name="Pistol" type="MeshInstance3D" parent="."]
 mesh = ExtResource("4_wnphd")
+
+[node name="FireRateTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]
