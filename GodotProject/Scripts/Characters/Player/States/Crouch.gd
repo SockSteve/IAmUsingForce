@@ -3,6 +3,7 @@ extends PlayerState
 var slide_time: float = 0
 
 func enter(_msg := {}) -> void:
+	player.putting_ranged_weapon_in_hand_enabled = false
 	start_crouch()
 	if _msg.has("do_slide"):
 		start_slide()
@@ -21,12 +22,14 @@ func physics_update(delta: float) -> void:
 			uncrouch()
 			if not player.is_crouching:
 				slide_time = 0
+				player.putting_ranged_weapon_in_hand_enabled = true
 				state_machine.transition_to("Air", {do_crouch_jump = true})
 		return
 	
 	if not player.is_on_floor():
 		uncrouch()
 		if not player.is_crouching:
+			player.putting_ranged_weapon_in_hand_enabled = true
 			state_machine.transition_to("Air")
 		return
 	
@@ -36,6 +39,7 @@ func physics_update(delta: float) -> void:
 		#player._character_skin.uncrouch()
 		uncrouch()
 		if not player.is_crouching:
+			player.putting_ranged_weapon_in_hand_enabled = true
 			if player.velocity.length() != 0.0:
 				state_machine.transition_to("Run")
 			else:
@@ -47,6 +51,7 @@ func physics_update(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		uncrouch()
 		if not player.is_crouching:
+			player.putting_ranged_weapon_in_hand_enabled = true
 			state_machine.transition_to("Air", {do_crouch_jump = true})
 
 func turn_and_move(delta):

@@ -73,6 +73,7 @@ var is_hanging: bool = false
 var is_magnetized: bool = false
 var is_strafing: bool
 var freeze: bool = false
+var putting_ranged_weapon_in_hand_enabled: bool = true 
 
 #store the active weapons that are not in the scene tree
 var current_ranged_weapon: Node
@@ -96,14 +97,14 @@ func _ready() -> void:
 	inventory.add_gadget(grinding_boots.name, grinding_boots)
 
 func _physics_process(delta):
-	#uncomment the following fr debugging
+	#uncomment the following fr debugging sates
 	#print($StateMachine.state)
-	if Input.is_action_just_pressed("ranged_attack"):
-		print(currently_held_weapon_or_gadget)
 	
-	if Input.is_action_just_pressed("ranged_attack") and currently_held_weapon_or_gadget != current_ranged_weapon:
-		print("ackackack")
-		put_in_hand(current_ranged_weapon)
+	#this is currently the only way to put ranged weapons in the players hand, because there is no 
+	#ranged combat state as the result that ranged weapons can be fired off without locking the player into an animation or state
+	if putting_ranged_weapon_in_hand_enabled:
+		if Input.is_action_just_pressed("ranged_attack") and currently_held_weapon_or_gadget != current_ranged_weapon:
+			put_in_hand(current_ranged_weapon)
 	
 	# Calculate ground height for camera controller
 	if _ground_shapecast.get_collision_count() > 0:

@@ -19,6 +19,10 @@ var current_grindrail : Path3D = null
 @export var grind_curve_time_factor: float = 1
 @export var grind_speed_time_factor: float = .3
 
+#debug
+var exc_arr_l: Array = []
+var exc_arr_r: Array = []
+
 #we probe for grindrails with a shapecast
 func _physics_process(delta):
 	#we test if we collide with a grindrail
@@ -35,8 +39,12 @@ func _physics_process(delta):
 			
 			shape_cast_left.force_shapecast_update()
 			shape_cast_right.force_shapecast_update()
+			exc_arr_l.append(shape_cast_ground.get_collider_rid(0))
+			exc_arr_r.append(shape_cast_ground.get_collider_rid(0))
 			shape_cast_left.add_exception_rid(shape_cast_ground.get_collider_rid(0))
 			shape_cast_right.add_exception_rid(shape_cast_ground.get_collider_rid(0))
+			print("left exceptions: ", exc_arr_l)
+			print("right exceptions: ", exc_arr_r)
 
 #this function is used for changing the grindrails
 #this function gets called by the state machine
@@ -53,7 +61,9 @@ func get_side_rail_path3d(direction: StringName) -> Path3D:
 
 func clear_grindrail_exceptions():
 	shape_cast_left.clear_exceptions()
+	exc_arr_l = []
 	shape_cast_right.clear_exceptions()
+	exc_arr_r = []
 
 #this function is for cleaning up the grind state. We also won't allow the player to grind
 #for a short time so the player can be released from the grindrail

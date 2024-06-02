@@ -22,21 +22,15 @@ func physics_update(delta: float) -> void:
 	if path_3d != null:
 		#update player progress
 		path_follow_3d.progress_ratio += (delta * player.get_inventory().get_gadget("GrindBoots").grind_speed_time_factor)/path_3d.curve.get_baked_length()
-		#update rotation
+		
+		#move player through path_follow_3d
+		#we check for grindjump, because when jumping we update our y position, which would otherwise be resetted
 		if !grind_jump:
 			player.global_position = path_follow_3d.global_position
 			
-			#player._rotation_root.global_basis = path_follow_3d.global_basis
-			#var bas: Basis = 
-			#bas.rotated(Vector3(0,1,0),3*PI)
-			player._rotation_root.global_basis = path_follow_3d.global_basis.rotated(Vector3(0,1,0),PI)
-			#player._rotation_root.rotated()
-			#player._rotation_root.FLIP_X
-
-			#player._orient_character_to_direction(path_follow_3d.firw, delta)
-			#player._rotation_root.rotation = Vector3(0,180,0)
+		player._rotation_root.global_basis = path_follow_3d.global_basis.rotated(Vector3(0,1,0),PI)
 		
-		if path_follow_3d.progress_ratio >= .98:
+		if path_follow_3d.progress_ratio >= 1:
 			endGrind()
 			return
 		
@@ -62,14 +56,9 @@ func physics_update(delta: float) -> void:
 			if !grind_jump:
 				grind_jump = true
 		
-		#if !grind_jump:
-			#player.global_transform = path_follow_3d.global_transform
-			#player._rotation_root.rotation = Vector3(0,180,0)
-			#rotate_character_along_the_grindrail(delta)
 		
 		if grind_jump:
-			player.global_transform = path_follow_3d.global_transform
-			player._rotation_root.rotation = Vector3(0,180,0)
+			player.global_position = path_follow_3d.global_position
 			grind_jump_time += delta * player.get_inventory().get_gadget("GrindBoots").grind_curve_time_factor
 			var jump_y_pos: float =  player.get_inventory().get_gadget("GrindBoots").grind_jump_curve.sample(grind_jump_time)
 			player.global_position.y = path_follow_3d.global_position.y + jump_y_pos
@@ -87,27 +76,15 @@ func set_initial_progress(player_position: Vector3) -> void:
 	path_follow_3d.progress_ratio = progress_ratio
 
 
-func rotate_character_along_the_grindrail(delta):
-	var curve_distance = path_3d.curve.get_baked_length() * path_follow_3d.progress_ratio
-	var position = path_3d.curve.sample_baked(curve_distance,true)
-	
-	var basis = Basis()
-	
-	var transform = Transform3D(basis, position)
-	
-	player.global_basis = basis
-	
-
 #here we end the grind
 #currently the grind state is only exited when the end is reached.
 func endGrind():
 	grind_jump = false
 	grind_jump_time = 0.0
-	player.rotation = Vector3.ZERO
 	player._character_skin.end_grind()
 	path_follow_3d.queue_free()
 	player.get_inventory().get_gadget("GrindBoots").end_grind()
-	player.velocity.y = 0.0
+	player.velocity.y = 0
 	state_machine.transition_to("Air", {do_jump = true})
 
 func change_grindrail(dir):

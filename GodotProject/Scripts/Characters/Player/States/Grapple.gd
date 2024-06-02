@@ -7,6 +7,7 @@ var target_distance_reached: bool = false
 var grappling_hook
 
 func enter(msg := {}) -> void:
+	player.putting_ranged_weapon_in_hand_enabled = false
 	grappling_hook = player.get_inventory().get_gadget("GrapplingHook")
 	
 	player.switchToPhysicsBody()
@@ -67,6 +68,7 @@ func end_grapple():
 	player.switchToCharacterBody()
 	
 	if not player.is_on_floor():
+		player.putting_ranged_weapon_in_hand_enabled = true
 		state_machine.transition_to("Air")
 		return
 		
