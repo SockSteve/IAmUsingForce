@@ -131,7 +131,7 @@ func _get_camera_oriented_input() -> Vector3:
 #function for smoothly rotating the player towards a given direction
 func _orient_character_to_direction(direction: Vector3, delta: float,rotation_speed:float=_rotation_speed, up_vector: Vector3 = Vector3.UP) -> void:
 	var left_axis := up_vector.cross(direction).normalized()
-	var rotation_basis := Basis(left_axis, up_vector, direction).get_rotation_quaternion()
+	var rotation_basis := Basis(left_axis, up_vector, direction).orthonormalized().get_rotation_quaternion()
 	var model_scale := _rotation_root.transform.basis.get_scale()
 	_rotation_root.transform.basis = Basis(_rotation_root.transform.basis.get_rotation_quaternion().slerp(rotation_basis, delta * rotation_speed)).scaled(
 		model_scale
@@ -193,10 +193,8 @@ func add_starting_loadout_to_inventory()->void:
 
 #because the player has buttons for melee and ranged, we need to be able to determine which weapon should be used
 func switch_current_weapon_to_melee(melee: bool):
-	print("here")
 	print(currently_held_weapon_or_gadget, "  ", current_melee_weapon, "   ", current_ranged_weapon)
 	if melee and currently_held_weapon_or_gadget != current_melee_weapon:
-		print("true")
 		put_in_hand(current_melee_weapon)
 	if ! melee and currently_held_weapon_or_gadget != current_ranged_weapon:
 		put_in_hand(current_ranged_weapon)

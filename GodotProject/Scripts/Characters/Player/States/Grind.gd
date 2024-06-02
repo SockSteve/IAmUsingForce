@@ -20,7 +20,21 @@ func enter(_msg := {}) -> void:
 #here we move the player along the path3d throug a path_follow3d
 func physics_update(delta: float) -> void:
 	if path_3d != null:
+		#update player progress
 		path_follow_3d.progress_ratio += (delta * player.get_inventory().get_gadget("GrindBoots").grind_speed_time_factor)/path_3d.curve.get_baked_length()
+		#update rotation
+		if !grind_jump:
+			player.global_position = path_follow_3d.global_position
+			
+			#player._rotation_root.global_basis = path_follow_3d.global_basis
+			#var bas: Basis = 
+			#bas.rotated(Vector3(0,1,0),3*PI)
+			player._rotation_root.global_basis = path_follow_3d.global_basis.rotated(Vector3(0,1,0),PI)
+			#player._rotation_root.rotated()
+			#player._rotation_root.FLIP_X
+
+			#player._orient_character_to_direction(path_follow_3d.firw, delta)
+			#player._rotation_root.rotation = Vector3(0,180,0)
 		
 		if path_follow_3d.progress_ratio >= .98:
 			endGrind()
@@ -48,9 +62,9 @@ func physics_update(delta: float) -> void:
 			if !grind_jump:
 				grind_jump = true
 		
-		if !grind_jump:
-			player.global_transform = path_follow_3d.global_transform
-			player._rotation_root.rotation = Vector3(0,180,0)
+		#if !grind_jump:
+			#player.global_transform = path_follow_3d.global_transform
+			#player._rotation_root.rotation = Vector3(0,180,0)
 			#rotate_character_along_the_grindrail(delta)
 		
 		if grind_jump:

@@ -4,7 +4,7 @@ class_name Inventory
 var weapons: Dictionary = {} #key: String | value: Node
 var gadgets: Dictionary = {} #key: String | value: Node
 var weapon_shortcuts: Dictionary = {} #key: int | value: Dictionary -> {key: index-int | value: weaponName-String} 
-@onready var passive_gadgets = $"../PassiveGadgets"
+@onready var passive_gadgets = $"../CharacterRotationRoot/PassiveGadgets"
 
 func parameterize_weapon():
 	#initialize weapon with xp
