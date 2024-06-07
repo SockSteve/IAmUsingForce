@@ -38,13 +38,17 @@ func physics_update(delta: float) -> void:
 	
 	#when player is falling down, check if any ledges are nearby
 	if player.velocity.y <= 0:
+		print("je")
 		player.ledge_ray_vertical.force_raycast_update()
+		print(player.ledge_ray_vertical.is_colliding())
 		if player.ledge_ray_vertical.is_colliding():
+			print("jere1")
 			player.ledge_ray_horizontal.global_position.y = player.ledge_ray_vertical.get_collision_point().y - 0.01
 			player.ledge_ray_horizontal.force_raycast_update()
 			if player.ledge_ray_horizontal.is_colliding():
+				print("jere2")
 				state_machine.transition_to("LedgeHang")
-			return
+				return
 	
 	
 	if Input.is_action_just_pressed("melee_attack"):

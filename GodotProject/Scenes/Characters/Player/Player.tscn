@@ -231,16 +231,17 @@ script = ExtResource("16_mjyse")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.383605)
 
 [node name="LedgeRayVertical" type="RayCast3D" parent="CharacterRotationRoot/LedgeRays"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.71359, 0.704414)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68861, 0.754186)
 enabled = false
 target_position = Vector3(0, -0.1, 0)
 collision_mask = 96
 debug_shape_custom_color = Color(0.454902, 0.682353, 0, 1)
 
 [node name="LedgeRayHorizontal" type="RayCast3D" parent="CharacterRotationRoot/LedgeRays"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65845, 0.677759)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61872, 0.698594)
 enabled = false
 target_position = Vector3(0, 0, 0.1)
+collision_mask = 96
 debug_shape_custom_color = Color(1, 0.403922, 0.545098, 1)
 
 [node name="PassiveGadgets" type="Node3D" parent="CharacterRotationRoot"]

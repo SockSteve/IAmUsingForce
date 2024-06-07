@@ -61,6 +61,8 @@ func physics_update(delta: float) -> void:
 		pass
 	
 	if not Input.is_action_pressed("interact"):
+		player.velocity = player._physics_body.linear_velocity
+		player.move_and_slide()
 		end_grapple()
 
 func end_grapple():

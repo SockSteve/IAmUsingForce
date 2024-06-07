@@ -60,7 +60,7 @@ func attack(air_up_down: StringName=""):
 		print("attack ",player.combo_step)
 		match player.combo_step:
 			0:
-				player._character_skin.attack(player.combo_step)
+				player._character_skin.attack(player.combo_step, "cutter")
 				move_character(advance_direction, advance_distance)
 				player.combo_step += 1
 			1:

@@ -35,6 +35,10 @@ func physics_update(delta: float) -> void:
 	
 	player.move_and_slide()
 	
+	if  Input.is_action_pressed("melee_attack"):
+		state_machine.transition_to("Melee")
+		return
+	
 	if Input.is_action_pressed("crouch"):
 		if player.velocity.length() >= player.slide_start_threshhold:
 			state_machine.transition_to("Crouch",{do_slide = true})

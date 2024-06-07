@@ -30,7 +30,7 @@ func physics_update(delta: float) -> void:
 			
 		player._rotation_root.global_basis = path_follow_3d.global_basis.rotated(Vector3(0,1,0),PI)
 		
-		if path_follow_3d.progress_ratio >= 1:
+		if path_follow_3d.progress_ratio >= .9:
 			endGrind()
 			return
 		
@@ -91,8 +91,8 @@ func change_grindrail(dir):
 	player._character_skin.end_grind()
 	path_follow_3d.queue_free()
 	#print(path_3d == player.get_inventory().get_gadget("GrindBoots").get_side_rail_path3d(dir))
-	path_3d = player.get_inventory().get_gadget("GrindBoots").get_side_rail_path3d(dir)
-	player.get_inventory().get_gadget("GrindBoots").clear_grindrail_exceptions()
+	path_3d = player.get_inventory().get_gadget("GrindBoots").change_current_grindrail_to(dir)
+	#player.get_inventory().get_gadget("GrindBoots").clear_grindrail_exceptions()
 	player.can_grind=true
 	path_follow_3d = PathFollow3D.new()
 	path_3d.add_child(path_follow_3d)

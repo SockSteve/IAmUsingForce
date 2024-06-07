@@ -20,6 +20,12 @@ script = ExtResource("2_72765")
 melee_weapon_dir_path = "res://Scenes/Weapons/MeleeWeapons"
 ranged_weapon_dir_path = "res://Scenes/Weapons/RangedWeapons"
 gadget_dir_path = "res://Scenes/Gadgets"
+game_progression_flags = {
+"glare_grotto_completed": false,
+"nogo_forrest_completed": true,
+"pelagic_cockcrow_completed": true,
+"polycoly_completed": false
+}
 
 [node name="SubViewport" type="SubViewport" parent="."]
 snap_2d_transforms_to_pixel = true

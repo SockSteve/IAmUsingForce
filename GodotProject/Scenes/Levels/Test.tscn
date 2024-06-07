@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cfv2ecbe68yfi"]
+[gd_scene load_steps=49 format=3 uid="uid://cfv2ecbe68yfi"]
 
 [ext_resource type="Texture2D" uid="uid://dk3g261yc4qry" path="res://Assets/Placeholders/Environment/Skyboxes/panorama_image.png" id="1_mhjnm"]
 [ext_resource type="Texture2D" uid="uid://bid2isp42co6r" path="res://addons/kenney_prototype_textures/orange/texture_01.png" id="1_y6805"]
@@ -98,6 +98,10 @@ _data = {
 }
 point_count = 12
 
+[sub_resource type="BoxMesh" id="BoxMesh_rmle0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fic72"]
+
 [sub_resource type="NavigationMesh" id="NavigationMesh_2evub"]
 vertices = PackedVector3Array(-2.59192, -3.38627, -3.23501, -2.34192, -3.38627, -2.23501, -1.09192, -3.38627, -2.23501, -0.84192, -3.38627, -3.23501, -0.84192, -3.38627, -3.23501, 0.40808, -3.38627, -3.23501, 3.15808, -3.38627, -8.23501, -6.34192, -3.38627, -8.23501, -6.34192, -3.38627, -3.48501, 0.40808, -3.38627, -3.23501, 0.65808, -3.38627, -2.23501, 1.90808, -3.38627, -2.23501, 2.15808, -3.38627, -3.23501, 3.15808, -3.38627, -8.23501, -6.34192, -3.38627, -3.48501, -2.59192, -3.38627, -3.23501, -0.84192, -3.38627, -3.23501, -6.34192, -3.38627, -3.48501, -3.84192, -3.38627, -3.23501, -2.59192, -3.38627, -3.23501, 2.15808, -3.38627, -3.23501, 3.15808, -3.38627, -3.23501, 3.15808, -3.38627, -8.23501, 3.65808, -3.38627, -1.48501, 2.90808, -3.38627, -1.23501, 2.90808, -3.38627, 0.76499, 12.6581, -3.38627, 0.76499, 3.15808, -3.38627, -8.23501, 3.15808, -3.38627, -3.23501, 3.65808, -3.38627, -2.98501, 12.6581, -3.38627, 0.76499, 12.6581, -3.38627, -8.23501, 3.65808, -3.38627, -2.98501, 3.65808, -3.38627, -1.48501, 12.6581, -3.38627, 0.76499, 23.4081, -3.38627, -8.23501, 23.4081, -3.38627, 0.76499, 32.9081, -3.38627, 0.76499, 32.9081, -3.38627, -8.23501, 42.4081, -3.38627, -8.23501, 32.9081, -3.38627, -8.23501, 32.9081, -3.38627, 0.76499, 42.4081, -3.38627, 0.76499, 1.90808, -3.38627, -1.48501, 1.90808, -3.38627, -2.23501, 0.65808, -3.38627, -2.23501, 0.40808, -3.38627, -1.23501, 2.90808, -3.38627, 0.76499, -0.84192, -3.38627, -1.23501, -2.59192, -3.38627, -1.23501, -6.34192, -3.38627, 0.76499, -0.84192, -3.38627, -1.23501, -1.09192, -3.38627, -2.23501, -2.34192, -3.38627, -2.23501, -2.59192, -3.38627, -1.23501, 2.90808, -3.38627, 0.76499, 0.40808, -3.38627, -1.23501, -0.84192, -3.38627, -1.23501, 2.90808, -3.38627, 0.76499, 2.90808, -3.38627, -1.23501, 1.90808, -3.38627, -1.48501, 0.40808, -3.38627, -1.23501, -2.59192, -3.38627, -1.23501, -3.84192, -3.38627, -1.23501, -6.34192, -3.38627, 0.76499, -3.84192, -3.38627, -1.23501, -3.84192, -3.38627, -3.23501, -6.34192, -3.38627, -3.48501, -6.34192, -3.38627, 0.76499)
 polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 8), PackedInt32Array(6, 8, 7), PackedInt32Array(10, 9, 11), PackedInt32Array(11, 9, 12), PackedInt32Array(12, 9, 13), PackedInt32Array(16, 15, 14), PackedInt32Array(19, 18, 17), PackedInt32Array(22, 21, 20), PackedInt32Array(24, 23, 25), PackedInt32Array(25, 23, 26), PackedInt32Array(28, 27, 29), PackedInt32Array(29, 27, 31), PackedInt32Array(29, 31, 30), PackedInt32Array(34, 33, 32), PackedInt32Array(38, 37, 35), PackedInt32Array(35, 37, 36), PackedInt32Array(42, 41, 39), PackedInt32Array(39, 41, 40), PackedInt32Array(44, 43, 45), PackedInt32Array(45, 43, 46), PackedInt32Array(48, 47, 49), PackedInt32Array(49, 47, 50), PackedInt32Array(52, 51, 53), PackedInt32Array(53, 51, 54), PackedInt32Array(57, 56, 55), PackedInt32Array(60, 59, 61), PackedInt32Array(61, 59, 58), PackedInt32Array(64, 63, 62), PackedInt32Array(66, 65, 67), PackedInt32Array(67, 65, 68)]
@@ -179,6 +183,7 @@ material = SubResource("StandardMaterial3D_oo8sc")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Map Geometry/Geometry"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70785, 3.27889, -2.73022)
+layers = 96
 size = Vector3(3.8559, 2.00305, 5.57715)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="Map Geometry/Geometry"]
@@ -347,7 +352,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0368, 1.39886, 57.5848)
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 6.25976, 1.39886, 58.9178)
 
 [node name="Player" parent="." instance=ExtResource("3_t8btd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2351, 2.98878, 58.712)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.7273, 2.98878, 8.05708)
 crouch_acceleration = 3.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
@@ -376,8 +381,23 @@ mesh = ExtResource("12_8u44m")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.9173, 0.810467, 2.40762)
 mesh = ExtResource("13_pndr6")
 
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.513829, 2.68137, 5.26352)
+mesh = SubResource("BoxMesh_rmle0")
+skeleton = NodePath("StaticBody3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0889, -0.889709)
+collision_layer = 48
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0889, 0.889709)
+shape = SubResource("BoxShape3D_fic72")
+
 [node name="Shotgun" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0093, 0.821194, 2.37675)
+layers = 96
 mesh = ExtResource("14_qv7x6")
 
 [node name="SmTestranged" parent="." instance=ExtResource("16_bkljh")]

@@ -5,16 +5,28 @@ var shop_weapons_and_gadgets: Dictionary = {}
 var thread: Thread
 
 @onready var shop_hbox_menu = %ShopHBoxWindow
+@export_category("Shop")
+@export_group("Item Folders")
 @export_dir var melee_weapon_dir_path: String 
 @export_dir var ranged_weapon_dir_path: String 
 @export_dir var gadget_dir_path: String 
 
+@export_group("Event Flags")
+@export_subgroup("Game")
+@export var game_progression_flags: Dictionary = Globals.game_progression_flags
+@export_subgroup("Special")
+@export_flags("grappling_hook_seller", "special_gear_seller", "booster_seller", "magnet_seller") var special_flags : int = 0
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#await get_tree().create_timer(1).timeout
+	print(game_progression_flags)
 	thread= Thread.new()
 	thread.start(load_all_weapons_and_gadgets)
 	thread.wait_to_finish()
 	#print(shop_weapons_and_gadgets)
+	await get_tree().process_frame
 	populate_shop_with_items()
  
 func buy_ammo():
@@ -44,11 +56,16 @@ func load_all_weapons_and_gadgets():
 			currently_open_folder.change_dir(sub_dir)
 			
 			#we extract all relevant scene paths and store them for use
-			for file_name in currently_open_folder.get_files():
+			for file_name:String in currently_open_folder.get_files():
+				
 				if !file_name.match("*Bullet*") and file_name.match("*.tscn*"):
 					var weapon_or_gadget = load(currently_open_folder.get_current_dir() + "/" + file_name)
+					
 					weapon_or_gadget = weapon_or_gadget.instantiate()
-					shop_weapons_and_gadgets[weapon_or_gadget] = btn_state_enum.SHOW
+					if not get_tree().get_first_node_in_group("player").get_inventory().has_weapon(file_name.trim_suffix(".tscn")):
+						shop_weapons_and_gadgets[weapon_or_gadget] = btn_state_enum.SHOW
+					else:
+						shop_weapons_and_gadgets[weapon_or_gadget] = btn_state_enum.HIDE
 			
 			#after we extracted everyting we go back into the parent folder and 
 			#go to the next folder 
