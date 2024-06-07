@@ -6,6 +6,9 @@
 background_mode = 2
 background_color = Color(1, 1, 1, 1)
 sky = SubResource("1")
-ambient_light_source = 2
-ambient_light_color = Color(0.862745, 0.862745, 0.780392, 1)
-ambient_light_energy = 0.53
+ambient_light_color = Color(0.552941, 0.552941, 0.552941, 1)
+fog_enabled = true
+fog_light_color = Color(0.337255, 0.494118, 0, 1)
+fog_light_energy = 0.06
+fog_sky_affect = 0.16
+volumetric_fog_density = 0.0

@@ -1,11 +1,34 @@
-[gd_scene load_steps=11 format=3 uid="uid://dg61cvqlsirpy"]
+[gd_scene load_steps=21 format=3 uid="uid://dg61cvqlsirpy"]
 
 [ext_resource type="Environment" uid="uid://ct2ypkwlmumhf" path="res://default_env.tres" id="1_0yh5f"]
 [ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Scenes/Characters/Player/Player.tscn" id="2_qdyh7"]
+[ext_resource type="Shader" path="res://Scenes/Levels/wood.gdshader" id="2_vaqb2"]
 [ext_resource type="Texture2D" uid="uid://8grkaamyqljx" path="res://Assets/Textures/Environment/dark_forest_final.png" id="2_vi34l"]
 [ext_resource type="PackedScene" uid="uid://bllxyncmft2sj" path="res://Scenes/Interactibles/GrapplingPoints/GrapplePoint.tscn" id="3_586er"]
 [ext_resource type="PackedScene" uid="uid://d1bwfomisauow" path="res://Assets/Models/Interactibles/GoldNugget.glb" id="4_wcjof"]
 [ext_resource type="PackedScene" uid="uid://dmhwr8d61ej2t" path="res://Assets/Models/Interactibles/SilverNugget.glb" id="5_sps66"]
+[ext_resource type="Shader" path="res://Scenes/Levels/Water.gdshader" id="7_vx513"]
+[ext_resource type="PackedScene" uid="uid://du0ausxn5e6vk" path="res://Assets/Placeholders/Environment/fern_grass_02/scene.gltf" id="9_fygig"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dbtl5"]
+render_priority = 0
+shader = ExtResource("2_vaqb2")
+shader_parameter/light_color = Vector4(0.952941, 0.858824, 0.74902, 1)
+shader_parameter/dark_color = Vector4(0.74902, 0.619608, 0.490196, 1)
+shader_parameter/ring_scale = 4.4
+shader_parameter/wave_scale = 8.454
+shader_parameter/random_scale = 4.6
+shader_parameter/noise_scale = 0.03
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nqt33"]
+render_priority = 0
+shader = ExtResource("2_vaqb2")
+shader_parameter/light_color = Vector4(0.953, 0.859, 0.749, 1.735)
+shader_parameter/dark_color = Vector4(0.74902, 0.619608, 0.490196, 1)
+shader_parameter/ring_scale = 1.0
+shader_parameter/wave_scale = 8.454
+shader_parameter/random_scale = 4.6
+shader_parameter/noise_scale = 0.03
 
 [sub_resource type="Curve3D" id="Curve3D_tkxag"]
 bake_interval = 1.0
@@ -24,7 +47,7 @@ point_count = 3
 
 [sub_resource type="Curve3D" id="Curve3D_dq0ku"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -31.9689, 0, 89.6411, 0, 0, 0, 0, 0, 0, -18.533, 0, 72.1977, 0, 0, 0, 0, 0, 0, -19.3086, 0, 62.8785, 0, 0, 0, 0, 0, 0, -20.0656, 0, 55.561, 0, 0, 0, 0, 0, 0, -14.5621, 0, 42.9338, 0, 0, 0, 0, 0, 0, -9.28301, 0, 37.9842, 0, 0, 0, 0, 0, 0, 3.33339, 0, 28.4462, 0, 0, 0, 0, 0, 0, 6.55544, 0, 20.9057, 0, 0, 0, 0, 0, 0, -2.94412, 0, 2.34183, 0, 0, 0, 0, 0, 0, -3.39674, 0, 1.58622, 0, 0, 0, 0, 0, 0, 4.47589, 0, -3.10708, 0, 0, 0, 0, 0, 0, 10.9355, 0, 7.03651, 0, 0, 0, 0, 0, 0, 15.9883, 0, 20.8642, 0, 0, 0, 0, 0, 0, 11.2012, 0, 34.0742, 0, 0, 0, 0, 0, 0, -7.52323, 0, 49.0502, 0, 0, 0, 0, 0, 0, -11.3294, 0, 56.9724, 0, 0, 0, 0, 0, 0, -10.1182, 0, 64.4918, 0, 0, 0, 0, 0, 0, -1.48863, 0, 73.8784, 0, 0, 0, 0, 0, 0, 3.91119, 0, 71.5569, 0, 0, 0, 0, 0, 0, 17.927, 0, 76.9431, 0, 0, 0, 0, 0, 0, 24.0429, 0, 90.9984, 0, 0, 0, 0, 0, 0, 18.0375, 0, 104.069, 0, 0, 0, 0, 0, 0, 12.7484, 0, 106.483, 0, 0, 0, 0, 0, 0, 13.5559, 0, 120.714),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -31.9689, 0, 89.6411, 0, 0, 0, 0, 0, 0, -18.533, 0, 72.1977, 0, 0, 0, 0, 0, 0, -19.3086, 0, 62.8785, 0, 0, 0, 0, 0, 0, -20.0656, 0, 55.561, 0, 0, 0, 0, 0, 0, -21.0995, 0, 42.0261, 0, 0, 0, 0, 0, 0, -14.8334, 0, 35.2237, 0, 0, 0, 0, 0, 0, -5.28944, 0, 28.2889, 0, 0, 0, 0, 0, 0, -1.16976, 0, 20.8735, 0, 0, 0, 0, 0, 0, -8.36349, 0, 1.18156, 0, 0, 0, 0, 0, 0, -4.72444, 0, -6.71448, 0, 0, 0, 0, 0, 0, 5.98671, 0, -8.637, 0, 0, 0, 0, 0, 0, 15.462, 0, 4.54596, 0, 0, 0, 0, 0, 0, 23.759, 0, 19.7647, 0, 0, 0, 0, 0, 0, 19.502, 0, 38.3719, 0, 0, 0, 0, 0, 0, 0.803487, 0, 53.2865, 0, 0, 0, 0, 0, 0, -11.3294, 0, 56.9724, 0, 0, 0, 0, 0, 0, -10.1182, 0, 64.4918, 0, 0, 0, 0, 0, 0, -1.48863, 0, 73.8784, 0, 0, 0, 0, 0, 0, 3.91119, 0, 71.5569, 0, 0, 0, 0, 0, 0, 17.927, 0, 76.9431, 0, 0, 0, 0, 0, 0, 24.0429, 0, 90.9984, 0, 0, 0, 0, 0, 0, 18.0375, 0, 104.069, 0, 0, 0, 0, 0, 0, 12.7484, 0, 106.483, 0, 0, 0, 0, 0, 0, 13.5559, 0, 120.714),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 24
@@ -32,10 +55,37 @@ point_count = 24
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fglfm"]
 albedo_texture = ExtResource("2_vi34l")
 uv1_scale = Vector3(0.05, 0.05, 0.05)
+uv1_offset = Vector3(1.365, 0.086, 0.065)
 uv1_triplanar = true
-uv1_triplanar_sharpness = 2.46229
+uv1_triplanar_sharpness = 3.86374
 uv1_world_triplanar = true
-uv2_scale = Vector3(3, 3, 3)
+uv2_triplanar_sharpness = 3.03143
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5lbtk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0ub58"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b6630"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1lh24"]
+render_priority = 0
+shader = ExtResource("7_vx513")
+shader_parameter/speed = 0.0
+shader_parameter/color = Vector4(0.405, 1.005, 0.145, 0)
+shader_parameter/edge_color = Vector4(0.2, 0.55, 0.565, 0)
+shader_parameter/edge_scale = 0.25
+shader_parameter/near = 0.1
+shader_parameter/far = 100.0
+shader_parameter/wave_strengh = Vector2(0.5, 0.25)
+shader_parameter/wave_frequency = Vector2(12, 12)
+shader_parameter/time_factor = Vector2(1, 2)
+shader_parameter/noise1 = SubResource("NoiseTexture2D_5lbtk")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_0ub58")
+shader_parameter/normalmap = SubResource("NoiseTexture2D_b6630")
+
+[sub_resource type="QuadMesh" id="QuadMesh_kp8q3"]
+material = SubResource("ShaderMaterial_1lh24")
+size = Vector2(100, 100)
 
 [node name="test_level_1" type="Node3D"]
 
@@ -43,8 +93,9 @@ uv2_scale = Vector3(3, 3, 3)
 environment = ExtResource("1_0yh5f")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.590577, 0.806981, 0, -0.806981, 0.590577, 0, 1.476, 0)
-visible = false
+transform = Transform3D(1, 0, 0, 0, -0.0644627, 0.99792, 0, -0.99792, -0.0644627, 4.22389, 3.85486, 1.86642)
+light_bake_mode = 1
+directional_shadow_mode = 0
 
 [node name="LevelGeometry" type="Node3D" parent="."]
 
@@ -52,7 +103,10 @@ visible = false
 use_collision = true
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="LevelGeometry/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.73452, -0.0612099, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.734318, -0.0260799, 0.0234723)
+material_override = SubResource("ShaderMaterial_dbtl5")
+cast_shadow = 0
+calculate_tangents = false
 polygon = PackedVector2Array(-4.51849, -0.0493758, -4.50584, 1.16539, 3.86363, 1.17492, 3.89936, -0.124238)
 mode = 2
 path_node = NodePath("../Path3D")
@@ -64,6 +118,7 @@ path_local = false
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
+material = SubResource("ShaderMaterial_nqt33")
 
 [node name="Path3D" type="Path3D" parent="LevelGeometry/CSGCombiner3D"]
 curve = SubResource("Curve3D_tkxag")
@@ -142,6 +197,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.57423, 5.25031, 120.706)
 radius = 4.43288
 
 [node name="Walls" type="CSGCombiner3D" parent="LevelGeometry"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.86451, 0)
 use_collision = true
 collision_layer = 17
 collision_mask = 17
@@ -150,7 +206,6 @@ collision_mask = 17
 curve = SubResource("Curve3D_dq0ku")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="LevelGeometry/Walls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.32661, 0)
 polygon = PackedVector2Array(0, 0, 0, 20, 1, 1, 1, 0)
 mode = 2
 path_node = NodePath("../Path3D")
@@ -235,6 +290,13 @@ transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 1.49774, 2.75399, 96.42
 
 [node name="SilverNugget" parent="." instance=ExtResource("5_sps66")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.242484, 1.17163, 99.6249)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.2508, 0, 0, 0, -6.80476e-08, 1, 0, -1.55675, -4.37114e-08, 0.0259109, -4.38419, 55.3737)
+mesh = SubResource("QuadMesh_kp8q3")
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("9_fygig")]
+transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 8.19576, 1.51847, 12.1589)
 
 [editable path="Player"]
 [editable path="Player/CharacterRotationRoot/CharacterSkin"]
