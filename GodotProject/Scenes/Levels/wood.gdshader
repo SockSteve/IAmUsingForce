@@ -50,5 +50,5 @@ void fragment( )
 	float f = mod( x * ring_scale + random( UV ).x * noise_scale, 1.0 );
 
 	ALBEDO = mix( light_color, dark_color, f ).rgb;
-	ALPHA = mix( light_color, dark_color, f ).a;
+	//ALPHA = mix( light_color, dark_color, f ).a;
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dg61cvqlsirpy"]
+[gd_scene load_steps=20 format=3 uid="uid://dg61cvqlsirpy"]
 
 [ext_resource type="Environment" uid="uid://ct2ypkwlmumhf" path="res://default_env.tres" id="1_0yh5f"]
 [ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Scenes/Characters/Player/Player.tscn" id="2_qdyh7"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bllxyncmft2sj" path="res://Scenes/Interactibles/GrapplingPoints/GrapplePoint.tscn" id="3_586er"]
 [ext_resource type="PackedScene" uid="uid://d1bwfomisauow" path="res://Assets/Models/Interactibles/GoldNugget.glb" id="4_wcjof"]
 [ext_resource type="PackedScene" uid="uid://dmhwr8d61ej2t" path="res://Assets/Models/Interactibles/SilverNugget.glb" id="5_sps66"]
-[ext_resource type="Shader" path="res://Scenes/Levels/Water.gdshader" id="7_vx513"]
 [ext_resource type="PackedScene" uid="uid://du0ausxn5e6vk" path="res://Assets/Placeholders/Environment/fern_grass_02/scene.gltf" id="9_fygig"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dbtl5"]
@@ -23,11 +22,11 @@ shader_parameter/noise_scale = 0.03
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nqt33"]
 render_priority = 0
 shader = ExtResource("2_vaqb2")
-shader_parameter/light_color = Vector4(0.953, 0.859, 0.749, 1.735)
+shader_parameter/light_color = Vector4(1.183, 0.859, 0.749, 1.735)
 shader_parameter/dark_color = Vector4(0.74902, 0.619608, 0.490196, 1)
-shader_parameter/ring_scale = 1.0
-shader_parameter/wave_scale = 8.454
-shader_parameter/random_scale = 4.6
+shader_parameter/ring_scale = 3.08
+shader_parameter/wave_scale = 3.054
+shader_parameter/random_scale = 2.905
 shader_parameter/noise_scale = 0.03
 
 [sub_resource type="Curve3D" id="Curve3D_tkxag"]
@@ -61,30 +60,33 @@ uv1_triplanar_sharpness = 3.86374
 uv1_world_triplanar = true
 uv2_triplanar_sharpness = 3.03143
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5lbtk"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_voamo"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0ub58"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_iowxm"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_voamo")
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b6630"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vqxkb"]
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_voamo")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1lh24"]
-render_priority = 0
-shader = ExtResource("7_vx513")
-shader_parameter/speed = 0.0
-shader_parameter/color = Vector4(0.405, 1.005, 0.145, 0)
-shader_parameter/edge_color = Vector4(0.2, 0.55, 0.565, 0)
-shader_parameter/edge_scale = 0.25
-shader_parameter/near = 0.1
-shader_parameter/far = 100.0
-shader_parameter/wave_strengh = Vector2(0.5, 0.25)
-shader_parameter/wave_frequency = Vector2(12, 12)
-shader_parameter/time_factor = Vector2(1, 2)
-shader_parameter/noise1 = SubResource("NoiseTexture2D_5lbtk")
-shader_parameter/noise2 = SubResource("NoiseTexture2D_0ub58")
-shader_parameter/normalmap = SubResource("NoiseTexture2D_b6630")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lsuc5"]
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0.0470588, 0.317647, 0.466667, 0.505882)
+roughness = 0.15
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_iowxm")
+refraction_enabled = true
+refraction_texture = SubResource("NoiseTexture2D_vqxkb")
+uv1_scale = Vector3(0.001, 0.001, 0.001)
+uv1_triplanar = true
+uv1_world_triplanar = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_kp8q3"]
-material = SubResource("ShaderMaterial_1lh24")
+material = SubResource("StandardMaterial3D_lsuc5")
 size = Vector2(100, 100)
 
 [node name="test_level_1" type="Node3D"]
@@ -94,6 +96,7 @@ environment = ExtResource("1_0yh5f")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -0.0644627, 0.99792, 0, -0.99792, -0.0644627, 4.22389, 3.85486, 1.86642)
+visible = false
 light_bake_mode = 1
 directional_shadow_mode = 0
 
@@ -118,6 +121,7 @@ path_local = false
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
+smooth_faces = true
 material = SubResource("ShaderMaterial_nqt33")
 
 [node name="Path3D" type="Path3D" parent="LevelGeometry/CSGCombiner3D"]
