@@ -17,10 +17,10 @@ func _ready():
 	set_physics_process(false)
 
 #we have the gadget and want to use it
-func _input(event):
-	print("echo")
-	if Input.is_action_just_pressed("interact"):
-		activate()
+#func _input(event):
+#	print("echo")
+#	if Input.is_action_just_pressed("interact"):
+#		activate()
 
 
 #here we test if any grappling points are in reach
@@ -33,7 +33,7 @@ func activate():
 	if player == null:
 		return
 	
-	elif grapple_points.size() == 1:
+	if grapple_points.size() == 1:
 		nearest_grapple_point = grapple_points.front()
 	
 	else:
@@ -42,13 +42,17 @@ func activate():
 			if self.global_position.distance_to(nearest_grapple_point.global_position) > self.global_position.distance_to(grapple_point.global_position):
 				nearest_grapple_point = grapple_point
 	
+	#saveguard
+	if nearest_grapple_point == null:
+		return
 	
-	player.is_grappling = true
-	player.put_in_hand(self)
-	initialize_grappling_mode()
-	set_physics_process(true)
-	$Rope.visible = true
-	update_rope_transform(nearest_grapple_point.global_position)
+	if not player.is_grappling:
+		player.is_grappling = true
+		player.put_in_hand(self)
+		initialize_grappling_mode()
+		set_physics_process(true)
+		$Rope.visible = true
+		update_rope_transform(nearest_grapple_point.global_position)
 
 #physics_process is only used for the rope here
 func _physics_process(delta):
@@ -56,11 +60,10 @@ func _physics_process(delta):
 		update_rope_transform(nearest_grapple_point.global_transform.origin)
 
 func end_grapple():
-	
 	player.is_grappling = false
 	set_physics_process(false)
 	$Rope.visible = false
-	nearest_grapple_point = null
+	#nearest_grapple_point = null
 
 func update_rope_transform(grapple_point_position: Vector3) -> void:
 	var rope = $Rope # Adjust the path

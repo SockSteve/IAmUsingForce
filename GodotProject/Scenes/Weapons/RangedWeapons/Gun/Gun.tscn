@@ -6,7 +6,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cw25l0jej84hr" path="res://Assets/Models/Weapons/pistol.obj" id="4_wnphd"]
 
 [node name="Gun" type="Node3D" groups=["ranged"]]
-transform = Transform3D(-2.18557e-07, 5, 0, 2.18557e-07, 9.55343e-15, 5, 5, 2.18557e-07, -2.18557e-07, 0, 0, 0)
+transform = Transform3D(-2.18557e-07, 5, 2.18557e-07, 0, -2.18557e-07, 5, 5, 2.18557e-07, 9.55343e-15, 0, 0.138348, 0)
 script = ExtResource("1_eansb")
 _name = "Gun"
 upgrade_name = "KoiKoi"

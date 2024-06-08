@@ -8,7 +8,7 @@ enum grapple_point_type_enum {PULL, SWING, TUG}
 @onready var jolt_slider_joint: JoltSliderJoint3D = $JoltSliderJoint3D
 
 ## monitoring_range describes the maximum range from which the Grapple Point can be detected.
-@export var monitoring_range:= 10.0
+#@export var monitoring_range:= 10.0
 ## target_distance is the distance the player gets pulled towards before executing the desired action
 @export var target_distance := 5.0
 

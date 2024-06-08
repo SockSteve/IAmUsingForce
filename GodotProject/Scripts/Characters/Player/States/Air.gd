@@ -38,7 +38,7 @@ func physics_update(delta: float) -> void:
 	
 	#when player is falling down, check if any ledges are nearby
 	if player.velocity.y <= 0:
-		print("je")
+		#print("je")
 		player.ledge_ray_vertical.force_raycast_update()
 		print(player.ledge_ray_vertical.is_colliding())
 		if player.ledge_ray_vertical.is_colliding():
@@ -61,6 +61,7 @@ func physics_update(delta: float) -> void:
 	if player.get_inventory().has_gadget("GrapplingHook") and Input.is_action_pressed("interact"):
 		player.get_inventory().get_gadget("GrapplingHook").activate()
 		if player.is_grappling:
+			jumped = false
 			state_machine.transition_to("Grapple")
 			return
 		
@@ -72,7 +73,6 @@ func physics_update(delta: float) -> void:
 			return
 	
 	if player.is_on_floor():
-		
 		jumped = false
 		if is_equal_approx(player.velocity.x, 0.0):
 			player._character_skin.set_moving(false)

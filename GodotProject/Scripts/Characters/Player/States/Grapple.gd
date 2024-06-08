@@ -15,6 +15,7 @@ func enter(msg := {}) -> void:
 	if not player.is_grappling:
 		end_grapple()
 		return
+	player._character_skin.grapple()
 
 
 func physics_update(delta: float) -> void:
@@ -47,9 +48,6 @@ func physics_update(delta: float) -> void:
 		
 		var input_vector =  player._get_camera_oriented_input()
 		
-		# Get positions of the two bodies
-		#var positionGrapplePoint = grappling_hook.nearest_grapple_point.global_transform.origin
-		#var positionPlayer = player.global_transform.origin
 		player.velocity = player._physics_body.linear_velocity
 		player.move_and_slide()
 		if input_vector != Vector3.ZERO:
@@ -66,6 +64,7 @@ func physics_update(delta: float) -> void:
 		end_grapple()
 
 func end_grapple():
+	player._physics_body.global_transform = player.global_transform
 	grappling_hook.end_grapple()
 	player.switchToCharacterBody()
 	
