@@ -14,8 +14,11 @@ size = Vector3(0.25, 2.2, 0.25)
 
 [node name="MeleeGear" type="Node3D"]
 script = ExtResource("1_2kj4h")
-_id = 3
+_name = "MeleeGear"
+upgrade_name = "MetalGear"
 icon = ExtResource("2_1am7b")
+shop_price = 7000
+bullet_price = -1
 
 [node name="WeaponSkin" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 2, 0, 0, 0, 0.1, 0, 1, 0)

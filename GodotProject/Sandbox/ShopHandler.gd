@@ -1,10 +1,18 @@
 extends Node3D
 
 enum btn_state_enum {HIDE, SHOW, AMMO}
-var shop_weapons_and_gadgets: Dictionary = {}
+var shop_weapons_and_gadgets: Dictionary = {} #item_instance : visibility_state
 var thread: Thread
 
-@onready var shop_hbox_menu = %ShopHBoxWindow
+@onready var shop_hbox_menu = %ShopItemSelectionField
+@onready var current_item_picture =  %ItemPicture
+@onready var current_item_name_label = %ItemNameLabel
+@onready var current_item_description_label = %ItemInfoLabel
+@onready var current_item_price_label = %PriceLabel
+
+
+@onready var sub_viewport = $"../SubViewport"
+
 @export_category("Shop")
 @export_group("Item Folders")
 @export_dir var melee_weapon_dir_path: String 
@@ -78,6 +86,7 @@ func populate_shop_with_items():
 	for item in shop_weapons_and_gadgets:
 		var btn: Button = Button.new()
 		btn.icon = item.icon
+		btn.name = item.name
 		#btn.name = item.name
 		#btn.pressed.connect(self._on_button_pressed.bind(item))
 		shop_hbox_menu.add_child(btn)
@@ -101,3 +110,23 @@ func load_shop_state():
 
 func update_shop():
 	pass
+
+#because every button has an item instance bound to its pressed callable,
+#we can hijack the bound argument and use it to fill the current shop gui
+#with item detaile
+func _on_sub_viewport_gui_focus_changed(item_button: Button):
+	
+	var dic = item_button.pressed.get_connections().pop_front() #get Array of connections for this signal
+	 #there is only one function connected to this signal, so we get the first connection
+	var callable = dic.get("callable") #get the callable from the connection
+	var item_inst = callable.get_bound_arguments().pop_front()
+	print(item_inst) #get the bound arguments array (here: corresponding weapon instance)
+	 
+	#print(node.pressed.get_connections())
+	#get_bound_arguments
+
+	#print(node.pressed.get_object())
+	current_item_picture.texture =  item_inst.icon
+	current_item_name_label.text = item_inst.name
+	current_item_description_label.text = item_inst.name
+	current_item_price_label.text = str(item_inst.shop_price)

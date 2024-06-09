@@ -11,7 +11,11 @@ size = Vector3(0.25, 2.2, 0.25)
 
 [node name="Cutter" type="Node3D" groups=["melee"]]
 script = ExtResource("1_vf8ox")
+_name = "Cutter"
 icon = ExtResource("2_6xntn")
+shop_price = 1500
+upgrade_shop_price = 100000
+bullet_price = 1
 damage = 10
 bullet = ExtResource("2_hv2fr")
 

@@ -22,7 +22,11 @@ func _ready():
 	_set_viewport_mat(node_quad, node_viewport)
 
 func initialize():
-	$SubViewport/Control/Panel/ScrollContainer/ShopHBoxWindow.get_child(0).grab_focus()
+	for child_idx in %ShopItemSelectionField.get_child_count():
+		if %ShopItemSelectionField.get_child(child_idx).visible:
+			%ShopItemSelectionField.get_child(child_idx).grab_focus()
+			print(%ShopItemSelectionField.get_child(child_idx))
+			break
 
 func cleanup():
 	$SubViewport/Control.release_focus()

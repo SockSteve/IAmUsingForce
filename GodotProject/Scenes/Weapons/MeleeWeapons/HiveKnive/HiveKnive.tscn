@@ -14,7 +14,10 @@ size = Vector3(0.25, 2.2, 0.25)
 
 [node name="HiveKnive" type="Node3D"]
 script = ExtResource("1_7iu6v")
+_name = "HiveKnive"
 icon = ExtResource("2_kgkgl")
+shop_price = 3000
+bullet_price = 1
 
 [node name="WeaponSkin" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 2, 0, 0, 0, 0.1, 0, 1, 0)
