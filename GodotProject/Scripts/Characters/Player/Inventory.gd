@@ -1,10 +1,25 @@
 extends Node3D
 class_name Inventory
 
+signal money_changed(amount: int)
+
+@export_range(0,1000000000) var money: int = 10000
+
 var weapons: Dictionary = {} #key: String | value: Node
 var gadgets: Dictionary = {} #key: String | value: Node
 var weapon_shortcuts: Dictionary = {} #key: int | value: Dictionary -> {key: index-int | value: weaponName-String} 
 @onready var passive_gadgets = $"../CharacterRotationRoot/PassiveGadgets"
+
+func get_money()-> int:
+	return money
+	
+func add_money(amount)->void:
+	money += amount
+	emit_signal("money_aount_changed", money)
+
+func remove_money(amount)->void:
+	money -= amount
+	emit_signal("money_aount_changed", money)
 
 func parameterize_weapon():
 	#initialize weapon with xp

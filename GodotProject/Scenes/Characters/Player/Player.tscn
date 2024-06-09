@@ -231,17 +231,19 @@ script = ExtResource("16_mjyse")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.383605)
 
 [node name="LedgeRayVertical" type="RayCast3D" parent="CharacterRotationRoot/LedgeRays"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68861, 0.754186)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.78023, 0.999082)
 enabled = false
-target_position = Vector3(0, -0.1, 0)
+target_position = Vector3(0, -0.3, 0)
 collision_mask = 96
+hit_from_inside = true
 debug_shape_custom_color = Color(0.454902, 0.682353, 0, 1)
 
 [node name="LedgeRayHorizontal" type="RayCast3D" parent="CharacterRotationRoot/LedgeRays"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61872, 0.698594)
 enabled = false
-target_position = Vector3(0, 0, 0.1)
+target_position = Vector3(0, 0, 0.5)
 collision_mask = 96
+hit_from_inside = true
 debug_shape_custom_color = Color(1, 0.403922, 0.545098, 1)
 
 [node name="PassiveGadgets" type="Node3D" parent="CharacterRotationRoot"]
@@ -261,6 +263,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("20_6xxyk")
+inventory_path = NodePath("../../Inventory")
 
 [node name="WeaponInfoPanel" type="Panel" parent="CanvasLayer/PlayerHUD"]
 layout_mode = 0

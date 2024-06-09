@@ -230,7 +230,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19694, 1.24575, 1.98293)
 transform = Transform3D(0.669131, 0, 0.743145, 0, 1, 0, -0.743145, 0, 0.669131, 0, 0, 0)
 
 [node name="MeleeHand" parent="Player/CharacterRotationRoot/CharacterSkin" index="2"]
-transform = Transform3D(-0.0455859, -0.00217351, 0.998958, 0.998819, -0.0169132, 0.0455429, 0.0167965, 0.999854, 0.00294173, -0.0474305, 1.28806, 0.311384)
+transform = Transform3D(-0.0455863, -0.00217363, 0.998958, 0.998819, -0.0169131, 0.0455431, 0.0167964, 0.999855, 0.00294214, -0.0474307, 1.28806, 0.311383)
 
 [node name="GrapplePoint" parent="." instance=ExtResource("3_586er")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5518, 14.019, 82.8753)
