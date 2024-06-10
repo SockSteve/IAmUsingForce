@@ -85,8 +85,8 @@ var stored_weapon_on_gadget_use: Node #this variable is only assigned with the a
 
 
 #debug
-@onready var grappling_hook = preload("res://Scenes/Gadgets/GrapplingHook.tscn").instantiate()
-@onready var grinding_boots = preload("res://Scenes/Gadgets/GrindBoots.tscn").instantiate()
+@onready var grappling_hook = preload("res://Scenes/Gadgets/GrapplingHook/GrapplingHook.tscn").instantiate()
+@onready var grinding_boots = preload("res://Scenes/Gadgets/GrindBoots/GrindBoots.tscn").instantiate()
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

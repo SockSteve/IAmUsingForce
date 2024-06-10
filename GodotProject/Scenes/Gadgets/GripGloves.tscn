@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://b11rpjewa7qy5"]
-
-[ext_resource type="Script" path="res://Scripts/Gadgets/GripGloves.gd" id="1_kyk5k"]
-
-[node name="GripGlove" type="Node3D" groups=["gadget", "passive"]]
-script = ExtResource("1_kyk5k")

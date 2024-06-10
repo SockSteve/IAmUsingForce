@@ -1,12 +1,6 @@
-extends Node3D
+#The Magnet let's you walk on metal surfaces. these can be on walls, ceilings, whatever
+
+extends Gadget
 
 #TODO
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

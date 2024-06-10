@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://b11rpjewa7qy5"]
+
+[ext_resource type="Script" path="res://Scripts/Gadgets/GripGloves.gd" id="1_3af75"]
+[ext_resource type="Texture2D" uid="uid://fp00l1f827re" path="res://SockSethLogo.png" id="2_rp5rv"]
+
+[node name="GripGlove" type="Node3D" groups=["gadget", "passive"]]
+script = ExtResource("1_3af75")
+_name = "GripGloves"
+icon = ExtResource("2_rp5rv")

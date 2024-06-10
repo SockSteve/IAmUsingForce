@@ -1,12 +1,5 @@
-extends Node3D
+#this gadget can be used on certein spots to start a minigame. upon success, a new
+#door or path will open
+extends Gadget
 
 #TODO
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

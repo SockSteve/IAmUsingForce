@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbkjkmt28wace"]
-
-[ext_resource type="Script" path="res://Scripts/Gadgets/HackingDevice.gd" id="1_rtfdb"]
-
-[node name="HackingDevice" type="Node3D" groups=["active", "gadget"]]
-script = ExtResource("1_rtfdb")

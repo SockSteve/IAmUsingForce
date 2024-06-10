@@ -3,7 +3,7 @@
 #The actual grapple logic is implemented in the state machine
 #"""
 
-extends Node3D
+extends Gadget
 
 var grapple_points : Array = []
 var nearest_grapple_point

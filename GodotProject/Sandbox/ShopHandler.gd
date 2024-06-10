@@ -29,6 +29,7 @@ var _costumer: Player = null
 var special_flags_dict: Dictionary = {"grappling_hook_seller": false, "special_gear_seller": false, "booster_seller": false, "magnet_seller": false}
 @export var special_flags : Dictionary = {"grappling_hook_seller": false, "special_gear_seller": false, "booster_seller": false, "magnet_seller": false}
 
+var last_focused_button
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -136,13 +137,12 @@ func _on_sub_viewport_gui_focus_changed(item_button: Button):
 	if item_inst == null:
 		return
 	print(item_inst) #get the bound arguments array (here: corresponding weapon instance)
-
+	last_focused_button = item_button
 	#print(node.pressed.get_object())
 	current_item_picture.texture =  item_inst.icon
 	current_item_name_label.text = item_inst.name
 	current_item_description_label.text = item_inst.name
 	current_item_price_label.text = str(item_inst.shop_price)
-
 
 func _on_vendor_got_costumer(costumer: Player):
 	_costumer = costumer
@@ -150,10 +150,11 @@ func _on_vendor_got_costumer(costumer: Player):
 func _on_vendor_costumer_left():
 	_costumer = null
 
-
 func _on_accept_transactio_button_pressed():
 	print("bought")
 
-
 func _on_cancel_transaction_button_pressed():
+	%BuyItemPopup.visible = false
+	shop_hbox_menu.visible = true
+	last_focused_button.grab_focus()
 	print("cancelled")

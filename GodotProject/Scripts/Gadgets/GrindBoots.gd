@@ -2,7 +2,7 @@
 In this class we set up the the logic for initializing and handling the Grind state.
 The grinding logic is housed in the state machine.
 """
-extends Node3D
+extends Gadget
 
 @onready var player: Player = find_parent("Player") #works because this gadget is always in tree upon collecting
 #shapecast for detecting grindrails
