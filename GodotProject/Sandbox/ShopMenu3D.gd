@@ -1,3 +1,5 @@
+#this class only handles ui related stuff, like grabbing focus and handling inputs
+
 extends Node3D
 
 
@@ -15,7 +17,6 @@ var last_mouse_pos2D = null
 @onready var node_viewport = $SubViewport
 @onready var node_quad = $MeshInstance3D
 @onready var node_area = $MeshInstance3D/Area3D
-
 
 func _ready():
 	node_area.mouse_entered.connect(_mouse_entered_area)

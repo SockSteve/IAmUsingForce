@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://fbpbxpmuqx3g"]
+[gd_scene load_steps=7 format=3 uid="uid://fbpbxpmuqx3g"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Merchants/vendor.gd" id="1_dycj1"]
 [ext_resource type="PackedScene" uid="uid://bcj7lff1v3mff" path="res://Sandbox/ShopMenu3D.tscn" id="2_j1xsu"]
@@ -9,6 +9,10 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uueeb"]
 size = Vector3(3, 3, 3)
+
+[sub_resource type="QuadMesh" id="QuadMesh_jh2oj"]
+resource_local_to_scene = true
+size = Vector2(3, 2)
 
 [node name="Vendor" type="Node3D"]
 script = ExtResource("1_dycj1")
@@ -37,5 +41,12 @@ far = 100.0
 [node name="ShopMenu3D" parent="." instance=ExtResource("2_j1xsu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.28301, 0.717324, 0)
 
+[node name="MeshInstance3D" parent="ShopMenu3D" index="3"]
+mesh = SubResource("QuadMesh_jh2oj")
+
+[connection signal="costumer_left" from="." to="ShopMenu3D/ShopHandler" method="_on_vendor_costumer_left"]
+[connection signal="got_costumer" from="." to="ShopMenu3D/ShopHandler" method="_on_vendor_got_costumer"]
 [connection signal="body_entered" from="StaticBody3D/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="StaticBody3D/Area3D" to="." method="_on_area_3d_body_exited"]
+
+[editable path="ShopMenu3D"]

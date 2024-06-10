@@ -1,5 +1,8 @@
 extends Node3D
 
+signal got_costumer(costumer: Player)
+signal costumer_left()
+
 var customer : Player = null
 var player_cam : Camera3D = null
 var shop_menu : bool = false
@@ -21,7 +24,6 @@ func _process(delta):
 		if not shop_menu:
 			close_shop()
 
-
 func open_shop():
 	customer.freeze = true
 	vendor_cam.make_current()
@@ -39,11 +41,13 @@ func close_shop():
 func _on_area_3d_body_entered(body):
 	if body.is_in_group("player"):
 		customer = body
+		emit_signal("got_costumer", body)
 		player_cam = body.find_child("PlayerCamera")
 		set_process(true)
 
 func _on_area_3d_body_exited(body):
 	if body.is_in_group("player"):
 		customer = null
+		emit_signal("costumer_left")
 		player_cam = null
 		set_process(false)

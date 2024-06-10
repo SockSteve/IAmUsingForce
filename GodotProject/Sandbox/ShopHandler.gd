@@ -1,8 +1,10 @@
+#this class handles the logic related to items in the shop
 extends Node3D
 
 enum btn_state_enum {HIDE, SHOW, AMMO}
 var shop_weapons_and_gadgets: Dictionary = {} #item_instance : visibility_state
 var thread: Thread
+var _costumer: Player = null
 
 @onready var shop_hbox_menu = %ShopItemSelectionField
 @onready var current_item_picture =  %ItemPicture
@@ -23,7 +25,9 @@ var thread: Thread
 @export_subgroup("Game")
 @export var game_progression_flags: Dictionary = Globals.game_progression_flags
 @export_subgroup("Special")
-@export_flags("grappling_hook_seller", "special_gear_seller", "booster_seller", "magnet_seller") var special_flags : int = 0
+
+var special_flags_dict: Dictionary = {"grappling_hook_seller": false, "special_gear_seller": false, "booster_seller": false, "magnet_seller": false}
+@export var special_flags : Dictionary = {"grappling_hook_seller": false, "special_gear_seller": false, "booster_seller": false, "magnet_seller": false}
 
 
 # Called when the node enters the scene tree for the first time.
@@ -41,6 +45,14 @@ func buy_ammo():
 	pass
 
 func buy_weapon_or_gadget(item):
+	if _costumer.get_inventory().get_money() < item.shop_price:
+		%InsuficcientMoneyLabel.visible = true
+		await get_tree().create_timer(2).timeout
+		%InsuficcientMoneyLabel.visible = false
+		return
+	
+	%BuyItemPopup.visible = true
+	%AcceptTransactioButton.grab_focus()
 	print(item)
 
 func load_all_weapons_and_gadgets():
@@ -120,13 +132,27 @@ func _on_sub_viewport_gui_focus_changed(item_button: Button):
 	 #there is only one function connected to this signal, so we get the first connection
 	var callable = dic.get("callable") #get the callable from the connection
 	var item_inst = callable.get_bound_arguments().pop_front()
+	if item_inst == null:
+		return
 	print(item_inst) #get the bound arguments array (here: corresponding weapon instance)
-	 
-	#print(node.pressed.get_connections())
-	#get_bound_arguments
 
 	#print(node.pressed.get_object())
 	current_item_picture.texture =  item_inst.icon
 	current_item_name_label.text = item_inst.name
 	current_item_description_label.text = item_inst.name
 	current_item_price_label.text = str(item_inst.shop_price)
+
+
+func _on_vendor_got_costumer(costumer: Player):
+	_costumer = costumer
+
+func _on_vendor_costumer_left():
+	_costumer = null
+
+
+func _on_accept_transactio_button_pressed():
+	print("bought")
+
+
+func _on_cancel_transaction_button_pressed():
+	print("cancelled")
