@@ -1,4 +1,5 @@
 #this class handles the logic related to items in the shop
+@tool
 extends Node3D
 
 enum btn_state_enum {HIDE, SHOW, AMMO}
@@ -12,7 +13,6 @@ var _costumer: Player = null
 @onready var current_item_description_label = %ItemInfoLabel
 @onready var current_item_price_label = %PriceLabel
 
-
 @onready var sub_viewport = $"../SubViewport"
 
 @export_category("Shop")
@@ -25,20 +25,19 @@ var _costumer: Player = null
 @export_subgroup("Game")
 @export var game_progression_flags: Dictionary = Globals.game_progression_flags
 @export_subgroup("Special")
-
-var special_flags_dict: Dictionary = {"grappling_hook_seller": false, "special_gear_seller": false, "booster_seller": false, "magnet_seller": false}
-@export var special_flags : Dictionary = {"grappling_hook_seller": false, "special_gear_seller": false, "booster_seller": false, "magnet_seller": false}
+@export var special_flags : Dictionary = Globals.special_flags
 
 var last_focused_button
 
+func _init():
+	for key in Globals.special_flag_enum.keys():
+		special_flags[key] = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#await get_tree().create_timer(1).timeout
-	print(game_progression_flags)
 	thread= Thread.new()
 	thread.start(load_all_weapons_and_gadgets)
 	thread.wait_to_finish()
-	#print(shop_weapons_and_gadgets)
 	await get_tree().process_frame
 	populate_shop_with_items()
  
@@ -84,10 +83,10 @@ func load_all_weapons_and_gadgets():
 					var weapon_or_gadget = load(currently_open_folder.get_current_dir() + "/" + file_name)
 					
 					weapon_or_gadget = weapon_or_gadget.instantiate()
-					if not get_tree().get_first_node_in_group("player").get_inventory().has_weapon(file_name.trim_suffix(".tscn")):
-						shop_weapons_and_gadgets[weapon_or_gadget] = btn_state_enum.SHOW
-					else:
-						shop_weapons_and_gadgets[weapon_or_gadget] = btn_state_enum.HIDE
+					#if not get_tree().get_first_node_in_group("player").get_inventory().has_weapon(file_name.trim_suffix(".tscn")):
+					shop_weapons_and_gadgets[weapon_or_gadget] = btn_state_enum.SHOW
+					#else:
+						#shop_weapons_and_gadgets[weapon_or_gadget] = btn_state_enum.HIDE
 			
 			#after we extracted everyting we go back into the parent folder and 
 			#go to the next folder 
@@ -114,31 +113,44 @@ func populate_shop_with_items():
 				btn.pressed.connect(self.buy_ammo.bind(item))
 
 func load_shop_state():
+	for item in shop_weapons_and_gadgets:
+		if _costumer.get_inventory().has_gadget_or_weapon(item.name):
+			shop_hbox_menu.find_child(item.name).visible = false
+		
+		#check progression
+		
 	#check world progression flags and make items visible accordingly
 	
 	#check player inventory which gadgets and weapons he already has
 	
 	#replace bought weapons with ammo for it in shop, if ammo is not max
+	
 	#add for buy all ammo
 	pass
 
 func update_shop():
+	#we check the inventory against the shop and flags
+	#for each item we check
 	pass
 
 #because every button has an item instance bound to its pressed callable,
 #we can hijack the bound argument and use it to fill the current shop gui
 #with item detaile
 func _on_sub_viewport_gui_focus_changed(item_button: Button):
-	
-	var dic = item_button.pressed.get_connections().pop_front() #get Array of connections for this signal
-	 #there is only one function connected to this signal, so we get the first connection
+	#get first signal from array of connections for this signal
+	#there is only one function connected to this signal, so we get the first connection
+	var dic = item_button.pressed.get_connections().pop_front() 
 	var callable = dic.get("callable") #get the callable from the connection
-	var item_inst = callable.get_bound_arguments().pop_front()
+	var item_inst = callable.get_bound_arguments().pop_front()#get bound argument
+	
+	#this is used for the buy popup. we don't want to populate anything if
+	#the focus changes to the popup
 	if item_inst == null:
 		return
-	print(item_inst) #get the bound arguments array (here: corresponding weapon instance)
+	#we save our focused btn to go back to if no purchase was made
 	last_focused_button = item_button
-	#print(node.pressed.get_object())
+	
+	#here we populate the gui with information
 	current_item_picture.texture =  item_inst.icon
 	current_item_name_label.text = item_inst.name
 	current_item_description_label.text = item_inst.name
@@ -146,11 +158,13 @@ func _on_sub_viewport_gui_focus_changed(item_button: Button):
 
 func _on_vendor_got_costumer(costumer: Player):
 	_costumer = costumer
+	update_shop()
 
 func _on_vendor_costumer_left():
 	_costumer = null
 
 func _on_accept_transactio_button_pressed():
+	
 	print("bought")
 
 func _on_cancel_transaction_button_pressed():

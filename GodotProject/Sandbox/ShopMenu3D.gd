@@ -1,6 +1,6 @@
 #this class only handles ui related stuff, like grabbing focus and handling inputs
-
 extends Node3D
+
 
 
 # The size of the quad mesh itself.
@@ -26,7 +26,6 @@ func initialize():
 	for child_idx in %ShopItemSelectionField.get_child_count():
 		if %ShopItemSelectionField.get_child(child_idx).visible:
 			%ShopItemSelectionField.get_child(child_idx).grab_focus()
-			print(%ShopItemSelectionField.get_child(child_idx))
 			break
 
 func cleanup():

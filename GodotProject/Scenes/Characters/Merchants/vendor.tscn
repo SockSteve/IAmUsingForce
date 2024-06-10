@@ -41,6 +41,10 @@ far = 100.0
 [node name="ShopMenu3D" parent="." instance=ExtResource("2_j1xsu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.28301, 0.717324, 0)
 
+[node name="ShopHandler" parent="ShopMenu3D" index="0"]
+game_progression_flags = {}
+special_flags = {}
+
 [node name="MeshInstance3D" parent="ShopMenu3D" index="2"]
 mesh = SubResource("QuadMesh_jh2oj")
 
