@@ -52,6 +52,7 @@ func buy_weapon_or_gadget(item):
 		return
 	
 	%BuyItemPopup.visible = true
+	shop_hbox_menu.visible = false
 	%AcceptTransactioButton.grab_focus()
 	print(item)
 
