@@ -26,11 +26,13 @@ func _process(delta):
 
 func open_shop():
 	customer.freeze = true
+	emit_signal("got_costumer", customer)
 	vendor_cam.make_current()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	$ShopMenu3D.initialize()
 
 func close_shop():
+	emit_signal("costumer_left")
 	$ShopMenu3D.cleanup()
 	customer.freeze = false
 	player_cam.make_current()
@@ -41,13 +43,11 @@ func close_shop():
 func _on_area_3d_body_entered(body):
 	if body.is_in_group("player"):
 		customer = body
-		emit_signal("got_costumer", body)
 		player_cam = body.find_child("PlayerCamera")
 		set_process(true)
 
 func _on_area_3d_body_exited(body):
 	if body.is_in_group("player"):
 		customer = null
-		emit_signal("costumer_left")
 		player_cam = null
 		set_process(false)

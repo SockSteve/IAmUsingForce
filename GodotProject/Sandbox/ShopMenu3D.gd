@@ -1,8 +1,6 @@
 #this class only handles ui related stuff, like grabbing focus and handling inputs
 extends Node3D
 
-
-
 # The size of the quad mesh itself.
 var quad_mesh_size
 # Used for checking if the mouse is inside the Area

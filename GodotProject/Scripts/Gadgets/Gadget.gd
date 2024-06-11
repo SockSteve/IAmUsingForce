@@ -12,8 +12,8 @@ class_name Gadget
 @export var gadget_mesh: Mesh = null
 @export_group("Shop")
 @export var shop_price: int = 0
-@export_group("Event Flags")
+@export_group("Shop Flags")
 @export_subgroup("Game")
-@export var game_progression_flags: Globals.game_progression_flag_enum
+@export var game_progression_flag: Globals.game_progression_flag_enum
 @export_subgroup("Special") 
-@export var special_flags : Globals.special_flag_enum
+@export var special_flag : Globals.special_flag_enum

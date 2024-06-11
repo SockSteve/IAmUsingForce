@@ -7,3 +7,5 @@
 script = ExtResource("1_3af75")
 _name = "GripGloves"
 icon = ExtResource("2_rp5rv")
+game_progression_flag = 2
+special_flag = 3

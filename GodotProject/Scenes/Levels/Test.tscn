@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cfv2ecbe68yfi"]
+[gd_scene load_steps=47 format=3 uid="uid://cfv2ecbe68yfi"]
 
 [ext_resource type="Texture2D" uid="uid://dk3g261yc4qry" path="res://Assets/Placeholders/Environment/Skyboxes/panorama_image.png" id="1_mhjnm"]
 [ext_resource type="Texture2D" uid="uid://bid2isp42co6r" path="res://addons/kenney_prototype_textures/orange/texture_01.png" id="1_y6805"]
@@ -94,6 +94,10 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 12
+
+[sub_resource type="QuadMesh" id="QuadMesh_yr5r4"]
+resource_local_to_scene = true
+size = Vector2(3, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_rmle0"]
 
@@ -366,6 +370,9 @@ volume_db = -15.928
 [node name="Vendor" parent="." instance=ExtResource("11_ahr15")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.2688, 1.30263, 2.59788)
 
+[node name="MeshInstance3D" parent="Vendor/ShopMenu3D" index="2"]
+mesh = SubResource("QuadMesh_yr5r4")
+
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.513829, 2.68137, 5.26352)
 mesh = SubResource("BoxMesh_rmle0")
@@ -511,3 +518,6 @@ shape = SubResource("BoxShape3D_u8aat")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CrouchHangBlock4"]
 layers = 64
 mesh = SubResource("BoxMesh_k1eka")
+
+[editable path="Vendor"]
+[editable path="Vendor/ShopMenu3D"]

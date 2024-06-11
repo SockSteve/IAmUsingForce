@@ -16,9 +16,9 @@ class_name Weapon
 @export var bullet_price: int = 0
 @export_group("Shop Flags")
 @export_subgroup("Game")
-@export var game_progression_flags: Dictionary = Globals.game_progression_flags
-@export_subgroup("Special")
-@export var special_flags : Dictionary = Globals.special_flags
+@export var game_progression_flag: Globals.game_progression_flag_enum
+@export_subgroup("Special") 
+@export var special_flag : Globals.special_flag_enum
 @export_group("Combat")
 @export var damage: int = 1
 @export var knockback := 0.0

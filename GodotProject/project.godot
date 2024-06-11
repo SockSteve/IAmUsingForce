@@ -17,12 +17,12 @@ config/icon="res://SockSethLogo.png"
 
 [autoload]
 
+Globals="*res://Singletons/Globals.gd"
 GameHandler="*res://Singletons/GameHandler.tscn"
 DebugLibrary="*res://Singletons/DebugLibrary.tscn"
 HelperLibrary="*res://Singletons/HelperLibrary.tscn"
 BulletContainer="*res://Singletons/BulletContainer.tscn"
 SignalBus="*res://Singletons/SignalBus.gd"
-Globals="*res://Singletons/Globals.gd"
 
 [editor_plugins]
 

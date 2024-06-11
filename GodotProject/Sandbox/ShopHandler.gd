@@ -1,5 +1,4 @@
 #this class handles the logic related to items in the shop
-@tool
 extends Node3D
 
 enum btn_state_enum {HIDE, SHOW, AMMO}
@@ -21,17 +20,7 @@ var _costumer: Player = null
 @export_dir var ranged_weapon_dir_path: String 
 @export_dir var gadget_dir_path: String 
 
-@export_group("Event Flags")
-@export_subgroup("Game")
-@export var game_progression_flags: Dictionary = Globals.game_progression_flags
-@export_subgroup("Special")
-@export var special_flags : Dictionary = Globals.special_flags
-
 var last_focused_button
-
-func _init():
-	for key in Globals.special_flag_enum.keys():
-		special_flags[key] = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -112,13 +101,31 @@ func populate_shop_with_items():
 			btn_state_enum.AMMO:
 				btn.pressed.connect(self.buy_ammo.bind(item))
 
-func load_shop_state():
+#func load_shop_state():
+	#for item in shop_weapons_and_gadgets:
+		#if _costumer.get_inventory().has_gadget_or_weapon(item.name):
+			#shop_hbox_menu.find_child(item.name).visible = false
+		#
+		##check progression
+		#if Globals.game_progression_flags[Globals.game_progression_flag_enum.find_key(item.game_progression_flag)]:
+			#print("soup")
+	##check world progression flags and make items visible accordingly
+	#
+	##check player inventory which gadgets and weapons he already has
+	#
+	##replace bought weapons with ammo for it in shop, if ammo is not max
+	#
+	##add for buy all ammo
+	#pass
+
+func update_shop():
 	for item in shop_weapons_and_gadgets:
 		if _costumer.get_inventory().has_gadget_or_weapon(item.name):
-			shop_hbox_menu.find_child(item.name).visible = false
+			shop_hbox_menu.find_child(item.name,false,false).visible = false
 		
 		#check progression
-		
+		#if Globals.game_progression_flags[Globals.game_progression_flag_enum.find_key(item.game_progression_flag)]:
+		print(Globals.game_progression_flag_enum.find_key(item.game_progression_flag))
 	#check world progression flags and make items visible accordingly
 	
 	#check player inventory which gadgets and weapons he already has
@@ -126,11 +133,6 @@ func load_shop_state():
 	#replace bought weapons with ammo for it in shop, if ammo is not max
 	
 	#add for buy all ammo
-	pass
-
-func update_shop():
-	#we check the inventory against the shop and flags
-	#for each item we check
 	pass
 
 #because every button has an item instance bound to its pressed callable,

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcj7lff1v3mff"]
+[gd_scene load_steps=9 format=3 uid="uid://bcj7lff1v3mff"]
 
 [ext_resource type="Script" path="res://Sandbox/ShopMenu3D.gd" id="1_1ttap"]
 [ext_resource type="Texture2D" uid="uid://dmf404ftfexwl" path="res://Assets/Decals/DropShadow/Shadow.png" id="1_5i4m7"]
@@ -8,6 +8,12 @@
 [sub_resource type="QuadMesh" id="QuadMesh_sqr5r"]
 resource_local_to_scene = true
 size = Vector2(3, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_60via"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rg7in"]
+albedo_texture = SubResource("ViewportTexture_60via")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tmjdk"]
 size = Vector3(3, 2, 0.1)
@@ -20,18 +26,6 @@ script = ExtResource("2_72765")
 melee_weapon_dir_path = "res://Scenes/Weapons/MeleeWeapons"
 ranged_weapon_dir_path = "res://Scenes/Weapons/RangedWeapons"
 gadget_dir_path = "res://Scenes/Gadgets"
-game_progression_flags = {
-"glare_grotto_completed": true,
-"nogo_forrest_completed": false,
-"pelagic_cockcrow_completed": false,
-"polycoly_completed": false
-}
-special_flags = {
-"booster_seller": false,
-"grappling_hook_seller": true,
-"magnet_seller": false,
-"special_gear_seller": true
-}
 
 [node name="SubViewport" type="SubViewport" parent="."]
 snap_2d_transforms_to_pixel = true
@@ -221,6 +215,7 @@ text = "no"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_sqr5r")
+surface_material_override/0 = SubResource("StandardMaterial3D_rg7in")
 
 [node name="Area3D" type="Area3D" parent="MeshInstance3D"]
 input_capture_on_drag = true
