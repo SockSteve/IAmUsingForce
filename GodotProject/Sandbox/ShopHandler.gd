@@ -24,11 +24,12 @@ var last_focused_button
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Globals.game_progression_flags[Globals.game_progression_flag_enum.find_key(Globals.game_progression_flag_enum.beginning)] = true
 	thread= Thread.new()
 	thread.start(load_all_weapons_and_gadgets)
-	thread.wait_to_finish()
+	var items = thread.wait_to_finish()
 	await get_tree().process_frame
-	populate_shop_with_items()
+	populate_shop_with_items(items)
  
 func buy_ammo():
 	pass
@@ -84,8 +85,8 @@ func load_all_weapons_and_gadgets():
 	#returns the filled dictionary
 	return shop_weapons_and_gadgets
 
-func populate_shop_with_items():
-	for item in shop_weapons_and_gadgets:
+func populate_shop_with_items(items):
+	for item in items:#shop_weapons_and_gadgets:
 		var btn: Button = Button.new()
 		btn.icon = item.icon
 		btn.name = item.name
@@ -101,30 +102,17 @@ func populate_shop_with_items():
 			btn_state_enum.AMMO:
 				btn.pressed.connect(self.buy_ammo.bind(item))
 
-#func load_shop_state():
-	#for item in shop_weapons_and_gadgets:
-		#if _costumer.get_inventory().has_gadget_or_weapon(item.name):
-			#shop_hbox_menu.find_child(item.name).visible = false
-		#
-		##check progression
-		#if Globals.game_progression_flags[Globals.game_progression_flag_enum.find_key(item.game_progression_flag)]:
-			#print("soup")
-	##check world progression flags and make items visible accordingly
-	#
-	##check player inventory which gadgets and weapons he already has
-	#
-	##replace bought weapons with ammo for it in shop, if ammo is not max
-	#
-	##add for buy all ammo
-	#pass
-
 func update_shop():
 	for item in shop_weapons_and_gadgets:
 		if _costumer.get_inventory().has_gadget_or_weapon(item.name):
+			#recursive search isn't needed and owned must be false because the 
+			#buttons were created through script and don't have owners
 			shop_hbox_menu.find_child(item.name,false,false).visible = false
-		
+			
 		#check progression
-		#if Globals.game_progression_flags[Globals.game_progression_flag_enum.find_key(item.game_progression_flag)]:
+		if not Globals.game_progression_flags.get(Globals.game_progression_flag_enum.find_key(item.game_progression_flag)):
+			shop_hbox_menu.find_child(item.name,false,false).visible = false
+			
 		print(Globals.game_progression_flag_enum.find_key(item.game_progression_flag))
 	#check world progression flags and make items visible accordingly
 	
@@ -166,7 +154,6 @@ func _on_vendor_costumer_left():
 	_costumer = null
 
 func _on_accept_transactio_button_pressed():
-	
 	print("bought")
 
 func _on_cancel_transaction_button_pressed():
