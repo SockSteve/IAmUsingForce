@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://clqubhkmu8ph0"]
+
+[node name="ShopAmmunitionButton" type="Button"]
+custom_minimum_size = Vector2(40, 40)
+offset_right = 114.0
+offset_bottom = 81.0
+expand_icon = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+vertical_alignment = 1

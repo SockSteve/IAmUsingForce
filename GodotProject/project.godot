@@ -24,6 +24,10 @@ HelperLibrary="*res://Singletons/HelperLibrary.tscn"
 BulletContainer="*res://Singletons/BulletContainer.tscn"
 SignalBus="*res://Singletons/SignalBus.gd"
 
+[debug]
+
+shader_language/warnings/unused_local_variable=false
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/ridiculous_coding/plugin.cfg")

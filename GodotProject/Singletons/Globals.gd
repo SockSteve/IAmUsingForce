@@ -1,5 +1,5 @@
 extends Node
-
+## the name of the flags are used as variables for dictionary values that change
 enum game_progression_flag_enum {beginning,nogo_forrest_completed, 
 	pelagic_cockcrow_completed, glare_grotto_completed, polycoly_completed, game_completed, test}
 

@@ -2,9 +2,13 @@
 extends Node3D
 
 enum btn_state_enum {HIDE, SHOW, AMMO}
+enum btn_content_enum {AMMO, GADGETWEAPON, UPGRADE}
 var shop_weapons_and_gadgets: Dictionary = {} #item_instance : visibility_state
 var thread: Thread
 var _costumer: Player = null
+
+const shop_button = preload("res://Scenes/UI/Templates/ShopButton.tscn")
+const ammo_button = preload("res://Scenes/UI/Templates/ShopAmmunitionButton.tscn")
 
 @onready var shop_hbox_menu = %ShopItemSelectionField
 @onready var current_item_picture =  %ItemPicture
@@ -27,7 +31,7 @@ func _ready():
 	Globals.game_progression_flags[Globals.game_progression_flag_enum.find_key(Globals.game_progression_flag_enum.beginning)] = true
 	thread= Thread.new()
 	thread.start(load_all_weapons_and_gadgets)
-	var items = thread.wait_to_finish()
+	var items: Dictionary = thread.wait_to_finish() # items {item_instance_}
 	await get_tree().process_frame
 	populate_shop_with_items(items)
  
@@ -46,7 +50,7 @@ func buy_weapon_or_gadget(item):
 	%AcceptTransactioButton.grab_focus()
 	print(item)
 
-func load_all_weapons_and_gadgets():
+func load_all_weapons_and_gadgets()->Dictionary:
 	# relevant dir paths are put in an array so they can be iterated over
 	var weapons_and_gadgets_directory_path_array: PackedStringArray = []
 	if melee_weapon_dir_path != "": weapons_and_gadgets_directory_path_array.append(melee_weapon_dir_path)
@@ -55,7 +59,7 @@ func load_all_weapons_and_gadgets():
 	
 	#check if something was added -> crash prevention
 	if weapons_and_gadgets_directory_path_array.is_empty():
-		return
+		return {}
 	
 	#here we iterate through the array with the previously defined paths
 	for directory_path in weapons_and_gadgets_directory_path_array:
@@ -87,12 +91,19 @@ func load_all_weapons_and_gadgets():
 
 func populate_shop_with_items(items):
 	for item in items:#shop_weapons_and_gadgets:
-		var btn: Button = Button.new()
+		var btn: Button = shop_button.instantiate()
 		btn.icon = item.icon
 		btn.name = item.name
 		#btn.name = item.name
 		#btn.pressed.connect(self._on_button_pressed.bind(item))
 		shop_hbox_menu.add_child(btn)
+		if item is Weapon:
+			var ammo_btn: Button = ammo_button.instantiate()
+			ammo_btn.name = item.name + "_Ammo"
+			ammo_btn.icon = item.icon
+			shop_hbox_menu.add_child(ammo_btn)
+			shop_hbox_menu.move_child(ammo_btn,0)
+			ammo_btn.get_child(0).text = "Ammo"
 		match shop_weapons_and_gadgets.get(item):
 			btn_state_enum.HIDE:
 				btn.hide()
@@ -130,6 +141,7 @@ func _on_sub_viewport_gui_focus_changed(item_button: Button):
 	#get first signal from array of connections for this signal
 	#there is only one function connected to this signal, so we get the first connection
 	var dic = item_button.pressed.get_connections().pop_front() 
+	if dic == null: return 
 	var callable = dic.get("callable") #get the callable from the connection
 	var item_inst = callable.get_bound_arguments().pop_front()#get bound argument
 	

@@ -1,9 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://bcj7lff1v3mff"]
+[gd_scene load_steps=11 format=3 uid="uid://bcj7lff1v3mff"]
 
 [ext_resource type="Script" path="res://Sandbox/ShopMenu3D.gd" id="1_1ttap"]
 [ext_resource type="Texture2D" uid="uid://dmf404ftfexwl" path="res://Assets/Decals/DropShadow/Shadow.png" id="1_5i4m7"]
 [ext_resource type="Script" path="res://Sandbox/ShopHandler.gd" id="2_72765"]
 [ext_resource type="Theme" uid="uid://d02hntmjt67aj" path="res://UI/UITheme_1.tres" id="2_dpxj1"]
+[ext_resource type="Texture2D" uid="uid://bsv5iog55nu8i" path="res://Assets/Textures/UI/AmmoIcon.png" id="5_vn3yi"]
+
+[sub_resource type="SystemFont" id="SystemFont_qjh1b"]
+hinting = 2
 
 [sub_resource type="QuadMesh" id="QuadMesh_sqr5r"]
 resource_local_to_scene = true
@@ -136,6 +140,28 @@ follow_focus = true
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
+
+[node name="AllAmmoBtn" type="Button" parent="SubViewport/Control/Panel/ScrollContainer/ShopItemSelectionField"]
+layout_mode = 2
+icon = ExtResource("5_vn3yi")
+flat = true
+alignment = 0
+icon_alignment = 1
+vertical_icon_alignment = 2
+
+[node name="Label" type="Label" parent="SubViewport/Control/Panel/ScrollContainer/ShopItemSelectionField/AllAmmoBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_qjh1b")
+theme_override_font_sizes/font_size = 12
+text = "AMMO"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="BuyItemPopup" type="Panel" parent="SubViewport/Control/Panel"]
 unique_name_in_owner = true
