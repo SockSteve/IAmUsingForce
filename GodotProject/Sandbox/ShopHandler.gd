@@ -50,6 +50,7 @@ func buy_weapon_or_gadget(item):
 	%AcceptTransactioButton.grab_focus()
 	#print(item)
 
+## this function loads all weapons and geadgets from the directory
 func load_all_weapons_and_gadgets()->Array:
 	var shop_weapons_and_gadgets: Array = []
 	# relevant dir paths are put in an array so they can be iterated over
@@ -127,13 +128,6 @@ func update_shop():
 		#check progression
 		if not Globals.game_progression_flags.get(Globals.game_progression_flag_enum.find_key(shop_items.get(item)[1].game_progression_flag)):
 			shop_items.get(item)[0].visible=false
-			
-		#print(Globals.game_progression_flag_enum.find_key(item.game_progression_flag))
-	#check world progression flags and make items visible accordingly
-	
-	#check player inventory which gadgets and weapons he already has
-	
-	#replace bought weapons with ammo for it in shop, if ammo is not max
 	
 	#add for buy all ammo
 	pass
