@@ -11,6 +11,8 @@ script = ExtResource("1_eansb")
 _name = "Gun"
 upgrade_name = "KoiKoi"
 icon = ExtResource("2_h3xh3")
+current_ammunition = 10
+max_ammunition = 20
 bullet = ExtResource("2_j5oes")
 
 [node name="Marker3D" type="Marker3D" parent="."]

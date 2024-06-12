@@ -1,9 +1,9 @@
 #this class handles the logic related to items in the shop
 extends Node3D
 
-enum btn_state_enum {HIDE, SHOW, AMMO}
-enum btn_content_enum {AMMO, GADGETWEAPON, UPGRADE}
-var shop_weapons_and_gadgets: Dictionary = {} #item_instance : visibility_state
+#enum btn_state_enum {HIDE, SHOW, AMMO}
+#enum btn_content_enum {AMMO, GADGETWEAPON, UPGRADE}
+var shop_items: Dictionary = {} #item_name : [btn,content,visibility_state]
 var thread: Thread
 var _costumer: Player = null
 
@@ -31,7 +31,7 @@ func _ready():
 	Globals.game_progression_flags[Globals.game_progression_flag_enum.find_key(Globals.game_progression_flag_enum.beginning)] = true
 	thread= Thread.new()
 	thread.start(load_all_weapons_and_gadgets)
-	var items: Dictionary = thread.wait_to_finish() # items {item_instance_}
+	var items: Array = thread.wait_to_finish() # items
 	await get_tree().process_frame
 	populate_shop_with_items(items)
  
@@ -48,9 +48,10 @@ func buy_weapon_or_gadget(item):
 	%BuyItemPopup.visible = true
 	shop_hbox_menu.visible = false
 	%AcceptTransactioButton.grab_focus()
-	print(item)
+	#print(item)
 
-func load_all_weapons_and_gadgets()->Dictionary:
+func load_all_weapons_and_gadgets()->Array:
+	var shop_weapons_and_gadgets: Array = []
 	# relevant dir paths are put in an array so they can be iterated over
 	var weapons_and_gadgets_directory_path_array: PackedStringArray = []
 	if melee_weapon_dir_path != "": weapons_and_gadgets_directory_path_array.append(melee_weapon_dir_path)
@@ -59,7 +60,7 @@ func load_all_weapons_and_gadgets()->Dictionary:
 	
 	#check if something was added -> crash prevention
 	if weapons_and_gadgets_directory_path_array.is_empty():
-		return {}
+		return shop_weapons_and_gadgets
 	
 	#here we iterate through the array with the previously defined paths
 	for directory_path in weapons_and_gadgets_directory_path_array:
@@ -78,7 +79,8 @@ func load_all_weapons_and_gadgets()->Dictionary:
 					
 					weapon_or_gadget = weapon_or_gadget.instantiate()
 					#if not get_tree().get_first_node_in_group("player").get_inventory().has_weapon(file_name.trim_suffix(".tscn")):
-					shop_weapons_and_gadgets[weapon_or_gadget] = btn_state_enum.SHOW
+					shop_weapons_and_gadgets.append(weapon_or_gadget)
+					#shop_weapons_and_gadgets[weapon_or_gadget] = btn_state_enum.SHOW
 					#else:
 						#shop_weapons_and_gadgets[weapon_or_gadget] = btn_state_enum.HIDE
 			
@@ -90,41 +92,43 @@ func load_all_weapons_and_gadgets()->Dictionary:
 	return shop_weapons_and_gadgets
 
 func populate_shop_with_items(items):
-	for item in items:#shop_weapons_and_gadgets:
+	for item in items:
 		var btn: Button = shop_button.instantiate()
 		btn.icon = item.icon
 		btn.name = item.name
-		#btn.name = item.name
-		#btn.pressed.connect(self._on_button_pressed.bind(item))
+		shop_items[btn.name] = [btn, item]
 		shop_hbox_menu.add_child(btn)
+		btn.pressed.connect(self.buy_weapon_or_gadget.bind(item))
 		if item is Weapon:
 			var ammo_btn: Button = ammo_button.instantiate()
-			ammo_btn.name = item.name + "_Ammo"
 			ammo_btn.icon = item.icon
+			ammo_btn.name = item.name + "_Ammo"
+			shop_items[ammo_btn.name] = [ammo_btn, item]
 			shop_hbox_menu.add_child(ammo_btn)
 			shop_hbox_menu.move_child(ammo_btn,0)
 			ammo_btn.get_child(0).text = "Ammo"
-		match shop_weapons_and_gadgets.get(item):
-			btn_state_enum.HIDE:
-				btn.hide()
-			btn_state_enum.SHOW:
-				btn.pressed.connect(self.buy_weapon_or_gadget.bind(item))
-				btn.show()
-			btn_state_enum.AMMO:
-				btn.pressed.connect(self.buy_ammo.bind(item))
+			ammo_btn.visible = false
+			ammo_btn.pressed.connect(self.buy_ammo.bind(item))
 
 func update_shop():
-	for item in shop_weapons_and_gadgets:
-		if _costumer.get_inventory().has_gadget_or_weapon(item.name):
-			#recursive search isn't needed and owned must be false because the 
-			#buttons were created through script and don't have owners
-			shop_hbox_menu.find_child(item.name,false,false).visible = false
+	for item: StringName in shop_items:
+		
+		if _costumer.get_inventory().has_weapon(item):
+			shop_items.get(item)[0].visible=false
+			
+			if _costumer.get_inventory().get_weapon(item).current_ammunition < _costumer.get_inventory().get_weapon(item).max_ammunition:
+				shop_items.get(item + "_Ammo")[0].visible=true
+			else:
+				shop_items.get(item + "_Ammo")[0].visible=false
+		
+		if _costumer.get_inventory().has_gadget(item):
+			shop_items.get(item)[0].visible=false
 			
 		#check progression
-		if not Globals.game_progression_flags.get(Globals.game_progression_flag_enum.find_key(item.game_progression_flag)):
-			shop_hbox_menu.find_child(item.name,false,false).visible = false
+		if not Globals.game_progression_flags.get(Globals.game_progression_flag_enum.find_key(shop_items.get(item)[1].game_progression_flag)):
+			shop_items.get(item)[0].visible=false
 			
-		print(Globals.game_progression_flag_enum.find_key(item.game_progression_flag))
+		#print(Globals.game_progression_flag_enum.find_key(item.game_progression_flag))
 	#check world progression flags and make items visible accordingly
 	
 	#check player inventory which gadgets and weapons he already has
