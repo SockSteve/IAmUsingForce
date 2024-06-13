@@ -1,7 +1,7 @@
 extends Node3D
 class_name Inventory
 
-signal money_changed(amount: int)
+signal money_amount_changed(amount: int)
 
 @export_range(0,1000000000) var money: int = 10000
 
@@ -15,11 +15,11 @@ func get_money()-> int:
 	
 func add_money(amount)->void:
 	money += amount
-	emit_signal("money_aount_changed", money)
+	emit_signal("money_amount_changed", money)
 
 func remove_money(amount)->void:
 	money -= amount
-	emit_signal("money_aount_changed", money)
+	emit_signal("money_amount_changed", money)
 
 func parameterize_weapon():
 	#initialize weapon with xp
@@ -49,6 +49,12 @@ func get_weapon_or_gadget(gadget_or_weapon_name: StringName)-> Node:
 	if gadget != null: 
 		return gadget
 	return weapons.get(gadget_or_weapon_name)
+
+func add_weapon_or_gadget(item_name: StringName,item_node: Node)->void:
+	if item_node is Gadget:
+		add_gadget(item_name,item_node)
+	else:
+		add_weapon(item_name,item_node)
 
 func add_weapon(weapon_name: StringName,weapon_node: Node)->void:
 	weapons[weapon_name] = weapon_node

@@ -25,7 +25,7 @@ const ammo_button = preload("res://Scenes/UI/Templates/ShopAmmunitionButton.tscn
 @export_dir var gadget_dir_path: String 
 
 var last_focused_button
-
+var current_item_to_be_bought: Node3D = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Globals.game_progression_flags[Globals.game_progression_flag_enum.find_key(Globals.game_progression_flag_enum.beginning)] = true
@@ -35,20 +35,6 @@ func _ready():
 	await get_tree().process_frame
 	populate_shop_with_items(items)
  
-func buy_ammo():
-	pass
-
-func buy_weapon_or_gadget(item):
-	if _costumer.get_inventory().get_money() < item.shop_price:
-		%InsuficcientMoneyLabel.visible = true
-		await get_tree().create_timer(2).timeout
-		%InsuficcientMoneyLabel.visible = false
-		return
-	
-	%BuyItemPopup.visible = true
-	shop_hbox_menu.visible = false
-	%AcceptTransactioButton.grab_focus()
-	#print(item)
 
 ## this function loads all weapons and geadgets from the directory
 func load_all_weapons_and_gadgets()->Array:
@@ -156,14 +142,25 @@ func _on_sub_viewport_gui_focus_changed(item_button: Button):
 	current_item_description_label.text = item_inst.name
 	current_item_price_label.text = str(item_inst.shop_price)
 
-func _on_vendor_got_costumer(costumer: Player):
-	_costumer = costumer
-	update_shop()
+## item can be weapon or gadget
+func buy_weapon_or_gadget(item:Node3D):
+	if _costumer.get_inventory().get_money() < item.shop_price:
+		%InsuficcientMoneyLabel.visible = true
+		await get_tree().create_timer(2).timeout
+		%InsuficcientMoneyLabel.visible = false
+		return
+	current_item_to_be_bought = item
+	%BuyItemPopup.visible = true
+	shop_hbox_menu.visible = false
+	%AcceptTransactioButton.grab_focus()
 
-func _on_vendor_costumer_left():
-	_costumer = null
+func buy_ammo():
+	pass
 
 func _on_accept_transactio_button_pressed():
+	_costumer.get_inventory().remove_money(current_item_to_be_bought.shop_price)
+	_costumer.get_inventory().add_weapon_or_gadget(current_item_to_be_bought.name,current_item_to_be_bought)
+	update_shop()
 	print("bought")
 
 func _on_cancel_transaction_button_pressed():
@@ -171,3 +168,10 @@ func _on_cancel_transaction_button_pressed():
 	shop_hbox_menu.visible = true
 	last_focused_button.grab_focus()
 	print("cancelled")
+
+func _on_vendor_got_costumer(costumer: Player):
+	_costumer = costumer
+	update_shop()
+
+func _on_vendor_costumer_left():
+	_costumer = null

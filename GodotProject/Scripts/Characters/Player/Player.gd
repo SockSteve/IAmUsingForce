@@ -75,12 +75,12 @@ var is_strafing: bool
 var freeze: bool = false
 var putting_ranged_weapon_in_hand_enabled: bool = true 
 
-#store the active weapons that are not in the scene tree
+## store the active weapons that are not in the scene tree
 var current_ranged_weapon: Node
 var current_melee_weapon: Node
-#weapon that is in the scene tree. there is only one
+## weapon that is in the scene tree. there is only one
 var currently_held_weapon_or_gadget: Node
-#store scene_tree weapon on gadget use 
+## store scene_tree weapon on gadget use 
 var stored_weapon_on_gadget_use: Node #this variable is only assigned with the active weapon when a gadget is used. it stores the weapon so it can be placed back into the players hand fter the gadget usage is over.
 
 
@@ -138,19 +138,11 @@ func _orient_character_to_direction(direction: Vector3, delta: float,rotation_sp
 		model_scale
 	)
 
-func _orient_magnetized_character_to_direction(direction: Vector3, delta: float,rotation_speed:float=_rotation_speed, up_vector: Vector3 = Vector3.UP) -> void:
-	var left_axis := up_vector.cross(direction)
-	var rotation_basis := Basis(left_axis, up_vector, direction).get_rotation_quaternion()
-	var model_scale := _rotation_root.transform.basis.get_scale()
-	self.transform.basis = Basis(_rotation_root.transform.basis.get_rotation_quaternion().slerp(rotation_basis, delta * rotation_speed)).scaled(
-		model_scale
-	)
 
 #function for changing the player physics to that of a ridgidbody (here @PhysicsBody)
 #called in StateMachine
 func switchToPhysicsBody():
 	var stored_player_velocity = velocity
-	_physics_body.linear_velocity 
 	_physics_body.global_transform = self.global_transform
 	_physics_body.freeze = false
 	_physics_body.top_level = true
@@ -162,6 +154,7 @@ func switchToCharacterBody():
 	_physics_body.freeze = true
 	_physics_body.top_level = false
 	velocity = _physics_body.linear_velocity
+	_physics_body.global_transform = self.global_transform
 
 #returns the inventory
 func get_inventory()->Inventory:

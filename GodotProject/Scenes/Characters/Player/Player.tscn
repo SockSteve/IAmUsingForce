@@ -163,12 +163,65 @@ debug_shape_custom_color = Color(0, 1, 0, 1)
 [node name="CharacterSkin" parent="CharacterRotationRoot" instance=ExtResource("15_7yrxv")]
 unique_name_in_owner = true
 
+[node name="GeneralSkeleton" parent="CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature" index="0"]
+bones/1/rotation = Quaternion(-1.71596e-09, -5.30086e-13, -2.39117e-15, 1)
+bones/2/rotation = Quaternion(3.72529e-09, -2.27374e-13, 3.6664e-12, 1)
+bones/3/rotation = Quaternion(1.38778e-17, -6.82121e-13, 5.68434e-14, 1)
+bones/7/rotation = Quaternion(0.500032, 0.499968, 0.500032, -0.499968)
+bones/8/rotation = Quaternion(0.496541, 0.784609, -0.362516, -0.0801132)
+bones/9/rotation = Quaternion(0.42837, -0.562544, 0.42837, 0.562622)
+bones/10/rotation = Quaternion(-0.335515, 0.295407, 0.178871, 0.876453)
+bones/11/rotation = Quaternion(0.283159, -0.00491733, 0.414788, 0.864724)
+bones/12/rotation = Quaternion(-0.131969, 0.691737, 0.238649, 0.668679)
+bones/13/rotation = Quaternion(0.139308, 0.485417, -0.0292757, 0.862616)
+bones/14/rotation = Quaternion(-2.98023e-08, 0, 0, 1)
+bones/15/rotation = Quaternion(0.186792, 0.171691, -0.0894219, 0.963138)
+bones/16/rotation = Quaternion(0.116548, -0.087689, 0.0371472, 0.988609)
+bones/17/rotation = Quaternion(0.465784, 0.177104, 0.0450962, 0.865821)
+bones/18/rotation = Quaternion(2.98023e-08, -2.98023e-08, 2.98023e-08, 1)
+bones/19/rotation = Quaternion(0.370269, -0.0289936, -0.0608119, 0.926478)
+bones/20/rotation = Quaternion(0.356051, -0.0278803, -0.058477, 0.932218)
+bones/21/rotation = Quaternion(0.307654, -0.0240904, -0.0505284, 0.94985)
+bones/22/rotation = Quaternion(-5.96047e-08, 1.49012e-08, -2.98023e-08, 1)
+bones/23/rotation = Quaternion(0.216593, -0.0169591, -0.0355768, 0.975466)
+bones/24/rotation = Quaternion(0.568887, -0.0445456, -0.0934257, 0.815876)
+bones/26/rotation = Quaternion(0, -5.96046e-08, 0, 1)
+bones/27/rotation = Quaternion(0.395134, -0.0308843, -0.0650248, 0.915799)
+bones/28/rotation = Quaternion(0.320843, -0.0251504, -0.0523455, 0.94535)
+bones/29/rotation = Quaternion(0.425864, -0.0334434, -0.0701513, 0.901443)
+bones/31/rotation = Quaternion(0.499969, -0.500031, -0.499968, -0.500032)
+bones/32/rotation = Quaternion(-0.511677, 0.799304, -0.30019, 0.0958461)
+bones/33/rotation = Quaternion(0.449024, 0.546278, -0.449024, 0.546201)
+bones/34/rotation = Quaternion(-0.432079, -0.266302, -0.127633, 0.852116)
+bones/35/rotation = Quaternion(-0.278776, 0.00472081, -0.0127121, 0.96026)
+bones/36/rotation = Quaternion(-0.10928, -0.694095, -0.102051, 0.704185)
+bones/37/rotation = Quaternion(0.259854, 0.402318, 0.0109547, 0.877779)
+bones/38/rotation = Quaternion(-2.98023e-08, 2.98023e-08, 5.96046e-08, 1)
+bones/39/rotation = Quaternion(0.347764, -0.00589031, 0.0158607, 0.937429)
+bones/40/rotation = Quaternion(0.356753, -0.00604254, 0.0162626, 0.934038)
+bones/41/rotation = Quaternion(0.564921, -0.00956589, 0.025758, 0.824687)
+bones/42/rotation = Quaternion(-2.98023e-08, -2.98023e-08, -2.98023e-08, 1)
+bones/43/rotation = Quaternion(0.552463, -0.00935497, 0.0251901, 0.833104)
+bones/44/rotation = Quaternion(0.175735, -0.00297566, 0.00801301, 0.9844)
+bones/45/rotation = Quaternion(0.526701, -0.00891868, 0.0240155, 0.849664)
+bones/46/rotation = Quaternion(-1.49012e-08, -1.49012e-08, -1.49012e-08, 1)
+bones/47/rotation = Quaternion(0.447945, -0.00758757, 0.0204292, 0.893796)
+bones/48/rotation = Quaternion(0.349661, -0.00592165, 0.0159356, 0.936722)
+bones/49/rotation = Quaternion(0.513748, -0.194646, 0.015607, 0.835423)
+bones/50/rotation = Quaternion(-2.98023e-08, 2.98023e-08, 2.98023e-08, 1)
+bones/51/rotation = Quaternion(0.364391, -0.109376, 0.0287752, 0.924353)
+bones/52/rotation = Quaternion(0.449863, 0.0607724, -0.164155, 0.875776)
+bones/53/rotation = Quaternion(0.488696, 0.0595852, 0.14461, 0.85832)
+bones/54/rotation = Quaternion(1.49012e-08, 0, 0, 1)
+bones/57/rotation = Quaternion(0, 0.707107, -0.707107, 0)
+bones/62/rotation = Quaternion(0, 0.707107, -0.707107, 0)
+
 [node name="AnimationTree" parent="CharacterRotationRoot/CharacterSkin" index="1"]
 parameters/armtransition/current_state = "hold_gun"
 parameters/weapon_melee_transition/transition_request = ""
 
 [node name="MeleeHand" parent="CharacterRotationRoot/CharacterSkin" index="2"]
-transform = Transform3D(-0.0455863, -0.00217363, 0.998958, 0.998819, -0.0169131, 0.0455431, 0.0167964, 0.999855, 0.00294214, -0.0474307, 1.28806, 0.311383)
+transform = Transform3D(-0.0455859, -0.00217348, 0.998958, 0.998819, -0.0169132, 0.0455429, 0.0167965, 0.999854, 0.00294173, -0.0474304, 1.28806, 0.311384)
 
 [node name="PlayerHand" type="Node3D" parent="CharacterRotationRoot/CharacterSkin"]
 unique_name_in_owner = true

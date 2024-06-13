@@ -41,7 +41,7 @@ far = 100.0
 [node name="ShopMenu3D" parent="." instance=ExtResource("2_j1xsu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.28301, 0.717324, 0)
 
-[node name="MeshInstance3D" parent="ShopMenu3D" index="2"]
+[node name="MeshInstance3D" parent="ShopMenu3D" index="3"]
 mesh = SubResource("QuadMesh_jh2oj")
 
 [connection signal="costumer_left" from="." to="ShopMenu3D/ShopHandler" method="_on_vendor_costumer_left"]

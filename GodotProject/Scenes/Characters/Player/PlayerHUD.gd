@@ -5,7 +5,7 @@ extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_node(inventory_path).money_changed.connect(display_money)
+	get_node(inventory_path).money_amount_changed.connect(display_money)
 	money_label.text = str(get_node(inventory_path).get_money())
 
 func display_money(amount):
