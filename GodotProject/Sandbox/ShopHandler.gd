@@ -15,6 +15,7 @@ const ammo_button = preload("res://Scenes/UI/Templates/ShopAmmunitionButton.tscn
 @onready var current_item_name_label = %ItemNameLabel
 @onready var current_item_description_label = %ItemInfoLabel
 @onready var current_item_price_label = %PriceLabel
+@onready var insufficient_money_label_timer = %InsufficientMoneyMessageTimer
 
 @onready var sub_viewport = $"../SubViewport"
 
@@ -25,6 +26,7 @@ const ammo_button = preload("res://Scenes/UI/Templates/ShopAmmunitionButton.tscn
 @export_dir var gadget_dir_path: String 
 
 var last_focused_button
+@onready var default_focused_button = %AllAmmoBtn
 var current_item_to_be_bought: Node3D = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -146,7 +148,8 @@ func _on_sub_viewport_gui_focus_changed(item_button: Button):
 func buy_weapon_or_gadget(item:Node3D):
 	if _costumer.get_inventory().get_money() < item.shop_price:
 		%InsuficcientMoneyLabel.visible = true
-		await get_tree().create_timer(2).timeout
+		insufficient_money_label_timer.start()
+		await insufficient_money_label_timer.timeout
 		%InsuficcientMoneyLabel.visible = false
 		return
 	current_item_to_be_bought = item
@@ -154,20 +157,30 @@ func buy_weapon_or_gadget(item:Node3D):
 	shop_hbox_menu.visible = false
 	%AcceptTransactioButton.grab_focus()
 
-func buy_ammo():
-	pass
-
-func _on_accept_transactio_button_pressed():
-	_costumer.get_inventory().remove_money(current_item_to_be_bought.shop_price)
-	_costumer.get_inventory().add_weapon_or_gadget(current_item_to_be_bought.name,current_item_to_be_bought)
-	update_shop()
-	print("bought")
-
-func _on_cancel_transaction_button_pressed():
-	%BuyItemPopup.visible = false
-	shop_hbox_menu.visible = true
-	last_focused_button.grab_focus()
-	print("cancelled")
+func buy_ammo(weapon):
+	var current_costumer_money: int = _costumer.get_inventory().get_money()
+	if weapon.bullet_price <= 0:
+		print("i can't give credit")
+	if current_costumer_money < weapon.bullet_price:
+		%InsuficcientMoneyLabel.visible = true
+		insufficient_money_label_timer.start()
+		await insufficient_money_label_timer.timeout
+		%InsuficcientMoneyLabel.visible = false
+		return
+	print("let me in")
+	%BuyAmmoPopup.visible = true
+	shop_hbox_menu.visible = false
+	var ammo_needed: int  = weapon.max_ammunition - weapon.current_ammunition
+	var max_ammo_affordable: int = int(current_costumer_money / weapon.bullet_price)
+	var ammo_max_amount_to_buy: int = min(ammo_needed, max_ammo_affordable)
+	
+	
+	%AmmoAmountSlider.max_value = ammo_max_amount_to_buy
+	%AmmoAmountSlider.value = ammo_max_amount_to_buy
+	%CurrentAmmoLabel.text = str(ammo_max_amount_to_buy)
+	%MaxAmmoLabel.text = str(ammo_max_amount_to_buy)
+	%AmmoAmountSlider.grab_focus()
+	
 
 func _on_vendor_got_costumer(costumer: Player):
 	_costumer = costumer
@@ -175,3 +188,33 @@ func _on_vendor_got_costumer(costumer: Player):
 
 func _on_vendor_costumer_left():
 	_costumer = null
+
+
+func _on_ammo_amount_slider_value_changed(value):
+	%CurrentAmmoLabel.text = str(value)
+
+
+func _on_accept_item_transaction_button_pressed():
+	_costumer.get_inventory().remove_money(current_item_to_be_bought.shop_price)
+	_costumer.get_inventory().add_weapon_or_gadget(current_item_to_be_bought.name,current_item_to_be_bought)
+	update_shop()
+	%BuyItemPopup.visible = false
+	shop_hbox_menu.visible = true
+	default_focused_button.grab_focus()
+	print("bought")
+
+
+func _on_cancel_item_transaction_button_pressed():
+	%BuyItemPopup.visible = false
+	shop_hbox_menu.visible = true
+	last_focused_button.grab_focus()
+	print("cancelled")
+
+
+func _on_accept_ammo_transaction_button_pressed():
+	var money_to_be_payed: int = %AmmoAmountSlider.value * current_item_to_be_bought.bullet_price
+	pass # Replace with function body.
+
+
+func _on_cancel_ammo_transaction_button_pressed():
+	pass # Replace with function body.

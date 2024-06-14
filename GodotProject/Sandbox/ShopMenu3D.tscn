@@ -142,6 +142,7 @@ layout_mode = 2
 alignment = 1
 
 [node name="AllAmmoBtn" type="Button" parent="SubViewport/Control/Panel/ScrollContainer/ShopItemSelectionField"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 icon = ExtResource("5_vn3yi")
@@ -192,12 +193,12 @@ text = "buy item?"
 [node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/Control/Panel/BuyItemPopup/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="AcceptTransactioButton" type="Button" parent="SubViewport/Control/Panel/BuyItemPopup/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="AcceptItemTransactionButton" type="Button" parent="SubViewport/Control/Panel/BuyItemPopup/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "yes"
 
-[node name="CancelTransactionButton" type="Button" parent="SubViewport/Control/Panel/BuyItemPopup/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="CancelItemTransactionButton" type="Button" parent="SubViewport/Control/Panel/BuyItemPopup/MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "no"
@@ -239,15 +240,17 @@ text = "Buy Ammo"
 [node name="HBoxContainer2" type="HBoxContainer" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="CurrentAmmoLabel" type="Label" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "a"
 
-[node name="Label4" type="Label" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Seperator" type="Label" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 text = "/"
 
-[node name="Label3" type="Label" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="MaxAmmoLabel" type="Label" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "a"
 
@@ -256,20 +259,28 @@ visible = false
 layout_mode = 2
 alignment = 1
 
-[node name="HSlider" type="HSlider" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer"]
+[node name="AmmoAmountSlider" type="HSlider" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+min_value = 1.0
 value = 49.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="AcceptTransactioButton" type="Button" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="AcceptAmmoTransactionButton" type="Button" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "yes"
 
-[node name="CancelTransactionButton" type="Button" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="CancelAmmoTransactionButton" type="Button" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "no"
+
+[node name="InsufficientMoneyMessageTimer" type="Timer" parent="SubViewport/Control/Panel"]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_sqr5r")
@@ -283,6 +294,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0133133, -0.00122152, 0)
 shape = SubResource("BoxShape3D_tmjdk")
 
 [connection signal="gui_focus_changed" from="SubViewport" to="ShopHandler" method="_on_sub_viewport_gui_focus_changed"]
-[connection signal="pressed" from="SubViewport/Control/Panel/BuyItemPopup/MarginContainer/VBoxContainer/HBoxContainer/AcceptTransactioButton" to="ShopHandler" method="_on_accept_transactio_button_pressed"]
-[connection signal="pressed" from="SubViewport/Control/Panel/BuyItemPopup/MarginContainer/VBoxContainer/HBoxContainer/CancelTransactionButton" to="ShopHandler" method="_on_cancel_transaction_button_pressed"]
-[connection signal="pressed" from="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer/HBoxContainer/CancelTransactionButton" to="ShopHandler" method="_on_cancel_transaction_button_pressed"]
+[connection signal="pressed" from="SubViewport/Control/Panel/BuyItemPopup/MarginContainer/VBoxContainer/HBoxContainer/AcceptItemTransactionButton" to="ShopHandler" method="_on_accept_item_transaction_button_pressed"]
+[connection signal="pressed" from="SubViewport/Control/Panel/BuyItemPopup/MarginContainer/VBoxContainer/HBoxContainer/CancelItemTransactionButton" to="ShopHandler" method="_on_cancel_item_transaction_button_pressed"]
+[connection signal="value_changed" from="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer/AmmoAmountSlider" to="ShopHandler" method="_on_ammo_amount_slider_value_changed"]
+[connection signal="pressed" from="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer/HBoxContainer/AcceptAmmoTransactionButton" to="ShopHandler" method="_on_accept_ammo_transaction_button_pressed"]
+[connection signal="pressed" from="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer/HBoxContainer/CancelAmmoTransactionButton" to="ShopHandler" method="_on_cancel_ammo_transaction_button_pressed"]
