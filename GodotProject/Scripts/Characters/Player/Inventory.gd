@@ -64,7 +64,6 @@ func add_gadget(gadget_name: StringName,gadget_node: Node)->void:
 	if gadget_node.is_in_group("passive"):
 		passive_gadgets.add_child(gadget_node)
 
-
 func save_inventory():
 	#save inventory to disk
 	pass

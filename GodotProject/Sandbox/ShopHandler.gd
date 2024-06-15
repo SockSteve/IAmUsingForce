@@ -65,13 +65,8 @@ func load_all_weapons_and_gadgets()->Array:
 				
 				if !file_name.match("*Bullet*") and file_name.match("*.tscn*"):
 					var weapon_or_gadget = load(currently_open_folder.get_current_dir() + "/" + file_name)
-					
 					weapon_or_gadget = weapon_or_gadget.instantiate()
-					#if not get_tree().get_first_node_in_group("player").get_inventory().has_weapon(file_name.trim_suffix(".tscn")):
 					shop_weapons_and_gadgets.append(weapon_or_gadget)
-					#shop_weapons_and_gadgets[weapon_or_gadget] = btn_state_enum.SHOW
-					#else:
-						#shop_weapons_and_gadgets[weapon_or_gadget] = btn_state_enum.HIDE
 			
 			#after we extracted everyting we go back into the parent folder and 
 			#go to the next folder 
@@ -100,15 +95,20 @@ func populate_shop_with_items(items):
 			ammo_btn.pressed.connect(self.buy_ammo.bind(item))
 
 func update_shop():
+	print("updat")
 	for item: StringName in shop_items:
-		
 		if _costumer.get_inventory().has_weapon(item):
 			shop_items.get(item)[0].visible=false
-			
+			print("updat 2")
 			if _costumer.get_inventory().get_weapon(item).current_ammunition < _costumer.get_inventory().get_weapon(item).max_ammunition:
 				shop_items.get(item + "_Ammo")[0].visible=true
-			else:
+				print(_costumer.get_inventory().get_weapon(item), " updat 3 not enough ammo")
+				for i in shop_items:
+					print(shop_items[i][1])
+				print(_costumer.get_inventory().get_weapon(item), _costumer.get_inventory().get_weapon(item).current_ammunition, " max ", _costumer.get_inventory().get_weapon(item).max_ammunition )
+			if  _costumer.get_inventory().get_weapon(item).current_ammunition == _costumer.get_inventory().get_weapon(item).max_ammunition:
 				shop_items.get(item + "_Ammo")[0].visible=false
+				print(_costumer.get_inventory().get_weapon(item), " updat 3 enough ammo")
 		
 		if _costumer.get_inventory().has_gadget(item):
 			shop_items.get(item)[0].visible=false
@@ -123,11 +123,15 @@ func update_shop():
 #because every button has an item instance bound to its pressed callable,
 #we can hijack the bound argument and use it to fill the current shop gui
 #with item detaile
-func _on_sub_viewport_gui_focus_changed(item_button: Button):
+func _on_sub_viewport_gui_focus_changed(item_button):
+	#the item_button can be a slider and we dont want to do anything here then
+	if not item_button is Button:
+		return
+	
 	#get first signal from array of connections for this signal
 	#there is only one function connected to this signal, so we get the first connection
 	var dic = item_button.pressed.get_connections().pop_front() 
-	if dic == null: return 
+	if dic == null : return 
 	var callable = dic.get("callable") #get the callable from the connection
 	var item_inst = callable.get_bound_arguments().pop_front()#get bound argument
 	
@@ -152,12 +156,14 @@ func buy_weapon_or_gadget(item:Node3D):
 		await insufficient_money_label_timer.timeout
 		%InsuficcientMoneyLabel.visible = false
 		return
+	print(item)
 	current_item_to_be_bought = item
 	%BuyItemPopup.visible = true
 	shop_hbox_menu.visible = false
-	%AcceptTransactioButton.grab_focus()
+	%AcceptItemTransactionButton.grab_focus()
 
-func buy_ammo(weapon):
+
+func buy_ammo(weapon: Weapon):
 	var current_costumer_money: int = _costumer.get_inventory().get_money()
 	if weapon.bullet_price <= 0:
 		print("i can't give credit")
@@ -167,6 +173,7 @@ func buy_ammo(weapon):
 		await insufficient_money_label_timer.timeout
 		%InsuficcientMoneyLabel.visible = false
 		return
+	current_item_to_be_bought = _costumer.get_inventory().get_weapon(weapon.name)
 	print("let me in")
 	%BuyAmmoPopup.visible = true
 	shop_hbox_menu.visible = false
@@ -174,17 +181,17 @@ func buy_ammo(weapon):
 	var max_ammo_affordable: int = int(current_costumer_money / weapon.bullet_price)
 	var ammo_max_amount_to_buy: int = min(ammo_needed, max_ammo_affordable)
 	
-	
 	%AmmoAmountSlider.max_value = ammo_max_amount_to_buy
 	%AmmoAmountSlider.value = ammo_max_amount_to_buy
 	%CurrentAmmoLabel.text = str(ammo_max_amount_to_buy)
 	%MaxAmmoLabel.text = str(ammo_max_amount_to_buy)
 	%AmmoAmountSlider.grab_focus()
-	
+
 
 func _on_vendor_got_costumer(costumer: Player):
 	_costumer = costumer
 	update_shop()
+
 
 func _on_vendor_costumer_left():
 	_costumer = null
@@ -212,9 +219,18 @@ func _on_cancel_item_transaction_button_pressed():
 
 
 func _on_accept_ammo_transaction_button_pressed():
-	var money_to_be_payed: int = %AmmoAmountSlider.value * current_item_to_be_bought.bullet_price
-	pass # Replace with function body.
+	var money_to_be_payed: int = int(%AmmoAmountSlider.value) * current_item_to_be_bought.bullet_price
+	_costumer.get_inventory().remove_money(money_to_be_payed)
+	current_item_to_be_bought.current_ammunition += int(%AmmoAmountSlider.value)
+	print(current_item_to_be_bought.current_ammunition, " max ", current_item_to_be_bought.max_ammunition)
+	%BuyAmmoPopup.visible = false
+	shop_hbox_menu.visible = true
+	update_shop()
+	default_focused_button.grab_focus()
 
 
 func _on_cancel_ammo_transaction_button_pressed():
-	pass # Replace with function body.
+	%BuyAmmoPopup.visible = false
+	shop_hbox_menu.visible = true
+	last_focused_button.grab_focus()
+	print("cancelled")

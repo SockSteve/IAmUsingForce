@@ -7,6 +7,8 @@
 [node name="LightningBaller" type="Node3D"]
 script = ExtResource("1_5qxus")
 icon = ExtResource("2_gus6n")
+shop_price = 15000
+bullet_price = 20
 bullet = ExtResource("3_v0b0t")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
