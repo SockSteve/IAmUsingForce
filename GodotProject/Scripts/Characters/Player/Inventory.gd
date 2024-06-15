@@ -50,6 +50,9 @@ func get_weapon_or_gadget(gadget_or_weapon_name: StringName)-> Node:
 		return gadget
 	return weapons.get(gadget_or_weapon_name)
 
+func get_all_weapons()->Array:
+	return weapons.values()
+
 func add_weapon_or_gadget(item_name: StringName,item_node: Node)->void:
 	if item_node is Gadget:
 		add_gadget(item_name,item_node)

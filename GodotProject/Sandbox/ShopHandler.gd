@@ -1,21 +1,30 @@
-#this class handles the logic related to items in the shop
+## This class handles the logic related to items in the shop
 extends Node3D
 
-#enum btn_state_enum {HIDE, SHOW, AMMO}
-#enum btn_content_enum {AMMO, GADGETWEAPON, UPGRADE}
-var shop_items: Dictionary = {} #item_name : [btn,content,visibility_state]
-var thread: Thread
+## shop_items contains all the items the shop can sell
+var shop_items: Dictionary = {} # item_name: stringName : [btn: Button,weapon_or_gadget_ref]
+## thread is used for asynchronous loading of items, because depending on the amount,
+## we don't want the main thread to be cluttered by it
+var thread: Thread 
+## ref to the player that is currently using this shop
 var _costumer: Player = null
 
+##here we load button templates used for selecting items and ammo
 const shop_button = preload("res://Scenes/UI/Templates/ShopButton.tscn")
 const ammo_button = preload("res://Scenes/UI/Templates/ShopAmmunitionButton.tscn")
+
 
 @onready var shop_hbox_menu = %ShopItemSelectionField
 @onready var current_item_picture =  %ItemPicture
 @onready var current_item_name_label = %ItemNameLabel
 @onready var current_item_description_label = %ItemInfoLabel
 @onready var current_item_price_label = %PriceLabel
+@onready var insufficient_money_label = %InsuficcientMoneyLabel
 @onready var insufficient_money_label_timer = %InsufficientMoneyMessageTimer
+@onready var buy_all_ammo_popup : Panel = %BuyAllAmmoPopup
+@onready var accept_all_ammo_btn: Button = %AcceptAllAmmonTransactionButton
+@onready var cancel_all_ammo_btn: Button = %CancelAllAmmoTransactionButton
+
 
 @onready var sub_viewport = $"../SubViewport"
 
@@ -95,20 +104,15 @@ func populate_shop_with_items(items):
 			ammo_btn.pressed.connect(self.buy_ammo.bind(item))
 
 func update_shop():
-	print("updat")
 	for item: StringName in shop_items:
 		if _costumer.get_inventory().has_weapon(item):
 			shop_items.get(item)[0].visible=false
-			print("updat 2")
+			
 			if _costumer.get_inventory().get_weapon(item).current_ammunition < _costumer.get_inventory().get_weapon(item).max_ammunition:
 				shop_items.get(item + "_Ammo")[0].visible=true
-				print(_costumer.get_inventory().get_weapon(item), " updat 3 not enough ammo")
-				for i in shop_items:
-					print(shop_items[i][1])
-				print(_costumer.get_inventory().get_weapon(item), _costumer.get_inventory().get_weapon(item).current_ammunition, " max ", _costumer.get_inventory().get_weapon(item).max_ammunition )
+			
 			if  _costumer.get_inventory().get_weapon(item).current_ammunition == _costumer.get_inventory().get_weapon(item).max_ammunition:
 				shop_items.get(item + "_Ammo")[0].visible=false
-				print(_costumer.get_inventory().get_weapon(item), " updat 3 enough ammo")
 		
 		if _costumer.get_inventory().has_gadget(item):
 			shop_items.get(item)[0].visible=false
@@ -117,8 +121,6 @@ func update_shop():
 		if not Globals.game_progression_flags.get(Globals.game_progression_flag_enum.find_key(shop_items.get(item)[1].game_progression_flag)):
 			shop_items.get(item)[0].visible=false
 	
-	#add for buy all ammo
-	pass
 
 #because every button has an item instance bound to its pressed callable,
 #we can hijack the bound argument and use it to fill the current shop gui
@@ -151,12 +153,11 @@ func _on_sub_viewport_gui_focus_changed(item_button):
 ## item can be weapon or gadget
 func buy_weapon_or_gadget(item:Node3D):
 	if _costumer.get_inventory().get_money() < item.shop_price:
-		%InsuficcientMoneyLabel.visible = true
+		insufficient_money_label.visible = true
 		insufficient_money_label_timer.start()
 		await insufficient_money_label_timer.timeout
-		%InsuficcientMoneyLabel.visible = false
+		insufficient_money_label.visible = false
 		return
-	print(item)
 	current_item_to_be_bought = item
 	%BuyItemPopup.visible = true
 	shop_hbox_menu.visible = false
@@ -168,17 +169,17 @@ func buy_ammo(weapon: Weapon):
 	if weapon.bullet_price <= 0:
 		print("i can't give credit")
 	if current_costumer_money < weapon.bullet_price:
-		%InsuficcientMoneyLabel.visible = true
+		insufficient_money_label.visible = true
 		insufficient_money_label_timer.start()
 		await insufficient_money_label_timer.timeout
-		%InsuficcientMoneyLabel.visible = false
+		insufficient_money_label.visible = false
 		return
 	current_item_to_be_bought = _costumer.get_inventory().get_weapon(weapon.name)
 	print("let me in")
 	%BuyAmmoPopup.visible = true
 	shop_hbox_menu.visible = false
-	var ammo_needed: int  = weapon.max_ammunition - weapon.current_ammunition
-	var max_ammo_affordable: int = int(current_costumer_money / weapon.bullet_price)
+	var ammo_needed: int  = current_item_to_be_bought.max_ammunition - current_item_to_be_bought.current_ammunition
+	var max_ammo_affordable: int = int(current_costumer_money / current_item_to_be_bought.bullet_price)
 	var ammo_max_amount_to_buy: int = min(ammo_needed, max_ammo_affordable)
 	
 	%AmmoAmountSlider.max_value = ammo_max_amount_to_buy
@@ -208,21 +209,18 @@ func _on_accept_item_transaction_button_pressed():
 	%BuyItemPopup.visible = false
 	shop_hbox_menu.visible = true
 	default_focused_button.grab_focus()
-	print("bought")
 
 
 func _on_cancel_item_transaction_button_pressed():
 	%BuyItemPopup.visible = false
 	shop_hbox_menu.visible = true
 	last_focused_button.grab_focus()
-	print("cancelled")
 
 
 func _on_accept_ammo_transaction_button_pressed():
 	var money_to_be_payed: int = int(%AmmoAmountSlider.value) * current_item_to_be_bought.bullet_price
 	_costumer.get_inventory().remove_money(money_to_be_payed)
 	current_item_to_be_bought.current_ammunition += int(%AmmoAmountSlider.value)
-	print(current_item_to_be_bought.current_ammunition, " max ", current_item_to_be_bought.max_ammunition)
 	%BuyAmmoPopup.visible = false
 	shop_hbox_menu.visible = true
 	update_shop()
@@ -233,4 +231,32 @@ func _on_cancel_ammo_transaction_button_pressed():
 	%BuyAmmoPopup.visible = false
 	shop_hbox_menu.visible = true
 	last_focused_button.grab_focus()
-	print("cancelled")
+
+var total_price: int = 0
+func _on_all_ammo_btn_pressed():
+	for weapon: Weapon in _costumer.get_inventory().get_all_weapons():
+		if weapon.current_ammunition != weapon.max_ammunition:
+			var bullet_diff = weapon.max_ammunition - weapon.current_ammunition
+			total_price += bullet_diff * weapon.bullet_price
+	if total_price == 0:
+		return
+	buy_all_ammo_popup.visible = true
+	shop_hbox_menu.visible = false
+	accept_all_ammo_btn.grab_focus()
+
+
+func _on_accept_all_ammon_transaction_button_pressed():
+	_costumer.get_inventory().remove_money(total_price)
+	for weapon: Weapon in _costumer.get_inventory().get_all_weapons():
+		weapon.current_ammunition = weapon.max_ammunition
+	total_price = 0
+	update_shop()
+	buy_all_ammo_popup.visible = false
+	shop_hbox_menu.visible = true
+	default_focused_button.grab_focus()
+
+
+func _on_cancel_all_ammo_transaction_button_pressed():
+	buy_all_ammo_popup.visible = false
+	shop_hbox_menu.visible = true
+	last_focused_button.grab_focus()
