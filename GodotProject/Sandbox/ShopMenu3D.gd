@@ -15,20 +15,24 @@ var last_mouse_pos2D = null
 @onready var node_viewport = $SubViewport
 @onready var node_quad = $MeshInstance3D
 @onready var node_area = $MeshInstance3D/Area3D
+@onready var shop_handler = %ShopHandler
 
 func _ready():
 	node_area.mouse_entered.connect(_mouse_entered_area)
 	_set_viewport_mat(node_quad, node_viewport)
 
-func initialize():
-	for child_idx in %ShopItemSelectionField.get_child_count():
-		if %ShopItemSelectionField.get_child(child_idx).visible:
-			%ShopItemSelectionField.get_child(child_idx).grab_focus()
-			break
+func get_shop_handler():
+	return shop_handler
 
-func cleanup():
-	$SubViewport/Control.release_focus()
-	node_viewport.gui_get_focus_owner().release_focus()
+#func initialize():
+	#for child_idx in %ShopItemSelectionField.get_child_count():
+		#if %ShopItemSelectionField.get_child(child_idx).visible:
+			#%ShopItemSelectionField.get_child(child_idx).grab_focus()
+			#break
+#
+#func cleanup():
+	#$SubViewport/Control.release_focus()
+	#node_viewport.gui_get_focus_owner().release_focus()
 
 func _mouse_entered_area():
 	is_mouse_inside = true

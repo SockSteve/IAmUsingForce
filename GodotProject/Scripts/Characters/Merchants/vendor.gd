@@ -29,16 +29,15 @@ func open_shop():
 	emit_signal("got_costumer", customer)
 	vendor_cam.make_current()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-	$ShopMenu3D.initialize()
+	$ShopMenu3D.get_shop_handler().initialize()
 
 func close_shop():
 	emit_signal("costumer_left")
-	$ShopMenu3D.cleanup()
+	$ShopMenu3D.get_shop_handler().cleanup()
 	customer.freeze = false
 	player_cam.make_current()
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	customer._ready()
-	$StaticBody3D/Area3D
+	customer.set_up_input()
 
 func _on_area_3d_body_entered(body):
 	if body.is_in_group("player"):

@@ -47,6 +47,16 @@ func _ready():
 	populate_shop_with_items(items)
  
 
+func initialize():
+	for child_idx in shop_hbox_menu.get_child_count():
+		if shop_hbox_menu.get_child(child_idx).visible:
+			shop_hbox_menu.get_child(child_idx).grab_focus()
+			break
+
+func cleanup():
+	$"../SubViewport/Control".release_focus()
+	$"../SubViewport".gui_get_focus_owner().release_focus()
+
 ## this function loads all weapons and geadgets from the directory
 func load_all_weapons_and_gadgets()->Array:
 	var shop_weapons_and_gadgets: Array = []

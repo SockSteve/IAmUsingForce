@@ -26,6 +26,7 @@ size = Vector3(3, 2, 0.1)
 script = ExtResource("1_1ttap")
 
 [node name="ShopHandler" type="Node3D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("2_72765")
 melee_weapon_dir_path = "res://Scenes/Weapons/MeleeWeapons"
 ranged_weapon_dir_path = "res://Scenes/Weapons/RangedWeapons"

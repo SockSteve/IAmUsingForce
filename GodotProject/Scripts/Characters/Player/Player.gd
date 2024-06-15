@@ -88,12 +88,15 @@ var stored_weapon_on_gadget_use: Node #this variable is only assigned with the a
 @onready var grinding_boots = preload("res://Scenes/Gadgets/GrindBoots/GrindBoots.tscn").instantiate()
 
 func _ready() -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	_camera_controller.setup(self)
+	set_up_input()
 	add_starting_loadout_to_inventory()
 	put_in_hand(currently_held_weapon_or_gadget)
 	inventory.add_gadget(grappling_hook.name, grappling_hook)
 	inventory.add_gadget(grinding_boots.name, grinding_boots)
+
+func set_up_input():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	_camera_controller.setup(self)
 
 func _physics_process(delta)-> void:
 	#uncomment the following fr debugging sates
