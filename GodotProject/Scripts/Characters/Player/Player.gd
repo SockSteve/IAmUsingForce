@@ -1,8 +1,7 @@
-"""
-This is the player
-
-"""
-
+## This is the Player class script
+## everything regarding the player lives here
+## the player also functions as an interface for everything connected to it, like
+## the inventory
 extends CharacterBody3D
 class_name Player
 
@@ -96,7 +95,7 @@ func _ready() -> void:
 	inventory.add_gadget(grappling_hook.name, grappling_hook)
 	inventory.add_gadget(grinding_boots.name, grinding_boots)
 
-func _physics_process(delta):
+func _physics_process(delta)-> void:
 	#uncomment the following fr debugging sates
 	#print($StateMachine.state)
 	
@@ -141,7 +140,7 @@ func _orient_character_to_direction(direction: Vector3, delta: float,rotation_sp
 
 #function for changing the player physics to that of a ridgidbody (here @PhysicsBody)
 #called in StateMachine
-func switchToPhysicsBody():
+func switchToPhysicsBody()-> void:
 	var stored_player_velocity = velocity
 	_physics_body.global_transform = self.global_transform
 	_physics_body.freeze = false
@@ -150,7 +149,7 @@ func switchToPhysicsBody():
 
 #function to switch the physics back to that of a CharacterBody3D
 #called in - @Node StateMachine
-func switchToCharacterBody():
+func switchToCharacterBody()-> void:
 	_physics_body.freeze = true
 	_physics_body.top_level = false
 	velocity = _physics_body.linear_velocity
@@ -164,7 +163,7 @@ func change_currently_held_weapon_or_gadget_to(weapon_or_gadget_name: StringName
 	put_in_hand(inventory.get_weapon_or_gadget(weapon_or_gadget_name))
 
 #function for putting a weapon in hand - called from player hand
-func put_in_hand(weapon_or_gadget: Node)->void:
+func put_in_hand(weapon_or_gadget: Node)-> void:
 	hand.add_or_replace_item_to_hand(weapon_or_gadget)
 	_character_skin.change_weapon(weapon_or_gadget.name)
 	currently_held_weapon_or_gadget = weapon_or_gadget
@@ -172,7 +171,7 @@ func put_in_hand(weapon_or_gadget: Node)->void:
 #function for adding the initial weapon loadout to the inventory.
 #@param starting_loadout - defined as export PackedStringArray
 #@param weapon_path - path to be loaded and instantiated, then added to the inventory
-func add_starting_loadout_to_inventory()->void:
+func add_starting_loadout_to_inventory()-> void:
 	for weapon_path in starting_loadout:
 		var weapon_scene = load(weapon_path)
 		weapon_scene = weapon_scene.instantiate()
@@ -185,9 +184,9 @@ func add_starting_loadout_to_inventory()->void:
 		
 		inventory.add_weapon(weapon_scene.name, weapon_scene)
 
-#because the player has buttons for melee and ranged, we need to be able to determine which weapon should be used
-func switch_current_weapon_to_melee(melee: bool):
-	print(currently_held_weapon_or_gadget, "  ", current_melee_weapon, "   ", current_ranged_weapon)
+## because the player has buttons for melee and ranged, we need to be able to determine which weapon should be used
+func switch_current_weapon_to_melee(melee: bool)-> void:
+	#print(currently_held_weapon_or_gadget, "  ", current_melee_weapon, "   ", current_ranged_weapon)
 	if melee and currently_held_weapon_or_gadget != current_melee_weapon:
 		put_in_hand(current_melee_weapon)
 	if ! melee and currently_held_weapon_or_gadget != current_ranged_weapon:
