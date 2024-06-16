@@ -24,16 +24,6 @@ func _ready():
 func get_shop_handler():
 	return shop_handler
 
-#func initialize():
-	#for child_idx in %ShopItemSelectionField.get_child_count():
-		#if %ShopItemSelectionField.get_child(child_idx).visible:
-			#%ShopItemSelectionField.get_child(child_idx).grab_focus()
-			#break
-#
-#func cleanup():
-	#$SubViewport/Control.release_focus()
-	#node_viewport.gui_get_focus_owner().release_focus()
-
 func _mouse_entered_area():
 	is_mouse_inside = true
 

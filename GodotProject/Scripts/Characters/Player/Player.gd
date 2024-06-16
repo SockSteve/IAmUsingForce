@@ -93,6 +93,7 @@ func _ready() -> void:
 	put_in_hand(currently_held_weapon_or_gadget)
 	inventory.add_gadget(grappling_hook.name, grappling_hook)
 	inventory.add_gadget(grinding_boots.name, grinding_boots)
+	populate_shortcut_menu()
 
 func set_up_input():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -195,3 +196,13 @@ func switch_current_weapon_to_melee(melee: bool)-> void:
 	if ! melee and currently_held_weapon_or_gadget != current_ranged_weapon:
 		put_in_hand(current_ranged_weapon)
 
+func populate_shortcut_menu():
+	var shortcuts_0 = {}
+	var shortcuts_1 = {}
+	var i = 0
+	while i <= 7:
+		shortcuts_0[i] = inventory.get_random_weapon().name
+		shortcuts_1[i] = inventory.get_random_weapon().name
+		i +=1
+	inventory.weapon_shortcuts[0] = shortcuts_0  
+	inventory.weapon_shortcuts[1] = shortcuts_1  
