@@ -1,8 +1,9 @@
-[gd_scene load_steps=35 format=3 uid="uid://c0d3bmprmf8q0"]
+[gd_scene load_steps=36 format=3 uid="uid://c0d3bmprmf8q0"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.gd" id="1_ld2le"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/CameraController.gd" id="2_7jqee"]
 [ext_resource type="Curve" uid="uid://dkhyr34syj1ps" path="res://SlideCurve.tres" id="2_w6n6n"]
+[ext_resource type="Script" path="res://Scripts/Characters/Player/States/StateMachine.gd" id="3_5fauu"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Idle.gd" id="4_h88q0"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/States/Run.gd" id="5_dheqf"]
 [ext_resource type="Script" path="res://Scenes/Characters/Player/Damaged.gd" id="5_h0rer"]
@@ -64,7 +65,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
 shape = SubResource("CylinderShape3D_p4inm")
 
 [node name="StateMachine" type="Node" parent="."]
-script = ExtResource("20_6xxyk")
+script = ExtResource("3_5fauu")
+initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("4_h88q0")
@@ -443,12 +445,12 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMBottomSection"]
 layout_mode = 2
 
-[node name="SMIconDown_6" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMBottomSection/VBoxContainer"]
+[node name="SMIcon_6" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMBottomSection/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("25_mqjly")
 
-[node name="SMIconDown_7" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMBottomSection/VBoxContainer"]
+[node name="SMIcon_7" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMBottomSection/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 texture = ExtResource("25_mqjly")
