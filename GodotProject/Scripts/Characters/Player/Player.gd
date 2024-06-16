@@ -77,11 +77,11 @@ var putting_ranged_weapon_in_hand_enabled: bool = true
 ## store the active weapons that are not in the scene tree
 var current_ranged_weapon: Node
 var current_melee_weapon: Node
+
 ## weapon that is in the scene tree. there is only one
 var currently_held_weapon_or_gadget: Node
 ## store scene_tree weapon on gadget use 
 var stored_weapon_on_gadget_use: Node #this variable is only assigned with the active weapon when a gadget is used. it stores the weapon so it can be placed back into the players hand fter the gadget usage is over.
-
 
 #debug
 @onready var grappling_hook = preload("res://Scenes/Gadgets/GrapplingHook/GrapplingHook.tscn").instantiate()
@@ -108,6 +108,24 @@ func _physics_process(delta)-> void:
 	if putting_ranged_weapon_in_hand_enabled:
 		if Input.is_action_just_pressed("ranged_attack") and currently_held_weapon_or_gadget != current_ranged_weapon:
 			put_in_hand(current_ranged_weapon)
+			
+		if Input.is_action_just_pressed("quick_select_up"):
+			print(inventory.get_weapons_from_shortcut("up"))
+			print("quick up")
+		
+		if Input.is_action_just_pressed("quick_select_left"):
+			print(inventory.get_weapons_from_shortcut("left"))
+			print("quick left")
+		
+		if Input.is_action_just_pressed("quick_select_right"):
+			print(inventory.get_weapons_from_shortcut("right"))
+			print("quick right")
+		
+		if Input.is_action_just_pressed("quick_select_down"):
+			print(inventory.get_weapons_from_shortcut("down"))
+			print("quick down")
+	
+	
 	
 	# Calculate ground height for camera controller
 	if _ground_shapecast.get_collision_count() > 0:
