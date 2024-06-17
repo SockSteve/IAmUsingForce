@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2024-06-16T14:12:53.674Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.2 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="GrZQ7yFA5diUgu6w_fDO" version="22.0.2" type="device" pages="7">
+<mxfile host="Electron" modified="2024-06-17T19:19:21.712Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.2 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="UJFstw4efrjmGD8A3y5Q" version="22.0.2" type="device" pages="7">
   <diagram name="Weapon System" id="s5kcOkmOvacQNM0t7v28">
     <mxGraphModel dx="1036" dy="760" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="1" shadow="1">
       <root>
@@ -206,7 +206,7 @@
         <mxCell id="F12n2EFeijY5wu6OqVUX-1" value="&lt;h2 style=&quot;line-height: 0%;&quot;&gt;&lt;font size=&quot;1&quot; face=&quot;Barlow&quot; style=&quot;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Barlow&quot;&gt;&lt;i style=&quot;font-size: 30px;&quot;&gt;State Machine react&lt;/i&gt;&lt;/font&gt;&lt;/h2&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;perimeterSpacing=0;shadow=0;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#333333;" parent="1" vertex="1">
           <mxGeometry x="50" y="710" width="280" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="F12n2EFeijY5wu6OqVUX-7" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="F12n2EFeijY5wu6OqVUX-3" edge="1" target="fe1VG5JmtjCR0VpSnEZK-1">
+        <mxCell id="F12n2EFeijY5wu6OqVUX-7" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="F12n2EFeijY5wu6OqVUX-3" target="fe1VG5JmtjCR0VpSnEZK-1" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="540" y="560" as="targetPoint" />
           </mxGeometry>
@@ -244,7 +244,7 @@
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="F12n2EFeijY5wu6OqVUX-14" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="F12n2EFeijY5wu6OqVUX-4" edge="1" target="fe1VG5JmtjCR0VpSnEZK-2">
+        <mxCell id="F12n2EFeijY5wu6OqVUX-14" style="rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="F12n2EFeijY5wu6OqVUX-4" target="fe1VG5JmtjCR0VpSnEZK-2" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="410" y="720" as="targetPoint" />
             <mxPoint x="419" y="470" as="sourcePoint" />
@@ -261,10 +261,10 @@
         <mxCell id="n4Z12KXxW6VXwqkHd7hI-1" value="&lt;h2 style=&quot;line-height: 0%;&quot;&gt;&lt;font size=&quot;1&quot; face=&quot;Barlow&quot; style=&quot;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Barlow&quot;&gt;&lt;i style=&quot;font-size: 30px;&quot;&gt;Money&lt;/i&gt;&lt;/font&gt;&lt;/h2&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;perimeterSpacing=0;shadow=0;align=center;" parent="1" vertex="1">
           <mxGeometry x="820" y="270" width="280" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="fe1VG5JmtjCR0VpSnEZK-1" value="&lt;h2 style=&quot;line-height: 0%;&quot;&gt;&lt;font size=&quot;1&quot; face=&quot;Barlow&quot; style=&quot;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Barlow&quot;&gt;&lt;i style=&quot;font-size: 30px;&quot;&gt;no change&lt;/i&gt;&lt;/font&gt;&lt;/h2&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;perimeterSpacing=0;shadow=0;align=center;" vertex="1" parent="1">
+        <mxCell id="fe1VG5JmtjCR0VpSnEZK-1" value="&lt;h2 style=&quot;line-height: 0%;&quot;&gt;&lt;font size=&quot;1&quot; face=&quot;Barlow&quot; style=&quot;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Barlow&quot;&gt;&lt;i style=&quot;font-size: 30px;&quot;&gt;no change&lt;/i&gt;&lt;/font&gt;&lt;/h2&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;perimeterSpacing=0;shadow=0;align=center;" parent="1" vertex="1">
           <mxGeometry x="480" y="560" width="140" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="fe1VG5JmtjCR0VpSnEZK-2" value="&lt;h2 style=&quot;line-height: 0%;&quot;&gt;&lt;font size=&quot;1&quot; face=&quot;Barlow&quot; style=&quot;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Barlow&quot;&gt;&lt;i style=&quot;font-size: 30px;&quot;&gt;no change&lt;/i&gt;&lt;/font&gt;&lt;/h2&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;perimeterSpacing=0;shadow=0;align=center;" vertex="1" parent="1">
+        <mxCell id="fe1VG5JmtjCR0VpSnEZK-2" value="&lt;h2 style=&quot;line-height: 0%;&quot;&gt;&lt;font size=&quot;1&quot; face=&quot;Barlow&quot; style=&quot;&quot; data-font-src=&quot;https://fonts.googleapis.com/css?family=Barlow&quot;&gt;&lt;i style=&quot;font-size: 30px;&quot;&gt;no change&lt;/i&gt;&lt;/font&gt;&lt;/h2&gt;" style="rounded=1;whiteSpace=wrap;html=1;strokeWidth=2;perimeterSpacing=0;shadow=0;align=center;" parent="1" vertex="1">
           <mxGeometry x="350" y="710" width="140" height="50" as="geometry" />
         </mxCell>
       </root>
@@ -1460,79 +1460,82 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="0HxJWsEeGEqDtKdrm9hh-2" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=12;startSize=8;endSize=8;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="0HxJWsEeGEqDtKdrm9hh-1" target="0HxJWsEeGEqDtKdrm9hh-3">
+        <mxCell id="0HxJWsEeGEqDtKdrm9hh-2" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=12;startSize=8;endSize=8;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="0HxJWsEeGEqDtKdrm9hh-1" target="0HxJWsEeGEqDtKdrm9hh-3" edge="1">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="680" y="-780" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="0HxJWsEeGEqDtKdrm9hh-1" value="from pause menu" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
+        <mxCell id="0HxJWsEeGEqDtKdrm9hh-1" value="from pause menu" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" parent="1" vertex="1">
           <mxGeometry x="470" y="-810" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="0HxJWsEeGEqDtKdrm9hh-5" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" edge="1" parent="1" source="0HxJWsEeGEqDtKdrm9hh-3" target="0HxJWsEeGEqDtKdrm9hh-4">
+        <mxCell id="0HxJWsEeGEqDtKdrm9hh-5" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" parent="1" source="0HxJWsEeGEqDtKdrm9hh-3" target="0HxJWsEeGEqDtKdrm9hh-4" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="0HxJWsEeGEqDtKdrm9hh-3" value="weapons menu" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
+        <mxCell id="0HxJWsEeGEqDtKdrm9hh-3" value="weapons menu" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" parent="1" vertex="1">
           <mxGeometry x="630" y="-810" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="0HxJWsEeGEqDtKdrm9hh-4" value="assign weapons to shortcut" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
+        <mxCell id="0HxJWsEeGEqDtKdrm9hh-4" value="assign weapons to shortcut" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" parent="1" vertex="1">
           <mxGeometry x="800" y="-810" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="0HxJWsEeGEqDtKdrm9hh-8" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" edge="1" parent="1" source="0HxJWsEeGEqDtKdrm9hh-6" target="0HxJWsEeGEqDtKdrm9hh-7">
+        <mxCell id="0HxJWsEeGEqDtKdrm9hh-8" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" parent="1" source="0HxJWsEeGEqDtKdrm9hh-6" target="0HxJWsEeGEqDtKdrm9hh-7" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="0HxJWsEeGEqDtKdrm9hh-6" value="get weapon" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
+        <mxCell id="0HxJWsEeGEqDtKdrm9hh-6" value="get weapon" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" parent="1" vertex="1">
           <mxGeometry x="470" y="-1025" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="0HxJWsEeGEqDtKdrm9hh-10" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" edge="1" parent="1" source="0HxJWsEeGEqDtKdrm9hh-7" target="0HxJWsEeGEqDtKdrm9hh-9">
+        <mxCell id="0HxJWsEeGEqDtKdrm9hh-10" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" parent="1" source="0HxJWsEeGEqDtKdrm9hh-7" target="0HxJWsEeGEqDtKdrm9hh-9" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="0HxJWsEeGEqDtKdrm9hh-7" value="try to assign weapon to shortcut" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
+        <mxCell id="0HxJWsEeGEqDtKdrm9hh-7" value="try to assign weapon to shortcut" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" parent="1" vertex="1">
           <mxGeometry x="630" y="-1025" width="160" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="0HxJWsEeGEqDtKdrm9hh-12" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" edge="1" parent="1" source="0HxJWsEeGEqDtKdrm9hh-9" target="0HxJWsEeGEqDtKdrm9hh-11">
+        <mxCell id="0HxJWsEeGEqDtKdrm9hh-12" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" parent="1" source="0HxJWsEeGEqDtKdrm9hh-9" target="0HxJWsEeGEqDtKdrm9hh-11" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="0HxJWsEeGEqDtKdrm9hh-13" value="yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=16;" vertex="1" connectable="0" parent="0HxJWsEeGEqDtKdrm9hh-12">
+        <mxCell id="0HxJWsEeGEqDtKdrm9hh-13" value="yes" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=16;" parent="0HxJWsEeGEqDtKdrm9hh-12" vertex="1" connectable="0">
           <mxGeometry x="-0.1172" y="1" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="0HxJWsEeGEqDtKdrm9hh-15" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" edge="1" parent="1" source="0HxJWsEeGEqDtKdrm9hh-9" target="0HxJWsEeGEqDtKdrm9hh-14">
+        <mxCell id="0HxJWsEeGEqDtKdrm9hh-15" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=1;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" parent="1" source="0HxJWsEeGEqDtKdrm9hh-9" target="0HxJWsEeGEqDtKdrm9hh-14" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="0HxJWsEeGEqDtKdrm9hh-16" value="no" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=16;" vertex="1" connectable="0" parent="0HxJWsEeGEqDtKdrm9hh-15">
+        <mxCell id="0HxJWsEeGEqDtKdrm9hh-16" value="no" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];fontSize=16;" parent="0HxJWsEeGEqDtKdrm9hh-15" vertex="1" connectable="0">
           <mxGeometry x="-0.3781" relative="1" as="geometry">
             <mxPoint as="offset" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="0HxJWsEeGEqDtKdrm9hh-9" value="is a shortcut&lt;br&gt;block empty?" style="rhombus;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
+        <mxCell id="0HxJWsEeGEqDtKdrm9hh-9" value="is a shortcut&lt;br&gt;block empty?" style="rhombus;whiteSpace=wrap;html=1;fontSize=16;" parent="1" vertex="1">
           <mxGeometry x="840" y="-1060" width="150" height="130" as="geometry" />
         </mxCell>
-        <mxCell id="0HxJWsEeGEqDtKdrm9hh-11" value="assign weapon to shortcut" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
+        <mxCell id="0HxJWsEeGEqDtKdrm9hh-11" value="assign weapon to shortcut" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" parent="1" vertex="1">
           <mxGeometry x="1010" y="-1110" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="0HxJWsEeGEqDtKdrm9hh-14" value="don&#39;t assign anything" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
+        <mxCell id="0HxJWsEeGEqDtKdrm9hh-14" value="don&#39;t assign anything" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" parent="1" vertex="1">
           <mxGeometry x="1010" y="-940" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="0HxJWsEeGEqDtKdrm9hh-17" value="weapons are unique, therefore each weapon can only assingned to one shortcut slot. The player can customize his shortcutpanel through the start menu." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" vertex="1" parent="1">
+        <mxCell id="0HxJWsEeGEqDtKdrm9hh-17" value="weapons are unique, therefore each weapon can only assingned to one shortcut slot. The player can customize his shortcutpanel through the start menu." style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontSize=16;" parent="1" vertex="1">
           <mxGeometry x="470" y="-910" width="380" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="0HxJWsEeGEqDtKdrm9hh-20" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" edge="1" parent="1" source="0HxJWsEeGEqDtKdrm9hh-18" target="0HxJWsEeGEqDtKdrm9hh-19">
+        <mxCell id="0HxJWsEeGEqDtKdrm9hh-20" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=12;startSize=8;endSize=8;" parent="1" source="0HxJWsEeGEqDtKdrm9hh-18" target="0HxJWsEeGEqDtKdrm9hh-19" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="0HxJWsEeGEqDtKdrm9hh-18" value="shortcut menu button pressed" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
-          <mxGeometry x="460" y="-520" width="120" height="60" as="geometry" />
+        <mxCell id="0HxJWsEeGEqDtKdrm9hh-18" value="shortcut menu button pressed" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="470" y="-650" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="0HxJWsEeGEqDtKdrm9hh-21" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=12;startSize=8;endSize=8;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="0HxJWsEeGEqDtKdrm9hh-19" target="0HxJWsEeGEqDtKdrm9hh-22">
+        <mxCell id="0HxJWsEeGEqDtKdrm9hh-21" style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;fontSize=12;startSize=8;endSize=8;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="0HxJWsEeGEqDtKdrm9hh-19" target="0HxJWsEeGEqDtKdrm9hh-22" edge="1">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="800" y="-490" as="targetPoint" />
+            <mxPoint x="810" y="-620" as="targetPoint" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="0HxJWsEeGEqDtKdrm9hh-19" value="highlight assosiated weapon" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
-          <mxGeometry x="630" y="-520" width="120" height="60" as="geometry" />
+        <mxCell id="0HxJWsEeGEqDtKdrm9hh-19" value="highlight assosiated weapon" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="640" y="-650" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="0HxJWsEeGEqDtKdrm9hh-22" value="put weapon in hand" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
-          <mxGeometry x="800" y="-520" width="120" height="60" as="geometry" />
+        <mxCell id="0HxJWsEeGEqDtKdrm9hh-22" value="put weapon in hand" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" parent="1" vertex="1">
+          <mxGeometry x="810" y="-650" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="Vgo7hrszhN1otZ0_ZgoE-1" value="" style="rounded=1;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="470" y="-460" width="120" height="60" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

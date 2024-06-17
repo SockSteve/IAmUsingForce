@@ -14,12 +14,14 @@ var weapons: Dictionary = {} ## key = weapon_name: String | value= weapon_instan
 var gadgets: Dictionary = {} ## key = gadget_name: String | value= gadget_instance_ref: Node
 
 ## key = shortcut_panel_number: int | 
-## value: Array[
-## Dictionary -> {key = index: int | value = weapon_name: String}
-## Dictionary -> {key = weapon_name: String | value = index: int}
-var weapon_quick_select: Dictionary = {} 
-var current_quick_select_panel: int = 1 ## represense the current active shortcut panel. At the moment we have 2 quick_select panels the player can switch between.
+## value= Dictionary -> {key = index: int | value = weapon_name: String}
 
+var weapon_quick_select: Dictionary = {} 
+var current_quick_select_panel: int = 0 ## represense the current active shortcut panel. At the moment we have 2 quick_select panels the player can switch between.
+
+enum quick_select_dir {LEFT_1= 0, LEFT_2= 1, UP_1= 2, UP_2= 3, RIGHT_1= 4, RIGHT_2= 5, DOWN_1= 6, DOWN_2= 7, NONE}
+## one value must alway be the melee weapon, the other a ranged weapon
+var current_quick_selected = [quick_select_dir.NONE,quick_select_dir.NONE]
 ## some gadgets like the grinding boots need to be constantly loaded into the scenetree in order to work. These are instanced as child nodes of this node.
 @onready var passive_gadgets = $"../CharacterRotationRoot/PassiveGadgets"
 
@@ -54,20 +56,30 @@ func get_random_weapon(can_get_same_weapon:bool=true)->Node:
 	#print(weapons.values())
 	return weapons.values().pick_random()
 
-func get_weapons_from_shortcut(dir: StringName):
+func get_weapons_array_from_quick_select_dir(dir: StringName):
 	match dir:
 		"up":
-			# indexes 2,3
-			return make_weapon_array_from_shortcut_indexes([2,3])
+			set_current_quick_selected(quick_select_dir.UP_1,quick_select_dir.UP_2)
+			return make_weapon_array_from_shortcut_indexes([quick_select_dir.UP_1, quick_select_dir.UP_2])
 		"left":
-			# indexes 0,1
-			return make_weapon_array_from_shortcut_indexes([0,1])
+			set_current_quick_selected(quick_select_dir.LEFT_1,quick_select_dir.LEFT_2)
+			return make_weapon_array_from_shortcut_indexes([ quick_select_dir.LEFT_1, quick_select_dir.LEFT_2])
 		"right":
-			# indexes 4,5
-			return make_weapon_array_from_shortcut_indexes([4,5])
+			set_current_quick_selected(quick_select_dir.RIGHT_1,quick_select_dir.RIGHT_2)
+			return make_weapon_array_from_shortcut_indexes([ quick_select_dir.RIGHT_1, quick_select_dir.RIGHT_2])
 		"down":
-			# indexes 6,7
-			return make_weapon_array_from_shortcut_indexes([6,7])
+			set_current_quick_selected(quick_select_dir.DOWN_1,quick_select_dir.DOWN_2)
+			return make_weapon_array_from_shortcut_indexes([ quick_select_dir.DOWN_1, quick_select_dir.DOWN_2])
+
+#when switch from ranged to melee -> change melee weapon
+#when switch from melee to diff melee -> change melee weapon
+
+## only set/change the first value, because that is the current weapon
+func set_current_quick_selected(dir_1, dir_2):
+	if current_quick_selected[0] == dir_1: 
+		current_quick_selected[0] = dir_2
+	else:
+		current_quick_selected[0] = dir_1
 
 func make_weapon_array_from_shortcut_indexes(indexes: Array[int])-> Array:
 	var current_panel: Dictionary = weapon_quick_select.get(current_quick_select_panel)

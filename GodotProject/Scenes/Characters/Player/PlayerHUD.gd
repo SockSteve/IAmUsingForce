@@ -20,9 +20,6 @@ func _ready():
 func display_money(amount):
 	money_label.text = str(amount)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func populate_quick_select_with_weapons(quick_select_index):
 	var sm_icon_path : String = "%SMIcon_"

@@ -76,13 +76,13 @@ var freeze: bool = false
 var putting_ranged_weapon_in_hand_enabled: bool = true 
 
 ## store the active weapons that are not in the scene tree
-var current_weapons: Array = []
 var current_ranged_weapon: Node
 var current_melee_weapon: Node
 
-## weapon that is in the scene tree. there is only one
+## weapon that is in the scene tree. there is only one.
 var currently_held_weapon_or_gadget: Node
-## store scene_tree weapon on gadget use 
+## stores currently_held_weapon_or_gadget weapon on gadget use. This need to be done in order to
+## change back to the previously held weapon when the gadget use is over
 var stored_weapon_on_gadget_use: Node #this variable is only assigned with the active weapon when a gadget is used. it stores the weapon so it can be placed back into the players hand fter the gadget usage is over.
 
 #debug
@@ -96,7 +96,8 @@ func _ready() -> void:
 	inventory.add_gadget(grappling_hook.name, grappling_hook)
 	inventory.add_gadget(grinding_boots.name, grinding_boots)
 	populate_shortcut_menu()
-
+	await get_tree().process_frame
+	
 func set_up_input():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_camera_controller.setup(self)
@@ -112,17 +113,17 @@ func _physics_process(delta)-> void:
 			put_in_hand(current_ranged_weapon)
 			
 		if Input.is_action_just_pressed("quick_select_up"):
-			var shortcut_array: Array = inventory.get_weapons_from_shortcut("up")
-			#if shortcut_array[0] 
+			var shortcut_array: Array = inventory.get_weapons_array_from_quick_select_dir("up")
+			inventory.current_quick_selected[0]
 		
 		if Input.is_action_just_pressed("quick_select_left"):
-			print(inventory.get_weapons_from_shortcut("left"))
+			print(inventory.get_weapons_array_from_quick_select_dir("left"))
 		
 		if Input.is_action_just_pressed("quick_select_right"):
-			print(inventory.get_weapons_from_shortcut("right"))
+			print(inventory.get_weapons_array_from_quick_select_dir("right"))
 		
 		if Input.is_action_just_pressed("quick_select_down"):
-			print(inventory.get_weapons_from_shortcut("down"))
+			print(inventory.get_weapons_array_from_quick_select_dir("down"))
 		
 	if Input.is_action_just_pressed("quick_select_change_panel"):
 		inventory.change_quick_select_panel()
@@ -150,7 +151,7 @@ func _get_camera_oriented_input() -> Vector3:
 	return input
 
 
-#function for smoothly rotating the player towards a given direction
+## function for smoothly rotating the player towards a given direction
 func _orient_character_to_direction(direction: Vector3, delta: float,rotation_speed:float=_rotation_speed, up_vector: Vector3 = Vector3.UP) -> void:
 	var left_axis := up_vector.cross(direction).normalized()
 	var rotation_basis := Basis(left_axis, up_vector, direction).orthonormalized().get_rotation_quaternion()
@@ -160,8 +161,8 @@ func _orient_character_to_direction(direction: Vector3, delta: float,rotation_sp
 	)
 
 
-#function for changing the player physics to that of a ridgidbody (here @PhysicsBody)
-#called in StateMachine
+## function for changing the player physics to that of a ridgidbody (here @PhysicsBody)
+## called in StateMachine
 func switchToPhysicsBody()-> void:
 	var stored_player_velocity = velocity
 	_physics_body.global_transform = self.global_transform
@@ -169,19 +170,22 @@ func switchToPhysicsBody()-> void:
 	_physics_body.top_level = true
 	_physics_body.linear_velocity = stored_player_velocity
 
-#function to switch the physics back to that of a CharacterBody3D
-#called in - @Node StateMachine
+## function to switch the physics back to that of a CharacterBody3D
+## called in - @Node StateMachine
 func switchToCharacterBody()-> void:
 	_physics_body.freeze = true
 	_physics_body.top_level = false
 	velocity = _physics_body.linear_velocity
 	_physics_body.global_transform = self.global_transform
 
-#returns the inventory
+## returns the inventory
 func get_inventory()->Inventory:
 	return inventory
 
 func change_currently_held_weapon_or_gadget_to(weapon_or_gadget_name: StringName)->void:
+	var weapon_or_gadget = inventory.get_weapon_or_gadget(weapon_or_gadget_name)
+	if weapon_or_gadget is Weapon:
+		assign_melee_and_ranged_weapons(weapon_or_gadget)
 	put_in_hand(inventory.get_weapon_or_gadget(weapon_or_gadget_name))
 
 #function for putting a weapon in hand - called from player hand
@@ -206,9 +210,18 @@ func add_starting_loadout_to_inventory()-> void:
 		
 		inventory.add_weapon(weapon_scene.name, weapon_scene)
 
+
+func assign_melee_and_ranged_weapons(weapon_scene: Node3D):
+	if weapon_scene.is_in_group("melee"):
+		current_melee_weapon = weapon_scene
+	if  weapon_scene.is_in_group("ranged"):
+		current_ranged_weapon = weapon_scene
+
+func handle_shortcut_weapons(array: PackedStringArray):
+	pass
+
 ## because the player has buttons for melee and ranged, we need to be able to determine which weapon should be used
 func switch_current_weapon_to_melee(melee: bool)-> void:
-	#print(currently_held_weapon_or_gadget, "  ", current_melee_weapon, "   ", current_ranged_weapon)
 	if melee and currently_held_weapon_or_gadget != current_melee_weapon:
 		put_in_hand(current_melee_weapon)
 	if ! melee and currently_held_weapon_or_gadget != current_ranged_weapon:
@@ -218,9 +231,26 @@ func populate_shortcut_menu():
 	var shortcuts_0 = {}
 	var shortcuts_1 = {}
 	var i = 0
+	var weapon_name = ''
 	while i <= 7:
 		shortcuts_0[i] = inventory.get_random_weapon().name
 		shortcuts_1[i] = inventory.get_random_weapon().name
 		i +=1
 	inventory.weapon_quick_select[0] = shortcuts_0  
 	inventory.weapon_quick_select[1] = shortcuts_1  
+
+#func populate_shortcut_menu():
+	#var shortcuts_0 = {}
+	#var shortcuts_1 = {}
+	#var i = 0
+	#var weapon_name = ''
+	#while i <= 7:
+		#weapon_name = inventory.get_random_weapon().name
+		#if not shortcuts_0.values().has(weapon_name):
+			#shortcuts_0[i] = weapon_name
+		#weapon_name = inventory.get_random_weapon().name
+		#if not shortcuts_1.values().has(weapon_name):
+			#shortcuts_1[i] = weapon_name
+		#i +=1
+	#inventory.weapon_quick_select[0] = shortcuts_0  
+	#inventory.weapon_quick_select[1] = shortcuts_1  
