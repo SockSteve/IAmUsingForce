@@ -263,6 +263,7 @@ grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("20_6xxyk")
 inventory_path = NodePath("../../Inventory")
+player = NodePath("../..")
 
 [node name="WeaponInfoPanel" type="Panel" parent="CanvasLayer/PlayerHUD"]
 layout_mode = 0

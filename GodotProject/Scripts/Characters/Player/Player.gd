@@ -5,8 +5,9 @@
 extends CharacterBody3D
 class_name Player
 
-@export_category("Gameplay")
+signal weapon_changed(weapon_name)
 
+@export_category("Gameplay")
 @export_group("Base Movement")
 @export var move_speed := 12.0 # Character maximum run speed on the ground.
 @export var acceleration := 4.0 # Movement acceleration (how fast character achieve maximum speed)
@@ -111,21 +112,18 @@ func _physics_process(delta)-> void:
 			
 		if Input.is_action_just_pressed("quick_select_up"):
 			print(inventory.get_weapons_from_shortcut("up"))
-			print("quick up")
 		
 		if Input.is_action_just_pressed("quick_select_left"):
 			print(inventory.get_weapons_from_shortcut("left"))
-			print("quick left")
 		
 		if Input.is_action_just_pressed("quick_select_right"):
 			print(inventory.get_weapons_from_shortcut("right"))
-			print("quick right")
 		
 		if Input.is_action_just_pressed("quick_select_down"):
 			print(inventory.get_weapons_from_shortcut("down"))
-			print("quick down")
-	
-	
+		
+	if Input.is_action_just_pressed("quick_select_change_panel"):
+		inventory.change_shortcut_panel()
 	
 	# Calculate ground height for camera controller
 	if _ground_shapecast.get_collision_count() > 0:
@@ -222,5 +220,5 @@ func populate_shortcut_menu():
 		shortcuts_0[i] = inventory.get_random_weapon().name
 		shortcuts_1[i] = inventory.get_random_weapon().name
 		i +=1
-	inventory.weapon_shortcuts[0] = shortcuts_0  
-	inventory.weapon_shortcuts[1] = shortcuts_1  
+	inventory.weapon_quick_select[0] = shortcuts_0  
+	inventory.weapon_quick_select[1] = shortcuts_1  

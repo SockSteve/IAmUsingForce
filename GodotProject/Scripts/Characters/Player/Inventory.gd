@@ -9,7 +9,7 @@ signal shortcut_panel_changed(index: int)
 var weapons: Dictionary = {} # key: String | value: Node
 var gadgets: Dictionary = {} # key: String | value: Node
 
-var weapon_shortcuts: Dictionary = {} # key = shortcut_panel_number: int | value: Dictionary -> {key: index-int | value: weaponName-String} 
+var weapon_quick_select: Dictionary = {} # key = shortcut_panel_number: int | value: Dictionary -> {key: index-int | value: weaponName-String} 
 var current_shortcut_panel: int = 1
 
 @onready var passive_gadgets = $"../CharacterRotationRoot/PassiveGadgets"
@@ -61,7 +61,7 @@ func get_weapons_from_shortcut(dir: StringName):
 			return make_weapon_array_from_shortcut_indexes([6,7])
 
 func make_weapon_array_from_shortcut_indexes(indexes: Array[int])-> Array:
-	var current_panel: Dictionary = weapon_shortcuts.get(current_shortcut_panel)
+	var current_panel: Dictionary = weapon_quick_select.get(current_shortcut_panel)
 	var weapon_1 = current_panel.get(indexes[0])
 	var weapon_2 = current_panel.get(indexes[1])
 	return [weapons.get(weapon_1),weapons.get(weapon_2)]
@@ -103,7 +103,7 @@ func add_gadget(gadget_name: StringName,gadget_node: Node)->void:
 func save_inventory():
 	#save inventory to disk
 	pass
-	
+
 func load_inventory():
 	#load inventory from disk
 	pass
