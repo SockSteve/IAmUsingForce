@@ -9,9 +9,9 @@ signal weapon_changed(weapon_name)
 
 @export_category("Gameplay")
 @export_group("Base Movement")
-@export var move_speed := 12.0 # Character maximum run speed on the ground.
-@export var acceleration := 4.0 # Movement acceleration (how fast character achieve maximum speed)
-@export var _rotation_speed := 12.0 # Player model rotaion speed
+@export var move_speed := 12.0 ## Character maximum movement speed on the ground.
+@export var acceleration := 4.0 ## Movement acceleration. How fast character achieve maximum speed.
+@export var _rotation_speed := 12.0 ## Player model rotaion speed. Used to rotate @CharacterRotationRoot
 @export var stopping_speed := 4.5
 @export var jump_apex_gravity := -10
 @export var jump_initial_impulse := 12.0 # Jump impulse
@@ -76,6 +76,7 @@ var freeze: bool = false
 var putting_ranged_weapon_in_hand_enabled: bool = true 
 
 ## store the active weapons that are not in the scene tree
+var current_weapons: Array = []
 var current_ranged_weapon: Node
 var current_melee_weapon: Node
 
@@ -111,7 +112,8 @@ func _physics_process(delta)-> void:
 			put_in_hand(current_ranged_weapon)
 			
 		if Input.is_action_just_pressed("quick_select_up"):
-			print(inventory.get_weapons_from_shortcut("up"))
+			var shortcut_array: Array = inventory.get_weapons_from_shortcut("up")
+			#if shortcut_array[0] 
 		
 		if Input.is_action_just_pressed("quick_select_left"):
 			print(inventory.get_weapons_from_shortcut("left"))
@@ -123,7 +125,7 @@ func _physics_process(delta)-> void:
 			print(inventory.get_weapons_from_shortcut("down"))
 		
 	if Input.is_action_just_pressed("quick_select_change_panel"):
-		inventory.change_shortcut_panel()
+		inventory.change_quick_select_panel()
 	
 	# Calculate ground height for camera controller
 	if _ground_shapecast.get_collision_count() > 0:

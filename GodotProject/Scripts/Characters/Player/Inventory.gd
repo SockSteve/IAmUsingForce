@@ -1,17 +1,26 @@
 extends Node3D
 class_name Inventory
 
-signal money_amount_changed(amount: int)
-signal shortcut_panel_changed(index: int)
+## This class contains all objects the player obtains like money, weapons or Gadgets.
+## If any other class needs something from this class it is called from the player
+## over the function get_inventory() and from there the class can access the inventory.
+
+signal money_amount_changed(amount: int) ## is emitted when the player receives od spends money.
+signal quick_select_panel_changed(index: int) ## is emitted when the qick select panel changes. At the moment there are only 2 panels: panel 1 and 2. Which panel is currently active is expressed through the variable 'current_quick_select_panel' 
 
 @export_range(0,1000000000) var money: int = 10000
 
-var weapons: Dictionary = {} # key: String | value: Node
-var gadgets: Dictionary = {} # key: String | value: Node
+var weapons: Dictionary = {} ## key = weapon_name: String | value= weapon_instance_ref: Node
+var gadgets: Dictionary = {} ## key = gadget_name: String | value= gadget_instance_ref: Node
 
-var weapon_quick_select: Dictionary = {} # key = shortcut_panel_number: int | value: Dictionary -> {key: index-int | value: weaponName-String} 
-var current_shortcut_panel: int = 1
+## key = shortcut_panel_number: int | 
+## value: Array[
+## Dictionary -> {key = index: int | value = weapon_name: String}
+## Dictionary -> {key = weapon_name: String | value = index: int}
+var weapon_quick_select: Dictionary = {} 
+var current_quick_select_panel: int = 1 ## represense the current active shortcut panel. At the moment we have 2 quick_select panels the player can switch between.
 
+## some gadgets like the grinding boots need to be constantly loaded into the scenetree in order to work. These are instanced as child nodes of this node.
 @onready var passive_gadgets = $"../CharacterRotationRoot/PassiveGadgets"
 
 func get_money()-> int:
@@ -61,18 +70,21 @@ func get_weapons_from_shortcut(dir: StringName):
 			return make_weapon_array_from_shortcut_indexes([6,7])
 
 func make_weapon_array_from_shortcut_indexes(indexes: Array[int])-> Array:
-	var current_panel: Dictionary = weapon_quick_select.get(current_shortcut_panel)
+	var current_panel: Dictionary = weapon_quick_select.get(current_quick_select_panel)
 	var weapon_1 = current_panel.get(indexes[0])
 	var weapon_2 = current_panel.get(indexes[1])
 	return [weapons.get(weapon_1),weapons.get(weapon_2)]
 
-func change_shortcut_panel():
-	if current_shortcut_panel == 1:
-		current_shortcut_panel = 0
-		emit_signal("shortcut_panel_changed", current_shortcut_panel)
+func change_quick_select_panel():
+	if current_quick_select_panel == 1:
+		current_quick_select_panel = 0
+		emit_signal("quick_select_panel_changed", current_quick_select_panel)
 		return
-	current_shortcut_panel = 1
-	emit_signal("shortcut_panel_changed", current_shortcut_panel)
+	current_quick_select_panel = 1
+	emit_signal("quick_select_panel_changed", current_quick_select_panel)
+
+func get_quick_select_weapon_index(weapon_name: StringName):
+	return weapon_quick_select[current_quick_select_panel].find_key(weapon_name)
 
 func get_gadget(gadget_name: StringName)->Node:
 	return gadgets.get(gadget_name)
