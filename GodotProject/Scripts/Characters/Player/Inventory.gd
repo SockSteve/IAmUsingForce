@@ -15,7 +15,6 @@ var gadgets: Dictionary = {} ## key = gadget_name: String | value= gadget_instan
 
 ## key = shortcut_panel_number: int | 
 ## value= Dictionary -> {key = index: int | value = weapon_name: String}
-
 var weapon_quick_select: Dictionary = {} 
 var current_quick_select_panel: int = 0 ## represense the current active shortcut panel. At the moment we have 2 quick_select panels the player can switch between.
 
