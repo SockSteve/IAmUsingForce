@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cp75jpjkpetyc" path="res://Assets/Textures/UI/PocketRocketIcon.png" id="2_erw7v"]
 [ext_resource type="PackedScene" uid="uid://cuc4p1cbkxwrn" path="res://Scenes/Weapons/RangedWeapons/PocketRocket/PocketRocketBullet.tscn" id="3_7midi"]
 
-[node name="PocketRocket" type="Node3D"]
+[node name="PocketRocket" type="Node3D" groups=["ranged"]]
 script = ExtResource("1_hjokh")
 icon = ExtResource("2_erw7v")
 bullet = ExtResource("3_7midi")

@@ -86,6 +86,43 @@ func make_weapon_array_from_shortcut_indexes(indexes: Array[int])-> Array:
 	var weapon_2 = current_panel.get(indexes[1])
 	return [weapons.get(weapon_1),weapons.get(weapon_2)]
 
+
+func populate_quick_select_menu():
+	print("Populating shortcut menu...")
+	var all_weapons = get_all_weapons()
+	var num_weapons = all_weapons.size()
+	
+	var shuffled_weapons = all_weapons.duplicate()
+	shuffled_weapons.shuffle()
+	
+	var shortcuts_0 = {}
+	var shortcuts_1 = {}
+	
+	var index = 0
+
+	# Populate first panel
+	for i in range(8):
+		if index < num_weapons:
+			shortcuts_0[i] = shuffled_weapons[index].name
+			index += 1
+		else:
+			shortcuts_0[i] = null
+	
+	shuffled_weapons.shuffle()
+	# Populate second panel
+	index = 0
+	for i in range(8):
+		if index < num_weapons:
+			shortcuts_1[i] = shuffled_weapons[index].name
+			index += 1
+		else:
+			shortcuts_1[i] = null
+
+	weapon_quick_select[0] = shortcuts_0
+	weapon_quick_select[1] = shortcuts_1
+	print("Shortcuts populated:", weapon_quick_select)
+
+
 func change_quick_select_panel():
 	if current_quick_select_panel == 1:
 		current_quick_select_panel = 0

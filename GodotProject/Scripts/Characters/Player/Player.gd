@@ -92,11 +92,12 @@ var stored_weapon_on_gadget_use: Node #this variable is only assigned with the a
 func _ready() -> void:
 	set_up_input()
 	add_starting_loadout_to_inventory()
+	print("Populating shortcut menu...")
+	inventory.populate_quick_select_menu()
 	put_in_hand(currently_held_weapon_or_gadget)
 	inventory.add_gadget(grappling_hook.name, grappling_hook)
 	inventory.add_gadget(grinding_boots.name, grinding_boots)
-	populate_shortcut_menu()
-	await get_tree().process_frame
+	#populate_shortcut_menu()
 	
 func set_up_input():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -106,6 +107,10 @@ func _physics_process(delta)-> void:
 	#uncomment the following fr debugging sates
 	#print($StateMachine.state)
 	
+	print("current weapon: ", currently_held_weapon_or_gadget)
+	print("melee weapon ", current_melee_weapon)
+	print("ranged weapon ", current_ranged_weapon)
+	
 	#this is currently the only way to put ranged weapons in the players hand, because there is no 
 	#ranged combat state as the result that ranged weapons can be fired off without locking the player into an animation or state
 	if putting_ranged_weapon_in_hand_enabled:
@@ -113,18 +118,18 @@ func _physics_process(delta)-> void:
 			put_in_hand(current_ranged_weapon)
 			
 		if Input.is_action_just_pressed("quick_select_up"):
-			var shortcut_array: Array = inventory.get_weapons_array_from_quick_select_dir("up")
-			inventory.current_quick_selected[0]
+			handle_quick_select("up")
 		
 		if Input.is_action_just_pressed("quick_select_left"):
-			print(inventory.get_weapons_array_from_quick_select_dir("left"))
+			handle_quick_select("left")
 		
 		if Input.is_action_just_pressed("quick_select_right"):
-			print(inventory.get_weapons_array_from_quick_select_dir("right"))
+			handle_quick_select("right")
 		
 		if Input.is_action_just_pressed("quick_select_down"):
 			print(inventory.get_weapons_array_from_quick_select_dir("down"))
-		
+			handle_quick_select("down")
+			
 	if Input.is_action_just_pressed("quick_select_change_panel"):
 		inventory.change_quick_select_panel()
 	
@@ -190,6 +195,8 @@ func change_currently_held_weapon_or_gadget_to(weapon_or_gadget_name: StringName
 
 #function for putting a weapon in hand - called from player hand
 func put_in_hand(weapon_or_gadget: Node)-> void:
+	if weapon_or_gadget is Weapon:
+		assign_melee_and_ranged_weapons(weapon_or_gadget)
 	hand.add_or_replace_item_to_hand(weapon_or_gadget)
 	_character_skin.change_weapon(weapon_or_gadget.name)
 	currently_held_weapon_or_gadget = weapon_or_gadget
@@ -217,8 +224,23 @@ func assign_melee_and_ranged_weapons(weapon_scene: Node3D):
 	if  weapon_scene.is_in_group("ranged"):
 		current_ranged_weapon = weapon_scene
 
-func handle_shortcut_weapons(array: PackedStringArray):
-	pass
+func handle_quick_select(direction: String):
+	var shortcut_array: Array = inventory.get_weapons_array_from_quick_select_dir(direction)
+	if shortcut_array.size() == 0:
+		print("Error: shortcut_array is empty for direction:", direction)
+		return
+
+	if currently_held_weapon_or_gadget == shortcut_array[0] and shortcut_array[1] != null:
+		currently_held_weapon_or_gadget = shortcut_array[1]
+	elif shortcut_array[0] != null:
+		currently_held_weapon_or_gadget = shortcut_array[0]
+	else:
+		print("Error: No valid weapon in shortcut_array for direction:", direction)
+		return
+
+	put_in_hand(currently_held_weapon_or_gadget)
+	emit_signal("weapon_changed", currently_held_weapon_or_gadget.name)
+	print("Switched weapon to:", currently_held_weapon_or_gadget.name)
 
 ## because the player has buttons for melee and ranged, we need to be able to determine which weapon should be used
 func switch_current_weapon_to_melee(melee: bool)-> void:
@@ -227,17 +249,17 @@ func switch_current_weapon_to_melee(melee: bool)-> void:
 	if ! melee and currently_held_weapon_or_gadget != current_ranged_weapon:
 		put_in_hand(current_ranged_weapon)
 
-func populate_shortcut_menu():
-	var shortcuts_0 = {}
-	var shortcuts_1 = {}
-	var i = 0
-	var weapon_name = ''
-	while i <= 7:
-		shortcuts_0[i] = inventory.get_random_weapon().name
-		shortcuts_1[i] = inventory.get_random_weapon().name
-		i +=1
-	inventory.weapon_quick_select[0] = shortcuts_0  
-	inventory.weapon_quick_select[1] = shortcuts_1  
+#func populate_shortcut_menu():
+	#var shortcuts_0 = {}
+	#var shortcuts_1 = {}
+	#var i = 0
+	#var weapon_name = ''
+	#while i <= 7:
+		#shortcuts_0[i] = inventory.get_random_weapon().name
+		#shortcuts_1[i] = inventory.get_random_weapon().name
+		#i +=1
+	#inventory.weapon_quick_select[0] = shortcuts_0  
+	#inventory.weapon_quick_select[1] = shortcuts_1  
 
 #func populate_shortcut_menu():
 	#var shortcuts_0 = {}
