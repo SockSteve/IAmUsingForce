@@ -60,7 +60,8 @@ func populate_quick_select_with_weapons(quick_select_index):
 		elif weapon_name == current_ranged_weapon.name:
 			sm_icon.modulate = Color(0, 0.5, 1)  # Blue for currently held ranged weapon
 		else:
-			sm_icon.modulate.a = disabled_alpha
+			sm_icon.modulate = Color(1, 1, 1, disabled_alpha)
+			#sm_icon.modulate.a = disabled_alpha
 	print("Quick select panel populated:", quick_select_index)
 
 func _on_weapon_changed(weapon_name: StringName):
