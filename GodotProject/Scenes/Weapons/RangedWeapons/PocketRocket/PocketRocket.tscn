@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://cuc4p1cbkxwrn" path="res://Scenes/Weapons/RangedWeapons/PocketRocket/PocketRocketBullet.tscn" id="3_7midi"]
 
 [node name="PocketRocket" type="Node3D" groups=["ranged"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_hjokh")
 icon = ExtResource("2_erw7v")
 bullet = ExtResource("3_7midi")

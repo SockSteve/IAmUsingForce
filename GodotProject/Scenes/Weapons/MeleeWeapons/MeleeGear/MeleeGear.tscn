@@ -12,7 +12,7 @@ material = SubResource("StandardMaterial3D_draq8")
 [sub_resource type="BoxShape3D" id="BoxShape3D_q72rh"]
 size = Vector3(0.25, 2.2, 0.25)
 
-[node name="MeleeGear" type="Node3D"]
+[node name="MeleeGear" type="Node3D" groups=["melee"]]
 script = ExtResource("1_2kj4h")
 _name = "MeleeGear"
 upgrade_name = "MetalGear"

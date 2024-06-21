@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bpfwxaialqgsh" path="res://Scenes/Weapons/RangedWeapons/BadPrank/BadPrankBullet.tscn" id="2_1kdye"]
 [ext_resource type="Texture2D" uid="uid://cu57pg1cqjpqy" path="res://Assets/Textures/UI/BadPrankIcon.png" id="2_phwey"]
 
-[node name="BadPrank" type="Node3D"]
+[node name="BadPrank" type="Node3D" groups=["ranged"]]
 script = ExtResource("1_nk07d")
 icon = ExtResource("2_phwey")
 bullet = ExtResource("2_1kdye")

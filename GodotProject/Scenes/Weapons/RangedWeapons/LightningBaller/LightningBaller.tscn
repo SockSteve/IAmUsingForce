@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dojtkvy2iukm8" path="res://Assets/Textures/UI/LightningBallerIcon.png" id="2_gus6n"]
 [ext_resource type="PackedScene" uid="uid://6vdsddthfh3f" path="res://Scenes/Weapons/RangedWeapons/LightningBaller/LightningBallerBullet.tscn" id="3_v0b0t"]
 
-[node name="LightningBaller" type="Node3D"]
+[node name="LightningBaller" type="Node3D" groups=["ranged"]]
 script = ExtResource("1_5qxus")
 icon = ExtResource("2_gus6n")
 shop_price = 15000
