@@ -22,12 +22,12 @@
 [ext_resource type="Theme" uid="uid://d02hntmjt67aj" path="res://UI/UITheme_1.tres" id="19_1icc6"]
 [ext_resource type="Script" path="res://Scenes/Characters/Player/PlayerHUD.gd" id="20_6xxyk"]
 [ext_resource type="Texture2D" uid="uid://dmf404ftfexwl" path="res://Assets/Decals/DropShadow/Shadow.png" id="22_gwf8y"]
-[ext_resource type="Texture2D" uid="uid://pcjnv83mgkat" path="res://Assets/Textures/UI/CutterIconSC.png" id="22_iaxg4"]
-[ext_resource type="Texture2D" uid="uid://cqiv6rrr26qmx" path="res://Assets/Textures/UI/PlaceholderIcon.png" id="23_qxeqk"]
-[ext_resource type="Texture2D" uid="uid://bsge2yls5o5jg" path="res://Assets/Textures/UI/HitPoint.png" id="24_6g3o4"]
+[ext_resource type="Texture2D" uid="uid://cbl0ms55gbbui" path="res://Assets/Textures/UI/CutterIconSC.png" id="22_iaxg4"]
+[ext_resource type="Texture2D" uid="uid://cgo68fl4c4jfp" path="res://Assets/Textures/UI/PlaceholderIcon.png" id="23_qxeqk"]
+[ext_resource type="Texture2D" uid="uid://d1gugcb55vqdk" path="res://Assets/Textures/UI/HitPoint.png" id="24_6g3o4"]
 [ext_resource type="Script" path="res://Scenes/Characters/Player/StartMenu.gd" id="28_r3h2c"]
 [ext_resource type="Texture2D" uid="uid://dccgws1gvwa1m" path="res://Assets/Textures/UI/Money.png" id="28_wddji"]
-[ext_resource type="Texture2D" uid="uid://cu57pg1cqjpqy" path="res://Assets/Textures/UI/BadPrankIcon.png" id="29_sc2yr"]
+[ext_resource type="Texture2D" uid="uid://bkqdlx45ftmvq" path="res://Assets/Textures/UI/BadPrankIcon.png" id="29_sc2yr"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_p4inm"]
 margin = 4.123
@@ -313,9 +313,9 @@ layout_mode = 2
 [node name="ShortcutMenu" type="VBoxContainer" parent="CanvasLayer/PlayerHUD"]
 layout_mode = 0
 offset_left = 2.0
-offset_top = 412.0
-offset_right = 210.0
-offset_bottom = 647.0
+offset_top = 375.0
+offset_right = 242.0
+offset_bottom = 642.0
 theme_override_constants/separation = 4
 
 [node name="PanelDisplay" type="Label" parent="CanvasLayer/PlayerHUD/ShortcutMenu"]
@@ -335,15 +335,17 @@ layout_mode = 2
 
 [node name="SMIcon_3" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMTopSection/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("23_qxeqk")
-stretch_mode = 2
+expand_mode = 1
 
 [node name="SMIcon_2" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMTopSection/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("23_qxeqk")
-stretch_mode = 2
+expand_mode = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMTopSection"]
 custom_minimum_size = Vector2(64, 0)
@@ -358,15 +360,17 @@ layout_mode = 2
 
 [node name="SMIcon_1" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMMiddleSection/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("23_qxeqk")
-stretch_mode = 2
+expand_mode = 1
 
 [node name="SMIcon_0" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMMiddleSection/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("23_qxeqk")
-stretch_mode = 2
+expand_mode = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMMiddleSection"]
 custom_minimum_size = Vector2(64, 0)
@@ -425,15 +429,17 @@ layout_mode = 2
 
 [node name="SMIcon_4" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMMiddleSection/HBoxContainer2"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 texture = ExtResource("23_qxeqk")
-stretch_mode = 2
+expand_mode = 1
 
 [node name="SMIcon_5" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMMiddleSection/HBoxContainer2"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("23_qxeqk")
-stretch_mode = 2
+expand_mode = 1
 
 [node name="SMBottomSection" type="HBoxContainer" parent="CanvasLayer/PlayerHUD/ShortcutMenu"]
 layout_mode = 2
@@ -447,13 +453,17 @@ layout_mode = 2
 
 [node name="SMIcon_6" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMBottomSection/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("23_qxeqk")
+expand_mode = 1
 
 [node name="SMIcon_7" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMBottomSection/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("23_qxeqk")
+expand_mode = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMBottomSection"]
 custom_minimum_size = Vector2(64, 0)

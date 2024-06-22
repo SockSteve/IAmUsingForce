@@ -1,16 +1,16 @@
 [gd_scene load_steps=5 format=3 uid="uid://cfru43w2xfbl2"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/RangedWeapons/Gun/Gun.gd" id="1_eansb"]
-[ext_resource type="Texture2D" uid="uid://c8stgkhcni7wh" path="res://Assets/Textures/UI/GunIcon.png" id="2_h3xh3"]
+[ext_resource type="Texture2D" uid="uid://dx3uap5faa1r0" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/machinegun.png" id="2_0krcr"]
 [ext_resource type="PackedScene" uid="uid://owsxbjhadsho" path="res://Scenes/Weapons/RangedWeapons/Gun/GunBullet.tscn" id="2_j5oes"]
-[ext_resource type="ArrayMesh" uid="uid://cw25l0jej84hr" path="res://Assets/Models/Weapons/pistol.obj" id="4_wnphd"]
+[ext_resource type="ArrayMesh" uid="uid://ihflrjje83gl" path="res://Assets/Kenney/Weapon Pack/Models/machinegun.obj" id="4_23puu"]
 
 [node name="Gun" type="Node3D" groups=["ranged"]]
 transform = Transform3D(-2.18557e-07, 5, 2.18557e-07, 0, -2.18557e-07, 5, 5, 2.18557e-07, 9.55343e-15, 0, 0.138348, 0)
 script = ExtResource("1_eansb")
 _name = "Gun"
 upgrade_name = "KoiKoi"
-icon = ExtResource("2_h3xh3")
+icon = ExtResource("2_0krcr")
 bullet_price = 2
 current_ammunition = 32
 max_ammunition = 100
@@ -20,7 +20,7 @@ bullet = ExtResource("2_j5oes")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00159025, 0.0152566, 0.0455439)
 
 [node name="Pistol" type="MeshInstance3D" parent="."]
-mesh = ExtResource("4_wnphd")
+mesh = ExtResource("4_23puu")
 
 [node name="FireRateTimer" type="Timer" parent="."]
 one_shot = true

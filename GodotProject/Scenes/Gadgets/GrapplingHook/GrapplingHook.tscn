@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cqhn455src0iq"]
 
 [ext_resource type="Script" path="res://Scripts/Gadgets/GrapplingHook.gd" id="1_udl8o"]
-[ext_resource type="Texture2D" uid="uid://fp00l1f827re" path="res://SockSethLogo.png" id="2_3logy"]
+[ext_resource type="Texture2D" uid="uid://b23rdma2xmt6s" path="res://Assets/Kenney/kenney_crosshair-pack/PNG/Black/crosshair126.png" id="2_qgc7u"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dib0u"]
 
@@ -16,7 +16,7 @@ material = SubResource("StandardMaterial3D_mscdr")
 [node name="GrapplingHook" type="Node3D" groups=["active", "gadget"]]
 script = ExtResource("1_udl8o")
 _name = "GrapplingHook"
-icon = ExtResource("2_3logy")
+icon = ExtResource("2_qgc7u")
 
 [node name="GadgetSkin" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
