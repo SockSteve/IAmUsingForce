@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Sandbox/ShopMenu3D.gd" id="1_1ttap"]
 [ext_resource type="Texture2D" uid="uid://dmf404ftfexwl" path="res://Assets/Decals/DropShadow/Shadow.png" id="1_5i4m7"]
 [ext_resource type="Script" path="res://Sandbox/ShopHandler.gd" id="2_72765"]
-[ext_resource type="Theme" uid="uid://d02hntmjt67aj" path="res://UI/UITheme_1.tres" id="2_dpxj1"]
+[ext_resource type="Theme" uid="uid://rf67byyn3ju3" path="res://Assets/Kenney/FlatUI/kenneyUI.tres" id="3_wehc4"]
 [ext_resource type="Texture2D" uid="uid://bsv5iog55nu8i" path="res://Assets/Textures/UI/AmmoIcon.png" id="5_vn3yi"]
 
 [sub_resource type="SystemFont" id="SystemFont_qjh1b"]
@@ -46,7 +46,7 @@ anchor_right = 0.596
 anchor_bottom = 0.625
 offset_right = -166.88
 offset_bottom = -112.5
-theme = ExtResource("2_dpxj1")
+theme = ExtResource("3_wehc4")
 
 [node name="Panel" type="Panel" parent="SubViewport/Control"]
 custom_minimum_size = Vector2(280, 180)
