@@ -171,19 +171,12 @@ func _orient_character_to_direction(direction: Vector3, delta: float,rotation_sp
 ## function for changing the player physics to that of a ridgidbody (here @PhysicsBody)
 ## called in StateMachine
 func switchToPhysicsBody()-> void:
-	var stored_player_velocity = velocity
-	_physics_body.global_transform = self.global_transform
-	_physics_body.freeze = false
-	_physics_body.top_level = true
-	_physics_body.linear_velocity = stored_player_velocity
+	_physics_body.set_active(true)
 
 ## function to switch the physics back to that of a CharacterBody3D
 ## called in - @Node StateMachine
 func switchToCharacterBody()-> void:
-	_physics_body.freeze = true
-	_physics_body.top_level = false
-	velocity = _physics_body.linear_velocity
-	_physics_body.global_transform = self.global_transform
+	_physics_body.set_active(false)
 
 ## returns the inventory
 func get_inventory()->Inventory:
@@ -208,8 +201,8 @@ func put_in_hand(weapon_or_gadget: Node)-> void:
 #@param weapon_path - path to be loaded and instantiated, then added to the inventory
 func add_starting_loadout_to_inventory()-> void:
 	for weapon_path in starting_loadout:
-		var weapon_scene = load(weapon_path)
-		weapon_scene = weapon_scene.instantiate()
+		var weapon_scene = load(weapon_path).instantiate()
+		#weapon_scene = weapon_scene.instantiate()
 		if currently_held_weapon_or_gadget == null:
 			currently_held_weapon_or_gadget = weapon_scene
 		if current_melee_weapon == null and weapon_scene.is_in_group("melee"):
@@ -218,7 +211,6 @@ func add_starting_loadout_to_inventory()-> void:
 			current_ranged_weapon = weapon_scene
 		
 		inventory.add_weapon(weapon_scene.name, weapon_scene)
-
 
 func assign_melee_and_ranged_weapons(weapon_scene: Node3D):
 	if weapon_scene.is_in_group("melee"):

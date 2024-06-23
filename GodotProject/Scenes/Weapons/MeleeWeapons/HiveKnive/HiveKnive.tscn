@@ -13,6 +13,7 @@ _name = "HiveKnive"
 icon = ExtResource("2_0myh2")
 shop_price = 3000
 bullet_price = 1
+max_combo_step = 3
 
 [node name="WeaponSkin" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000695467, 0.686496, -0.000282407)

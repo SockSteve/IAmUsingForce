@@ -19,6 +19,7 @@ upgrade_shop_price = 100000
 bullet_price = 1
 damage = 10
 bullet = ExtResource("2_hv2fr")
+max_combo_step = 2
 
 [node name="WeaponSkin" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true
