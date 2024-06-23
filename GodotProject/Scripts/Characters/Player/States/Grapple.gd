@@ -67,18 +67,10 @@ func end_grapple():
 	player._physics_body.global_transform = player.global_transform
 	grappling_hook.end_grapple()
 	player.switchToCharacterBody()
-	
-	if not player.is_on_floor():
-		player.putting_ranged_weapon_in_hand_enabled = true
-		state_machine.transition_to("Air")
-		return
-		
-	#if player.is_on_floor():
-		#if is_equal_approx(player.velocity.x, 0.0):
-			#state_machine.transition_to("Idle")
-		#else:
-			#state_machine.transition_to("Run")
-			
+	print("here")
+	player.putting_ranged_weapon_in_hand_enabled = true
+	state_machine.transition_to("Air")
+	return
 
 var interp_time = 0.0
 func move_to_distance(delta) -> bool:

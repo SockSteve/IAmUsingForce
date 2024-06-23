@@ -1,34 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8btq3jmsx6b"]
+[gd_scene load_steps=5 format=3 uid="uid://b8btq3jmsx6b"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/MeleeWeapons/HiveKnive/HiveKnive.gd" id="1_7iu6v"]
-[ext_resource type="Texture2D" uid="uid://dwwlxp66dx1ss" path="res://Assets/Textures/UI/HiveKniveIcon.png" id="2_kgkgl"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_draq8"]
-albedo_color = Color(0, 0, 1, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_02pf1"]
-material = SubResource("StandardMaterial3D_draq8")
+[ext_resource type="Texture2D" uid="uid://u0s1t54u7o8x" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/knifeRound_smooth.png" id="2_0myh2"]
+[ext_resource type="ArrayMesh" uid="uid://cnxheamlmyjsy" path="res://Assets/Kenney/Weapon Pack/Models/knifeRound_smooth.obj" id="3_xd8xh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q72rh"]
-size = Vector3(0.25, 2.2, 0.25)
+size = Vector3(0.25, 1.40566, 0.25)
 
 [node name="HiveKnive" type="Node3D" groups=["melee"]]
 script = ExtResource("1_7iu6v")
 _name = "HiveKnive"
-icon = ExtResource("2_kgkgl")
+icon = ExtResource("2_0myh2")
 shop_price = 3000
 bullet_price = 1
 
 [node name="WeaponSkin" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 2, 0, 0, 0, 0.1, 0, 1, 0)
-mesh = SubResource("BoxMesh_02pf1")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000695467, 0.686496, -0.000282407)
+mesh = ExtResource("3_xd8xh")
 
 [node name="HitboxArea" type="Area3D" parent="."]
 monitoring = false
 monitorable = false
 
 [node name="HitboxCollision" type="CollisionShape3D" parent="HitboxArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.702832, 0)
 shape = SubResource("BoxShape3D_q72rh")
 
 [node name="ParryTimer" type="Timer" parent="."]

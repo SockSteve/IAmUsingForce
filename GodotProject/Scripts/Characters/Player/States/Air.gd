@@ -4,6 +4,7 @@ extends PlayerState
 var jumped: bool = false
 
 func enter(msg := {}) -> void:
+	player._character_skin.fall()
 	if msg.has("do_jump"):
 		player.velocity.y += player.jump_initial_impulse
 		player._character_skin.jump()

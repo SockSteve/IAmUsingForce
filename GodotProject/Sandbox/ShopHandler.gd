@@ -24,7 +24,7 @@ const ammo_button = preload("res://Scenes/UI/Templates/ShopAmmunitionButton.tscn
 @onready var buy_all_ammo_popup : Panel = %BuyAllAmmoPopup
 @onready var accept_all_ammo_btn: Button = %AcceptAllAmmonTransactionButton
 @onready var cancel_all_ammo_btn: Button = %CancelAllAmmoTransactionButton
-
+@onready var ui_focus_sfx: AudioStreamPlayer = %UiFocusChangedSfx
 
 @onready var sub_viewport = $"../SubViewport"
 
@@ -144,6 +144,7 @@ func _on_sub_viewport_gui_focus_changed(item_button):
 	#there is only one function connected to this signal, so we get the first connection
 	var dic = item_button.pressed.get_connections().pop_front() 
 	if dic == null : return 
+	ui_focus_sfx.play()
 	var callable = dic.get("callable") #get the callable from the connection
 	var item_inst = callable.get_bound_arguments().pop_front()#get bound argument
 	

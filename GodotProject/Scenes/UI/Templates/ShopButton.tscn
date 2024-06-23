@@ -1,6 +1,9 @@
-[gd_scene format=3 uid="uid://dmcowq41mf0wo"]
+[gd_scene load_steps=2 format=3 uid="uid://dmcowq41mf0wo"]
+
+[ext_resource type="Theme" uid="uid://dvspb4esei5oi" path="res://UI/UITheme_Base_ NoSkew.tres" id="1_6cm65"]
 
 [node name="ShopButton" type="Button"]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(160, 160)
+theme = ExtResource("1_6cm65")
 icon_alignment = 1
 expand_icon = true

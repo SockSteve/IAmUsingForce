@@ -97,7 +97,6 @@ func _ready() -> void:
 	put_in_hand(currently_held_weapon_or_gadget)
 	inventory.add_gadget(grappling_hook.name, grappling_hook)
 	inventory.add_gadget(grinding_boots.name, grinding_boots)
-	#populate_shortcut_menu()
 	
 func set_up_input():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -105,11 +104,11 @@ func set_up_input():
 
 func _physics_process(delta)-> void:
 	#uncomment the following fr debugging sates
-	#print($StateMachine.state)
+	print($StateMachine.state)
 	
-	print("current weapon: ", currently_held_weapon_or_gadget)
-	print("melee weapon ", current_melee_weapon)
-	print("ranged weapon ", current_ranged_weapon)
+	#print("current weapon: ", currently_held_weapon_or_gadget)
+	#print("melee weapon ", current_melee_weapon)
+	#print("ranged weapon ", current_ranged_weapon)
 	
 	#this is currently the only way to put ranged weapons in the players hand, because there is no 
 	#ranged combat state as the result that ranged weapons can be fired off without locking the player into an animation or state
@@ -227,7 +226,7 @@ func assign_melee_and_ranged_weapons(weapon_scene: Node3D):
 func handle_quick_select(direction: String):
 	var shortcut_array: Array = inventory.get_weapons_array_from_quick_select_dir(direction)
 	if shortcut_array.size() == 0:
-		print("Error: shortcut_array is empty for direction:", direction)
+		printerr("Error: shortcut_array is empty for direction:", direction)
 		return
 
 	if currently_held_weapon_or_gadget == shortcut_array[0] and shortcut_array[1] != null:
@@ -235,7 +234,7 @@ func handle_quick_select(direction: String):
 	elif shortcut_array[0] != null:
 		currently_held_weapon_or_gadget = shortcut_array[0]
 	else:
-		print("Error: No valid weapon in shortcut_array for direction:", direction)
+		printerr("Error: No valid weapon in shortcut_array for direction:", direction)
 		return
 
 	put_in_hand(currently_held_weapon_or_gadget)
@@ -248,31 +247,3 @@ func switch_current_weapon_to_melee(melee: bool)-> void:
 		put_in_hand(current_melee_weapon)
 	if ! melee and currently_held_weapon_or_gadget != current_ranged_weapon:
 		put_in_hand(current_ranged_weapon)
-
-#func populate_shortcut_menu():
-	#var shortcuts_0 = {}
-	#var shortcuts_1 = {}
-	#var i = 0
-	#var weapon_name = ''
-	#while i <= 7:
-		#shortcuts_0[i] = inventory.get_random_weapon().name
-		#shortcuts_1[i] = inventory.get_random_weapon().name
-		#i +=1
-	#inventory.weapon_quick_select[0] = shortcuts_0  
-	#inventory.weapon_quick_select[1] = shortcuts_1  
-
-#func populate_shortcut_menu():
-	#var shortcuts_0 = {}
-	#var shortcuts_1 = {}
-	#var i = 0
-	#var weapon_name = ''
-	#while i <= 7:
-		#weapon_name = inventory.get_random_weapon().name
-		#if not shortcuts_0.values().has(weapon_name):
-			#shortcuts_0[i] = weapon_name
-		#weapon_name = inventory.get_random_weapon().name
-		#if not shortcuts_1.values().has(weapon_name):
-			#shortcuts_1[i] = weapon_name
-		#i +=1
-	#inventory.weapon_quick_select[0] = shortcuts_0  
-	#inventory.weapon_quick_select[1] = shortcuts_1  

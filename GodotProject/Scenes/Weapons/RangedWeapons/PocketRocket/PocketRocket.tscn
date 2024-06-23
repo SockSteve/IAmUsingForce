@@ -1,17 +1,18 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdaml07lkckcs"]
+[gd_scene load_steps=5 format=3 uid="uid://bdaml07lkckcs"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/RangedWeapons/PocketRocket/PocketRocket.gd" id="1_hjokh"]
-[ext_resource type="Texture2D" uid="uid://cp75jpjkpetyc" path="res://Assets/Textures/UI/PocketRocketIcon.png" id="2_erw7v"]
+[ext_resource type="Texture2D" uid="uid://b7nu35vbl0xu8" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/rocketlauncher.png" id="2_4woyu"]
 [ext_resource type="PackedScene" uid="uid://cuc4p1cbkxwrn" path="res://Scenes/Weapons/RangedWeapons/PocketRocket/PocketRocketBullet.tscn" id="3_7midi"]
+[ext_resource type="ArrayMesh" uid="uid://dfybra7cgbtfs" path="res://Assets/Kenney/Weapon Pack/Models/rocketlauncher.obj" id="4_goyof"]
 
 [node name="PocketRocket" type="Node3D" groups=["ranged"]]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_hjokh")
-icon = ExtResource("2_erw7v")
+icon = ExtResource("2_4woyu")
 bullet = ExtResource("3_7midi")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-size = Vector3(0.1, 0.1, 0.9698)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("4_goyof")
 
-[node name="Marker3D" type="Marker3D" parent="CSGBox3D"]
+[node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.56142)

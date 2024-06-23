@@ -64,10 +64,12 @@ func set_crouch_moving_speed(value : float):
 	animation_tree.set(crouch_moving_blend_path, move_speed)
 
 func jump():
+	animation_tree.set(state_transition_request, "state_normal")
 	state_machine.travel("jumpstart")
 
 func fall():
-	state_machine.travel("fall")
+	animation_tree.set(state_transition_request, "state_normal")
+	state_machine.travel("falling")
 
 func crouch():
 	animation_tree.set(state_transition_request, "state_crouch")

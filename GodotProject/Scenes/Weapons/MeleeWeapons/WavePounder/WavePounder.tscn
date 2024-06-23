@@ -1,31 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6rlckm46ttkw"]
+[gd_scene load_steps=5 format=3 uid="uid://b6rlckm46ttkw"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/MeleeWeapons/WavePounder/WavePounder.gd" id="1_njs3y"]
-[ext_resource type="Texture2D" uid="uid://digsq6bc7pjbh" path="res://Assets/Textures/UI/WavePounderIcon.png" id="2_iopr3"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_draq8"]
-albedo_color = Color(0.568627, 0.568627, 0.568627, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_02pf1"]
-material = SubResource("StandardMaterial3D_draq8")
+[ext_resource type="Texture2D" uid="uid://c6l2ds7dsot3u" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/knife_sharp.png" id="2_8q1sf"]
+[ext_resource type="ArrayMesh" uid="uid://dw6rh3juokfrq" path="res://Assets/Kenney/Weapon Pack/Models/knife_smooth.obj" id="3_td3yu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q72rh"]
-size = Vector3(0.25, 2.2, 0.25)
+size = Vector3(0.25, 2.25637, 0.25)
 
 [node name="WavePounder" type="Node3D" groups=["melee"]]
 script = ExtResource("1_njs3y")
-icon = ExtResource("2_iopr3")
+icon = ExtResource("2_8q1sf")
 
 [node name="WeaponSkin" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 2, 0, 0, 0, 0.1, 0, 1, 0)
-mesh = SubResource("BoxMesh_02pf1")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11629, 0)
+mesh = ExtResource("3_td3yu")
 
 [node name="HitboxArea" type="Area3D" parent="."]
 monitoring = false
 monitorable = false
 
 [node name="HitboxCollision" type="CollisionShape3D" parent="HitboxArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12819, 0)
 shape = SubResource("BoxShape3D_q72rh")
 
 [node name="ParryTimer" type="Timer" parent="."]
