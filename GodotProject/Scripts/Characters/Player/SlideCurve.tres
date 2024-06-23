@@ -1,0 +1,8 @@
+[gd_resource type="Curve" format=3 uid="uid://dkhyr34syj1ps"]
+
+[resource]
+min_value = 12.0
+max_value = 35.0
+_data = [Vector2(0, 35), 0.0, 0.0, 0, 0, Vector2(0.3, 35), 0.0, 0.0, 0, 0, Vector2(0.6, 35), -1.50071, -1.50071, 0, 0, Vector2(0.8, 23.5), -147.067, -147.067, 0, 0, Vector2(1, 14.3), -7.86786, 0.0, 0, 0]
+point_count = 5
+metadata/_snap_enabled = true

@@ -104,11 +104,14 @@ func set_up_input():
 
 func _physics_process(delta)-> void:
 	#uncomment the following fr debugging sates
-	print($StateMachine.state)
+	#print($StateMachine.state)
 	
 	#print("current weapon: ", currently_held_weapon_or_gadget)
 	#print("melee weapon ", current_melee_weapon)
 	#print("ranged weapon ", current_ranged_weapon)
+	
+	if Input.is_action_just_pressed("strafe"):
+		is_strafing = not is_strafing
 	
 	#this is currently the only way to put ranged weapons in the players hand, because there is no 
 	#ranged combat state as the result that ranged weapons can be fired off without locking the player into an animation or state
@@ -197,7 +200,7 @@ func put_in_hand(weapon_or_gadget: Node)-> void:
 	if weapon_or_gadget is Weapon:
 		assign_melee_and_ranged_weapons(weapon_or_gadget)
 	hand.add_or_replace_item_to_hand(weapon_or_gadget)
-	_character_skin.change_weapon(weapon_or_gadget.name)
+	_character_skin.change_weapon(weapon_or_gadget.name, weapon_or_gadget.get_groups())
 	currently_held_weapon_or_gadget = weapon_or_gadget
 
 #function for adding the initial weapon loadout to the inventory.
