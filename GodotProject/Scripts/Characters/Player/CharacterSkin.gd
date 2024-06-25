@@ -2,6 +2,8 @@ class_name CharacterSkin
 extends Node3D
 
 signal foot_step
+signal attack_hitbox_state_change(hitbox_state: bool)
+signal lock_player(lock_state: bool)
 
 @export var main_animation_player : AnimationPlayer
 
@@ -40,6 +42,8 @@ var arm_transition_request := "parameters/armtransition/transition_request"
 
 func _ready():
 	animation_tree.active = true
+	#animation_tree.animation_started.connect()
+	#animation_tree.animation_finished.connect()
 	main_animation_player["playback_default_blend_time"] = 0.1
 
 #is used in the walking and crouching state
@@ -103,7 +107,7 @@ func change_weapon(weapon:StringName, groups: Array[StringName]):
 
 func attack(attack_counter:int, weapon_name: StringName = "cutter"):
 	animation_tree.set(state_transition_request, "state_melee")
-	animation_tree.set(weapon_melee_transition_request, "melee_cutter")
+	animation_tree.set(weapon_melee_transition_request, weapon_name)
 	var current_attack_animation = "attack_" + str(attack_counter)
 	sm_melee_cutter.travel(current_attack_animation)
 

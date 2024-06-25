@@ -12,7 +12,7 @@ script = ExtResource("1_2kj4h")
 _name = "MeleeGear"
 upgrade_name = "MetalGear"
 icon = ExtResource("2_675yk")
-shop_price = 7000
+shop_price = 20000
 bullet_price = -1
 game_progression_flag = 2
 
