@@ -1,5 +1,6 @@
 extends PlayerState
 func enter(_msg := {}) -> void:
+	player._character_skin.grab_ledge()
 	player.putting_ranged_weapon_in_hand_enabled = false
 	player.velocity = Vector3.ZERO
 	#transition to hanging animation

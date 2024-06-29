@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dks0u0nj50spe"]
 
 [ext_resource type="Script" path="res://Sandbox/TestMenu3D.gd" id="1_4k0ly"]
-[ext_resource type="Theme" uid="uid://d02hntmjt67aj" path="res://UI/UITheme_1.tres" id="1_kh1iq"]
+[ext_resource type="Theme" uid="uid://d02hntmjt67aj" path="res://UI/UITheme_Base.tres" id="1_kh1iq"]
 [ext_resource type="Texture2D" uid="uid://dmf404ftfexwl" path="res://Assets/Decals/DropShadow/Shadow.png" id="2_yhehj"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_sqr5r"]

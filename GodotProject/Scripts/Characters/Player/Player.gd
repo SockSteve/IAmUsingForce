@@ -97,7 +97,6 @@ func _ready() -> void:
 	put_in_hand(currently_held_weapon_or_gadget)
 	inventory.add_gadget(grappling_hook.name, grappling_hook)
 	inventory.add_gadget(grinding_boots.name, grinding_boots)
-	#populate_shortcut_menu()
 	
 func set_up_input():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -107,9 +106,12 @@ func _physics_process(delta)-> void:
 	#uncomment the following fr debugging sates
 	#print($StateMachine.state)
 	
-	print("current weapon: ", currently_held_weapon_or_gadget)
-	print("melee weapon ", current_melee_weapon)
-	print("ranged weapon ", current_ranged_weapon)
+	#print("current weapon: ", currently_held_weapon_or_gadget)
+	#print("melee weapon ", current_melee_weapon)
+	#print("ranged weapon ", current_ranged_weapon)
+	
+	if Input.is_action_just_pressed("strafe"):
+		is_strafing = not is_strafing
 	
 	#this is currently the only way to put ranged weapons in the players hand, because there is no 
 	#ranged combat state as the result that ranged weapons can be fired off without locking the player into an animation or state
@@ -169,19 +171,12 @@ func _orient_character_to_direction(direction: Vector3, delta: float,rotation_sp
 ## function for changing the player physics to that of a ridgidbody (here @PhysicsBody)
 ## called in StateMachine
 func switchToPhysicsBody()-> void:
-	var stored_player_velocity = velocity
-	_physics_body.global_transform = self.global_transform
-	_physics_body.freeze = false
-	_physics_body.top_level = true
-	_physics_body.linear_velocity = stored_player_velocity
+	_physics_body.set_active(true)
 
 ## function to switch the physics back to that of a CharacterBody3D
 ## called in - @Node StateMachine
 func switchToCharacterBody()-> void:
-	_physics_body.freeze = true
-	_physics_body.top_level = false
-	velocity = _physics_body.linear_velocity
-	_physics_body.global_transform = self.global_transform
+	_physics_body.set_active(false)
 
 ## returns the inventory
 func get_inventory()->Inventory:
@@ -198,7 +193,7 @@ func put_in_hand(weapon_or_gadget: Node)-> void:
 	if weapon_or_gadget is Weapon:
 		assign_melee_and_ranged_weapons(weapon_or_gadget)
 	hand.add_or_replace_item_to_hand(weapon_or_gadget)
-	_character_skin.change_weapon(weapon_or_gadget.name)
+	_character_skin.change_weapon(weapon_or_gadget.name, weapon_or_gadget.get_groups())
 	currently_held_weapon_or_gadget = weapon_or_gadget
 
 #function for adding the initial weapon loadout to the inventory.
@@ -206,8 +201,8 @@ func put_in_hand(weapon_or_gadget: Node)-> void:
 #@param weapon_path - path to be loaded and instantiated, then added to the inventory
 func add_starting_loadout_to_inventory()-> void:
 	for weapon_path in starting_loadout:
-		var weapon_scene = load(weapon_path)
-		weapon_scene = weapon_scene.instantiate()
+		var weapon_scene = load(weapon_path).instantiate()
+		#weapon_scene = weapon_scene.instantiate()
 		if currently_held_weapon_or_gadget == null:
 			currently_held_weapon_or_gadget = weapon_scene
 		if current_melee_weapon == null and weapon_scene.is_in_group("melee"):
@@ -216,7 +211,6 @@ func add_starting_loadout_to_inventory()-> void:
 			current_ranged_weapon = weapon_scene
 		
 		inventory.add_weapon(weapon_scene.name, weapon_scene)
-
 
 func assign_melee_and_ranged_weapons(weapon_scene: Node3D):
 	if weapon_scene.is_in_group("melee"):
@@ -227,7 +221,7 @@ func assign_melee_and_ranged_weapons(weapon_scene: Node3D):
 func handle_quick_select(direction: String):
 	var shortcut_array: Array = inventory.get_weapons_array_from_quick_select_dir(direction)
 	if shortcut_array.size() == 0:
-		print("Error: shortcut_array is empty for direction:", direction)
+		printerr("Error: shortcut_array is empty for direction:", direction)
 		return
 
 	if currently_held_weapon_or_gadget == shortcut_array[0] and shortcut_array[1] != null:
@@ -235,7 +229,7 @@ func handle_quick_select(direction: String):
 	elif shortcut_array[0] != null:
 		currently_held_weapon_or_gadget = shortcut_array[0]
 	else:
-		print("Error: No valid weapon in shortcut_array for direction:", direction)
+		printerr("Error: No valid weapon in shortcut_array for direction:", direction)
 		return
 
 	put_in_hand(currently_held_weapon_or_gadget)
@@ -248,31 +242,3 @@ func switch_current_weapon_to_melee(melee: bool)-> void:
 		put_in_hand(current_melee_weapon)
 	if ! melee and currently_held_weapon_or_gadget != current_ranged_weapon:
 		put_in_hand(current_ranged_weapon)
-
-#func populate_shortcut_menu():
-	#var shortcuts_0 = {}
-	#var shortcuts_1 = {}
-	#var i = 0
-	#var weapon_name = ''
-	#while i <= 7:
-		#shortcuts_0[i] = inventory.get_random_weapon().name
-		#shortcuts_1[i] = inventory.get_random_weapon().name
-		#i +=1
-	#inventory.weapon_quick_select[0] = shortcuts_0  
-	#inventory.weapon_quick_select[1] = shortcuts_1  
-
-#func populate_shortcut_menu():
-	#var shortcuts_0 = {}
-	#var shortcuts_1 = {}
-	#var i = 0
-	#var weapon_name = ''
-	#while i <= 7:
-		#weapon_name = inventory.get_random_weapon().name
-		#if not shortcuts_0.values().has(weapon_name):
-			#shortcuts_0[i] = weapon_name
-		#weapon_name = inventory.get_random_weapon().name
-		#if not shortcuts_1.values().has(weapon_name):
-			#shortcuts_1[i] = weapon_name
-		#i +=1
-	#inventory.weapon_quick_select[0] = shortcuts_0  
-	#inventory.weapon_quick_select[1] = shortcuts_1  

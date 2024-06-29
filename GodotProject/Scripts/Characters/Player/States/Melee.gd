@@ -1,7 +1,5 @@
 extends PlayerState
 
-
-
 func enter(_msg := {}) -> void:
 	player.switch_current_weapon_to_melee(true)
 	player.putting_ranged_weapon_in_hand_enabled = false
@@ -11,6 +9,7 @@ func enter(_msg := {}) -> void:
 		attack("up")
 		$"../../AttackTimer".start()
 		return
+		
 	if _msg.has("do_air_down_attack"):
 		attack("down")
 		return
@@ -32,8 +31,7 @@ func physics_update(delta: float) -> void:
 		player.putting_ranged_weapon_in_hand_enabled = true
 		state_machine.transition_to("Crouch", {do_slide = true})
 
-	
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and player.is_on_floor():
 		player.combo_step = 0
 		player.putting_ranged_weapon_in_hand_enabled = true
 		state_machine.transition_to("Air", {do_jump = true})
@@ -42,7 +40,7 @@ func physics_update(delta: float) -> void:
 
 #get the combo step information from weapon
 func attack(air_up_down: StringName=""):
-	if player.combo_step > 2:
+	if player.combo_step > player.currently_held_weapon_or_gadget.max_combo_step:
 		player.combo_step = 0 
 	
 	if air_up_down == "up":
@@ -56,29 +54,25 @@ func attack(air_up_down: StringName=""):
 	var advance_distance = 10.0  # Adjust as needed
 	#var advance_direction = -player.global_transform.basis.z.normalized()  # Forward direction, -z is forward
 	var advance_direction = player._rotation_root.transform.basis.z.normalized() 
-	if air_up_down == "":
-		print("attack ",player.combo_step)
-		match player.combo_step:
-			0:
-				player._character_skin.attack(player.combo_step, "cutter")
-				move_character(advance_direction, advance_distance)
-				player.combo_step += 1
-			1:
-				player._character_skin.attack(player.combo_step)
-				move_character(advance_direction, advance_distance)
-				player.combo_step += 1
-			2:
-				player._character_skin.attack(player.combo_step)
-				move_character(advance_direction, advance_distance)
-				player.combo_step = 0  # Reset combo after third attack
+	if not air_up_down == "":
+		return
+		
+	print("attack ",player.combo_step)
 	
+	if player.combo_step < player.currently_held_weapon_or_gadget.max_combo_step:
+		player._character_skin.attack(player.combo_step, player.currently_held_weapon_or_gadget.name)
+		move_character(advance_direction, advance_distance)
+		player.combo_step += 1
+	else:
+		player._character_skin.attack(player.currently_held_weapon_or_gadget.max_combo_step, player.currently_held_weapon_or_gadget.name)
+		move_character(advance_direction, advance_distance)
+		player.combo_step = 0
 
 
 func move_character(direction: Vector3, distance: float):
 	var motion = direction * distance
 	player.velocity = motion
 
-	
 
 func _on_attack_timer_timeout():
 	pass # Replace with function body.

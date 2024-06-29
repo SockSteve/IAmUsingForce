@@ -1,9 +1,12 @@
-[gd_scene format=3 uid="uid://clqubhkmu8ph0"]
+[gd_scene load_steps=2 format=3 uid="uid://clqubhkmu8ph0"]
+
+[ext_resource type="Theme" uid="uid://dvspb4esei5oi" path="res://UI/UITheme_Base_ NoSkew.tres" id="1_ijr6t"]
 
 [node name="ShopAmmunitionButton" type="Button"]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(160, 160)
 offset_right = 114.0
 offset_bottom = 81.0
+theme = ExtResource("1_ijr6t")
 expand_icon = true
 
 [node name="Label" type="Label" parent="."]

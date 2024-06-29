@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://df2wl5sx1ocvp"]
 
-[ext_resource type="Theme" uid="uid://d02hntmjt67aj" path="res://UI/UITheme_1.tres" id="1_03pkw"]
+[ext_resource type="Theme" uid="uid://d02hntmjt67aj" path="res://UI/UITheme_Base.tres" id="1_03pkw"]
 
 [node name="Node3D" type="Node3D"]
 

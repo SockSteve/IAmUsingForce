@@ -31,7 +31,7 @@ class_name Weapon
 @export var bullet : PackedScene = null
 
 @export_subgroup("Melee")
-@export var max_combo_steps: int = 1
+@export var max_combo_step: int = 1
 
 @export_group("Level Specifics")
 @export var max_experience_per_lvl : Dictionary ={}		#dictionary with all xp values

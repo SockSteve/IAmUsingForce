@@ -2,12 +2,16 @@ class_name CharacterSkin
 extends Node3D
 
 signal foot_step
+signal attack_hitbox_state_change(hitbox_state: bool)
+signal lock_player(lock_state: bool)
 
 @export var main_animation_player : AnimationPlayer
 
 #paths to set the moving blend
 var moving_blend_path := "parameters/sm_normal/move/blend_position"
 var crouch_moving_blend_path := "parameters/sm_crouch/move/blend_position"
+var ranged_weapon_grip_blend_path := "parameters/weapon_grip_blend/blend_amount"
+
 #paths to the transitions. they determine what animation sets for wat states are currently in use
 var state_transition_request := "parameters/state_transition/transition_request"
 var weapon_melee_transition_request := "parameters/weapon_melee_transition/transition_request"
@@ -32,12 +36,14 @@ var arm_transition_request := "parameters/armtransition/transition_request"
 @onready var sm_grind : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_grind/playback")
 @onready var sm_grapple : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_grapple/playback")
 @onready var sm_monkeybar : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_monkeybar/playback")
+
 #state machine for holding weapons
 @onready var sm_armtransitions : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_normal/playback")
 
 func _ready():
-	pass
 	animation_tree.active = true
+	#animation_tree.animation_started.connect()
+	#animation_tree.animation_finished.connect()
 	main_animation_player["playback_default_blend_time"] = 0.1
 
 #is used in the walking and crouching state
@@ -64,10 +70,12 @@ func set_crouch_moving_speed(value : float):
 	animation_tree.set(crouch_moving_blend_path, move_speed)
 
 func jump():
+	animation_tree.set(state_transition_request, "state_normal")
 	state_machine.travel("jumpstart")
 
 func fall():
-	state_machine.travel("fall")
+	animation_tree.set(state_transition_request, "state_normal")
+	state_machine.travel("falling")
 
 func crouch():
 	animation_tree.set(state_transition_request, "state_crouch")
@@ -89,12 +97,17 @@ func uncrouch():
 	animation_tree.set(state_transition_request, "state_normal")
 	state_machine.travel("idle")
 
-func change_weapon(weapon:StringName):
+func change_weapon(weapon:StringName, groups: Array[StringName]):
+	if groups.has("melee"):
+		animation_tree.set(ranged_weapon_grip_blend_path, 0)
+		return
+	else:
+		animation_tree.set(ranged_weapon_grip_blend_path, 1)
 	animation_tree.set(arm_transition_request, weapon.to_lower())
 
 func attack(attack_counter:int, weapon_name: StringName = "cutter"):
 	animation_tree.set(state_transition_request, "state_melee")
-	animation_tree.set(weapon_melee_transition_request, "melee_cutter")
+	animation_tree.set(weapon_melee_transition_request, weapon_name)
 	var current_attack_animation = "attack_" + str(attack_counter)
 	sm_melee_cutter.travel(current_attack_animation)
 
@@ -114,7 +127,11 @@ func return_to_normal():
 
 func grapple():
 	animation_tree.set(state_transition_request, "state_grapple")
-	sm_grapple.travel("mixamograpple_grapplestart")
+	sm_grapple.travel("mixamograpple_hanginggrapple")
+
+func grab_ledge():
+	animation_tree.set(state_transition_request, "state_ledgehanging")
+	sm_ledgehanging.travel("idle")
 
 func monkey_bar():
 	printerr("MONKEYBARS ANIMATION NOT IMPLEMENTED YET!")

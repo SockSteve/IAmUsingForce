@@ -1,36 +1,31 @@
-[gd_scene load_steps=6 format=3 uid="uid://e6g6ya01rpcg"]
+[gd_scene load_steps=5 format=3 uid="uid://e6g6ya01rpcg"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/MeleeWeapons/MeleeGear/MeleeGear.gd" id="1_2kj4h"]
-[ext_resource type="Texture2D" uid="uid://cobuykxygbpnv" path="res://Assets/Textures/UI/MeleeGearIcon.png" id="2_1am7b"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_draq8"]
-albedo_color = Color(0.568627, 0.568627, 0.568627, 1)
-
-[sub_resource type="BoxMesh" id="BoxMesh_02pf1"]
-material = SubResource("StandardMaterial3D_draq8")
+[ext_resource type="Texture2D" uid="uid://cptr1yhe0c5f7" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/grenadeSmoke.png" id="2_675yk"]
+[ext_resource type="ArrayMesh" uid="uid://cfe2rylp8ix23" path="res://Assets/Kenney/Weapon Pack/Models/grenadeSmoke.obj" id="3_1ark3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q72rh"]
-size = Vector3(0.25, 2.2, 0.25)
+size = Vector3(0.35437, 0.394434, 0.25)
 
 [node name="MeleeGear" type="Node3D" groups=["melee"]]
 script = ExtResource("1_2kj4h")
 _name = "MeleeGear"
 upgrade_name = "MetalGear"
-icon = ExtResource("2_1am7b")
-shop_price = 7000
+icon = ExtResource("2_675yk")
+shop_price = 20000
 bullet_price = -1
 game_progression_flag = 2
 
 [node name="WeaponSkin" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 2, 0, 0, 0, 0.1, 0, 1, 0)
-mesh = SubResource("BoxMesh_02pf1")
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.00876509, 0)
+mesh = ExtResource("3_1ark3")
 
 [node name="HitboxArea" type="Area3D" parent="."]
 monitoring = false
 monitorable = false
 
 [node name="HitboxCollision" type="CollisionShape3D" parent="HitboxArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00569654, 0.057688, 0)
 shape = SubResource("BoxShape3D_q72rh")
 
 [node name="ParryTimer" type="Timer" parent="."]

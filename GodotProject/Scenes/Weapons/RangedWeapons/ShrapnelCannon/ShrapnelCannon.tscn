@@ -1,16 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://en34ra3hel6l"]
+[gd_scene load_steps=5 format=3 uid="uid://en34ra3hel6l"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/RangedWeapons/ShrapnelCannon/ShrapnelCannon.gd" id="1_ng84a"]
-[ext_resource type="Texture2D" uid="uid://blqyiovspwi7m" path="res://Assets/Textures/UI/Shrapnel_Cannon_Icon.png" id="2_hd7vk"]
+[ext_resource type="Texture2D" uid="uid://cqmkikw58pg58" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/shotgunShort.png" id="2_mmh0d"]
 [ext_resource type="PackedScene" uid="uid://beq13f8xapqh5" path="res://Scenes/Weapons/RangedWeapons/ShrapnelCannon/ShrapnelCannonBullet.tscn" id="3_y5qe3"]
+[ext_resource type="ArrayMesh" uid="uid://vs333uux577n" path="res://Assets/Kenney/Weapon Pack/Models/shotgunShort.obj" id="4_2ocds"]
 
 [node name="ShrapnelCannon" type="Node3D" groups=["ranged"]]
 script = ExtResource("1_ng84a")
-icon = ExtResource("2_hd7vk")
+icon = ExtResource("2_mmh0d")
 bullet = ExtResource("3_y5qe3")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-size = Vector3(0.1, 0.1, 0.9698)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("4_2ocds")
 
-[node name="Marker3D" type="Marker3D" parent="CSGBox3D"]
+[node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.56142)
