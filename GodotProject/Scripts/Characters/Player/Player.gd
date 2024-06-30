@@ -110,6 +110,9 @@ func _physics_process(delta)-> void:
 	#print("melee weapon ", current_melee_weapon)
 	#print("ranged weapon ", current_ranged_weapon)
 	
+	#TODO 
+	#export into own function
+	
 	if Input.is_action_just_pressed("strafe"):
 		is_strafing = not is_strafing
 	
