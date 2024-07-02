@@ -279,11 +279,9 @@ bones/51/rotation = Quaternion(0.364391, -0.109376, 0.0287752, 0.924353)
 bones/52/rotation = Quaternion(0.449863, 0.0607724, -0.164155, 0.875776)
 bones/53/rotation = Quaternion(0.488696, 0.0595852, 0.14461, 0.85832)
 bones/54/rotation = Quaternion(1.49012e-08, 0, 0, 1)
-bones/57/rotation = Quaternion(0, 0.707107, -0.707107, 0)
-bones/62/rotation = Quaternion(0, 0.707107, -0.707107, 0)
 
 [node name="MeleeHand" parent="Player/CharacterRotationRoot/CharacterSkin" index="2"]
-transform = Transform3D(-0.0455859, -0.00217351, 0.998958, 0.998819, -0.0169132, 0.0455429, 0.0167965, 0.999854, 0.00294173, -0.0474305, 1.28806, 0.311384)
+transform = Transform3D(-0.0455863, -0.00217363, 0.998958, 0.998819, -0.0169131, 0.0455431, 0.0167964, 0.999855, 0.00294214, -0.0474307, 1.28806, 0.311383)
 
 [node name="GrapplePoint" parent="." instance=ExtResource("3_586er")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5518, 14.019, 82.8753)

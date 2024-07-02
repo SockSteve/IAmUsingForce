@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/Weapons/RangedWeapons/BadPrank/BadPrank.gd" id="1_nk07d"]
 [ext_resource type="PackedScene" uid="uid://bpfwxaialqgsh" path="res://Scenes/Weapons/RangedWeapons/BadPrank/BadPrankBullet.tscn" id="2_1kdye"]
-[ext_resource type="Texture2D" uid="uid://ucm8w8b0rlgy" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/flamethrower.png" id="2_ycopd"]
-[ext_resource type="ArrayMesh" uid="uid://cuwwca0vptape" path="res://Assets/Kenney/Weapon Pack/Models/flamethrowerHandle.obj" id="4_t7v1b"]
+[ext_resource type="Texture2D" uid="uid://b066bb605c84m" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/flamethrower.png" id="2_ycopd"]
+[ext_resource type="ArrayMesh" uid="uid://bq6yywxtk83fq" path="res://Assets/Kenney/Weapon Pack/Models/flamethrowerHandle.obj" id="4_t7v1b"]
 
 [node name="BadPrank" type="Node3D" groups=["ranged"]]
 script = ExtResource("1_nk07d")
