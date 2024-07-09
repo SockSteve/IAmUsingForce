@@ -6,6 +6,7 @@ extends Weapon
 
 @onready var fire_rate_timer: Timer = $FireRateTimer
 @onready var bullet_spawn_marker: Marker3D = $Marker3D
+@export var shoot_sfx: AudioStreamPlayer3D
 
 var can_shoot: bool = true
 
@@ -14,6 +15,8 @@ func _process(delta)->void:
 		shoot()
 
 func shoot()->void:
+	attack_signal.emit()
+	shoot_sfx.play()
 	var bullet: Node3D = bullet.instantiate()
 	
 	#add child to character out of rotational root detached from any player transform
