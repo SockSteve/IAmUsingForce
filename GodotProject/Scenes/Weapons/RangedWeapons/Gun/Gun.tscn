@@ -55,7 +55,7 @@ current_ammunition = 32
 max_ammunition = 100
 bullet = ExtResource("2_j5oes")
 
-[node name="Marker3D" type="Marker3D" parent="."]
+[node name="BulletSpawn" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, -2.11758e-22, 0, 1, 8.35188e-23, 0, 8.35188e-23, 1, 0.00159025, 0.0119831, 0.118286)
 
 [node name="Pistol" type="MeshInstance3D" parent="."]
@@ -75,8 +75,9 @@ light = NodePath("OmniLight3D")
 emitter = NodePath("GPUParticles3D")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="MuzzleFlash"]
-transform = Transform3D(0.2, 0, 1.32349e-22, 0, 0.2, 1.67038e-23, 0, 1.67038e-23, 0.2, -4.70309e-10, 0.0107594, 0.118986)
+transform = Transform3D(1, 0, 0, 0, 1, -8.3519e-23, 0, 8.3519e-23, 1, -4.70309e-10, 0.0107594, 0.118986)
 visible = false
+omni_attenuation = 0.420448
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="MuzzleFlash"]
 transform = Transform3D(0.2, 0, 7.94093e-23, 0, 0.2, 1.67038e-23, 0, 1.67038e-23, 0.2, -4.70309e-10, 0.0107594, 0.118986)

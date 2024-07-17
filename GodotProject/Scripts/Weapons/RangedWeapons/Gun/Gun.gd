@@ -4,9 +4,9 @@ extends Weapon
 @export var bullet_speed : float = 100.0
 @export var fire_rate : float = 0.25
 
-@onready var fire_rate_timer: Timer = $FireRateTimer
-@onready var bullet_spawn_marker: Marker3D = $Marker3D
 @export var shoot_sfx: AudioStreamPlayer3D
+@onready var fire_rate_timer: Timer = $FireRateTimer
+@onready var bullet_spawn_marker: Marker3D = $BulletSpawn
 
 var can_shoot: bool = true
 
@@ -27,7 +27,8 @@ func shoot()->void:
 
 	# Apply velocity to the bullet
 	var direction = global_transform.basis.z.normalized()
-	bullet.linear_velocity = direction * bullet_speed
+	bullet.linear_velocity = bullet.global_transform.basis.z * bullet_speed#direction * bullet_speed
+	bullet.global_transform.basis.z =  global_transform.basis.z.normalized()
 
 	# Implement fire rate
 	can_shoot = false
