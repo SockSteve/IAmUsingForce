@@ -6,7 +6,7 @@
 [ext_resource type="Theme" uid="uid://d02hntmjt67aj" path="res://UI/UITheme_Base.tres" id="3_stmwa"]
 [ext_resource type="Theme" uid="uid://dvspb4esei5oi" path="res://UI/UITheme_Base_ NoSkew.tres" id="5_a5rer"]
 [ext_resource type="Texture2D" uid="uid://jedvca0wwrh0" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/ammo_pistol.png" id="6_dy6un"]
-[ext_resource type="AudioStream" uid="uid://ckthte10wylpn" path="res://Assets/Kenney/kenney_interface-sounds/Audio/click_005.ogg" id="7_khdft"]
+[ext_resource type="AudioStream" uid="uid://d4gcil3ga3ccg" path="res://Assets/Kenney/kenney_ui-pack/Sounds/tap-a.ogg" id="7_khdft"]
 
 [sub_resource type="SystemFont" id="SystemFont_qjh1b"]
 hinting = 2
