@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://cfru43w2xfbl2"]
 
 [ext_resource type="Script" path="res://Scripts/Weapons/RangedWeapons/Gun/Gun.gd" id="1_eansb"]
-[ext_resource type="Texture2D" uid="uid://luu1ncah51id" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/machinegun.png" id="2_0krcr"]
+[ext_resource type="Texture2D" uid="uid://dx3uap5faa1r0" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/machinegun.png" id="2_0krcr"]
 [ext_resource type="PackedScene" uid="uid://owsxbjhadsho" path="res://Scenes/Weapons/RangedWeapons/Gun/GunBullet.tscn" id="2_j5oes"]
-[ext_resource type="ArrayMesh" uid="uid://b3yox47uinrmm" path="res://Assets/Kenney/Weapon Pack/Models/machinegun.obj" id="4_23puu"]
+[ext_resource type="ArrayMesh" uid="uid://ihflrjje83gl" path="res://Assets/Kenney/Weapon Pack/Models/machinegun.obj" id="4_23puu"]
 [ext_resource type="Script" path="res://Scripts/Weapons/RangedWeapons/MuzzleFlash.gd" id="5_nhikp"]
-[ext_resource type="AudioStream" uid="uid://bc2t56unn01o4" path="res://Assets/Kenney/kenney_impact-sounds/Audio/impactPlank_medium_001.ogg" id="5_re7nf"]
+[ext_resource type="AudioStream" uid="uid://yw8srbqof5xq" path="res://Assets/Kenney/kenney_impact-sounds/Audio/impactPlank_medium_001.ogg" id="5_re7nf"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f1fn7"]
 angle_min = -95.3

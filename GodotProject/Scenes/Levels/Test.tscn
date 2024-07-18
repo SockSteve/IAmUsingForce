@@ -354,7 +354,6 @@ transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 6.25976, 1.39886, 58.91
 
 [node name="Player" parent="." instance=ExtResource("3_t8btd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.7273, 0.717426, 8.05708)
-crouch_acceleration = 3.0
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.00787138, 0.999969, 0, -0.999969, 0.00787138, 46.5912, 18.8276, 41.777)
