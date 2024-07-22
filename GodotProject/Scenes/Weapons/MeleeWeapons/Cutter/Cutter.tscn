@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://Scripts/Weapons/MeleeWeapons/Cutter/Cutter.gd" id="1_vf8ox"]
 [ext_resource type="PackedScene" uid="uid://bqp21jx4d4l2f" path="res://Scenes/Weapons/MeleeWeapons/Cutter/CutterBullet.tscn" id="2_hv2fr"]
-[ext_resource type="Texture2D" uid="uid://du0vm1mkfeigy" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/knifeRound_sharp.png" id="2_mo0mh"]
-[ext_resource type="ArrayMesh" uid="uid://bkh06neorx0ip" path="res://Assets/Kenney/Weapon Pack/Models/ammo_rocket.obj" id="3_hjm8s"]
-[ext_resource type="ArrayMesh" uid="uid://dbi7tgpp28n38" path="res://Assets/Kenney/Weapon Pack/Models/knife_sharp.obj" id="4_5lqtr"]
+[ext_resource type="Texture2D" uid="uid://58gj3m76qtx1" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/knifeRound_sharp.png" id="2_mo0mh"]
+[ext_resource type="ArrayMesh" uid="uid://701xj700glwg" path="res://Assets/Kenney/Weapon Pack/Models/ammo_rocket.obj" id="3_hjm8s"]
+[ext_resource type="ArrayMesh" uid="uid://da6sawgy2fspe" path="res://Assets/Kenney/Weapon Pack/Models/knife_sharp.obj" id="4_5lqtr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q72rh"]
 size = Vector3(0.25, 1.58729, 0.25)
