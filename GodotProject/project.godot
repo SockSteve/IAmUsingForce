@@ -24,6 +24,7 @@ HelperLibrary="*res://Singletons/HelperLibrary.tscn"
 BulletContainer="*res://Singletons/BulletContainer.tscn"
 SignalBus="*res://Singletons/SignalBus.gd"
 DebugMenu="*res://Singletons/DebugMenu.tscn"
+Shaker="*res://addons/shaker/src/Shaker.gd"
 
 [debug]
 
