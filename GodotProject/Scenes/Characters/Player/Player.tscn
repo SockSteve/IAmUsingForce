@@ -174,9 +174,6 @@ bones/37/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
 bones/57/rotation = Quaternion(0, 0.707107, -0.707107, 0)
 bones/62/rotation = Quaternion(0, 0.707107, -0.707107, 0)
 
-[node name="MeleeHand" parent="CharacterRotationRoot/CharacterSkin" index="2"]
-transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, -0.737829, 1.43559, -0.0617137)
-
 [node name="PlayerHand" type="Node3D" parent="CharacterRotationRoot/CharacterSkin"]
 unique_name_in_owner = true
 script = ExtResource("16_mjyse")

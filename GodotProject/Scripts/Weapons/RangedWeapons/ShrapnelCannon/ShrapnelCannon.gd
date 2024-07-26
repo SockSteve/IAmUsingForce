@@ -5,6 +5,7 @@ extends Weapon
 @export var fire_rate : float = 1
 
 @onready var bullet_spawn_marker: Marker3D = $BulletSpawn
+@onready var shoot_sfx: AudioStreamPlayer3D = $ShootSfx
 var can_shoot = true
 
 func _process(delta):
@@ -20,6 +21,7 @@ func shoot():
 	# Set the bullet's position to the gun's position
 	bullet.global_transform.origin = bullet_spawn_marker.global_transform.origin
 	bullet.shoot()
+	shoot_sfx.play()
 	# Apply velocity to the bullet
 	#var direction = global_transform.basis.z.normalized()
 	#bullet.linear_velocity = direction * bullet_speed
