@@ -6,6 +6,7 @@
 [ext_resource type="ArrayMesh" uid="uid://vs333uux577n" path="res://Assets/Kenney/Weapon Pack/Models/shotgunShort.obj" id="4_2ocds"]
 
 [node name="ShrapnelCannon" type="Node3D" groups=["ranged"]]
+transform = Transform3D(1, 0, 0, 0, -0.0554904, 0.998459, 0, -0.998459, -0.0554904, 0, 0, 0)
 script = ExtResource("1_ng84a")
 icon = ExtResource("2_mmh0d")
 bullet = ExtResource("3_y5qe3")
@@ -13,5 +14,5 @@ bullet = ExtResource("3_y5qe3")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = ExtResource("4_2ocds")
 
-[node name="Marker3D" type="Marker3D" parent="."]
+[node name="BulletSpawn" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.56142)
