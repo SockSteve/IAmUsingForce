@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cfv2ecbe68yfi"]
+[gd_scene load_steps=48 format=3 uid="uid://cfv2ecbe68yfi"]
 
 [ext_resource type="Texture2D" uid="uid://dk3g261yc4qry" path="res://Assets/Placeholders/Environment/Skyboxes/panorama_image.png" id="1_mhjnm"]
 [ext_resource type="Texture2D" uid="uid://bid2isp42co6r" path="res://addons/kenney_prototype_textures/orange/texture_01.png" id="1_y6805"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://du0ausxn5e6vk" path="res://Assets/Placeholders/Environment/fern_grass_02/scene.gltf" id="7_mr86d"]
 [ext_resource type="PackedScene" uid="uid://bllxyncmft2sj" path="res://Scenes/Interactibles/GrapplingPoints/GrapplePoint.tscn" id="7_nwman"]
 [ext_resource type="PackedScene" uid="uid://fbpbxpmuqx3g" path="res://Scenes/Characters/Merchants/vendor.tscn" id="11_ahr15"]
-[ext_resource type="ArrayMesh" uid="uid://dgd1sli7r3ynx" path="res://Assets/Kenney/Weapon Pack/Models/shotgunShort.obj" id="14_qv7x6"]
+[ext_resource type="ArrayMesh" uid="uid://vs333uux577n" path="res://Assets/Kenney/Weapon Pack/Models/shotgunShort.obj" id="14_qv7x6"]
 [ext_resource type="PackedScene" uid="uid://b1nlc7o2d0leo" path="res://Scenes/Characters/Enemies/StationaryTurret/StationaryTurret.tscn" id="15_20i8t"]
 [ext_resource type="PackedScene" uid="uid://oun126a7s625" path="res://Scenes/Characters/Enemies/StationaryLookAtTurret/TestEnemy_2.tscn" id="16_a0aqu"]
 [ext_resource type="PackedScene" uid="uid://cbg2qc717km4f" path="res://Scenes/Characters/Enemies/MovingSmallEnemyRanged/sm_testranged.tscn" id="16_bkljh"]
@@ -136,6 +136,9 @@ size = Vector3(5, 2, 5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_k1eka"]
 size = Vector3(5, 2, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ha8e"]
+albedo_color = Color(0.364706, 0.364706, 0.364706, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -517,6 +520,12 @@ shape = SubResource("BoxShape3D_u8aat")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CrouchHangBlock4"]
 layers = 64
 mesh = SubResource("BoxMesh_k1eka")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." groups=["monkey_bar"]]
+transform = Transform3D(0.984019, 0.178064, 0, -0.178064, 0.984019, 0, 0, 0, 1, -8.5309, 4.60613, 28.8695)
+material_override = SubResource("StandardMaterial3D_6ha8e")
+use_collision = true
+size = Vector3(7.30371, 1, 2.23486)
 
 [editable path="Vendor"]
 [editable path="Vendor/ShopMenu3D"]

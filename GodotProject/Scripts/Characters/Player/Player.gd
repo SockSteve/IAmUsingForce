@@ -68,6 +68,7 @@ var is_sliding: bool = false
 var can_grind: bool = true
 var is_grinding: bool = false
 var is_grappling: bool = false
+var is_monkey_bar: bool = false
 var is_ledge_grabbing: bool = false
 var is_hanging: bool = false
 var is_magnetized: bool = false

@@ -13,6 +13,7 @@ func enter(msg := {}) -> void:
 	if msg.has("do_crouch_jump"):
 		player.velocity.y += player.crouch_jump_initial_impulse
 		player._character_skin.jump()
+		jumped = true
 		
 	if msg.has("do_launch"):
 		player.velocity.y += player.launch_initial_impulse
@@ -53,11 +54,12 @@ func physics_update(delta: float) -> void:
 	
 	
 	if Input.is_action_just_pressed("melee_attack"):
-		if player.velocity.y > 0:
-			state_machine.transition_to("Melee", {do_air_up_attack = true})
-		else:
+		if player.velocity.y <= 0:
 			state_machine.transition_to("Melee", {do_air_down_attack = true})
-		return
+			return
+		if player.velocity.y > 0 and Input.is_action_pressed("jump"):
+			state_machine.transition_to("Melee", {do_air_up_attack = true})
+			return
 	
 	if player.get_inventory().has_gadget("GrapplingHook") and Input.is_action_pressed("interact"):
 		player.get_inventory().get_gadget("GrapplingHook").activate()
@@ -65,13 +67,16 @@ func physics_update(delta: float) -> void:
 			jumped = false
 			state_machine.transition_to("Grapple")
 			return
-		
 	
 	if player.get_inventory().has_gadget("GrindBoots"):
 		if player.is_grinding:
 			jumped = false
 			state_machine.transition_to("Grind")
 			return
+	
+	if player.is_monkey_bar:
+		jumped = false
+		state_machine.transition_to("MonkeyBars")
 	
 	if player.is_on_floor():
 		jumped = false

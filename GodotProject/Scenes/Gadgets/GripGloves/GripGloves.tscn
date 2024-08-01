@@ -9,3 +9,6 @@ _name = "GripGloves"
 icon = ExtResource("2_rp5rv")
 game_progression_flag = 2
 special_flag = 3
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 1, 0)
