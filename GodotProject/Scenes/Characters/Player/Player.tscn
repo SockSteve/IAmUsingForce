@@ -188,8 +188,6 @@ debug_shape_custom_color = Color(1, 0.403922, 0.545098, 1)
 
 [node name="PassiveGadgets" type="Node3D" parent="CharacterRotationRoot"]
 
-[node name="MonkeyBarRay" type="RayCast3D" parent="CharacterRotationRoot/PassiveGadgets"]
-
 [node name="Inventory" type="Node3D" parent="."]
 script = ExtResource("16_kqrv3")
 

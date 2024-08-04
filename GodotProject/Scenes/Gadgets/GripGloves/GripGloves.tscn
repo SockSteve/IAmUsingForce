@@ -12,3 +12,7 @@ special_flag = 3
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 1, 0)
+
+[node name="ReleaseTimer" type="Timer" parent="." groups=["gadget", "passive"]]
+
+[connection signal="timeout" from="ReleaseTimer" to="." method="_on_release_timer_timeout"]

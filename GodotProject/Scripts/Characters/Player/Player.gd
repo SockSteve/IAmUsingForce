@@ -89,6 +89,7 @@ var stored_weapon_on_gadget_use: Node #this variable is only assigned with the a
 #debug
 @onready var grappling_hook = preload("res://Scenes/Gadgets/GrapplingHook/GrapplingHook.tscn").instantiate()
 @onready var grinding_boots = preload("res://Scenes/Gadgets/GrindBoots/GrindBoots.tscn").instantiate()
+@onready var grip_gloves = preload("res://Scenes/Gadgets/GripGloves/GripGloves.tscn").instantiate()
 
 func _ready() -> void:
 	set_up_input()
@@ -98,6 +99,7 @@ func _ready() -> void:
 	put_in_hand(currently_held_weapon_or_gadget)
 	inventory.add_gadget(grappling_hook.name, grappling_hook)
 	inventory.add_gadget(grinding_boots.name, grinding_boots)
+	inventory.add_gadget(grip_gloves.name, grip_gloves)
 	
 func set_up_input():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
