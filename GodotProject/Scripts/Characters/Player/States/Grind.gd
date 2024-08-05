@@ -18,6 +18,7 @@ func enter(_msg := {}) -> void:
 	set_initial_progress(player.global_transform.origin)
 
 #here we move the player along the path3d throug a path_follow3d
+
 func physics_update(delta: float) -> void:
 	if path_3d != null:
 		#update player progress
@@ -30,18 +31,24 @@ func physics_update(delta: float) -> void:
 			
 		player._rotation_root.global_basis = path_follow_3d.global_basis.rotated(Vector3(0,1,0),PI)
 		
-		if path_follow_3d.progress_ratio >= .9:
-			endGrind()
+		print(path_follow_3d.progress_ratio)
+		if path_follow_3d.progress_ratio >= .95:
+			if player.get_inventory().get_gadget("GrindBoots").is_looping:
+				path_follow_3d.progress_ratio = 0.0
+			else:
+				endGrind()
 			return
 		
+		
+		
 		#when we have a grindrails next to ours and detect them, we can jump to them 
-		if Input.is_action_pressed("move_left") and player.get_inventory().get_gadget("GrindBoots").get_side_rail_path3d("left") != null and Input.is_action_just_pressed("jump"):
-			change_grindrail("left")
-			grind_rail_change = true
-			#return
-		if Input.is_action_pressed("move_right") and player.get_inventory().get_gadget("GrindBoots").get_side_rail_path3d("right") != null and Input.is_action_just_pressed("jump"):
-			change_grindrail("right")
-			grind_rail_change = true
+		if Input.is_action_just_pressed("jump"):
+			if Input.is_action_pressed("move_left") and player.get_inventory().get_gadget("GrindBoots").get_side_rail_path3d("left") != null:
+				change_grindrail("left")
+				grind_rail_change = true
+			elif Input.is_action_pressed("move_right") and player.get_inventory().get_gadget("GrindBoots").get_side_rail_path3d("right") != null:
+				change_grindrail("right")
+				grind_rail_change = true
 			#return
 		
 		if grind_rail_change:

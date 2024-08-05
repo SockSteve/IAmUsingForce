@@ -18,6 +18,7 @@ var current_grindrail : Path3D = null
 @export var grindrail_change_jump_curve: Curve = load("res://Scripts/Gadgets/GrindJumpCurve.tres")
 @export var grind_curve_time_factor: float = 1
 @export var grind_speed_time_factor: float = .3
+@export var is_looping: bool = false
 
 var initialize_grinding: bool = true
 
@@ -31,6 +32,11 @@ func _physics_process(delta):
 	if shape_cast_ground.is_colliding():
 		#if we collide with a grindrail and can grind, we set the parameters for the Grinding state
 		if shape_cast_ground.get_collider(0).is_in_group("grindRail") and player.can_grind:
+			if shape_cast_ground.get_collider(0).is_in_group("loop"):
+				is_looping = true
+			else:
+				is_looping = false
+			
 			if initialize_grinding:
 				
 				current_grindrail = shape_cast_ground.get_collider(0).get_parent()
