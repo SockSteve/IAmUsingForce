@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://Scripts/Gadgets/GripGloves.gd" id="1_3af75"]
 [ext_resource type="Texture2D" uid="uid://fp00l1f827re" path="res://SockSethLogo.png" id="2_rp5rv"]
 
-[node name="GripGlove" type="Node3D" groups=["gadget", "passive"]]
+[node name="GripGloves" type="Node3D" groups=["gadget", "passive"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 script = ExtResource("1_3af75")
 _name = "GripGloves"
 icon = ExtResource("2_rp5rv")
@@ -12,6 +13,7 @@ special_flag = 3
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 1, 0)
+collision_mask = 128
 
 [node name="ReleaseTimer" type="Timer" parent="." groups=["gadget", "passive"]]
 

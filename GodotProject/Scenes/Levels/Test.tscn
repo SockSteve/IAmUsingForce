@@ -525,6 +525,8 @@ mesh = SubResource("BoxMesh_k1eka")
 transform = Transform3D(0.984019, 0.178064, 0, -0.178064, 0.984019, 0, 0, 0, 1, -8.5309, 4.60613, 28.8695)
 material_override = SubResource("StandardMaterial3D_6ha8e")
 use_collision = true
+collision_layer = 224
+collision_mask = 0
 size = Vector3(7.30371, 1, 2.23486)
 
 [editable path="Vendor"]

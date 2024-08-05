@@ -9,6 +9,7 @@ class_name GripGloves
 #TODO
 func _physics_process(delta):
 	if not grip_cast.is_colliding():
+		player.is_monkey_bar = false
 		return
 		
 	if not grip_cast.get_collider().is_in_group("monkey_bar"):
