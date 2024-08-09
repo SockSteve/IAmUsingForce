@@ -32,12 +32,12 @@ func physics_update(delta: float) -> void:
 	
 	#move player through path_follow_3d
 	#we check for grindjump, because when jumping we update our y position, which would otherwise be resetted
-	if !grind_jump:
+	if !grind_jump and not grind_rail_change:
 		player.global_position = path_follow_3d.global_position
-		
+		print("ye")
+	
 	player._rotation_root.global_basis = path_follow_3d.global_basis.rotated(Vector3(0,1,0),PI)
 	
-	print(path_follow_3d.progress_ratio)
 	if path_follow_3d.progress_ratio >= 1:
 		if player.get_inventory().get_gadget("GrindBoots").is_looping:
 			path_follow_3d.progress_ratio = 0.0
@@ -47,6 +47,7 @@ func physics_update(delta: float) -> void:
 	
 	
 	
+	print(grind_rail_change, ' ', delta)
 	#when we have a grindrails next to ours and detect them, we can jump to them 
 	if Input.is_action_just_pressed("jump"):
 		if Input.is_action_pressed("move_left") and player.get_inventory().get_gadget("GrindBoots").get_side_rail_path3d("left") != null:
@@ -64,8 +65,7 @@ func physics_update(delta: float) -> void:
 			grind_jump_time = 0
 			grind_rail_change = false
 		return
-	
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and not grind_rail_change:
 		if !grind_jump:
 			grind_jump = true
 	

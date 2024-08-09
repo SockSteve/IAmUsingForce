@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://du0ausxn5e6vk" path="res://Assets/Placeholders/Environment/fern_grass_02/scene.gltf" id="7_mr86d"]
 [ext_resource type="PackedScene" uid="uid://bllxyncmft2sj" path="res://Scenes/Interactibles/GrapplingPoints/GrapplePoint.tscn" id="7_nwman"]
 [ext_resource type="PackedScene" uid="uid://fbpbxpmuqx3g" path="res://Scenes/Characters/Merchants/vendor.tscn" id="11_ahr15"]
-[ext_resource type="ArrayMesh" uid="uid://vs333uux577n" path="res://Assets/Kenney/Weapon Pack/Models/shotgunShort.obj" id="14_qv7x6"]
+[ext_resource type="ArrayMesh" uid="uid://dgd1sli7r3ynx" path="res://Assets/Kenney/Weapon Pack/Models/shotgunShort.obj" id="14_qv7x6"]
 [ext_resource type="PackedScene" uid="uid://b1nlc7o2d0leo" path="res://Scenes/Characters/Enemies/StationaryTurret/StationaryTurret.tscn" id="15_20i8t"]
 [ext_resource type="PackedScene" uid="uid://oun126a7s625" path="res://Scenes/Characters/Enemies/StationaryLookAtTurret/TestEnemy_2.tscn" id="16_a0aqu"]
 [ext_resource type="PackedScene" uid="uid://cbg2qc717km4f" path="res://Scenes/Characters/Enemies/MovingSmallEnemyRanged/sm_testranged.tscn" id="16_bkljh"]
