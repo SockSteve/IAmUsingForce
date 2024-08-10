@@ -32,9 +32,8 @@ func physics_update(delta: float) -> void:
 	
 	#move player through path_follow_3d
 	#we check for grindjump, because when jumping we update our y position, which would otherwise be resetted
-	if !grind_jump and not grind_rail_change:
+	if not grind_jump and not grind_rail_change:
 		player.global_position = path_follow_3d.global_position
-		print("ye")
 	
 	player._rotation_root.global_basis = path_follow_3d.global_basis.rotated(Vector3(0,1,0),PI)
 	
@@ -45,11 +44,8 @@ func physics_update(delta: float) -> void:
 			endGrind()
 		return
 	
-	
-	
-	print(grind_rail_change, ' ', delta)
 	#when we have a grindrails next to ours and detect them, we can jump to them 
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and not grind_rail_change:
 		if Input.is_action_pressed("move_left") and player.get_inventory().get_gadget("GrindBoots").get_side_rail_path3d("left") != null:
 			change_grindrail("left")
 			grind_rail_change = true
@@ -59,25 +55,26 @@ func physics_update(delta: float) -> void:
 		#return
 	
 	if grind_rail_change:
-		grind_jump_time += delta
-		player.global_position = player.global_position.lerp(path_follow_3d.global_position, grind_jump_time)
+		var player_air_position = path_follow_3d.global_position
+		grind_jump_time += delta * player.get_inventory().get_gadget("GrindBoots").grind_curve_time_factor
+		var jump_y_pos: float =  player.get_inventory().get_gadget("GrindBoots").grind_jump_curve.sample(grind_jump_time)
+		
+		#grind_jump_time += delta
+		player_air_position = player.global_position.lerp(path_follow_3d.global_position, grind_jump_time)
+		player_air_position.y = path_follow_3d.global_position.y + jump_y_pos
+		player.global_position = player_air_position
 		if grind_jump_time >=1:
 			grind_jump_time = 0
 			grind_rail_change = false
 		return
+	
+	
 	if Input.is_action_just_pressed("jump") and not grind_rail_change:
 		if !grind_jump:
 			grind_jump = true
 	
-	
 	if grind_jump:
-		player.global_position = path_follow_3d.global_position
-		grind_jump_time += delta * player.get_inventory().get_gadget("GrindBoots").grind_curve_time_factor
-		var jump_y_pos: float =  player.get_inventory().get_gadget("GrindBoots").grind_jump_curve.sample(grind_jump_time)
-		player.global_position.y = path_follow_3d.global_position.y + jump_y_pos
-		if grind_jump_time >= 1:
-			grind_jump_time = 0.0
-			grind_jump = false
+		jump(delta)
 
 #when we first enter the grindrail, we adjust the progress_ratio of the path_follow3d to start grinding
 #on the impact point where we jumped on
@@ -93,6 +90,7 @@ func set_initial_progress(player_position: Vector3) -> void:
 #currently the grind state is only exited when the end is reached.
 func endGrind():
 	grind_jump = false
+	grind_rail_change = false
 	grind_jump_time = 0.0
 	player._character_skin.end_grind()
 	path_follow_3d.queue_free()
@@ -113,7 +111,18 @@ func change_grindrail(dir):
 	set_initial_progress(player.global_position)
 	#player.get_inventory().get_gadget("GrindBoots").end_grind()
 	#player.velocity.y = 0.0
-	
+
+func jump(delta: float):
+	var player_air_position = path_follow_3d.global_position
+	#player.global_position = path_follow_3d.global_position
+	grind_jump_time += delta * player.get_inventory().get_gadget("GrindBoots").grind_curve_time_factor
+	var jump_y_pos: float =  player.get_inventory().get_gadget("GrindBoots").grind_jump_curve.sample(grind_jump_time)
+	#player.global_position.y = path_follow_3d.global_position.y + jump_y_pos
+	player_air_position.y = path_follow_3d.global_position.y + jump_y_pos
+	player.global_position = player_air_position
+	if grind_jump_time >= 1:
+		grind_jump_time = 0.0
+		grind_jump = false
 
 func _on_jump_completed():
 	# Reset jump state, allow for new actions
