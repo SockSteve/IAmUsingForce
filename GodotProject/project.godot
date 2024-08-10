@@ -25,6 +25,8 @@ BulletContainer="*res://Singletons/BulletContainer.tscn"
 SignalBus="*res://Singletons/SignalBus.gd"
 DebugMenu="*res://Singletons/DebugMenu.tscn"
 Shaker="*res://addons/shaker/src/Shaker.gd"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+CsgToolkitAutoload="*res://addons/csg_toolkit/scripts/csg_toolkit_config.gd"
 
 [debug]
 
@@ -32,7 +34,7 @@ shader_language/warnings/unused_local_variable=false
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ridiculous_coding/plugin.cfg")
+enabled=PackedStringArray("res://addons/csg_toolkit/plugin.cfg", "res://addons/grappling_hook_3d/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/ridiculous_coding/plugin.cfg", "res://addons/shaker/plugin.cfg")
 
 [input]
 
