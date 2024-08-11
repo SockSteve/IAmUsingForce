@@ -34,7 +34,7 @@ shader_language/warnings/unused_local_variable=false
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/csg_toolkit/plugin.cfg", "res://addons/grappling_hook_3d/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/ridiculous_coding/plugin.cfg", "res://addons/shaker/plugin.cfg")
+enabled=PackedStringArray("res://addons/csg_toolkit/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/ridiculous_coding/plugin.cfg", "res://addons/shaker/plugin.cfg")
 
 [input]
 

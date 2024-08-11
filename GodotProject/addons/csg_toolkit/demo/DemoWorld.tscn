@@ -25,10 +25,9 @@ albedo_color = Color(0.351563, 0.351563, 0.351563, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 size = Vector3(8, 6, 0.2)
 
-[node name="Windows" type="CSGCombiner3D" parent="CSGCombiner3D" node_paths=PackedStringArray("template_node")]
+[node name="Windows" type="CSGCombiner3D" parent="CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.3, 0, 0)
 script = ExtResource("1_xplbf")
-template_node = NodePath("Window")
 repeat = Vector3(3, 1, 1)
 spacing = Vector3(1, 0, 0)
 
