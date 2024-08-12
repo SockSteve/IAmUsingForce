@@ -316,15 +316,27 @@ transform = Transform3D(0.999952, 0, -0.00977367, 0, 1, 0, 0.00977367, 0, 0.9999
 use_collision = true
 size = Vector3(11, 17.2241, 25.1266)
 
-[node name="CSGBox3D13" type="CSGBox3D" parent="starting_place/path_split/path1"]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="starting_place/path_split/path1"]
 transform = Transform3D(0.999952, 0, -0.00977367, 0, 1, 0, 0.00977367, 0, 0.999952, 166.464, 1.15229, -25.1376)
+use_collision = true
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="starting_place/path_split/path1/CSGCombiner3D"]
 use_collision = true
 size = Vector3(21, 16, 25.1266)
 
-[node name="CSGBox3D14" type="CSGBox3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(0.999952, 0, -0.00977367, 0, 1, 0, 0.00977367, 0, 0.999952, 171.65, 1.76435, -44.0878)
+[node name="CSGBox3D14" type="CSGBox3D" parent="starting_place/path_split/path1/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00053, 0.61206, -19)
 use_collision = true
 size = Vector3(11, 17.2241, 25.1266)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="starting_place/path_split/path1/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.499908, 1, -0.563303)
+operation = 2
+use_collision = true
+size = Vector3(16, 12, 24)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="starting_place/path_split/path1/CSGCombiner3D"]
+omni_range = 34.0
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="starting_place/path_split/path1"]
 transform = Transform3D(0.968409, 0, 0.249366, 0, 1, 0, -0.249366, 0, 0.968409, 262.578, -7.23565, -110.783)
@@ -371,6 +383,42 @@ height = 68.0875
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170.948, 0.764349, -61.0947)
 use_collision = true
 radius = 5.0
+height = 14.0
+
+[node name="CSGCylinder3D21" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 166.948, -1.23565, -57.0947)
+use_collision = true
+radius = 3.0
+height = 14.0
+
+[node name="CSGCylinder3D22" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.948, -3.23565, -54.0947)
+use_collision = true
+radius = 3.0
+height = 14.0
+
+[node name="CSGCylinder3D23" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.948, -5.23565, -51.0947)
+use_collision = true
+radius = 3.0
+height = 14.0
+
+[node name="CSGCylinder3D24" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.948, -7.23565, -46.0947)
+use_collision = true
+radius = 3.0
+height = 14.0
+
+[node name="CSGCylinder3D25" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.948, -9.23565, -42.0947)
+use_collision = true
+radius = 3.0
+height = 14.0
+
+[node name="CSGCylinder3D26" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.948, -10.8657, -39.0947)
+use_collision = true
+radius = 3.0
 height = 14.0
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
@@ -496,26 +544,186 @@ radius = 5.0
 height = 30.0
 sides = 24
 
-[node name="house_platform" type="CSGBox3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(0.249366, 0, -0.968409, 0, 1, 0, 0.968409, 0, 0.249366, 338.857, -7.23565, -59.1743)
-use_collision = true
-size = Vector3(42, 17.2241, 45)
-
 [node name="path2" type="Node3D" parent="starting_place/path_split"]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="starting_place/path_split/path2"]
+use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="starting_place/path_split/path2/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 226.337, -4.73962, 77.3252)
 size = Vector3(98.1607, 81.6822, 97.9402)
 
+[node name="CSGBox3D4" type="CSGBox3D" parent="starting_place/path_split/path2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 190.84, 18.3079, 42.8239)
+operation = 2
+size = Vector3(29.4105, 8.83564, 18.6985)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="starting_place/path_split/path2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 201.06, 9.48314, 51.8665)
+operation = 2
+size = Vector3(8.96943, 8.83564, 36.7967)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="starting_place/path_split/path2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 209.06, 9.48314, 66.2648)
+operation = 2
+size = Vector3(8.96943, 8.83564, 8)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="starting_place/path_split/path2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 228.575, 5.40096, 55.2648)
+operation = 2
+size = Vector3(34, 23, 40)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="starting_place/path_split/path2/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 247.075, 3.40096, 67.7648)
+operation = 2
+size = Vector3(9, 7, 7)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="starting_place/path_split/path2/CSGCombiner3D"]
+transform = Transform3D(0.5, 0.866025, 0, -0.866025, 0.5, 0, 0, 0, 1, 256.575, -12.599, 67.7648)
+operation = 2
+size = Vector3(32, 3, 3)
+
 [node name="CSGBox3D2" type="CSGBox3D" parent="starting_place/path_split/path2/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 323.825, -17.7534, 77.3638)
-size = Vector3(98.1607, 55.6547, 97.9402)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 324.245, -17.7534, 77.3638)
+size = Vector3(99, 55.6547, 97.9402)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="starting_place/path_split/path2/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 0.996931, -0.0782851, 0, 0.0782851, 0.996931, 349.405, -25.0548, 34.6363)
 size = Vector3(47, 40, 163.436)
+
+[node name="Assembly_Hall" type="Node3D" parent="starting_place"]
+
+[node name="house_platform" type="CSGBox3D" parent="starting_place/Assembly_Hall"]
+transform = Transform3D(0.249366, 0, -0.968409, 0, 1, 0, 0.968409, 0, 0.249366, 338.857, -7.23565, -59.1743)
+use_collision = true
+size = Vector3(42, 17.2241, 45)
+
+[node name="PathToClearing" type="Node3D" parent="starting_place"]
+
+[node name="house_platform2" type="CSGBox3D" parent="starting_place/PathToClearing"]
+transform = Transform3D(-0.00977363, 0, -0.999952, 0, 1, 0, 0.999952, 0, -0.00977363, 366.125, 8.76435, -67.1454)
+use_collision = true
+size = Vector3(6, 17.2241, 9)
+
+[node name="house_platform3" type="CSGBox3D" parent="starting_place/PathToClearing"]
+transform = Transform3D(-0.00977363, 0, -0.999952, 0, 1, 0, 0.999952, 0, -0.00977363, 377.625, 7.1523, -67.1601)
+use_collision = true
+size = Vector3(6, 14, 6)
+
+[node name="house_platform4" type="CSGBox3D" parent="starting_place/PathToClearing"]
+transform = Transform3D(-0.00977363, 0, -0.999952, 0, 1, 0, 0.999952, 0, -0.00977363, 390.625, 5.6523, -67.1406)
+use_collision = true
+size = Vector3(6, 11, 10)
+
+[node name="house_platform5" type="CSGBox3D" parent="starting_place/PathToClearing"]
+transform = Transform3D(-0.713984, 0, -0.700162, 0, 1, 0, 0.700162, 0, -0.713984, 404.625, 5.6523, -65.1406)
+use_collision = true
+size = Vector3(6, 11, 10)
+
+[node name="house_platform6" type="CSGBox3D" parent="starting_place/PathToClearing"]
+transform = Transform3D(-0.968409, 0, -0.249366, 0, 1, 0, 0.249366, 0, -0.968409, 414.625, 2.6523, -54.1406)
+use_collision = true
+size = Vector3(6, 11, 10)
+
+[node name="house_platform7" type="CSGBox3D" parent="starting_place/PathToClearing"]
+transform = Transform3D(-0.999952, 0, 0.00977358, 0, 1, 0, -0.00977358, 0, -0.999952, 421.097, -0.8477, -24.6263)
+use_collision = true
+size = Vector3(28, 18, 37)
+
+[node name="house_platform8" type="CSGBox3D" parent="starting_place/PathToClearing"]
+transform = Transform3D(-0.999952, 0, 0.00977358, 0, 1, 0, -0.00977358, 0, -0.999952, 439.67, -0.8477, 0.957099)
+use_collision = true
+size = Vector3(45, 18, 52)
+
+[node name="house_platform9" type="CSGBox3D" parent="starting_place/PathToClearing"]
+transform = Transform3D(-0.999952, 0, 0.00977358, 0, 1, 0, -0.00977358, 0, -0.999952, 489.169, -0.8477, 17.2356)
+use_collision = true
+size = Vector3(102, 18, 52)
+
+[node name="wall" type="CSGBox3D" parent="starting_place/PathToClearing"]
+transform = Transform3D(-0.00944058, -0.258819, -0.965879, -0.0025296, 0.965926, -0.258807, 0.999952, 0, -0.00977361, 420.417, 0.739254, -85.4721)
+use_collision = true
+size = Vector3(6, 73, 108)
+
+[node name="wall2" type="CSGBox3D" parent="starting_place/PathToClearing"]
+transform = Transform3D(-0.259451, 0.00851855, -0.965718, 0.0669008, 0.997718, -0.0091728, 0.963436, -0.0669873, -0.259428, 387.887, -19.0903, -51.5655)
+use_collision = true
+size = Vector3(6, 84, 36)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="starting_place/PathToClearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 355.125, 2.26435, -58.6454)
+use_collision = true
+size = Vector3(1, 2, 2)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="starting_place/PathToClearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 355.125, 4.26435, -56.6454)
+use_collision = true
+size = Vector3(1, 2, 2)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="starting_place/PathToClearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 357.125, 6.26435, -54.6454)
+use_collision = true
+size = Vector3(1, 2, 2)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="starting_place/PathToClearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 357.125, 8.26435, -57.6454)
+use_collision = true
+size = Vector3(1, 2, 2)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="starting_place/PathToClearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 357.125, 10.2643, -60.6454)
+use_collision = true
+size = Vector3(1, 2, 2)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="starting_place/PathToClearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 357.125, 12.2643, -63.6454)
+use_collision = true
+size = Vector3(1, 2, 2)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="starting_place/PathToClearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 357.125, 14.2643, -66.6454)
+use_collision = true
+size = Vector3(1, 2, 2)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="starting_place/PathToClearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 357.125, 16.2644, -69.6454)
+use_collision = true
+size = Vector3(1, 2, 2)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="starting_place/PathToClearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 359.125, 16.2644, -69.6454)
+use_collision = true
+size = Vector3(1, 2, 2)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="starting_place/PathToClearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 361.125, 16.2644, -69.6454)
+use_collision = true
+size = Vector3(1, 2, 2)
+
+[node name="Clearing" type="Node3D" parent="."]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Clearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 556.169, 7.1523, 17.2356)
+use_collision = true
+radius = 23.0
+
+[node name="BossArena" type="CSGCylinder3D" parent="Clearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 600.169, 7.1523, 17.2356)
+use_collision = true
+radius = 39.0
+height = 6.0
+
+[node name="BossArena2" type="CSGCylinder3D" parent="Clearing/BossArena"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+operation = 2
+use_collision = true
+radius = 31.0
+height = 6.0
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Clearing"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 647.169, 7.1523, 2.23565)
+use_collision = true
+radius = 39.0
 
 [node name="Node3D2" type="Node3D" parent="."]
 
