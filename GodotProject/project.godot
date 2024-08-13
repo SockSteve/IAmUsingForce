@@ -25,7 +25,6 @@ BulletContainer="*res://Singletons/BulletContainer.tscn"
 SignalBus="*res://Singletons/SignalBus.gd"
 DebugMenu="*res://Singletons/DebugMenu.tscn"
 Shaker="*res://addons/shaker/src/Shaker.gd"
-PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 CsgToolkitAutoload="*res://addons/csg_toolkit/scripts/csg_toolkit_config.gd"
 
 [debug]
