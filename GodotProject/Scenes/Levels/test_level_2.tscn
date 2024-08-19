@@ -1,4 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bttb2yvi5q3fb"]
+[gd_scene load_steps=8 format=3 uid="uid://bttb2yvi5q3fb"]
+
+[ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Scenes/Characters/Player/Player.tscn" id="1_iyogp"]
+
+[sub_resource type="Environment" id="Environment_tsh1l"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxdnk"]
 albedo_color = Color(0.597956, 0.354775, 7.70092e-06, 1)
@@ -20,6 +24,13 @@ point_count = 5
 albedo_color = Color(1, 0.74902, 0.870588, 1)
 
 [node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_tsh1l")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0)
+light_color = Color(0.4, 0.556863, 0.682353, 1)
 
 [node name="starting_place" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
@@ -1625,3 +1636,24 @@ inner_radius = 4.0
 outer_radius = 8.0
 
 [node name="nextarea" type="Node3D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("1_iyogp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="GeneralSkeleton" parent="Player/CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature" index="0"]
+bones/9/rotation = Quaternion(0, -0.707107, 0, 0.707107)
+bones/10/rotation = Quaternion(0, 0.707107, 0, 0.707107)
+bones/12/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
+bones/13/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
+bones/33/rotation = Quaternion(0, 0.707107, 0, 0.707107)
+bones/34/rotation = Quaternion(0, -0.707107, 0, 0.707107)
+bones/36/rotation = Quaternion(-0.214187, -0.673887, -0.214187, 0.673887)
+bones/37/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
+bones/57/rotation = Quaternion(0, 0.707107, -0.707107, 0)
+bones/62/rotation = Quaternion(0, 0.707107, -0.707107, 0)
+
+[node name="MeleeHand" parent="Player/CharacterRotationRoot/CharacterSkin" index="2"]
+transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, -0.737829, 1.43559, -0.0617137)
+
+[editable path="Player"]
+[editable path="Player/CharacterRotationRoot/CharacterSkin"]
