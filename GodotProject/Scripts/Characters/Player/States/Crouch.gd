@@ -111,4 +111,3 @@ func slide():
 	if slide_time >= 1:
 		player.is_sliding = false
 		slide_time = 0.0
-

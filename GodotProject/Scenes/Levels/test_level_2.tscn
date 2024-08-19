@@ -1,8 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bttb2yvi5q3fb"]
-
-[ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Scenes/Characters/Player/Player.tscn" id="1_l5xy4"]
-
-[sub_resource type="Environment" id="Environment_ct3bs"]
+[gd_scene load_steps=6 format=3 uid="uid://bttb2yvi5q3fb"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uxdnk"]
 albedo_color = Color(0.597956, 0.354775, 7.70092e-06, 1)
@@ -25,13 +21,8 @@ albedo_color = Color(1, 0.74902, 0.870588, 1)
 
 [node name="Node3D" type="Node3D"]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_ct3bs")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(1, 0, 0, 0, 0.258819, 0.965926, 0, -0.965926, 0.258819, 0, 9, 0)
-
 [node name="starting_place" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="hangar_area" type="Node3D" parent="starting_place"]
 
@@ -1634,6 +1625,3 @@ inner_radius = 4.0
 outer_radius = 8.0
 
 [node name="nextarea" type="Node3D" parent="."]
-
-[node name="Player" parent="." instance=ExtResource("1_l5xy4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.332001, 5.40644, -23.0471)

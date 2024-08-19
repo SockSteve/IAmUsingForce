@@ -165,21 +165,6 @@ debug_shape_custom_color = Color(0, 1, 0, 1)
 [node name="CharacterSkin" parent="CharacterRotationRoot" instance=ExtResource("15_7yrxv")]
 unique_name_in_owner = true
 
-[node name="GeneralSkeleton" parent="CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature" index="0"]
-bones/9/rotation = Quaternion(0, -0.707107, 0, 0.707107)
-bones/10/rotation = Quaternion(0, 0.707107, 0, 0.707107)
-bones/12/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/13/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
-bones/33/rotation = Quaternion(0, 0.707107, 0, 0.707107)
-bones/34/rotation = Quaternion(0, -0.707107, 0, 0.707107)
-bones/36/rotation = Quaternion(-0.214187, -0.673887, -0.214187, 0.673887)
-bones/37/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
-bones/57/rotation = Quaternion(0, 0.707107, -0.707107, 0)
-bones/62/rotation = Quaternion(0, 0.707107, -0.707107, 0)
-
-[node name="MeleeHand" parent="CharacterRotationRoot/CharacterSkin" index="2"]
-transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, -0.737829, 1.43559, -0.0617137)
-
 [node name="PlayerHand" type="Node3D" parent="CharacterRotationRoot/CharacterSkin"]
 unique_name_in_owner = true
 script = ExtResource("16_mjyse")
@@ -547,9 +532,11 @@ current_tab = 1
 [node name="TabBar" type="TabBar" parent="CanvasLayer/StartMenu/SSMOptionsMenu/TabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="TabBar2" type="TabBar" parent="CanvasLayer/StartMenu/SSMOptionsMenu/TabContainer"]
 layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="SSMWeaponsAndGadgetsMenu" type="Control" parent="CanvasLayer/StartMenu"]
 visible = false
@@ -598,9 +585,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 item_count = 2
 max_columns = 2
-item_0/text = ""
 item_0/icon = ExtResource("29_sc2yr")
-item_1/text = ""
 item_1/icon = ExtResource("29_sc2yr")
 
 [node name="WeaponInfo" type="Panel" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/Panel"]
@@ -675,9 +660,11 @@ offset_left = 601.0
 offset_top = 57.0
 offset_right = 1092.0
 offset_bottom = 437.0
+current_tab = 0
 
 [node name="Selection 1" type="TabBar" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer"]
 layout_mode = 2
+metadata/_tab_index = 0
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer/Selection 1"]
 layout_mode = 1
@@ -787,10 +774,12 @@ layout_mode = 2
 [node name="Selection 2" type="TabBar" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 1
 
 [node name="Selection 3" type="TabBar" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/TabContainer"]
 visible = false
 layout_mode = 2
+metadata/_tab_index = 2
 
 [node name="ComboTimer" type="Timer" parent="."]
 editor_description = "This Node is used in state melee"
