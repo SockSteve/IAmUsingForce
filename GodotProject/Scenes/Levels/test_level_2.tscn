@@ -28,6 +28,73 @@ albedo_color = Color(1, 0.74902, 0.870588, 1)
 
 [node name="NogoForestDemo" parent="." instance=ExtResource("1_jf07b")]
 
+[node name="tunnel1_bak" parent="NogoForestDemo" index="33"]
+visible = false
+
+[node name="tunnel1" parent="NogoForestDemo" index="34"]
+visible = false
+
+[node name="Skeleton3D" parent="NogoForestDemo/Armature" index="0"]
+bones/1/rotation = Quaternion(-0.0603962, 0, 0, 0.998174)
+bones/1/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(0.0603962, 0, 0, 0.998174)
+bones/4/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(-0.550851, -0.437669, 0.572056, -0.421617)
+bones/7/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(-0.0491515, -0.00278028, 0.056403, 0.997194)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.0536769, 0.114363, 0.0217365, 0.99175)
+bones/10/scale = Vector3(1, 1, 1)
+bones/11/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(-0.000385337, -3.74392e-07, -2.20258e-07, 1)
+bones/15/rotation = Quaternion(0.0189003, 0.00110856, 0.0585246, 0.998106)
+bones/16/rotation = Quaternion(0.0609303, -2.36063e-07, -9.37722e-08, 0.998142)
+bones/19/rotation = Quaternion(0.0458328, -6.74518e-05, -0.00147159, 0.998948)
+bones/19/scale = Vector3(1, 1, 1)
+bones/21/rotation = Quaternion(-0.0275911, 2.18944e-08, 4.28572e-08, 0.999619)
+bones/23/scale = Vector3(1, 1, 1)
+bones/25/rotation = Quaternion(-0.00214405, 9.3831e-08, 2.05823e-07, 0.999998)
+bones/27/rotation = Quaternion(0.0952282, -0.00504042, -0.0526145, 0.994051)
+bones/29/rotation = Quaternion(0.0134707, 2.16901e-07, -2.09567e-09, 0.999909)
+bones/29/scale = Vector3(1, 1, 1)
+bones/31/rotation = Quaternion(0.553733, -0.435429, 0.569739, 0.423296)
+bones/31/scale = Vector3(1, 1, 1)
+bones/32/rotation = Quaternion(-0.099943, -0.00231825, 0.0230699, 0.994723)
+bones/32/scale = Vector3(1, 1, 1)
+bones/34/rotation = Quaternion(0.0548748, -0.109425, -0.0279963, 0.992084)
+bones/35/rotation = Quaternion(0.115952, -0.0302659, -0.250738, 0.960609)
+bones/35/scale = Vector3(1, 1, 1)
+bones/36/rotation = Quaternion(0.0871314, -6.31043e-07, -4.37055e-07, 0.996197)
+bones/36/scale = Vector3(1, 1, 1)
+bones/37/rotation = Quaternion(-0.050492, 6.71409e-08, 2.99803e-07, 0.998724)
+bones/38/rotation = Quaternion(4.23516e-22, -4.74975e-08, 3.81842e-08, 1)
+bones/39/rotation = Quaternion(0.044541, -0.00137081, -0.0307312, 0.998534)
+bones/39/scale = Vector3(1, 1, 1)
+bones/40/rotation = Quaternion(0.0419973, -3.37903e-07, 2.23249e-07, 0.999118)
+bones/41/rotation = Quaternion(-0.00159796, 4.74975e-08, -3.32948e-07, 0.999999)
+bones/41/scale = Vector3(1, 1, 1)
+bones/43/rotation = Quaternion(0.0244309, 3.486e-05, 0.00141844, 0.9997)
+bones/43/scale = Vector3(1, 1, 1)
+bones/47/rotation = Quaternion(0.0706908, 0.003178, 0.0447986, 0.996487)
+bones/47/scale = Vector3(1, 1, 1)
+bones/48/rotation = Quaternion(0.0441792, 9.67192e-09, -1.25152e-07, 0.999024)
+bones/49/rotation = Quaternion(-0.0486995, 2.13468e-07, 1.1702e-07, 0.998813)
+bones/51/rotation = Quaternion(0.0852368, 0.00496038, 0.0578829, 0.994666)
+bones/52/rotation = Quaternion(0.0604627, -1.3284e-07, 8.39727e-09, 0.99817)
+bones/53/rotation = Quaternion(-0.0199439, -2.77124e-08, 1.25986e-07, 0.999801)
+bones/53/scale = Vector3(1, 1, 1)
+bones/55/rotation = Quaternion(-0.00139766, -0.031604, 0.998541, -0.0437565)
+bones/56/rotation = Quaternion(-0.00265956, -1.79305e-06, -0.00392753, 0.999989)
+bones/56/scale = Vector3(1, 1, 1)
+bones/57/rotation = Quaternion(0.495122, -0.0147279, 0.0083944, 0.868658)
+bones/57/scale = Vector3(1, 1, 1)
+bones/58/rotation = Quaternion(0.290119, -0.0565117, 0.017164, 0.955166)
+bones/60/rotation = Quaternion(0.00127632, -0.0289032, 0.998622, 0.0437746)
+bones/60/scale = Vector3(1.00002, 1, 1.00001)
+bones/61/rotation = Quaternion(-0.00638096, -1.38148e-05, 0.00394467, 0.999972)
+bones/62/scale = Vector3(1, 1, 1)
+bones/63/rotation = Quaternion(0.28853, 0.0573651, -0.0173196, 0.955594)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tsh1l")
 
@@ -274,12 +341,6 @@ size = Vector3(6, 7, 33.8489)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.169861, 1.57142, -13.5157)
 size = Vector3(10, 10, 1)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="starting_place/path"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 152.614, 5.2854, 40.1945)
-use_collision = true
-radius = 13.0
-height = 12.0
-
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="starting_place/path"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 171.553, 5.2854, 40.1945)
 use_collision = true
@@ -290,44 +351,6 @@ height = 14.0
 
 [node name="path1" type="Node3D" parent="starting_place/path_split"]
 
-[node name="optional1side" type="Node3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(0.861097, 0, -0.50844, 0, 1, 0, 0.50844, 0, 0.861097, 183.48, 0.652288, 16.3297)
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="starting_place/path_split/path1/optional1side"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.29771, 0, -2.5)
-use_collision = true
-size = Vector3(19, 15, 5)
-
-[node name="CSGBox3D8" type="CSGBox3D" parent="starting_place/path_split/path1/optional1side"]
-transform = Transform3D(0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, 0.5, 7.30905, -1, -11.3332)
-use_collision = true
-size = Vector3(18, 13, 4)
-
-[node name="CSGBox3D9" type="CSGBox3D" parent="starting_place/path_split/path1/optional1side"]
-transform = Transform3D(0.258819, 0, 0.965926, 0, 1, 0, -0.965926, 0, 0.258819, 15.9155, -2, -27.408)
-use_collision = true
-size = Vector3(23, 11, 4)
-
-[node name="CSGBox3D10" type="CSGBox3D" parent="starting_place/path_split/path1/optional1side"]
-transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 22.5853, -3, -47.5113)
-use_collision = true
-size = Vector3(28, 11, 18)
-
-[node name="CSGBox3D11" type="CSGBox3D" parent="starting_place/path_split/path1/optional1side"]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 31.4077, -3, -67.7461)
-use_collision = true
-size = Vector3(16, 11, 8)
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(0.861097, 0, -0.50844, 0, 1, 0, 0.50844, 0, 0.861097, 167.346, 1.76435, 15.3782)
-use_collision = true
-size = Vector3(7, 17.2241, 25.1266)
-
-[node name="CSGBox3D12" type="CSGBox3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(0.999952, 0, -0.00977367, 0, 1, 0, 0.00977367, 0, 0.999952, 171.288, 1.76435, -7.08957)
-use_collision = true
-size = Vector3(11, 17.2241, 25.1266)
-
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="starting_place/path_split/path1"]
 transform = Transform3D(0.999952, 0, -0.00977367, 0, 1, 0, 0.00977367, 0, 0.999952, 166.464, 1.15229, -25.1376)
 use_collision = true
@@ -335,11 +358,6 @@ use_collision = true
 [node name="CSGBox3D13" type="CSGBox3D" parent="starting_place/path_split/path1/CSGCombiner3D"]
 use_collision = true
 size = Vector3(21, 16, 25.1266)
-
-[node name="CSGBox3D14" type="CSGBox3D" parent="starting_place/path_split/path1/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.00053, 0.61206, -19)
-use_collision = true
-size = Vector3(11, 17.2241, 25.1266)
 
 [node name="CSGBox3D15" type="CSGBox3D" parent="starting_place/path_split/path1/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.499908, 1, -0.563303)
@@ -384,12 +402,6 @@ size = Vector3(2, 1, 9)
 transform = Transform3D(0.968409, 0, 0.249366, 0, 1, 0, -0.249366, 0, 0.968409, 243.407, -7.23565, -95.0042)
 use_collision = true
 size = Vector3(25, 17.2241, 8)
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 217.487, 1.76435, -27.5923)
-use_collision = true
-radius = 23.8216
-height = 68.0875
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170.948, 0.764349, -61.0947)
@@ -1370,106 +1382,6 @@ radius = 39.0
 [node name="treetops" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 647.169, 7.1523, 2.23565)
 
-[node name="tta2" type="CSGCylinder3D" parent="treetops"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83, -2, -52.0001)
-use_collision = true
-radius = 8.0
-height = 8.0
-
-[node name="tta" type="CSGCylinder3D" parent="treetops"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83, -2, -99.0001)
-use_collision = true
-radius = 13.0
-height = 28.0
-
-[node name="tta3" type="CSGCylinder3D" parent="treetops"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83, -2, -297)
-use_collision = true
-radius = 7.0
-height = 114.0
-
-[node name="tta4" type="CSGCylinder3D" parent="treetops/tta3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 58, 0)
-use_collision = true
-radius = 36.0
-height = 10.0
-
-[node name="th" type="CSGCylinder3D" parent="treetops"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -299, -2, -484)
-use_collision = true
-radius = 13.0
-height = 114.0
-
-[node name="th2" type="CSGCylinder3D" parent="treetops/th"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 72, 0)
-use_collision = true
-radius = 35.0
-height = 24.0
-
-[node name="th3" type="CSGCylinder3D" parent="treetops/th"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 95, 0)
-use_collision = true
-radius = 35.0
-height = 24.0
-cone = true
-
-[node name="th2" type="CSGCylinder3D" parent="treetops"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -143, -2, -505)
-use_collision = true
-radius = 13.0
-height = 114.0
-
-[node name="th2" type="CSGCylinder3D" parent="treetops/th2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 72, 0)
-use_collision = true
-radius = 35.0
-height = 24.0
-
-[node name="th3" type="CSGCylinder3D" parent="treetops/th2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 95, 0)
-use_collision = true
-radius = 35.0
-height = 24.0
-cone = true
-
-[node name="th3" type="CSGCylinder3D" parent="treetops"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -222, -2, -627)
-use_collision = true
-radius = 13.0
-height = 114.0
-
-[node name="th2" type="CSGCylinder3D" parent="treetops/th3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 72, 0)
-use_collision = true
-radius = 35.0
-height = 24.0
-
-[node name="th3" type="CSGCylinder3D" parent="treetops/th3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 95, 0)
-use_collision = true
-radius = 35.0
-height = 24.0
-cone = true
-
-[node name="th4" type="CSGCylinder3D" parent="treetops"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -2, -468)
-use_collision = true
-radius = 13.0
-height = 114.0
-
-[node name="th2" type="CSGCylinder3D" parent="treetops/th4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 72, 0)
-use_collision = true
-radius = 35.0
-height = 24.0
-
-[node name="th3" type="CSGCylinder3D" parent="treetops/th4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 95, 0)
-use_collision = true
-radius = 35.0
-height = 24.0
-cone = true
-
 [node name="clearingpaths" type="Node3D" parent="."]
 
 [node name="CSGCylinder3D4" type="CSGCylinder3D" parent="clearingpaths"]
@@ -1626,18 +1538,8 @@ outer_radius = 8.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 
 [node name="GeneralSkeleton" parent="Player/CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature" index="0"]
-bones/9/rotation = Quaternion(0, -0.707107, 0, 0.707107)
-bones/10/rotation = Quaternion(0, 0.707107, 0, 0.707107)
-bones/12/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
 bones/12/scale = Vector3(1, 0.999392, 0.999392)
-bones/13/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
-bones/33/rotation = Quaternion(0, 0.707107, 0, 0.707107)
-bones/34/rotation = Quaternion(0, -0.707107, 0, 0.707107)
-bones/36/rotation = Quaternion(-0.214187, -0.673887, -0.214187, 0.673887)
 bones/36/scale = Vector3(1, 0.999392, 0.999392)
-bones/37/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
-bones/57/rotation = Quaternion(0, 0.707107, -0.707107, 0)
-bones/62/rotation = Quaternion(0, 0.707107, -0.707107, 0)
 
 [node name="MeleeHand" parent="Player/CharacterRotationRoot/CharacterSkin" index="2"]
 transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, -0.737829, 1.43559, -0.0617137)
