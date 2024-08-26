@@ -16,7 +16,7 @@ uniform float random_scale = 4.6;
 uniform float noise_scale = 0.03;
 
 vec2 random( vec2 pos )
-{ 
+{
 	return fract(
 		sin(
 			vec2(

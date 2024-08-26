@@ -40,26 +40,26 @@ void fragment(){
 	float time = TIME * speed;
 	vec3 n1 = texture(noise1, UV + time).rgb;
 	vec3 n2 = texture(noise2, UV - time * 0.2).rgb;
-	
+
 	vec2 uv_movement = UV * 4.0;
 	uv_movement += TIME * speed * 4.0;
-	
+
 	float sum = (n1.r + n2.r) - 1.0;
-	
-	
 
 
-	
+
+
+
 	vec2 displacement = vec2(sum * 0.05);
 
-	
-	
 
-	
+
+
+
 	vec4 alpha = vec4(1.0);
 	//alpha = texture(SCREEN_TEXTURE, SCREEN_UV + displacement);
-	
-	
+
+
 	float fin = 0.0;
 	if (sum > 0.0 && sum < 0.4) fin = 0.1;
 	if (sum > 0.4 && sum < 0.8) fin = 0.0;
