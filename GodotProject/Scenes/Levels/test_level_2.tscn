@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bttb2yvi5q3fb"]
 
 [ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Scenes/Characters/Player/Player.tscn" id="1_iyogp"]
-[ext_resource type="PackedScene" uid="uid://cqw173hvs7ny6" path="res://Assets/Geometry/NogoForestDemo.blend" id="1_jf07b"]
+[ext_resource type="PackedScene" uid="uid://ndssirk0bb80" path="res://Assets/Geometry/NogoForestDemo.blend" id="1_jf07b"]
 
 [sub_resource type="Environment" id="Environment_tsh1l"]
 
@@ -28,16 +28,7 @@ albedo_color = Color(1, 0.74902, 0.870588, 1)
 
 [node name="NogoForestDemo" parent="." instance=ExtResource("1_jf07b")]
 
-[node name="Plane_001" parent="NogoForestDemo" index="35"]
-visible = false
-
-[node name="tunnel1_bak" parent="NogoForestDemo" index="37"]
-visible = false
-
-[node name="tunnel1" parent="NogoForestDemo" index="38"]
-visible = false
-
-[node name="Skeleton3D" parent="NogoForestDemo/Armature" index="0"]
+[node name="Skeleton3D" parent="NogoForestDemo/AA" index="0"]
 bones/1/rotation = Quaternion(-0.0603962, 0, 0, 0.998174)
 bones/1/scale = Vector3(1, 1, 1)
 bones/4/rotation = Quaternion(0.0603962, 0, 0, 0.998174)
@@ -97,6 +88,19 @@ bones/60/scale = Vector3(1.00002, 1, 1.00001)
 bones/61/rotation = Quaternion(-0.00638096, -1.38148e-05, 0.00394467, 0.999972)
 bones/62/scale = Vector3(1, 1, 1)
 bones/63/rotation = Quaternion(0.28853, 0.0573651, -0.0173196, 0.955594)
+
+[node name="tunnel1_bak" parent="NogoForestDemo" index="38"]
+visible = false
+
+[node name="tunnel1" parent="NogoForestDemo" index="39"]
+visible = false
+
+[node name="HookTreeInner" parent="NogoForestDemo" index="186"]
+visible = false
+
+[node name="CollisionShape3D" parent="NogoForestDemo/HookTreeInner/StaticBody3D" index="0"]
+visible = false
+disabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_tsh1l")
@@ -351,225 +355,6 @@ radius = 2.0
 height = 14.0
 
 [node name="path_split" type="Node3D" parent="starting_place"]
-
-[node name="path1" type="Node3D" parent="starting_place/path_split"]
-
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(0.999952, 0, -0.00977367, 0, 1, 0, 0.00977367, 0, 0.999952, 166.464, 1.15229, -25.1376)
-use_collision = true
-
-[node name="CSGBox3D13" type="CSGBox3D" parent="starting_place/path_split/path1/CSGCombiner3D"]
-use_collision = true
-size = Vector3(21, 16, 25.1266)
-
-[node name="CSGBox3D15" type="CSGBox3D" parent="starting_place/path_split/path1/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.499908, 1, -0.563303)
-operation = 2
-use_collision = true
-size = Vector3(16, 12, 24)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="starting_place/path_split/path1/CSGCombiner3D"]
-omni_range = 34.0
-
-[node name="CSGBox3D15" type="CSGBox3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(0.968409, 0, 0.249366, 0, 1, 0, -0.249366, 0, 0.968409, 262.578, -7.23565, -110.783)
-use_collision = true
-size = Vector3(102, 17.2241, 17)
-
-[node name="CSGBox3D17" type="CSGBox3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(0.249366, 0, -0.968409, 0, 1, 0, 0.968409, 0, 0.249366, 305.18, -7.23565, -105.748)
-use_collision = true
-size = Vector3(15, 17.2241, 9)
-
-[node name="CSGBox3D20" type="CSGBox3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(0.249366, 0, -0.968409, 0, 1, 0, 0.968409, 0, 0.249366, 283.513, 20.6523, -65.5755)
-use_collision = true
-size = Vector3(48, 73, 29)
-
-[node name="CSGBox3D21" type="CSGBox3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(0.96335, 0, -0.268247, 0, 1, 0, 0.268247, 0, 0.96335, 269.181, 20.6523, -71.1231)
-use_collision = true
-size = Vector3(23, 73, 29)
-
-[node name="CSGBox3D18" type="CSGBox3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(0.249366, 0, -0.968409, 0, 1, 0, 0.968409, 0, 0.249366, 305.055, 5.15229, -106.232)
-use_collision = true
-size = Vector3(2, 4, 9)
-
-[node name="CSGBox3D19" type="CSGBox3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(0.249366, 0, -0.968409, 0, 1, 0, 0.968409, 0, 0.249366, 305.554, 3.65229, -104.295)
-use_collision = true
-size = Vector3(2, 1, 9)
-
-[node name="CSGBox3D16" type="CSGBox3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(0.968409, 0, 0.249366, 0, 1, 0, -0.249366, 0, 0.968409, 243.407, -7.23565, -95.0042)
-use_collision = true
-size = Vector3(25, 17.2241, 8)
-
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170.948, 0.764349, -61.0947)
-use_collision = true
-radius = 5.0
-height = 14.0
-
-[node name="CSGCylinder3D21" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 166.948, -1.23565, -57.0947)
-use_collision = true
-radius = 3.0
-height = 14.0
-
-[node name="CSGCylinder3D22" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.948, -3.23565, -54.0947)
-use_collision = true
-radius = 3.0
-height = 14.0
-
-[node name="CSGCylinder3D23" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.948, -5.23565, -51.0947)
-use_collision = true
-radius = 3.0
-height = 14.0
-
-[node name="CSGCylinder3D24" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.948, -7.23565, -46.0947)
-use_collision = true
-radius = 3.0
-height = 14.0
-
-[node name="CSGCylinder3D25" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.948, -9.23565, -42.0947)
-use_collision = true
-radius = 3.0
-height = 14.0
-
-[node name="CSGCylinder3D26" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 163.948, -10.8657, -39.0947)
-use_collision = true
-radius = 3.0
-height = 14.0
-
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 170.948, -1.23565, -68.0947)
-use_collision = true
-radius = 5.0
-height = 14.0
-
-[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 173.948, -3.23565, -74.0947)
-use_collision = true
-radius = 5.0
-height = 14.0
-
-[node name="CSGCylinder3D12" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 178.948, -5.23565, -78.0947)
-use_collision = true
-radius = 3.0
-height = 14.0
-
-[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192.948, -5.23565, -88.0947)
-use_collision = true
-radius = 16.0
-height = 14.0
-sides = 24
-
-[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 192.948, 12.7643, -88.0947)
-use_collision = true
-radius = 6.0
-height = 30.0
-sides = 24
-
-[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 218.948, -2.23565, -94.0947)
-use_collision = true
-radius = 6.0
-height = 52.0
-sides = 24
-
-[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 240.948, 12.7643, -108.095)
-use_collision = true
-radius = 12.0
-height = 30.0
-sides = 24
-
-[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 310.948, 13.7643, -115.095)
-use_collision = true
-radius = 4.0
-height = 30.0
-sides = 24
-
-[node name="CSGCylinder3D17" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 315.948, -2.23565, -106.095)
-use_collision = true
-radius = 4.0
-height = 18.0
-sides = 24
-
-[node name="CSGCylinder3D19" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 323.948, -2.23565, -99.0947)
-use_collision = true
-radius = 4.0
-height = 18.0
-sides = 24
-
-[node name="CSGCylinder3D20" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 327.948, -2.23565, -89.0947)
-use_collision = true
-radius = 4.0
-height = 14.0
-sides = 24
-
-[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 288.948, 13.7643, -124.095)
-use_collision = true
-radius = 3.0
-height = 30.0
-sides = 24
-
-[node name="CSGCylinder3D14" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 287.948, 13.7643, -120.095)
-use_collision = true
-radius = 3.0
-height = 30.0
-sides = 24
-
-[node name="CSGCylinder3D15" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 291.948, 13.7643, -117.095)
-use_collision = true
-radius = 3.0
-height = 30.0
-sides = 24
-
-[node name="CSGCylinder3D16" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 292.948, 13.7643, -122.095)
-use_collision = true
-radius = 3.0
-height = 30.0
-sides = 24
-
-[node name="CSGCylinder3D18" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 303.948, 13.7643, -124.095)
-use_collision = true
-radius = 3.0
-height = 30.0
-sides = 24
-
-[node name="CSGCylinder3D11" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 277.948, 13.7643, -106.095)
-use_collision = true
-radius = 5.0
-height = 30.0
-sides = 24
-
-[node name="CSGCylinder3D13" type="CSGCylinder3D" parent="starting_place/path_split/path1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 271.948, 13.7643, -112.095)
-use_collision = true
-radius = 5.0
-height = 30.0
-sides = 24
 
 [node name="path2" type="Node3D" parent="starting_place/path_split"]
 
@@ -1544,10 +1329,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 bones/9/rotation = Quaternion(0, -0.707107, 0, 0.707107)
 bones/10/rotation = Quaternion(0, 0.707107, 0, 0.707107)
 bones/12/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
+bones/12/scale = Vector3(1, 0.999392, 0.999392)
 bones/13/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
 bones/33/rotation = Quaternion(0, 0.707107, 0, 0.707107)
 bones/34/rotation = Quaternion(0, -0.707107, 0, 0.707107)
 bones/36/rotation = Quaternion(-0.214187, -0.673887, -0.214187, 0.673887)
+bones/36/scale = Vector3(1, 0.999392, 0.999392)
 bones/37/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
 bones/57/rotation = Quaternion(0, 0.707107, -0.707107, 0)
 bones/62/rotation = Quaternion(0, 0.707107, -0.707107, 0)

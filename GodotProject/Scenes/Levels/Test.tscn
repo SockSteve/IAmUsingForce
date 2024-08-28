@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://du0ausxn5e6vk" path="res://Assets/Placeholders/Environment/fern_grass_02/scene.gltf" id="7_mr86d"]
 [ext_resource type="PackedScene" uid="uid://bllxyncmft2sj" path="res://Scenes/Interactibles/GrapplingPoints/GrapplePoint.tscn" id="7_nwman"]
 [ext_resource type="PackedScene" uid="uid://fbpbxpmuqx3g" path="res://Scenes/Characters/Merchants/vendor.tscn" id="11_ahr15"]
-[ext_resource type="ArrayMesh" uid="uid://vs333uux577n" path="res://Assets/Kenney/Weapon Pack/Models/shotgunShort.obj" id="14_qv7x6"]
+[ext_resource type="ArrayMesh" uid="uid://dgd1sli7r3ynx" path="res://Assets/Kenney/Weapon Pack/Models/shotgunShort.obj" id="14_qv7x6"]
 [ext_resource type="PackedScene" uid="uid://b1nlc7o2d0leo" path="res://Scenes/Characters/Enemies/StationaryTurret/StationaryTurret.tscn" id="15_20i8t"]
 [ext_resource type="PackedScene" uid="uid://oun126a7s625" path="res://Scenes/Characters/Enemies/StationaryLookAtTurret/TestEnemy_2.tscn" id="16_a0aqu"]
 [ext_resource type="PackedScene" uid="uid://cbg2qc717km4f" path="res://Scenes/Characters/Enemies/MovingSmallEnemyRanged/sm_testranged.tscn" id="16_bkljh"]
@@ -359,21 +359,6 @@ transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 6.25976, 1.39886, 58.91
 
 [node name="PlayerCamera" parent="Player/CameraController" index="3"]
 transform = Transform3D(-1, -3.23243e-08, 8.12273e-08, 0, 0.929133, 0.369747, -8.74228e-08, 0.369747, -0.929133, 24.4441, -6.73179, 16.6014)
-
-[node name="GeneralSkeleton" parent="Player/CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature" index="0"]
-bones/9/rotation = Quaternion(0, -0.707107, 0, 0.707107)
-bones/10/rotation = Quaternion(0, 0.707107, 0, 0.707107)
-bones/12/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/13/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
-bones/33/rotation = Quaternion(0, 0.707107, 0, 0.707107)
-bones/34/rotation = Quaternion(0, -0.707107, 0, 0.707107)
-bones/36/rotation = Quaternion(-0.214187, -0.673887, -0.214187, 0.673887)
-bones/37/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
-bones/57/rotation = Quaternion(0, 0.707107, -0.707107, 0)
-bones/62/rotation = Quaternion(0, 0.707107, -0.707107, 0)
-
-[node name="MeleeHand" parent="Player/CharacterRotationRoot/CharacterSkin" index="2"]
-transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, -0.737829, 1.43559, -0.0617137)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.00787138, 0.999969, 0, -0.999969, 0.00787138, 46.5912, 18.8276, 41.777)
