@@ -1,12 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://clqubhkmu8ph0"]
+[gd_scene load_steps=6 format=3 uid="uid://clqubhkmu8ph0"]
 
-[ext_resource type="Theme" uid="uid://dvspb4esei5oi" path="res://UI/UITheme_Base_ NoSkew.tres" id="1_ijr6t"]
+[ext_resource type="Texture2D" uid="uid://v5wqb5h7avge" path="res://Assets/UI/WeaponBGBtn2.svg" id="1_6u2cv"]
+[ext_resource type="Texture2D" uid="uid://c8feibihd2amg" path="res://Assets/UI/WeaponBGBtn1.svg" id="2_xk62y"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_22d4o"]
+texture = ExtResource("1_6u2cv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uu7op"]
+texture = ExtResource("1_6u2cv")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0gsi8"]
+texture = ExtResource("2_xk62y")
 
 [node name="ShopAmmunitionButton" type="Button"]
 custom_minimum_size = Vector2(160, 160)
 offset_right = 114.0
 offset_bottom = 81.0
-theme = ExtResource("1_ijr6t")
+theme_override_styles/focus = SubResource("StyleBoxTexture_22d4o")
+theme_override_styles/hover = SubResource("StyleBoxTexture_uu7op")
+theme_override_styles/normal = SubResource("StyleBoxTexture_0gsi8")
 expand_icon = true
 
 [node name="Label" type="Label" parent="."]

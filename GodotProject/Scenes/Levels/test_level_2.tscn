@@ -572,11 +572,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.4779, 8.5, -70.1947)
 use_collision = true
 size = Vector3(4, 1, 10)
 
-[node name="platform_5" type="CSGBox3D" parent="starting_place/PathToClearing/Forrest"]
-transform = Transform3D(0.866026, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866026, -30.7458, 8.5, -78.1229)
-use_collision = true
-size = Vector3(4, 1, 10)
-
 [node name="platform_6" type="CSGBox3D" parent="starting_place/PathToClearing/Forrest"]
 transform = Transform3D(0.5, 0, 0.866026, 0, 1, 0, -0.866026, 0, 0.5, -36.3798, 8.5, -83.6851)
 use_collision = true
@@ -671,11 +666,6 @@ use_collision = true
 radius = 1.0
 height = 16.0
 
-[node name="wall" type="CSGBox3D" parent="starting_place/PathToClearing"]
-transform = Transform3D(-0.00944058, -0.258819, -0.965879, -0.0025296, 0.965926, -0.258807, 0.999952, 0, -0.00977361, 420.417, 0.739254, -85.4721)
-use_collision = true
-size = Vector3(6, 73, 108)
-
 [node name="wall2" type="CSGBox3D" parent="starting_place/PathToClearing"]
 transform = Transform3D(-0.259451, 0.00851855, -0.965718, 0.0669008, 0.997718, -0.0091728, 0.963436, -0.0669873, -0.259428, 387.887, -19.0903, -51.5655)
 use_collision = true
@@ -747,12 +737,6 @@ size = Vector3(1, 2, 2)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 556.169, 7.1523, 17.2356)
 use_collision = true
 radius = 23.0
-
-[node name="BossArena" type="CSGCylinder3D" parent="Clearing"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 600.169, 5.1523, 17.2356)
-use_collision = true
-radius = 39.0
-height = 6.0
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Clearing"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 647.169, 7.1523, 2.23565)
@@ -916,6 +900,21 @@ outer_radius = 8.0
 
 [node name="Player" parent="." instance=ExtResource("1_iyogp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="GeneralSkeleton" parent="Player/CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature" index="0"]
+bones/9/rotation = Quaternion(0, -0.707107, 0, 0.707107)
+bones/10/rotation = Quaternion(0, 0.707107, 0, 0.707107)
+bones/12/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
+bones/13/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
+bones/33/rotation = Quaternion(0, 0.707107, 0, 0.707107)
+bones/34/rotation = Quaternion(0, -0.707107, 0, 0.707107)
+bones/36/rotation = Quaternion(-0.214187, -0.673887, -0.214187, 0.673887)
+bones/37/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
+bones/57/rotation = Quaternion(0, 0.707107, -0.707107, 0)
+bones/62/rotation = Quaternion(0, 0.707107, -0.707107, 0)
+
+[node name="MeleeHand" parent="Player/CharacterRotationRoot/CharacterSkin" index="2"]
+transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, -0.737829, 1.43559, -0.0617137)
 
 [editable path="NogoForestDemo"]
 [editable path="Player"]

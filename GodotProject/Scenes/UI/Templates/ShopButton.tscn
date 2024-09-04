@@ -1,9 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmcowq41mf0wo"]
+[gd_scene load_steps=5 format=3 uid="uid://dmcowq41mf0wo"]
 
-[ext_resource type="Theme" uid="uid://dvspb4esei5oi" path="res://UI/UITheme_Base_ NoSkew.tres" id="1_6cm65"]
+[ext_resource type="Texture2D" uid="uid://v5wqb5h7avge" path="res://Assets/UI/WeaponBGBtn2.svg" id="1_egtle"]
+[ext_resource type="Texture2D" uid="uid://c8feibihd2amg" path="res://Assets/UI/WeaponBGBtn1.svg" id="2_rkda0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g8ql2"]
+texture = ExtResource("1_egtle")
+modulate_color = Color(2, 2, 2, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_u7gsl"]
+texture = ExtResource("2_rkda0")
 
 [node name="ShopButton" type="Button"]
 custom_minimum_size = Vector2(160, 160)
-theme = ExtResource("1_6cm65")
+theme_override_styles/focus = SubResource("StyleBoxTexture_g8ql2")
+theme_override_styles/normal = SubResource("StyleBoxTexture_u7gsl")
 icon_alignment = 1
 expand_icon = true

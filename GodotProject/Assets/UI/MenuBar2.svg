@@ -1,0 +1,25 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created using Krita: https://krita.org -->
+<svg xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:krita="http://krita.org/namespaces/svg/krita"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    width="144.48pt"
+    height="5.52pt"
+    viewBox="0 0 144.48 5.52">
+<defs>
+  <linearGradient id="gradient0" gradientUnits="objectBoundingBox" x1="0" y1="0.524999953061343" x2="1" y2="0.587500036880368" spreadMethod="pad">
+   <stop stop-color="#9998af" offset="0" stop-opacity="1"/>
+   <stop stop-color="#6b6a7b" offset="0.435373991727829" stop-opacity="1"/>
+   <stop stop-color="#6c6b7c" offset="0.659864008426666" stop-opacity="1"/>
+   <stop stop-color="#a9a8bc" offset="0.979592025279999" stop-opacity="1"/>
+  </linearGradient>
+  <linearGradient id="gradient1" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="1" spreadMethod="pad">
+   <stop stop-color="#bfbfbf" offset="0" stop-opacity="1"/>
+   <stop stop-color="#000000" offset="0.397260010242462" stop-opacity="0.301960784313725"/>
+   <stop stop-color="#000000" offset="1" stop-opacity="0"/>
+  </linearGradient>
+ </defs>
+<path id="shape01" transform="translate(0.240000000000009, 0.300000016093211)" fill="url(#gradient0)" fill-rule="evenodd" stroke="url(#gradient1)" stroke-width="0.24" stroke-linecap="square" stroke-linejoin="bevel" d="M4.26326e-14 4.8L0 0.18L144 0L144 4.8Z" sodipodi:nodetypes="ccccc"/>
+</svg>
