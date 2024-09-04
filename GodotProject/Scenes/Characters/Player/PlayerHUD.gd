@@ -10,7 +10,7 @@ const  QUICK_SELECT_ICON_PATH ="%SMIcon_"
 @export_node_path("Inventory") var inventory_path: NodePath
 @export_node_path("Player") var player: NodePath
 
-@onready var money_label = $MoneyPanel/MoneyLabel
+@onready var money_label = %MoneyLabel
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	money_label.text = str(get_node(inventory_path).get_money())

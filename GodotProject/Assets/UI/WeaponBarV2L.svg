@@ -1,0 +1,30 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Created using Krita: https://krita.org -->
+<svg xmlns="http://www.w3.org/2000/svg" 
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:krita="http://krita.org/namespaces/svg/krita"
+    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+    width="144.48pt"
+    height="48.48pt"
+    viewBox="0 0 144.48 48.48">
+<defs>
+  <linearGradient id="gradient0" gradientUnits="objectBoundingBox" x1="0.0100250619812968" y1="0.505562420891391" x2="1" y2="0.505562420891391" spreadMethod="pad">
+   <stop stop-color="#000000" offset="0" stop-opacity="0.501960784313725"/>
+   <stop stop-color="#000000" offset="0.482993197278912" stop-opacity="0.301960784313725"/>
+   <stop stop-color="#000000" offset="1" stop-opacity="0.0509803921568627"/>
+  </linearGradient>
+  <linearGradient id="gradient1" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="1" spreadMethod="pad">
+   <stop stop-color="#9998af" offset="0" stop-opacity="1"/>
+   <stop stop-color="#6b6a7b" offset="0.19178082048893" stop-opacity="1"/>
+   <stop stop-color="#6b6a7b" offset="0.630136966705322" stop-opacity="1"/>
+   <stop stop-color="#ffffff" offset="1" stop-opacity="0"/>
+  </linearGradient>
+  <linearGradient id="gradient2" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="1" spreadMethod="pad">
+   <stop stop-color="#bfbfbf" offset="0" stop-opacity="1"/>
+   <stop stop-color="#000000" offset="0.397260278463364" stop-opacity="0.301960784313725"/>
+   <stop stop-color="#000000" offset="1" stop-opacity="0"/>
+  </linearGradient>
+ </defs>
+<path id="shape0" transform="translate(0.180000000000007, -0.269999909056374)" fill="url(#gradient0)" fill-rule="evenodd" d="M0 0L143.64 0L143.64 48.54L0 48.54Z" sodipodi:nodetypes="ccccc"/><path id="shape01" transform="translate(0, -0.0299999511509768)" fill="url(#gradient1)" fill-rule="evenodd" stroke="url(#gradient2)" stroke-width="1.2" stroke-linecap="square" stroke-linejoin="bevel" d="M0 48.06L0 -2.22045e-16L13.2791 0L62.4 43.2L144 43.2L144 48Z" sodipodi:nodetypes="ccccccc"/>
+</svg>

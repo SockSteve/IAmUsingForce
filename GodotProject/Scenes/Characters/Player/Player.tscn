@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c0d3bmprmf8q0"]
+[gd_scene load_steps=43 format=3 uid="uid://c0d3bmprmf8q0"]
 
 [ext_resource type="Script" path="res://Scripts/Characters/Player/Player.gd" id="1_ld2le"]
 [ext_resource type="Script" path="res://Scripts/Characters/Player/CameraController.gd" id="2_7jqee"]
@@ -22,10 +22,13 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerHand.gd" id="16_mjyse"]
 [ext_resource type="Script" path="res://Scenes/Characters/Player/PlayerHUD.gd" id="20_6xxyk"]
 [ext_resource type="Theme" uid="uid://d02hntmjt67aj" path="res://UI/UITheme_Base.tres" id="21_13c1r"]
+[ext_resource type="Texture2D" uid="uid://bwo2v53nvfp1o" path="res://Assets/UI/WeaponBarV2L.svg" id="22_86vob"]
 [ext_resource type="Texture2D" uid="uid://dmf404ftfexwl" path="res://Assets/Decals/DropShadow/Shadow.png" id="22_gwf8y"]
 [ext_resource type="Texture2D" uid="uid://pcjnv83mgkat" path="res://Assets/Textures/UI/CutterIconSC.png" id="22_iaxg4"]
 [ext_resource type="Texture2D" uid="uid://cqiv6rrr26qmx" path="res://Assets/Textures/UI/PlaceholderIcon.png" id="23_qxeqk"]
-[ext_resource type="Texture2D" uid="uid://bsge2yls5o5jg" path="res://Assets/Textures/UI/HitPoint.png" id="24_6g3o4"]
+[ext_resource type="Theme" uid="uid://cti1a1y4wu3hw" path="res://Assets/Kenney/FlatUI/kenneyUICostume.tres" id="24_qnks5"]
+[ext_resource type="Texture2D" uid="uid://bx8lfh6vgwtnk" path="res://Assets/UI/QuickSelectCross.svg" id="25_iehhb"]
+[ext_resource type="Texture2D" uid="uid://dnrhjt2nuwbnf" path="res://Assets/UI/UIBarR.svg" id="28_gv4ft"]
 [ext_resource type="Script" path="res://Scenes/Characters/Player/StartMenu.gd" id="28_r3h2c"]
 [ext_resource type="Texture2D" uid="uid://dccgws1gvwa1m" path="res://Assets/Textures/UI/Money.png" id="28_wddji"]
 [ext_resource type="Texture2D" uid="uid://cu57pg1cqjpqy" path="res://Assets/Textures/UI/BadPrankIcon.png" id="29_sc2yr"]
@@ -46,6 +49,17 @@ material = SubResource("StandardMaterial3D_dm5n6")
 [sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_w05h1"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_grq1b"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t7yn4"]
+texture = ExtResource("22_86vob")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c4gey"]
+texture = ExtResource("28_gv4ft")
+
+[sub_resource type="Theme" id="Theme_w7nyr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lauh3"]
+texture = ExtResource("25_iehhb")
 
 [node name="Player" type="CharacterBody3D" groups=["damageables", "player"]]
 collision_mask = 65
@@ -224,237 +238,225 @@ script = ExtResource("20_6xxyk")
 inventory_path = NodePath("../../Inventory")
 player = NodePath("../..")
 
-[node name="WeaponInfoPanel" type="Panel" parent="CanvasLayer/PlayerHUD"]
-layout_mode = 0
-offset_right = 179.0
-offset_bottom = 61.0
-theme = ExtResource("21_13c1r")
+[node name="CurrentWeaponInfoPanel" type="PanelContainer" parent="CanvasLayer/PlayerHUD"]
+layout_mode = 1
+offset_right = 185.0
+offset_bottom = 71.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_t7yn4")
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PlayerHUD/WeaponInfoPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PlayerHUD/CurrentWeaponInfoPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PlayerHUD/CurrentWeaponInfoPanel/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="CurrentWeaponTextureRect" type="TextureRect" parent="CanvasLayer/PlayerHUD/CurrentWeaponInfoPanel/MarginContainer/HBoxContainer"]
 texture_filter = 1
 layout_mode = 2
-offset_right = 62.0
-offset_bottom = 60.0
+size_flags_horizontal = 3
 texture = ExtResource("22_iaxg4")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PlayerHUD/WeaponInfoPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PlayerHUD/CurrentWeaponInfoPanel/MarginContainer/HBoxContainer"]
 layout_mode = 2
-offset_left = 67.0
-offset_right = 179.0
-offset_bottom = 61.0
 size_flags_horizontal = 8
 size_flags_stretch_ratio = 3.32
-theme = ExtResource("21_13c1r")
 alignment = 1
 
-[node name="WIHBoxContainer" type="HBoxContainer" parent="CanvasLayer/PlayerHUD/WeaponInfoPanel/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PlayerHUD/CurrentWeaponInfoPanel/MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("24_qnks5")
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="WICurrentAmmoLabel" type="Label" parent="CanvasLayer/PlayerHUD/WeaponInfoPanel/VBoxContainer/WIHBoxContainer"]
+[node name="CurrentAmmoLabel" type="Label" parent="CanvasLayer/PlayerHUD/CurrentWeaponInfoPanel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "100"
+text = "120"
 
-[node name="WISepratorLabel" type="Label" parent="CanvasLayer/PlayerHUD/WeaponInfoPanel/VBoxContainer/WIHBoxContainer"]
+[node name="SepratorLabel" type="Label" parent="CanvasLayer/PlayerHUD/CurrentWeaponInfoPanel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "/"
 
-[node name="WIMaxAmmoLabel" type="Label" parent="CanvasLayer/PlayerHUD/WeaponInfoPanel/VBoxContainer/WIHBoxContainer"]
+[node name="MaxAmmoLabel" type="Label" parent="CanvasLayer/PlayerHUD/CurrentWeaponInfoPanel/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "100"
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/PlayerHUD/WeaponInfoPanel/VBoxContainer"]
-custom_minimum_size = Vector2(0, 10)
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/PlayerHUD/CurrentWeaponInfoPanel/MarginContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 6)
 layout_mode = 2
+size_flags_vertical = 2
+theme = ExtResource("24_qnks5")
 
-[node name="ShortcutMenu" type="VBoxContainer" parent="CanvasLayer/PlayerHUD"]
-layout_mode = 0
-offset_left = 2.0
-offset_top = 375.0
-offset_right = 242.0
-offset_bottom = 642.0
-theme_override_constants/separation = 4
+[node name="Label" type="Label" parent="CanvasLayer/PlayerHUD/CurrentWeaponInfoPanel/MarginContainer/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 14
+text = "V3"
 
-[node name="PanelDisplay" type="Label" parent="CanvasLayer/PlayerHUD/ShortcutMenu"]
+[node name="MoneyPanel" type="PanelContainer" parent="CanvasLayer/PlayerHUD"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -188.0
+offset_bottom = 61.0
+grow_horizontal = 0
+mouse_filter = 2
+theme = ExtResource("21_13c1r")
+theme_override_styles/panel = SubResource("StyleBoxTexture_c4gey")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PlayerHUD/MoneyPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PlayerHUD/MoneyPanel/MarginContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="MoneyLabel" type="Label" parent="CanvasLayer/PlayerHUD/MoneyPanel/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "1"
-horizontal_alignment = 1
+horizontal_alignment = 2
 
-[node name="SMTopSection" type="HBoxContainer" parent="CanvasLayer/PlayerHUD/ShortcutMenu"]
+[node name="MoneyIcon" type="TextureRect" parent="CanvasLayer/PlayerHUD/MoneyPanel/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("28_wddji")
+expand_mode = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMTopSection"]
-custom_minimum_size = Vector2(64, 0)
+[node name="QuickSelectPanel" type="PanelContainer" parent="CanvasLayer/PlayerHUD"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -267.0
+offset_right = 240.0
+grow_vertical = 0
+mouse_filter = 2
+theme = SubResource("Theme_w7nyr")
+theme_override_styles/panel = SubResource("StyleBoxTexture_lauh3")
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PlayerHUD/QuickSelectPanel"]
 layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMTopSection"]
+[node name="ShortcutMenu" type="VBoxContainer" parent="CanvasLayer/PlayerHUD/QuickSelectPanel/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
 
-[node name="SMIcon_3" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMTopSection/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/PlayerHUD/QuickSelectPanel/MarginContainer/ShortcutMenu"]
+layout_mode = 2
+alignment = 1
+
+[node name="SMIcon_3" type="TextureRect" parent="CanvasLayer/PlayerHUD/QuickSelectPanel/MarginContainer/ShortcutMenu/VBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
 texture = ExtResource("23_qxeqk")
 expand_mode = 1
 
-[node name="SMIcon_2" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMTopSection/VBoxContainer"]
+[node name="SMIcon_2" type="TextureRect" parent="CanvasLayer/PlayerHUD/QuickSelectPanel/MarginContainer/ShortcutMenu/VBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
 texture = ExtResource("23_qxeqk")
 expand_mode = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMTopSection"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-
-[node name="SMMiddleSection" type="HBoxContainer" parent="CanvasLayer/PlayerHUD/ShortcutMenu"]
+[node name="SMMiddleSection" type="HBoxContainer" parent="CanvasLayer/PlayerHUD/QuickSelectPanel/MarginContainer/ShortcutMenu"]
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMMiddleSection"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PlayerHUD/QuickSelectPanel/MarginContainer/ShortcutMenu/SMMiddleSection"]
 layout_mode = 2
 
-[node name="SMIcon_1" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMMiddleSection/HBoxContainer"]
+[node name="SMIcon_1" type="TextureRect" parent="CanvasLayer/PlayerHUD/QuickSelectPanel/MarginContainer/ShortcutMenu/SMMiddleSection/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("23_qxeqk")
 expand_mode = 1
 
-[node name="SMIcon_0" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMMiddleSection/HBoxContainer"]
+[node name="SMIcon_0" type="TextureRect" parent="CanvasLayer/PlayerHUD/QuickSelectPanel/MarginContainer/ShortcutMenu/SMMiddleSection/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("23_qxeqk")
 expand_mode = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMMiddleSection"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PlayerHUD/QuickSelectPanel/MarginContainer/ShortcutMenu/SMMiddleSection"]
 custom_minimum_size = Vector2(64, 0)
 layout_mode = 2
 
-[node name="SMHPDisplay" type="Control" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMMiddleSection/MarginContainer"]
-unique_name_in_owner = true
+[node name="PanelDisplay" type="Label" parent="CanvasLayer/PlayerHUD/QuickSelectPanel/MarginContainer/ShortcutMenu/SMMiddleSection/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/PlayerHUD/QuickSelectPanel/MarginContainer/ShortcutMenu/SMMiddleSection"]
 layout_mode = 2
 
-[node name="HP_0" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMMiddleSection/MarginContainer/SMHPDisplay"]
-layout_mode = 0
-offset_left = 21.0
-offset_top = 1.0
-offset_right = 43.0
-offset_bottom = 22.0
-texture = ExtResource("24_6g3o4")
-expand_mode = 1
-
-[node name="HP_1" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMMiddleSection/MarginContainer/SMHPDisplay"]
-layout_mode = 0
-offset_left = 39.0
-offset_top = 18.0
-offset_right = 61.0
-offset_bottom = 39.0
-texture = ExtResource("24_6g3o4")
-expand_mode = 1
-
-[node name="HP_2" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMMiddleSection/MarginContainer/SMHPDisplay"]
-layout_mode = 0
-offset_left = 32.0
-offset_top = 42.0
-offset_right = 54.0
-offset_bottom = 63.0
-texture = ExtResource("24_6g3o4")
-expand_mode = 1
-
-[node name="HP_3" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMMiddleSection/MarginContainer/SMHPDisplay"]
-layout_mode = 0
-offset_left = 7.0
-offset_top = 43.0
-offset_right = 29.0
-offset_bottom = 64.0
-texture = ExtResource("24_6g3o4")
-expand_mode = 1
-
-[node name="HP_4" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMMiddleSection/MarginContainer/SMHPDisplay"]
-layout_mode = 0
-offset_top = 18.0
-offset_right = 22.0
-offset_bottom = 39.0
-texture = ExtResource("24_6g3o4")
-expand_mode = 1
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMMiddleSection"]
-layout_mode = 2
-
-[node name="SMIcon_4" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMMiddleSection/HBoxContainer2"]
+[node name="SMIcon_4" type="TextureRect" parent="CanvasLayer/PlayerHUD/QuickSelectPanel/MarginContainer/ShortcutMenu/SMMiddleSection/HBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 texture = ExtResource("23_qxeqk")
 expand_mode = 1
 
-[node name="SMIcon_5" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMMiddleSection/HBoxContainer2"]
+[node name="SMIcon_5" type="TextureRect" parent="CanvasLayer/PlayerHUD/QuickSelectPanel/MarginContainer/ShortcutMenu/SMMiddleSection/HBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("23_qxeqk")
 expand_mode = 1
 
-[node name="SMBottomSection" type="HBoxContainer" parent="CanvasLayer/PlayerHUD/ShortcutMenu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PlayerHUD/QuickSelectPanel/MarginContainer/ShortcutMenu"]
 layout_mode = 2
+alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMBottomSection"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMBottomSection"]
-layout_mode = 2
-
-[node name="SMIcon_6" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMBottomSection/VBoxContainer"]
+[node name="SMIcon_6" type="TextureRect" parent="CanvasLayer/PlayerHUD/QuickSelectPanel/MarginContainer/ShortcutMenu/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+size_flags_horizontal = 4
 texture = ExtResource("23_qxeqk")
 expand_mode = 1
 
-[node name="SMIcon_7" type="TextureRect" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMBottomSection/VBoxContainer"]
+[node name="SMIcon_7" type="TextureRect" parent="CanvasLayer/PlayerHUD/QuickSelectPanel/MarginContainer/ShortcutMenu/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
 texture = ExtResource("23_qxeqk")
 expand_mode = 1
-
-[node name="MarginContainer2" type="MarginContainer" parent="CanvasLayer/PlayerHUD/ShortcutMenu/SMBottomSection"]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-
-[node name="MoneyPanel" type="Panel" parent="CanvasLayer/PlayerHUD"]
-layout_mode = 0
-offset_left = 963.0
-offset_right = 1151.0
-offset_bottom = 61.0
-theme = ExtResource("21_13c1r")
-
-[node name="MoneyIcon" type="TextureRect" parent="CanvasLayer/PlayerHUD/MoneyPanel"]
-layout_mode = 0
-offset_left = 10.0
-offset_top = 6.0
-offset_right = 56.0
-offset_bottom = 53.0
-texture = ExtResource("28_wddji")
-expand_mode = 1
-
-[node name="MoneyLabel" type="Label" parent="CanvasLayer/PlayerHUD/MoneyPanel"]
-layout_mode = 2
-offset_left = 74.0
-offset_top = 20.0
-offset_right = 168.0
-offset_bottom = 40.0
-text = "1"
-horizontal_alignment = 2
 
 [node name="StartMenu" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
+process_mode = 3
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -462,12 +464,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
+mouse_filter = 2
 theme = ExtResource("21_13c1r")
 script = ExtResource("28_r3h2c")
 
-[node name="StartMenuPanel" type="Panel" parent="CanvasLayer/StartMenu"]
-visible = false
+[node name="StartMenuMain" type="PanelContainer" parent="CanvasLayer/StartMenu"]
 custom_minimum_size = Vector2(500, 270)
 layout_mode = 1
 anchors_preset = 8
@@ -476,55 +477,57 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -250.0
-offset_top = -125.0
+offset_top = -135.0
 offset_right = 250.0
-offset_bottom = 125.0
+offset_bottom = 135.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/StartMenu/StartMenuPanel"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/StartMenu/StartMenuMain"]
 custom_minimum_size = Vector2(10, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/StartMenu/StartMenuPanel/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/StartMenu/StartMenuMain/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="Label" type="Label" parent="CanvasLayer/StartMenu/StartMenuPanel/MarginContainer/VBoxContainer"]
+[node name="PauseMenuLabel" type="Label" parent="CanvasLayer/StartMenu/StartMenuMain/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Pause Menu"
 horizontal_alignment = 1
 
-[node name="ResumeGame" type="Button" parent="CanvasLayer/StartMenu/StartMenuPanel/MarginContainer/VBoxContainer"]
+[node name="ResumeGameButton" type="Button" parent="CanvasLayer/StartMenu/StartMenuMain/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Resume"
 
-[node name="WeaponsAndGadgets" type="Button" parent="CanvasLayer/StartMenu/StartMenuPanel/MarginContainer/VBoxContainer"]
+[node name="WeaponsAndGadgetsButton" type="Button" parent="CanvasLayer/StartMenu/StartMenuMain/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Weapons and Gadgets"
 
-[node name="Options" type="Button" parent="CanvasLayer/StartMenu/StartMenuPanel/MarginContainer/VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="CanvasLayer/StartMenu/StartMenuMain/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Options"
 
-[node name="Extras" type="Button" parent="CanvasLayer/StartMenu/StartMenuPanel/MarginContainer/VBoxContainer"]
+[node name="ExtrasButton" type="Button" parent="CanvasLayer/StartMenu/StartMenuMain/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Extras"
 
-[node name="ExitToMainMenu" type="Button" parent="CanvasLayer/StartMenu/StartMenuPanel/MarginContainer/VBoxContainer"]
+[node name="ExitToMainMenuButton" type="Button" parent="CanvasLayer/StartMenu/StartMenuMain/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Exit to Main Menu"
 
 [node name="SSMOptionsMenu" type="Control" parent="CanvasLayer/StartMenu"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
