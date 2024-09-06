@@ -7,3 +7,11 @@ GoldenRooster
 	zafiratype
 	license: Freeware
 	link: https://www.fontspace.com/supply-center-font-f89906
+
+schutzgitterhaus-grotesk-nbp-font
+	license: Creative Commons (by-sa) Attribution Share Alike
+	link: https://www.fontspace.com/schutzgitterhaus-grotesk-nbp-font-f14524
+
+Mechanical
+	license: SIL Open Font License (OFL)
+	link: https://www.fontspace.com/mechanical-font-f22368

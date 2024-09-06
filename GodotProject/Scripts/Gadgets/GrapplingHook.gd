@@ -1,7 +1,6 @@
-#"""
+
 #This class manages the activation and the end of the grapple state.
 #The actual grapple logic is implemented in the state machine
-#"""
 
 extends Gadget
 
@@ -16,18 +15,11 @@ var player = null #gets initialized as soon as the first grapple point is detect
 func _ready():
 	set_physics_process(false)
 
-#we have the gadget and want to use it
-#func _input(event):
-#	print("echo")
-#	if Input.is_action_just_pressed("interact"):
-#		activate()
-
-
 #here we test if any grappling points are in reach
 #and if any grappling points are there, we set the player state bool and put it in the players hand
 func activate():
 	
-	if grapple_points.is_empty(): #or player == null:
+	if grapple_points.is_empty():
 		return
 	
 	if player == null:
@@ -63,7 +55,6 @@ func end_grapple():
 	player.is_grappling = false
 	set_physics_process(false)
 	$Rope.visible = false
-	#nearest_grapple_point = null
 
 func update_rope_transform(grapple_point_position: Vector3) -> void:
 	var rope = $Rope # Adjust the path
@@ -91,17 +82,19 @@ func remove_grapple_point(grapple_point):
 #when the grappling hook successfully activates this function is called
 #it is responsible for assigning the player to the grapple joint
 func initialize_grappling_mode():
-	match nearest_grapple_point.grapple_point_type:
-		
-		nearest_grapple_point.grapple_point_type_enum.PULL:
-			joint = nearest_grapple_point.get_joint()
-			nearest_grapple_point.add_child(joint)
-			joint.node_b = player._physics_body.get_path()
-			
-		nearest_grapple_point.grapple_point_type_enum.SWING:
-			joint = nearest_grapple_point.get_joint()
-			joint.node_b = player._physics_body.get_path()
-			
-		nearest_grapple_point.grapple_point_type_enum.TUG:
-			joint = nearest_grapple_point.get_joint()
-			push_warning("Tog: TODO")
+	joint = nearest_grapple_point.get_joint()
+	joint.node_b = player._physics_body.get_path()
+	
+	#match nearest_grapple_point.grapple_point_type:
+		#
+		#nearest_grapple_point.grapple_point_type_enum.PULL:
+			#joint = nearest_grapple_point.get_joint()
+			#joint.node_b = player._physics_body.get_path()
+			#
+		#nearest_grapple_point.grapple_point_type_enum.SWING:
+			#joint = nearest_grapple_point.get_joint()
+			#joint.node_b = player._physics_body.get_path()
+			#
+		#nearest_grapple_point.grapple_point_type_enum.HOLD:
+			#joint = nearest_grapple_point.get_joint()
+			#push_warning("Tog: TODO")

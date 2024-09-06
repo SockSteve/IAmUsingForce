@@ -901,21 +901,6 @@ outer_radius = 8.0
 [node name="Player" parent="." instance=ExtResource("1_iyogp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 
-[node name="GeneralSkeleton" parent="Player/CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature" index="0"]
-bones/9/rotation = Quaternion(0, -0.707107, 0, 0.707107)
-bones/10/rotation = Quaternion(0, 0.707107, 0, 0.707107)
-bones/12/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/13/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
-bones/33/rotation = Quaternion(0, 0.707107, 0, 0.707107)
-bones/34/rotation = Quaternion(0, -0.707107, 0, 0.707107)
-bones/36/rotation = Quaternion(-0.214187, -0.673887, -0.214187, 0.673887)
-bones/37/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
-bones/57/rotation = Quaternion(0, 0.707107, -0.707107, 0)
-bones/62/rotation = Quaternion(0, 0.707107, -0.707107, 0)
-
-[node name="MeleeHand" parent="Player/CharacterRotationRoot/CharacterSkin" index="2"]
-transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, -0.737829, 1.43559, -0.0617137)
-
 [editable path="NogoForestDemo"]
 [editable path="Player"]
 [editable path="Player/CharacterRotationRoot/CharacterSkin"]

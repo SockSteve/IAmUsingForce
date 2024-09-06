@@ -2,7 +2,7 @@ class_name GrapplePoint
 extends Node3D
 
 #enum where the player can set the desired action to perform on this grapple point
-enum grapple_point_type_enum {PULL, SWING, TUG}
+enum grapple_point_type_enum {PULL, SWING, HOLD}
 @export var grapple_point_type: grapple_point_type_enum
 @onready var jolt_six_dof_joint: JoltGeneric6DOFJoint3D = $JoltGeneric6DOFJoint3D
 @onready var jolt_slider_joint: JoltSliderJoint3D = $JoltSliderJoint3D
@@ -22,9 +22,9 @@ func get_joint()->JoltJoint3D:
 			return jolt_slider_joint
 		grapple_point_type_enum.SWING:
 			return jolt_six_dof_joint
-		grapple_point_type_enum.TUG:
-			push_warning("Tug: TODO")
-			return null
+		grapple_point_type_enum.HOLD:
+			return jolt_six_dof_joint
+	push_warning("no joint detected")
 	return null
 
 #when player enters area and has GrapplingHook, add this GrapplePoint to the detected grapplePoints

@@ -56,8 +56,11 @@ func physics_update(delta: float) -> void:
 			var swing_direction = player._move_direction
 			var force = swing_direction * .4 #speed
 			player._physics_body.apply_central_impulse(force)
-		pass
-	
+		
+	if grappling_hook.nearest_grapple_point.grapple_point_type == grappling_hook.nearest_grapple_point.grapple_point_type_enum.HOLD:
+		player.velocity = player._physics_body.linear_velocity
+		player.move_and_slide()
+		
 	if not Input.is_action_pressed("interact"):
 		player.velocity = player._physics_body.linear_velocity
 		player.move_and_slide()

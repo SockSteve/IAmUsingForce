@@ -102,7 +102,7 @@ shape = SubResource("ConvexPolygonShape3D_vrbtt")
 
 [node name="BladePivot" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-top_level = true
+visible = false
 
 [node name="Bazooka" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.546597, 1.58632, 0)

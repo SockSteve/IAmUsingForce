@@ -22,4 +22,3 @@ func damageable_body_entered(body):
 func damageable_area_entered(body):
 	if body.is_in_group("damageables"):
 		emit_signal("apply_damage",damage,special)
-
