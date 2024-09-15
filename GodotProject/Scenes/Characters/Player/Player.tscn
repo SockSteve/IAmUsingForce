@@ -22,22 +22,22 @@
 [ext_resource type="Script" path="res://Scripts/Characters/Player/PlayerHand.gd" id="16_mjyse"]
 [ext_resource type="Script" path="res://Scenes/Characters/Player/PlayerHUD.gd" id="20_6xxyk"]
 [ext_resource type="Theme" uid="uid://d02hntmjt67aj" path="res://UI/UITheme_Base.tres" id="21_13c1r"]
-[ext_resource type="Texture2D" uid="uid://bwo2v53nvfp1o" path="res://Assets/UI/WeaponBarV2L.svg" id="22_86vob"]
+[ext_resource type="Texture2D" uid="uid://jy2vmax0iabe" path="res://Assets/UI/WeaponBarV2L.svg" id="22_86vob"]
 [ext_resource type="Texture2D" uid="uid://dmf404ftfexwl" path="res://Assets/Decals/DropShadow/Shadow.png" id="22_gwf8y"]
-[ext_resource type="Texture2D" uid="uid://pcjnv83mgkat" path="res://Assets/Textures/UI/CutterIconSC.png" id="22_iaxg4"]
-[ext_resource type="Texture2D" uid="uid://cqiv6rrr26qmx" path="res://Assets/Textures/UI/PlaceholderIcon.png" id="23_qxeqk"]
+[ext_resource type="Texture2D" uid="uid://cbl0ms55gbbui" path="res://Assets/Textures/UI/CutterIconSC.png" id="22_iaxg4"]
+[ext_resource type="Texture2D" uid="uid://cgo68fl4c4jfp" path="res://Assets/Textures/UI/PlaceholderIcon.png" id="23_qxeqk"]
 [ext_resource type="Theme" uid="uid://cti1a1y4wu3hw" path="res://Assets/Kenney/FlatUI/kenneyUICostume.tres" id="24_qnks5"]
-[ext_resource type="FontFile" uid="uid://bawngymo25rp5" path="res://Assets/Fonts/SchutzgitterhausGroteskNbpRegular-l5pV.ttf" id="24_vjfmv"]
-[ext_resource type="Texture2D" uid="uid://bx8lfh6vgwtnk" path="res://Assets/UI/QuickSelectCross.svg" id="25_iehhb"]
-[ext_resource type="Texture2D" uid="uid://cque1s6oa5b10" path="res://Assets/UI/MoneyIconWhite.svg" id="27_4reeb"]
-[ext_resource type="Texture2D" uid="uid://dnrhjt2nuwbnf" path="res://Assets/UI/UIBarR.svg" id="28_gv4ft"]
+[ext_resource type="FontFile" uid="uid://bqr5brhsp8adx" path="res://Assets/Fonts/SchutzgitterhausGroteskNbpRegular-l5pV.ttf" id="24_vjfmv"]
+[ext_resource type="Texture2D" uid="uid://brqqeoa2lybu" path="res://Assets/UI/QuickSelectCross.svg" id="25_iehhb"]
+[ext_resource type="Texture2D" uid="uid://drc2788udnpm7" path="res://Assets/UI/MoneyIconWhite.svg" id="27_4reeb"]
+[ext_resource type="Texture2D" uid="uid://cw66b5fw65e25" path="res://Assets/UI/UIBarR.svg" id="28_gv4ft"]
 [ext_resource type="Script" path="res://Scenes/Characters/Player/StartMenu.gd" id="28_r3h2c"]
-[ext_resource type="Texture2D" uid="uid://cu57pg1cqjpqy" path="res://Assets/Textures/UI/BadPrankIcon.png" id="29_sc2yr"]
-[ext_resource type="Texture2D" uid="uid://bvacnvgd3rgqc" path="res://Assets/UI/MenuBar1.svg" id="30_detqe"]
-[ext_resource type="Texture2D" uid="uid://darrnp03hrxwg" path="res://Assets/UI/MenuBar2.svg" id="30_vhdh7"]
-[ext_resource type="Texture2D" uid="uid://rjbg36fwvyrm" path="res://Assets/UI/MenuBtnHalf1.svg" id="31_fy6wc"]
-[ext_resource type="Texture2D" uid="uid://chje5lrkyyvyk" path="res://Assets/UI/MenuBarVertical.svg" id="31_nacso"]
-[ext_resource type="Texture2D" uid="uid://cej71ru117n5y" path="res://Assets/UI/PanelBGBig.svg" id="34_n86an"]
+[ext_resource type="Texture2D" uid="uid://bkqdlx45ftmvq" path="res://Assets/Textures/UI/BadPrankIcon.png" id="29_sc2yr"]
+[ext_resource type="Texture2D" uid="uid://23pp11qxektv" path="res://Assets/UI/MenuBar1.svg" id="30_detqe"]
+[ext_resource type="Texture2D" uid="uid://cg60w1catlsel" path="res://Assets/UI/MenuBar2.svg" id="30_vhdh7"]
+[ext_resource type="Texture2D" uid="uid://cfdhd0otugn7e" path="res://Assets/UI/MenuBtnHalf1.svg" id="31_fy6wc"]
+[ext_resource type="Texture2D" uid="uid://brqqo63wiridu" path="res://Assets/UI/MenuBarVertical.svg" id="31_nacso"]
+[ext_resource type="Texture2D" uid="uid://b12dhfai07x17" path="res://Assets/UI/PanelBGBig.svg" id="34_n86an"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_p4inm"]
 margin = 4.123
@@ -202,21 +202,6 @@ debug_shape_custom_color = Color(0, 1, 0, 1)
 
 [node name="CharacterSkin" parent="CharacterRotationRoot" instance=ExtResource("15_7yrxv")]
 unique_name_in_owner = true
-
-[node name="GeneralSkeleton" parent="CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature" index="0"]
-bones/9/rotation = Quaternion(0, -0.707107, 0, 0.707107)
-bones/10/rotation = Quaternion(0, 0.707107, 0, 0.707107)
-bones/12/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/13/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
-bones/33/rotation = Quaternion(0, 0.707107, 0, 0.707107)
-bones/34/rotation = Quaternion(0, -0.707107, 0, 0.707107)
-bones/36/rotation = Quaternion(-0.214187, -0.673887, -0.214187, 0.673887)
-bones/37/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
-bones/57/rotation = Quaternion(0, 0.707107, -0.707107, 0)
-bones/62/rotation = Quaternion(0, 0.707107, -0.707107, 0)
-
-[node name="MeleeHand" parent="CharacterRotationRoot/CharacterSkin" index="2"]
-transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, -0.737829, 1.43559, -0.0617137)
 
 [node name="PlayerHand" type="Node3D" parent="CharacterRotationRoot/CharacterSkin"]
 unique_name_in_owner = true

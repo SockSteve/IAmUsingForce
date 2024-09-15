@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bttb2yvi5q3fb"]
 
 [ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Scenes/Characters/Player/Player.tscn" id="1_iyogp"]
-[ext_resource type="PackedScene" uid="uid://cqw173hvs7ny6" path="res://Assets/Geometry/NogoForestDemo.blend" id="1_jf07b"]
+[ext_resource type="PackedScene" uid="uid://ndssirk0bb80" path="res://Assets/Geometry/NogoForestDemo.blend" id="1_jf07b"]
 
 [sub_resource type="Environment" id="Environment_tsh1l"]
 
