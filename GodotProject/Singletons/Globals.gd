@@ -6,6 +6,8 @@ enum game_progression_flag_enum {beginning,nogo_forrest_completed,
 enum special_flag_enum {none, grappling_hook_seller, special_gear_seller, 
 	booster_seller, magnet_seller}
 
+enum F {POLYCOLY, VENDOR, SHIT_ONDER, FFF, NYOOO}
+
 var game_progression_flags: Dictionary = get_flags.call(game_progression_flag_enum)
 
 var special_flags: Dictionary = get_flags.call(special_flag_enum)

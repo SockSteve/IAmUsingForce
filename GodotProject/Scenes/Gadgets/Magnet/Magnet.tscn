@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dcqg4lt5matjd"]
 
 [ext_resource type="Script" path="res://Scripts/Gadgets/Magnet.gd" id="1_7n43l"]
-[ext_resource type="Texture2D" uid="uid://fp00l1f827re" path="res://SockSethLogo.png" id="2_i47dk"]
+[ext_resource type="Texture2D" uid="uid://fp00l1f827re" path="res://Sock.png" id="2_i47dk"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0qjsk"]
 

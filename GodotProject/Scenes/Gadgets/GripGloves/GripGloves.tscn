@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b11rpjewa7qy5"]
 
 [ext_resource type="Script" path="res://Scripts/Gadgets/GripGloves.gd" id="1_3af75"]
-[ext_resource type="Texture2D" uid="uid://fp00l1f827re" path="res://SockSethLogo.png" id="2_rp5rv"]
+[ext_resource type="Texture2D" uid="uid://fp00l1f827re" path="res://Sock.png" id="2_rp5rv"]
 
 [node name="GripGloves" type="Node3D" groups=["gadget", "passive"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)

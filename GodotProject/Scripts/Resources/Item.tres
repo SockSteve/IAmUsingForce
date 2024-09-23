@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="item" load_steps=2 format=3 uid="uid://0r8la1khhta7"]
+
+[ext_resource type="Script" path="res://Scripts/Resources/Item.gd" id="1_wq7a8"]
+
+[resource]
+script = ExtResource("1_wq7a8")
+id = &""
+name = ""
+type = 0
+description = ""
+shop_price = 0
+unlock_flags = Array[String]([])
+flas = Array[int]([0, 0])

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://e5q5x35q2ld0"]
+
+[ext_resource type="Script" path="res://Sandbox/test.gd" id="1_l7htg"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_8n58x"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_bw2ym"]
+
+[node name="Node3D" type="Node3D"]
+script = ExtResource("1_l7htg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_8n58x")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.17114, 0, 0)
+mesh = SubResource("BoxMesh_bw2ym")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.00236, 0, 6.16606)

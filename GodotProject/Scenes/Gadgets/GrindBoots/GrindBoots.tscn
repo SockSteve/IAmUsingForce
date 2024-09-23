@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Gadgets/GrindBoots.gd" id="1_42vuo"]
 [ext_resource type="Curve" uid="uid://5fggr785a6bl" path="res://Scripts/Gadgets/GrindJumpCurve.tres" id="2_ttfmb"]
 [ext_resource type="Curve" uid="uid://oy4auoolki6p" path="res://Scripts/Gadgets/GrindrailChangeJumpCurve.tres" id="3_kkq5l"]
-[ext_resource type="Texture2D" uid="uid://fp00l1f827re" path="res://SockSethLogo.png" id="4_l3ifl"]
+[ext_resource type="Texture2D" uid="uid://fp00l1f827re" path="res://Sock.png" id="4_l3ifl"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8pcjv"]
 height = 0.2

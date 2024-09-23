@@ -1,7 +1,6 @@
 extends Node3D
 class_name Gadget
 
-#const globals = preload("res://Singletons/Globals.gd")
 
 @export_category("Gadget")
 
