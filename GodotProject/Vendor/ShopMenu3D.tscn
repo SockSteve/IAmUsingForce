@@ -1,0 +1,404 @@
+[gd_scene load_steps=13 format=3 uid="uid://bcj7lff1v3mff"]
+
+[ext_resource type="Script" path="res://Vendor/ShopMenu3D.gd" id="1_1ttap"]
+[ext_resource type="Texture2D" uid="uid://dmf404ftfexwl" path="res://Assets/Decals/DropShadow/Shadow.png" id="1_5i4m7"]
+[ext_resource type="Script" path="res://Vendor/ShopHandler.gd" id="2_72765"]
+[ext_resource type="Theme" uid="uid://dvspb4esei5oi" path="res://UI/UITheme_Base_ NoSkew.tres" id="5_a5rer"]
+[ext_resource type="Texture2D" uid="uid://jedvca0wwrh0" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/ammo_pistol.png" id="6_dy6un"]
+[ext_resource type="AudioStream" uid="uid://d4gcil3ga3ccg" path="res://Assets/Kenney/Sounds/tap-a.ogg" id="7_khdft"]
+
+[sub_resource type="SystemFont" id="SystemFont_qjh1b"]
+hinting = 2
+subpixel_positioning = 0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tu8k3"]
+bg_color = Color(0.207843, 0.164706, 0.101961, 1)
+skew = Vector2(0.3, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 0.443137, 0, 0.435294)
+border_blend = true
+shadow_color = Color(0, 0, 0, 0.262745)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_sqr5r"]
+resource_local_to_scene = true
+size = Vector2(3, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_60via"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rg7in"]
+albedo_texture = SubResource("ViewportTexture_60via")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tmjdk"]
+size = Vector3(3, 2, 0.1)
+
+[node name="ShopMenu3D" type="Node3D"]
+script = ExtResource("1_1ttap")
+
+[node name="ShopHandler" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_72765")
+melee_weapon_dir_path = "res://Scenes/Weapons/MeleeWeapons"
+ranged_weapon_dir_path = "res://Scenes/Weapons/RangedWeapons"
+gadget_dir_path = "res://Scenes/Gadgets"
+
+[node name="SubViewport" type="SubViewport" parent="."]
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Control" type="Control" parent="SubViewport"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="Panel" type="Panel" parent="SubViewport/Control"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 1
+
+[node name="ItemNameLabel" type="Label" parent="SubViewport/Control/Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 480.0
+offset_top = 36.0
+offset_right = 1385.0
+offset_bottom = 149.0
+theme_override_font_sizes/font_size = 100
+text = "Weapon Name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/Control/Panel"]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 609.0
+offset_right = 1195.0
+offset_bottom = 807.0
+
+[node name="PriceTextLabel" type="Label" parent="SubViewport/Control/Panel/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Price:"
+
+[node name="PriceLabel" type="Label" parent="SubViewport/Control/Panel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "null"
+
+[node name="InsuficcientMoneyLabel" type="Label" parent="SubViewport/Control/Panel/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 70
+text = "NOT ENOUGH LIQUIDITY"
+
+[node name="Panel" type="Panel" parent="SubViewport/Control/Panel"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 167.0
+offset_right = 869.0
+offset_bottom = 582.0
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/Control/Panel/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="ItemInfoLabel" type="Label" parent="SubViewport/Control/Panel/Panel/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 32
+text = "test"
+autowrap_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="SubViewport/Control/Panel"]
+layout_mode = 0
+offset_left = 1179.0
+offset_top = 187.0
+offset_right = 1800.0
+offset_bottom = 632.0
+
+[node name="ItemPicture" type="TextureRect" parent="SubViewport/Control/Panel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1211.0
+offset_top = 196.0
+offset_right = 1781.0
+offset_bottom = 607.0
+texture = ExtResource("1_5i4m7")
+expand_mode = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="SubViewport/Control/Panel"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 856.0
+offset_right = 1773.0
+offset_bottom = 1023.0
+follow_focus = true
+
+[node name="ShopItemSelectionField" type="HBoxContainer" parent="SubViewport/Control/Panel/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
+[node name="AllAmmoBtn" type="Button" parent="SubViewport/Control/Panel/ScrollContainer/ShopItemSelectionField"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(160, 160)
+layout_mode = 2
+theme = ExtResource("5_a5rer")
+icon = ExtResource("6_dy6un")
+alignment = 0
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="SubViewport/Control/Panel/ScrollContainer/ShopItemSelectionField/AllAmmoBtn"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_a5rer")
+theme_override_fonts/font = SubResource("SystemFont_qjh1b")
+theme_override_font_sizes/font_size = 42
+text = "AMMO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BuyItemPopup" type="Panel" parent="SubViewport/Control/Panel"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 564.0
+offset_top = 477.0
+offset_right = 1299.0
+offset_bottom = 762.0
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/Control/Panel/BuyItemPopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = -2
+theme_override_constants/margin_bottom = -2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/Control/Panel/BuyItemPopup/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="SubViewport/Control/Panel/BuyItemPopup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "buy item?"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/Control/Panel/BuyItemPopup/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/Control/Panel/BuyItemPopup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="AcceptItemTransactionButton" type="Button" parent="SubViewport/Control/Panel/BuyItemPopup/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "yes"
+
+[node name="CancelItemTransactionButton" type="Button" parent="SubViewport/Control/Panel/BuyItemPopup/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "no"
+
+[node name="BuyAmmoPopup" type="Panel" parent="SubViewport/Control/Panel"]
+unique_name_in_owner = true
+visible = false
+layout_direction = 1
+layout_mode = 0
+offset_left = 507.0
+offset_top = 309.0
+offset_right = 1520.0
+offset_bottom = 876.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tu8k3")
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/Control/Panel/BuyAmmoPopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = -2
+theme_override_constants/margin_bottom = -2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="Label" type="Label" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Buy Ammo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="CurrentAmmoLabel" type="Label" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "a"
+
+[node name="Seperator" type="Label" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "/"
+
+[node name="MaxAmmoLabel" type="Label" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "a"
+
+[node name="SpinBox" type="SpinBox" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="AmmoAmountSlider" type="HSlider" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_vertical = 4
+min_value = 1.0
+value = 49.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="AcceptAmmoTransactionButton" type="Button" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "yes"
+
+[node name="CancelAmmoTransactionButton" type="Button" parent="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "no"
+
+[node name="BuyAllAmmoPopup" type="Panel" parent="SubViewport/Control/Panel"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_left = 356.0
+offset_top = 239.0
+offset_right = 1528.0
+offset_bottom = 865.0
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/Control/Panel/BuyAllAmmoPopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 2
+theme_override_constants/margin_right = -2
+theme_override_constants/margin_bottom = -2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/Control/Panel/BuyAllAmmoPopup/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="SubViewport/Control/Panel/BuyAllAmmoPopup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 100
+text = "buy Ammo for 
+all weapons?"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport/Control/Panel/BuyAllAmmoPopup/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 24.275)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/Control/Panel/BuyAllAmmoPopup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="AcceptAllAmmonTransactionButton" type="Button" parent="SubViewport/Control/Panel/BuyAllAmmoPopup/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "yes"
+
+[node name="CancelAllAmmoTransactionButton" type="Button" parent="SubViewport/Control/Panel/BuyAllAmmoPopup/MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "no"
+
+[node name="InsufficientMoneyMessageTimer" type="Timer" parent="SubViewport/Control/Panel"]
+unique_name_in_owner = true
+wait_time = 2.0
+one_shot = true
+
+[node name="UiFocusChangedSfx" type="AudioStreamPlayer" parent="SubViewport/Control/Panel"]
+unique_name_in_owner = true
+stream = ExtResource("7_khdft")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("QuadMesh_sqr5r")
+surface_material_override/0 = SubResource("StandardMaterial3D_rg7in")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D"]
+input_capture_on_drag = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0133133, -0.00122152, 0)
+shape = SubResource("BoxShape3D_tmjdk")
+
+[connection signal="gui_focus_changed" from="SubViewport" to="ShopHandler" method="_on_sub_viewport_gui_focus_changed"]
+[connection signal="pressed" from="SubViewport/Control/Panel/ScrollContainer/ShopItemSelectionField/AllAmmoBtn" to="ShopHandler" method="_on_all_ammo_btn_pressed"]
+[connection signal="pressed" from="SubViewport/Control/Panel/BuyItemPopup/MarginContainer/VBoxContainer/HBoxContainer/AcceptItemTransactionButton" to="ShopHandler" method="_on_accept_item_transaction_button_pressed"]
+[connection signal="pressed" from="SubViewport/Control/Panel/BuyItemPopup/MarginContainer/VBoxContainer/HBoxContainer/CancelItemTransactionButton" to="ShopHandler" method="_on_cancel_item_transaction_button_pressed"]
+[connection signal="value_changed" from="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer/AmmoAmountSlider" to="ShopHandler" method="_on_ammo_amount_slider_value_changed"]
+[connection signal="pressed" from="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer/HBoxContainer/AcceptAmmoTransactionButton" to="ShopHandler" method="_on_accept_ammo_transaction_button_pressed"]
+[connection signal="pressed" from="SubViewport/Control/Panel/BuyAmmoPopup/MarginContainer/VBoxContainer/HBoxContainer/CancelAmmoTransactionButton" to="ShopHandler" method="_on_cancel_ammo_transaction_button_pressed"]
+[connection signal="pressed" from="SubViewport/Control/Panel/BuyAllAmmoPopup/MarginContainer/VBoxContainer/HBoxContainer/AcceptAllAmmonTransactionButton" to="ShopHandler" method="_on_accept_all_ammon_transaction_button_pressed"]
+[connection signal="pressed" from="SubViewport/Control/Panel/BuyAllAmmoPopup/MarginContainer/VBoxContainer/HBoxContainer/CancelAllAmmoTransactionButton" to="ShopHandler" method="_on_cancel_all_ammo_transaction_button_pressed"]

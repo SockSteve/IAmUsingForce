@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqhn455src0iq"]
+
+[ext_resource type="Script" path="res://Gadgets/GrapplingHook/GrapplingHook.gd" id="1_udl8o"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dib0u"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_s4e47"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mscdr"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_n28p7"]
+material = SubResource("StandardMaterial3D_mscdr")
+
+[node name="GrapplingHook" type="Node3D" groups=["active", "gadget"]]
+script = ExtResource("1_udl8o")
+_name = "GrapplingHook"
+
+[node name="GadgetSkin" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_dib0u")
+mesh = SubResource("BoxMesh_s4e47")
+
+[node name="Rope" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_n28p7")

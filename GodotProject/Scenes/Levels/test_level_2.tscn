@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bttb2yvi5q3fb"]
 
-[ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Scenes/Characters/Player/Player.tscn" id="1_iyogp"]
+[ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Player/Player.tscn" id="1_iyogp"]
 [ext_resource type="PackedScene" uid="uid://cqw173hvs7ny6" path="res://Assets/Geometry/NogoForestDemo.blend" id="1_jf07b"]
 
 [sub_resource type="Environment" id="Environment_tsh1l"]
@@ -73,23 +73,23 @@ bones/61/rotation = Quaternion(-0.00638096, -1.38148e-05, 0.00394467, 0.999972)
 bones/62/scale = Vector3(1, 1, 1)
 bones/63/rotation = Quaternion(0.28853, 0.0573651, -0.0173196, 0.955594)
 
-[node name="tunnel1_bak" parent="NogoForestDemo" index="62"]
+[node name="tunnel1_bak" parent="NogoForestDemo" index="26"]
 visible = false
 
-[node name="tunnel1" parent="NogoForestDemo" index="63"]
+[node name="tunnel1" parent="NogoForestDemo" index="27"]
 visible = false
 
-[node name="HookTreeInner" parent="NogoForestDemo" index="211"]
+[node name="HookTreeInner" parent="NogoForestDemo" index="61"]
 visible = false
 
 [node name="CollisionShape3D" parent="NogoForestDemo/HookTreeInner/StaticBody3D" index="0"]
 visible = false
 disabled = true
 
-[node name="DirtHillEntranceCave_bak" parent="NogoForestDemo" index="213"]
+[node name="DirtHillEntranceCave_bak" parent="NogoForestDemo" index="63"]
 visible = false
 
-[node name="PathShroomArea12_bak" parent="NogoForestDemo" index="248"]
+[node name="PathShroomArea12_bak" parent="NogoForestDemo" index="98"]
 visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -900,6 +900,21 @@ outer_radius = 8.0
 
 [node name="Player" parent="." instance=ExtResource("1_iyogp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+
+[node name="GeneralSkeleton" parent="Player/CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature" index="0"]
+bones/9/rotation = Quaternion(0, -0.707107, 0, 0.707107)
+bones/10/rotation = Quaternion(0, 0.707107, 0, 0.707107)
+bones/12/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
+bones/13/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
+bones/33/rotation = Quaternion(0, 0.707107, 0, 0.707107)
+bones/34/rotation = Quaternion(0, -0.707107, 0, 0.707107)
+bones/36/rotation = Quaternion(-0.214187, -0.673887, -0.214187, 0.673887)
+bones/37/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
+bones/57/rotation = Quaternion(0, 0.707107, -0.707107, 0)
+bones/62/rotation = Quaternion(0, 0.707107, -0.707107, 0)
+
+[node name="MeleeHand" parent="Player/CharacterRotationRoot/CharacterSkin" index="2"]
+transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, -0.737829, 1.43559, -0.0617137)
 
 [editable path="NogoForestDemo"]
 [editable path="Player"]

@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ShakerPreset3D" load_steps=7 format=3 uid="uid://bgwupdyecxqic"]
 
-[ext_resource type="Resource" uid="uid://cqhisip66ngbl" path="res://ShakerDemoScenes/HeadBobWalking.tres" id="2_abfix"]
+[ext_resource type="Resource" uid="uid://cqhisip66ngbl" path="res://AddonRelatedStuff/ShakerDemoScenes/HeadBobWalking.tres" id="2_abfix"]
 [ext_resource type="Script" path="res://addons/shaker/data/Vector3/ShakerTypeSineWave3D.gd" id="2_lj1xu"]
 [ext_resource type="Script" path="res://addons/shaker/data/Vector3/ShakerPreset3D.gd" id="3_1llgx"]
 

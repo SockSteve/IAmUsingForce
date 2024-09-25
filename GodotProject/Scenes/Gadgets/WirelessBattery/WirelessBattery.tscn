@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://crtl1ry21yynr"]
-
-[ext_resource type="Script" path="res://Scripts/Gadgets/WirelessBattery.gd" id="1_i6p2c"]
-[ext_resource type="Texture2D" uid="uid://fp00l1f827re" path="res://Sock.png" id="2_fy7je"]
-
-[node name="WirelessBattery" type="Node3D" groups=["gadget", "passive"]]
-script = ExtResource("1_i6p2c")
-_name = "WirelessBattery"
-icon = ExtResource("2_fy7je")

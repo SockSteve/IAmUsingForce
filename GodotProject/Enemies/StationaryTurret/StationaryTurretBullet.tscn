@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://c7ddlf7ujhwcv"]
+
+[ext_resource type="Script" path="res://Enemies/StationaryTurret/StationaryTurretBullet.gd" id="1_v3lyj"]
+[ext_resource type="Shape3D" uid="uid://bnplddgmewavb" path="res://Enemies/StationaryTurret/StationaryTurretBulletCollisionShape.tres" id="2_dqi21"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_e2hnk"]
+
+[node name="StationaryTurretBullet" type="Node3D"]
+top_level = true
+script = ExtResource("1_v3lyj")
+
+[node name="BulletMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+mesh = SubResource("SphereMesh_e2hnk")
+
+[node name="BulletArea" type="Area3D" parent="."]
+collision_layer = 0
+monitorable = false
+
+[node name="BulletHitBox" type="CollisionShape3D" parent="BulletArea"]
+shape = ExtResource("2_dqi21")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+
+[connection signal="body_entered" from="BulletArea" to="." method="_on_bullet_area_body_entered"]
+[connection signal="body_shape_entered" from="BulletArea" to="." method="_on_bullet_area_body_shape_entered"]

@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://se2y61k15skk"]
+
+[node name="AmmunitionPickup" type="Node3D"]

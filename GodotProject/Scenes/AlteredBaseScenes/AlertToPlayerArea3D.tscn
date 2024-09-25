@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cymks8fexl0x1"]
 
-[ext_resource type="Script" path="res://Scripts/AlteredBaseScenes/AlertToPlayerArea3D.gd" id="1_u8ohm"]
+[ext_resource type="Script" path="res://Scenes/AlteredBaseScenes/AlertToPlayerArea3D.gd" id="1_u8ohm"]
 
 [node name="AlertToPlayerArea3D" type="Area3D"]
 script = ExtResource("1_u8ohm")

@@ -1,9 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbkjkmt28wace"]
-
-[ext_resource type="Script" path="res://Scripts/Gadgets/HackingDevice.gd" id="1_4ebrp"]
-[ext_resource type="Texture2D" uid="uid://fp00l1f827re" path="res://Sock.png" id="2_14geg"]
-
-[node name="HackingDevice" type="Node3D" groups=["active", "gadget"]]
-script = ExtResource("1_4ebrp")
-_name = "HackingDevice"
-icon = ExtResource("2_14geg")

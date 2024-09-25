@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://4s847lw7g5ai"]
+
+[ext_resource type="Script" path="res://Scenes/AlteredBaseScenes/HitBoxArea3D.gd" id="1_1v2lj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_be7vd"]
+albedo_color = Color(0.247059, 0.247059, 0.247059, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bpek6"]
+material = SubResource("StandardMaterial3D_be7vd")
+size = Vector3(0.1, 0.01, 2.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x7nrc"]
+size = Vector3(0.1, 0.01, 2.5)
+
+[node name="BladeHitDetectionArea" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+script = ExtResource("1_1v2lj")
+damage = 10.0
+
+[node name="BladeMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00086, 1.88168)
+mesh = SubResource("BoxMesh_bpek6")
+
+[node name="BladeHitBox" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.00086, 1.88168)
+shape = SubResource("BoxShape3D_x7nrc")
