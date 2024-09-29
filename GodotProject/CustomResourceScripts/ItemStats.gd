@@ -1,7 +1,7 @@
 extends Resource
-class_name item
+class_name ItemStats
 
-enum Type {WEAPON, INTERACTIVE_GADGET, PASSIVE_GADGET, POWER_UP}
+enum Type {WEAPON, AMMO, WEAPON_UPGRADE, INTERACTIVE_GADGET, PASSIVE_GADGET, POWER_UP}
 
 @export var id: StringName
 @export var name: String
@@ -10,5 +10,4 @@ enum Type {WEAPON, INTERACTIVE_GADGET, PASSIVE_GADGET, POWER_UP}
 @export var icon: Texture
 @export var mesh: Mesh
 @export var shop_price: int
-@export var unlock_flags: Array[String]
-@export var flas: Array[Globals.F]
+@export var unlock_flags: Array[Globals.GAME_FLAGS]

@@ -1,28 +1,28 @@
-[gd_scene load_steps=43 format=3 uid="uid://cfv2ecbe68yfi"]
+[gd_scene load_steps=42 format=3 uid="uid://cfv2ecbe68yfi"]
 
-[ext_resource type="Texture2D" uid="uid://dk3g261yc4qry" path="res://Assets/Placeholders/Environment/Skyboxes/panorama_image.png" id="1_mhjnm"]
-[ext_resource type="Texture2D" uid="uid://bid2isp42co6r" path="res://addons/kenney_prototype_textures/orange/texture_01.png" id="1_y6805"]
-[ext_resource type="Texture2D" uid="uid://k68sjddpo8rx" path="res://addons/kenney_prototype_textures/dark/texture_06.png" id="2_ibgu5"]
-[ext_resource type="PackedScene" uid="uid://diffqkpcbhfpc" path="res://Assets/Models/Interactibles/MonkeyBarTestModel.blend" id="2_t8jh1"]
-[ext_resource type="PackedScene" uid="uid://be8k2anwecem7" path="res://Assets/Models/Environment/CrouchTestObject.blend" id="3_041gn"]
-[ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Player/Player.tscn" id="3_t8btd"]
-[ext_resource type="AudioStream" uid="uid://dg1u65hw1xmhh" path="res://Assets/Audio/Music/hip-hop-rock-beats-118000.mp3" id="5_b0j0h"]
-[ext_resource type="PackedScene" uid="uid://ro280iljuyye" path="res://Assets/Placeholders/Environment/bonfire_free_download/scene.gltf" id="6_ryulc"]
-[ext_resource type="Texture2D" uid="uid://de0wimp7e8g3n" path="res://addons/kenney_prototype_textures/purple/texture_12.png" id="7_eov66"]
-[ext_resource type="PackedScene" uid="uid://du0ausxn5e6vk" path="res://Assets/Placeholders/Environment/fern_grass_02/scene.gltf" id="7_mr86d"]
-[ext_resource type="PackedScene" uid="uid://bllxyncmft2sj" path="res://Interactibles/GrapplingPoints/GrapplePoint.tscn" id="7_nwman"]
-[ext_resource type="PackedScene" uid="uid://fbpbxpmuqx3g" path="res://Vendor/vendor.tscn" id="11_ahr15"]
-[ext_resource type="PackedScene" uid="uid://b1nlc7o2d0leo" path="res://Enemies/StationaryTurret/StationaryTurret.tscn" id="15_20i8t"]
-[ext_resource type="PackedScene" uid="uid://oun126a7s625" path="res://Enemies/StationaryLookAtTurret/TestEnemy_2.tscn" id="16_a0aqu"]
-[ext_resource type="PackedScene" uid="uid://cbg2qc717km4f" path="res://Enemies/MovingSmallEnemyRanged/sm_testranged.tscn" id="16_bkljh"]
-[ext_resource type="PackedScene" uid="uid://ckkun5xjhksvs" path="res://Enemies/movingSmallEnemyMelee/sm_testenemy.tscn" id="17_5qu7l"]
-[ext_resource type="PackedScene" uid="uid://bv5y01h2xtad" path="res://Sandbox/point_spawner.tscn" id="19_564na"]
-[ext_resource type="PackedScene" uid="uid://bb6l672p5wvsp" path="res://Enemies/MovingMediumEnemyMelee/MM_MeleeEnemy.tscn" id="20_v1cmt"]
-[ext_resource type="PackedScene" uid="uid://beykhmrsswsgc" path="res://Enemies/BigEnemyMeleeRanged/BM_BigEnemy.tscn" id="22_ci7y7"]
-[ext_resource type="PackedScene" uid="uid://3vftd3ge5inj" path="res://Scenes/AlteredBaseScenes/HitBoxArea3D.tscn" id="23_8o1fk"]
+[ext_resource type="Texture2D" uid="uid://dk3g261yc4qry" path="res://Assets/Placeholders/Environment/Skyboxes/panorama_image.png" id="1_fslvx"]
+[ext_resource type="PackedScene" uid="uid://dn3vjoeu551qr" path="res://Assets/Models/Interactibles/MonkeyBarTestModel.blend" id="2_0k45d"]
+[ext_resource type="PackedScene" uid="uid://cwxxst84r6m1a" path="res://Assets/Models/Environment/CrouchTestObject.blend" id="3_1onp7"]
+[ext_resource type="Texture2D" uid="uid://bid2isp42co6r" path="res://addons/kenney_prototype_textures/orange/texture_01.png" id="4_hcqb6"]
+[ext_resource type="Texture2D" uid="uid://k68sjddpo8rx" path="res://addons/kenney_prototype_textures/dark/texture_06.png" id="5_e3214"]
+[ext_resource type="Texture2D" uid="uid://de0wimp7e8g3n" path="res://addons/kenney_prototype_textures/purple/texture_12.png" id="6_4cwlb"]
+[ext_resource type="PackedScene" uid="uid://bllxyncmft2sj" path="res://Interactibles/GrapplingPoints/GrapplePoint.tscn" id="7_ewbnr"]
+[ext_resource type="PackedScene" uid="uid://ro280iljuyye" path="res://Assets/Placeholders/Environment/bonfire_free_download/scene.gltf" id="8_agwlu"]
+[ext_resource type="PackedScene" uid="uid://du0ausxn5e6vk" path="res://Assets/Placeholders/Environment/fern_grass_02/scene.gltf" id="9_1hai1"]
+[ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Player/Player.tscn" id="10_8jicg"]
+[ext_resource type="AudioStream" uid="uid://dg1u65hw1xmhh" path="res://Assets/Audio/Music/hip-hop-rock-beats-118000.mp3" id="11_g7etk"]
+[ext_resource type="PackedScene" uid="uid://cbg2qc717km4f" path="res://Enemies/MovingSmallEnemyRanged/sm_testranged.tscn" id="12_lah70"]
+[ext_resource type="PackedScene" uid="uid://ckkun5xjhksvs" path="res://Enemies/movingSmallEnemyMelee/sm_testenemy.tscn" id="13_5d36v"]
+[ext_resource type="PackedScene" uid="uid://b1nlc7o2d0leo" path="res://Enemies/StationaryTurret/StationaryTurret.tscn" id="14_tic2p"]
+[ext_resource type="PackedScene" uid="uid://oun126a7s625" path="res://Enemies/StationaryLookAtTurret/TestEnemy_2.tscn" id="15_f2m45"]
+[ext_resource type="PackedScene" uid="uid://bv5y01h2xtad" path="res://Sandbox/point_spawner.tscn" id="16_5mlhr"]
+[ext_resource type="PackedScene" uid="uid://bb6l672p5wvsp" path="res://Enemies/MovingMediumEnemyMelee/MM_MeleeEnemy.tscn" id="17_gh4yx"]
+[ext_resource type="PackedScene" uid="uid://beykhmrsswsgc" path="res://Enemies/BigEnemyMeleeRanged/BM_BigEnemy.tscn" id="18_iklwx"]
+[ext_resource type="PackedScene" uid="uid://3vftd3ge5inj" path="res://Scenes/AlteredBaseScenes/HitBoxArea3D.tscn" id="19_ibhqo"]
+[ext_resource type="PackedScene" uid="uid://fbpbxpmuqx3g" path="res://Vendor/vendor.tscn" id="20_rhfpa"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_30l7b"]
-panorama = ExtResource("1_mhjnm")
+panorama = ExtResource("1_fslvx")
 
 [sub_resource type="Sky" id="Sky_fidjy"]
 sky_material = SubResource("PanoramaSkyMaterial_30l7b")
@@ -48,11 +48,11 @@ volumetric_fog_sky_affect = 0.526
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_4bw5o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_owx1c"]
-albedo_texture = ExtResource("1_y6805")
+albedo_texture = ExtResource("4_hcqb6")
 uv1_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oo8sc"]
-albedo_texture = ExtResource("2_ibgu5")
+albedo_texture = ExtResource("5_e3214")
 uv1_triplanar = true
 
 [sub_resource type="Curve3D" id="Curve3D_pp05w"]
@@ -64,7 +64,7 @@ _data = {
 point_count = 22
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hift0"]
-albedo_texture = ExtResource("7_eov66")
+albedo_texture = ExtResource("6_4cwlb")
 uv1_triplanar = true
 
 [sub_resource type="Curve3D" id="Curve3D_ljlxt"]
@@ -98,10 +98,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 13
-
-[sub_resource type="QuadMesh" id="QuadMesh_yr5r4"]
-resource_local_to_scene = true
-size = Vector2(3, 2)
 
 [sub_resource type="BoxMesh" id="BoxMesh_rmle0"]
 
@@ -146,7 +142,7 @@ light_bake_mode = 1
 
 [node name="Map Geometry" type="Node3D" parent="."]
 
-[node name="MonkeyBarTestModel" parent="Map Geometry" instance=ExtResource("2_t8jh1")]
+[node name="MonkeyBarTestModel" parent="Map Geometry" instance=ExtResource("2_0k45d")]
 transform = Transform3D(-3.1423e-08, 0, 0.70117, 0, 0.668727, 0, -0.718875, 0, -3.06491e-08, -9.54024, 3.76116, 28.8793)
 
 [node name="MonkeyBarTest" parent="Map Geometry/MonkeyBarTestModel" index="0"]
@@ -155,7 +151,7 @@ transform = Transform3D(3.87244, 0, 0, 0, 2.49162, 0, 0, 0, 1, -7.74387, 0, 5.64
 [node name="StaticBody3D" parent="Map Geometry/MonkeyBarTestModel/MonkeyBarTest" index="0" groups=["monkey_bar"]]
 collision_layer = 192
 
-[node name="CrouchTestObject" parent="Map Geometry" instance=ExtResource("3_041gn")]
+[node name="CrouchTestObject" parent="Map Geometry" instance=ExtResource("3_1onp7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53921, 0.675074, 51.1108)
 
 [node name="FloorBlock_1" type="CSGBox3D" parent="Map Geometry"]
@@ -336,34 +332,22 @@ path_u_distance = 1.0
 path_joined = false
 material = SubResource("StandardMaterial3D_hift0")
 
-[node name="GrapplePoint" parent="Map Geometry" instance=ExtResource("7_nwman")]
+[node name="GrapplePoint" parent="Map Geometry" instance=ExtResource("7_ewbnr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7181, 10.5414, 47.8072)
 grapple_point_type = 1
 target_distance = 6.0
 
-[node name="Sketchfab_Scene" parent="Map Geometry" instance=ExtResource("6_ryulc")]
+[node name="Sketchfab_Scene" parent="Map Geometry" instance=ExtResource("8_agwlu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0368, 1.39886, 57.5848)
 
-[node name="Sketchfab_Scene2" parent="Map Geometry" instance=ExtResource("7_mr86d")]
+[node name="Sketchfab_Scene2" parent="Map Geometry" instance=ExtResource("9_1hai1")]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 6.25976, 1.39886, 58.9178)
 
-[node name="Player" parent="." instance=ExtResource("3_t8btd")]
+[node name="Player" parent="." instance=ExtResource("10_8jicg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.14406, 0)
 
 [node name="PlayerCamera" parent="Player/CameraController" index="3"]
 transform = Transform3D(-1, -3.23243e-08, 8.12273e-08, 0, 0.929133, 0.369747, -8.74228e-08, 0.369747, -0.929133, 24.4441, -6.73179, 16.6014)
-
-[node name="GeneralSkeleton" parent="Player/CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature" index="0"]
-bones/9/rotation = Quaternion(0, -0.707107, 0, 0.707107)
-bones/10/rotation = Quaternion(0, 0.707107, 0, 0.707107)
-bones/12/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/13/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
-bones/33/rotation = Quaternion(0, 0.707107, 0, 0.707107)
-bones/34/rotation = Quaternion(0, -0.707107, 0, 0.707107)
-bones/36/rotation = Quaternion(-0.214187, -0.673887, -0.214187, 0.673887)
-bones/37/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
-bones/57/rotation = Quaternion(0, 0.707107, -0.707107, 0)
-bones/62/rotation = Quaternion(0, 0.707107, -0.707107, 0)
 
 [node name="MeleeHand" parent="Player/CharacterRotationRoot/CharacterSkin" index="2"]
 transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, -0.737829, 1.43559, -0.0617137)
@@ -376,14 +360,8 @@ spot_range = 95.856
 spot_angle = 58.2169
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_b0j0h")
+stream = ExtResource("11_g7etk")
 volume_db = -15.928
-
-[node name="Vendor" parent="." instance=ExtResource("11_ahr15")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.2688, 1.30263, 2.59788)
-
-[node name="MeshInstance3D" parent="Vendor/ShopMenu3D" index="2"]
-mesh = SubResource("QuadMesh_yr5r4")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.513829, 2.68137, 5.26352)
@@ -399,7 +377,7 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0889, 0.889709)
 shape = SubResource("BoxShape3D_fic72")
 
-[node name="SmTestranged" parent="." instance=ExtResource("16_bkljh")]
+[node name="SmTestranged" parent="." instance=ExtResource("12_lah70")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.7433, 1.59019, -15.3721)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
@@ -415,13 +393,13 @@ mesh = SubResource("BoxMesh_llufc")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D2"]
 shape = SubResource("BoxShape3D_ibcg5")
 
-[node name="SmTestenemy" parent="NavigationRegion3D" instance=ExtResource("17_5qu7l")]
+[node name="SmTestenemy" parent="NavigationRegion3D" instance=ExtResource("13_5d36v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.21874, -3.63553, -2.4534)
 
-[node name="SmTestenemy2" parent="NavigationRegion3D" instance=ExtResource("17_5qu7l")]
+[node name="SmTestenemy2" parent="NavigationRegion3D" instance=ExtResource("13_5d36v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16467, -3.63553, -2.4534)
 
-[node name="SmTestenemy3" parent="NavigationRegion3D" instance=ExtResource("17_5qu7l")]
+[node name="SmTestenemy3" parent="NavigationRegion3D" instance=ExtResource("13_5d36v")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.80398, -3.63553, -2.4534)
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="NavigationRegion3D"]
@@ -433,31 +411,31 @@ mesh = SubResource("BoxMesh_llufc")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D3"]
 shape = SubResource("BoxShape3D_ibcg5")
 
-[node name="TestEnemy_1" parent="." instance=ExtResource("15_20i8t")]
+[node name="TestEnemy_1" parent="." instance=ExtResource("14_tic2p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.4979, 1.94951, -16.8217)
 
-[node name="TestEnemy_3" parent="." instance=ExtResource("15_20i8t")]
+[node name="TestEnemy_3" parent="." instance=ExtResource("14_tic2p")]
 transform = Transform3D(-0.0046429, 0, 0.999989, 0, 1, 0, -0.999989, 0, -0.0046429, 58.8896, 1.94951, -13.6)
 
-[node name="TestEnemy_4" parent="." instance=ExtResource("15_20i8t")]
+[node name="TestEnemy_4" parent="." instance=ExtResource("14_tic2p")]
 transform = Transform3D(0.565787, 0, 0.824551, 0, 1, 0, -0.824551, 0, 0.565787, 63.4815, 1.94951, -16.4641)
 
-[node name="TestEnemy_5" parent="." instance=ExtResource("15_20i8t")]
+[node name="TestEnemy_5" parent="." instance=ExtResource("14_tic2p")]
 transform = Transform3D(-0.948809, 0, -0.315848, 0, 1, 0, 0.315848, 0, -0.948809, 62.972, 1.94951, -10.2538)
 
-[node name="TestEnemy_2" parent="." instance=ExtResource("16_a0aqu")]
+[node name="TestEnemy_2" parent="." instance=ExtResource("15_f2m45")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7083, 1.59159, 1.10253)
 
-[node name="pointspawner" parent="." instance=ExtResource("19_564na")]
+[node name="pointspawner" parent="." instance=ExtResource("16_5mlhr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.4345, 1.30768, 14.7864)
 
-[node name="MM_MeleeEnemy" parent="." instance=ExtResource("20_v1cmt")]
+[node name="MM_MeleeEnemy" parent="." instance=ExtResource("17_gh4yx")]
 transform = Transform3D(0.999999, -0.000898777, 0.000713599, 0.000898467, 0.999999, 0.000419381, -0.00071399, -0.000418715, 1, 24.5195, 1.73462, -12.3167)
 
-[node name="BmBigEnemy" parent="." instance=ExtResource("22_ci7y7")]
+[node name="BmBigEnemy" parent="." instance=ExtResource("18_iklwx")]
 transform = Transform3D(0.993943, 0, -0.10989, 0, 1, 0, 0.10989, 0, 0.993943, 77.3343, 0.678023, -15.131)
 
-[node name="HitBoxArea3D" parent="." instance=ExtResource("23_8o1fk")]
+[node name="HitBoxArea3D" parent="." instance=ExtResource("19_ibhqo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6388, 0.678023, -3.26617)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitBoxArea3D"]
@@ -517,8 +495,9 @@ text = "Magnet Boots Test
 (Not Implemented atm)"
 font_size = 64
 
+[node name="Vendor" parent="." instance=ExtResource("20_rhfpa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.452, 1.13435, 3.31871)
+
 [editable path="Map Geometry/MonkeyBarTestModel"]
 [editable path="Player"]
 [editable path="Player/CharacterRotationRoot/CharacterSkin"]
-[editable path="Vendor"]
-[editable path="Vendor/ShopMenu3D"]

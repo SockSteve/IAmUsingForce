@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=5 format=3 uid="uid://bi8wlixc5dxgq"]
+
+[ext_resource type="Script" path="res://CustomResourceScripts/WeaponStats.gd" id="1_32y8w"]
+[ext_resource type="Texture2D" uid="uid://bsh67d33gchom" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/rocketlauncherSide.png" id="1_nx01h"]
+[ext_resource type="ArrayMesh" uid="uid://dkwrold404dnu" path="res://Assets/Kenney/Weapon Pack/Models/rocketlauncher.obj" id="2_vkf64"]
+[ext_resource type="Texture2D" uid="uid://dv3owacsdacdk" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/rocketlauncherUpgrade.png" id="4_wg5t5"]
+
+[resource]
+script = ExtResource("1_32y8w")
+upgrade_name = "Absolute Terretory"
+upgrade_icon = ExtResource("4_wg5t5")
+upgrade_weapon_mesh = ExtResource("2_vkf64")
+base_damage = 0
+upgraded = false
+current_lvl = 1
+current_xp = 0
+current_ammo = 50
+max_ammo = 100
+experience_thresholds = Array[int]([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300])
+base_damage_per_lvl = Array[int]([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300])
+modifications_per_level = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
+id = &"pocket_rocket"
+name = "Pocket Rocket"
+type = 0
+description = "The Pocket Rocket is your basic rocket Launcher"
+icon = ExtResource("1_nx01h")
+mesh = ExtResource("2_vkf64")
+shop_price = 100
+unlock_flags = Array[int]([])

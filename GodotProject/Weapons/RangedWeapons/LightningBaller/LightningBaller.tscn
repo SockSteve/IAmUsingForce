@@ -1,15 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://dy2yb3ibm4e4s"]
 
 [ext_resource type="Script" path="res://Weapons/RangedWeapons/LightningBaller/LightningBaller.gd" id="1_5qxus"]
-[ext_resource type="Texture2D" uid="uid://dojtkvy2iukm8" path="res://Assets/Textures/UI/LightningBallerIcon.png" id="2_gus6n"]
+[ext_resource type="Resource" uid="uid://3bas6jff0ipn" path="res://Weapons/RangedWeapons/LightningBaller/LightningBaller.tres" id="2_pqaym"]
 [ext_resource type="PackedScene" uid="uid://6vdsddthfh3f" path="res://Weapons/RangedWeapons/LightningBaller/LightningBallerBullet.tscn" id="3_v0b0t"]
-[ext_resource type="ArrayMesh" uid="uid://bgekunmv4rqgj" path="res://Assets/Kenney/Weapon Pack/Models/rocketlauncherModern.obj" id="4_g52re"]
+[ext_resource type="ArrayMesh" uid="uid://bqo83ds4xx2wy" path="res://Assets/Kenney/Weapon Pack/Models/rocketlauncherModern.obj" id="4_g52re"]
 
 [node name="LightningBaller" type="Node3D" groups=["ranged"]]
 script = ExtResource("1_5qxus")
-icon = ExtResource("2_gus6n")
-shop_price = 15000
-bullet_price = 20
+weapon_type = 1
+weapon_stats = ExtResource("2_pqaym")
 bullet = ExtResource("3_v0b0t")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

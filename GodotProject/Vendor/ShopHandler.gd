@@ -39,10 +39,11 @@ var last_focused_button
 var current_item_to_be_bought: Node3D = null
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Globals.game_progression_flags[Globals.game_progression_flag_enum.find_key(Globals.game_progression_flag_enum.beginning)] = true
+	# use threading to lead weapons
 	thread= Thread.new()
 	thread.start(load_all_weapons_and_gadgets)
 	var items: Array = thread.wait_to_finish() # items
+	
 	await get_tree().process_frame
 	populate_shop_with_items(items)
  
@@ -52,6 +53,7 @@ func initialize():
 		if shop_hbox_menu.get_child(child_idx).visible:
 			shop_hbox_menu.get_child(child_idx).grab_focus()
 			break
+
 
 func cleanup():
 	$"../SubViewport/Control".release_focus()
@@ -97,15 +99,15 @@ func load_all_weapons_and_gadgets()->Array:
 func populate_shop_with_items(items):
 	for item in items:
 		var btn: Button = shop_button.instantiate()
-		btn.icon = item.icon
-		btn.name = item.name
+		btn.icon = item.get_stats().icon
+		btn.name = item.get_stats().name
 		shop_items[btn.name] = [btn, item]
 		shop_hbox_menu.add_child(btn)
 		btn.pressed.connect(self.buy_weapon_or_gadget.bind(item))
 		if item is Weapon:
 			var ammo_btn: Button = ammo_button.instantiate()
-			ammo_btn.icon = item.icon
-			ammo_btn.name = item.name + "_Ammo"
+			ammo_btn.icon = item.get_stats().icon
+			ammo_btn.name = item.get_stats().name + "_Ammo"
 			shop_items[ammo_btn.name] = [ammo_btn, item]
 			shop_hbox_menu.add_child(ammo_btn)
 			shop_hbox_menu.move_child(ammo_btn,0)
@@ -118,18 +120,18 @@ func update_shop():
 		if _costumer.get_inventory().has_weapon(item):
 			shop_items.get(item)[0].visible=false
 			
-			if _costumer.get_inventory().get_weapon(item).current_ammunition < _costumer.get_inventory().get_weapon(item).max_ammunition:
+			if _costumer.get_inventory().get_weapon(item).get_stats().current_ammo < _costumer.get_inventory().get_weapon(item).get_stats().max_ammo:
 				shop_items.get(item + "_Ammo")[0].visible=true
 			
-			if  _costumer.get_inventory().get_weapon(item).current_ammunition == _costumer.get_inventory().get_weapon(item).max_ammunition:
+			if  _costumer.get_inventory().get_weapon(item).get_stats().current_ammo == _costumer.get_inventory().get_weapon(item).get_stats().max_ammo:
 				shop_items.get(item + "_Ammo")[0].visible=false
 		
 		if _costumer.get_inventory().has_gadget(item):
 			shop_items.get(item)[0].visible=false
 			
 		#check progression
-		if not Globals.game_progression_flags.get(Globals.game_progression_flag_enum.find_key(shop_items.get(item)[1].game_progression_flag)):
-			shop_items.get(item)[0].visible=false
+		#if not Globals.game_progression_flags.get(Globals.game_progression_flag_enum.find_key(shop_items.get(item)[1].game_progression_flag)):
+			#shop_items.get(item)[0].visible=false
 	
 
 #because every button has an item instance bound to its pressed callable,
@@ -156,10 +158,10 @@ func _on_sub_viewport_gui_focus_changed(item_button):
 	last_focused_button = item_button
 	
 	#here we populate the gui with information
-	current_item_picture.texture =  item_inst.icon
-	current_item_name_label.text = item_inst.name
-	current_item_description_label.text = item_inst.name
-	current_item_price_label.text = str(item_inst.shop_price)
+	current_item_picture.texture =  item_inst.get_stats().icon
+	current_item_name_label.text = item_inst.get_stats().name
+	current_item_description_label.text = item_inst.get_stats().description
+	current_item_price_label.text = str(item_inst.get_stats().shop_price)
 
 ## item can be weapon or gadget
 func buy_weapon_or_gadget(item:Node3D):

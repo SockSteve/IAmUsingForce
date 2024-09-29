@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=5 format=3 uid="uid://r67683pof5s4"]
+
+[ext_resource type="Texture2D" uid="uid://du0vm1mkfeigy" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/knifeRound_sharp.png" id="1_bdtt1"]
+[ext_resource type="Script" path="res://CustomResourceScripts/WeaponStats.gd" id="1_j3nmm"]
+[ext_resource type="ArrayMesh" uid="uid://da8o4ncyf7chp" path="res://Assets/Kenney/Weapon Pack/Models/knifeRound_smooth.obj" id="2_0e5ru"]
+[ext_resource type="Texture2D" uid="uid://qh6fiodonrgs" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/knifeRound_sharpUpgrade.png" id="4_ts0ei"]
+
+[resource]
+script = ExtResource("1_j3nmm")
+upgrade_name = "Queen Bee"
+upgrade_icon = ExtResource("4_ts0ei")
+upgrade_weapon_mesh = ExtResource("2_0e5ru")
+base_damage = 0
+upgraded = false
+current_lvl = 1
+current_xp = 0
+current_ammo = 50
+max_ammo = 100
+experience_thresholds = Array[int]([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300])
+base_damage_per_lvl = Array[int]([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300])
+modifications_per_level = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
+id = &"hive_knive"
+name = "Hive Knive"
+type = 0
+description = "The Hive Knive creates swam swords that circe around you on attack."
+icon = ExtResource("1_bdtt1")
+mesh = ExtResource("2_0e5ru")
+shop_price = 1000
+unlock_flags = Array[int]([1])

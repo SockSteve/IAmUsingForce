@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="GadgetStats" load_steps=4 format=3 uid="uid://dogrgg7dhy4rl"]
+
+[ext_resource type="Script" path="res://CustomResourceScripts/GadgetStats.gd" id="1_od14n"]
+[ext_resource type="Texture2D" uid="uid://b7x1miaf4w0gi" path="res://Assets/Textures/UI/Icons.png" id="1_riikj"]
+[ext_resource type="ArrayMesh" uid="uid://dbrb42tkl5l5h" path="res://Assets/Kenney/Weapon Pack/Models/ammo_rocketModern.obj" id="2_2chtx"]
+
+[resource]
+script = ExtResource("1_od14n")
+id = &"wireless_battery"
+name = "Wireless Battery"
+type = 3
+description = "Activates specific devices near your vicinity"
+icon = ExtResource("1_riikj")
+mesh = ExtResource("2_2chtx")
+shop_price = 1000
+unlock_flags = Array[int]([1])

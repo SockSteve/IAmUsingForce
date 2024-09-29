@@ -1,7 +1,9 @@
-extends item
+extends ItemStats
+class_name WeaponStats
 
 signal weapon_lvl_up(weapon) # called for the lvl up screen
-signal ammo_changed(weapon_full)
+signal ammo_stats_changed(weapon)
+signal xp_stats_changed(weapon)
 
 const UPGRADE_LEVEL = 7
 const MAX_LEVEL = 14
@@ -9,7 +11,7 @@ const MAX_LEVEL = 14
 @export var upgrade_name: String
 @export var upgrade_icon: Texture
 @export var upgrade_weapon_mesh: Mesh
-@export var bullet: PackedScene
+
 @export var base_damage: int
 
 @export var upgraded: bool: set = _on_upgraded
@@ -30,6 +32,7 @@ const MAX_LEVEL = 14
 @export var modifications_per_level = [ #[0] == lvl 1 || [6] == lvl 7
 "", "", "", "", "", "",
 "", "", "", "", "", "", "" ]
+
 
 func _on_upgraded(new_value: bool):
 	upgraded = new_value
@@ -53,20 +56,25 @@ func set_current_xp(new_value: int):
 			current_lvl += 1
 			return
 	
+	xp_stats_changed.emit(self)
 	clamp(current_xp,0,experience_thresholds[current_lvl - 1])
+
 
 func set_current_lvl(new_value: int):
 	current_lvl = new_value
 	base_damage = base_damage_per_lvl[current_lvl - 1]
+	weapon_lvl_up.emit(self)
 
 
 func set_max_ammo(new_value):
 	max_ammo = new_value
 	current_ammo = new_value
+	ammo_stats_changed.emit(self)
 
 
 func set_current_ammo(new_value: int):
 	current_ammo = new_value
+	ammo_stats_changed.emit(self)
 
 #if not is_node_ready():
 		#await ready

@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c68cttfkec2hb"]
 
-[ext_resource type="Shader" path="res://Singletons/OutlineShader.gdshader" id="1_6u8ta"]
+[ext_resource type="Shader" path="res://Shader/OutlineShader.gdshader" id="1_6u8ta"]
 
 [resource]
 render_priority = 0

@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=5 format=3 uid="uid://df0438332cn4i"]
+
+[ext_resource type="Script" path="res://CustomResourceScripts/WeaponStats.gd" id="1_lhwjm"]
+[ext_resource type="Texture2D" uid="uid://buvnqbxxed33c" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/grenadeFlash.png" id="1_w0ssr"]
+[ext_resource type="ArrayMesh" uid="uid://r7gsec65ap5c" path="res://Assets/Kenney/Weapon Pack/Models/grenadeSmoke.obj" id="2_d2blp"]
+[ext_resource type="Texture2D" uid="uid://bv6pvh8bus66r" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/grenadeFlashUpgrade.png" id="4_y6snk"]
+
+[resource]
+script = ExtResource("1_lhwjm")
+upgrade_name = "Metal Gear"
+upgrade_icon = ExtResource("4_y6snk")
+upgrade_weapon_mesh = ExtResource("2_d2blp")
+base_damage = 0
+upgraded = false
+current_lvl = 1
+current_xp = 0
+current_ammo = 50
+max_ammo = 100
+experience_thresholds = Array[int]([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300])
+base_damage_per_lvl = Array[int]([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300])
+modifications_per_level = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
+id = &"melee_gear"
+name = "Melee Gear"
+type = 0
+description = "It is a close ranged weapon that odoes a thrusting attack. Also slide attacks get stronger."
+icon = ExtResource("1_w0ssr")
+mesh = ExtResource("2_d2blp")
+shop_price = 1000
+unlock_flags = Array[int]([2])

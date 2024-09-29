@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d3q46pm5kfaqi"]
 
-[ext_resource type="Script" path="res://WelcomeScreen.gd" id="1_lsfsd"]
-[ext_resource type="PackedScene" uid="uid://cfv2ecbe68yfi" path="res://Scenes/Levels/Test.tscn" id="2_wnonv"]
+[ext_resource type="Script" path="res://Levels/WelcomeScreen.gd" id="1_lsfsd"]
+[ext_resource type="PackedScene" uid="uid://cfv2ecbe68yfi" path="res://Levels/Test.tscn" id="2_wnonv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_sqxxk"]
 font_size = 32

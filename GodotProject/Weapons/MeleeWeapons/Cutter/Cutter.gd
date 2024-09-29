@@ -5,9 +5,9 @@ extends Weapon
 @onready var parry_timer = $ParryTimer
 
 
-func attack(time):
+func attack():
 	hitbox.monitoring = true
-	attack_timer.start(time)
+	attack_timer.start()
 	pass
 
 func _on_attack_timer_timeout():

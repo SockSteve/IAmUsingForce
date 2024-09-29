@@ -87,9 +87,9 @@ var currently_held_weapon_or_gadget: Node
 var stored_weapon_on_gadget_use: Node #this variable is only assigned with the active weapon when a gadget is used. it stores the weapon so it can be placed back into the players hand fter the gadget usage is over.
 
 #debug
-@onready var grappling_hook = preload("res://Scenes/Gadgets/GrapplingHook/GrapplingHook.tscn").instantiate()
-@onready var grinding_boots = preload("res://Scenes/Gadgets/GrindBoots/GrindBoots.tscn").instantiate()
-@onready var grip_gloves = preload("res://Scenes/Gadgets/GripGloves/GripGloves.tscn").instantiate()
+@onready var grappling_hook = preload("res://Gadgets/GrapplingHook/GrapplingHook.tscn").instantiate()
+@onready var grinding_boots = preload("res://Gadgets/GrindBoots/GrindBoots.tscn").instantiate()
+@onready var grip_gloves = preload("res://Gadgets/GripGloves/GripGloves.tscn").instantiate()
 
 func _ready() -> void:
 	set_up_input()

@@ -1,25 +1,21 @@
 extends Node
 ## the name of the flags are used as variables for dictionary values that change
-enum game_progression_flag_enum {beginning,nogo_forrest_completed, 
-	pelagic_cockcrow_completed, glare_grotto_completed, polycoly_completed, game_completed, test}
 
-enum special_flag_enum {none, grappling_hook_seller, special_gear_seller, 
-	booster_seller, magnet_seller}
+enum GAME_FLAGS {NONE, BEGINNING, NOGO_FOREST_COMPLETED, 
+	PELAGIC_COCKROW_COMPLETED, GLAER_GROTTO_COMPLETED, POLYCOLY_COMPLETED, 
+	GAME_COMPLETED, GRAPPLING_HOOK_SELLER, GRIND_BOOTS_SELLER, GRIP_GLOVES_SELLER, 
+	BOOSTER_SELLER, MAGNET_SELLER}
 
-enum F {POLYCOLY, VENDOR, SHIT_ONDER, FFF, NYOOO}
-
-var game_progression_flags: Dictionary = get_flags.call(game_progression_flag_enum)
-
-var special_flags: Dictionary = get_flags.call(special_flag_enum)
+var game_progression_flags: Dictionary = get_flags.call(GAME_FLAGS)
 
 func get_flags(flag_enum)->Dictionary:
 	var dicc: Dictionary
-	for key in game_progression_flag_enum.keys():
+	for key in GAME_FLAGS.keys():
 		dicc[key] = false
 	return dicc
 
 func get_flags_by_value(flag_enum)->Dictionary:
 	var dicc: Dictionary
-	for value in game_progression_flag_enum.values():
+	for value in GAME_FLAGS.values():
 		dicc[value] = false
 	return dicc

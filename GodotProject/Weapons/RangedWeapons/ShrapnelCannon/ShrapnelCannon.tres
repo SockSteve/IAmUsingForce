@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=5 format=3 uid="uid://cantxhjmmue4g"]
+
+[ext_resource type="Texture2D" uid="uid://dg1gjueqkn166" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/shotgunShort.png" id="1_6sjly"]
+[ext_resource type="Script" path="res://CustomResourceScripts/WeaponStats.gd" id="2_c7q6a"]
+[ext_resource type="Texture2D" uid="uid://dpqhek5vxidr6" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/shotgunShortUpgrade.png" id="3_qo173"]
+[ext_resource type="ArrayMesh" uid="uid://dgd1sli7r3ynx" path="res://Assets/Kenney/Weapon Pack/Models/shotgunShort.obj" id="4_h7doy"]
+
+[resource]
+script = ExtResource("2_c7q6a")
+upgrade_name = "Resident Obliterator"
+upgrade_icon = ExtResource("3_qo173")
+upgrade_weapon_mesh = ExtResource("4_h7doy")
+base_damage = 0
+upgraded = false
+current_lvl = 1
+current_xp = 0
+current_ammo = 50
+max_ammo = 100
+experience_thresholds = Array[int]([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300])
+base_damage_per_lvl = Array[int]([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300])
+modifications_per_level = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
+id = &"shrapnel_cannon"
+name = "Shrapnel Cannon"
+type = 0
+description = "It is a medium-ranged shotgun with a medium fire rate which deals moderate damage"
+icon = ExtResource("1_6sjly")
+mesh = ExtResource("4_h7doy")
+shop_price = 0
+unlock_flags = Array[int]([])

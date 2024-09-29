@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="GadgetStats" load_steps=4 format=3 uid="uid://d3d1eacqaidoy"]
+
+[ext_resource type="Script" path="res://CustomResourceScripts/GadgetStats.gd" id="1_bupyw"]
+[ext_resource type="Texture2D" uid="uid://ckb6b5h0k8nio" path="res://Assets/Textures/UI/BadPrankIconSC.png" id="1_snsxi"]
+[ext_resource type="ArrayMesh" uid="uid://mx8ne7kcng84" path="res://Assets/Kenney/Weapon Pack/Models/pistolSilencer.obj" id="2_yr5tg"]
+
+[resource]
+script = ExtResource("1_bupyw")
+id = &"grappling_hook"
+name = "GrapplingHook"
+type = 3
+description = "A gadget to pull, hang and swing on different grapple points"
+icon = ExtResource("1_snsxi")
+mesh = ExtResource("2_yr5tg")
+shop_price = 1000
+unlock_flags = Array[int]([1])

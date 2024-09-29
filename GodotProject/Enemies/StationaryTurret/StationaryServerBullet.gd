@@ -1,7 +1,7 @@
 class_name Bullet3DWithServer
 extends MeshInstance3D
 
-const SHAPE := preload("res://Scenes/Characters/Enemies/StationaryTurret/StationaryTurretBulletCollisionShape.tres")
+const SHAPE := preload("res://Enemies/StationaryTurret/StationaryTurretBulletCollisionShape.tres")
 
 var query = PhysicsShapeQueryParameters3D.new()
 @onready var direct_space_state := get_world_3d().direct_space_state

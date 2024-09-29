@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="GadgetStats" load_steps=4 format=3 uid="uid://bva48ymi85ij4"]
+
+[ext_resource type="Texture2D" uid="uid://cyp0fgi52ncq2" path="res://Sock.png" id="1_jabpr"]
+[ext_resource type="Script" path="res://CustomResourceScripts/GadgetStats.gd" id="1_tfy52"]
+[ext_resource type="ArrayMesh" uid="uid://de86s7agfle4m" path="res://Assets/Kenney/Weapon Pack/Models/ammo_shotgun.obj" id="2_w5imc"]
+
+[resource]
+script = ExtResource("1_tfy52")
+id = &"grip_gloves"
+name = "Grip Gloves"
+type = 4
+description = "A Pair of gloves that allow you to  grip onto specific ceilings"
+icon = ExtResource("1_jabpr")
+mesh = ExtResource("2_w5imc")
+shop_price = 1000
+unlock_flags = Array[int]([2])

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="GadgetStats" load_steps=4 format=3 uid="uid://btai83usj0wed"]
+
+[ext_resource type="Script" path="res://CustomResourceScripts/GadgetStats.gd" id="1_fcthv"]
+[ext_resource type="Texture2D" uid="uid://cyp0fgi52ncq2" path="res://Sock.png" id="1_jjqbd"]
+[ext_resource type="ArrayMesh" uid="uid://chkamhrqhun8l" path="res://Assets/Kenney/Weapon Pack/Models/grenade.obj" id="2_n1nvk"]
+
+[resource]
+script = ExtResource("1_fcthv")
+id = &"magnet"
+name = "Magnet"
+type = 4
+description = "Let's you walk on metal surfaces. Doesn't matter if it's a wall or ceiling. Also draws in metal objects, so be careful!"
+icon = ExtResource("1_jjqbd")
+mesh = ExtResource("2_n1nvk")
+shop_price = 1000
+unlock_flags = Array[int]([1])

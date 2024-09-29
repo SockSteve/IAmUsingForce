@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=5 format=3 uid="uid://3bas6jff0ipn"]
+
+[ext_resource type="Script" path="res://CustomResourceScripts/WeaponStats.gd" id="1_3gst1"]
+[ext_resource type="ArrayMesh" uid="uid://bqo83ds4xx2wy" path="res://Assets/Kenney/Weapon Pack/Models/rocketlauncherModern.obj" id="1_6abk1"]
+[ext_resource type="Texture2D" uid="uid://ht73vx17h6a3" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/rocketlauncherModern.png" id="1_lmif5"]
+[ext_resource type="Texture2D" uid="uid://dv3owacsdacdk" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/rocketlauncherUpgrade.png" id="3_l54vo"]
+
+[resource]
+script = ExtResource("1_3gst1")
+upgrade_name = "Lightning Caller"
+upgrade_icon = ExtResource("3_l54vo")
+upgrade_weapon_mesh = ExtResource("1_6abk1")
+base_damage = 0
+upgraded = false
+current_lvl = 1
+current_xp = 0
+current_ammo = 50
+max_ammo = 100
+experience_thresholds = Array[int]([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300])
+base_damage_per_lvl = Array[int]([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300])
+modifications_per_level = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
+id = &"lightning_baller"
+name = "Lightning Baller"
+type = 0
+description = "It shoots balls of lightning which shock enemies near it's projectile, dealing moderate damage"
+icon = ExtResource("1_lmif5")
+mesh = ExtResource("1_6abk1")
+shop_price = 1000
+unlock_flags = Array[int]([])

@@ -4,7 +4,7 @@ extends CharacterBody3D
 @export var shooting_interval: float = 2.0
 
 var time: float = 0
-var bullet_scene = preload("res://Scenes/Characters/Enemies/StationaryLookAtTurret/TestEnemyBullet_2.tscn")
+var bullet_scene = preload("res://Enemies/StationaryLookAtTurret/TestEnemyBullet_2.tscn")
 
 @export var bullet_speed : float = 10.0
 var player_detected: bool = false

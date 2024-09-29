@@ -1,3 +1,5 @@
 [gd_scene format=3 uid="uid://b6g7dt4hrbd8l"]
 
 [node name="BulletContainer" type="Node3D"]
+editor_description = "This scene serves as a parent to all bullets in a scene so they they are not paranted aimlessly to some node."
+top_level = true

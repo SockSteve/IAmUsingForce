@@ -1,0 +1,29 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=5 format=3 uid="uid://cqqboa3ap5oc1"]
+
+[ext_resource type="Texture2D" uid="uid://b066bb605c84m" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/flamethrower.png" id="1_6ckyr"]
+[ext_resource type="Script" path="res://CustomResourceScripts/WeaponStats.gd" id="1_c3lnq"]
+[ext_resource type="ArrayMesh" uid="uid://bq6yywxtk83fq" path="res://Assets/Kenney/Weapon Pack/Models/flamethrowerHandle.obj" id="2_h43rh"]
+[ext_resource type="Texture2D" uid="uid://81ptper7frnw" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/flamethrowerUpgrade.png" id="4_2d0bc"]
+
+[resource]
+script = ExtResource("1_c3lnq")
+upgrade_name = "Choleriker"
+upgrade_icon = ExtResource("4_2d0bc")
+upgrade_weapon_mesh = ExtResource("2_h43rh")
+base_damage = 0
+upgraded = false
+current_lvl = 1
+current_xp = 0
+current_ammo = 50
+max_ammo = 100
+experience_thresholds = Array[int]([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300])
+base_damage_per_lvl = Array[int]([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300])
+modifications_per_level = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
+id = &"bad_prank"
+name = "Bad Prank"
+type = 0
+description = " It's was first intended as a potato cannon, but the potatoes started to explode when shot. After that it was used as a granade or bomb launcher. It is intended for medium-ranged combad and posesses a medium rate-of-fire. "
+icon = ExtResource("1_6ckyr")
+mesh = ExtResource("2_h43rh")
+shop_price = 1000
+unlock_flags = Array[int]([2])

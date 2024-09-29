@@ -11,14 +11,18 @@ config_version=5
 [application]
 
 config/name="I Am Using Force"
-run/main_scene="res://Scenes/Levels/Test.tscn"
+run/main_scene="res://Levels/Test.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://Sock.png"
+
+[audio]
+
+buses/default_bus_layout="res://Audio/default_bus_layout.tres"
 
 [autoload]
 
 Globals="*res://Singletons/Globals.gd"
-GameHandler="*res://Singletons/GameHandler.tscn"
+GameHandler="*res://Singletons/Game.tscn"
 DebugLibrary="*res://Singletons/DebugLibrary.tscn"
 HelperLibrary="*res://Singletons/HelperLibrary.tscn"
 BulletContainer="*res://Singletons/BulletContainer.tscn"

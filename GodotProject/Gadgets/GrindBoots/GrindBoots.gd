@@ -14,8 +14,8 @@ extends Gadget
 var current_grindrail : Path3D = null
 
 #grainding variables
-@export var grind_jump_curve: Curve = load("res://Scripts/Gadgets/GrindJumpCurve.tres")
-@export var grindrail_change_jump_curve: Curve = load("res://Scripts/Gadgets/GrindJumpCurve.tres")
+@export var grind_jump_curve: Curve = load("res://Gadgets/GrindBoots/GrindJumpCurve.tres")
+@export var grindrail_change_jump_curve: Curve = load("res://Gadgets/GrindBoots/GrindrailChangeJumpCurve.tres")
 @export var grind_curve_time_factor: float = 1
 @export var grind_speed_time_factor: float = .3
 @export var is_looping: bool = false

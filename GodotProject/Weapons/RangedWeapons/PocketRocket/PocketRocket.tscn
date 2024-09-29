@@ -1,14 +1,15 @@
 [gd_scene load_steps=5 format=3 uid="uid://bdaml07lkckcs"]
 
 [ext_resource type="Script" path="res://Weapons/RangedWeapons/PocketRocket/PocketRocket.gd" id="1_hjokh"]
-[ext_resource type="Texture2D" uid="uid://b7nu35vbl0xu8" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/rocketlauncher.png" id="2_4woyu"]
+[ext_resource type="Resource" uid="uid://bi8wlixc5dxgq" path="res://Weapons/RangedWeapons/PocketRocket/PocketRocket.tres" id="2_2c0la"]
 [ext_resource type="PackedScene" uid="uid://cuc4p1cbkxwrn" path="res://Weapons/RangedWeapons/PocketRocket/PocketRocketBullet.tscn" id="3_7midi"]
-[ext_resource type="ArrayMesh" uid="uid://dfybra7cgbtfs" path="res://Assets/Kenney/Weapon Pack/Models/rocketlauncher.obj" id="4_goyof"]
+[ext_resource type="ArrayMesh" uid="uid://dkwrold404dnu" path="res://Assets/Kenney/Weapon Pack/Models/rocketlauncher.obj" id="4_goyof"]
 
 [node name="PocketRocket" type="Node3D" groups=["ranged"]]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_hjokh")
-icon = ExtResource("2_4woyu")
+weapon_type = 1
+weapon_stats = ExtResource("2_2c0la")
 bullet = ExtResource("3_7midi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

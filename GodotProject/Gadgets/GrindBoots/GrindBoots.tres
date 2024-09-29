@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="GadgetStats" load_steps=4 format=3 uid="uid://r7ew5beexc3s"]
+
+[ext_resource type="Texture2D" uid="uid://cyp0fgi52ncq2" path="res://Sock.png" id="1_q0chv"]
+[ext_resource type="Script" path="res://CustomResourceScripts/GadgetStats.gd" id="1_rnlhv"]
+[ext_resource type="ArrayMesh" uid="uid://de86s7agfle4m" path="res://Assets/Kenney/Weapon Pack/Models/ammo_shotgun.obj" id="2_ohngf"]
+
+[resource]
+script = ExtResource("1_rnlhv")
+id = &"grind_boots"
+name = "Grind Boots"
+type = 4
+description = "Allows you to grind on grindrails."
+icon = ExtResource("1_q0chv")
+mesh = ExtResource("2_ohngf")
+shop_price = 1000
+unlock_flags = Array[int]([1])

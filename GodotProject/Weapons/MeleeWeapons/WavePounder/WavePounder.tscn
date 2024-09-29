@@ -1,15 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://b6rlckm46ttkw"]
+[gd_scene load_steps=6 format=3 uid="uid://b6rlckm46ttkw"]
 
 [ext_resource type="Script" path="res://Weapons/MeleeWeapons/WavePounder/WavePounder.gd" id="1_njs3y"]
-[ext_resource type="Texture2D" uid="uid://c6l2ds7dsot3u" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/knife_sharp.png" id="2_8q1sf"]
-[ext_resource type="ArrayMesh" uid="uid://dw6rh3juokfrq" path="res://Assets/Kenney/Weapon Pack/Models/knife_smooth.obj" id="3_td3yu"]
+[ext_resource type="Resource" uid="uid://dca8yxmuuc7xo" path="res://Weapons/MeleeWeapons/WavePounder/WavePounder.tres" id="2_td87j"]
+[ext_resource type="PackedScene" uid="uid://ctnj30ewrmv5l" path="res://Weapons/MeleeWeapons/WavePounder/WavePounderBullet.tscn" id="3_buash"]
+[ext_resource type="ArrayMesh" uid="uid://r1h13wlt2pxu" path="res://Assets/Kenney/Weapon Pack/Models/knife_smooth.obj" id="3_td3yu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q72rh"]
 size = Vector3(0.25, 2.25637, 0.25)
 
 [node name="WavePounder" type="Node3D" groups=["melee"]]
 script = ExtResource("1_njs3y")
-icon = ExtResource("2_8q1sf")
+weapon_stats = ExtResource("2_td87j")
+bullet = ExtResource("3_buash")
 
 [node name="WeaponSkin" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11629, 0)

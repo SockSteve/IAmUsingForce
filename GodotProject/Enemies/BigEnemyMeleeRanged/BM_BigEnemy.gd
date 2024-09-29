@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 @onready var sword_pivot: Marker3D = $BladePivot
 @onready var bullet_spawn_point: Marker3D = $Bazooka/BulletSpawnPoint
-@onready var blade: PackedScene = preload("res://Scenes/Characters/Enemies/BigEnemyMeleeRanged/BladeHitDetectionArea.tscn")
+@onready var blade: PackedScene = preload("res://Enemies/BigEnemyMeleeRanged/BladeHitDetectionArea.tscn")
 @onready var timer: Timer = $Timer
 
 @export var bullet: PackedScene

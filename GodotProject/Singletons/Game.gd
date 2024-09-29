@@ -1,5 +1,8 @@
 extends Node
 
+
+@export var collected_game_flags: Array[Globals.GAME_FLAGS]
+
 var save_game_resource : SaveGameResource
 
 func save_game():

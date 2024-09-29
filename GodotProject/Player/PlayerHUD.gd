@@ -46,7 +46,7 @@ func populate_quick_select_with_weapons(quick_select_index):
 			sm_icon.modulate.a = disabled_alpha
 			continue
 		
-		var weapon_texture: CompressedTexture2D = get_node(inventory_path).get_weapon(weapon_name).icon
+		var weapon_texture: CompressedTexture2D = get_node(inventory_path).get_weapon(weapon_name).weapon_stats.icon
 		if weapon_texture == null:
 			print("Error: weapon_texture is null for weapon:", weapon_name)
 			continue

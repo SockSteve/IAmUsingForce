@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="WeaponStats" load_steps=6 format=3 uid="uid://751yv2pgmqxu"]
+
+[ext_resource type="Texture2D" uid="uid://bdhlx678ufe6t" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/pistol.png" id="1_tkilh"]
+[ext_resource type="ArrayMesh" uid="uid://gnl415n6wi2h" path="res://Assets/Kenney/Weapon Pack/Models/pistol.obj" id="3_34lf4"]
+[ext_resource type="Script" path="res://CustomResourceScripts/WeaponStats.gd" id="3_i1avt"]
+[ext_resource type="Texture2D" uid="uid://4kq5h3dvlco4" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/pistolUpgrade.png" id="3_jodcx"]
+[ext_resource type="ArrayMesh" uid="uid://mx8ne7kcng84" path="res://Assets/Kenney/Weapon Pack/Models/pistolSilencer.obj" id="4_8hc0g"]
+
+[resource]
+script = ExtResource("3_i1avt")
+upgrade_name = "Koi Koi"
+upgrade_icon = ExtResource("3_jodcx")
+upgrade_weapon_mesh = ExtResource("4_8hc0g")
+base_damage = 25
+upgraded = false
+current_lvl = 1
+current_xp = 0
+current_ammo = 50
+max_ammo = 100
+experience_thresholds = Array[int]([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300])
+base_damage_per_lvl = Array[int]([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300])
+modifications_per_level = ["", "", "", "", "", "", "", "", "", "", "", "", ""]
+id = &"gun"
+name = "Gun"
+type = 0
+description = "The Gun is one of the Weapons ever made. It shoots very much bullets that defenetly hurt anyone who is hit by them."
+icon = ExtResource("1_tkilh")
+mesh = ExtResource("3_34lf4")
+shop_price = 1000
+unlock_flags = Array[int]([1])

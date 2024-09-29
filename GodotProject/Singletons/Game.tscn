@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyf72lvw1x27p"]
+
+[ext_resource type="Script" path="res://Singletons/Game.gd" id="1_bj0oe"]
+
+[node name="GameHandler" type="Node"]
+script = ExtResource("1_bj0oe")
+collected_game_flags = Array[int]([0])

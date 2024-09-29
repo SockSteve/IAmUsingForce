@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="GadgetStats" load_steps=4 format=3 uid="uid://ckdhml1lhh8mw"]
+
+[ext_resource type="Texture2D" uid="uid://cyp0fgi52ncq2" path="res://Sock.png" id="1_72jho"]
+[ext_resource type="Script" path="res://CustomResourceScripts/GadgetStats.gd" id="1_veyfc"]
+[ext_resource type="ArrayMesh" uid="uid://ckr2k7s03hm46" path="res://Assets/Kenney/Weapon Pack/Models/ammo_machinegun.obj" id="2_huej1"]
+
+[resource]
+script = ExtResource("1_veyfc")
+id = &"hacking_device"
+name = "Hacking Device"
+type = 3
+description = "Allows you to hack into terminals and activate or open something"
+icon = ExtResource("1_72jho")
+mesh = ExtResource("2_huej1")
+shop_price = 1000
+unlock_flags = Array[int]([1])

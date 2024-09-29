@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Gadgets/GrindBoots/GrindBoots.gd" id="1_42vuo"]
 [ext_resource type="Curve" uid="uid://5fggr785a6bl" path="res://Gadgets/GrindBoots/GrindJumpCurve.tres" id="2_ttfmb"]
 [ext_resource type="Curve" uid="uid://oy4auoolki6p" path="res://Gadgets/GrindBoots/GrindrailChangeJumpCurve.tres" id="3_kkq5l"]
-[ext_resource type="Texture2D" uid="uid://fp00l1f827re" path="res://Sock.png" id="4_l3ifl"]
+[ext_resource type="Resource" uid="uid://r7ew5beexc3s" path="res://Gadgets/GrindBoots/GrindBoots.tres" id="4_oy6bt"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_8pcjv"]
 height = 0.2
@@ -22,8 +22,7 @@ grind_jump_curve = ExtResource("2_ttfmb")
 grindrail_change_jump_curve = ExtResource("3_kkq5l")
 grind_curve_time_factor = 1.5
 grind_speed_time_factor = 20.0
-_name = "GrindBoots"
-icon = ExtResource("4_l3ifl")
+gadget_stats = ExtResource("4_oy6bt")
 
 [node name="ShapeCast3D" type="ShapeCast3D" parent="."]
 shape = SubResource("CylinderShape3D_8pcjv")

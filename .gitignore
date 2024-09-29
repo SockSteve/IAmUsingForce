@@ -1,5 +1,13 @@
 # Godot 4+ specific ignores
 .godot/
+
 Paid/
 *.import
 *.dll
+.import/
+export.cfg
+export_presets.cfg
+
+*.translation
+
+Godot/Project/addons/ridiculous_coding

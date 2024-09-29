@@ -1,38 +1,49 @@
 extends Weapon
 
-# Export variables allow you to set these in the editor
-@export var bullet_speed : float = 100.0
-@export var fire_rate : float = 0.25
-
-@export var shoot_sfx: AudioStreamPlayer3D
+@onready var mesh_instance : MeshInstance3D = $WeaponMesh
 @onready var fire_rate_timer: Timer = $FireRateTimer
 @onready var bullet_spawn_marker: Marker3D = $BulletSpawn
 
 var can_shoot: bool = true
 
+func set_weapon_stats(new_weapon_stats: WeaponStats):
+	weapon_stats = new_weapon_stats
+
+
+func _ready() -> void:
+	mesh_instance.mesh = weapon_stats.mesh
+
+
 func _process(delta)->void:
 	if can_shoot and Input.is_action_pressed("ranged_attack"):
-		shoot()
+		attack()
 
-func shoot()->void:
-	attack_signal.emit()
-	shoot_sfx.play()
-	var bullet: Node3D = bullet.instantiate()
+
+func attack() -> void:
+	if weapon_stats.current_ammo <= 0:
+		print("not enough ammo for %s" % weapon_stats.name)
+		#TODO play empty sound
+		return
 	
-	#add child to character out of rotational root detached from any player transform
-	BulletContainer.add_child(bullet)
-
+	weapon_stats.current_ammo -= 1
+	
+	attack_sfx.play()
+	var bullet = bullet.instantiate()
+	bullet.bullet_stats.owner_ref = self
+	
+	bullet_spawn_marker.add_child(bullet)
 	# Set the bullet's position to the gun's position
 	bullet.global_transform.origin = bullet_spawn_marker.global_transform.origin
-
-	# Apply velocity to the bullet
-	var direction = global_transform.basis.z.normalized()
-	bullet.linear_velocity = bullet.global_transform.basis.z * bullet_speed#direction * bullet_speed
-	bullet.global_transform.basis.z =  global_transform.basis.z.normalized()
-
-	# Implement fire rate
+	
+	## Apply velocity to the bullet
+	var direction = bullet_spawn_marker.global_transform.basis.z.normalized()
+	print(direction)
+	bullet.linear_velocity = direction * _bullet_speed
+#
+	## Implement fire rate
 	can_shoot = false
-	fire_rate_timer.start(fire_rate)
+	fire_rate_timer.start(_fire_rate)
+
 
 func _on_fire_rate_timer_timeout():
 	can_shoot = true

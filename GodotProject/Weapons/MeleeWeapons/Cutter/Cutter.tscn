@@ -1,25 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://b0ofcf84vrio1"]
+[gd_scene load_steps=6 format=3 uid="uid://b0ofcf84vrio1"]
 
 [ext_resource type="Script" path="res://Weapons/MeleeWeapons/Cutter/Cutter.gd" id="1_vf8ox"]
-[ext_resource type="PackedScene" uid="uid://bqp21jx4d4l2f" path="res://Weapons/MeleeWeapons/Cutter/CutterBullet.tscn" id="2_hv2fr"]
-[ext_resource type="Texture2D" uid="uid://58gj3m76qtx1" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/knifeRound_sharp.png" id="2_mo0mh"]
-[ext_resource type="ArrayMesh" uid="uid://701xj700glwg" path="res://Assets/Kenney/Weapon Pack/Models/ammo_rocket.obj" id="3_hjm8s"]
-[ext_resource type="ArrayMesh" uid="uid://da6sawgy2fspe" path="res://Assets/Kenney/Weapon Pack/Models/knife_sharp.obj" id="4_5lqtr"]
+[ext_resource type="Resource" uid="uid://ls0tp5qhkrlp" path="res://Weapons/MeleeWeapons/Cutter/Cutter.tres" id="2_gfrwa"]
+[ext_resource type="PackedScene" uid="uid://bqp21jx4d4l2f" path="res://Weapons/MeleeWeapons/Cutter/CutterBullet.tscn" id="3_3vo5t"]
+[ext_resource type="ArrayMesh" uid="uid://dbi7tgpp28n38" path="res://Assets/Kenney/Weapon Pack/Models/knife_sharp.obj" id="4_5lqtr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q72rh"]
 size = Vector3(0.25, 1.58729, 0.25)
 
 [node name="Cutter" type="Node3D" groups=["melee"]]
 script = ExtResource("1_vf8ox")
-_name = "Cutter"
-icon = ExtResource("2_mo0mh")
-base_weapon_mesh = ExtResource("3_hjm8s")
-shop_price = 1500
-upgrade_shop_price = 100000
-bullet_price = 1
-damage = 10
-bullet = ExtResource("2_hv2fr")
-max_combo_step = 2
+weapon_stats = ExtResource("2_gfrwa")
+bullet = ExtResource("3_3vo5t")
 
 [node name="WeaponSkin" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true

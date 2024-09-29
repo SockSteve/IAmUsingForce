@@ -1,12 +1,12 @@
 [gd_scene load_steps=22 format=3 uid="uid://dg61cvqlsirpy"]
 
-[ext_resource type="Environment" uid="uid://ct2ypkwlmumhf" path="res://default_env.tres" id="1_0yh5f"]
+[ext_resource type="Environment" uid="uid://ct2ypkwlmumhf" path="res://Levels/default_env.tres" id="1_0yh5f"]
 [ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Player/Player.tscn" id="2_qdyh7"]
-[ext_resource type="Shader" path="res://Scenes/Levels/wood.gdshader" id="2_vaqb2"]
-[ext_resource type="Texture2D" uid="uid://8grkaamyqljx" path="res://Assets/Textures/Environment/dark_forest_final.png" id="2_vi34l"]
+[ext_resource type="Shader" path="res://Shader/wood.gdshader" id="2_vaqb2"]
+[ext_resource type="Texture2D" uid="uid://e52rum8f2e4n" path="res://Assets/Textures/Environment/dark_forest_final.png" id="2_vi34l"]
 [ext_resource type="PackedScene" uid="uid://bllxyncmft2sj" path="res://Interactibles/GrapplingPoints/GrapplePoint.tscn" id="3_586er"]
-[ext_resource type="PackedScene" uid="uid://d1bwfomisauow" path="res://Assets/Models/Interactibles/GoldNugget.glb" id="4_wcjof"]
-[ext_resource type="PackedScene" uid="uid://dmhwr8d61ej2t" path="res://Assets/Models/Interactibles/SilverNugget.glb" id="5_sps66"]
+[ext_resource type="PackedScene" uid="uid://bcvynjajcwmks" path="res://Assets/Models/Interactibles/GoldNugget.glb" id="4_wcjof"]
+[ext_resource type="PackedScene" uid="uid://ctrttq07u1pok" path="res://Assets/Models/Interactibles/SilverNugget.glb" id="5_sps66"]
 [ext_resource type="PackedScene" uid="uid://du0ausxn5e6vk" path="res://Assets/Placeholders/Environment/fern_grass_02/scene.gltf" id="9_fygig"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dbtl5"]
