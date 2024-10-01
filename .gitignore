@@ -10,4 +10,4 @@ export_presets.cfg
 
 *.translation
 
-Godot/Project/addons/ridiculous_coding
+GodotProject/addons/ridiculous_coding/*

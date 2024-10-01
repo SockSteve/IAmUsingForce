@@ -40,7 +40,7 @@ project/assembly_name="I Am Using Force"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/shaker/plugin.cfg")
+enabled=PackedStringArray("res://addons/ridiculous_coding/plugin.cfg", "res://addons/shaker/plugin.cfg")
 
 [input]
 

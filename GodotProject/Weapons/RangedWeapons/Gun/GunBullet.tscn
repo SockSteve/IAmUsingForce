@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://owsxbjhadsho"]
+[gd_scene load_steps=7 format=3 uid="uid://owsxbjhadsho"]
 
 [ext_resource type="Script" path="res://Weapons/RangedWeapons/Gun/GunBullet.gd" id="1_dkxp1"]
-[ext_resource type="Resource" uid="uid://bryljedlx37pf" path="res://Weapons/RangedWeapons/Gun/GunBullet.tres" id="2_yd0dp"]
+[ext_resource type="PackedScene" uid="uid://b0i3f2a76pxek" path="res://SpecialFX/Explosions/vfx_explosion_1.tscn" id="2_k2j6s"]
+[ext_resource type="AudioStream" uid="uid://dr7gsjtxdf3hc" path="res://Assets/Kenney/kenney_impact-sounds/Audio/impactWood_heavy_004.ogg" id="3_xe6qj"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pgolh"]
 
@@ -10,7 +11,7 @@ radius = 0.05
 height = 0.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gqdkv"]
-albedo_color = Color(1.7, 1.32, 0.47, 1)
+albedo_color = Color(5, 3, 1, 1)
 
 [node name="GunBullet" type="CharacterBody3D"]
 top_level = true
@@ -18,11 +19,17 @@ collision_layer = 256
 collision_mask = 50
 motion_mode = 1
 script = ExtResource("1_dkxp1")
-bullet_stats = ExtResource("2_yd0dp")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="BulletCollision" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_pgolh")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="BulletMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_05gjw")
 surface_material_override/0 = SubResource("StandardMaterial3D_gqdkv")
+
+[node name="VFXExplosion" parent="." instance=ExtResource("2_k2j6s")]
+
+[node name="SFXBulletExplosion" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_xe6qj")
+
+[editable path="VFXExplosion"]

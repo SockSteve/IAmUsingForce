@@ -25,11 +25,12 @@ func attack() -> void:
 		#TODO play empty sound
 		return
 	
+	attack_signal.emit()
 	weapon_stats.current_ammo -= 1
 	
 	attack_sfx.play()
 	var bullet = bullet.instantiate()
-	bullet.bullet_stats.owner_ref = self
+	bullet._owner = self
 	
 	bullet_spawn_marker.add_child(bullet)
 	# Set the bullet's position to the gun's position

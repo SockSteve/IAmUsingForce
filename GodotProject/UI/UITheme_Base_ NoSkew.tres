@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=14 format=3 uid="uid://dvspb4esei5oi"]
 
-[ext_resource type="FontFile" uid="uid://cv427bf248lp3" path="res://Assets/Fonts/keney_vector_future.ttf" id="1_ia5vi"]
+[ext_resource type="FontFile" uid="uid://c77x5odytqjf7" path="res://Assets/Fonts/keney_vector_future.ttf" id="1_ia5vi"]
 [ext_resource type="StyleBox" uid="uid://dpuowtm0rg7iq" path="res://UI/sbf_btn_disabled.tres" id="2_2cyv4"]
 [ext_resource type="StyleBox" uid="uid://c28pbyuku0akj" path="res://UI/sbf_btn_focus.tres" id="3_1ubu2"]
 [ext_resource type="StyleBox" uid="uid://cwidnr8vwg5kq" path="res://UI/sbf_btn_hover.tres" id="4_smjb6"]
