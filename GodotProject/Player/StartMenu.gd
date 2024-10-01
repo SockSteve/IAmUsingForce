@@ -58,4 +58,5 @@ func _on_exit_to_main_menu_button_pressed():
 	# Implement exit to main menu functionality
 	unpause()
 	# Add code to switch to the main menu scene
+	get_tree().quit() #close the game for now
 	pass

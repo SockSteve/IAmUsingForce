@@ -40,6 +40,8 @@ func physics_update(delta: float) -> void:
 
 #get the combo step information from weapon
 func attack(air_up_down: StringName=""):
+	return#this function just crashes the game atm -muftwin
+		
 	if player.combo_step > player.currently_held_weapon_or_gadget.max_combo_step:
 		player.combo_step = 0 
 	

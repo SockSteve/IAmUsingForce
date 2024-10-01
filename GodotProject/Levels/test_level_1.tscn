@@ -1,12 +1,13 @@
-[gd_scene load_steps=22 format=3 uid="uid://dg61cvqlsirpy"]
+[gd_scene load_steps=23 format=3 uid="uid://dg61cvqlsirpy"]
 
 [ext_resource type="Environment" uid="uid://ct2ypkwlmumhf" path="res://Levels/default_env.tres" id="1_0yh5f"]
 [ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Player/Player.tscn" id="2_qdyh7"]
 [ext_resource type="Shader" path="res://Shader/wood.gdshader" id="2_vaqb2"]
-[ext_resource type="Texture2D" uid="uid://e52rum8f2e4n" path="res://Assets/Textures/Environment/dark_forest_final.png" id="2_vi34l"]
+[ext_resource type="Texture2D" uid="uid://duxieovv6xp1y" path="res://Assets/Textures/Environment/dark_forest_final.png" id="2_vi34l"]
 [ext_resource type="PackedScene" uid="uid://bllxyncmft2sj" path="res://Interactibles/GrapplingPoints/GrapplePoint.tscn" id="3_586er"]
-[ext_resource type="PackedScene" uid="uid://bcvynjajcwmks" path="res://Assets/Models/Interactibles/GoldNugget.glb" id="4_wcjof"]
-[ext_resource type="PackedScene" uid="uid://ctrttq07u1pok" path="res://Assets/Models/Interactibles/SilverNugget.glb" id="5_sps66"]
+[ext_resource type="PackedScene" uid="uid://bgdr8clsam4w1" path="res://Assets/Models/Interactibles/GoldNugget.glb" id="4_wcjof"]
+[ext_resource type="PackedScene" uid="uid://v4bei818u2qf" path="res://Assets/Models/Interactibles/SilverNugget.glb" id="5_sps66"]
+[ext_resource type="Script" path="res://Player/StartMenu.gd" id="5_y7v02"]
 [ext_resource type="PackedScene" uid="uid://du0ausxn5e6vk" path="res://Assets/Placeholders/Environment/fern_grass_02/scene.gltf" id="9_fygig"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dbtl5"]
@@ -251,8 +252,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19694, 1.24575, 1.98293)
 [node name="CharacterRotationRoot" parent="Player" index="5"]
 transform = Transform3D(0.669131, 0, 0.743145, 0, 1, 0, -0.743145, 0, 0.669131, 0, 0, 0)
 
+[node name="GeneralSkeleton" parent="Player/CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature" index="0"]
+bones/9/rotation = Quaternion(0, -0.707107, 0, 0.707107)
+bones/10/rotation = Quaternion(0, 0.707107, 0, 0.707107)
+bones/12/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
+bones/13/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
+bones/33/rotation = Quaternion(0, 0.707107, 0, 0.707107)
+bones/34/rotation = Quaternion(0, -0.707107, 0, 0.707107)
+bones/36/rotation = Quaternion(-0.214187, -0.673887, -0.214187, 0.673887)
+bones/37/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
+bones/57/rotation = Quaternion(0, 0.707107, -0.707107, 0)
+bones/62/rotation = Quaternion(0, 0.707107, -0.707107, 0)
+
 [node name="MeleeHand" parent="Player/CharacterRotationRoot/CharacterSkin" index="2"]
 transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, -0.737829, 1.43559, -0.0617137)
+
+[node name="ResumeGameButton" parent="Player/CanvasLayer/StartMenu/StartMenuMain/MarginContainer/VBoxContainer" index="1"]
+focus_neighbor_top = NodePath("../ExitToMainMenuButton")
+
+[node name="ExitToMainMenuButton" parent="Player/CanvasLayer/StartMenu/StartMenuMain/MarginContainer/VBoxContainer" index="5"]
+script = ExtResource("5_y7v02")
 
 [node name="GrapplePoint" parent="." instance=ExtResource("3_586er")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5518, 14.019, 82.8753)
@@ -270,6 +289,8 @@ mesh = SubResource("QuadMesh_kp8q3")
 
 [node name="Sketchfab_Scene" parent="." instance=ExtResource("9_fygig")]
 transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 8.19576, 1.51847, 12.1589)
+
+[connection signal="pressed" from="Player/CanvasLayer/StartMenu/StartMenuMain/MarginContainer/VBoxContainer/ExitToMainMenuButton" to="Player/CanvasLayer/StartMenu/StartMenuMain/MarginContainer/VBoxContainer/ExitToMainMenuButton" method="_on_exit_to_main_menu_button_pressed"]
 
 [editable path="Player"]
 [editable path="Player/CharacterRotationRoot/CharacterSkin"]
