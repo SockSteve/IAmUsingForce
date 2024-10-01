@@ -16,6 +16,7 @@ current_lvl = 1
 current_xp = 0
 current_ammo = 50
 max_ammo = 100
+ammo_shop_price = 1
 experience_thresholds = Array[int]([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300])
 base_damage_per_lvl = Array[int]([100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200, 1300])
 modifications_per_level = ["", "", "", "", "", "", "", "", "", "", "", "", ""]

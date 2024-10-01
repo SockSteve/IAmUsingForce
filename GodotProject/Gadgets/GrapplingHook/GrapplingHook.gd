@@ -47,7 +47,7 @@ func activate():
 		update_rope_transform(nearest_grapple_point.global_position)
 
 #physics_process is only used for the rope here
-func _physics_process(delta):
+func _physics_process(_delta):
 	if nearest_grapple_point != null:
 		update_rope_transform(nearest_grapple_point.global_transform.origin)
 

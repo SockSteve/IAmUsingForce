@@ -25,7 +25,7 @@ func smooth_3d_rotate_towards_vector(rot_source:Node3D, rot_target:Vector3, weig
 	rot_source.transform.basis = Basis(rot_source.transform.basis.get_rotation_quaternion().slerp(rotation_basis, delta * weight))
 	return direction
 	
-func calc_rotation_basis_towards_vector(rot_source:Vector3, rot_target:Vector3, weight:float, delta: float, up_vector:Vector3=Vector3.UP)->Basis:
+func calc_rotation_basis_towards_vector(rot_source:Vector3, rot_target:Vector3, _weight:float, _delta: float, up_vector:Vector3=Vector3.UP)->Basis:
 	var direction = rot_source.direction_to(rot_target)
 	var left_axis := up_vector.cross(direction)
 	var rotation_basis := Basis(left_axis, up_vector, direction)

@@ -13,5 +13,5 @@ func _on_attack_timer_timeout():
 	hitbox.monitoring = false
 
 
-func _on_hitbox_area_body_entered(body):
+func _on_hitbox_area_body_entered(_body):
 	print("hit")

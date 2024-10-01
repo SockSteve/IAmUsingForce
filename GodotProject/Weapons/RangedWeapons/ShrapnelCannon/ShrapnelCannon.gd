@@ -8,19 +8,19 @@ extends Weapon
 @onready var shoot_sfx: AudioStreamPlayer3D = $ShootSfx
 var can_shoot = true
 
-func _process(delta):
+func _process(_delta):
 	if can_shoot and Input.is_action_pressed("ranged_attack"):
 		shoot()
 
 func shoot():
-	var bullet = bullet.instantiate()
+	var bullet_inst = bullet.instantiate()
 	#add child to character out of rotational root detached from any player transform
-	get_parent().get_parent().get_parent().add_child(bullet)
+	get_parent().get_parent().get_parent().add_child(bullet_inst)
 	#get_tree().root.add_child(bullet)
 
 	# Set the bullet's position to the gun's position
-	bullet.global_transform.origin = bullet_spawn_marker.global_transform.origin
-	bullet.shoot()
+	bullet_inst.global_transform.origin = bullet_spawn_marker.global_transform.origin
+	bullet_inst.shoot()
 	shoot_sfx.play()
 	# Apply velocity to the bullet
 	#var direction = global_transform.basis.z.normalized()

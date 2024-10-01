@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://Weapons/RangedWeapons/Gun/Gun.gd" id="1_eansb"]
 [ext_resource type="Resource" uid="uid://751yv2pgmqxu" path="res://Weapons/RangedWeapons/Gun/Gun.tres" id="2_hj6v4"]
-[ext_resource type="ArrayMesh" uid="uid://duvby03ebihuq" path="res://Assets/Kenney/Weapon Pack/Models/pistol.obj" id="3_0vde1"]
+[ext_resource type="ArrayMesh" uid="uid://gnl415n6wi2h" path="res://Assets/Kenney/Weapon Pack/Models/pistol.obj" id="3_0vde1"]
 [ext_resource type="PackedScene" uid="uid://owsxbjhadsho" path="res://Weapons/RangedWeapons/Gun/GunBullet.tscn" id="3_7jug8"]
 [ext_resource type="Script" path="res://Weapons/RangedWeapons/MuzzleFlash.gd" id="5_nhikp"]
-[ext_resource type="AudioStream" uid="uid://bc2t56unn01o4" path="res://Assets/Kenney/kenney_impact-sounds/Audio/impactPlank_medium_001.ogg" id="5_re7nf"]
+[ext_resource type="AudioStream" uid="uid://yw8srbqof5xq" path="res://Assets/Kenney/kenney_impact-sounds/Audio/impactPlank_medium_001.ogg" id="5_re7nf"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f1fn7"]
 angle_min = -95.3
