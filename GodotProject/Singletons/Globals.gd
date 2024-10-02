@@ -8,13 +8,13 @@ enum GAME_FLAGS {NONE, BEGINNING, NOGO_FOREST_COMPLETED,
 
 var game_progression_flags: Dictionary = get_flags.call(GAME_FLAGS)
 
-func get_flags(flag_enum)->Dictionary:
+func get_flags(_flag_enum)->Dictionary:
 	var dicc: Dictionary
 	for key in GAME_FLAGS.keys():
 		dicc[key] = false
 	return dicc
 
-func get_flags_by_value(flag_enum)->Dictionary:
+func get_flags_by_value(_flag_enum)->Dictionary:
 	var dicc: Dictionary
 	for value in GAME_FLAGS.values():
 		dicc[value] = false

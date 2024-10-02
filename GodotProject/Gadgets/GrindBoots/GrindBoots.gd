@@ -27,7 +27,7 @@ var exc_arr_l: Array = []
 var exc_arr_r: Array = []
 
 #we probe for grindrails with a shapecast
-func _physics_process(delta):
+func _physics_process(_delta):
 	#we test if we collide with a grindrail
 	if shape_cast_ground.is_colliding():
 		#if we collide with a grindrail and can grind, we set the parameters for the Grinding state

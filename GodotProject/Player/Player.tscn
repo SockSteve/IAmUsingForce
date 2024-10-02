@@ -5528,7 +5528,6 @@ expand_mode = 1
 [node name="StartMenu" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

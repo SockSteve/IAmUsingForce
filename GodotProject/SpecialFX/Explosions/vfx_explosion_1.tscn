@@ -1,6 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://b0i3f2a76pxek"]
+[gd_scene load_steps=25 format=3 uid="uid://b0i3f2a76pxek"]
 
-[ext_resource type="Texture2D" uid="uid://cfb0pbh5tevg" path="res://SpecialFX/Explosions/Flare00.PNG" id="1_logxl"]
+[ext_resource type="Script" path="res://SpecialFX/Explosions/VFX_Explosion_1.gd" id="1_ae1m6"]
+[ext_resource type="Texture2D" uid="uid://dn1vjpgo18def" path="res://SpecialFX/Explosions/Flare00.PNG" id="1_logxl"]
 [ext_resource type="Material" uid="uid://7r3j2nwensai" path="res://SpecialFX/Explosions/Flare00.material" id="2_wmidu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lqlqc"]
@@ -83,6 +84,8 @@ scale_max = 1.5
 scale_curve = SubResource("CurveTexture_l1bav")
 color = Color(5, 2, 1, 1)
 color_ramp = SubResource("GradientTexture1D_tceke")
+sub_emitter_mode = 2
+sub_emitter_amount_at_end = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_p8tn5"]
 
@@ -108,7 +111,7 @@ color = Color(0.219501, 0.219501, 0.219501, 1)
 [sub_resource type="QuadMesh" id="QuadMesh_voa8c"]
 
 [node name="VFXExplosion" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.53454, 0)
+script = ExtResource("1_ae1m6")
 
 [node name="Sparks" type="GPUParticles3D" parent="."]
 material_override = SubResource("StandardMaterial3D_lqlqc")

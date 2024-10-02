@@ -20,6 +20,7 @@ const MAX_LEVEL = 14
 
 @export var current_ammo: int = 50 : set = set_current_ammo
 @export var max_ammo: int = 100 : set = set_max_ammo
+@export var ammo_shop_price: int = 1
 
 @export var experience_thresholds: Array[int] = [ #[0] == lvl 1 || [6] == lvl 7
 100, 200, 300, 400, 500, 600,
@@ -75,6 +76,10 @@ func set_max_ammo(new_value):
 func set_current_ammo(new_value: int):
 	current_ammo = new_value
 	ammo_stats_changed.emit(self)
+
+
+func get_damage() -> int:
+	return base_damage_per_lvl[current_lvl - 1]
 
 #if not is_node_ready():
 		#await ready

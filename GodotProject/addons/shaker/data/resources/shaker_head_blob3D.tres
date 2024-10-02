@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="ShakerPreset3D" load_steps=7 format=3 uid="uid://bgwupdyecxqic"]
+[gd_resource type="Resource" script_class="ShakerPreset3D" load_steps=8 format=3 uid="uid://bgwupdyecxqic"]
 
+[ext_resource type="Script" path="res://addons/shaker/data/Vector3/BaseShakerType3D.gd" id="1_mjohb"]
 [ext_resource type="Resource" uid="uid://cqhisip66ngbl" path="res://AddonRelatedStuff/ShakerDemoScenes/HeadBobWalking.tres" id="2_abfix"]
 [ext_resource type="Script" path="res://addons/shaker/data/Vector3/ShakerTypeSineWave3D.gd" id="2_lj1xu"]
 [ext_resource type="Script" path="res://addons/shaker/data/Vector3/ShakerPreset3D.gd" id="3_1llgx"]
@@ -48,8 +49,8 @@ bake_internal = 64
 
 [resource]
 script = ExtResource("3_1llgx")
-PositionShake = Array[Resource("res://addons/shaker/data/Vector3/BaseShakerType3D.gd")]([SubResource("Resource_hui0g"), SubResource("Resource_usaqk")])
-RotationShake = Array[Resource("res://addons/shaker/data/Vector3/BaseShakerType3D.gd")]([SubResource("Resource_sxvgt"), ExtResource("2_abfix")])
-ScaleShake = Array[Resource("res://addons/shaker/data/Vector3/BaseShakerType3D.gd")]([])
+PositionShake = Array[ExtResource("1_mjohb")]([SubResource("Resource_hui0g"), SubResource("Resource_usaqk")])
+RotationShake = Array[ExtResource("1_mjohb")]([SubResource("Resource_sxvgt"), ExtResource("2_abfix")])
+ScaleShake = Array[ExtResource("1_mjohb")]([])
 bake_internal = 64
 __follow_timeline = false

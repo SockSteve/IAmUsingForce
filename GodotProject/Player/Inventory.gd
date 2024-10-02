@@ -51,7 +51,7 @@ func has_gadget_or_weapon(gadget_or_weapon_name: StringName)->bool:
 func get_weapon(weapon_name: StringName)->Node:
 	return weapons.get(weapon_name)
 
-func get_random_weapon(can_get_same_weapon:bool=true)->Node:
+func get_random_weapon(_can_get_same_weapon:bool=true)->Node:
 	#print(weapons.values())
 	return weapons.values().pick_random()
 

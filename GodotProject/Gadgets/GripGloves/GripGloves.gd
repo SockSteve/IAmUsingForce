@@ -7,7 +7,7 @@ class_name GripGloves
 @onready var player: Player = find_parent("Player")
 
 #TODO
-func _physics_process(delta):
+func _physics_process(_delta):
 	if not grip_cast.is_colliding():
 		player.is_monkey_bar = false
 		return
