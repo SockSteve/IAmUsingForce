@@ -68,10 +68,8 @@ func physics_update(delta: float) -> void:
 			grind_rail_change = false
 		return
 	
-	
 	if Input.is_action_just_pressed("jump") and not grind_rail_change:
-		if !grind_jump:
-			grind_jump = true
+		grind_jump = true
 	
 	if grind_jump:
 		jump(delta)
