@@ -1,23 +1,109 @@
-[gd_scene load_steps=7 format=3 uid="uid://cdfkx46kbxvyb"]
+[gd_scene load_steps=27 format=3 uid="uid://cdfkx46kbxvyb"]
 
 [ext_resource type="Shader" uid="uid://cs8c0pml7isy3" path="res://Shader/Mat_VFX_Slash.tres" id="1_6goch"]
-[ext_resource type="ArrayMesh" uid="uid://cs8g115indni" path="res://Assets/Models/VFX/SwordSlash.obj" id="2_o21i8"]
-
-[sub_resource type="Gradient" id="Gradient_xl766"]
-offsets = PackedFloat32Array(0, 0.30625, 0.65, 0.825)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0.102, 1, 1, 1, 0.900222)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_gilk7"]
-gradient = SubResource("Gradient_xl766")
+[ext_resource type="ArrayMesh" uid="uid://28bls1v5iajo" path="res://Assets/Models/VFX/SwordSlash.obj" id="2_o21i8"]
+[ext_resource type="Texture2D" uid="uid://dp43w1kf6708x" path="res://SpecialFX/Slash/VFX_Slash_Gradient.tres" id="2_u23g5"]
+[ext_resource type="ArrayMesh" uid="uid://bovgp4avjbdey" path="res://Assets/Models/VFX/SwordTrail.obj" id="4_5hyju"]
+[ext_resource type="Shader" uid="uid://wd0vxve8mcx2" path="res://SpecialFX/Slash/VFX_SlashTextureScroll.tres" id="5_55uvs"]
+[ext_resource type="Texture2D" uid="uid://qfw1pv2ns43c" path="res://SpecialFX/Slash/Noise01.png" id="6_qm1sg"]
+[ext_resource type="Texture2D" uid="uid://ch7d6htue8fgl" path="res://SpecialFX/Slash/Flare01.PNG" id="7_hoh33"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hfn1x"]
 render_priority = 0
 shader = ExtResource("1_6goch")
-shader_parameter/Texture2DParameter = SubResource("GradientTexture1D_gilk7")
+shader_parameter/Texture2DParameter = ExtResource("2_u23g5")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1sm42"]
 gravity = Vector3(0, 0, 0)
 color = Color(2.4, 1.3, 0.8, 1)
+
+[sub_resource type="Gradient" id="Gradient_r6pqg"]
+offsets = PackedFloat32Array(0, 0.4125, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dhic5"]
+gradient = SubResource("Gradient_r6pqg")
+fill_from = Vector2(0.544643, 0)
+fill_to = Vector2(0.584821, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_31k22"]
+render_priority = 0
+shader = ExtResource("1_6goch")
+shader_parameter/Texture2DParameter = SubResource("GradientTexture2D_dhic5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rspwy"]
+gravity = Vector3(0, 0, 0)
+color = Color(1, 0.7, 0.2, 1)
+
+[sub_resource type="Gradient" id="Gradient_rwac5"]
+offsets = PackedFloat32Array(0, 0.225, 0.34375, 0.55, 0.65625, 0.78125, 0.8875, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 0.013807, 1, 1, 1, 0.0478643, 1, 1, 1, 0.0846829, 1, 1, 1, 0.423415, 1, 1, 1, 0.62, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b8108"]
+gradient = SubResource("Gradient_rwac5")
+fill_from = Vector2(0.517857, 1)
+fill_to = Vector2(0.491071, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j0dut"]
+render_priority = 0
+shader = ExtResource("5_55uvs")
+shader_parameter/TextureTiling = Vector2(1, 1)
+shader_parameter/Vector2Parameter = Vector2(0, -3)
+shader_parameter/MainTexture = ExtResource("6_qm1sg")
+shader_parameter/GradientTexture = SubResource("GradientTexture2D_b8108")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_yxme7"]
+gravity = Vector3(0, 0, 0)
+color = Color(2.8, 1.3, 0.8, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7p4ok"]
+transparency = 1
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("7_hoh33")
+
+[sub_resource type="Gradient" id="Gradient_806v4"]
+offsets = PackedFloat32Array(0, 0.405405, 0.614865, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.086893, 1, 1, 1, 0.819277, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3vfjo"]
+gradient = SubResource("Gradient_806v4")
+
+[sub_resource type="Curve" id="Curve_rl3k3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_4tbod"]
+max_value = 10.0
+_data = [Vector2(0.244318, 10), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_2yfnh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_dvwt5"]
+curve_x = SubResource("Curve_rl3k3")
+curve_y = SubResource("Curve_4tbod")
+curve_z = SubResource("Curve_2yfnh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_i3syq"]
+particle_flag_align_y = true
+emission_shape_scale = Vector3(1, 0.2, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 0, -1)
+spread = 2.0
+initial_velocity_min = 40.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveXYZTexture_dvwt5")
+color = Color(6, 2, 1, 1)
+color_ramp = SubResource("GradientTexture1D_3vfjo")
+
+[sub_resource type="QuadMesh" id="QuadMesh_13cra"]
 
 [node name="Node3D" type="Node3D"]
 
@@ -29,7 +115,26 @@ fixed_fps = 75
 process_material = SubResource("ParticleProcessMaterial_1sm42")
 draw_pass_1 = ExtResource("2_o21i8")
 
-[node name="SlashTrail" type="GPUParticles3D" parent="."]
+[node name="SlashTrail" type="GPUParticles3D" parent="SlashMesh"]
+sorting_offset = -2.0
+material_override = SubResource("ShaderMaterial_31k22")
 amount = 1
 lifetime = 0.7
 fixed_fps = 75
+process_material = SubResource("ParticleProcessMaterial_rspwy")
+draw_pass_1 = ExtResource("4_5hyju")
+
+[node name="SlashNoiseScroll" type="GPUParticles3D" parent="SlashMesh"]
+material_override = SubResource("ShaderMaterial_j0dut")
+amount = 1
+lifetime = 0.7
+fixed_fps = 75
+process_material = SubResource("ParticleProcessMaterial_yxme7")
+draw_pass_1 = ExtResource("4_5hyju")
+
+[node name="StretchedParticles" type="GPUParticles3D" parent="SlashMesh"]
+material_override = SubResource("StandardMaterial3D_7p4ok")
+amount = 25
+lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_i3syq")
+draw_pass_1 = SubResource("QuadMesh_13cra")
