@@ -86,6 +86,7 @@ var currently_held_weapon_or_gadget: Node
 ## change back to the previously held weapon when the gadget use is over
 var stored_weapon_on_gadget_use: Node #this variable is only assigned with the active weapon when a gadget is used. it stores the weapon so it can be placed back into the players hand fter the gadget usage is over.
 
+var metal_check_ray: RayCast3D
 #debug
 @onready var grappling_hook = preload("res://Gadgets/GrapplingHook/GrapplingHook.tscn").instantiate()
 @onready var grinding_boots = preload("res://Gadgets/GrindBoots/GrindBoots.tscn").instantiate()
@@ -100,6 +101,8 @@ func _ready() -> void:
 	inventory.add_gadget(grappling_hook.name, grappling_hook)
 	inventory.add_gadget(grinding_boots.name, grinding_boots)
 	inventory.add_gadget(grip_gloves.name, grip_gloves)
+	
+	metal_check_ray = $MetalCheckRayCast
 	
 func set_up_input():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -149,6 +152,22 @@ func _physics_process(delta)-> void:
 		_ground_height = global_position.y + _ground_shapecast.target_position.y
 	if global_position.y < _ground_height:
 		_ground_height = global_position.y
+		
+	# Magnet logic
+	var direction = _get_camera_oriented_input()
+	metal_check_ray.global_transform.origin = global_transform.origin + Vector3(0, 0.9, 0)  # Position the raycast 1 unit above the player's origin
+	metal_check_ray.force_raycast_update()
+	if metal_check_ray.is_colliding():
+		var collider = metal_check_ray.get_collider()
+		if collider.has_meta("is_metal") and collider.get_meta("is_metal") == true:
+			is_magnetized = true
+			print("magnet engaged")
+		else:
+			is_magnetized = false
+	 # Apply magnet effect
+	if is_magnetized:
+		velocity = direction * move_speed
+		velocity.y = 0  # Prevent falling
 
 
 func _get_camera_oriented_input() -> Vector3:
