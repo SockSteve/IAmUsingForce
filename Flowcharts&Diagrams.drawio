@@ -1,4 +1,4 @@
-<mxfile host="Electron" modified="2024-10-14T05:15:52.035Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.2 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="-iVXqHSrHDGabQUtZ98A" version="22.0.2" type="device" pages="9">
+<mxfile host="Electron" modified="2024-10-14T07:21:50.960Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.2 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="sIpGPLQR_yp5vLMI8_LI" version="22.0.2" type="device" pages="9">
   <diagram name="Weapon System" id="s5kcOkmOvacQNM0t7v28">
     <mxGraphModel dx="1863" dy="1929" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="#ffffff" math="1" shadow="1">
       <root>
@@ -1745,7 +1745,7 @@
         <mxCell id="feUwGgpd3bh9Bd8_4qYr-1" value="weapon handler&lt;br&gt;handles weapon switching, keeps track of current object in hand" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
           <mxGeometry x="-320" y="-160" width="350" height="120" as="geometry" />
         </mxCell>
-        <mxCell id="feUwGgpd3bh9Bd8_4qYr-2" value="gadgets are encapsulated.&lt;br&gt;no state booleans wof objects in the player" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
+        <mxCell id="feUwGgpd3bh9Bd8_4qYr-2" value="gadgets are encapsulated.&lt;br&gt;no state booleans of objects in the player" style="rounded=0;whiteSpace=wrap;html=1;fontSize=16;" vertex="1" parent="1">
           <mxGeometry x="80" y="-160" width="270" height="120" as="geometry" />
         </mxCell>
       </root>

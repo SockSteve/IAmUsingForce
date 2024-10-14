@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://cl6qqbb2uudm"]
+
+[ext_resource type="Shader" uid="uid://bgkg8ukrfv1cp" path="res://SpecialFX/Bullets/FireBallVFX.tres" id="1_e7gss"]
+[ext_resource type="Texture2D" uid="uid://csqrsyv2aq4gt" path="res://SpecialFX/Bullets/VoronoiTexture.png" id="2_512v5"]
+[ext_resource type="Texture2D" uid="uid://crv5g5wlu0huk" path="res://SpecialFX/Bullets/Circle.png" id="3_0uq8r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_omw58"]
+render_priority = 0
+shader = ExtResource("1_e7gss")
+shader_parameter/MainTextureSpeed = Vector2(0, 1)
+shader_parameter/MainTexturePow = 4.0
+shader_parameter/MainTexure = ExtResource("2_512v5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sike5"]
+gravity = Vector3(0, 0, 0)
+scale_min = 0.3
+scale_max = 0.3
+color = Color(4.865, 3.244, 1, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_vpvna"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_868e7"]
+transparency = 1
+blend_mode = 4
+cull_mode = 2
+shading_mode = 0
+diffuse_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_0uq8r")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f4waa"]
+gravity = Vector3(0, 0, 0)
+scale_min = 0.3
+scale_max = 0.3
+color = Color(0.396436, 0.236151, 9.62615e-08, 1)
+
+[sub_resource type="QuadMesh" id="QuadMesh_dgyo6"]
+size = Vector2(0.4, 0.4)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Fireball" type="GPUParticles3D" parent="."]
+material_override = SubResource("ShaderMaterial_omw58")
+amount = 1
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_sike5")
+draw_pass_1 = SubResource("SphereMesh_vpvna")
+
+[node name="Flare" type="GPUParticles3D" parent="."]
+sorting_offset = -1.0
+material_override = SubResource("StandardMaterial3D_868e7")
+amount = 1
+fixed_fps = 60
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_f4waa")
+draw_pass_1 = SubResource("QuadMesh_dgyo6")
