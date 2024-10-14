@@ -1,12 +1,12 @@
 [gd_scene load_steps=27 format=3 uid="uid://cdfkx46kbxvyb"]
 
 [ext_resource type="Shader" uid="uid://cs8c0pml7isy3" path="res://Shader/Mat_VFX_Slash.tres" id="1_6goch"]
-[ext_resource type="ArrayMesh" uid="uid://28bls1v5iajo" path="res://Assets/Models/VFX/SwordSlash.obj" id="2_o21i8"]
+[ext_resource type="ArrayMesh" uid="uid://cs8g115indni" path="res://Assets/Models/VFX/SwordSlash.obj" id="2_o21i8"]
 [ext_resource type="Texture2D" uid="uid://dp43w1kf6708x" path="res://SpecialFX/Slash/VFX_Slash_Gradient.tres" id="2_u23g5"]
-[ext_resource type="ArrayMesh" uid="uid://bovgp4avjbdey" path="res://Assets/Models/VFX/SwordTrail.obj" id="4_5hyju"]
+[ext_resource type="ArrayMesh" uid="uid://gfcfrsxfes4e" path="res://Assets/Models/VFX/SwordTrail.obj" id="4_5hyju"]
 [ext_resource type="Shader" uid="uid://wd0vxve8mcx2" path="res://SpecialFX/Slash/VFX_SlashTextureScroll.tres" id="5_55uvs"]
-[ext_resource type="Texture2D" uid="uid://qfw1pv2ns43c" path="res://SpecialFX/Slash/Noise01.png" id="6_qm1sg"]
-[ext_resource type="Texture2D" uid="uid://ch7d6htue8fgl" path="res://SpecialFX/Slash/Flare01.PNG" id="7_hoh33"]
+[ext_resource type="Texture2D" uid="uid://drttyexjtcada" path="res://SpecialFX/Slash/Noise01.png" id="6_qm1sg"]
+[ext_resource type="Texture2D" uid="uid://cngsmvdgxsjub" path="res://SpecialFX/Slash/Flare01.PNG" id="7_hoh33"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hfn1x"]
 render_priority = 0
