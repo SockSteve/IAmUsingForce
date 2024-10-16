@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://68xqk3uljnkd"]
+
+[ext_resource type="Shader" uid="uid://c2u2mejc0aym1" path="res://Shader/Dissolve_1.tres" id="1_wrvut"]
+
+[sub_resource type="Environment" id="Environment_1os04"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uf2ct"]
+render_priority = 0
+shader = ExtResource("1_wrvut")
+shader_parameter/LightColor = Color(3e-06, 0.779063, 0.945481, 1)
+shader_parameter/FloatParameter = 2.0
+shader_parameter/EdgeOffset = 0.1
+shader_parameter/strength = 2.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_1050n"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1os04")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("ShaderMaterial_uf2ct")
+mesh = SubResource("BoxMesh_1050n")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.877841, 0.1125, -0.465552, 0, 0.972023, 0.234888, 0.478952, -0.206194, 0.853281, -2.29342, 0.943676, 3.49693)
+fov = 78.55
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.927359, -0.00602371, -0.374126, -0.282312, -0.644959, 0.710161, -0.245573, 0.764194, 0.596407, 0, 2.17631, 1.93794)
