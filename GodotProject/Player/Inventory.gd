@@ -29,11 +29,11 @@ func get_money()-> int:
 
 func add_money(amount)->void:
 	money += amount
-	emit_signal("money_amount_changed", money)
+	money_amount_changed.emit(money)
 
 func remove_money(amount)->void:
 	money -= amount
-	emit_signal("money_amount_changed", money)
+	money_amount_changed.emit(money)
 
 func parameterize_weapon():
 	#initialize weapon with xp
@@ -79,6 +79,7 @@ func set_current_quick_selected(dir_1, dir_2):
 		current_quick_selected[0] = dir_2
 	else:
 		current_quick_selected[0] = dir_1
+
 
 func make_weapon_array_from_shortcut_indexes(indexes: Array[int])-> Array:
 	var current_panel: Dictionary = weapon_quick_select.get(current_quick_select_panel)

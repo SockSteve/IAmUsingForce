@@ -1,8 +1,8 @@
 [gd_scene load_steps=43 format=3 uid="uid://cfv2ecbe68yfi"]
 
 [ext_resource type="Texture2D" uid="uid://dk3g261yc4qry" path="res://Assets/Placeholders/Environment/Skyboxes/panorama_image.png" id="1_fslvx"]
-[ext_resource type="PackedScene" uid="uid://dn3vjoeu551qr" path="res://Assets/Models/Interactibles/MonkeyBarTestModel.blend" id="2_0k45d"]
-[ext_resource type="PackedScene" uid="uid://cwxxst84r6m1a" path="res://Assets/Models/Environment/CrouchTestObject.blend" id="3_1onp7"]
+[ext_resource type="PackedScene" uid="uid://diffqkpcbhfpc" path="res://Assets/Models/Interactibles/MonkeyBarTestModel.blend" id="2_0k45d"]
+[ext_resource type="PackedScene" uid="uid://be8k2anwecem7" path="res://Assets/Models/Environment/CrouchTestObject.blend" id="3_1onp7"]
 [ext_resource type="Texture2D" uid="uid://bid2isp42co6r" path="res://addons/kenney_prototype_textures/orange/texture_01.png" id="4_hcqb6"]
 [ext_resource type="Texture2D" uid="uid://k68sjddpo8rx" path="res://addons/kenney_prototype_textures/dark/texture_06.png" id="5_e3214"]
 [ext_resource type="Texture2D" uid="uid://de0wimp7e8g3n" path="res://addons/kenney_prototype_textures/purple/texture_12.png" id="6_4cwlb"]
