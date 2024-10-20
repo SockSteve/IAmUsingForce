@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://btejo5c2suafs"]
+
+[ext_resource type="PackedScene" uid="uid://q85i65h33eg7" path="res://Assets/Models/Characters/Player/MixamoManFinishedBase.fbx" id="1_5bvy0"]
+[ext_resource type="PackedScene" uid="uid://cbbitb4sh1o3g" path="res://Assets/Models/Weapons/Cutter/Cutter.fbx" id="2_8djw4"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MixamoManFinishedBase" parent="." instance=ExtResource("1_5bvy0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.151314, 0, 0.0364852)
+
+[node name="Skeleton3D" parent="MixamoManFinishedBase/Armature" index="0"]
+bones/68/position = Vector3(-0.0372531, 0.0990111, 0.0343573)
+bones/68/rotation = Quaternion(-0.0654045, 0.0100273, -0.671177, 0.738338)
+bones/68/scale = Vector3(1, 1, 1)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="MixamoManFinishedBase"]
+transform = Transform3D(0.980011, -0.184019, -0.0756005, -0.0526467, 0.126576, -0.990559, 0.191851, 0.974738, 0.114358, -0.779348, 1.3956, -0.0977883)
+bone_name = "mixamorig7_RightHandWeapon"
+bone_idx = 68
+use_external_skeleton = true
+external_skeleton = NodePath("../Armature/Skeleton3D")
+
+[node name="Cutter" parent="MixamoManFinishedBase/BoneAttachment3D" instance=ExtResource("2_8djw4")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+
+[editable path="MixamoManFinishedBase"]
