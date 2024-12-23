@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://cfv2ecbe68yfi"]
+[gd_scene load_steps=44 format=3 uid="uid://cfv2ecbe68yfi"]
 
 [ext_resource type="Texture2D" uid="uid://dk3g261yc4qry" path="res://Assets/Placeholders/Environment/Skyboxes/panorama_image.png" id="1_fslvx"]
 [ext_resource type="PackedScene" uid="uid://diffqkpcbhfpc" path="res://Assets/Models/Interactibles/MonkeyBarTestModel.blend" id="2_0k45d"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://cbg2qc717km4f" path="res://Enemies/MovingSmallEnemyRanged/sm_testranged.tscn" id="12_lah70"]
 [ext_resource type="PackedScene" uid="uid://ckkun5xjhksvs" path="res://Enemies/movingSmallEnemyMelee/sm_testenemy.tscn" id="13_5d36v"]
 [ext_resource type="PackedScene" uid="uid://b1nlc7o2d0leo" path="res://Enemies/StationaryTurret/StationaryTurret.tscn" id="14_tic2p"]
+[ext_resource type="PackedScene" uid="uid://x44brybjp4wq" path="res://Enemies/TestDummy/TestDummy.tscn" id="14_yqcck"]
 [ext_resource type="PackedScene" uid="uid://oun126a7s625" path="res://Enemies/StationaryLookAtTurret/TestEnemy_2.tscn" id="15_f2m45"]
 [ext_resource type="PackedScene" uid="uid://bv5y01h2xtad" path="res://Sandbox/point_spawner.tscn" id="16_5mlhr"]
 [ext_resource type="PackedScene" uid="uid://bb6l672p5wvsp" path="res://Enemies/MovingMediumEnemyMelee/MM_MeleeEnemy.tscn" id="17_gh4yx"]
@@ -408,6 +409,9 @@ mesh = SubResource("BoxMesh_llufc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D3"]
 shape = SubResource("BoxShape3D_ibcg5")
+
+[node name="TestDummy" parent="NavigationRegion3D" instance=ExtResource("14_yqcck")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3778, -4.21382, 15.5846)
 
 [node name="TestEnemy_1" parent="." instance=ExtResource("14_tic2p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.4979, 1.94951, -16.8217)

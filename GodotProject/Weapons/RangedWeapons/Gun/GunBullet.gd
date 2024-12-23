@@ -21,7 +21,8 @@ func _physics_process(delta):
 	move_and_slide()
 	if get_slide_collision_count() > 0:
 		if get_last_slide_collision().get_collider(0).is_in_group("enemy"):
-			get_last_slide_collision().get_collider(0).apply_damage(_owner.weapon_stats.get_damage())
+			if get_last_slide_collision().get_collider(0).has_method("apply_damage"):
+				get_last_slide_collision().get_collider(0).apply_damage(_owner.weapon_stats.get_damage())
 		on_hit()
 
 
@@ -33,3 +34,13 @@ func on_hit():
 	await vfx_explosion.smoke.finished
 	queue_free()
 	
+
+
+func _on_hit_box_area_entered(area: Area3D) -> void:
+	var target = area.get_parent() as EnemyBase
+	target.apply_damage.emit(25)
+	on_hit()
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	print(body)

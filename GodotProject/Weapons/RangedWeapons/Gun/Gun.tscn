@@ -51,6 +51,8 @@ weapon_stats = ExtResource("2_hj6v4")
 bullet = ExtResource("3_7jug8")
 bullet_spawn = NodePath("BulletSpawn")
 attack_sfx = NodePath("AudioStreamPlayer3D")
+knockback = 10.0
+stagger = 1.0
 _bullet_speed = 1000.0
 
 [node name="BulletSpawn" type="Marker3D" parent="."]

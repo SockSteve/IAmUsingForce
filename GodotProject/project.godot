@@ -198,6 +198,8 @@ strafe={
 3d_physics/layer_6="floor"
 3d_physics/layer_7="platform"
 3d_physics/layer_8="interactible"
+3d_physics/layer_9="player_bullet"
+3d_physics/layer_10="enemy_bullet"
 
 [physics]
 

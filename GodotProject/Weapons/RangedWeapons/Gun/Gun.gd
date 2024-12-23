@@ -35,6 +35,7 @@ func attack() -> void:
 	bullet_spawn_marker.add_child(bullet)
 	# Set the bullet's position to the gun's position
 	bullet.global_transform.origin = bullet_spawn_marker.global_transform.origin
+	bullet.rotation = get_parent().get_parent().get_parent().rotation
 	
 	## Apply velocity to the bullet
 	var direction = bullet_spawn_marker.global_transform.basis.z.normalized()

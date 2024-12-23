@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="WeaponStats" load_steps=6 format=3 uid="uid://751yv2pgmqxu"]
 
-[ext_resource type="Texture2D" uid="uid://bdhlx678ufe6t" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/pistol.png" id="1_tkilh"]
-[ext_resource type="ArrayMesh" uid="uid://gnl415n6wi2h" path="res://Assets/Kenney/Weapon Pack/Models/pistol.obj" id="3_34lf4"]
+[ext_resource type="Texture2D" uid="uid://c8lwivvpo8vqd" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/pistol.png" id="1_tkilh"]
+[ext_resource type="ArrayMesh" uid="uid://duvby03ebihuq" path="res://Assets/Kenney/Weapon Pack/Models/pistol.obj" id="3_34lf4"]
 [ext_resource type="Script" path="res://CustomResourceScripts/WeaponStats.gd" id="3_i1avt"]
-[ext_resource type="Texture2D" uid="uid://4kq5h3dvlco4" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/pistolUpgrade.png" id="3_jodcx"]
-[ext_resource type="ArrayMesh" uid="uid://mx8ne7kcng84" path="res://Assets/Kenney/Weapon Pack/Models/pistolSilencer.obj" id="4_8hc0g"]
+[ext_resource type="Texture2D" uid="uid://bxmau8wxgs54s" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/pistolUpgrade.png" id="3_jodcx"]
+[ext_resource type="ArrayMesh" uid="uid://6s6ekw51k3a8" path="res://Assets/Kenney/Weapon Pack/Models/pistolSilencer.obj" id="4_8hc0g"]
 
 [resource]
 script = ExtResource("3_i1avt")
