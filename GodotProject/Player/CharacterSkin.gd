@@ -20,6 +20,10 @@ var arm_transition_request := "parameters/armtransition/transition_request"
 # False : set animation to "idle"
 # True : set animation to "move"
 @onready var moving : bool = false : set = set_moving
+@onready var right_hand: BoneAttachment3D = %RightHand
+@onready var left_hand: BoneAttachment3D = %LeftHand
+@onready var back: BoneAttachment3D = %Back
+
 
 # Blend value between the walk and run cycle. used for walking and crouching.
 # 0.0 walk - 1.0 run

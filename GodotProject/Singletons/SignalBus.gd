@@ -6,4 +6,3 @@ signal animation_ended
 
 func _ready():
 	pass 
-

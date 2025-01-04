@@ -11,6 +11,7 @@ var linear_velocity = Vector3.ZERO
 
 
 func _ready():
+	vfx_explosion.explosion_finished.connect(kill_self)
 	await get_tree().create_timer(5.0).timeout
 	queue_free()
 
@@ -31,16 +32,19 @@ func on_hit():
 	bullet_collision.disabled = true
 	bullet_mesh.visible = false
 	vfx_explosion.emit_explosion()
-	await vfx_explosion.smoke.finished
-	queue_free()
-	
 
 
 func _on_hit_box_area_entered(area: Area3D) -> void:
 	var target = area.get_parent() as EnemyBase
-	target.apply_damage.emit(25)
+	var damage: Damage = Damage.new()
+	damage.value = 25
+	damage.source = _owner
+	target.apply_damage.emit(damage)
 	on_hit()
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	print(body)
+
+func kill_self():
+	queue_free()
