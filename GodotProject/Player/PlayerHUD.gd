@@ -11,7 +11,14 @@ const  QUICK_SELECT_ICON_PATH ="%SMIcon_"
 @export_node_path("Player") var player: NodePath
 
 @onready var money_label = %MoneyLabel
-# Called when the node enters the scene tree for the first time.
+
+@onready var current_weapon_info_display: PanelContainer = $CurrentWeaponInfoPanel
+@onready var money_display: PanelContainer = $MoneyPanel
+@onready var quick_select_panel: PanelContainer = $QuickSelectPanel
+@onready var health_display: MarginContainer = $HealthDisplay
+
+
+
 func _ready():
 	money_label.text = str(get_node(inventory_path).get_money())
 	get_node(inventory_path).money_amount_changed.connect(display_money)
@@ -67,6 +74,7 @@ func populate_quick_select_with_weapons(quick_select_index):
 func _on_weapon_changed(weapon_name: StringName):
 	print("Weapon changed to:", weapon_name)
 	populate_quick_select_with_weapons(get_node(inventory_path).current_quick_select_panel)
+
 
 
 #extends TextureRect

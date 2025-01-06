@@ -39,6 +39,7 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 	var damage: Damage = Damage.new()
 	damage.value = 25
 	damage.source = _owner
+	damage.instigator = _owner._owner
 	target.apply_damage.emit(damage)
 	on_hit()
 

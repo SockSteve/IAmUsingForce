@@ -221,8 +221,10 @@ func add_starting_loadout_to_inventory()-> void:
 func assign_melee_and_ranged_weapons(weapon_scene: Node3D):
 	if weapon_scene.is_in_group("melee"):
 		current_melee_weapon = weapon_scene
+		weapon_scene._owner = self
 	if  weapon_scene.is_in_group("ranged"):
 		current_ranged_weapon = weapon_scene
+		weapon_scene._owner = self
 
 func handle_quick_select(direction: String):
 	var shortcut_array: Array = inventory.get_weapons_array_from_quick_select_dir(direction)
@@ -248,3 +250,17 @@ func switch_current_weapon_to_melee(melee: bool)-> void:
 		put_in_hand(current_melee_weapon)
 	if ! melee and currently_held_weapon_or_gadget != current_ranged_weapon:
 		put_in_hand(current_ranged_weapon)
+
+
+func _on_money_collection_range_body_entered(body: Node3D) -> void:
+	if body.is_in_group("money"):
+		body.player_detected(self)
+
+
+func _on_hurtbox_area_entered(area: Area3D) -> void:
+	pass # Replace with function body.
+
+
+func _on_hurtbox_body_entered(body: Node3D) -> void:
+	if body.is_in_group("money"):
+		body.collect()

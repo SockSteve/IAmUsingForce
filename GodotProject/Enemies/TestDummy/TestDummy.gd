@@ -24,13 +24,14 @@ func take_damage(damage: Damage) -> void:
 	
 	health -= damage.value
 	if health <= 0:
-		die(damage.source)
+		die(damage)
 	else:
 		animation_player.play("hit")
 
 # Function to handle death.
-func die(damage_source: Weapon) -> void:
+func die(damage_source: Damage) -> void:
 	print(damage_source)
-	damage_source.gain_xp.emit(xp_reward)
+	damage_source.source.gain_xp.emit(xp_reward)
+	damage_source.instigator.get_inventory().add_money(gold_reward)
 	#emit_signal(xp_reward, gold_reward)
 	queue_free() # Remove this enemy from the scene.

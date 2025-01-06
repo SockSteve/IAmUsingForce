@@ -80,13 +80,11 @@ func set_current_quick_selected(dir_1, dir_2):
 	else:
 		current_quick_selected[0] = dir_1
 
-
 func make_weapon_array_from_shortcut_indexes(indexes: Array[int])-> Array:
 	var current_panel: Dictionary = weapon_quick_select.get(current_quick_select_panel)
 	var weapon_1 = current_panel.get(indexes[0])
 	var weapon_2 = current_panel.get(indexes[1])
 	return [weapons.get(weapon_1),weapons.get(weapon_2)]
-
 
 func populate_quick_select_menu():
 	print("Populating shortcut menu...")
@@ -122,7 +120,6 @@ func populate_quick_select_menu():
 	weapon_quick_select[0] = shortcuts_0
 	weapon_quick_select[1] = shortcuts_1
 	print("Shortcuts populated:", weapon_quick_select)
-
 
 func change_quick_select_panel():
 	if current_quick_select_panel == 1:

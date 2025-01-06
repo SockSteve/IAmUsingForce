@@ -29,20 +29,13 @@ func attack() -> void:
 	attack_sfx.play()
 	var bullet = bullet.instantiate()
 	bullet._owner = self
-	
 	bullet_spawn_marker.add_child(bullet)
-	# Set the bullet's position to the gun's position
 	bullet.global_transform.origin = bullet_spawn_marker.global_transform.origin
-	
-	## Apply velocity to the bullet
 	var direction = bullet_spawn_marker.global_transform.basis.z.normalized()
-	
-	# Rotate the bullet to face the direction
 	bullet.look_at(bullet.global_transform.origin + direction, Vector3.UP)
-	
 	bullet.linear_velocity = direction * _bullet_speed
 #
-	## Implement fire rate
+	## fire rate
 	can_shoot = false
 	fire_rate_timer.start(_fire_rate)
 

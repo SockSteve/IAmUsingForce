@@ -204,6 +204,7 @@ strafe={
 3d_physics/layer_8="interactible"
 3d_physics/layer_9="player_bullet"
 3d_physics/layer_10="enemy_bullet"
+3d_physics/layer_11="money"
 
 [physics]
 

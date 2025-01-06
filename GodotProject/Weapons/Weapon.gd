@@ -28,15 +28,12 @@ var _owner: Player
 
 func _ready() -> void:
 	gain_xp.connect(add_xp)
-	print('signal:', gain_xp.get_connections())
 
 func get_stats():
 	return weapon_stats
 
 func add_xp(xp):
-	print('hello')
 	weapon_stats.current_xp += xp
-	print(weapon_stats.current_xp)
 
 func attack() -> void:
 	pass

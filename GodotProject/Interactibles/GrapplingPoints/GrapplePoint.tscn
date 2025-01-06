@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bllxyncmft2sj"]
 
-[ext_resource type="Script" path="res://Interactibles/GrapplePoint.gd" id="1_t6n43"]
+[ext_resource type="Script" path="res://Interactibles/GrapplingPoints/GrapplePoint.gd" id="1_t6n43"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_bucv0"]
 

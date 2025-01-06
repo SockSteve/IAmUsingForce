@@ -1,0 +1,49 @@
+[gd_resource type="ArrayMesh" load_steps=6 format=4 uid="uid://gvxod6uyyy1j"]
+
+[ext_resource type="Texture2D" uid="uid://b63odq04ypag2" path="res://Assets/Models/Interactibles/SilverNugget_Metal003_2K-JPG_Color.jpg" id="1_teelm"]
+[ext_resource type="Texture2D" uid="uid://brf8vtnee1oak" path="res://Assets/Models/Interactibles/SilverNugget_Metal003_2K-JPG_Metalness-Metal003_2K-JPG_Roughness.png" id="2_yc6xv"]
+[ext_resource type="Texture2D" uid="uid://blf05n82e0wr2" path="res://Assets/Models/Interactibles/SilverNugget_Metal003_2K-JPG_NormalGL.jpg" id="3_pigsp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cgap6"]
+resource_name = "Silver"
+cull_mode = 2
+albedo_texture = ExtResource("1_teelm")
+metallic = 0.5
+metallic_texture = ExtResource("2_yc6xv")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_yc6xv")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_pigsp")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_p860x"]
+_surfaces = [{
+"aabb": AABB(-1.00058, -1, -1, 2.20544, 2.32019, 2.11971),
+"format": 34896613377,
+"index_count": 36,
+"index_data": PackedByteArray("AAAGAAQAAAACAAYAAwAGAAIAAwAHAAYABwAEAAYABwAFAAQABQADAAEABQAHAAMAAQACAAAAAQADAAIABQAAAAQABQABAAAA"),
+"name": "Silver",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//+yRwIbAAA36AAAAAAAAMWpq7T//wAAN+gAAIrxAAARAKrcAAAAAAAAWz3pZgAAD1r//wm5AAARAAAAivEAAA==")
+}]
+blend_shape_mode = 0
+
+[resource]
+resource_name = "SilverNugget_Cube"
+_surfaces = [{
+"aabb": AABB(-1.00058, -1, -1, 2.20544, 2.32019, 2.11971),
+"attribute_data": PackedByteArray("/5//f/9f/3//n/8//1//P/+f/7//3/9//x//f/9f/7//nwAA/5/////f/z//H/8//18AAP9f//8="),
+"format": 34896613399,
+"index_count": 36,
+"index_data": PackedByteArray("AAAKAAUAAAACAAoAAwAIAAIAAwAMAAgADQAEAAkADQAHAAQABgADAAEABgALAAMAAQACAAAAAQADAAIABwAAAAQABwABAAAA"),
+"material": SubResource("StandardMaterial3D_cgap6"),
+"name": "Silver",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 14,
+"vertex_data": PackedByteArray("//+yRwIbQu036AAAAABI3sWpq7T//4LWN+gAAIrxebQRAKrcAABK3BEAqtwAAAvnAABbPelmyuEAAFs96WaX8w9a//8JuWu+D1r//wm5F74PWv//CbnB7hEAAACK8caoEQAAAIrxc80RAAAAivHs1IEvyDDGIaJauScQCI4Q/TlG3gCsaIxX1cE56o9R2ZPRm+V7OdnlBjql0pMPEUjws2zPmPc01Ffz")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_p860x")

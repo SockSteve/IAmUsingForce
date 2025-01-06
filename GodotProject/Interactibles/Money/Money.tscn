@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqb7cfqy5n6oq"]
+
+[ext_resource type="Script" path="res://Interactibles/Money/money.gd" id="1_pb3dj"]
+[ext_resource type="ArrayMesh" uid="uid://gvxod6uyyy1j" path="res://Interactibles/Money/SilverMesh.tres" id="2_xaf7e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vmhd2"]
+size = Vector3(1.89818, 1.94144, 1.71573)
+
+[node name="Money" type="RigidBody3D" groups=["money"]]
+collision_layer = 1024
+collision_mask = 96
+script = ExtResource("1_pb3dj")
+
+[node name="MoneyMesh" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_xaf7e")
+
+[node name="MoneyCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0546799, 0.0899506, -0.0240631)
+shape = SubResource("BoxShape3D_vmhd2")
