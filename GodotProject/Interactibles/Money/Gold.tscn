@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://0sdohhshq3ku"]
+
+[ext_resource type="PackedScene" uid="uid://bqb7cfqy5n6oq" path="res://Interactibles/Money/Money.tscn" id="1_esgbp"]
+[ext_resource type="ArrayMesh" uid="uid://dtbfbsksnkvdw" path="res://Interactibles/Money/GoldMesh.tres" id="2_hr6qe"]
+
+[node name="Gold" instance=ExtResource("1_esgbp")]
+value_small = 100
+value_big = 500
+
+[node name="MoneyMesh" parent="." index="0"]
+mesh = ExtResource("2_hr6qe")

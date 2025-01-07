@@ -31,6 +31,7 @@ func attack() -> void:
 	bullet._owner = self
 	bullet_spawn_marker.add_child(bullet)
 	bullet.global_transform.origin = bullet_spawn_marker.global_transform.origin
+	bullet.spawn_pos = bullet.global_position
 	var direction = bullet_spawn_marker.global_transform.basis.z.normalized()
 	bullet.look_at(bullet.global_transform.origin + direction, Vector3.UP)
 	bullet.linear_velocity = direction * _bullet_speed

@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cfv2ecbe68yfi"]
+[gd_scene load_steps=46 format=3 uid="uid://cfv2ecbe68yfi"]
 
 [ext_resource type="Texture2D" uid="uid://dk3g261yc4qry" path="res://Assets/Placeholders/Environment/Skyboxes/panorama_image.png" id="1_fslvx"]
 [ext_resource type="PackedScene" uid="uid://diffqkpcbhfpc" path="res://Assets/Models/Interactibles/MonkeyBarTestModel.blend" id="2_0k45d"]
@@ -16,13 +16,14 @@
 [ext_resource type="PackedScene" uid="uid://b1nlc7o2d0leo" path="res://Enemies/StationaryTurret/StationaryTurret.tscn" id="14_tic2p"]
 [ext_resource type="PackedScene" uid="uid://x44brybjp4wq" path="res://Enemies/TestDummy/TestDummy.tscn" id="14_yqcck"]
 [ext_resource type="PackedScene" uid="uid://oun126a7s625" path="res://Enemies/StationaryLookAtTurret/TestEnemy_2.tscn" id="15_f2m45"]
+[ext_resource type="PackedScene" uid="uid://0sdohhshq3ku" path="res://Interactibles/Money/Gold.tscn" id="15_yuupm"]
 [ext_resource type="PackedScene" uid="uid://bv5y01h2xtad" path="res://Sandbox/point_spawner.tscn" id="16_5mlhr"]
+[ext_resource type="PackedScene" uid="uid://caemwqek86k4c" path="res://Interactibles/Money/Silver.tscn" id="16_26sh4"]
 [ext_resource type="PackedScene" uid="uid://bb6l672p5wvsp" path="res://Enemies/MovingMediumEnemyMelee/MM_MeleeEnemy.tscn" id="17_gh4yx"]
 [ext_resource type="PackedScene" uid="uid://beykhmrsswsgc" path="res://Enemies/BigEnemyMeleeRanged/BM_BigEnemy.tscn" id="18_iklwx"]
 [ext_resource type="PackedScene" uid="uid://3vftd3ge5inj" path="res://Scenes/AlteredBaseScenes/HitBoxArea3D.tscn" id="19_ibhqo"]
 [ext_resource type="PackedScene" uid="uid://fbpbxpmuqx3g" path="res://Vendor/vendor.tscn" id="20_rhfpa"]
 [ext_resource type="PackedScene" uid="uid://b0i3f2a76pxek" path="res://SpecialFX/Explosions/vfx_explosion_1.tscn" id="21_18a5i"]
-[ext_resource type="PackedScene" uid="uid://bqb7cfqy5n6oq" path="res://Interactibles/Money/Money.tscn" id="23_1hgta"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_30l7b"]
 panorama = ExtResource("1_fslvx")
@@ -419,6 +420,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.3778, -4.21382, 15.5846)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.3067, -4.21382, 15.5846)
 health = 100
 
+[node name="Gold" parent="NavigationRegion3D" instance=ExtResource("15_yuupm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2482, -2.88889, 13.5466)
+
+[node name="Gold2" parent="NavigationRegion3D" instance=ExtResource("15_yuupm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.2482, -2.88889, 15.1715)
+big = true
+
+[node name="Silver" parent="NavigationRegion3D" instance=ExtResource("16_26sh4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.2482, -2.88889, 13.5466)
+
 [node name="TestEnemy_1" parent="." instance=ExtResource("14_tic2p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.4979, 1.94951, -16.8217)
 
@@ -507,12 +518,6 @@ font_size = 64
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.452, 1.13435, 3.31871)
 
 [node name="VFXExplosion" parent="." instance=ExtResource("21_18a5i")]
-
-[node name="Money" parent="." instance=ExtResource("23_1hgta")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.0961, 2.44396, 1.53742)
-
-[node name="Money2" parent="." instance=ExtResource("23_1hgta")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4755, 2.44396, 1.53742)
 
 [editable path="Map Geometry/MonkeyBarTestModel"]
 [editable path="Player"]

@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://caemwqek86k4c"]
+
+[ext_resource type="PackedScene" uid="uid://bqb7cfqy5n6oq" path="res://Interactibles/Money/Money.tscn" id="1_fcta1"]
+
+[node name="Silver" instance=ExtResource("1_fcta1")]

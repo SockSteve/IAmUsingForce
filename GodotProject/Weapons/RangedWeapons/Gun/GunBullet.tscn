@@ -18,7 +18,7 @@ height = 0.1
 albedo_color = Color(5, 3, 1, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_iyfk3"]
-size = Vector3(1.5, 1.5, 20)
+size = Vector3(8.38177, 6.99878, 27.5991)
 
 [node name="GunBullet" type="CharacterBody3D"]
 top_level = true
@@ -46,19 +46,19 @@ surface_material_override/0 = SubResource("StandardMaterial3D_gqdkv")
 [node name="SFXBulletExplosion" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_xe6qj")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="EnemyDetectionArea" type="Area3D" parent="."]
 collision_layer = 0
 collision_mask = 2
 monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyDetectionArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05136, -0.308716, -13.7996)
 shape = SubResource("BoxShape3D_iyfk3")
 
-[node name="RayCast3D" type="RayCast3D" parent="Area3D"]
+[node name="RayCast3D" type="RayCast3D" parent="EnemyDetectionArea"]
 target_position = Vector3(0, 0, -20)
 
 [connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="area_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_area_entered"]
 
 [editable path="VFXExplosion"]
