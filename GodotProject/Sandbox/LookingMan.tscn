@@ -1,13 +1,6 @@
-[gd_scene load_steps=107 format=4 uid="uid://bihfxywywukdv"]
+[gd_scene load_steps=12 format=4 uid="uid://do6wn85to7hkb"]
 
-[ext_resource type="Script" path="res://Player/CharacterSkin.gd" id="1_e7ctj"]
-[ext_resource type="AnimationLibrary" uid="uid://miovkfbsalcs" path="res://Assets/Animation/mixamobasicmovement1.res" id="3_gbms1"]
-[ext_resource type="AnimationLibrary" uid="uid://t3m65r25yw7g" path="res://Assets/Animation/mixamobasicmovement2.res" id="4_fsp2b"]
-[ext_resource type="AnimationLibrary" uid="uid://dnbns2ic7fk8r" path="res://Assets/Animation/mixamograpple.res" id="5_o8w4y"]
-[ext_resource type="AnimationLibrary" uid="uid://7ebqub7hxk7b" path="res://Assets/Animation/mixamogrind.res" id="6_e8ob0"]
-[ext_resource type="AnimationLibrary" uid="uid://dak13p3dq1lb0" path="res://Assets/Animation/mixamomelee1.res" id="7_d2o3q"]
-[ext_resource type="AnimationLibrary" uid="uid://inuj3fgdy5u5" path="res://Assets/Animation/mixamomisc.res" id="8_852s7"]
-[ext_resource type="AnimationLibrary" uid="uid://c8sspxfkupdgt" path="res://Assets/Animation/mixamoadvancedmovement.res" id="13_tt3bo"]
+[ext_resource type="Script" path="res://Sandbox/looking_man.gd" id="1_8a8jt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7y15f"]
 resource_name = "Alpha_Joints_MAT"
@@ -270,437 +263,353 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_cita3"]
-input_0/name = "gun"
-input_0/auto_advance = false
-input_0/break_loop_at_end = false
-input_0/reset = true
-input_1/name = "shrapnelcannon"
-input_1/auto_advance = false
-input_1/break_loop_at_end = false
-input_1/reset = true
-input_2/name = "lightningballer"
-input_2/auto_advance = false
-input_2/break_loop_at_end = false
-input_2/reset = true
-input_3/name = "pocketrocket"
-input_3/auto_advance = false
-input_3/break_loop_at_end = false
-input_3/reset = true
-input_4/name = "badprank"
-input_4/auto_advance = false
-input_4/break_loop_at_end = false
-input_4/reset = true
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ejg3i"]
-animation = &"armanimations/hold_shotgun"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r0cq7"]
-animation = &"armanimations/hold_gun"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_m6bmi"]
-animation = &"armanimations/hold_gun"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_tqybx"]
-animation = &"armanimations/hold_gun"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qdga7"]
-animation = &"armanimations/hold_shotgun"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xgqbn"]
-animation = &"mixamobasicmovement1/crouchingidle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rmchk"]
-animation = &"mixamobasicmovement1/crouchingidle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_c2oxy"]
-animation = &"mixamobasicmovement2/crouchwalk"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yusak"]
-animation = &"mixamobasicmovement1/crouchingidle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yo0my"]
-animation = &"mixamobasicmovement1/crouchingidle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bop2q"]
-animation = &"mixamobasicmovement2/crouchwalk"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_tu676"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_rmchk")
-blend_point_0/pos = -1.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_c2oxy")
-blend_point_1/pos = 1.0
-blend_point_2/node = SubResource("AnimationNodeAnimation_yusak")
-blend_point_2/pos = 0.0
-blend_point_3/node = SubResource("AnimationNodeAnimation_yo0my")
-blend_point_3/pos = 0.0
-blend_point_4/node = SubResource("AnimationNodeAnimation_bop2q")
-blend_point_4/pos = 1.0
-min_space = 0.0
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_nl11m"]
-animation = &"mixamobasicmovement2/slide"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ywp6p"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_o0v63"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0ymfu"]
-switch_mode = 1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6gu6p"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_nipin"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bp8ad"]
-switch_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_o6x0c"]
-states/End/position = Vector2(1060, 78)
-states/Start/position = Vector2(188, 100)
-states/idle/node = SubResource("AnimationNodeAnimation_xgqbn")
-states/idle/position = Vector2(443, 108)
-states/move/node = SubResource("AnimationNodeBlendSpace1D_tu676")
-states/move/position = Vector2(747, 108)
-states/slide/node = SubResource("AnimationNodeAnimation_nl11m")
-states/slide/position = Vector2(603, 251)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_ywp6p"), "idle", "slide", SubResource("AnimationNodeStateMachineTransition_o0v63"), "slide", "idle", SubResource("AnimationNodeStateMachineTransition_0ymfu"), "idle", "move", SubResource("AnimationNodeStateMachineTransition_6gu6p"), "move", "idle", SubResource("AnimationNodeStateMachineTransition_nipin"), "slide", "move", SubResource("AnimationNodeStateMachineTransition_bp8ad")]
-graph_offset = Vector2(79, 37)
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ya4dl"]
-animation = &"mixamograpple/grapplestart"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_65r5r"]
-animation = &"mixamograpple/hanginggrapple"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wdrbm"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5bqe2"]
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_g8a12"]
-states/Start/position = Vector2(192, 100)
-states/mixamograpple_grapplestart/node = SubResource("AnimationNodeAnimation_ya4dl")
-states/mixamograpple_grapplestart/position = Vector2(383, 100)
-states/mixamograpple_hanginggrapple/node = SubResource("AnimationNodeAnimation_65r5r")
-states/mixamograpple_hanginggrapple/position = Vector2(699, 100)
-transitions = ["Start", "mixamograpple_grapplestart", SubResource("AnimationNodeStateMachineTransition_wdrbm"), "mixamograpple_grapplestart", "mixamograpple_hanginggrapple", SubResource("AnimationNodeStateMachineTransition_5bqe2")]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_iq0u4"]
-animation = &"mixamogrind/grindattack"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yu6b0"]
-animation = &"mixamogrind/grind"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_makyh"]
-animation = &"mixamobasicmovement1/falling"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mv3m6"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4vx6m"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_oqoq6"]
-switch_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i3mlk"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_36ef6"]
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_pse0p"]
-states/Start/position = Vector2(183, 100)
-states/attack/node = SubResource("AnimationNodeAnimation_iq0u4")
-states/attack/position = Vector2(656, 100)
-states/idle/node = SubResource("AnimationNodeAnimation_yu6b0")
-states/idle/position = Vector2(393, 100)
-states/jump/node = SubResource("AnimationNodeAnimation_makyh")
-states/jump/position = Vector2(393, 231)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_mv3m6"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_4vx6m"), "attack", "idle", SubResource("AnimationNodeStateMachineTransition_oqoq6"), "idle", "jump", SubResource("AnimationNodeStateMachineTransition_i3mlk"), "jump", "idle", SubResource("AnimationNodeStateMachineTransition_36ef6")]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qgw33"]
-animation = &"mixamoadvancedmovement/ledgehangidle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cv3am"]
-animation = &"mixamoadvancedmovement/ledgehangleft"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6htfs"]
-animation = &"mixamoadvancedmovement/ledgehangright"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_se3u4"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sykml"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7ku3l"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1vuyv"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_24ko7"]
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_tqjsd"]
-states/Start/position = Vector2(190, 95)
-states/idle/node = SubResource("AnimationNodeAnimation_qgw33")
-states/idle/position = Vector2(515, 100)
-states/left/node = SubResource("AnimationNodeAnimation_cv3am")
-states/left/position = Vector2(286, 271)
-states/right/node = SubResource("AnimationNodeAnimation_6htfs")
-states/right/position = Vector2(746, 264)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_se3u4"), "idle", "left", SubResource("AnimationNodeStateMachineTransition_sykml"), "left", "idle", SubResource("AnimationNodeStateMachineTransition_7ku3l"), "idle", "right", SubResource("AnimationNodeStateMachineTransition_1vuyv"), "right", "idle", SubResource("AnimationNodeStateMachineTransition_24ko7")]
-graph_offset = Vector2(-71, 68)
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dq0fk"]
-animation = &"mixamomelee/attack1"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8bga8"]
-animation = &"mixamomelee/attack2"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8f0m5"]
-animation = &"mixamomelee/attack3"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ca5sg"]
-animation = &"mixamomelee/block"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ajq3x"]
-animation = &"mixamomelee/attack3"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_wij4j"]
-animation = &"mixamomelee/blockstart"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_mgpsj"]
-animation = &"up_air_attack"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_qfy55"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wbrfe"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_matlx"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wbie2"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ih4sc"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_g5rfm"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xcyu7"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ec13v"]
-xfade_time = 0.1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_u6sov"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_itmqo"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6p3de"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_y0rqv"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_it1fh"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_58c02"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s40cg"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_v04h3"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_frxkp"]
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_8pgek"]
-resource_local_to_scene = true
-states/End/position = Vector2(985, 100)
-states/Start/position = Vector2(134, 100)
-states/attack_0/node = SubResource("AnimationNodeAnimation_dq0fk")
-states/attack_0/position = Vector2(341, 100)
-states/attack_1/node = SubResource("AnimationNodeAnimation_8bga8")
-states/attack_1/position = Vector2(510, 136)
-states/attack_2/node = SubResource("AnimationNodeAnimation_8f0m5")
-states/attack_2/position = Vector2(753, -26)
-states/block/node = SubResource("AnimationNodeAnimation_ca5sg")
-states/block/position = Vector2(510, 296)
-states/down_air_attack/node = SubResource("AnimationNodeAnimation_ajq3x")
-states/down_air_attack/position = Vector2(510, -78)
-states/parry/node = SubResource("AnimationNodeAnimation_wij4j")
-states/parry/position = Vector2(737, 296)
-states/up_air_attack/node = SubResource("AnimationNodeAnimation_mgpsj")
-states/up_air_attack/position = Vector2(284, -78)
-transitions = ["attack_0", "attack_1", SubResource("AnimationNodeStateMachineTransition_qfy55"), "attack_1", "attack_2", SubResource("AnimationNodeStateMachineTransition_wbrfe"), "attack_0", "parry", SubResource("AnimationNodeStateMachineTransition_matlx"), "attack_1", "parry", SubResource("AnimationNodeStateMachineTransition_wbie2"), "attack_2", "parry", SubResource("AnimationNodeStateMachineTransition_ih4sc"), "parry", "block", SubResource("AnimationNodeStateMachineTransition_g5rfm"), "block", "attack_0", SubResource("AnimationNodeStateMachineTransition_xcyu7"), "Start", "attack_0", SubResource("AnimationNodeStateMachineTransition_ec13v"), "attack_2", "attack_0", SubResource("AnimationNodeStateMachineTransition_u6sov"), "block", "attack_1", SubResource("AnimationNodeStateMachineTransition_itmqo"), "block", "attack_2", SubResource("AnimationNodeStateMachineTransition_6p3de"), "Start", "up_air_attack", SubResource("AnimationNodeStateMachineTransition_y0rqv"), "up_air_attack", "down_air_attack", SubResource("AnimationNodeStateMachineTransition_it1fh"), "down_air_attack", "attack_0", SubResource("AnimationNodeStateMachineTransition_58c02"), "down_air_attack", "attack_1", SubResource("AnimationNodeStateMachineTransition_s40cg"), "down_air_attack", "attack_2", SubResource("AnimationNodeStateMachineTransition_v04h3"), "down_air_attack", "parry", SubResource("AnimationNodeStateMachineTransition_frxkp")]
-graph_offset = Vector2(50, 107)
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_n1n3j"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qchj4"]
-animation = &"mixamobasicmovement1/falling"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bg8mf"]
-animation = &"mixamobasicmovement1/idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_toom8"]
-animation = &"mixamobasicmovement1/jumpstart"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o3o5i"]
-animation = &"mixamobasicmovement1/running"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lfeij"]
-animation = &"mixamobasicmovement1/idle"
-
-[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_7bw1o"]
-blend_point_0/node = SubResource("AnimationNodeAnimation_o3o5i")
-blend_point_0/pos = 1.0
-blend_point_1/node = SubResource("AnimationNodeAnimation_lfeij")
-blend_point_1/pos = 0.0
-min_space = 0.0
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4yoa4"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_6txqg"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5vtd4"]
-xfade_time = 0.1
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f5al2"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xoexb"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_t7ns4"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0rlvp"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0wqxu"]
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_s46si"]
-states/End/position = Vector2(953, 92)
-states/Start/position = Vector2(148, 92)
-states/falling/node = SubResource("AnimationNodeAnimation_qchj4")
-states/falling/position = Vector2(733, 336)
-states/idle/node = SubResource("AnimationNodeAnimation_bg8mf")
-states/idle/position = Vector2(415, 92)
-states/jumpstart/node = SubResource("AnimationNodeAnimation_toom8")
-states/jumpstart/position = Vector2(351, 284)
-states/move/node = SubResource("AnimationNodeBlendSpace1D_7bw1o")
-states/move/position = Vector2(743, 99)
-transitions = ["jumpstart", "falling", SubResource("AnimationNodeStateMachineTransition_4yoa4"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_6txqg"), "idle", "jumpstart", SubResource("AnimationNodeStateMachineTransition_5vtd4"), "falling", "idle", SubResource("AnimationNodeStateMachineTransition_f5al2"), "idle", "move", SubResource("AnimationNodeStateMachineTransition_xoexb"), "move", "idle", SubResource("AnimationNodeStateMachineTransition_t7ns4"), "falling", "move", SubResource("AnimationNodeStateMachineTransition_0rlvp"), "move", "jumpstart", SubResource("AnimationNodeStateMachineTransition_0wqxu")]
-graph_offset = Vector2(25, -51)
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_xiruw"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qy7f5"]
-animation = &"mixamomisc/takedamage"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_02se6"]
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_txg3o"]
-states/Start/position = Vector2(231, 100)
-states/mixamomisc_takedamage/node = SubResource("AnimationNodeAnimation_qy7f5")
-states/mixamomisc_takedamage/position = Vector2(465, 100)
-transitions = ["Start", "mixamomisc_takedamage", SubResource("AnimationNodeStateMachineTransition_02se6")]
-
-[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_0yykw"]
-xfade_time = 0.1
-input_0/name = "state_normal"
-input_0/auto_advance = false
-input_0/break_loop_at_end = false
-input_0/reset = true
-input_1/name = "state_melee"
-input_1/auto_advance = false
-input_1/break_loop_at_end = false
-input_1/reset = true
-input_2/name = "state_onwall"
-input_2/auto_advance = false
-input_2/break_loop_at_end = false
-input_2/reset = true
-input_3/name = "state_ledgehanging"
-input_3/auto_advance = false
-input_3/break_loop_at_end = false
-input_3/reset = true
-input_4/name = "state_takedamage"
-input_4/auto_advance = false
-input_4/break_loop_at_end = false
-input_4/reset = true
-input_5/name = "state_crouch"
-input_5/auto_advance = false
-input_5/break_loop_at_end = false
-input_5/reset = true
-input_6/name = "state_grind"
-input_6/auto_advance = false
-input_6/break_loop_at_end = false
-input_6/reset = true
-input_7/name = "state_grapple"
-input_7/auto_advance = false
-input_7/break_loop_at_end = false
-input_7/reset = true
-input_8/name = "state_monkeybar"
-input_8/auto_advance = false
-input_8/break_loop_at_end = false
-input_8/reset = true
-
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_aphma"]
-filter_enabled = true
-filters = ["%GeneralSkeleton:Chest", "%GeneralSkeleton:Hips", "%GeneralSkeleton:LeftHand", "%GeneralSkeleton:LeftIndexDistal", "%GeneralSkeleton:LeftIndexIntermediate", "%GeneralSkeleton:LeftIndexProximal", "%GeneralSkeleton:LeftLittleDistal", "%GeneralSkeleton:LeftLittleIntermediate", "%GeneralSkeleton:LeftLittleProximal", "%GeneralSkeleton:LeftLowerArm", "%GeneralSkeleton:LeftMiddleDistal", "%GeneralSkeleton:LeftMiddleIntermediate", "%GeneralSkeleton:LeftMiddleProximal", "%GeneralSkeleton:LeftRingDistal", "%GeneralSkeleton:LeftRingIntermediate", "%GeneralSkeleton:LeftRingProximal", "%GeneralSkeleton:LeftShoulder", "%GeneralSkeleton:LeftThumbDistal", "%GeneralSkeleton:LeftThumbMetacarpal", "%GeneralSkeleton:LeftThumbProximal", "%GeneralSkeleton:LeftUpperArm", "%GeneralSkeleton:RightHand", "%GeneralSkeleton:RightIndexDistal", "%GeneralSkeleton:RightIndexIntermediate", "%GeneralSkeleton:RightIndexProximal", "%GeneralSkeleton:RightLittleDistal", "%GeneralSkeleton:RightLittleIntermediate", "%GeneralSkeleton:RightLittleProximal", "%GeneralSkeleton:RightLowerArm", "%GeneralSkeleton:RightMiddleDistal", "%GeneralSkeleton:RightMiddleIntermediate", "%GeneralSkeleton:RightMiddleProximal", "%GeneralSkeleton:RightRingDistal", "%GeneralSkeleton:RightRingIntermediate", "%GeneralSkeleton:RightRingProximal", "%GeneralSkeleton:RightShoulder", "%GeneralSkeleton:RightThumbDistal", "%GeneralSkeleton:RightThumbMetacarpal", "%GeneralSkeleton:RightThumbProximal", "%GeneralSkeleton:RightUpperArm", "%GeneralSkeleton:Spine", "%GeneralSkeleton:UpperChest", "%GeneralSkeleton:mixamorig_LeftHandIndex1", "%GeneralSkeleton:mixamorig_LeftHandMiddle1", "%GeneralSkeleton:mixamorig_LeftHandPinky1", "%GeneralSkeleton:mixamorig_LeftHandRing1", "%GeneralSkeleton:mixamorig_LeftHandThumb1", "%GeneralSkeleton:mixamorig_RightHandIndex1", "%GeneralSkeleton:mixamorig_RightHandMiddle1", "%GeneralSkeleton:mixamorig_RightHandPinky1", "%GeneralSkeleton:mixamorig_RightHandRing1", "%GeneralSkeleton:mixamorig_RightHandThumb1"]
-
-[sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_mbhnp"]
-input_0/name = "melee_cutter"
-input_0/auto_advance = false
-input_0/break_loop_at_end = false
-input_0/reset = true
-input_1/name = "melee_wavepounder"
-input_1/auto_advance = false
-input_1/break_loop_at_end = false
-input_1/reset = true
-input_2/name = "melee_hiveknife"
-input_2/auto_advance = false
-input_2/break_loop_at_end = false
-input_2/reset = true
-input_3/name = "melee_meleegear"
-input_3/auto_advance = false
-input_3/break_loop_at_end = false
-input_3/reset = true
-
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_aatt7"]
-graph_offset = Vector2(-558.435, -718.693)
-nodes/armtransition/node = SubResource("AnimationNodeTransition_cita3")
-nodes/armtransition/position = Vector2(-620, -560)
-nodes/badprank_grip/node = SubResource("AnimationNodeAnimation_ejg3i")
-nodes/badprank_grip/position = Vector2(-1100, -300)
-nodes/gun_grip/node = SubResource("AnimationNodeAnimation_r0cq7")
-nodes/gun_grip/position = Vector2(-1100, -780)
-nodes/lightningballer_grip/node = SubResource("AnimationNodeAnimation_m6bmi")
-nodes/lightningballer_grip/position = Vector2(-1100, -540)
-nodes/output/position = Vector2(760, 80)
-nodes/pocketrocket_grip/node = SubResource("AnimationNodeAnimation_tqybx")
-nodes/pocketrocket_grip/position = Vector2(-1100, -420)
-nodes/shrapnelcannon_grip/node = SubResource("AnimationNodeAnimation_qdga7")
-nodes/shrapnelcannon_grip/position = Vector2(-1120, -660)
-nodes/sm_crouch/node = SubResource("AnimationNodeStateMachine_o6x0c")
-nodes/sm_crouch/position = Vector2(-200, 520)
-nodes/sm_grapple/node = SubResource("AnimationNodeStateMachine_g8a12")
-nodes/sm_grapple/position = Vector2(-60, 760)
-nodes/sm_grind/node = SubResource("AnimationNodeStateMachine_pse0p")
-nodes/sm_grind/position = Vector2(-40, 600)
-nodes/sm_ledgehanging/node = SubResource("AnimationNodeStateMachine_tqjsd")
-nodes/sm_ledgehanging/position = Vector2(-280, 220)
-nodes/sm_melee_cutter/node = SubResource("AnimationNodeStateMachine_8pgek")
-nodes/sm_melee_cutter/position = Vector2(-340, -360)
-nodes/sm_monkeybar/node = SubResource("AnimationNodeStateMachine_n1n3j")
-nodes/sm_monkeybar/position = Vector2(240, 800)
-nodes/sm_normal/node = SubResource("AnimationNodeStateMachine_s46si")
-nodes/sm_normal/position = Vector2(-260, -700)
-nodes/sm_onwall/node = SubResource("AnimationNodeStateMachine_xiruw")
-nodes/sm_onwall/position = Vector2(-160, 60)
-nodes/sm_takedamage/node = SubResource("AnimationNodeStateMachine_txg3o")
-nodes/sm_takedamage/position = Vector2(-280, 380)
-nodes/state_transition/node = SubResource("AnimationNodeTransition_0yykw")
-nodes/state_transition/position = Vector2(480, 80)
-nodes/weapon_grip_blend/node = SubResource("AnimationNodeBlend2_aphma")
-nodes/weapon_grip_blend/position = Vector2(20, -620)
-nodes/weapon_melee_transition/node = SubResource("AnimationNodeTransition_mbhnp")
-nodes/weapon_melee_transition/position = Vector2(-40, -260)
-node_connections = [&"armtransition", 0, &"gun_grip", &"armtransition", 1, &"shrapnelcannon_grip", &"armtransition", 2, &"lightningballer_grip", &"armtransition", 3, &"pocketrocket_grip", &"armtransition", 4, &"badprank_grip", &"output", 0, &"state_transition", &"state_transition", 0, &"weapon_grip_blend", &"state_transition", 1, &"weapon_melee_transition", &"state_transition", 2, &"sm_onwall", &"state_transition", 3, &"sm_ledgehanging", &"state_transition", 4, &"sm_takedamage", &"state_transition", 5, &"sm_crouch", &"state_transition", 6, &"sm_grind", &"state_transition", 7, &"sm_grapple", &"state_transition", 8, &"sm_monkeybar", &"weapon_grip_blend", 0, &"sm_normal", &"weapon_grip_blend", 1, &"armtransition", &"weapon_melee_transition", 0, &"sm_melee_cutter"]
-
-[node name="CharacterSkin" type="Node3D" node_paths=PackedStringArray("main_animation_player")]
-script = ExtResource("1_e7ctj")
-main_animation_player = NodePath("lonelyYBot/Armature/AnimationPlayer")
-
-[node name="lonelyYBot" type="Node3D" parent="."]
-
-[node name="Armature" type="Node3D" parent="lonelyYBot"]
-
-[node name="GeneralSkeleton" type="Skeleton3D" parent="lonelyYBot/Armature"]
+[sub_resource type="Animation" id="Animation_ijkoy"]
+resource_name = "Armature_001|test|Anima_Layer"
+length = 0.766667
+tracks/0/type = "rotation_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("%GeneralSkeleton:LeftShoulder")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.5, -0.5, -0.5, 0.5)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("%GeneralSkeleton:LeftUpperArm")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 2.98023e-08, 1, 2.98023e-08, -2.98023e-08)
+tracks/2/type = "scale_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("%GeneralSkeleton:LeftThumbDistal")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 1.00002, 1, 0.999985)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("%GeneralSkeleton:mixamorig_LeftHandPinky1")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 1.49012e-08, 1.49012e-08, 1)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = true
+tracks/4/enabled = true
+tracks/4/path = NodePath("%GeneralSkeleton:LeftLittleProximal")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0, 0, -5.96046e-08, 1)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = true
+tracks/5/enabled = true
+tracks/5/path = NodePath("%GeneralSkeleton:LeftLittleIntermediate")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, -1.49012e-08, 0, -2.98023e-08, 1)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = true
+tracks/6/enabled = true
+tracks/6/path = NodePath("%GeneralSkeleton:RightShoulder")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, 0.5, -0.5, -0.5, -0.5)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = true
+tracks/7/enabled = true
+tracks/7/path = NodePath("%GeneralSkeleton:RightUpperArm")
+tracks/7/interp = 0
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, -7.45058e-08, 1, 1.49012e-08, -2.98023e-08)
+tracks/8/type = "scale_3d"
+tracks/8/imported = true
+tracks/8/enabled = true
+tracks/8/path = NodePath("%GeneralSkeleton:RightThumbDistal")
+tracks/8/interp = 0
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, 1.00002, 1, 0.999984)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = true
+tracks/9/enabled = true
+tracks/9/path = NodePath("%GeneralSkeleton:RightLittleProximal")
+tracks/9/interp = 0
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, 2.98023e-08, 0, 5.96046e-08, 1)
+tracks/10/type = "rotation_3d"
+tracks/10/imported = true
+tracks/10/enabled = true
+tracks/10/path = NodePath("%GeneralSkeleton:RightLittleIntermediate")
+tracks/10/interp = 0
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0, 1, 1.49012e-08, 2.98023e-08, 5.96046e-08, 1)
+tracks/11/type = "rotation_3d"
+tracks/11/imported = true
+tracks/11/enabled = true
+tracks/11/path = NodePath("%GeneralSkeleton:LeftUpperLeg")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/keys = PackedFloat32Array(0, 1, -5.45428e-12, -6.11817e-11, -1, 1.96451e-10)
+tracks/12/type = "rotation_3d"
+tracks/12/imported = true
+tracks/12/enabled = true
+tracks/12/path = NodePath("%GeneralSkeleton:LeftLowerLeg")
+tracks/12/interp = 0
+tracks/12/loop_wrap = true
+tracks/12/keys = PackedFloat32Array(0, 1, 2.32831e-10, 1, 0, -3.63798e-12)
+tracks/13/type = "rotation_3d"
+tracks/13/imported = true
+tracks/13/enabled = true
+tracks/13/path = NodePath("Armature")
+tracks/13/interp = 0
+tracks/13/loop_wrap = true
+tracks/13/keys = PackedFloat32Array(0, 1, 0.707107, -9.41569e-08, 9.41569e-08, 0.707107)
+tracks/14/type = "scale_3d"
+tracks/14/imported = true
+tracks/14/enabled = true
+tracks/14/path = NodePath("Armature")
+tracks/14/interp = 0
+tracks/14/loop_wrap = true
+tracks/14/keys = PackedFloat32Array(0, 1, 0.01, 0.01, 0.01)
+
+[sub_resource type="Animation" id="Animation_3j60b"]
+resource_name = "Armature_002|test|Anima_Layer"
+length = 0.766667
+tracks/0/type = "rotation_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("%GeneralSkeleton:LeftShoulder")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.5, -0.5, -0.5, 0.5)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("%GeneralSkeleton:LeftUpperArm")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 2.98023e-08, 1, 2.98023e-08, -2.98023e-08)
+tracks/2/type = "scale_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("%GeneralSkeleton:LeftThumbDistal")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 1.00002, 1, 0.999985)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("%GeneralSkeleton:mixamorig_LeftHandPinky1")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 1.49012e-08, 1.49012e-08, 1)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = true
+tracks/4/enabled = true
+tracks/4/path = NodePath("%GeneralSkeleton:LeftLittleProximal")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0, 0, -5.96046e-08, 1)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = true
+tracks/5/enabled = true
+tracks/5/path = NodePath("%GeneralSkeleton:LeftLittleIntermediate")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, -1.49012e-08, 0, -2.98023e-08, 1)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = true
+tracks/6/enabled = true
+tracks/6/path = NodePath("%GeneralSkeleton:RightShoulder")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, 0.5, -0.5, -0.5, -0.5)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = true
+tracks/7/enabled = true
+tracks/7/path = NodePath("%GeneralSkeleton:RightUpperArm")
+tracks/7/interp = 0
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, -7.45058e-08, 1, 1.49012e-08, -2.98023e-08)
+tracks/8/type = "scale_3d"
+tracks/8/imported = true
+tracks/8/enabled = true
+tracks/8/path = NodePath("%GeneralSkeleton:RightThumbDistal")
+tracks/8/interp = 0
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, 1.00002, 1, 0.999984)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = true
+tracks/9/enabled = true
+tracks/9/path = NodePath("%GeneralSkeleton:RightLittleProximal")
+tracks/9/interp = 0
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, 2.98023e-08, 0, 5.96046e-08, 1)
+tracks/10/type = "rotation_3d"
+tracks/10/imported = true
+tracks/10/enabled = true
+tracks/10/path = NodePath("%GeneralSkeleton:RightLittleIntermediate")
+tracks/10/interp = 0
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0, 1, 1.49012e-08, 2.98023e-08, 5.96046e-08, 1)
+tracks/11/type = "rotation_3d"
+tracks/11/imported = true
+tracks/11/enabled = true
+tracks/11/path = NodePath("%GeneralSkeleton:LeftUpperLeg")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/keys = PackedFloat32Array(0, 1, -5.45428e-12, -6.11817e-11, -1, 1.96451e-10)
+tracks/12/type = "rotation_3d"
+tracks/12/imported = true
+tracks/12/enabled = true
+tracks/12/path = NodePath("%GeneralSkeleton:LeftLowerLeg")
+tracks/12/interp = 0
+tracks/12/loop_wrap = true
+tracks/12/keys = PackedFloat32Array(0, 1, 2.32831e-10, 1, 0, -3.63798e-12)
+tracks/13/type = "rotation_3d"
+tracks/13/imported = true
+tracks/13/enabled = true
+tracks/13/path = NodePath("Armature")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = PackedFloat32Array(0, 1, 0.707107, 0, 0, 0.707107)
+tracks/14/type = "scale_3d"
+tracks/14/imported = true
+tracks/14/enabled = true
+tracks/14/path = NodePath("Armature")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = PackedFloat32Array(0, 1, 0.01, 0.01, 0.01)
+
+[sub_resource type="Animation" id="Animation_chdyh"]
+resource_name = "Armature|mixamo_com|Layer0"
+length = 0.0666667
+tracks/0/type = "rotation_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("%GeneralSkeleton:LeftShoulder")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.500032, -0.499969, -0.500032, 0.499968)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("%GeneralSkeleton:LeftUpperArm")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -1.35601e-06, 1, 1.90884e-05, 2.08616e-07)
+tracks/2/type = "scale_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("%GeneralSkeleton:LeftThumbDistal")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 1.00002, 1, 0.999985)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("%GeneralSkeleton:mixamorig_LeftHandPinky1")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -2.75671e-06, 5.96046e-08, -0.000141144, 1)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = true
+tracks/4/enabled = true
+tracks/4/path = NodePath("%GeneralSkeleton:LeftLittleProximal")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 6.25849e-06, -1.49012e-08, 0.000368372, 1)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = true
+tracks/5/enabled = true
+tracks/5/path = NodePath("%GeneralSkeleton:LeftLittleIntermediate")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, -3.53158e-06, -5.96046e-08, -0.000229612, 1)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = true
+tracks/6/enabled = true
+tracks/6/path = NodePath("%GeneralSkeleton:RightShoulder")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, 0.499968, -0.500031, -0.499969, -0.500032)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = true
+tracks/7/enabled = true
+tracks/7/path = NodePath("%GeneralSkeleton:RightUpperArm")
+tracks/7/interp = 0
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, -4.47035e-07, 1, -2.00123e-05, -2.68221e-07)
+tracks/8/type = "scale_3d"
+tracks/8/imported = true
+tracks/8/enabled = true
+tracks/8/path = NodePath("%GeneralSkeleton:RightThumbDistal")
+tracks/8/interp = 0
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, 1.00002, 1, 0.999984)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = true
+tracks/9/enabled = true
+tracks/9/path = NodePath("%GeneralSkeleton:RightLittleProximal")
+tracks/9/interp = 0
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, 1.49012e-07, -8.9407e-08, -1.05202e-05, 1)
+tracks/10/type = "rotation_3d"
+tracks/10/imported = true
+tracks/10/enabled = true
+tracks/10/path = NodePath("%GeneralSkeleton:RightLittleIntermediate")
+tracks/10/interp = 0
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0, 1, -4.47035e-08, 5.96046e-08, 1.05351e-05, 1)
+tracks/11/type = "rotation_3d"
+tracks/11/imported = true
+tracks/11/enabled = true
+tracks/11/path = NodePath("%GeneralSkeleton:LeftUpperLeg")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/keys = PackedFloat32Array(0, 1, -8.25547e-09, -1.02958e-05, -1, 8.81921e-08)
+tracks/12/type = "rotation_3d"
+tracks/12/imported = true
+tracks/12/enabled = true
+tracks/12/path = NodePath("%GeneralSkeleton:LeftLowerLeg")
+tracks/12/interp = 0
+tracks/12/loop_wrap = true
+tracks/12/keys = PackedFloat32Array(0, 1, 1.16415e-09, 1, -1.97911e-05, -5.47043e-08)
+tracks/13/type = "rotation_3d"
+tracks/13/imported = true
+tracks/13/enabled = true
+tracks/13/path = NodePath("Armature")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = PackedFloat32Array(0, 1, 0.707107, 0, 0, 0.707107)
+tracks/14/type = "scale_3d"
+tracks/14/imported = true
+tracks/14/enabled = true
+tracks/14/path = NodePath("Armature")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = PackedFloat32Array(0, 1, 0.01, 0.01, 0.01)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2drmw"]
+_data = {
+"Armature_001|test|Anima_Layer": SubResource("Animation_ijkoy"),
+"Armature_002|test|Anima_Layer": SubResource("Animation_3j60b"),
+"Armature|mixamo_com|Layer0": SubResource("Animation_chdyh")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_vpc7p"]
+height = 3.93391
+radius = 5.76062
+
+[node name="looking_man" type="Node3D"]
+script = ExtResource("1_8a8jt")
+
+[node name="YBotWeaponReady" type="Node3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -14.1384, 0)
+
+[node name="Armature" type="Node3D" parent="YBotWeaponReady"]
+
+[node name="GeneralSkeleton" type="Skeleton3D" parent="YBotWeaponReady/Armature"]
 unique_name_in_owner = true
 motion_scale = 0.997919
 bones/0/name = "Hips"
@@ -1180,56 +1089,24 @@ bones/67/position = Vector3(0.00141798, 0.0999747, 0.00175009)
 bones/67/rotation = Quaternion(0.00701185, 0.999897, 0.00881406, -0.00893758)
 bones/67/scale = Vector3(1, 1, 1)
 
-[node name="Alpha_Joints" type="MeshInstance3D" parent="lonelyYBot/Armature/GeneralSkeleton"]
+[node name="Alpha_Joints" type="MeshInstance3D" parent="YBotWeaponReady/Armature/GeneralSkeleton"]
 mesh = SubResource("ArrayMesh_udvog")
 skin = SubResource("Skin_q8mgm")
 
-[node name="Alpha_Surface" type="MeshInstance3D" parent="lonelyYBot/Armature/GeneralSkeleton"]
+[node name="Alpha_Surface" type="MeshInstance3D" parent="YBotWeaponReady/Armature/GeneralSkeleton"]
 mesh = SubResource("ArrayMesh_uf6dx")
 skin = SubResource("Skin_q8mgm")
 
-[node name="RightHand" type="BoneAttachment3D" parent="lonelyYBot/Armature/GeneralSkeleton"]
-unique_name_in_owner = true
-transform = Transform3D(1, 8.34465e-07, 0.000172794, 0.000172794, -8.59262e-05, -1, -8.34465e-07, 1, -8.59264e-05, -0.831343, 1.40688, -0.116614)
-bone_name = "mixamorig_RightHandWeapon"
-bone_idx = 56
-
-[node name="LeftHand" type="BoneAttachment3D" parent="lonelyYBot/Armature/GeneralSkeleton"]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0.000174819, 0.000174819, 8.76127e-05, -1, 0, 1, 8.76127e-05, 0.816473, 1.40928, -0.110099)
-bone_name = "mixamorig_LeftHandWeapon"
-bone_idx = 31
-
-[node name="Back" type="BoneAttachment3D" parent="lonelyYBot/Armature/GeneralSkeleton"]
-unique_name_in_owner = true
-transform = Transform3D(1, -8.78111e-05, -1.55353e-10, 8.78097e-05, 0.999984, 0.00565533, -4.96446e-07, -0.00565533, 0.999984, -2.25914e-05, 1.34721, -0.169072)
-bone_name = "mixamorig_SpineWeapon"
-bone_idx = 57
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="lonelyYBot/Armature"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="YBotWeaponReady"]
 libraries = {
-"mixamoadvancedmovement": ExtResource("13_tt3bo"),
-"mixamobasicmovement1": ExtResource("3_gbms1"),
-"mixamobasicmovement2": ExtResource("4_fsp2b"),
-"mixamograpple": ExtResource("5_o8w4y"),
-"mixamogrind": ExtResource("6_e8ob0"),
-"mixamomelee1": ExtResource("7_d2o3q"),
-"mixamomisc": ExtResource("8_852s7")
+"": SubResource("AnimationLibrary_2drmw")
 }
 
-[node name="AnimationTree" type="AnimationTree" parent="."]
-root_node = NodePath("../lonelyYBot/Armature")
-tree_root = SubResource("AnimationNodeBlendTree_aatt7")
-anim_player = NodePath("../lonelyYBot/Armature/AnimationPlayer")
-parameters/armtransition/current_state = "gun"
-parameters/armtransition/transition_request = ""
-parameters/armtransition/current_index = 0
-parameters/sm_crouch/move/blend_position = -0.960559
-parameters/sm_normal/move/blend_position = 0.926505
-parameters/state_transition/current_state = "state_melee"
-parameters/state_transition/transition_request = ""
-parameters/state_transition/current_index = 1
-parameters/weapon_grip_blend/blend_amount = 1.0
-parameters/weapon_melee_transition/current_state = "melee_cutter"
-parameters/weapon_melee_transition/transition_request = ""
-parameters/weapon_melee_transition/current_index = 0
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.89217, 0)
+shape = SubResource("CylinderShape3D_vpc7p")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]

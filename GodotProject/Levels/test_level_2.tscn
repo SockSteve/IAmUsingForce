@@ -901,6 +901,28 @@ outer_radius = 8.0
 [node name="Player" parent="." instance=ExtResource("1_iyogp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 
+[node name="GeneralSkeleton" parent="Player/CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature" index="0"]
+bones/9/rotation = Quaternion(0, -0.707107, 0, 0.707107)
+bones/10/rotation = Quaternion(0, 0.707107, 0, 0.707107)
+bones/12/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
+bones/13/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
+bones/33/rotation = Quaternion(0, 1, 0, 0)
+bones/34/rotation = Quaternion(0, 0.707107, 0, 0.707107)
+bones/35/rotation = Quaternion(0, -0.707107, 0, 0.707107)
+bones/37/rotation = Quaternion(-0.214187, -0.673887, -0.214187, 0.673887)
+bones/38/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
+bones/60/rotation = Quaternion(0, 0.707107, -0.707107, 0)
+bones/65/rotation = Quaternion(0, 0.707107, -0.707107, 0)
+
+[node name="RightHand" parent="Player/CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature/GeneralSkeleton" index="2"]
+transform = Transform3D(1, 1.43051e-06, 0.000172794, 0.000172794, -8.59261e-05, -1, -1.43051e-06, 1, -8.59264e-05, -0.831343, 1.40688, -0.116614)
+
+[node name="LeftHand" parent="Player/CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature/GeneralSkeleton" index="3"]
+transform = Transform3D(1, 0, 0.000174819, 0.000174819, 8.76128e-05, -1, 0, 1, 8.76128e-05, 0.816474, 1.40928, -0.110099)
+
+[node name="Back" parent="Player/CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature/GeneralSkeleton" index="4"]
+transform = Transform3D(-1, 0, 0, 0, 0, -1, 0, -1, 0, -2.25913e-05, 1.34721, -0.169072)
+
 [editable path="NogoForestDemo"]
 [editable path="Player"]
 [editable path="Player/CharacterRotationRoot/CharacterSkin"]

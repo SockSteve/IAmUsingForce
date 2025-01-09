@@ -5189,24 +5189,13 @@ shape = SubResource("BoxShape3D_hme5y")
 unique_name_in_owner = true
 
 [node name="GeneralSkeleton" parent="CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature" index="0"]
-bones/9/rotation = Quaternion(0, -0.707107, 0, 0.707107)
-bones/10/rotation = Quaternion(0, 0.707107, 0, 0.707107)
-bones/12/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/13/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
 bones/33/rotation = Quaternion(0, 0.707107, 0, 0.707107)
 bones/34/rotation = Quaternion(0, -0.707107, 0, 0.707107)
-bones/37/rotation = Quaternion(0.673887, -0.673887, -0.214187, 0.214187)
-bones/38/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
 bones/57/rotation = Quaternion(0, 0.707107, -0.707107, 0)
-bones/60/rotation = Quaternion(0, 0.707107, -0.707107, 0)
 bones/62/rotation = Quaternion(0, 0.707107, -0.707107, 0)
-bones/65/rotation = Quaternion(0, 0.707107, -0.707107, 0)
 
 [node name="RightHand" parent="CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature/GeneralSkeleton" index="2"]
 transform = Transform3D(1, 9.629e-07, 0.000172794, 0.000172794, -8.63075e-05, -1, -9.47992e-07, 1, -8.63075e-05, -0.557296, 1.40688, 0.157433)
-
-[node name="LeftHand" parent="CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature/GeneralSkeleton" index="3"]
-transform = Transform3D(1, 0, 0.000174819, 0.000174819, 8.76128e-05, -1, 0, 1, 8.76128e-05, 0.816474, 1.40928, -0.110099)
 
 [node name="Back" parent="CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature/GeneralSkeleton" index="4"]
 transform = Transform3D(-1, 0, 0, 0, 0, -1, 0, -1, 0, -2.25913e-05, 1.34721, -0.169072)

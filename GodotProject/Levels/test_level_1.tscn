@@ -3,10 +3,10 @@
 [ext_resource type="Environment" uid="uid://ct2ypkwlmumhf" path="res://Levels/default_env.tres" id="1_0yh5f"]
 [ext_resource type="PackedScene" uid="uid://c0d3bmprmf8q0" path="res://Player/Player.tscn" id="2_qdyh7"]
 [ext_resource type="Shader" path="res://Shader/wood.gdshader" id="2_vaqb2"]
-[ext_resource type="Texture2D" uid="uid://duxieovv6xp1y" path="res://Assets/Textures/Environment/dark_forest_final.png" id="2_vi34l"]
+[ext_resource type="Texture2D" uid="uid://8grkaamyqljx" path="res://Assets/Textures/Environment/dark_forest_final.png" id="2_vi34l"]
 [ext_resource type="PackedScene" uid="uid://bllxyncmft2sj" path="res://Interactibles/GrapplingPoints/GrapplePoint.tscn" id="3_586er"]
-[ext_resource type="PackedScene" uid="uid://bgdr8clsam4w1" path="res://Assets/Models/Interactibles/GoldNugget.glb" id="4_wcjof"]
-[ext_resource type="PackedScene" uid="uid://v4bei818u2qf" path="res://Assets/Models/Interactibles/SilverNugget.glb" id="5_sps66"]
+[ext_resource type="PackedScene" uid="uid://d1bwfomisauow" path="res://Assets/Models/Interactibles/GoldNugget.glb" id="4_wcjof"]
+[ext_resource type="PackedScene" uid="uid://dmhwr8d61ej2t" path="res://Assets/Models/Interactibles/SilverNugget.glb" id="5_sps66"]
 [ext_resource type="Script" path="res://Player/StartMenu.gd" id="5_y7v02"]
 [ext_resource type="PackedScene" uid="uid://du0ausxn5e6vk" path="res://Assets/Placeholders/Environment/fern_grass_02/scene.gltf" id="9_fygig"]
 
@@ -249,7 +249,7 @@ material = SubResource("StandardMaterial3D_fglfm")
 [node name="Player" parent="." instance=ExtResource("2_qdyh7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19694, 1.24575, 1.98293)
 
-[node name="CharacterRotationRoot" parent="Player" index="5"]
+[node name="CharacterRotationRoot" parent="Player" index="7"]
 transform = Transform3D(0.669131, 0, 0.743145, 0, 1, 0, -0.743145, 0, 0.669131, 0, 0, 0)
 
 [node name="GeneralSkeleton" parent="Player/CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature" index="0"]
@@ -257,15 +257,22 @@ bones/9/rotation = Quaternion(0, -0.707107, 0, 0.707107)
 bones/10/rotation = Quaternion(0, 0.707107, 0, 0.707107)
 bones/12/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
 bones/13/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
-bones/33/rotation = Quaternion(0, 0.707107, 0, 0.707107)
-bones/34/rotation = Quaternion(0, -0.707107, 0, 0.707107)
-bones/36/rotation = Quaternion(-0.214187, -0.673887, -0.214187, 0.673887)
-bones/37/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
-bones/57/rotation = Quaternion(0, 0.707107, -0.707107, 0)
-bones/62/rotation = Quaternion(0, 0.707107, -0.707107, 0)
+bones/33/rotation = Quaternion(0, 1, 0, 0)
+bones/34/rotation = Quaternion(0, 0.707107, 0, 0.707107)
+bones/35/rotation = Quaternion(0, -0.707107, 0, 0.707107)
+bones/37/rotation = Quaternion(-0.214187, -0.673887, -0.214187, 0.673887)
+bones/38/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
+bones/60/rotation = Quaternion(0, 0.707107, -0.707107, 0)
+bones/65/rotation = Quaternion(0, 0.707107, -0.707107, 0)
 
-[node name="MeleeHand" parent="Player/CharacterRotationRoot/CharacterSkin" index="2"]
-transform = Transform3D(0, -1, 0, 0, 0, -1, 1, 0, 0, -0.737829, 1.43559, -0.0617137)
+[node name="RightHand" parent="Player/CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature/GeneralSkeleton" index="2"]
+transform = Transform3D(1, 1.43051e-06, 0.000172794, 0.000172794, -8.59261e-05, -1, -1.43051e-06, 1, -8.59264e-05, -0.831343, 1.40688, -0.116614)
+
+[node name="LeftHand" parent="Player/CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature/GeneralSkeleton" index="3"]
+transform = Transform3D(1, 0, 0.000174819, 0.000174819, 8.76128e-05, -1, 0, 1, 8.76128e-05, 0.816474, 1.40928, -0.110099)
+
+[node name="Back" parent="Player/CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature/GeneralSkeleton" index="4"]
+transform = Transform3D(-1, 0, 0, 0, 0, -1, 0, -1, 0, -2.25913e-05, 1.34721, -0.169072)
 
 [node name="ResumeGameButton" parent="Player/CanvasLayer/StartMenu/StartMenuMain/MarginContainer/VBoxContainer" index="1"]
 focus_neighbor_top = NodePath("../ExitToMainMenuButton")

@@ -5,6 +5,7 @@ signal foot_step
 signal attack_hitbox_state_change(hitbox_state: bool)
 signal lock_player(lock_state: bool)
 
+@onready var general_skeleton: Skeleton3D = %GeneralSkeleton
 @export var main_animation_player : AnimationPlayer
 
 #paths to set the moving blend
