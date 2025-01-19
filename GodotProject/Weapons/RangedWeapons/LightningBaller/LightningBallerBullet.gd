@@ -9,8 +9,8 @@ var linear_velocity = Vector3.ZERO
 @export var lightning_damage: float = 50.0
 
 @onready var sfx_bounce: AudioStreamPlayer3D = $SFXBounce
-@onready var shock_scene = preload("res://Weapons/RangedWeapons/LightningBaller/ShockStatus.tscn")  # Scene for the shock
-@onready var lightning_scene = preload("res://Weapons/RangedWeapons/LightningBaller/LightningBolt.tscn")  # Scene for the lightning bolt
+#@onready var shock_scene = preload("res://Weapons/RangedWeapons/LightningBaller/ShockStatus.tscn")  # Scene for the shock
+#@onready var lightning_scene = preload("res://Weapons/RangedWeapons/LightningBaller/LightningBolt.tscn")  # Scene for the lightning bolt
 
 var direction: Vector3 = Vector3.ZERO
 var remaining_bounces: int
@@ -38,9 +38,9 @@ func shock_enemy(enemy):
 	if enemy.has_node("ShockNode"):  # Ensure an enemy can't be shocked multiple times
 		return
 
-	var shock_instance = shock_scene.instantiate()
-	shock_instance.setup(enemy, shock_radius, shock_damage, lightning_scene, lightning_damage)
-	enemy.add_child(shock_instance)  # Attach the shock to the enemy
+	#var shock_instance = shock_scene.instantiate()
+	#shock_instance.setup(enemy, shock_radius, shock_damage, lightning_scene, lightning_damage)
+	#enemy.add_child(shock_instance)  # Attach the shock to the enemy
 
 func bounce(normal: Vector3):
 	if remaining_bounces > 0:
