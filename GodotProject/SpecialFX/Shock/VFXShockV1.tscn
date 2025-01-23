@@ -123,6 +123,7 @@ material = SubResource("StandardMaterial3D_dvrad")
 [node name="VfxShock" type="Node3D"]
 
 [node name="Rings" type="GPUParticles3D" parent="."]
+visible = false
 amount = 3
 lifetime = 4.0
 local_coords = true
