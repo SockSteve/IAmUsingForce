@@ -1,8 +1,8 @@
 [gd_resource type="ArrayMesh" load_steps=6 format=4 uid="uid://dtbfbsksnkvdw"]
 
-[ext_resource type="Texture2D" uid="uid://1k2f2sabsdmx" path="res://Assets/Models/Interactibles/GoldNugget_Metal007_2K-JPG_Color.jpg" id="1_6usvq"]
-[ext_resource type="Texture2D" uid="uid://beeq4kgbpsi5a" path="res://Assets/Models/Interactibles/GoldNugget_Metal007_2K-JPG_Metalness-Metal007_2K-JPG_Roughness.png" id="2_hctyh"]
-[ext_resource type="Texture2D" uid="uid://jxptxm1gsfmn" path="res://Assets/Models/Interactibles/GoldNugget_Metal007_2K-JPG_NormalGL.jpg" id="3_1ei3t"]
+[ext_resource type="Texture2D" uid="uid://cvtjis3wroc6l" path="res://Assets/Models/Interactibles/GoldNugget_Metal007_2K-JPG_Color.jpg" id="1_6usvq"]
+[ext_resource type="Texture2D" uid="uid://bqpa718po6oxl" path="res://Assets/Models/Interactibles/GoldNugget_Metal007_2K-JPG_Metalness-Metal007_2K-JPG_Roughness.png" id="2_hctyh"]
+[ext_resource type="Texture2D" uid="uid://cn2ijnq75fipj" path="res://Assets/Models/Interactibles/GoldNugget_Metal007_2K-JPG_NormalGL.jpg" id="3_1ei3t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_47jcj"]
 resource_name = "Material"
