@@ -1,0 +1,62 @@
+[gd_resource type="VisualShader" load_steps=6 format=3 uid="uid://b0tm44r718nlu"]
+
+[ext_resource type="Texture2D" uid="uid://s6c5ndxof7m5" path="res://SpecialFX/Lightning/floor_mark.png" id="1_qyw76"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_dt1ix"]
+expanded_output_ports = [0]
+texture = ExtResource("1_qyw76")
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_i740l"]
+expanded_output_ports = [0]
+input_name = "color"
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_wemxx"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_qs4qd"]
+parameter_name = "MarkColor"
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform vec4 MarkColor : source_color;
+uniform sampler2D tex_frg_2;
+
+
+
+void fragment() {
+// ColorParameter:7
+	vec4 n_out7p0 = MarkColor;
+
+
+// Input:4
+	vec4 n_out4p0 = COLOR;
+	float n_out4p1 = n_out4p0.r;
+
+
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, UV);
+	float n_out2p1 = n_out2p0.r;
+
+
+// FloatOp:5
+	float n_out5p0 = n_out4p1 * n_out2p1;
+
+
+// Output:0
+	ALBEDO = vec3(n_out7p0.xyz);
+	ALPHA = n_out5p0;
+
+
+}
+"
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_dt1ix")
+nodes/fragment/2/position = Vector2(-360, 380)
+nodes/fragment/4/node = SubResource("VisualShaderNodeInput_i740l")
+nodes/fragment/4/position = Vector2(-520, 60)
+nodes/fragment/5/node = SubResource("VisualShaderNodeFloatOp_wemxx")
+nodes/fragment/5/position = Vector2(0, 300)
+nodes/fragment/7/node = SubResource("VisualShaderNodeColorParameter_qs4qd")
+nodes/fragment/7/position = Vector2(-52.7697, 38.9615)
+nodes/fragment/connections = PackedInt32Array(2, 1, 5, 1, 5, 0, 0, 1, 4, 1, 5, 0, 7, 0, 0, 0)

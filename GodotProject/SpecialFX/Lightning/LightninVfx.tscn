@@ -1,9 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://wki1612x4jxj"]
+[gd_scene load_steps=5 format=3 uid="uid://wki1612x4jxj"]
 
 [ext_resource type="ArrayMesh" uid="uid://cxu5cnnotkeyl" path="res://SpecialFX/Lightning/LightningMesh.tres" id="1_37ql4"]
 
+[sub_resource type="Gradient" id="Gradient_8h282"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_rcrjq"]
+gradient = SubResource("Gradient_8h282")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6lgav"]
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_rcrjq")
+
 [node name="LightninVFX" type="Node3D"]
 
-[node name="Thunder" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.335815, 1.19209e-07, -0.115771)
-mesh = ExtResource("1_37ql4")
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 1
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_6lgav")
+draw_pass_1 = ExtResource("1_37ql4")

@@ -1,19 +1,22 @@
-[gd_resource type="ArrayMesh" load_steps=4 format=4 uid="uid://cxu5cnnotkeyl"]
+[gd_resource type="ArrayMesh" load_steps=7 format=4 uid="uid://cxu5cnnotkeyl"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tarax"]
-resource_name = "Material.003"
-albedo_color = Color(0.8, 0.8, 0.8, 1)
-metallic = 0.5
+[ext_resource type="Shader" uid="uid://dd8intqyete50" path="res://SpecialFX/Lightning/thunder_shader.tres" id="1_h0g0h"]
+[ext_resource type="Shader" uid="uid://b0tm44r718nlu" path="res://SpecialFX/Lightning/mark_shader.tres" id="1_xkana"]
+[ext_resource type="Shader" uid="uid://bin17qe7nojwk" path="res://SpecialFX/Lightning/wave_shader.tres" id="3_wn0ih"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4q15i"]
-resource_name = "Material.001"
-albedo_color = Color(0.8, 0.8, 0.8, 1)
-metallic = 0.5
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vnnwn"]
+render_priority = 0
+shader = ExtResource("1_xkana")
+shader_parameter/MarkColor = Color(0.5, 1, 3, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oks15"]
-resource_name = "Material.002"
-albedo_color = Color(0.8, 0.8, 0.8, 1)
-metallic = 0.5
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1qu70"]
+render_priority = 0
+shader = ExtResource("1_h0g0h")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1cjba"]
+render_priority = 0
+shader = ExtResource("3_wn0ih")
+shader_parameter/Wave_color = Color(0.5, 1, 4, 1)
 
 [resource]
 _surfaces = [{
@@ -22,7 +25,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray("AAABAAIAAgABAAMA"),
-"material": SubResource("StandardMaterial3D_tarax"),
+"material": SubResource("ShaderMaterial_vnnwn"),
 "name": "Material",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -34,7 +37,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 108,
 "index_data": PackedByteArray("AAABAAIAAgABAAMABAAFAAYABgAFAAcABgAHAAgACAAHAAkACAAJAAoACgAJAAsACgALAAwADAALAA0ADAANAA4ADgANAA8ADgAPABAAEAAPABEAEAARABIAEgARABMAEgATABQAFAATABUAFAAVABYAFgAVABcAFgAXABgAGAAXABkAGAAZABoAGgAZABsAGgAbABwAHAAbAB0AHAAdAB4AHgAdAB8AHgAfACAAIAAfACEAIAAhACIAIgAhACMAIgAjACQAJAAjACUAJAAlAAAAAAAlAAEA"),
-"material": SubResource("StandardMaterial3D_4q15i"),
+"material": SubResource("ShaderMaterial_1qu70"),
 "name": "Material",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -46,7 +49,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 192,
 "index_data": PackedByteArray("AAABAAIAAgABAAMABAAAAAUABQAAAAIABgAEAAcABwAEAAUACAAGAAkACQAGAAcACgAIAAsACwAIAAkADAAKAA0ADQAKAAsADgAMAA8ADwAMAA0AEAAOABEAEQAOAA8AEgAQABMAEwAQABEAFAASABUAFQASABMAFgAUABcAFwAUABUAGAAWABkAGQAWABcAGgAYABsAGwAYABkAHAAaAB0AHQAaABsAHgAcAB8AHwAcAB0AIAAeACEAIQAeAB8AIgAgACMAIwAgACEAJAAiACUAJQAiACMAJgAkACcAJwAkACUAKAAmACkAKQAmACcAKgAoACsAKwAoACkALAAqAC0ALQAqACsALgAsAC8ALwAsAC0AMAAuADEAMQAuAC8AMgAwADMAMwAwADEANAAyADUANQAyADMANgA0ADcANwA0ADUAOAA2ADkAOQA2ADcAOgA4ADsAOwA4ADkAPAA6AD0APQA6ADsAPgA8AD8APwA8AD0AQAA+AEEAQQA+AD8A"),
-"material": SubResource("StandardMaterial3D_oks15"),
+"material": SubResource("ShaderMaterial_1cjba"),
 "name": "Material",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

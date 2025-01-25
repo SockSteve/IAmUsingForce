@@ -1,0 +1,102 @@
+[gd_resource type="VisualShader" load_steps=11 format=3 uid="uid://bin17qe7nojwk"]
+
+[ext_resource type="Texture2D" uid="uid://ccnxj0x51revc" path="res://SpecialFX/Lightning/expansive_wave.png" id="1_5vcmm"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_8372l"]
+expanded_output_ports = [0]
+texture = ExtResource("1_5vcmm")
+
+[sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_nvlie"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ug1j5"]
+expanded_output_ports = [0]
+input_name = "color"
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_at4ba"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 1)]
+op_type = 0
+operator = 2
+
+[sub_resource type="Gradient" id="Gradient_g2wi7"]
+offsets = PackedFloat32Array(0, 0.425, 0.755, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.71, 0.71, 0.71, 1, 1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_xqoba"]
+gradient = SubResource("Gradient_g2wi7")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_kk4jn"]
+texture = SubResource("GradientTexture2D_xqoba")
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_1l2em"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_tjwxe"]
+parameter_name = "Wave_color"
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform vec4 Wave_color : source_color;
+uniform sampler2D tex_frg_2;
+uniform sampler2D tex_frg_6;
+
+
+
+void fragment() {
+// ColorParameter:8
+	vec4 n_out8p0 = Wave_color;
+
+
+// Input:4
+	vec4 n_out4p0 = COLOR;
+	float n_out4p1 = n_out4p0.r;
+
+
+// VectorOp:5
+	vec2 n_in5p1 = vec2(0.00000, 1.00000);
+	vec2 n_out5p0 = vec2(n_out4p1) * n_in5p1;
+
+
+// UVFunc:3
+	vec2 n_in3p1 = vec2(1.00000, 1.00000);
+	vec2 n_out3p0 = n_out5p0 * n_in3p1 + UV;
+
+
+// Texture2D:2
+	vec4 n_out2p0 = texture(tex_frg_2, n_out3p0);
+	float n_out2p1 = n_out2p0.r;
+
+
+// Texture2D:6
+	vec4 n_out6p0 = texture(tex_frg_6, UV);
+
+
+// FloatOp:7
+	float n_out7p0 = n_out2p1 * n_out6p0.x;
+
+
+// Output:0
+	ALBEDO = vec3(n_out8p0.xyz);
+	ALPHA = n_out7p0;
+
+
+}
+"
+graph_offset = Vector2(-500.749, -35.6339)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_8372l")
+nodes/fragment/2/position = Vector2(-220, 220)
+nodes/fragment/3/node = SubResource("VisualShaderNodeUVFunc_nvlie")
+nodes/fragment/3/position = Vector2(-540, 300)
+nodes/fragment/4/node = SubResource("VisualShaderNodeInput_ug1j5")
+nodes/fragment/4/position = Vector2(-1240, 220)
+nodes/fragment/5/node = SubResource("VisualShaderNodeVectorOp_at4ba")
+nodes/fragment/5/position = Vector2(-836.981, 355.727)
+nodes/fragment/6/node = SubResource("VisualShaderNodeTexture_kk4jn")
+nodes/fragment/6/position = Vector2(-160, 560)
+nodes/fragment/7/node = SubResource("VisualShaderNodeFloatOp_1l2em")
+nodes/fragment/7/position = Vector2(160, 500)
+nodes/fragment/8/node = SubResource("VisualShaderNodeColorParameter_tjwxe")
+nodes/fragment/8/position = Vector2(-20, 0)
+nodes/fragment/connections = PackedInt32Array(4, 1, 5, 0, 5, 0, 3, 2, 3, 0, 2, 0, 2, 1, 7, 0, 6, 0, 7, 1, 7, 0, 0, 1, 8, 0, 0, 0)
