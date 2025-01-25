@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://wki1612x4jxj"]
+
+[ext_resource type="ArrayMesh" uid="uid://dpjklx4icu0hk" path="res://SpecialFX/Lightning/Thunder.obj" id="1_u81lr"]
+
+[node name="LightninVFX" type="Node3D"]
+
+[node name="Thunder" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.335815, 1.19209e-07, -0.115771)
+mesh = ExtResource("1_u81lr")
