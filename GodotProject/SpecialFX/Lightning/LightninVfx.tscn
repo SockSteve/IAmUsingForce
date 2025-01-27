@@ -14,7 +14,9 @@ color_ramp = SubResource("GradientTexture1D_rcrjq")
 [node name="LightninVFX" type="Node3D"]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+emitting = false
 amount = 1
 lifetime = 0.5
+one_shot = true
 process_material = SubResource("ParticleProcessMaterial_6lgav")
 draw_pass_1 = ExtResource("1_37ql4")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvo4pacg0es5e"]
+
+[ext_resource type="Shader" uid="uid://puaw6lkhuv13" path="res://SpecialFX/ElectricArc/electric_arc.tres" id="1_fhphr"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vws4f"]
+render_priority = 0
+shader = ExtResource("1_fhphr")
+
+[sub_resource type="QuadMesh" id="QuadMesh_i5tya"]
+material = SubResource("ShaderMaterial_vws4f")
+
+[node name="ElectricArc" type="MeshInstance3D"]
+mesh = SubResource("QuadMesh_i5tya")

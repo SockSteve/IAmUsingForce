@@ -1,22 +1,23 @@
-[gd_resource type="VisualShader" load_steps=12 format=3 uid="uid://dd8intqyete50"]
+[gd_resource type="VisualShader" load_steps=12 format=3 uid="uid://puaw6lkhuv13"]
 
-[ext_resource type="Texture2D" uid="uid://b7h6h5i7domxh" path="res://SpecialFX/Lightning/thunder_01.png" id="1_s5uv1"]
+[ext_resource type="Texture2D" uid="uid://cclj3hc3vaxt6" path="res://SpecialFX/ElectricArc/spark_05_b_rotated.png" id="1_yhbbj"]
 
 [sub_resource type="Gradient" id="Gradient_1kjhi"]
-offsets = PackedFloat32Array(0.287736, 0.712264)
-colors = PackedColorArray(0.1, 0, 4, 1, 1, 2, 10, 1)
+offsets = PackedFloat32Array(0.287736, 0.900943)
+colors = PackedColorArray(0.101961, 0.184314, 4, 0.8, 0.017, 0.568, 0.465, 0.768)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_q2wy7"]
 gradient = SubResource("Gradient_1kjhi")
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_g5b5b"]
 output_port_for_preview = 0
+expanded_output_ports = [0]
 texture = SubResource("GradientTexture1D_q2wy7")
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_o6onx"]
 output_port_for_preview = 0
 expanded_output_ports = [0]
-texture = ExtResource("1_s5uv1")
+texture = ExtResource("1_yhbbj")
 
 [sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_07qdl"]
 
@@ -24,7 +25,7 @@ texture = ExtResource("1_s5uv1")
 input_name = "time"
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_5k0j6"]
-default_input_values = [0, Vector2(0, 0), 1, Vector2(0, -0.5)]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(-3, 0)]
 op_type = 0
 operator = 2
 
@@ -75,7 +76,7 @@ void fragment() {
 
 
 // VectorOp:5
-	vec2 n_in5p1 = vec2(0.00000, -0.50000);
+	vec2 n_in5p1 = vec2(-3.00000, 0.00000);
 	vec2 n_out5p0 = vec2(n_out4p0) * n_in5p1;
 
 
@@ -101,7 +102,7 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-579.782, -97.3712)
+graph_offset = Vector2(-709.523, -56.0025)
 modes/cull = 2
 flags/unshaded = true
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_o6onx")

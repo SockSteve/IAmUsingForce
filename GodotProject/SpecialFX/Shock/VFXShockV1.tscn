@@ -1,8 +1,8 @@
 [gd_scene load_steps=25 format=3 uid="uid://c03x678frspps"]
 
-[ext_resource type="Texture2D" uid="uid://ddu8ytsi5ts1w" path="res://SpecialFX/Shock/circle_01.png" id="1_abrbq"]
-[ext_resource type="Texture2D" uid="uid://bvf80478wnqp4" path="res://SpecialFX/Shock/spark_02.png" id="2_1a00n"]
-[ext_resource type="Texture2D" uid="uid://vp7pk57le0n8" path="res://SpecialFX/Shock/spark_04.png" id="3_k1brd"]
+[ext_resource type="Texture2D" uid="uid://ds8je0gcc1baa" path="res://SpecialFX/Shock/circle_01.png" id="1_abrbq"]
+[ext_resource type="Texture2D" uid="uid://cuxxyp0g1hs83" path="res://SpecialFX/Shock/spark_02.png" id="2_1a00n"]
+[ext_resource type="Texture2D" uid="uid://d1nsi01iq0kb1" path="res://SpecialFX/Shock/spark_04.png" id="3_k1brd"]
 
 [sub_resource type="Gradient" id="Gradient_clt2n"]
 offsets = PackedFloat32Array(0, 0.560811, 1)

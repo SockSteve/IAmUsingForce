@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://besehglplk733"]
 
-[ext_resource type="Script" path="res://Enemies/StationaryLookAtTurret/TestEnemyBullet_2.gd" id="1_advww"]
+[ext_resource type="Script" path="res://Enemies/Common/StationaryLookAtTurret/TestEnemyBullet_2.gd" id="1_advww"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_e2hnk"]
 

@@ -1,8 +1,8 @@
 [gd_resource type="ArrayMesh" load_steps=6 format=4 uid="uid://gvxod6uyyy1j"]
 
-[ext_resource type="Texture2D" uid="uid://bw7qnx6f3bgbb" path="res://Assets/Models/Interactibles/SilverNugget_Metal003_2K-JPG_Color.jpg" id="1_teelm"]
-[ext_resource type="Texture2D" uid="uid://hm4ertq5b6jp" path="res://Assets/Models/Interactibles/SilverNugget_Metal003_2K-JPG_Metalness-Metal003_2K-JPG_Roughness.png" id="2_yc6xv"]
-[ext_resource type="Texture2D" uid="uid://bnqk6anejq6yv" path="res://Assets/Models/Interactibles/SilverNugget_Metal003_2K-JPG_NormalGL.jpg" id="3_pigsp"]
+[ext_resource type="Texture2D" uid="uid://b63odq04ypag2" path="res://Assets/Models/Interactibles/SilverNugget_Metal003_2K-JPG_Color.jpg" id="1_teelm"]
+[ext_resource type="Texture2D" uid="uid://brf8vtnee1oak" path="res://Assets/Models/Interactibles/SilverNugget_Metal003_2K-JPG_Metalness-Metal003_2K-JPG_Roughness.png" id="2_yc6xv"]
+[ext_resource type="Texture2D" uid="uid://blf05n82e0wr2" path="res://Assets/Models/Interactibles/SilverNugget_Metal003_2K-JPG_NormalGL.jpg" id="3_pigsp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cgap6"]
 resource_name = "Silver"
