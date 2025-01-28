@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bia3qopxe6b3q"]
+
+[ext_resource type="Shader" path="res://SpecialFX/ElectricArc/ElectricArcB.gdshader" id="1_al5ox"]
+[ext_resource type="Script" path="res://SpecialFX/ElectricArc/ElectricArc.gd" id="2_310ms"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3gpyc"]
+render_priority = 0
+shader = ExtResource("1_al5ox")
+shader_parameter/time_scale = 1.0
+shader_parameter/base_color = Vector3(0, 0.5, 1)
+shader_parameter/glow_intensity = 2.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_kpwe8"]
+material = SubResource("ShaderMaterial_3gpyc")
+top_radius = 0.2
+bottom_radius = 0.2
+radial_segments = 16
+rings = 1
+cap_top = false
+cap_bottom = false
+
+[node name="ElectricArc" type="MeshInstance3D"]
+mesh = SubResource("CylinderMesh_kpwe8")
+script = ExtResource("2_310ms")

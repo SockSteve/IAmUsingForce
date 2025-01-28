@@ -10,6 +10,7 @@ signal apply_damage(damage: Damage) # Signal for applying damage.
 @export var gold_reward: int = 10 # Gold given upon death.
 
 @onready var animation_player: AnimationPlayer = $Skin/AnimationPlayer
+@onready var attraction_point: Marker3D = %AttractionPoint
 
 func _ready() -> void:
 	animation_player.play("idle")

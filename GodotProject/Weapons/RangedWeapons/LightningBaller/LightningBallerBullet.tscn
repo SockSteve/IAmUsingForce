@@ -1,18 +1,29 @@
-[gd_scene load_steps=6 format=3 uid="uid://6vdsddthfh3f"]
+[gd_scene load_steps=10 format=3 uid="uid://6vdsddthfh3f"]
 
 [ext_resource type="Script" path="res://Weapons/RangedWeapons/LightningBaller/LightningBallerBullet.gd" id="1_hmp61"]
-[ext_resource type="AudioStream" uid="uid://bywpf8lfghslq" path="res://Assets/Kenney/kenney_impact-sounds/Audio/footstep_carpet_000.ogg" id="2_uqryk"]
+[ext_resource type="AudioStream" uid="uid://rr5pi6qk6peg" path="res://Assets/Kenney/kenney_impact-sounds/Audio/impactPunch_heavy_003.ogg" id="2_sdlj6"]
+[ext_resource type="AudioStream" uid="uid://dmtnup4ipebcg" path="res://Assets/Kenney/kenney_impact-sounds/Audio/impactWood_heavy_003.ogg" id="3_p3bp2"]
+[ext_resource type="AudioStream" uid="uid://dbr1af8bdygc4" path="res://Assets/Kenney/kenney_impact-sounds/Audio/impactGeneric_light_001.ogg" id="4_30pc1"]
+[ext_resource type="PackedScene" uid="uid://cvo4pacg0es5e" path="res://SpecialFX/ElectricArc/ElectricArc.tscn" id="5_rsbtm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5qn7r"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_02oto"]
+albedo_color = Color(0.541, 5.405, 1, 1)
+
 [sub_resource type="SphereMesh" id="SphereMesh_62vgp"]
+material = SubResource("StandardMaterial3D_02oto")
+radius = 0.2
+height = 0.4
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_iuup7"]
 margin = 0.1
 radius = 7.0
 
 [node name="LightningBallerBullet" type="CharacterBody3D"]
+top_level = true
 script = ExtResource("1_hmp61")
+speed = 500.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_5qn7r")
@@ -20,10 +31,25 @@ shape = SubResource("SphereShape3D_5qn7r")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_62vgp")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="ShockArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShockArea"]
 shape = SubResource("SphereShape3D_iuup7")
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
-stream = ExtResource("2_uqryk")
+[node name="SFXExplode" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_sdlj6")
+
+[node name="SFXShock" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_p3bp2")
+
+[node name="SFXBounce" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_30pc1")
+
+[node name="ElectricArc" parent="." instance=ExtResource("5_rsbtm")]
+unique_name_in_owner = true
+visible = false
+
+[connection signal="area_entered" from="ShockArea" to="." method="_on_shock_area_area_entered"]

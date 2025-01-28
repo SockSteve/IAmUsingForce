@@ -46,6 +46,12 @@ naming/scene_name_casing=1
 
 enabled=PackedStringArray("res://addons/ridiculous_coding/plugin.cfg", "res://addons/shaker/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://Weapons/": "red"
+}
+
 [input]
 
 move_left={

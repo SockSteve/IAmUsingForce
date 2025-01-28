@@ -1,10 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://brgju0mcg3vx4"]
+[gd_scene load_steps=5 format=3 uid="uid://brgju0mcg3vx4"]
 
 [ext_resource type="Script" path="res://Weapons/RangedWeapons/ShockStatus.gd" id="1_iwp7i"]
 [ext_resource type="AudioStream" uid="uid://b2ood3lkcgpqb" path="res://addons/ridiculous_coding/blip.wav" id="2_yjuwq"]
+[ext_resource type="PackedScene" uid="uid://c03x678frspps" path="res://SpecialFX/Shock/VFXShockV1.tscn" id="3_u7ij6"]
+[ext_resource type="PackedScene" uid="uid://wki1612x4jxj" path="res://SpecialFX/Lightning/LightninVfx.tscn" id="4_la1ao"]
 
 [node name="ShockStatus" type="Node3D"]
 script = ExtResource("1_iwp7i")
 
 [node name="SFXAttachment" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_yjuwq")
+
+[node name="VfxShock" parent="." instance=ExtResource("3_u7ij6")]
+
+[node name="LightninVFX" parent="." instance=ExtResource("4_la1ao")]
+
+[editable path="VfxShock"]
+[editable path="LightninVFX"]
