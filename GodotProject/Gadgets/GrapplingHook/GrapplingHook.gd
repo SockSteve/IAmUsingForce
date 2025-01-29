@@ -5,7 +5,7 @@
 extends Gadget
 
 var grapple_points : Array = []
-var nearest_grapple_point
+var nearest_grapple_point: GrapplePoint
 
 var joint
 var direction_normal_to_origin: Vector3 = Vector3.ZERO
@@ -82,8 +82,8 @@ func remove_grapple_point(grapple_point):
 #when the grappling hook successfully activates this function is called
 #it is responsible for assigning the player to the grapple joint
 func initialize_grappling_mode():
-	joint = nearest_grapple_point.get_joint()
-	joint.node_b = player._physics_body.get_path()
+	nearest_grapple_point.grapple_joint.node_b = player._physics_body.get_path()
+	#joint.node_b = player._physics_body.get_path()
 	
 	#match nearest_grapple_point.grapple_point_type:
 		#

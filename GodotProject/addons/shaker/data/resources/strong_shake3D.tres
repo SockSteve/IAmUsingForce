@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="ShakerPreset3D" load_steps=6 format=3 uid="uid://dakufr1eoowxf"]
 
-[ext_resource type="Script" path="res://addons/shaker/data/Vector3/BaseShakerType3D.gd" id="1_nk16c"]
-[ext_resource type="Script" path="res://addons/shaker/data/Vector3/ShakerTypeSineWave3D.gd" id="2_dydew"]
-[ext_resource type="Script" path="res://addons/shaker/data/Vector3/ShakerPreset3D.gd" id="3_1oh1n"]
+[ext_resource type="Script" uid="uid://c5awpk2dv7mbl" path="res://addons/shaker/data/Vector3/BaseShakerType3D.gd" id="1_nk16c"]
+[ext_resource type="Script" uid="uid://rliuy5y6se6l" path="res://addons/shaker/data/Vector3/ShakerTypeSineWave3D.gd" id="2_dydew"]
+[ext_resource type="Script" uid="uid://isflqmwjtro2" path="res://addons/shaker/data/Vector3/ShakerPreset3D.gd" id="3_1oh1n"]
 
 [sub_resource type="Resource" id="Resource_rqq58"]
 script = ExtResource("2_dydew")

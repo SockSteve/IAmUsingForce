@@ -46,7 +46,7 @@ render_mode blend_add, depth_draw_opaque, cull_back, diffuse_lambert, specular_s
 
 uniform vec2 MainTextureSpeed = vec2(0.000000, 0.000000);
 uniform sampler2D MainTexure;
-uniform float MainTexturePow = 1;
+uniform float MainTexturePow = 1.0;
 
 
 

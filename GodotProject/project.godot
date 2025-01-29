@@ -12,7 +12,7 @@ config_version=5
 
 config/name="I Am Using Force"
 run/main_scene="res://Levels/Test.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://Sock.png"
 
 [audio]
@@ -214,5 +214,5 @@ strafe={
 
 [physics]
 
-3d/physics_engine="JoltPhysics3D"
+3d/physics_engine="Jolt Physics"
 3d/default_gravity=16.0

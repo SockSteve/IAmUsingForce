@@ -24,13 +24,13 @@
 [ext_resource type="PackedScene" uid="uid://3vftd3ge5inj" path="res://Scenes/AlteredBaseScenes/HitBoxArea3D.tscn" id="19_ibhqo"]
 [ext_resource type="PackedScene" uid="uid://fbpbxpmuqx3g" path="res://Vendor/vendor.tscn" id="20_rhfpa"]
 [ext_resource type="PackedScene" uid="uid://b0i3f2a76pxek" path="res://SpecialFX/Explosions/vfx_explosion_1.tscn" id="21_18a5i"]
-[ext_resource type="Script" path="res://Sandbox/movable_look_object.gd" id="25_rn2nm"]
+[ext_resource type="Script" uid="uid://dm8jitoqobk0o" path="res://Sandbox/movable_look_object.gd" id="25_rn2nm"]
 [ext_resource type="PackedScene" uid="uid://do6wn85to7hkb" path="res://Sandbox/LookingMan.tscn" id="26_oervn"]
 [ext_resource type="PackedScene" uid="uid://bv44xl2m2fah5" path="res://Enemies/Common/Stout/AIGenPHStout.fbx" id="27_f1cld"]
 [ext_resource type="PackedScene" uid="uid://cvo4pacg0es5e" path="res://SpecialFX/ElectricArc/ElectricArc.tscn" id="28_fut23"]
-[ext_resource type="Script" path="res://Levels/mesh_instance_3d_3.gd" id="29_jtuej"]
+[ext_resource type="Script" uid="uid://brg1q6w8whtiv" path="res://Levels/mesh_instance_3d_3.gd" id="29_jtuej"]
 [ext_resource type="PackedScene" uid="uid://c03x678frspps" path="res://SpecialFX/Shock/VFXShockV1.tscn" id="29_t1l1n"]
-[ext_resource type="Script" path="res://Levels/mesh_instance_3d_4.gd" id="30_6xxop"]
+[ext_resource type="Script" uid="uid://hi758wdtd7on" path="res://Levels/mesh_instance_3d_4.gd" id="30_6xxop"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_30l7b"]
 panorama = ExtResource("1_fslvx")

@@ -42,6 +42,13 @@ func _process(delta):
 		end + perpendicular
 	])
 	
+	var uvs = PackedVector2Array([
+	Vector2(0, 0),
+	Vector2(1, 0),
+	Vector2(0, 1),
+	Vector2(1, 1)
+	])
+	
 	# Define indices for the quad strip
 	var indices = PackedInt32Array([0, 1, 2, 2, 1, 3])
 	
@@ -50,6 +57,7 @@ func _process(delta):
 	arrays.resize(Mesh.ARRAY_MAX)
 	arrays[Mesh.ARRAY_VERTEX] = vertices
 	arrays[Mesh.ARRAY_INDEX] = indices
+	arrays[Mesh.ARRAY_TEX_UV] = uvs
 	
 	# Add the surface to the mesh
 	array_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)

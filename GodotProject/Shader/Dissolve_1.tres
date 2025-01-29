@@ -70,9 +70,9 @@ render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_s
 uniform sampler2D Albedo;
 uniform sampler2D tex_frg_4;
 uniform vec4 LightColor : source_color = vec4(0.000003, 0.779063, 0.945481, 1.000000);
-uniform float FloatParameter = 2;
+uniform float FloatParameter = 2.0;
 uniform float EdgeOffset = 0.10000000149012;
-uniform float strength = 2;
+uniform float strength = 2.0;
 
 
 
