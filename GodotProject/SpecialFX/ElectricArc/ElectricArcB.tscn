@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bia3qopxe6b3q"]
 
-[ext_resource type="Shader" path="res://SpecialFX/ElectricArc/ElectricArcB.gdshader" id="1_al5ox"]
-[ext_resource type="Script" path="res://SpecialFX/ElectricArc/ElectricArc.gd" id="2_310ms"]
+[ext_resource type="Shader" uid="uid://cb2h6uv0ebojc" path="res://SpecialFX/ElectricArc/ElectricArcB.gdshader" id="1_al5ox"]
+[ext_resource type="Script" uid="uid://8pafwvkan6aj" path="res://SpecialFX/ElectricArc/ElectricArc.gd" id="2_310ms"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3gpyc"]
 render_priority = 0

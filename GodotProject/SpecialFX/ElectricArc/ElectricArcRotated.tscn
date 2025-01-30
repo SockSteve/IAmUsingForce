@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cvo4pacg0es5e"]
+[gd_scene load_steps=4 format=3 uid="uid://b0lhoejsvrhjw"]
 
-[ext_resource type="Shader" uid="uid://puaw6lkhuv13" path="res://SpecialFX/ElectricArc/ElectricArc.tres" id="1_fhphr"]
+[ext_resource type="Shader" uid="uid://dfngj30bawpm0" path="res://SpecialFX/ElectricArc/ElectricArcRotated.tres" id="1_xlxu7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vws4f"]
 render_priority = 0
-shader = ExtResource("1_fhphr")
+shader = ExtResource("1_xlxu7")
 
 [sub_resource type="QuadMesh" id="QuadMesh_i5tya"]
 material = SubResource("ShaderMaterial_vws4f")

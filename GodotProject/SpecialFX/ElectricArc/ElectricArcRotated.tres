@@ -1,6 +1,6 @@
-[gd_resource type="VisualShader" load_steps=12 format=3 uid="uid://puaw6lkhuv13"]
+[gd_resource type="VisualShader" load_steps=12 format=3 uid="uid://dfngj30bawpm0"]
 
-[ext_resource type="Texture2D" uid="uid://cclj3hc3vaxt6" path="res://SpecialFX/ElectricArc/spark_05_b_rotated.png" id="1_yhbbj"]
+[ext_resource type="Texture2D" uid="uid://7o6pqkt0t2y" path="res://SpecialFX/ElectricArc/spark_05_b.png" id="1_xeoyo"]
 
 [sub_resource type="Gradient" id="Gradient_1kjhi"]
 offsets = PackedFloat32Array(0.287736, 0.900943)
@@ -17,7 +17,7 @@ texture = SubResource("GradientTexture1D_q2wy7")
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_o6onx"]
 output_port_for_preview = 0
 expanded_output_ports = [0]
-texture = ExtResource("1_yhbbj")
+texture = ExtResource("1_xeoyo")
 
 [sub_resource type="VisualShaderNodeUVFunc" id="VisualShaderNodeUVFunc_07qdl"]
 
@@ -25,7 +25,7 @@ texture = ExtResource("1_yhbbj")
 input_name = "time"
 
 [sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_5k0j6"]
-default_input_values = [0, Vector2(0, 0), 1, Vector2(-3, 0)]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, -3)]
 op_type = 0
 operator = 2
 
@@ -76,7 +76,7 @@ void fragment() {
 
 
 // VectorOp:5
-	vec2 n_in5p1 = vec2(-3.00000, 0.00000);
+	vec2 n_in5p1 = vec2(0.00000, -3.00000);
 	vec2 n_out5p0 = vec2(n_out4p0) * n_in5p1;
 
 
@@ -102,6 +102,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-912, 28)
 modes/cull = 2
 flags/unshaded = true
 nodes/fragment/0/position = Vector2(480, 20)

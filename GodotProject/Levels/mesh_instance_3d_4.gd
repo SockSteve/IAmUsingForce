@@ -16,7 +16,7 @@ func _ready():
 	mesh = array_mesh
 	
 	# Load or create your shader
-	var shader = preload("res://SpecialFX/ElectricArc/electric_arc.tres") # Replace with your shader path
+	var shader = preload("res://SpecialFX/ElectricArc/ElectricArcRotated.tres") # Replace with your shader path
 	material.shader = shader
 	
 	# Load the noise texture
@@ -26,13 +26,19 @@ func _ready():
 
 func _process(delta):
 	# Clear the mesh and redraw the line every frame
+	
 	array_mesh.clear_surfaces()
 	
 	# Calculate the direction and perpendicular vector
-	var start = object1.global_transform.origin
-	var end = object2.global_transform.origin
+	var start = object1.global_position
+	var end = object2.global_position
+	var local_start = to_local(start)
+	var local_end = to_local(end)
+	position = local_start.lerp(local_end, 0.5)
+	#self.global_position = (start + end)/3
 	var direction = (end - start).normalized()
-	var perpendicular = direction.cross(Vector3.UP).normalized() * thickness
+	
+	var perpendicular = direction.cross(Vector3.FORWARD).normalized() * thickness
 	
 	# Define vertices for the quad strip (double-sided)
 	var vertices = PackedVector3Array([
