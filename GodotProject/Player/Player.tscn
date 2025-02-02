@@ -1,38 +1,38 @@
 [gd_scene load_steps=83 format=3 uid="uid://c0d3bmprmf8q0"]
 
-[ext_resource type="Script" path="res://Player/Player.gd" id="1_ld2le"]
-[ext_resource type="Script" path="res://Player/CameraController.gd" id="2_7jqee"]
+[ext_resource type="Script" uid="uid://b04agd2xhqbbe" path="res://Player/Player.gd" id="1_ld2le"]
+[ext_resource type="Script" uid="uid://cn7h6ka6x7lrn" path="res://Player/CameraController.gd" id="2_7jqee"]
 [ext_resource type="Curve" uid="uid://dkhyr34syj1ps" path="res://Player/SlideCurve.tres" id="2_w6n6n"]
-[ext_resource type="Script" path="res://Player/States/StateMachine.gd" id="3_5fauu"]
-[ext_resource type="Script" path="res://Player/States/Idle.gd" id="4_h88q0"]
-[ext_resource type="Script" path="res://Player/States/Run.gd" id="5_dheqf"]
-[ext_resource type="Script" path="res://Player/Damaged.gd" id="5_h0rer"]
-[ext_resource type="Script" path="res://Player/States/Crouch.gd" id="6_q58v3"]
-[ext_resource type="Script" path="res://Player/States/Grapple.gd" id="6_r5qvj"]
-[ext_resource type="Script" path="res://Player/States/Air.gd" id="6_wo20p"]
-[ext_resource type="Script" path="res://Player/States/Grind.gd" id="8_82ggy"]
-[ext_resource type="Script" path="res://Player/States/LedgeHang.gd" id="9_033i6"]
-[ext_resource type="Script" path="res://Player/States/Block.gd" id="9_lxqh2"]
-[ext_resource type="Script" path="res://Player/States/Magnet.gd" id="10_0mhbm"]
-[ext_resource type="Script" path="res://Player/States/Melee.gd" id="10_1rkfv"]
-[ext_resource type="Script" path="res://Player/States/MonkeyBars.gd" id="12_w6n3d"]
+[ext_resource type="Script" uid="uid://bnsg8qslttv7b" path="res://Player/States/StateMachine.gd" id="3_5fauu"]
+[ext_resource type="Script" uid="uid://dmo4aphlxit4t" path="res://Player/States/Idle.gd" id="4_h88q0"]
+[ext_resource type="Script" uid="uid://05vs1x5gauo0" path="res://Player/States/Run.gd" id="5_dheqf"]
+[ext_resource type="Script" uid="uid://dnmnhkfn8478a" path="res://Player/Damaged.gd" id="5_h0rer"]
+[ext_resource type="Script" uid="uid://bhvqppg6xtsyk" path="res://Player/States/Crouch.gd" id="6_q58v3"]
+[ext_resource type="Script" uid="uid://86uucdqewuvk" path="res://Player/States/Grapple.gd" id="6_r5qvj"]
+[ext_resource type="Script" uid="uid://bxpsryuyebuup" path="res://Player/States/Air.gd" id="6_wo20p"]
+[ext_resource type="Script" uid="uid://c6ji88mx5lqy3" path="res://Player/States/Grind.gd" id="8_82ggy"]
+[ext_resource type="Script" uid="uid://o047od7vixcx" path="res://Player/States/LedgeHang.gd" id="9_033i6"]
+[ext_resource type="Script" uid="uid://ch7sfb67kv4tc" path="res://Player/States/Block.gd" id="9_lxqh2"]
+[ext_resource type="Script" uid="uid://b6v1wkj3eg71n" path="res://Player/States/Magnet.gd" id="10_0mhbm"]
+[ext_resource type="Script" uid="uid://dbi724f6clqml" path="res://Player/States/Melee.gd" id="10_1rkfv"]
+[ext_resource type="Script" uid="uid://dvarjgy7j5ykj" path="res://Player/States/MonkeyBars.gd" id="12_w6n3d"]
 [ext_resource type="PackedScene" uid="uid://bihfxywywukdv" path="res://Player/CharacterSkin.tscn" id="15_7yrxv"]
-[ext_resource type="Script" path="res://Player/PhysicsBody.gd" id="16_50cj4"]
-[ext_resource type="Script" path="res://Player/Inventory.gd" id="16_kqrv3"]
-[ext_resource type="Script" path="res://Player/PlayerHand.gd" id="16_mjyse"]
-[ext_resource type="Script" path="res://Player/PlayerHUD.gd" id="20_6xxyk"]
+[ext_resource type="Script" uid="uid://dysgm45ta5sli" path="res://Player/PhysicsBody.gd" id="16_50cj4"]
+[ext_resource type="Script" uid="uid://bx8wombawocms" path="res://Player/Inventory.gd" id="16_kqrv3"]
+[ext_resource type="Script" uid="uid://bkoee6m1yqbkb" path="res://Player/PlayerHand.gd" id="16_mjyse"]
+[ext_resource type="Script" uid="uid://2bqjon1rlriq" path="res://Player/PlayerHUD.gd" id="20_6xxyk"]
 [ext_resource type="Theme" uid="uid://d02hntmjt67aj" path="res://UI/UITheme_Base.tres" id="21_13c1r"]
 [ext_resource type="Texture2D" uid="uid://bwo2v53nvfp1o" path="res://Assets/UI/WeaponBarV2L.svg" id="22_86vob"]
 [ext_resource type="Texture2D" uid="uid://dmf404ftfexwl" path="res://Assets/Decals/DropShadow/Shadow.png" id="22_gwf8y"]
 [ext_resource type="Texture2D" uid="uid://pcjnv83mgkat" path="res://Assets/Textures/UI/CutterIconSC.png" id="22_iaxg4"]
 [ext_resource type="Texture2D" uid="uid://cqiv6rrr26qmx" path="res://Assets/Textures/UI/PlaceholderIcon.png" id="23_qxeqk"]
-[ext_resource type="Script" path="res://UI/CurrentWeaponUI.gd" id="24_e02xp"]
+[ext_resource type="Script" uid="uid://dwo6qnv8yni5c" path="res://UI/CurrentWeaponUI.gd" id="24_e02xp"]
 [ext_resource type="FontFile" uid="uid://bawngymo25rp5" path="res://Assets/Fonts/SchutzgitterhausGroteskNbpRegular-l5pV.ttf" id="24_vjfmv"]
 [ext_resource type="FontFile" uid="uid://cx307j2obkmaw" path="res://Assets/Fonts/kenvector_future.ttf" id="25_hpuwh"]
 [ext_resource type="Texture2D" uid="uid://bx8lfh6vgwtnk" path="res://Assets/UI/QuickSelectCross.svg" id="25_iehhb"]
 [ext_resource type="Texture2D" uid="uid://cque1s6oa5b10" path="res://Assets/UI/MoneyIconWhite.svg" id="27_4reeb"]
 [ext_resource type="Texture2D" uid="uid://dnrhjt2nuwbnf" path="res://Assets/UI/UIBarR.svg" id="28_gv4ft"]
-[ext_resource type="Script" path="res://Player/StartMenu.gd" id="28_r3h2c"]
+[ext_resource type="Script" uid="uid://dusp8b6sr1si0" path="res://Player/StartMenu.gd" id="28_r3h2c"]
 [ext_resource type="Texture2D" uid="uid://cu57pg1cqjpqy" path="res://Assets/Textures/UI/BadPrankIcon.png" id="29_sc2yr"]
 [ext_resource type="Texture2D" uid="uid://darrnp03hrxwg" path="res://Assets/UI/MenuBar2.svg" id="30_vhdh7"]
 [ext_resource type="Texture2D" uid="uid://chje5lrkyyvyk" path="res://Assets/UI/MenuBarVertical.svg" id="31_nacso"]
@@ -5070,7 +5070,7 @@ stopping_speed = 9.0
 crouch_acceleration = 3.0
 slide_strength_curve = ExtResource("2_w6n6n")
 slide_strength_curve_time_factor = 3
-starting_loadout = PackedStringArray("res://Weapons/RangedWeapons/Gun/Gun.tscn", "res://Weapons/RangedWeapons/BadPrank/BadPrank.tscn", "res://Weapons/RangedWeapons/LightningBaller/LightningBaller.tscn", "res://Weapons/MeleeWeapons/Cutter/Cutter.tscn", "res://Weapons/MeleeWeapons/WavePounder/WavePounder.tscn", "res://Weapons/MeleeWeapons/MeleeGear/MeleeGear.tscn")
+starting_loadout = PackedStringArray("res://Weapons/RangedWeapons/Gun/GunWeapon.tscn", "res://Weapons/RangedWeapons/BadPrank/BadPrankWeapon.tscn", "res://Weapons/RangedWeapons/LightningBaller/LightningBallerWeapon.tscn", "res://Weapons/MeleeWeapons/Cutter/CutterWeapon.tscn", "res://Weapons/MeleeWeapons/WavePounder/WavePounderWeapon.tscn", "res://Weapons/MeleeWeapons/MeleeGear/MeleeGearWeapon.tscn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
@@ -5271,6 +5271,7 @@ inventory_path = NodePath("../../Inventory")
 player = NodePath("../..")
 
 [node name="CurrentWeaponInfoPanel" type="PanelContainer" parent="CanvasLayer/PlayerHUD"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.161

@@ -1,4 +1,5 @@
 extends Weapon
+class_name PocketRocket
 
 # Export variables allow you to set these in the editor
 @export var bullet_speed : float = 100.0

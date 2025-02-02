@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://owsxbjhadsho"]
 
-[ext_resource type="Script" path="res://Weapons/RangedWeapons/Gun/GunBullet.gd" id="1_dkxp1"]
+[ext_resource type="Script" uid="uid://bnla2sfn264uw" path="res://Weapons/RangedWeapons/Gun/GunBullet.gd" id="1_dkxp1"]
 [ext_resource type="PackedScene" uid="uid://b0i3f2a76pxek" path="res://SpecialFX/Explosions/vfx_explosion_1.tscn" id="2_k2j6s"]
 [ext_resource type="AudioStream" uid="uid://dr7gsjtxdf3hc" path="res://Assets/Kenney/kenney_impact-sounds/Audio/impactWood_heavy_004.ogg" id="3_xe6qj"]
 

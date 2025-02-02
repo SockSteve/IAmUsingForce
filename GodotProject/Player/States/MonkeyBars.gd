@@ -12,7 +12,7 @@ func physics_update(delta: float) -> void:
 		state_machine.transition_to("Air")
 		return
 	
-	var hit_normal: Vector3 = player.get_inventory().get_gadget("GripGloves").get_collision_normal()
+	var hit_normal: Vector3 = player.get_inventory().get_gadget("grip_gloves").get_collision_normal()
 	hit_normal = abs(hit_normal)
 	
 	var input_dir = player._get_camera_oriented_input()

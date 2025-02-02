@@ -5,7 +5,7 @@
 extends CharacterBody3D
 class_name Player
 
-signal weapon_changed(weapon_name)
+signal weapon_changed(weapon_id)
 
 @export_category("Gameplay")
 @export_group("Base Movement")
@@ -77,19 +77,19 @@ var freeze: bool = false
 var putting_ranged_weapon_in_hand_enabled: bool = true 
 
 ## store the active weapons that are not in the scene tree
-var current_ranged_weapon: Node
-var current_melee_weapon: Node
+var current_ranged_weapon: Weapon
+var current_melee_weapon: Weapon
 
 ## weapon that is in the scene tree. there is only one.
-var currently_held_weapon_or_gadget: Node
+var currently_held_weapon_or_gadget: Item3D
 ## stores currently_held_weapon_or_gadget weapon on gadget use. This need to be done in order to
 ## change back to the previously held weapon when the gadget use is over
-var stored_weapon_on_gadget_use: Node #this variable is only assigned with the active weapon when a gadget is used. it stores the weapon so it can be placed back into the players hand fter the gadget usage is over.
+var stored_weapon_on_gadget_use: Item3D #this variable is only assigned with the active weapon when a gadget is used. it stores the weapon so it can be placed back into the players hand fter the gadget usage is over.
 
 #debug
-@onready var grappling_hook = preload("res://Gadgets/GrapplingHook/GrapplingHook.tscn").instantiate()
-@onready var grinding_boots = preload("res://Gadgets/GrindBoots/GrindBoots.tscn").instantiate()
-@onready var grip_gloves = preload("res://Gadgets/GripGloves/GripGloves.tscn").instantiate()
+@onready var grappling_hook = preload("res://Gadgets/GrapplingHook/GrapplingHookGadget.tscn").instantiate()
+@onready var grinding_boots = preload("res://Gadgets/GrindBoots/GrindBootsGadget.tscn").instantiate()
+@onready var grip_gloves = preload("res://Gadgets/GripGloves/GripGlovesGadget.tscn").instantiate()
 
 func _ready() -> void:
 	set_up_input()
@@ -97,9 +97,9 @@ func _ready() -> void:
 	print("Populating shortcut menu...")
 	inventory.populate_quick_select_menu()
 	put_in_hand(currently_held_weapon_or_gadget)
-	inventory.add_gadget(grappling_hook.name, grappling_hook)
-	inventory.add_gadget(grinding_boots.name, grinding_boots)
-	inventory.add_gadget(grip_gloves.name, grip_gloves)
+	inventory.add_gadget(grappling_hook.get_id(), grappling_hook)
+	inventory.add_gadget(grinding_boots.get_id(), grinding_boots)
+	inventory.add_gadget(grip_gloves.get_id(), grip_gloves)
 	
 func set_up_input():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -188,18 +188,18 @@ func switchToCharacterBody()-> void:
 func get_inventory()->Inventory:
 	return inventory
 
-func change_currently_held_weapon_or_gadget_to(weapon_or_gadget_name: StringName)->void:
-	var weapon_or_gadget = inventory.get_weapon_or_gadget(weapon_or_gadget_name)
+func change_currently_held_weapon_or_gadget_to(weapon_or_gadget_id: StringName)->void:
+	var weapon_or_gadget = inventory.get_weapon_or_gadget(weapon_or_gadget_id)
 	if weapon_or_gadget is Weapon:
 		assign_melee_and_ranged_weapons(weapon_or_gadget)
-	put_in_hand(inventory.get_weapon_or_gadget(weapon_or_gadget_name))
+	put_in_hand(inventory.get_weapon_or_gadget(weapon_or_gadget_id))
 
 #function for putting a weapon in hand - called from player hand
 func put_in_hand(weapon_or_gadget: Node)-> void:
 	if weapon_or_gadget is Weapon:
 		assign_melee_and_ranged_weapons(weapon_or_gadget)
 	hand.add_or_replace_item_to_hand(weapon_or_gadget)
-	_character_skin.change_weapon(weapon_or_gadget.name, weapon_or_gadget.get_groups())
+	_character_skin.change_weapon(weapon_or_gadget.get_id(), weapon_or_gadget.get_groups())
 	currently_held_weapon_or_gadget = weapon_or_gadget
 
 #function for adding the initial weapon loadout to the inventory.
@@ -216,7 +216,7 @@ func add_starting_loadout_to_inventory()-> void:
 		if current_ranged_weapon == null and weapon_scene.is_in_group("ranged"):
 			current_ranged_weapon = weapon_scene
 		
-		inventory.add_weapon(weapon_scene.name, weapon_scene)
+		inventory.add_weapon(weapon_scene.get_id(), weapon_scene)
 
 func assign_melee_and_ranged_weapons(weapon_scene: Node3D):
 	if weapon_scene.is_in_group("melee"):
@@ -241,8 +241,8 @@ func handle_quick_select(direction: String):
 		return
 
 	put_in_hand(currently_held_weapon_or_gadget)
-	emit_signal("weapon_changed", currently_held_weapon_or_gadget.name)
-	print("Switched weapon to:", currently_held_weapon_or_gadget.name)
+	emit_signal("weapon_changed", currently_held_weapon_or_gadget.get_id())
+	print("Switched weapon to:", currently_held_weapon_or_gadget.get_id())
 
 ## because the player has buttons for melee and ranged, we need to be able to determine which weapon should be used
 func switch_current_weapon_to_melee(melee: bool)-> void:

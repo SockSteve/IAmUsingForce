@@ -15,7 +15,7 @@ func enter(_msg := {}) -> void:
 	player._character_skin.grind()
 	path_follow_3d = PathFollow3D.new()
 	path_follow_3d.loop = false
-	path_3d = player.get_inventory().get_gadget("GrindBoots").current_grindrail
+	path_3d = player.get_inventory().get_gadget("grind_boots").current_grindrail
 	path_3d.add_child(path_follow_3d)
 	set_initial_progress(player.global_transform.origin)
 
@@ -28,7 +28,7 @@ func physics_update(delta: float) -> void:
 		return
 	
 	#update player progress
-	path_follow_3d.progress_ratio += (delta * player.get_inventory().get_gadget("GrindBoots").grind_speed_time_factor)/path_3d.curve.get_baked_length()
+	path_follow_3d.progress_ratio += (delta * player.get_inventory().get_gadget("grind_boots").grind_speed_time_factor)/path_3d.curve.get_baked_length()
 	
 	#move player through path_follow_3d
 	#we check for grindjump, because when jumping we update our y position, which would otherwise be resetted
@@ -38,7 +38,7 @@ func physics_update(delta: float) -> void:
 	player._rotation_root.global_basis = path_follow_3d.global_basis.rotated(Vector3(0,1,0),PI)
 	
 	if path_follow_3d.progress_ratio >= 1:
-		if player.get_inventory().get_gadget("GrindBoots").is_looping:
+		if player.get_inventory().get_gadget("grind_boots").is_looping:
 			path_follow_3d.progress_ratio = 0.0
 		else:
 			endGrind()
@@ -46,18 +46,18 @@ func physics_update(delta: float) -> void:
 	
 	#when we have a grindrails next to ours and detect them, we can jump to them 
 	if Input.is_action_just_pressed("jump") and not grind_rail_change:
-		if Input.is_action_pressed("move_left") and player.get_inventory().get_gadget("GrindBoots").get_side_rail_path3d("left") != null:
+		if Input.is_action_pressed("move_left") and player.get_inventory().get_gadget("grind_boots").get_side_rail_path3d("left") != null:
 			change_grindrail("left")
 			grind_rail_change = true
-		elif Input.is_action_pressed("move_right") and player.get_inventory().get_gadget("GrindBoots").get_side_rail_path3d("right") != null:
+		elif Input.is_action_pressed("move_right") and player.get_inventory().get_gadget("grind_boots").get_side_rail_path3d("right") != null:
 			change_grindrail("right")
 			grind_rail_change = true
 		#return
 	
 	if grind_rail_change:
 		var player_air_position = path_follow_3d.global_position
-		grind_jump_time += delta * player.get_inventory().get_gadget("GrindBoots").grind_curve_time_factor
-		var jump_y_pos: float =  player.get_inventory().get_gadget("GrindBoots").grind_jump_curve.sample(grind_jump_time)
+		grind_jump_time += delta * player.get_inventory().get_gadget("grind_boots").grind_curve_time_factor
+		var jump_y_pos: float =  player.get_inventory().get_gadget("grind_boots").grind_jump_curve.sample(grind_jump_time)
 		
 		#grind_jump_time += delta
 		player_air_position = player.global_position.lerp(path_follow_3d.global_position, grind_jump_time)
@@ -92,7 +92,7 @@ func endGrind():
 	grind_jump_time = 0.0
 	player._character_skin.end_grind()
 	path_follow_3d.queue_free()
-	player.get_inventory().get_gadget("GrindBoots").end_grind()
+	player.get_inventory().get_gadget("grind_boots").end_grind()
 	player.velocity.y = 0
 	state_machine.transition_to("Air", {do_jump = true})
 
@@ -100,7 +100,7 @@ func change_grindrail(dir):
 	player._character_skin.end_grind()
 	path_follow_3d.queue_free()
 	#print(path_3d == player.get_inventory().get_gadget("GrindBoots").get_side_rail_path3d(dir))
-	path_3d = player.get_inventory().get_gadget("GrindBoots").change_current_grindrail_to(dir)
+	path_3d = player.get_inventory().get_gadget("grind_boots").change_current_grindrail_to(dir)
 	#player.get_inventory().get_gadget("GrindBoots").clear_grindrail_exceptions()
 	player.can_grind=true
 	path_follow_3d = PathFollow3D.new()
@@ -113,8 +113,8 @@ func change_grindrail(dir):
 func jump(delta: float):
 	var player_air_position = path_follow_3d.global_position
 	#player.global_position = path_follow_3d.global_position
-	grind_jump_time += delta * player.get_inventory().get_gadget("GrindBoots").grind_curve_time_factor
-	var jump_y_pos: float =  player.get_inventory().get_gadget("GrindBoots").grind_jump_curve.sample(grind_jump_time)
+	grind_jump_time += delta * player.get_inventory().get_gadget("grind_boots").grind_curve_time_factor
+	var jump_y_pos: float =  player.get_inventory().get_gadget("grind_boots").grind_jump_curve.sample(grind_jump_time)
 	#player.global_position.y = path_follow_3d.global_position.y + jump_y_pos
 	player_air_position.y = path_follow_3d.global_position.y + jump_y_pos
 	player.global_position = player_air_position

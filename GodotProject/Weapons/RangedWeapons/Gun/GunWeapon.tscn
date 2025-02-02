@@ -1,0 +1,97 @@
+[gd_scene load_steps=13 format=3 uid="uid://cfru43w2xfbl2"]
+
+[ext_resource type="Script" uid="uid://37bqnfe5ka4p" path="res://Weapons/RangedWeapons/Gun/Gun.gd" id="1_mot61"]
+[ext_resource type="PackedScene" uid="uid://owsxbjhadsho" path="res://Weapons/RangedWeapons/Gun/GunBullet.tscn" id="2_68xc3"]
+[ext_resource type="Texture2D" uid="uid://bxmau8wxgs54s" path="res://Weapons/RangedWeapons/Gun/pistolUpgrade.png" id="3_mot61"]
+[ext_resource type="ArrayMesh" uid="uid://duvby03ebihuq" path="res://Weapons/RangedWeapons/Gun/pistol.obj" id="4_m5qbd"]
+[ext_resource type="Texture2D" uid="uid://c8lwivvpo8vqd" path="res://Weapons/RangedWeapons/Gun/pistol.png" id="5_jrnei"]
+[ext_resource type="AudioStream" uid="uid://bc2t56unn01o4" path="res://Assets/Kenney/kenney_impact-sounds/Audio/impactPlank_medium_001.ogg" id="5_yhwe8"]
+[ext_resource type="Script" uid="uid://bb8vc8pofle8t" path="res://Weapons/RangedWeapons/MuzzleFlash.gd" id="6_skels"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f1fn7"]
+angle_min = -95.3
+angle_max = 113.0
+direction = Vector3(-1, 0, 0)
+spread = 30.0
+initial_velocity_min = 0.5
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="Gradient" id="Gradient_w1pye"]
+offsets = PackedFloat32Array(0, 0.00657895, 0.0131579, 0.0263158, 0.0460526, 1)
+colors = PackedColorArray(1, 0.572549, 0, 1, 1, 0.567255, 0, 1, 0.835526, 0.835526, 0.835526, 1, 1, 0.560784, 0, 1, 0.878431, 0.709804, 0.14902, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vk5ha"]
+gradient = SubResource("Gradient_w1pye")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hvxaw"]
+transparency = 1
+albedo_texture = SubResource("GradientTexture2D_vk5ha")
+roughness = 0.0
+emission_enabled = true
+emission_energy_multiplier = 16.0
+emission_texture = SubResource("GradientTexture2D_vk5ha")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_03ioh"]
+lightmap_size_hint = Vector2i(2, 2)
+material = SubResource("StandardMaterial3D_hvxaw")
+size = Vector2(0.05, 0.05)
+
+[node name="Gun" type="Node3D" node_paths=PackedStringArray("attack_sfx") groups=["ranged"]]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0.138348, 0)
+script = ExtResource("1_mot61")
+attack_sfx = NodePath("AudioStreamPlayer3D")
+bullet = ExtResource("2_68xc3")
+upgrade_name = "KoiKoi"
+upgrade_icon = ExtResource("3_mot61")
+upgrade_weapon_mesh = ExtResource("4_m5qbd")
+base_damage = 25
+id = &"gun"
+_name = "Gun"
+description = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. "
+icon = ExtResource("5_jrnei")
+mesh = ExtResource("4_m5qbd")
+shop_price = 1000
+unlock_flags = Array[int]([1])
+
+[node name="BulletSpawn" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, -2.11758e-22, 0, 1, 8.35188e-23, 0, 8.35188e-23, 1, 0.00159025, 0.0119831, 0.0416966)
+
+[node name="WeaponMesh" type="MeshInstance3D" parent="."]
+mesh = ExtResource("4_m5qbd")
+
+[node name="FireRateTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(0.2, 0, 7.94093e-23, 0, 0.2, 1.67038e-23, 0, 1.67038e-23, 0.2, 0, 0, 0)
+stream = ExtResource("5_yhwe8")
+
+[node name="MuzzleFlash" type="Node3D" parent="." node_paths=PackedStringArray("weapon", "light", "emitter")]
+script = ExtResource("6_skels")
+weapon = NodePath("..")
+light = NodePath("OmniLight3D")
+emitter = NodePath("GPUParticles3D")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="MuzzleFlash"]
+transform = Transform3D(1, 0, 0, 0, 1, -8.3519e-23, 0, 8.3519e-23, 1, -4.70309e-10, 0.0107594, 0.118986)
+visible = false
+omni_attenuation = 0.420448
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="MuzzleFlash"]
+transform = Transform3D(0.2, 0, 7.94093e-23, 0, 0.2, 1.67038e-23, 0, 1.67038e-23, 0.2, -4.70309e-10, 0.0107594, 0.118986)
+emitting = false
+lifetime = 0.05
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_f1fn7")
+draw_pass_1 = SubResource("QuadMesh_03ioh")
+
+[connection signal="timeout" from="FireRateTimer" to="." method="_on_fire_rate_timer_timeout"]

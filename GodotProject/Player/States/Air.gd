@@ -61,14 +61,14 @@ func physics_update(delta: float) -> void:
 			state_machine.transition_to("Melee", {do_air_up_attack = true})
 			return
 	
-	if player.get_inventory().has_gadget("GrapplingHook") and Input.is_action_pressed("interact"):
-		player.get_inventory().get_gadget("GrapplingHook").activate()
+	if player.get_inventory().has_gadget("grappling_hook") and Input.is_action_pressed("interact"):
+		player.get_inventory().get_gadget("grappling_hook").activate()
 		if player.is_grappling:
 			jumped = false
 			state_machine.transition_to("Grapple")
 			return
 	
-	if player.get_inventory().has_gadget("GrindBoots"):
+	if player.get_inventory().has_gadget("grind_boots"):
 		if player.is_grinding:
 			jumped = false
 			state_machine.transition_to("Grind")

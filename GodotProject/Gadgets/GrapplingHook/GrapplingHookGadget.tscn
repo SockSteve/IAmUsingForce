@@ -1,0 +1,33 @@
+[gd_scene load_steps=8 format=3 uid="uid://cqhn455src0iq"]
+
+[ext_resource type="Script" uid="uid://dfpbkqti6bfpv" path="res://Gadgets/GrapplingHook/GrapplingHook.gd" id="1_udl8o"]
+[ext_resource type="Texture2D" uid="uid://bixl0hen54b4f" path="res://Gadgets/GrapplingHook/uzi.png" id="3_k28p7"]
+[ext_resource type="ArrayMesh" uid="uid://chh8tj3gh0oue" path="res://Gadgets/GrapplingHook/uzi.obj" id="4_e2e6t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dib0u"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_s4e47"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mscdr"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_n28p7"]
+material = SubResource("StandardMaterial3D_mscdr")
+
+[node name="GrapplingHook" type="Node3D" groups=["active", "gadget"]]
+script = ExtResource("1_udl8o")
+id = &"grappling_hook"
+_name = "Grappling Hook"
+description = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. "
+icon = ExtResource("3_k28p7")
+mesh = ExtResource("4_e2e6t")
+shop_price = 1000
+
+[node name="GadgetSkin" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_dib0u")
+mesh = SubResource("BoxMesh_s4e47")
+
+[node name="Rope" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_n28p7")

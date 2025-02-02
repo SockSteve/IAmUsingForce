@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0ofcf84vrio1"]
+
+[ext_resource type="Script" uid="uid://cfmfp5lswo2c8" path="res://Weapons/MeleeWeapons/Cutter/Cutter.gd" id="1_k703u"]
+[ext_resource type="PackedScene" uid="uid://bqp21jx4d4l2f" path="res://Weapons/MeleeWeapons/Cutter/CutterBullet.tscn" id="3_jdbmb"]
+[ext_resource type="Texture2D" uid="uid://bxtb3havpd1ie" path="res://Weapons/MeleeWeapons/Cutter/knife_sharpUpgrade.png" id="3_jplig"]
+[ext_resource type="Texture2D" uid="uid://c6l2ds7dsot3u" path="res://Weapons/MeleeWeapons/Cutter/knife_sharp.png" id="3_k703u"]
+[ext_resource type="ArrayMesh" uid="uid://da6sawgy2fspe" path="res://Weapons/MeleeWeapons/Cutter/knife_sharp.obj" id="4_0rf6n"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q72rh"]
+size = Vector3(0.25, 1.58729, 0.25)
+
+[node name="Cutter" type="Node3D" groups=["melee"]]
+script = ExtResource("1_k703u")
+bullet = ExtResource("3_jdbmb")
+upgrade_icon = ExtResource("3_jplig")
+upgrade_weapon_mesh = ExtResource("4_0rf6n")
+id = &"cutter"
+_name = "Cutter"
+description = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. "
+icon = ExtResource("3_k703u")
+mesh = ExtResource("4_0rf6n")
+shop_price = 1000
+
+[node name="WeaponSkin" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.822347, 0)
+mesh = ExtResource("4_0rf6n")
+
+[node name="HitboxArea" type="Area3D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="HitboxCollision" type="CollisionShape3D" parent="HitboxArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.793646, 0)
+shape = SubResource("BoxShape3D_q72rh")
+
+[node name="ParryTimer" type="Timer" parent="."]
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="HitboxArea" to="." method="_on_hitbox_area_body_entered"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

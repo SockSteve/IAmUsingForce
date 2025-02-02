@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbkjkmt28wace"]
+
+[ext_resource type="Script" uid="uid://rrtsotph50ge" path="res://Gadgets/HackingDevice/HackingDevice.gd" id="1_4ebrp"]
+[ext_resource type="Texture2D" uid="uid://b1405x0ur1u7c" path="res://Gadgets/HackingDevice/uziLongSilencer.png" id="2_7qc8n"]
+[ext_resource type="ArrayMesh" uid="uid://coa2tl6y4xe62" path="res://Gadgets/HackingDevice/uziGoldLongSilencer.obj" id="3_s4m17"]
+
+[node name="HackingDevice" type="Node3D" groups=["active", "gadget"]]
+script = ExtResource("1_4ebrp")
+id = &"hacking_device"
+_name = "Hacking Device"
+description = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. "
+icon = ExtResource("2_7qc8n")
+mesh = ExtResource("3_s4m17")
+shop_price = 1000

@@ -1,4 +1,5 @@
 extends Weapon
+class_name Gun
 
 @onready var mesh_instance : MeshInstance3D = $WeaponMesh
 @onready var fire_rate_timer: Timer = $FireRateTimer
@@ -6,25 +7,23 @@ extends Weapon
 
 var can_shoot: bool = true
 
-func set_weapon_stats(new_weapon_stats: WeaponStats):
-	weapon_stats = new_weapon_stats
 
 func _ready() -> void:
-	super._ready()
-	mesh_instance.mesh = weapon_stats.mesh
+	#super._ready()
+	mesh_instance.mesh = mesh
 
 func _process(delta)->void:
 	if can_shoot and Input.is_action_pressed("ranged_attack"):
 		attack()
 
 func attack() -> void:
-	if weapon_stats.current_ammo <= 0:
-		print("not enough ammo for %s" % weapon_stats.name)
+	if current_ammo <= 0:
+		print("not enough ammo for %s" % _name)
 		#TODO play empty sound
 		return
 	
 	attack_signal.emit()
-	weapon_stats.current_ammo -= 1
+	current_ammo -= 1
 	
 	attack_sfx.play()
 	var bullet = bullet.instantiate()

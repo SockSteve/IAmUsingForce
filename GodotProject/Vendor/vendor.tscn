@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://fbpbxpmuqx3g"]
+[gd_scene load_steps=12 format=3 uid="uid://fbpbxpmuqx3g"]
 
-[ext_resource type="Script" path="res://Vendor/vendor.gd" id="1_dycj1"]
+[ext_resource type="Script" uid="uid://dsbi3jjru81i1" path="res://Vendor/vendor.gd" id="1_dycj1"]
 [ext_resource type="PackedScene" uid="uid://bcj7lff1v3mff" path="res://Vendor/ShopMenu3D.tscn" id="2_j1xsu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_e4osp"]
@@ -13,6 +13,12 @@ size = Vector3(3, 3, 3)
 [sub_resource type="QuadMesh" id="QuadMesh_jh2oj"]
 resource_local_to_scene = true
 size = Vector2(3, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_46lq2"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jrqfx"]
+albedo_texture = SubResource("ViewportTexture_46lq2")
 
 [sub_resource type="Animation" id="Animation_bcwhf"]
 length = 0.001
@@ -47,8 +53,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wvifq"]
 _data = {
-"RESET": SubResource("Animation_bcwhf"),
-"open_shop": SubResource("Animation_e4wrl")
+&"RESET": SubResource("Animation_bcwhf"),
+&"open_shop": SubResource("Animation_e4wrl")
 }
 
 [node name="Vendor" type="Node3D"]
@@ -79,13 +85,17 @@ far = 100.0
 [node name="ShopMenu3D" parent="." instance=ExtResource("2_j1xsu")]
 transform = Transform3D(1.43405, 0, 0, 0, 1.24105, 0, 0, 0, 1, 2.8589, 0.898019, 0)
 
+[node name="AllAmmoBtn" parent="ShopMenu3D/SubViewport/Control/Background/ScrollContainer/ShopItemSelectionField" index="0"]
+icon = null
+
 [node name="MeshInstance3D" parent="ShopMenu3D" index="2"]
 mesh = SubResource("QuadMesh_jh2oj")
+surface_material_override/0 = SubResource("StandardMaterial3D_jrqfx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../ShopMenu3D")
 libraries = {
-"": SubResource("AnimationLibrary_wvifq")
+&"": SubResource("AnimationLibrary_wvifq")
 }
 
 [connection signal="costumer_left" from="." to="ShopMenu3D/ShopHandler" method="_on_vendor_costumer_left"]

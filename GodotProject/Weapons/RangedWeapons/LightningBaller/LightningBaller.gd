@@ -1,4 +1,5 @@
 extends Weapon
+class_name LightningBaller
 
 # Export variables allow you to set these in the editor
 @export var bullet_speed : float = 100.0
@@ -6,21 +7,21 @@ extends Weapon
 @onready var fire_rate_timer: Timer = $FireRateTimer
 
 var can_shoot = true
-func _ready() -> void:
-	super._ready()
+#func _ready() -> void:
+	#super._ready()
 
 func _process(delta):
 	if can_shoot and Input.is_action_pressed("ranged_attack"):
 		attack()
 
 func attack():
-	if weapon_stats.current_ammo <= 0:
-		print("not enough ammo for %s" % weapon_stats.name)
+	if current_ammo <= 0:
+		print("not enough ammo for %s" % _name)
 		#TODO play empty sound
 		return
 	
 	attack_signal.emit()
-	weapon_stats.current_ammo -= 1
+	current_ammo -= 1
 	
 	attack_sfx.play()
 	var bullet = bullet.instantiate()

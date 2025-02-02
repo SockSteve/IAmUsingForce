@@ -27,8 +27,8 @@ func update(delta: float) -> void:
 		if player.is_grinding:
 			state_machine.transition_to("Grind")
 		
-	if player.get_inventory().has_gadget("GrapplingHook") and Input.is_action_pressed("interact"):
-		player.get_inventory().get_gadget("GrapplingHook").activate()
+	if player.get_inventory().has_gadget("grappling_hook") and Input.is_action_pressed("interact"):
+		player.get_inventory().get_gadget("grappling_hook").activate()
 		if player.is_grappling:
 			state_machine.transition_to("Grapple")
 			return

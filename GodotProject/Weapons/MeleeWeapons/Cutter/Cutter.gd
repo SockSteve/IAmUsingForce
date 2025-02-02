@@ -1,9 +1,9 @@
 extends Weapon
+class_name Cutter
 
 @onready var hitbox = $HitboxArea
 @onready var attack_timer = $AttackTimer
 @onready var parry_timer = $ParryTimer
-
 
 func attack():
 	hitbox.monitoring = true

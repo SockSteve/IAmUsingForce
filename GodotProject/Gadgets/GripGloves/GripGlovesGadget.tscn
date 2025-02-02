@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://b11rpjewa7qy5"]
+
+[ext_resource type="Script" uid="uid://db4grpdglm6ti" path="res://Gadgets/GripGloves/GripGloves.gd" id="1_3af75"]
+
+[node name="GripGloves" type="Node3D" groups=["gadget", "passive"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+script = ExtResource("1_3af75")
+id = &"grip_gloves"
+_name = "Grip Gloves"
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 1, 0)
+collision_mask = 128
+
+[node name="ReleaseTimer" type="Timer" parent="." groups=["gadget", "passive"]]
+
+[connection signal="timeout" from="ReleaseTimer" to="." method="_on_release_timer_timeout"]

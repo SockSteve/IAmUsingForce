@@ -10,11 +10,11 @@ signal quick_select_panel_changed(index: int) ## is emitted when the qick select
 
 @export_range(0,1000000000) var money: int = 10000
 
-var weapons: Dictionary = {} ## key = weapon_name: String | value= weapon_instance_ref: Node
-var gadgets: Dictionary = {} ## key = gadget_name: String | value= gadget_instance_ref: Node
+var weapons: Dictionary = {} ## key = item_id: StringName | value= weapon_instance_ref: Node
+var gadgets: Dictionary = {} ## key = item_id: StringName | value= gadget_instance_ref: Node
 
 ## key = shortcut_panel_number: int | 
-## value= Dictionary -> {key = index: int | value = weapon_name: String}
+## value= Dictionary -> {key = index: int | value = weapon_id: String}
 var weapon_quick_select: Dictionary = {} 
 var current_quick_select_panel: int = 0 ## represense the current active shortcut panel. At the moment we have 2 quick_select panels the player can switch between.
 
@@ -39,17 +39,17 @@ func parameterize_weapon():
 	#initialize weapon with xp
 	pass
 
-func has_weapon(weapon_name: StringName)->bool:
-	return weapons.has(weapon_name)
+func has_weapon(weapon_id: StringName)->bool:
+	return weapons.has(weapon_id)
 
-func has_gadget(gadget_name: StringName)->bool:
-	return gadgets.has(gadget_name)
+func has_gadget(gadget_id: StringName)->bool:
+	return gadgets.has(gadget_id)
 
-func has_gadget_or_weapon(gadget_or_weapon_name: StringName)->bool:
-	return weapons.has(gadget_or_weapon_name) or gadgets.has(gadget_or_weapon_name)
+func has_gadget_or_weapon(gadget_or_weapon_id: StringName)->bool:
+	return weapons.has(gadget_or_weapon_id) or gadgets.has(gadget_or_weapon_id)
 
-func get_weapon(weapon_name: StringName)->Node:
-	return weapons.get(weapon_name)
+func get_weapon(weapon_id: StringName)->Node:
+	return weapons.get(weapon_id)
 
 func get_random_weapon(_can_get_same_weapon:bool=true)->Node:
 	#print(weapons.values())
@@ -102,7 +102,7 @@ func populate_quick_select_menu():
 	# Populate first panel
 	for i in range(8):
 		if index < num_weapons:
-			shortcuts_0[i] = shuffled_weapons[index].name
+			shortcuts_0[i] = shuffled_weapons[index].get_id()
 			index += 1
 		else:
 			shortcuts_0[i] = null
@@ -112,7 +112,7 @@ func populate_quick_select_menu():
 	index = 0
 	for i in range(8):
 		if index < num_weapons:
-			shortcuts_1[i] = shuffled_weapons[index].name
+			shortcuts_1[i] = shuffled_weapons[index].get_id()
 			index += 1
 		else:
 			shortcuts_1[i] = null
@@ -129,32 +129,32 @@ func change_quick_select_panel():
 	current_quick_select_panel = 1
 	emit_signal("quick_select_panel_changed", current_quick_select_panel)
 
-func get_quick_select_weapon_index(weapon_name: StringName):
-	return weapon_quick_select[current_quick_select_panel].find_key(weapon_name)
+func get_quick_select_weapon_index(weapon_id: StringName):
+	return weapon_quick_select[current_quick_select_panel].find_key(weapon_id)
 
-func get_gadget(gadget_name: StringName)->Node:
-	return gadgets.get(gadget_name)
+func get_gadget(gadget_id: StringName)->Node:
+	return gadgets.get(gadget_id)
 
-func get_weapon_or_gadget(gadget_or_weapon_name: StringName)-> Node:
-	var gadget: Node = gadgets.get(gadget_or_weapon_name)
+func get_weapon_or_gadget(gadget_or_weapon_id: StringName)-> Node:
+	var gadget: Node = gadgets.get(gadget_or_weapon_id)
 	if gadget != null: 
 		return gadget
-	return weapons.get(gadget_or_weapon_name)
+	return weapons.get(gadget_or_weapon_id)
 
 func get_all_weapons()->Array:
 	return weapons.values()
 
-func add_weapon_or_gadget(item_name: StringName,item_node: Node)->void:
+func add_weapon_or_gadget(item_id: StringName,item_node: Node)->void:
 	if item_node is Gadget:
-		add_gadget(item_name,item_node)
+		add_gadget(item_id,item_node)
 	else:
-		add_weapon(item_name,item_node)
+		add_weapon(item_id,item_node)
 
-func add_weapon(weapon_name: StringName,weapon_node: Node)->void:
-	weapons[weapon_name] = weapon_node
+func add_weapon(weapon_id: StringName,weapon_node: Node)->void:
+	weapons[weapon_id] = weapon_node
 
-func add_gadget(gadget_name: StringName,gadget_node: Node)->void:
-	gadgets[gadget_name] = gadget_node
+func add_gadget(gadget_id: StringName,gadget_node: Node)->void:
+	gadgets[gadget_id] = gadget_node
 	if gadget_node.is_in_group("passive"):
 		passive_gadgets.add_child(gadget_node)
 

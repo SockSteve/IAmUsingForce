@@ -1,0 +1,27 @@
+[gd_scene load_steps=6 format=3 uid="uid://bdaml07lkckcs"]
+
+[ext_resource type="Script" uid="uid://4n3jry2outtd" path="res://Weapons/RangedWeapons/PocketRocket/PocketRocket.gd" id="1_hjokh"]
+[ext_resource type="ArrayMesh" uid="uid://dfybra7cgbtfs" path="res://Weapons/RangedWeapons/PocketRocket/rocketlauncher.obj" id="3_4heyd"]
+[ext_resource type="PackedScene" uid="uid://cuc4p1cbkxwrn" path="res://Weapons/RangedWeapons/PocketRocket/PocketRocketBullet.tscn" id="3_7midi"]
+[ext_resource type="Texture2D" uid="uid://tstrvstjm4r" path="res://Weapons/RangedWeapons/PocketRocket/rocketlauncherUpgrade.png" id="3_op53q"]
+[ext_resource type="Texture2D" uid="uid://b7nu35vbl0xu8" path="res://Weapons/RangedWeapons/PocketRocket/rocketlauncher.png" id="5_ml0m5"]
+
+[node name="PocketRocket" type="Node3D" groups=["ranged"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_hjokh")
+weapon_type = 1
+bullet = ExtResource("3_7midi")
+upgrade_icon = ExtResource("3_op53q")
+upgrade_weapon_mesh = ExtResource("3_4heyd")
+id = &"pocket_rocket"
+_name = "Pocet Rocket"
+description = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. "
+icon = ExtResource("5_ml0m5")
+mesh = ExtResource("3_4heyd")
+shop_price = 5000
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("3_4heyd")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.56142)

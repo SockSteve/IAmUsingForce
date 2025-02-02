@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8btq3jmsx6b"]
+
+[ext_resource type="Script" uid="uid://dcyq1suk6r8xh" path="res://Weapons/MeleeWeapons/HiveKnive/HiveKnive.gd" id="1_7iu6v"]
+[ext_resource type="PackedScene" uid="uid://dwf4ru0wc1wx7" path="res://Weapons/MeleeWeapons/HiveKnive/HiveKniveBullet.tscn" id="3_643be"]
+[ext_resource type="Texture2D" uid="uid://58gj3m76qtx1" path="res://Weapons/MeleeWeapons/HiveKnive/knifeRound_sharp.png" id="3_eaidc"]
+[ext_resource type="ArrayMesh" uid="uid://cnxheamlmyjsy" path="res://Weapons/MeleeWeapons/HiveKnive/knifeRound_smooth.obj" id="3_mhpw2"]
+[ext_resource type="ArrayMesh" uid="uid://dycaomb0jepuc" path="res://Weapons/MeleeWeapons/HiveKnive/knifeRound_sharp.obj" id="4_8une4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q72rh"]
+size = Vector3(0.25, 1.40566, 0.25)
+
+[node name="HiveKnive" type="Node3D" groups=["melee"]]
+script = ExtResource("1_7iu6v")
+bullet = ExtResource("3_643be")
+id = &"hive_knive"
+_name = "Hive Knive"
+description = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. "
+icon = ExtResource("3_eaidc")
+mesh = ExtResource("4_8une4")
+shop_price = 2000
+
+[node name="WeaponSkin" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000695467, 0.686496, -0.000282407)
+mesh = ExtResource("3_mhpw2")
+
+[node name="HitboxArea" type="Area3D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="HitboxCollision" type="CollisionShape3D" parent="HitboxArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.702832, 0)
+shape = SubResource("BoxShape3D_q72rh")
+
+[node name="ParryTimer" type="Timer" parent="."]
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="HitboxArea" to="." method="_on_hitbox_area_body_entered"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

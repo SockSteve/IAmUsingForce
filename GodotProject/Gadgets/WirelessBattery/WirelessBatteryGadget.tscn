@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://crtl1ry21yynr"]
+
+[ext_resource type="Script" uid="uid://bkjl5qs14jcqv" path="res://Gadgets/WirelessBattery/WirelessBattery.gd" id="1_i6p2c"]
+[ext_resource type="Texture2D" uid="uid://dlbj6apsevs4e" path="res://Gadgets/WirelessBattery/ammo_rocket.png" id="2_c7rgh"]
+[ext_resource type="ArrayMesh" uid="uid://701xj700glwg" path="res://Gadgets/WirelessBattery/ammo_rocket.obj" id="3_tbe3b"]
+
+[node name="WirelessBattery" type="Node3D" groups=["gadget", "passive"]]
+script = ExtResource("1_i6p2c")
+id = &"wireless_battery"
+_name = "Wireless Battery"
+description = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. "
+icon = ExtResource("2_c7rgh")
+mesh = ExtResource("3_tbe3b")
+shop_price = 555

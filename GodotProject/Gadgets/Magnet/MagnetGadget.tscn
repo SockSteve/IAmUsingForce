@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dcqg4lt5matjd"]
+
+[ext_resource type="Script" uid="uid://k6ug3tbcflr3" path="res://Gadgets/Magnet/Magnet.gd" id="1_7n43l"]
+[ext_resource type="Texture2D" uid="uid://cmrhcfanuhkd2" path="res://Gadgets/Magnet/grenadeVintage.png" id="2_tnmlc"]
+[ext_resource type="ArrayMesh" uid="uid://cw3wlgl540eem" path="res://Gadgets/Magnet/grenade_vintage.obj" id="3_vigb8"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0qjsk"]
+
+[node name="Magnet" type="Node3D" groups=["gadget", "passive"]]
+script = ExtResource("1_7n43l")
+id = &"magnet"
+_name = "Magnet"
+description = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. "
+icon = ExtResource("2_tnmlc")
+mesh = ExtResource("3_vigb8")
+shop_price = 200
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+shape = SubResource("CylinderShape3D_0qjsk")

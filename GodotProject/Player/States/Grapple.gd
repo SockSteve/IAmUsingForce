@@ -8,7 +8,7 @@ var grappling_hook
 
 func enter(msg := {}) -> void:
 	player.putting_ranged_weapon_in_hand_enabled = false
-	grappling_hook = player.get_inventory().get_gadget("GrapplingHook")
+	grappling_hook = player.get_inventory().get_gadget("grappling_hook")
 	
 	player.switchToPhysicsBody()
 	grappling_hook.activate()

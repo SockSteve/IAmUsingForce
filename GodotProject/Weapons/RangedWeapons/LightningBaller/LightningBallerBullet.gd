@@ -13,7 +13,7 @@ var linear_velocity = Vector3.ZERO
 @onready var sfx_shock: AudioStreamPlayer3D = $SFXShock
 @onready var sfx_bounce: AudioStreamPlayer3D = $SFXBounce
 
-@onready var shock_scene = preload("res://Weapons/RangedWeapons/ShockStatus.tscn")  # Scene for the shock
+@onready var shock_scene = preload("res://Weapons/RangedWeapons/LightningBaller/ShockStatus.tscn")  # Scene for the shock
 @onready var shock_line_temp = preload("res://Shared/ElectricLine3D.tscn")
 
 var spawn_pos: Vector3 = Vector3.ZERO

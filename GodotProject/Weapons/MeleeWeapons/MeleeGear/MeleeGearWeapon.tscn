@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://e6g6ya01rpcg"]
+
+[ext_resource type="Script" uid="uid://drvb8xuimcli8" path="res://Weapons/MeleeWeapons/MeleeGear/MeleeGear.gd" id="1_2kj4h"]
+[ext_resource type="ArrayMesh" uid="uid://cfe2rylp8ix23" path="res://Weapons/MeleeWeapons/MeleeGear/grenadeSmoke.obj" id="3_dxsi4"]
+[ext_resource type="PackedScene" uid="uid://dssdcm68rsihr" path="res://Weapons/MeleeWeapons/MeleeGear/MeleeGearBullet.tscn" id="3_nq6br"]
+[ext_resource type="Texture2D" uid="uid://cwvsaip5htn1c" path="res://Weapons/MeleeWeapons/MeleeGear/grenadeFlash.png" id="3_ntlbx"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q72rh"]
+size = Vector3(0.35437, 0.394434, 0.25)
+
+[node name="MeleeGear" type="Node3D" groups=["melee"]]
+script = ExtResource("1_2kj4h")
+bullet = ExtResource("3_nq6br")
+id = &"melee_gear"
+_name = "Melee Gear"
+description = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. "
+icon = ExtResource("3_ntlbx")
+mesh = ExtResource("3_dxsi4")
+shop_price = 3000
+
+[node name="WeaponSkin" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0.00876509, 0)
+mesh = ExtResource("3_dxsi4")
+
+[node name="HitboxArea" type="Area3D" parent="."]
+monitoring = false
+monitorable = false
+
+[node name="HitboxCollision" type="CollisionShape3D" parent="HitboxArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00569654, 0.057688, 0)
+shape = SubResource("BoxShape3D_q72rh")
+
+[node name="ParryTimer" type="Timer" parent="."]
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="HitboxArea" to="." method="_on_hitbox_area_body_entered"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

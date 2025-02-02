@@ -1,4 +1,5 @@
 #this class only handles ui related stuff, like grabbing focus and handling inputs
+@tool
 extends Node3D
 
 # The size of the quad mesh itself.

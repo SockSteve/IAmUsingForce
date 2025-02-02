@@ -1,9 +1,4 @@
-extends Node3D
+extends Item3D
 class_name Gadget
 
-
-@export var gadget_stats: GadgetStats
-@export var _owner: Player
-
-func get_stats():
-	return gadget_stats
+enum GadgetType {ACTIVE, PASSIVE, POWER_UP}

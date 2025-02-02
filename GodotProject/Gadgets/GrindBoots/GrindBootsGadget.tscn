@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://cc6mfpfv1cnw7"]
+
+[ext_resource type="Script" uid="uid://bylsfscap1cmk" path="res://Gadgets/GrindBoots/GrindBoots.gd" id="1_jgs8f"]
+[ext_resource type="Curve" uid="uid://5fggr785a6bl" path="res://Gadgets/GrindBoots/GrindJumpCurve.tres" id="2_c8tfu"]
+[ext_resource type="Curve" uid="uid://oy4auoolki6p" path="res://Gadgets/GrindBoots/GrindrailChangeJumpCurve.tres" id="3_m6m5b"]
+[ext_resource type="Texture2D" uid="uid://dtfgqbvn8x5me" path="res://Gadgets/GrindBoots/ammo_sniper.png" id="4_c8tfu"]
+[ext_resource type="ArrayMesh" uid="uid://c041h27skwrug" path="res://Gadgets/GrindBoots/ammo_sniper.obj" id="5_m6m5b"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8pcjv"]
+height = 0.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1voed"]
+height = 3.0
+radius = 1.5
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_8e3ri"]
+height = 3.0
+radius = 1.5
+
+[node name="GrindBoots" type="Node3D" groups=["gadget", "passive"]]
+script = ExtResource("1_jgs8f")
+grind_jump_curve = ExtResource("2_c8tfu")
+grindrail_change_jump_curve = ExtResource("3_m6m5b")
+grind_curve_time_factor = 1.5
+grind_speed_time_factor = 20.0
+id = &"grind_boots"
+_name = "Grind Boots"
+description = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. "
+icon = ExtResource("4_c8tfu")
+mesh = ExtResource("5_m6m5b")
+shop_price = 1000
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="."]
+shape = SubResource("CylinderShape3D_8pcjv")
+max_results = 4
+collision_mask = 128
+
+[node name="GrindEndCooldown" type="Timer" parent="."]
+
+[node name="ShapeCast3DRight" type="ShapeCast3D" parent="."]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -1.48429, -0.767848, 0)
+enabled = false
+shape = SubResource("CylinderShape3D_1voed")
+max_results = 1
+collision_mask = 128
+
+[node name="ShapeCast3DLeft" type="ShapeCast3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 1.5653, -0.742876, 0)
+enabled = false
+shape = SubResource("CylinderShape3D_8e3ri")
+max_results = 1
+collision_mask = 128
+
+[connection signal="timeout" from="GrindEndCooldown" to="." method="_on_grind_end_cooldown_timeout"]
