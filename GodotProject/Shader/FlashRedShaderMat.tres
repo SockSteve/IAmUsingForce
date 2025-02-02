@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cgl25haeugq7r"]
+
+[ext_resource type="Shader" uid="uid://c4u7h8mbn8vfk" path="res://Shader/HitFlashRed.gdshader" id="1_adf6i"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_adf6i")
+shader_parameter/flash_color = Vector3(1, 0, 0)
+shader_parameter/flash_time = 100.0

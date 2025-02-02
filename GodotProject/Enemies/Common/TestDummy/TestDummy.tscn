@@ -6,6 +6,7 @@
 [ext_resource type="Animation" uid="uid://dqcr4kn0c6aov" path="res://Assets/Animation/DummyTestAnims/TestDummyIdle.res" id="4_si7n3"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_qqpfy"]
+resource_local_to_scene = true
 resource_name = "Ch36"
 _surfaces = [{
 "aabb": AABB(-0.889803, 0.00411255, -0.113948, 1.77961, 1.76505, 0.282219),
