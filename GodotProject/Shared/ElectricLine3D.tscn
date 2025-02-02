@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyvsoyovq86db"]
+
+[ext_resource type="Script" uid="uid://hi758wdtd7on" path="res://Shared/ElectricLine3D.gd" id="1_yf8s8"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_yf8s8"]
+
+[node name="ElectricLine3D" type="MeshInstance3D"]
+mesh = SubResource("QuadMesh_yf8s8")
+script = ExtResource("1_yf8s8")

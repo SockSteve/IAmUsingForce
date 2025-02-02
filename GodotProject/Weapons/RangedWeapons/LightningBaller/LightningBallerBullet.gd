@@ -13,8 +13,8 @@ var linear_velocity = Vector3.ZERO
 @onready var sfx_shock: AudioStreamPlayer3D = $SFXShock
 @onready var sfx_bounce: AudioStreamPlayer3D = $SFXBounce
 
-@onready var shock_line: MeshInstance3D = %ElectricArc
 @onready var shock_scene = preload("res://Weapons/RangedWeapons/ShockStatus.tscn")  # Scene for the shock
+@onready var shock_line_temp = preload("res://Shared/ElectricLine3D.tscn")
 
 var spawn_pos: Vector3 = Vector3.ZERO
 var direction: Vector3 = Vector3.ZERO
@@ -27,15 +27,6 @@ func _ready():
 func _physics_process(delta):
 	velocity = linear_velocity * delta
 	move_and_slide()
-
-	if shock_time < 0:
-		return
-	shock_time += delta
-	if shock_time > .33:
-		shock_line.visible = false
-	# Check collisions
-	#if get_slide_collision_count() > 0:
-		#handle_collision(get_slide_collision(0))
 
 func handle_collision(collision: KinematicCollision3D):
 	var collider = collision.collider
@@ -75,14 +66,9 @@ func _on_shock_area_area_entered(area: Area3D) -> void:
 
 
 func show_shock_line(enemy):
-	# Calculate the distance and direction to the enemy
-	var direction_to_enemy = (enemy.global_position - global_position).normalized()
-	var distance = global_position.distance_to(enemy.global_position)
-
-	# Position and scale the shock line (cylinder) to connect the bullet and enemy
-	shock_line.visible = true
-	shock_line.global_transform.origin = global_position + (direction_to_enemy * (distance / 2))
-	shock_line.scale = Vector3((distance / 2), (distance / 2), (distance / 2))  # Adjust the radius and height
-	shock_line.look_at(enemy.global_position,Vector3.UP,true)
-
-	shock_time = 0
+	var sl =shock_line_temp.instantiate() as ElectricLine3D
+	add_child(sl)
+	sl.object1 = self
+	sl.object2 = enemy
+	sl.fleeting = true
+	sl.alive_time = .6

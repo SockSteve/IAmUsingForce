@@ -1,15 +1,20 @@
 extends MeshInstance3D
+class_name  ElectricLine3D
 
-# Reference to the two moving objects
 @export var object1: Node3D
 @export var object2: Node3D
 
-# Thickness of the line
-@export var thickness: float = 5
+@export var thickness: float = 2
 
-# Create an ArrayMesh for the line
-var array_mesh = ArrayMesh.new()
+@export var fleeting: bool = true
+@export var alive_time: float = .5
+
+
+# ArrayMesh for the line
+var array_mesh = ArrayMesh.new() # 
 var material = ShaderMaterial.new()
+
+var up_time: float = 0.0
 
 func _ready():
 	# Set the mesh to the ArrayMesh
@@ -18,26 +23,24 @@ func _ready():
 	# Load or create your shader
 	var shader = preload("res://SpecialFX/ElectricArc/ElectricArcRotated.tres") # Replace with your shader path
 	material.shader = shader
-	
-	# Load the noise texture
-	#var noise_texture = preload("res://SpecialFX/ElectricArc/ElectricNoise.tres") # Replace with your noise texture path
-	#material.set_shader_parameter("noise_texture", noise_texture)
 	material_override = material
 
 func _process(delta):
-	# Clear the mesh and redraw the line every frame
+	if not object1 or not object2:
+		return
 	
+	if fleeting:
+		up_time += delta
+		if up_time >= alive_time:
+			queue_free()
+	
+	# Clear the mesh and redraw the line every frame
 	array_mesh.clear_surfaces()
 	
 	# Calculate the direction and perpendicular vector
-	var start = object1.global_position
-	var end = object2.global_position
-	var local_start = to_local(start)
-	var local_end = to_local(end)
-	position = local_start.lerp(local_end, 0.5)
-	#self.global_position = (start + end)/3
+	var start = to_local(object1.global_position)
+	var end = to_local(object2.global_position)
 	var direction = (end - start).normalized()
-	
 	var perpendicular = direction.cross(Vector3.FORWARD).normalized() * thickness
 	
 	# Define vertices for the quad strip (double-sided)
@@ -48,6 +51,7 @@ func _process(delta):
 		end + perpendicular
 	])
 	
+	# Define UVs for shaders to work
 	var uvs = PackedVector2Array([
 	Vector2(0, 0),
 	Vector2(1, 0),
@@ -55,7 +59,7 @@ func _process(delta):
 	Vector2(1, 1)
 	])
 	
-	# Define indices for the quad strip
+	# Define indices for the quad strip (two primitive triangles)
 	var indices = PackedInt32Array([0, 1, 2, 2, 1, 3])
 	
 	# Create a surface from the vertices and indices

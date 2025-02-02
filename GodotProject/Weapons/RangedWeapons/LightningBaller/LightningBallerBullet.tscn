@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://6vdsddthfh3f"]
+[gd_scene load_steps=9 format=3 uid="uid://6vdsddthfh3f"]
 
-[ext_resource type="Script" path="res://Weapons/RangedWeapons/LightningBaller/LightningBallerBullet.gd" id="1_hmp61"]
+[ext_resource type="Script" uid="uid://b73vfryrd7fng" path="res://Weapons/RangedWeapons/LightningBaller/LightningBallerBullet.gd" id="1_hmp61"]
 [ext_resource type="AudioStream" uid="uid://rr5pi6qk6peg" path="res://Assets/Kenney/kenney_impact-sounds/Audio/impactPunch_heavy_003.ogg" id="2_sdlj6"]
 [ext_resource type="AudioStream" uid="uid://dmtnup4ipebcg" path="res://Assets/Kenney/kenney_impact-sounds/Audio/impactWood_heavy_003.ogg" id="3_p3bp2"]
 [ext_resource type="AudioStream" uid="uid://dbr1af8bdygc4" path="res://Assets/Kenney/kenney_impact-sounds/Audio/impactGeneric_light_001.ogg" id="4_30pc1"]
-[ext_resource type="PackedScene" uid="uid://cvo4pacg0es5e" path="res://SpecialFX/ElectricArc/ElectricArc.tscn" id="5_rsbtm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5qn7r"]
 
@@ -28,6 +27,8 @@ speed = 500.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_5qn7r")
 
+[node name="Marker3D" type="Marker3D" parent="."]
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_62vgp")
 
@@ -47,9 +48,5 @@ stream = ExtResource("3_p3bp2")
 
 [node name="SFXBounce" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_30pc1")
-
-[node name="ElectricArc" parent="." instance=ExtResource("5_rsbtm")]
-unique_name_in_owner = true
-visible = false
 
 [connection signal="area_entered" from="ShockArea" to="." method="_on_shock_area_area_entered"]
