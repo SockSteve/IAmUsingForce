@@ -1,11 +1,26 @@
-[gd_scene load_steps=13 format=3 uid="uid://bcj7lff1v3mff"]
+[gd_scene load_steps=15 format=3 uid="uid://bcj7lff1v3mff"]
 
-[ext_resource type="Script" path="res://Vendor/ShopMenu3D.gd" id="1_1ttap"]
+[ext_resource type="Script" uid="uid://bs8r24tmkjjcs" path="res://Vendor/ShopMenu3D.gd" id="1_1ttap"]
 [ext_resource type="Texture2D" uid="uid://dmf404ftfexwl" path="res://Assets/Decals/DropShadow/Shadow.png" id="1_5i4m7"]
-[ext_resource type="Script" path="res://Vendor/ShopHandler.gd" id="2_72765"]
+[ext_resource type="Script" uid="uid://d18uvo3c3dpir" path="res://Vendor/ShopHandler.gd" id="2_72765"]
+[ext_resource type="Shader" uid="uid://dj511w4nxctb1" path="res://Shader/ShopBG.gdshader" id="3_8r2af"]
 [ext_resource type="Theme" uid="uid://dvspb4esei5oi" path="res://UI/UITheme_Base_ NoSkew.tres" id="5_a5rer"]
-[ext_resource type="Texture2D" uid="uid://csfd0u1wa3bkf" path="res://Assets/Kenney/Weapon Pack/Sprites/Silhouette/ammo_pistol.png" id="6_dy6un"]
-[ext_resource type="AudioStream" uid="uid://clkrok30dnbqo" path="res://Assets/Kenney/Sounds/tap-a.ogg" id="7_khdft"]
+[ext_resource type="Texture2D" uid="uid://c8lwivvpo8vqd" path="res://Weapons/RangedWeapons/Gun/pistol.png" id="6_dy6un"]
+[ext_resource type="AudioStream" uid="uid://d4gcil3ga3ccg" path="res://Assets/Kenney/Sounds/tap-a.ogg" id="7_khdft"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kpa8v"]
+shader = ExtResource("3_8r2af")
+shader_parameter/spin_rotation_speed = 2.0
+shader_parameter/move_speed = 7.0
+shader_parameter/offset = Vector2(0, 0)
+shader_parameter/colour_1 = Color(0.155682, 0.142232, 0.122229, 1)
+shader_parameter/colour_2 = Color(0.473608, 0.43527, 0.406802, 1)
+shader_parameter/colour_3 = Color(0.086, 0.137, 0.145, 1)
+shader_parameter/contrast = 3.5
+shader_parameter/lighting = 0.4
+shader_parameter/spin_amount = 0.25
+shader_parameter/pixel_filter = 740.0
+shader_parameter/is_rotating = false
 
 [sub_resource type="SystemFont" id="SystemFont_qjh1b"]
 hinting = 2
@@ -28,11 +43,11 @@ shadow_offset = Vector2(1, 1)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_60via"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_rlrhv"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rg7in"]
-albedo_texture = SubResource("ViewportTexture_60via")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8r2af"]
+albedo_texture = SubResource("ViewportTexture_rlrhv")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tmjdk"]
 size = Vector3(3, 2, 0.1)
@@ -61,6 +76,7 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 
 [node name="Background" type="Panel" parent="SubViewport/Control"]
+material = SubResource("ShaderMaterial_kpa8v")
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 1
 
@@ -384,7 +400,7 @@ stream = ExtResource("7_khdft")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_sqr5r")
-surface_material_override/0 = SubResource("StandardMaterial3D_rg7in")
+surface_material_override/0 = SubResource("StandardMaterial3D_8r2af")
 
 [node name="Area3D" type="Area3D" parent="MeshInstance3D"]
 input_capture_on_drag = true

@@ -53,6 +53,7 @@ upgrade_name = "KoiKoi"
 upgrade_icon = ExtResource("3_mot61")
 upgrade_weapon_mesh = ExtResource("4_m5qbd")
 base_damage = 25
+_bullet_speed = 1000.0
 id = &"gun"
 _name = "Gun"
 description = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. "

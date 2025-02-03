@@ -232,7 +232,7 @@ func _on_cancel_item_transaction_button_pressed():
 func _on_accept_ammo_transaction_button_pressed():
 	var money_to_be_payed: int = int(%AmmoAmountSlider.value) * current_item_to_be_bought.get_ammo_shop_price()
 	_costumer.get_inventory().remove_money(money_to_be_payed)
-	current_item_to_be_bought.current_ammunition += int(%AmmoAmountSlider.value)
+	current_item_to_be_bought.current_ammo += int(%AmmoAmountSlider.value)
 	%BuyAmmoPopup.visible = false
 	shop_hbox_menu.visible = true
 	update_shop()
@@ -247,9 +247,9 @@ func _on_cancel_ammo_transaction_button_pressed():
 var total_price: int = 0
 func _on_all_ammo_btn_pressed():
 	for weapon: Weapon in _costumer.get_inventory().get_all_weapons():
-		if weapon.current_ammunition != weapon.max_ammunition:
-			var bullet_diff = weapon.max_ammunition - weapon.current_ammunition
-			total_price += bullet_diff * weapon.bullet_price
+		if weapon.get_current_ammo() != weapon.get_max_ammo():
+			var bullet_diff = weapon.get_max_ammo() - weapon.get_current_ammo()
+			total_price += bullet_diff * weapon.get_ammo_shop_price()
 	if total_price == 0:
 		return
 	buy_all_ammo_popup.visible = true
@@ -260,7 +260,7 @@ func _on_all_ammo_btn_pressed():
 func _on_accept_all_ammon_transaction_button_pressed():
 	_costumer.get_inventory().remove_money(total_price)
 	for weapon: Weapon in _costumer.get_inventory().get_all_weapons():
-		weapon.current_ammunition = weapon.max_ammunition
+		weapon.current_ammo = weapon.get_max_ammo()
 	total_price = 0
 	update_shop()
 	buy_all_ammo_popup.visible = false
