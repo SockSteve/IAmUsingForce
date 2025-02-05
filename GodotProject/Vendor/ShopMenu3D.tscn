@@ -43,11 +43,11 @@ shadow_offset = Vector2(1, 1)
 resource_local_to_scene = true
 size = Vector2(3, 2)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_rlrhv"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_8r2af"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8r2af"]
-albedo_texture = SubResource("ViewportTexture_rlrhv")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kpa8v"]
+albedo_texture = SubResource("ViewportTexture_8r2af")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tmjdk"]
 size = Vector3(3, 2, 0.1)
@@ -400,7 +400,7 @@ stream = ExtResource("7_khdft")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("QuadMesh_sqr5r")
-surface_material_override/0 = SubResource("StandardMaterial3D_8r2af")
+surface_material_override/0 = SubResource("StandardMaterial3D_kpa8v")
 
 [node name="Area3D" type="Area3D" parent="MeshInstance3D"]
 input_capture_on_drag = true

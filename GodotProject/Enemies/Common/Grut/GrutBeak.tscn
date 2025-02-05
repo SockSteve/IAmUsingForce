@@ -45,17 +45,17 @@ size = Vector3(0.722717, 1.62064, 1.08203)
 [sub_resource type="BoxShape3D" id="BoxShape3D_hnic0"]
 size = Vector3(13.231, 2.91602, 13.154)
 
-[sub_resource type="Animation" id="Animation_5j1np"]
-resource_name = "idle"
-
-[sub_resource type="Animation" id="Animation_c8nyi"]
-resource_name = "walk"
-
 [sub_resource type="Animation" id="Animation_j1134"]
 resource_name = "attack"
 
 [sub_resource type="Animation" id="Animation_r068l"]
 resource_name = "death"
+
+[sub_resource type="Animation" id="Animation_5j1np"]
+resource_name = "idle"
+
+[sub_resource type="Animation" id="Animation_c8nyi"]
+resource_name = "walk"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_btdd5"]
 _data = {

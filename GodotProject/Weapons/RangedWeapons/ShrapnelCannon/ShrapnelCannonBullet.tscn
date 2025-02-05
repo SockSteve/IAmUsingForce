@@ -1,51 +1,57 @@
-[gd_scene load_steps=6 format=3 uid="uid://beq13f8xapqh5"]
+[gd_scene load_steps=7 format=3 uid="uid://beq13f8xapqh5"]
 
-[ext_resource type="Script" path="res://Weapons/RangedWeapons/ShrapnelCannon/ShrapnelCannonBullet.gd" id="1_nb3d7"]
+[ext_resource type="Script" uid="uid://4l665770b6ud" path="res://Weapons/RangedWeapons/ShrapnelCannon/ShrapnelCannonBullet.gd" id="1_nb3d7"]
+[ext_resource type="Texture2D" uid="uid://duyu7uyovxqia" path="res://addons/kenney_particle_pack/magic_05.png" id="2_24k0j"]
+[ext_resource type="PackedScene" uid="uid://b0i3f2a76pxek" path="res://SpecialFX/Explosions/vfx_explosion_1.tscn" id="3_pangp"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_41288"]
-direction = Vector3(0, 0, 1)
-spread = 40.0
-flatness = 0.22
-initial_velocity_min = 30.0
-initial_velocity_max = 60.0
+angle_min = 1.07288e-05
+angle_max = 360.0
+direction = Vector3(0, 0, 0)
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.3
+scale_max = 0.5
+color = Color(2.21569, 1, 0.333333, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lw0is"]
-albedo_color = Color(6.08235, 4.18431, 0, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pangp"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_24k0j")
+disable_receive_shadows = true
 billboard_mode = 3
+billboard_keep_scale = true
 particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="QuadMesh" id="QuadMesh_sshkd"]
-material = SubResource("StandardMaterial3D_lw0is")
-size = Vector2(0.1, 0.3)
+[sub_resource type="QuadMesh" id="QuadMesh_jcrjn"]
+material = SubResource("StandardMaterial3D_pangp")
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_y2gu6"]
-size = Vector3(4.54739, 8.31244, 2.68079)
-
-[node name="ShrapnelCannonBullet" type="Node3D"]
+[node name="ShrapnelCannonBullet" type="RayCast3D"]
+top_level = true
+target_position = Vector3(0, 0, -1)
+collision_mask = 10
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(1, 0, 0, 1)
 script = ExtResource("1_nb3d7")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-emitting = false
-amount = 26
-lifetime = 0.25
-one_shot = true
-speed_scale = 2.0
-explosiveness = 1.0
-randomness = 0.39
+amount = 6
+speed_scale = 5.0
 visibility_aabb = AABB(-0.599575, -0.556929, -0.432573, 1.19915, 1.11386, 0.865146)
 process_material = SubResource("ParticleProcessMaterial_41288")
-draw_pass_1 = SubResource("QuadMesh_sshkd")
+draw_pass_1 = SubResource("QuadMesh_jcrjn")
 
-[node name="Area3D" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.92096)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.0890045, 0.634216, -3.59065)
-shape = SubResource("BoxShape3D_y2gu6")
+[node name="VFXExplosion" parent="." instance=ExtResource("3_pangp")]
 
 [node name="ImpactSfx" type="AudioStreamPlayer3D" parent="."]
 
 [connection signal="finished" from="GPUParticles3D" to="." method="_on_gpu_particles_3d_finished"]
-[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+
+[editable path="VFXExplosion"]

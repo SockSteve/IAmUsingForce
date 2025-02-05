@@ -1,16 +1,23 @@
-[gd_scene load_steps=6 format=3 uid="uid://en34ra3hel6l"]
+[gd_scene load_steps=8 format=3 uid="uid://en34ra3hel6l"]
 
 [ext_resource type="Script" uid="uid://c4b6mpkexsok6" path="res://Weapons/RangedWeapons/ShrapnelCannon/ShrapnelCannon.gd" id="1_ng84a"]
+[ext_resource type="Texture2D" uid="uid://bn2rnrfpt4vye" path="res://Weapons/RangedWeapons/ShrapnelCannon/shotgunShortUpgrade.png" id="3_6nsa4"]
 [ext_resource type="Texture2D" uid="uid://cqmkikw58pg58" path="res://Weapons/RangedWeapons/ShrapnelCannon/shotgunShort.png" id="3_x8fg2"]
 [ext_resource type="PackedScene" uid="uid://beq13f8xapqh5" path="res://Weapons/RangedWeapons/ShrapnelCannon/ShrapnelCannonBullet.tscn" id="3_y5qe3"]
 [ext_resource type="ArrayMesh" uid="uid://vs333uux577n" path="res://Weapons/RangedWeapons/ShrapnelCannon/shotgunShort.obj" id="4_2ocds"]
+[ext_resource type="ArrayMesh" uid="uid://bblqc48x11ryv" path="res://Weapons/RangedWeapons/ShrapnelCannon/shotgun.obj" id="4_qk0gv"]
 [ext_resource type="AudioStream" uid="uid://cqnw8xu8jl8rj" path="res://Assets/Kenney/kenney_impact-sounds/Audio/impactGeneric_light_003.ogg" id="5_0m5d1"]
 
-[node name="ShrapnelCannon" type="Node3D" groups=["ranged"]]
-transform = Transform3D(1, 0, 0, 0, -0.0554904, 0.998459, 0, -0.998459, -0.0554904, 0, 0, 0)
+[node name="ShrapnelCannon" type="Node3D" node_paths=PackedStringArray("bullet_spawn") groups=["ranged"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_ng84a")
 weapon_type = 1
 bullet = ExtResource("3_y5qe3")
+bullet_spawn = NodePath("BulletSpawn")
+upgrade_icon = ExtResource("3_6nsa4")
+upgrade_weapon_mesh = ExtResource("4_qk0gv")
+_bullet_speed = 5.0
+_fire_rate = 1.0
 id = &"shrapnel_cannon"
 _name = "Sharapnel Cannon"
 description = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. "
@@ -22,7 +29,7 @@ shop_price = 1500
 mesh = ExtResource("4_2ocds")
 
 [node name="BulletSpawn" type="Marker3D" parent="."]
-transform = Transform3D(0.999802, 0.0198474, 0.00110304, -0.0198474, 0.999803, -1.09486e-05, -0.00110304, -1.09486e-05, 0.999999, 0, 0.0730748, 0.40186)
+transform = Transform3D(0.999802, 0.0198474, 0.00110304, -0.0198474, 0.999803, -1.09486e-05, -0.00110304, -1.09486e-05, 0.999999, 0, 0.0730748, 0.493736)
 
 [node name="ShootSfx" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("5_0m5d1")

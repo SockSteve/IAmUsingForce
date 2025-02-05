@@ -53,6 +53,10 @@ folder_colors={
 "res://Weapons/": "red"
 }
 
+[global_group]
+
+damageable="Everything that can be damaged should be a damageable"
+
 [input]
 
 move_left={

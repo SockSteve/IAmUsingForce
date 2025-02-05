@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://ckkun5xjhksvs"]
 
-[ext_resource type="Script" path="res://Enemies/Common/movingSmallEnemyMelee/sm_testenemy.gd" id="1_gmdm7"]
+[ext_resource type="Script" uid="uid://5mtnydnvi2yg" path="res://Enemies/Common/movingSmallEnemyMelee/sm_testenemy.gd" id="1_gmdm7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e6mnk"]
 albedo_color = Color(0, 0, 0.996078, 1)
@@ -269,9 +269,9 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_35yqk"]
 _data = {
-"RESET": SubResource("Animation_25sqb"),
-"attack": SubResource("Animation_pxc0h"),
-"idle": SubResource("Animation_wlabe")
+&"RESET": SubResource("Animation_25sqb"),
+&"attack": SubResource("Animation_pxc0h"),
+&"idle": SubResource("Animation_wlabe")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rp8pa"]
@@ -310,7 +310,7 @@ shape = SubResource("BoxShape3D_ggrtg")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_35yqk")
+&"": SubResource("AnimationLibrary_35yqk")
 }
 autoplay = "idle"
 

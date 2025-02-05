@@ -9,6 +9,7 @@ var linear_velocity = Vector3.ZERO
 @onready var bullet_collision: CollisionShape3D = $BulletCollision
 @onready var bullet_mesh: MeshInstance3D = $BulletMesh
 @onready var enemy_detection_area: Area3D = $EnemyDetectionArea
+@onready var hit_box: Area3D = $HitBox
 
 #@spawn_pos is set from parent
 var spawn_pos: Vector3 = Vector3.ZERO
@@ -50,6 +51,7 @@ func _on_hit_box_area_entered(area: Area3D) -> void:
 	damage.source = _owner
 	damage.instigator = _owner._owner
 	target.apply_damage.emit(damage)
+	hit_box.disable_mode = CollisionObject3D.DISABLE_MODE_REMOVE
 	on_hit()
 
 

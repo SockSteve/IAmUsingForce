@@ -5070,7 +5070,7 @@ stopping_speed = 9.0
 crouch_acceleration = 3.0
 slide_strength_curve = ExtResource("2_w6n6n")
 slide_strength_curve_time_factor = 3
-starting_loadout = PackedStringArray("res://Weapons/RangedWeapons/Gun/GunWeapon.tscn", "res://Weapons/RangedWeapons/BadPrank/BadPrankWeapon.tscn", "res://Weapons/RangedWeapons/LightningBaller/LightningBallerWeapon.tscn", "res://Weapons/MeleeWeapons/Cutter/CutterWeapon.tscn", "res://Weapons/MeleeWeapons/WavePounder/WavePounderWeapon.tscn", "res://Weapons/MeleeWeapons/MeleeGear/MeleeGearWeapon.tscn")
+starting_loadout = PackedStringArray("res://Weapons/RangedWeapons/Gun/GunWeapon.tscn", "res://Weapons/RangedWeapons/BadPrank/BadPrankWeapon.tscn", "res://Weapons/RangedWeapons/LightningBaller/LightningBallerWeapon.tscn", "res://Weapons/MeleeWeapons/Cutter/CutterWeapon.tscn", "res://Weapons/MeleeWeapons/WavePounder/WavePounderWeapon.tscn", "res://Weapons/MeleeWeapons/MeleeGear/MeleeGearWeapon.tscn", "res://Weapons/RangedWeapons/ShrapnelCannon/ShrapnelCannonWeapon.tscn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)

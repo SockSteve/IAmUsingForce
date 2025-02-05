@@ -1,19 +1,45 @@
-extends Node3D
+extends RayCast3D
 
+@onready var vfx_explosion: VFXExplosion = $VFXExplosion
+@onready var gpu_particles_3d: GPUParticles3D = $GPUParticles3D
 
+var _owner: Weapon
 var linear_velocity = Vector3.ZERO
+var pellet_hit: bool = false
 
-func _process(delta):
+func _ready() -> void:
+	vfx_explosion.explosion_finished.connect(kill_self)
+
+func _physics_process(delta):
 	# Move the bullet
 	translate(linear_velocity * delta)
+	if collide_with_areas:
+		if get_collider() == null:
+			return
+		hit(get_collider())
 
-func shoot():
-	$GPUParticles3D.emitting = true
+func hit(collision_object: Area3D):
+	#explosion_finished
+	pellet_hit = true
+	vfx_explosion.emit_explosion()
+	if collision_object.is_in_group('damageable'):
+		if _owner.enemies_hit.has(collision_object.get_parent()):
+			pass
+		apply_damage(collision_object.get_parent())
+	
+func apply_damage(target):
+	var damage: Damage = Damage.new()
+	damage.value = 25
+	damage.source = _owner
+	damage.instigator = _owner.get_owner_ref()
+	target.apply_damage.emit(damage)
 
+func kill_self():
+	#queue_free()
+	pass
 
 func _on_gpu_particles_3d_finished():
-	queue_free()
-
-
-func _on_area_3d_body_entered(body):
-	print(body)
+	if pellet_hit:
+		gpu_particles_3d.visible = false
+		return
+	#queue_free()

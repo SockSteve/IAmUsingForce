@@ -678,7 +678,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.774955, 0)
 visible = false
 shape = SubResource("CapsuleShape3D_iy2su")
 
-[node name="Hurtbox" type="Area3D" parent="." groups=["enemy", "hurtbox"]]
+[node name="Hurtbox" type="Area3D" parent="." groups=["damageable", "enemy", "hurtbox"]]
 visible = false
 collision_layer = 2
 collision_mask = 257
