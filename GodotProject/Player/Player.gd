@@ -221,10 +221,10 @@ func add_starting_loadout_to_inventory()-> void:
 func assign_melee_and_ranged_weapons(weapon_scene: Node3D):
 	if weapon_scene.is_in_group("melee"):
 		current_melee_weapon = weapon_scene
-		weapon_scene._owner = self
+		weapon_scene.owner_ref = self
 	if  weapon_scene.is_in_group("ranged"):
 		current_ranged_weapon = weapon_scene
-		weapon_scene._owner = self
+		weapon_scene.owner_ref = self
 
 func handle_quick_select(direction: String):
 	var shortcut_array: Array = inventory.get_weapons_array_from_quick_select_dir(direction)

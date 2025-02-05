@@ -52,7 +52,6 @@ const MAX_LEVEL = 14
 @export var _max_combo_step: int = 1
 
 var can_attack: bool = true
-var _owner: Player
 
 func _on_upgraded(new_value: bool):
 	upgraded = new_value

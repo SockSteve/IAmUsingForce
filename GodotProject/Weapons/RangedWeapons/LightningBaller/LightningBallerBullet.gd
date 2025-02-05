@@ -61,7 +61,7 @@ func _on_shock_area_area_entered(area: Area3D) -> void:
 	var damage: Damage = Damage.new()
 	damage.value = 25
 	damage.source = _owner
-	damage.instigator = _owner._owner
+	damage.instigator = _owner.get_owner_ref()
 	target.apply_damage.emit(damage)
 
 

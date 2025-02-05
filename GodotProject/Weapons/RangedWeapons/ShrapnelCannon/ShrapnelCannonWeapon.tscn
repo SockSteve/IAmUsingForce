@@ -11,12 +11,13 @@
 [node name="ShrapnelCannon" type="Node3D" node_paths=PackedStringArray("bullet_spawn") groups=["ranged"]]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_ng84a")
+spread_angle = 3.0
 weapon_type = 1
 bullet = ExtResource("3_y5qe3")
 bullet_spawn = NodePath("BulletSpawn")
 upgrade_icon = ExtResource("3_6nsa4")
 upgrade_weapon_mesh = ExtResource("4_qk0gv")
-_bullet_speed = 5.0
+_bullet_speed = 50.0
 _fire_rate = 1.0
 id = &"shrapnel_cannon"
 _name = "Sharapnel Cannon"

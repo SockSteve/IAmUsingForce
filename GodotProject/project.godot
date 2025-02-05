@@ -50,6 +50,7 @@ enabled=PackedStringArray("res://addons/ridiculous_coding/plugin.cfg", "res://ad
 
 folder_colors={
 "res://Gadgets/": "gray",
+"res://Sandbox/": "yellow",
 "res://Weapons/": "red"
 }
 

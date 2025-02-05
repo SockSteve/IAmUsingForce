@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://beq13f8xapqh5"]
+[gd_scene load_steps=8 format=3 uid="uid://beq13f8xapqh5"]
 
 [ext_resource type="Script" uid="uid://4l665770b6ud" path="res://Weapons/RangedWeapons/ShrapnelCannon/ShrapnelCannonBullet.gd" id="1_nb3d7"]
 [ext_resource type="Texture2D" uid="uid://duyu7uyovxqia" path="res://addons/kenney_particle_pack/magic_05.png" id="2_24k0j"]
 [ext_resource type="PackedScene" uid="uid://b0i3f2a76pxek" path="res://SpecialFX/Explosions/vfx_explosion_1.tscn" id="3_pangp"]
+[ext_resource type="AudioStream" uid="uid://d3trcm8sqqvpf" path="res://Assets/Kenney/kenney_rpg-audio/Audio/doorClose_3.ogg" id="4_jcrjn"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_41288"]
 angle_min = 1.07288e-05
@@ -42,7 +43,8 @@ debug_shape_custom_color = Color(1, 0, 0, 1)
 script = ExtResource("1_nb3d7")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-amount = 6
+amount = 2
+lifetime = 0.1
 speed_scale = 5.0
 visibility_aabb = AABB(-0.599575, -0.556929, -0.432573, 1.19915, 1.11386, 0.865146)
 process_material = SubResource("ParticleProcessMaterial_41288")
@@ -51,6 +53,9 @@ draw_pass_1 = SubResource("QuadMesh_jcrjn")
 [node name="VFXExplosion" parent="." instance=ExtResource("3_pangp")]
 
 [node name="ImpactSfx" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_jcrjn")
+
+[node name="ExplosionSFX" type="AudioStreamPlayer3D" parent="."]
 
 [connection signal="finished" from="GPUParticles3D" to="." method="_on_gpu_particles_3d_finished"]
 

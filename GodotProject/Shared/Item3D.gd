@@ -38,5 +38,5 @@ func get_shop_price()->int:
 func get_unlock_flags()-> Array[Globals.GAME_FLAGS]:
 	return unlock_flags
 
-func get_owner_ref()->Node3D:
+func get_owner_ref()->Player:
 	return owner_ref

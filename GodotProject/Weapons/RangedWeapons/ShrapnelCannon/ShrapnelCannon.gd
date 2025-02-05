@@ -18,14 +18,22 @@ func _process(_delta):
 
 
 func shoot():
+	if current_ammo <= 0:
+		print("not enough ammo for %s" % get_owner_ref())
+		#TODO play empty sound
+		return
+	
+	attack_signal.emit()
+	current_ammo -= 1
+	
 	for i in range(pellet_amnt):
 		var pellet_direction = get_pellet_direction()
 		var bullet_inst = bullet.instantiate()
+		bullet_spawn.add_child(bullet_inst)
 		bullet_inst.target_position = -pellet_direction
 		bullet_inst.global_transform.origin = bullet_spawn.global_transform.origin
 		bullet_inst.linear_velocity = -pellet_direction * _bullet_speed
 		bullet_inst._owner = self
-		bullet_spawn.add_child(bullet_inst)
 	#add child to character out of rotational root detached from any player transform
 	#get_tree().root.add_child(bullet)
 
