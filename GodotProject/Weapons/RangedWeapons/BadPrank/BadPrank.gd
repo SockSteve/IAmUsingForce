@@ -4,6 +4,7 @@ class_name BadPrank
 # Export variables allow you to set these in the editor
 @export var bullet_speed : float = 100.0
 @export var fire_rate : float = 0.25
+@onready var grenade_launcher: GrenadeLauncher = $BulletSpawnMarker3D/GrenadeLauncher
 
 var can_shoot = true
 

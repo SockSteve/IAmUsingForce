@@ -1,9 +1,9 @@
 [gd_scene load_steps=12 format=3 uid="uid://e7p4xvo51lbl"]
 
-[ext_resource type="Material" uid="uid://b68u2dl4qlooi" path="res://Player/ExplosionVisuals/materials/shell_mat.tres" id="2_0w2wd"]
-[ext_resource type="Material" uid="uid://8qp4bf0yp6ry" path="res://Player/ExplosionVisuals/materials/blast_mat.tres" id="3_buqr0"]
-[ext_resource type="ArrayMesh" uid="uid://bw14c1iaac2sq" path="res://Player/ExplosionVisuals/objects/disk.obj" id="4_5ir1b"]
-[ext_resource type="Material" uid="uid://ben1qjmc14yjq" path="res://Player/ExplosionVisuals/materials/particles_mat.tres" id="5_id1fu"]
+[ext_resource type="Material" uid="uid://b68u2dl4qlooi" path="res://Sandbox/steel/ExplosionVisuals/materials/shell_mat.tres" id="2_0w2wd"]
+[ext_resource type="Material" uid="uid://8qp4bf0yp6ry" path="res://Sandbox/steel/ExplosionVisuals/materials/blast_mat.tres" id="3_buqr0"]
+[ext_resource type="ArrayMesh" uid="uid://bw14c1iaac2sq" path="res://Sandbox/steel/ExplosionVisuals/objects/disk.obj" id="4_5ir1b"]
+[ext_resource type="Material" uid="uid://ben1qjmc14yjq" path="res://Sandbox/steel/ExplosionVisuals/materials/particles_mat.tres" id="5_id1fu"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_vfl0d"]
 radial_segments = 32
@@ -294,8 +294,8 @@ tracks/10/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ystop"]
 _data = {
-"RESET": SubResource("Animation_lg5hv"),
-"explosion": SubResource("Animation_8xfee")
+&"RESET": SubResource("Animation_lg5hv"),
+&"explosion": SubResource("Animation_8xfee")
 }
 
 [node name="Explosion" type="Node3D"]
@@ -324,7 +324,7 @@ process_material = SubResource("ParticleProcessMaterial_3yxx8")
 draw_pass_1 = SubResource("RibbonTrailMesh_cl4kc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "explosion"
 libraries = {
-"": SubResource("AnimationLibrary_ystop")
+&"": SubResource("AnimationLibrary_ystop")
 }
+autoplay = "explosion"

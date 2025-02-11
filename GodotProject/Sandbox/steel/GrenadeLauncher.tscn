@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b2ew46dlu7u7x"]
 
-[ext_resource type="Script" path="res://Sandbox/steel/GrenadeLauncher.gd" id="1_n50mh"]
+[ext_resource type="Script" uid="uid://cb3jyoifutqwj" path="res://Sandbox/steel/GrenadeLauncher.gd" id="1_n50mh"]
 [ext_resource type="Material" uid="uid://dus6jtbfyqwj8" path="res://Sandbox/steel/GrenadeVisuals/aim_material.tres" id="2_qr0pg"]
 [ext_resource type="Material" uid="uid://b6h7p7jogt6ep" path="res://Sandbox/steel/GrenadeVisuals/trajectory_material.tres" id="3_s7dm5"]
 

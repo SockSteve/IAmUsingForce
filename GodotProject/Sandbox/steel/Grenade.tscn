@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bq562nfq7puh"]
 
-[ext_resource type="Script" path="res://Sandbox/steel/Grenade.gd" id="1_ak024"]
+[ext_resource type="Script" uid="uid://be821mreqb3jb" path="res://Sandbox/steel/Grenade.gd" id="1_ak024"]
 [ext_resource type="PackedScene" uid="uid://d3765dge2xh0" path="res://Sandbox/steel/GrenadeVisuals/grenade/grenade.tscn" id="2_6f7t1"]
 [ext_resource type="AudioStream" uid="uid://btiucv14pfcwc" path="res://Assets/Kenney/kenney_impact-sounds/Audio/impactGeneric_light_002.ogg" id="3_q2utn"]
 

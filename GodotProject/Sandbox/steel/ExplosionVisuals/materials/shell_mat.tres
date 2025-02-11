@@ -1,23 +1,19 @@
 [gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://b68u2dl4qlooi"]
 
-[ext_resource type="Shader" path="res://Player/ExplosionVisuals/shaders/shell_shader.gdshader" id="1_lk055"]
+[ext_resource type="Shader" uid="uid://qshum1qhh6bc" path="res://Sandbox/steel/ExplosionVisuals/shaders/shell_shader.gdshader" id="1_g72y7"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_4kwk8"]
-noise_type = 2
-seed = 2
-fractal_type = 0
-fractal_octaves = 1
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_g72y7"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q4shp"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5x4dr"]
 seamless = true
-noise = SubResource("FastNoiseLite_4kwk8")
+noise = SubResource("FastNoiseLite_g72y7")
 
 [resource]
 resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("1_lk055")
+shader = ExtResource("1_g72y7")
 shader_parameter/intensity = 1.0
 shader_parameter/shell_color = Color(0.972549, 0.521569, 0, 1)
+shader_parameter/voronoi_sampler = SubResource("NoiseTexture2D_5x4dr")
 shader_parameter/edge = 0.05
 shader_parameter/progress = 0.0
-shader_parameter/voronoi_sampler = SubResource("NoiseTexture2D_q4shp")

@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dq5hm0lbnsqq"]
+[gd_scene load_steps=6 format=3 uid="uid://dq5hm0lbnsqq"]
 
 [ext_resource type="Script" uid="uid://bvi66w75yygpw" path="res://Weapons/RangedWeapons/BadPrank/BadPrank.gd" id="1_nk07d"]
 [ext_resource type="PackedScene" uid="uid://bpfwxaialqgsh" path="res://Weapons/RangedWeapons/BadPrank/BadPrankBullet.tscn" id="2_1kdye"]
 [ext_resource type="Texture2D" uid="uid://ucm8w8b0rlgy" path="res://Weapons/RangedWeapons/BadPrank/flamethrower.png" id="3_s10i3"]
 [ext_resource type="ArrayMesh" uid="uid://cuwwca0vptape" path="res://Weapons/RangedWeapons/BadPrank/flamethrowerHandle.obj" id="4_t7v1b"]
+[ext_resource type="PackedScene" uid="uid://b2ew46dlu7u7x" path="res://Sandbox/steel/GrenadeLauncher.tscn" id="5_fap4l"]
 
 [node name="BadPrank" type="Node3D" node_paths=PackedStringArray("bullet_spawn") groups=["ranged"]]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_nk07d")
 bullet = ExtResource("2_1kdye")
 bullet_spawn = NodePath("BulletSpawnMarker3D")
@@ -17,8 +19,9 @@ mesh = ExtResource("4_t7v1b")
 shop_price = 1200
 
 [node name="GunMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0, 0)
 mesh = ExtResource("4_t7v1b")
 
 [node name="BulletSpawnMarker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0447532, 0.124567)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0447532, 0.424115)
+
+[node name="GrenadeLauncher" parent="BulletSpawnMarker3D" instance=ExtResource("5_fap4l")]
