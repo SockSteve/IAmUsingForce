@@ -19,7 +19,7 @@ signal weapon_changed(weapon_id)
 @export var crouch_acceleration := 2.0
 @export var crouch_rotation_speed := 16.0
 @export var crouch_jump_initial_impulse := 16.0 # Jump impulse
-@export var slide_start_threshhold := 6
+@export var slide_start_threshhold := 8
 @export var slide_strength_curve: Curve
 @export var slide_strength_curve_factor = 1
 @export var slide_strength_curve_time_factor = 1

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cb8ywjy4q2kvq"]
+
+[ext_resource type="Script" uid="uid://bi2ktrwgydwp3" path="res://Sandbox/CharacterController2.0/Rig/PlayerRig.gd" id="1_gskow"]
+
+[node name="Rig" type="Node3D"]
+script = ExtResource("1_gskow")

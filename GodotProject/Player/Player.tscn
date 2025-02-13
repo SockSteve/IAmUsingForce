@@ -5189,16 +5189,8 @@ shape = SubResource("BoxShape3D_hme5y")
 unique_name_in_owner = true
 
 [node name="GeneralSkeleton" parent="CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature" index="0"]
-bones/13/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
-bones/38/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
 bones/57/rotation = Quaternion(0, 0.707107, -0.707107, 0)
 bones/62/rotation = Quaternion(0, 0.707107, -0.707107, 0)
-
-[node name="RightHand" parent="CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature/GeneralSkeleton" index="2"]
-transform = Transform3D(1, 1.43051e-06, 0.000172794, 0.000172794, -8.59261e-05, -1, -1.43051e-06, 1, -8.59264e-05, -0.831343, 1.40688, -0.116614)
-
-[node name="LeftHand" parent="CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature/GeneralSkeleton" index="3"]
-transform = Transform3D(1, 0, 0.000174819, 0.000174819, 8.76128e-05, -1, 0, 1, 8.76128e-05, 0.816474, 1.40928, -0.110099)
 
 [node name="Back" parent="CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature/GeneralSkeleton" index="4"]
 transform = Transform3D(-1, 0, 0, 0, 0, -1, 0, -1, 0, -2.25913e-05, 1.34721, -0.169072)

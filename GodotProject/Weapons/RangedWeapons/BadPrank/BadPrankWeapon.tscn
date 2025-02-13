@@ -21,7 +21,8 @@ shop_price = 1200
 [node name="GunMesh" type="MeshInstance3D" parent="."]
 mesh = ExtResource("4_t7v1b")
 
-[node name="BulletSpawnMarker3D" type="Marker3D" parent="."]
+[node name="GrenadeLauncher" parent="." instance=ExtResource("5_fap4l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0447532, 0.424115)
 
-[node name="GrenadeLauncher" parent="BulletSpawnMarker3D" instance=ExtResource("5_fap4l")]
+[node name="BulletSpawnMarker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0447532, 0.424115)

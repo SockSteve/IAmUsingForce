@@ -39,7 +39,7 @@ func physics_update(delta: float) -> void:
 		state_machine.transition_to("Melee")
 		return
 	
-	if Input.is_action_pressed("crouch"):
+	if Input.is_action_just_pressed("crouch"):
 		if player.velocity.length() >= player.slide_start_threshhold:
 			state_machine.transition_to("Crouch",{do_slide = true})
 		state_machine.transition_to("Crouch")
