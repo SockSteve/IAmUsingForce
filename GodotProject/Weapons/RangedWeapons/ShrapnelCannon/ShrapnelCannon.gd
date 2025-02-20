@@ -9,7 +9,7 @@ class_name ShrapnelCannon
 @onready var shoot_sfx: AudioStreamPlayer3D = $ShootSfx
 
 var can_shoot = true
-var enemies_hit: Array[EnemyBase] = []
+var enemies_hit: Array[Enemy] = []
 var destroyed_pellet_amnt = 0 : set =equalize_damage
 
 func _process(_delta):

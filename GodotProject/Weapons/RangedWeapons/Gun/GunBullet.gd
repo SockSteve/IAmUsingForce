@@ -45,7 +45,7 @@ func on_hit():
 
 
 func _on_hit_box_area_entered(area: Area3D) -> void:
-	var target = area.get_parent() as EnemyBase
+	var target = area.get_parent() as Enemy
 	var damage: Damage = Damage.new()
 	damage.value = 25
 	damage.source = _owner

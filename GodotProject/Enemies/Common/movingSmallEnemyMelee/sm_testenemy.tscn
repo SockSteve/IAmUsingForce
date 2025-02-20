@@ -296,12 +296,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0126343, 0.409674, 0.022460
 shape = SubResource("BoxShape3D_e0oye")
 
 [node name="PlayerDetectionArea" type="Area3D" parent="."]
+collision_layer = 0
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDetectionArea"]
 shape = SubResource("SphereShape3D_n71e6")
 
 [node name="InitAttackArea" type="Area3D" parent="."]
+collision_layer = 0
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="InitAttackArea"]
@@ -315,6 +317,7 @@ libraries = {
 autoplay = "idle"
 
 [node name="AttackHitbox" type="Area3D" parent="."]
+collision_layer = 0
 monitoring = false
 monitorable = false
 

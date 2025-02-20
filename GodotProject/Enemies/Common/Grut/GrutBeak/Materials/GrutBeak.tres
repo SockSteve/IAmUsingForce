@@ -1,0 +1,25 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://lpyetgfpp2oh"]
+
+[ext_resource type="Texture2D" uid="uid://hpur5674s436" path="res://Enemies/Common/Grut/GrutBeak/Textures/Grut_Albedo.png" id="1_ypj2r"]
+[ext_resource type="Texture2D" uid="uid://b57pv4kb5slw0" path="res://Enemies/Common/Grut/GrutBeak/Textures/Grut_Metallic.tga" id="2_t4yjw"]
+[ext_resource type="Shader" uid="uid://c4u7h8mbn8vfk" path="res://Shader/HitFlashRed.gdshader" id="3_stxsm"]
+[ext_resource type="Texture2D" uid="uid://djx580v6vvw3h" path="res://Enemies/Common/Grut/GrutBeak/Textures/Grut_Normal.png" id="4_itkji"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_exnvw"]
+render_priority = 0
+shader = ExtResource("3_stxsm")
+shader_parameter/flash_color = Vector3(1, 0, 0)
+shader_parameter/flash_time = 100.0
+
+[resource]
+resource_name = "fastyuidsfdsfsd"
+next_pass = SubResource("ShaderMaterial_exnvw")
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_ypj2r")
+metallic = 1.0
+metallic_texture = ExtResource("2_t4yjw")
+emission_enabled = true
+emission = Color(0, 0, 0, 0)
+emission_energy_multiplier = 0.0
+normal_enabled = true
+normal_texture = ExtResource("4_itkji")

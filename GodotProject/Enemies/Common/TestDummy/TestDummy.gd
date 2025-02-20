@@ -1,4 +1,4 @@
-class_name EnemyBase
+class_name TestDummy
 extends CharacterBody3D
 
 signal died(xp: int, gold: int) # Signal to notify XP and gold on death.

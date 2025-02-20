@@ -31,7 +31,7 @@ func _physics_process(delta):
 func handle_collision(collision: KinematicCollision3D):
 	var collider = collision.collider
 
-	if collider is EnemyBase:  # If the bullet hits an enemy
+	if collider is Enemy:  # If the bullet hits an enemy
 		shock_enemy(collider)
 		bounce(collision.normal)
 	elif collider is StaticBody3D:  # If the bullet hits a wall
@@ -55,7 +55,7 @@ func bounce(normal: Vector3):
 		queue_free()
 
 func _on_shock_area_area_entered(area: Area3D) -> void:
-	var target = area.get_parent() as EnemyBase
+	var target = area.get_parent() as Enemy
 	show_shock_line(target)
 	shock_enemy(target)
 	var damage: Damage = Damage.new()
