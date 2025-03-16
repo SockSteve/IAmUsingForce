@@ -51,6 +51,7 @@ func _physics_process(delta):
 			var direction = (player.global_transform.origin - global_transform.origin).normalized()
 			attraction_speed += delta
 			global_transform.origin += direction * attraction_speed * delta
+			global_position.y += 1
 
 
 func player_detected(attractive_player: Player):

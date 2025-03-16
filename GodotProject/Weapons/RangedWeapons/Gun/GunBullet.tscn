@@ -1,14 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://owsxbjhadsho"]
+[gd_scene load_steps=11 format=3 uid="uid://owsxbjhadsho"]
 
 [ext_resource type="Script" uid="uid://bnla2sfn264uw" path="res://Weapons/RangedWeapons/Gun/GunBullet.gd" id="1_dkxp1"]
 [ext_resource type="PackedScene" uid="uid://b0i3f2a76pxek" path="res://SpecialFX/Explosions/vfx_explosion_1.tscn" id="2_k2j6s"]
+[ext_resource type="PackedScene" uid="uid://b74uw3ds5x4dq" path="res://Shared/Hitbox.tscn" id="2_s7e3r"]
 [ext_resource type="AudioStream" uid="uid://dr7gsjtxdf3hc" path="res://Assets/Kenney/kenney_impact-sounds/Audio/impactWood_heavy_004.ogg" id="3_xe6qj"]
+[ext_resource type="PackedScene" uid="uid://cltevaf1ssk5p" path="res://Shared/HurtboxDetectionArea3D.tscn" id="5_u56rk"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_pgolh"]
-radius = 0.0551452
+radius = 0.05
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_d7fnm"]
-radius = 0.0581247
+[sub_resource type="BoxShape3D" id="BoxShape3D_iyfk3"]
+size = Vector3(8.38177, 6.99878, 27.5991)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_gn82j"]
+radius = 0.052
 
 [sub_resource type="SphereMesh" id="SphereMesh_05gjw"]
 radius = 0.05
@@ -16,9 +21,6 @@ height = 0.1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gqdkv"]
 albedo_color = Color(5, 3, 1, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_iyfk3"]
-size = Vector3(8.38177, 6.99878, 27.5991)
 
 [node name="GunBullet" type="CharacterBody3D"]
 top_level = true
@@ -30,12 +32,19 @@ script = ExtResource("1_dkxp1")
 [node name="BulletCollision" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_pgolh")
 
-[node name="HitBox" type="Area3D" parent="."]
-collision_layer = 256
+[node name="HurtboxDetectionArea3D" parent="." instance=ExtResource("5_u56rk")]
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBox"]
-shape = SubResource("SphereShape3D_d7fnm")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtboxDetectionArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05136, -0.308716, -13.7996)
+shape = SubResource("BoxShape3D_iyfk3")
+
+[node name="Hitbox" parent="." instance=ExtResource("2_s7e3r")]
+collision_mask = 2
+one_shot = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("SphereShape3D_gn82j")
 
 [node name="BulletMesh" type="MeshInstance3D" parent="."]
 mesh = SubResource("SphereMesh_05gjw")
@@ -46,19 +55,11 @@ surface_material_override/0 = SubResource("StandardMaterial3D_gqdkv")
 [node name="SFXBulletExplosion" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_xe6qj")
 
-[node name="EnemyDetectionArea" type="Area3D" parent="."]
-collision_layer = 0
-collision_mask = 2
-monitorable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyDetectionArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05136, -0.308716, -13.7996)
-shape = SubResource("BoxShape3D_iyfk3")
-
-[node name="RayCast3D" type="RayCast3D" parent="EnemyDetectionArea"]
+[node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -20)
+collide_with_bodies = false
 
-[connection signal="area_entered" from="HitBox" to="." method="_on_hit_box_area_entered"]
-[connection signal="area_entered" from="EnemyDetectionArea" to="." method="_on_enemy_detection_area_area_entered"]
+[connection signal="area_entered" from="HurtboxDetectionArea3D" to="." method="_on_hurtbox_detection_area_3d_area_entered"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
 
 [editable path="VFXExplosion"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bs5c8uyhmpr0y"]
+
+[ext_resource type="Script" uid="uid://brxdtw0pen2nd" path="res://Shared/HP.gd" id="1_ti5wq"]
+
+[node name="Hp" type="Node"]
+script = ExtResource("1_ti5wq")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://blloxr84jx46b"]
+
+[ext_resource type="Script" uid="uid://djqfh78u7mnit" path="res://Shared/MoneyReward.gd" id="1_bvi2i"]
+
+[node name="MoneyReward" type="Node3D"]
+script = ExtResource("1_bvi2i")

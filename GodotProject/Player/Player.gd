@@ -257,10 +257,11 @@ func _on_money_collection_range_body_entered(body: Node3D) -> void:
 		body.player_detected(self)
 
 
-func _on_hurtbox_area_entered(area: Area3D) -> void:
-	pass # Replace with function body.
 
-
-func _on_hurtbox_body_entered(body: Node3D) -> void:
+func _on_hurt_box_body_entered(body: Node3D) -> void:
 	if body.is_in_group("money"):
 		body.collect()
+
+
+func _on_hp_death() -> void:
+	get_tree().reload_current_scene()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://c0d3bmprmf8q0"]
+[gd_scene load_steps=85 format=3 uid="uid://c0d3bmprmf8q0"]
 
 [ext_resource type="Script" uid="uid://b04agd2xhqbbe" path="res://Player/Player.gd" id="1_ld2le"]
 [ext_resource type="Script" uid="uid://cn7h6ka6x7lrn" path="res://Player/CameraController.gd" id="2_7jqee"]
@@ -25,6 +25,8 @@
 [ext_resource type="Texture2D" uid="uid://bwo2v53nvfp1o" path="res://Assets/UI/WeaponBarV2L.svg" id="22_86vob"]
 [ext_resource type="Texture2D" uid="uid://dmf404ftfexwl" path="res://Assets/Decals/DropShadow/Shadow.png" id="22_gwf8y"]
 [ext_resource type="Texture2D" uid="uid://pcjnv83mgkat" path="res://Assets/Textures/UI/CutterIconSC.png" id="22_iaxg4"]
+[ext_resource type="PackedScene" uid="uid://die13hgrm443x" path="res://Shared/HurtBox.tscn" id="22_jvfa1"]
+[ext_resource type="PackedScene" uid="uid://bs5c8uyhmpr0y" path="res://Shared/HP.tscn" id="23_ib3vm"]
 [ext_resource type="Texture2D" uid="uid://cqiv6rrr26qmx" path="res://Assets/Textures/UI/PlaceholderIcon.png" id="23_qxeqk"]
 [ext_resource type="Script" uid="uid://dwo6qnv8yni5c" path="res://UI/CurrentWeaponUI.gd" id="24_e02xp"]
 [ext_resource type="FontFile" uid="uid://bawngymo25rp5" path="res://Assets/Fonts/SchutzgitterhausGroteskNbpRegular-l5pV.ttf" id="24_vjfmv"]
@@ -54,11 +56,11 @@ material = SubResource("StandardMaterial3D_dm5n6")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_grq1b"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_gojh2"]
-size = Vector3(0.312958, 1.26022, 0.277954)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_hme5y"]
-size = Vector3(10, 10, 10)
+size = Vector3(5, 5, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ib3vm"]
+size = Vector3(0.321884, 1.03809, 0.243103)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t7yn4"]
 texture = ExtResource("22_86vob")
@@ -5055,7 +5057,7 @@ outline_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lauh3"]
 texture = ExtResource("25_iehhb")
 
-[node name="Player" type="CharacterBody3D" groups=["damageables", "player"]]
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_mask = 65
 axis_lock_angular_x = true
 axis_lock_angular_y = true
@@ -5168,19 +5170,12 @@ visible = false
 shape = SubResource("CylinderShape3D_grq1b")
 debug_shape_custom_color = Color(0, 1, 0, 1)
 
-[node name="Hurtbox" type="Area3D" parent="."]
-collision_mask = 1536
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0098114, 1.049, -0.0261841)
-shape = SubResource("BoxShape3D_gojh2")
-
 [node name="MoneyCollectionRange" type="Area3D" parent="."]
 collision_layer = 0
 collision_mask = 1024
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MoneyCollectionRange"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.164215, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.164, 2, 0)
 shape = SubResource("BoxShape3D_hme5y")
 
 [node name="CharacterRotationRoot" type="Node3D" parent="."]
@@ -5189,24 +5184,8 @@ shape = SubResource("BoxShape3D_hme5y")
 unique_name_in_owner = true
 
 [node name="GeneralSkeleton" parent="CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature" index="0"]
-bones/9/rotation = Quaternion(0, -0.707107, 0, 0.707107)
-bones/10/rotation = Quaternion(0, 0.707107, 0, 0.707107)
-bones/12/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/13/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
-bones/34/rotation = Quaternion(0, 0.707107, 0, 0.707107)
-bones/35/rotation = Quaternion(0, -0.707107, 0, 0.707107)
-bones/37/rotation = Quaternion(-0.214187, -0.673887, -0.214187, 0.673887)
-bones/38/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
 bones/57/rotation = Quaternion(0, 0.707107, -0.707107, 0)
-bones/60/rotation = Quaternion(0, 0.707107, -0.707107, 0)
 bones/62/rotation = Quaternion(0, 0.707107, -0.707107, 0)
-bones/65/rotation = Quaternion(0, 0.707107, -0.707107, 0)
-
-[node name="RightHand" parent="CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature/GeneralSkeleton" index="2"]
-transform = Transform3D(1, 1.43051e-06, 0.000172794, 0.000172794, -8.59261e-05, -1, -1.43051e-06, 1, -8.59264e-05, -0.831343, 1.40688, -0.116614)
-
-[node name="LeftHand" parent="CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature/GeneralSkeleton" index="3"]
-transform = Transform3D(1, 0, 0.000174819, 0.000174819, 8.76128e-05, -1, 0, 1, 8.76128e-05, 0.816474, 1.40928, -0.110099)
 
 [node name="Back" parent="CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature/GeneralSkeleton" index="4"]
 transform = Transform3D(-1, 0, 0, 0, 0, -1, 0, -1, 0, -2.25913e-05, 1.34721, -0.169072)
@@ -5240,6 +5219,7 @@ debug_shape_custom_color = Color(1, 0.403922, 0.545098, 1)
 
 [node name="AttractionPoint" type="Marker3D" parent="."]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19998, 0)
 
 [node name="Inventory" type="Node3D" parent="."]
 script = ExtResource("16_kqrv3")
@@ -5254,6 +5234,18 @@ upper_fade = 0.0001
 lower_fade = 1.0
 distance_fade_begin = 172.53
 distance_fade_length = 1000.0
+
+[node name="HurtBox" parent="." node_paths=PackedStringArray("hp_node", "attraction_point") groups=["player"] instance=ExtResource("22_jvfa1")]
+collision_layer = 1
+hp_node = NodePath("../Hp")
+attraction_point = NodePath("../AttractionPoint")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00533295, 1.03841, 0.000823975)
+shape = SubResource("BoxShape3D_ib3vm")
+debug_color = Color(0.704822, 0.489308, 5.77569e-07, 0.42)
+
+[node name="Hp" parent="." instance=ExtResource("23_ib3vm")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -5917,9 +5909,9 @@ editor_description = "This Node is used in state melee"
 wait_time = 0.5
 one_shot = true
 
-[connection signal="area_entered" from="Hurtbox" to="." method="_on_hurtbox_area_entered"]
-[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
 [connection signal="body_entered" from="MoneyCollectionRange" to="." method="_on_money_collection_range_body_entered"]
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
+[connection signal="death" from="Hp" to="." method="_on_hp_death"]
 [connection signal="timeout" from="ComboTimer" to="StateMachine/Melee" method="_on_combo_timer_timeout"]
 [connection signal="timeout" from="AttackTimer" to="StateMachine/Melee" method="_on_attack_timer_timeout"]
 

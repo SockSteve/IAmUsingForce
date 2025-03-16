@@ -1,8 +1,9 @@
-@tool
+#@tool
 extends Enemy
 
 @onready var nav: NavigationAgent3D = $NavigationAgent3D
 @onready var attack_range_ray: RayCast3D = $AttackRangeRay
+@onready var hurtbox_detection_area_3d: HurtboxDetectionArea3D = $HurtboxDetectionArea3D
 
 const SPEED = 5.0
 const ACCEL = 10.0
@@ -10,7 +11,6 @@ const ACCEL = 10.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 
 var player = null
-
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -32,10 +32,12 @@ func _physics_process(delta):
 	if player != null:
 		if animation_player.current_animation != "walk":
 			animation_player.play("walk")
-		HelperLibrary.smooth_3d_rotate_towards(self, player, 10.0, delta)
+		look_at(player.global_position,Vector3.UP,true)
+		#HelperLibrary.smooth_3d_rotate_towards(self, player, 10.0, delta)
 		nav.target_position = player.global_position
 		direction = nav.get_next_path_position() - global_position
 		direction = direction.normalized()
+		direction.y = 0.0
 		velocity = velocity.lerp(direction*SPEED, ACCEL*delta)
 	
 	else:
@@ -49,21 +51,16 @@ func _physics_process(delta):
 func attack():
 	animation_player.play("attack")
 
-func _on_area_3d_body_entered(body):
-	if body.is_in_group("player"):
-		player = body
-
-func _on_area_3d_body_exited(body):
-	if body.is_in_group("player"):
-		player = null
-
-
-func _on_hitbox_area_entered(area: Area3D) -> void:
-	print(area)
-	print(area.get_parent)
-
-
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	match anim_name:
 		"attack":
 			animation_player.play("idle")
+
+
+func _on_hurtbox_detection_area_3d_area_entered(area: Hurtbox) -> void:
+	player = hurtbox_detection_area_3d.get_closest_area().get_parent()
+
+
+func _on_hurtbox_detection_area_3d_area_exited(area: Area3D) -> void:
+	player = null
+	

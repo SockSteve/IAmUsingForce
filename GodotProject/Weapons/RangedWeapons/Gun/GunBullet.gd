@@ -8,12 +8,15 @@ var linear_velocity = Vector3.ZERO
 @onready var vfx_explosion: Node3D = $VFXExplosion
 @onready var bullet_collision: CollisionShape3D = $BulletCollision
 @onready var bullet_mesh: MeshInstance3D = $BulletMesh
-@onready var enemy_detection_area: Area3D = $EnemyDetectionArea
-@onready var hit_box: Area3D = $HitBox
 
-#@spawn_pos is set from parent
+@onready var hurtbox_detection_area_3d: HurtboxDetectionArea3D = $HurtboxDetectionArea3D
+@onready var hit_box: Area3D = $Hitbox
+
+#set from parent (weapon who shoots the bullet)
+var damage: Damage
+
 var spawn_pos: Vector3 = Vector3.ZERO
-var homing_target: Area3D
+var homing_target: Marker3D
 
 func _ready():
 	vfx_explosion.explosion_finished.connect(kill_self)
@@ -44,33 +47,25 @@ func on_hit():
 	vfx_explosion.emit_explosion()
 
 
-func _on_hit_box_area_entered(area: Area3D) -> void:
-	var target = area.get_parent() as Enemy
-	var damage: Damage = Damage.new()
-	damage.value = 25
-	damage.source = _owner
-	damage.instigator = _owner.get_owner_ref()
-	target.apply_damage.emit(damage)
-	hit_box.queue_free()
-	on_hit()
-
-
 func kill_self():
 	queue_free()
 
-
-func _on_enemy_detection_area_area_entered(enemy_hurtbox: Area3D) -> void:
-	homing_target = enemy_hurtbox
-	enemy_detection_area.set_deferred("monitoring", false)
-
-
 func activate_homing() -> bool:
-	if spawn_pos == Vector3.ZERO or !is_instance_valid(homing_target):
+	if !is_instance_valid(homing_target):
 		return false
 
-	var total_distance = spawn_pos.distance_to(homing_target.global_position)
-	var current_distance = global_position.distance_to(homing_target.global_position)
+	return true
 
-	if current_distance < total_distance / 2:
-		return true
-	return false
+func _on_hurtbox_detection_area_3d_area_entered(enemy_hurtbox: Area3D) -> void:
+	print("enemy detected")
+	await get_tree().process_frame
+	homing_target = hurtbox_detection_area_3d.get_closest_area().attraction_point
+	hurtbox_detection_area_3d.queue_free()
+	activate_homing()
+
+
+func _on_hitbox_area_entered(hurtbox: Area3D) -> void:
+	var target = hurtbox.attraction_point
+	print("deal damage")
+	hurtbox.take_damage(damage)
+	on_hit()

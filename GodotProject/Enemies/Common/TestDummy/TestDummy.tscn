@@ -1,9 +1,20 @@
-[gd_scene load_steps=10 format=4 uid="uid://x44brybjp4wq"]
+[gd_scene load_steps=16 format=4 uid="uid://x44brybjp4wq"]
 
 [ext_resource type="Script" uid="uid://b5c7qxk077ty2" path="res://Enemies/Common/TestDummy/TestDummy.gd" id="1_sdwvm"]
 [ext_resource type="Material" uid="uid://6ww083e45nho" path="res://Enemies/Common/TestDummy/TestDummy_Mat.tres" id="2_6k7wy"]
+[ext_resource type="Shader" uid="uid://c4u7h8mbn8vfk" path="res://Shader/HitFlashRed.gdshader" id="2_uqggw"]
 [ext_resource type="Animation" uid="uid://bbfl4ghtctygs" path="res://Assets/Animation/DummyTestAnims/Hit.res" id="3_6fl8l"]
 [ext_resource type="Animation" uid="uid://dqcr4kn0c6aov" path="res://Assets/Animation/DummyTestAnims/TestDummyIdle.res" id="4_si7n3"]
+[ext_resource type="PackedScene" uid="uid://die13hgrm443x" path="res://Shared/HurtBox.tscn" id="6_hnxeg"]
+[ext_resource type="PackedScene" uid="uid://bs5c8uyhmpr0y" path="res://Shared/HP.tscn" id="7_7k6ko"]
+[ext_resource type="PackedScene" uid="uid://tce24nukd8tw" path="res://Shared/XpReward.tscn" id="8_i156r"]
+[ext_resource type="PackedScene" uid="uid://blloxr84jx46b" path="res://Shared/MoneyReward.tscn" id="9_hnxeg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_24vu7"]
+render_priority = 0
+shader = ExtResource("2_uqggw")
+shader_parameter/flash_color = Vector3(1, 0, 0)
+shader_parameter/flash_time = 100.0
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_qqpfy"]
 resource_local_to_scene = true
@@ -199,10 +210,12 @@ height = 1.75515
 [sub_resource type="BoxShape3D" id="BoxShape3D_wvrk7"]
 size = Vector3(0.662842, 1.50146, 0.592285)
 
-[node name="TestDummy" type="CharacterBody3D" groups=["enemy"]]
+[node name="TestDummy" type="CharacterBody3D" node_paths=PackedStringArray("hp_component", "animation_player") groups=["enemy"]]
 collision_layer = 2
 collision_mask = 257
 script = ExtResource("1_sdwvm")
+hp_component = NodePath("Hp")
+animation_player = NodePath("Skin/AnimationPlayer")
 
 [node name="Skin" type="Node3D" parent="."]
 
@@ -665,6 +678,7 @@ bones/64/rotation = Quaternion(-1.13841e-17, -3.0559e-09, 3.72529e-09, 1)
 bones/64/scale = Vector3(1, 1, 1)
 
 [node name="Ch36" type="MeshInstance3D" parent="Skin/GeneralSkeleton"]
+material_overlay = SubResource("ShaderMaterial_24vu7")
 mesh = SubResource("ArrayMesh_qqpfy")
 skin = SubResource("Skin_picp3")
 
@@ -678,17 +692,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.774955, 0)
 visible = false
 shape = SubResource("CapsuleShape3D_iy2su")
 
-[node name="Hurtbox" type="Area3D" parent="." groups=["damageable", "enemy", "hurtbox"]]
-visible = false
+[node name="HurtBox" parent="." groups=["enemy"] instance=ExtResource("6_hnxeg")]
 collision_layer = 2
-collision_mask = 257
 
-[node name="HurtboxCollision" type="CollisionShape3D" parent="Hurtbox"]
+[node name="HurtboxCollision" type="CollisionShape3D" parent="HurtBox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0020752, 0.83363, 0.0339355)
 shape = SubResource("BoxShape3D_wvrk7")
 
 [node name="AttractionPoint" type="Marker3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05111, 0)
+
+[node name="Hp" parent="." node_paths=PackedStringArray("skin") instance=ExtResource("7_7k6ko")]
+skin = NodePath("../Skin/GeneralSkeleton/Ch36")
+
+[node name="XpReward" parent="." node_paths=PackedStringArray("hp_component") instance=ExtResource("8_i156r")]
+xp_reward_death = 10
+hp_component = NodePath("../Hp")
+
+[node name="MoneyReward" parent="." node_paths=PackedStringArray("hp_component") instance=ExtResource("9_hnxeg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.910437, 0)
+hp_component = NodePath("../Hp")
 
 [connection signal="animation_finished" from="Skin/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

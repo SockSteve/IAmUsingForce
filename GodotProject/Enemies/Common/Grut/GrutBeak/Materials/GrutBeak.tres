@@ -1,21 +1,44 @@
 [gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://lpyetgfpp2oh"]
 
-[ext_resource type="Texture2D" uid="uid://hpur5674s436" path="res://Enemies/Common/Grut/GrutBeak/Textures/Grut_Albedo.png" id="1_ypj2r"]
 [ext_resource type="Texture2D" uid="uid://b57pv4kb5slw0" path="res://Enemies/Common/Grut/GrutBeak/Textures/Grut_Metallic.tga" id="2_t4yjw"]
-[ext_resource type="Shader" uid="uid://c4u7h8mbn8vfk" path="res://Shader/HitFlashRed.gdshader" id="3_stxsm"]
 [ext_resource type="Texture2D" uid="uid://djx580v6vvw3h" path="res://Enemies/Common/Grut/GrutBeak/Textures/Grut_Normal.png" id="4_itkji"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ghwfy"]
+resource_local_to_scene = true
+load_path = "res://.godot/imported/Grut_Albedo.png-79db71da5e0e2c738ca8acd178623f7f.s3tc.ctex"
+
+[sub_resource type="Shader" id="Shader_gqq21"]
+resource_local_to_scene = true
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, unshaded;
+
+uniform vec3 flash_color = vec3(1.0, 0.0, 0.0); // Red flash color
+uniform float flash_time = 100.0;
+
+void fragment() {
+	float time_factor_b = mod(TIME, 3.0);
+	//float intensity = 0.0;
+    float intensity = exp(-15.0 * flash_time); // Controls fade-out effect
+
+    // Apply the shock color with fading intensity
+    ALBEDO = flash_color;
+    ALPHA = intensity; // Fade effect using alpha
+    EMISSION = flash_color * intensity * 2.0; // Boost glow for visibility
+}"
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_exnvw"]
+resource_local_to_scene = true
 render_priority = 0
-shader = ExtResource("3_stxsm")
+shader = SubResource("Shader_gqq21")
 shader_parameter/flash_color = Vector3(1, 0, 0)
 shader_parameter/flash_time = 100.0
 
 [resource]
+resource_local_to_scene = true
 resource_name = "fastyuidsfdsfsd"
 next_pass = SubResource("ShaderMaterial_exnvw")
 vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_ypj2r")
+albedo_texture = SubResource("CompressedTexture2D_ghwfy")
 metallic = 1.0
 metallic_texture = ExtResource("2_t4yjw")
 emission_enabled = true
