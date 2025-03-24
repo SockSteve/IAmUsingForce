@@ -22,7 +22,7 @@ func _physics_process(delta):
 
 func shoot_bullet():
 	var bullet = bullet_scene.instantiate()
-	BulletContainer.add_child(bullet)
+	ObjectContainer.add_child(bullet)
 	bullet.global_transform.origin = global_transform.origin + global_transform.basis.z.normalized() * 1
 	var target_direction: Vector3 = bullet.position.direction_to(player.position)
 	target_direction.y = 0

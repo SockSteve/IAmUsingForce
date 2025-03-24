@@ -57,6 +57,7 @@ var crouching_collision_height: float = .9
 @onready var standing_collision_height: float = collision_shape.shape.height
 @onready var standing_collision_position: Vector3 = Vector3(0,standing_collision_height/2,0)
 @onready var crouching_collision_position: Vector3 = Vector3(0,crouching_collision_height/2,0)
+@onready var attraction_point: Marker3D = %AttractionPoint
 
 #state variables
 var combo_step : int = 0 #used for melee attack combo
@@ -253,9 +254,9 @@ func switch_current_weapon_to_melee(melee: bool)-> void:
 
 
 func _on_money_collection_range_body_entered(body: Node3D) -> void:
+	print(body)
 	if body.is_in_group("money"):
 		body.player_detected(self)
-
 
 
 func _on_hurt_box_body_entered(body: Node3D) -> void:
@@ -265,3 +266,9 @@ func _on_hurt_box_body_entered(body: Node3D) -> void:
 
 func _on_hp_death() -> void:
 	get_tree().reload_current_scene()
+
+
+func _on_money_collection_range_area_entered(area: Area3D) -> void:
+	print(area)
+	if area.is_in_group("money"):
+		area.player_detected(self)

@@ -15,7 +15,6 @@ var linear_velocity = Vector3.ZERO
 #set from parent (weapon who shoots the bullet)
 var damage: Damage
 
-var spawn_pos: Vector3 = Vector3.ZERO
 var homing_target: Marker3D
 
 func _ready():
@@ -23,14 +22,12 @@ func _ready():
 	await get_tree().create_timer(5.0).timeout
 	queue_free()
 
-func _enter_tree() -> void:
-	spawn_pos = global_position
 
 func _physics_process(delta):
 	if activate_homing():
 		var direction_to_target = (homing_target.global_position - global_position).normalized()
 
-		var steering_strength = 5.0  # Adjust this to control how quickly the bullet homes in
+		var steering_strength = 8.0  # Adjust this to control how quickly the bullet homes in
 		linear_velocity = linear_velocity.lerp(direction_to_target * linear_velocity.length(), steering_strength * delta)
 	
 	velocity = linear_velocity * delta
@@ -59,13 +56,19 @@ func activate_homing() -> bool:
 func _on_hurtbox_detection_area_3d_area_entered(enemy_hurtbox: Area3D) -> void:
 	print("enemy detected")
 	await get_tree().process_frame
+	if not enemy_hurtbox:
+		return
+		
 	homing_target = hurtbox_detection_area_3d.get_closest_area().attraction_point
 	hurtbox_detection_area_3d.queue_free()
 	activate_homing()
 
 
-func _on_hitbox_area_entered(hurtbox: Area3D) -> void:
+func _on_hitbox_area_entered(hurtbox: Hurtbox) -> void:
 	var target = hurtbox.attraction_point
 	print("deal damage")
+	
+	damage.impact_point = (global_position - hurtbox.attraction_point.global_position).normalized()
+	damage.force = -1.5
 	hurtbox.take_damage(damage)
 	on_hit()

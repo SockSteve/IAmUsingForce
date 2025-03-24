@@ -57,7 +57,6 @@ stream = ExtResource("3_xe6qj")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, -20)
-collide_with_bodies = false
 
 [connection signal="area_entered" from="HurtboxDetectionArea3D" to="." method="_on_hurtbox_detection_area_3d_area_entered"]
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

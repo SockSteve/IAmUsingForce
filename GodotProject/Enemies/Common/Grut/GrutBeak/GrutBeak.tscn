@@ -21,7 +21,8 @@ size = Vector3(0.411011, 0.785034, 0.671875)
 [sub_resource type="BoxShape3D" id="BoxShape3D_d0l46"]
 size = Vector3(15, 5, 15)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8kw1b"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o3lgo"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("4_a8ptr")
 shader_parameter/flash_color = Vector3(1, 0, 0)
@@ -218,7 +219,9 @@ size = Vector3(0.543945, 0.460693, 0.593262)
 
 [node name="GrutBeak" type="CharacterBody3D" node_paths=PackedStringArray("hp_component", "animation_player")]
 collision_layer = 2
-collision_mask = 112
+collision_mask = 115
+input_ray_pickable = false
+slide_on_ceiling = false
 velocity = Vector3(0, -403084, 0)
 script = ExtResource("1_d0l46")
 hp_component = NodePath("Hp")
@@ -234,7 +237,7 @@ simplify_path = true
 
 [node name="AttackRangeRay" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.351181, 0)
-target_position = Vector3(0, 0, 0.5)
+target_position = Vector3(0, 0, 0.7)
 collide_with_areas = true
 collide_with_bodies = false
 debug_shape_custom_color = Color(0, 1, 0, 1)
@@ -250,42 +253,36 @@ shape = SubResource("BoxShape3D_d0l46")
 
 [node name="Skeleton3D" parent="Grut_Model" index="0"]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
-bones/0/position = Vector3(0.116956, 1.5035, -1.1294)
-bones/1/position = Vector3(0, 0, -1.39829)
 bones/2/position = Vector3(0, 0, 2.22045e-16)
 bones/2/rotation = Quaternion(0.541675, 0.45452, 0.541675, -0.45452)
-bones/3/position = Vector3(0.156253, 9.65595e-06, -1.44094e-05)
-bones/3/rotation = Quaternion(0.0535968, -0.0380418, 0.710083, 0.701044)
-bones/4/position = Vector3(0.868203, -0.000423074, -1.41934e-05)
-bones/4/rotation = Quaternion(0.016719, 0.0216479, 0.00211451, 0.999624)
-bones/5/rotation = Quaternion(-0.0295181, -0.0432119, 0.0237615, 0.998347)
-bones/6/position = Vector3(0.868203, 0.000530839, -1.49012e-08)
-bones/6/rotation = Quaternion(1, -0.000796327, -4.33138e-08, -3.44922e-11)
-bones/7/position = Vector3(0.870269, 0.128298, -0.00159097)
-bones/7/rotation = Quaternion(1, -0.000796298, -4.4005e-08, -3.50404e-11)
+bones/3/rotation = Quaternion(0.00273842, 0.00173127, 0.719556, 0.694427)
+bones/4/rotation = Quaternion(-6.52145e-05, -0.00275541, 0.0464621, 0.998916)
+bones/5/rotation = Quaternion(-0.0112897, -0.0830621, -0.0326269, 0.995946)
+bones/6/rotation = Quaternion(1, -0.000796298, -6.1882e-08, -4.92766e-11)
+bones/7/rotation = Quaternion(1, -0.000796298, -6.1882e-08, -4.92766e-11)
 bones/8/position = Vector3(7.03033e-07, 7.32886e-07, 0.498128)
-bones/8/rotation = Quaternion(0.0555194, -0.0768164, 0.959338, -0.265871)
+bones/8/rotation = Quaternion(0.0566267, -0.0839201, 0.943331, -0.316035)
 bones/9/position = Vector3(0.676356, 4.29678e-08, 1.86876e-08)
-bones/9/rotation = Quaternion(3.72206e-09, -1.29057e-08, -0.645753, 0.763546)
+bones/9/rotation = Quaternion(1.03944e-08, -1.06771e-08, -0.716527, 0.697559)
 bones/10/position = Vector3(1.1085, 5.40639e-08, -4.24002e-08)
-bones/10/rotation = Quaternion(0.848395, 0.50355, 0.00575102, 0.163187)
+bones/10/rotation = Quaternion(0.824818, 0.541408, 0.00623309, 0.162829)
 bones/10/scale = Vector3(1, 1, 1)
 bones/11/position = Vector3(0.182522, 0.0711637, 1.55265e-07)
 bones/11/rotation = Quaternion(0.00714059, -0.0543088, 0.760683, 0.646808)
 bones/11/scale = Vector3(1, 1, 1)
 bones/12/position = Vector3(-7.03033e-07, -6.13677e-07, -0.498128)
-bones/12/rotation = Quaternion(-0.101279, 0.0248819, 0.859501, -0.500382)
+bones/12/rotation = Quaternion(-0.107248, 0.0370733, 0.816623, -0.565907)
 bones/12/scale = Vector3(1, 1, 1)
 bones/13/position = Vector3(0.676355, 2.59393e-08, -3.47968e-09)
-bones/13/rotation = Quaternion(1.05131e-08, 7.04564e-10, -0.658242, 0.752807)
+bones/13/rotation = Quaternion(-2.90008e-09, -7.80887e-09, -0.73063, 0.682774)
 bones/14/position = Vector3(1.1085, 4.81758e-08, -4.68924e-09)
-bones/14/rotation = Quaternion(0.9618, 0.199541, 0.06715, -0.174973)
+bones/14/rotation = Quaternion(0.955806, 0.221557, 0.0720086, -0.179338)
 bones/14/scale = Vector3(1, 1, 1)
 bones/15/position = Vector3(0.182522, 0.0711635, 3.81032e-07)
 bones/15/rotation = Quaternion(-1.8931e-07, 5.69333e-07, 0.707107, 0.707107)
 
 [node name="Grut" parent="Grut_Model/Skeleton3D" index="0"]
-material_overlay = SubResource("ShaderMaterial_8kw1b")
+material_overlay = SubResource("ShaderMaterial_o3lgo")
 mesh = SubResource("ArrayMesh_ervsu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Grut_Model/Skeleton3D" index="1"]
@@ -296,7 +293,7 @@ libraries = {
 autoplay = "idle"
 
 [node name="RootBone" type="BoneAttachment3D" parent="Grut_Model/Skeleton3D" index="2"]
-transform = Transform3D(1.87583e-12, -0.173645, 0.984808, 1, -1.3113e-06, -2.38419e-07, 1.3113e-06, 0.984808, 0.173645, 0.116956, 1.5035, -1.1294)
+transform = Transform3D(0, -0.173645, 0.984808, 1, 0, 0, 0, 0.984808, 0.173645, 0.116956, 1.38525, -1.1294)
 bone_name = "Bip001 Pelvis"
 bone_idx = 2
 
@@ -304,6 +301,7 @@ bone_idx = 2
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
 
 [node name="Hitbox" parent="." instance=ExtResource("10_o3lgo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.213302)
 collision_mask = 1
 monitoring = false
 
@@ -324,6 +322,7 @@ shape = SubResource("BoxShape3D_okgu8")
 debug_color = Color(0.787735, 0.431029, 0, 0.42)
 
 [node name="Hp" parent="." node_paths=PackedStringArray("skin", "hit_sfx", "death_sfx") instance=ExtResource("9_ervsu")]
+max_health = 1000
 skin = NodePath("../Grut_Model/Skeleton3D/Grut")
 hit_sfx = NodePath("HitSFX")
 death_sfx = NodePath("DeathSFX")
@@ -337,8 +336,11 @@ xp_reward_hit = 1
 xp_reward_death = 5
 hp_component = NodePath("../Hp")
 
-[node name="MoneyReward" parent="." node_paths=PackedStringArray("hp_component") instance=ExtResource("10_ervsu")]
+[node name="MoneyReward" parent="." node_paths=PackedStringArray("hp_component", "attraction_point") instance=ExtResource("10_ervsu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.429685, 0)
+amount = 660
 hp_component = NodePath("../Hp")
+attraction_point = NodePath("../Grut_Model/Skeleton3D/RootBone/AttractionPoint")
 
 [node name="AttackSFX" type="AudioStreamPlayer3D" parent="."]
 

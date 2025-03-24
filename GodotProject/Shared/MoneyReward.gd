@@ -1,38 +1,42 @@
 extends Node3D
 class_name MoneyReward
 
-signal activate
+const MONEY = "res://Interactibles/Money/Money.tscn"
 
 @export var amount: int = 10
 @export var hp_component: Hp
+@export var attraction_point: Marker3D
+
+# Money types (big = size indicator, not actual scene)
+const CHUNKS = [
+	{ "value": 500, "type": "gold", "big": true },
+	{ "value": 100, "type": "gold", "big": false },
+	{ "value": 50,  "type": "silver", "big": true },
+	{ "value": 10,  "type": "silver", "big": false }
+]
 
 func _ready() -> void:
-	if not hp_component:
-		return
-	hp_component.death.connect(spawn_money)
+	if hp_component:
+		hp_component.death.connect(spawn_money)
 
 func spawn_money():
-	if amount >= 0:
+	if amount <= 0:
 		return
+
 	var remaining = amount
+	for chunk in CHUNKS:
+		var count = remaining / chunk["value"]
+		remaining %= chunk["value"]
 
-	var chunks = [
-		{ "scene": InstanceLoader.gold, "value": 500 },
-		{ "scene": InstanceLoader.gold, "value": 100 },
-		{ "scene": InstanceLoader.silver, "value": 50 },
-		{ "scene": InstanceLoader.silver, "value": 10 }
-	]
-	for chunk in chunks:
-		var count = remaining / chunk["value"]  # How many of this chunk can we use?
-		remaining %= chunk["value"]  # Get remainder
+		for _i in range(count):
+			var instance = load(MONEY).instantiate() as Money
+			instance.value = chunk["value"]
+			instance.money_type = chunk["type"]
+			instance.big = chunk["big"]
+			get_parent().get_parent().add_child(instance)
+			instance.apply_visuals()
 
-		for i in range(count):
-			var instance = chunk["scene"].instantiate() as Money
-			if chunk["value"] == 500 || chunk["value"] == 50:
-				instance.big = true
-			get_parent().add_child(instance)
-			instance.global_position = global_position + Vector3(randi_range(-10, 10), randi_range(1, 10), randi_range(-10, 10))  # Random spawn
-	
-	if remaining > 0:
-		print("Warning: Amount left unhandled:", remaining)  # Shouldn't happen if values are multiples of 10
-	
+			# Apply slight random velocity
+			#var spawn_offset = Vector3(randf_range(0, 1), 2, randf_range(0, 1))
+			instance.position = attraction_point.global_position + Vector3(randf_range(-0.5, 0.5),.5,randf_range(-0.5, 0.5))
+			#instance.velocity = Vector3(randf_range(-1.5, 1.5), 1.0, randf_range(-1.5, 1.5)) * randf_range(2, 4)

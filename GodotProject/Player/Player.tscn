@@ -60,7 +60,7 @@ material = SubResource("StandardMaterial3D_dm5n6")
 size = Vector3(5, 5, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ib3vm"]
-size = Vector3(0.321884, 1.03809, 0.243103)
+size = Vector3(0.416409, 1.47901, 0.421371)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t7yn4"]
 texture = ExtResource("22_86vob")
@@ -5184,8 +5184,24 @@ shape = SubResource("BoxShape3D_hme5y")
 unique_name_in_owner = true
 
 [node name="GeneralSkeleton" parent="CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature" index="0"]
+bones/9/rotation = Quaternion(0, -0.707107, 0, 0.707107)
+bones/10/rotation = Quaternion(0, 0.707107, 0, 0.707107)
+bones/12/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
+bones/13/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
+bones/34/rotation = Quaternion(0, 0.707107, 0, 0.707107)
+bones/35/rotation = Quaternion(0, -0.707107, 0, 0.707107)
+bones/37/rotation = Quaternion(-0.214187, -0.673887, -0.214187, 0.673887)
+bones/38/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
 bones/57/rotation = Quaternion(0, 0.707107, -0.707107, 0)
+bones/60/rotation = Quaternion(0, 0.707107, -0.707107, 0)
 bones/62/rotation = Quaternion(0, 0.707107, -0.707107, 0)
+bones/65/rotation = Quaternion(0, 0.707107, -0.707107, 0)
+
+[node name="RightHand" parent="CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature/GeneralSkeleton" index="2"]
+transform = Transform3D(1, 1.43051e-06, 0.000172794, 0.000172794, -8.59261e-05, -1, -1.43051e-06, 1, -8.59264e-05, -0.831343, 1.40688, -0.116614)
+
+[node name="LeftHand" parent="CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature/GeneralSkeleton" index="3"]
+transform = Transform3D(1, 0, 0.000174819, 0.000174819, 8.76128e-05, -1, 0, 1, 8.76128e-05, 0.816474, 1.40928, -0.110099)
 
 [node name="Back" parent="CharacterRotationRoot/CharacterSkin/lonelyYBot/Armature/GeneralSkeleton" index="4"]
 transform = Transform3D(-1, 0, 0, 0, 0, -1, 0, -1, 0, -2.25913e-05, 1.34721, -0.169072)
@@ -5241,7 +5257,7 @@ hp_node = NodePath("../Hp")
 attraction_point = NodePath("../AttractionPoint")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00533295, 1.03841, 0.000823975)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00708965, 0.817952, -0.0130844)
 shape = SubResource("BoxShape3D_ib3vm")
 debug_color = Color(0.704822, 0.489308, 5.77569e-07, 0.42)
 
@@ -5909,6 +5925,7 @@ editor_description = "This Node is used in state melee"
 wait_time = 0.5
 one_shot = true
 
+[connection signal="area_entered" from="MoneyCollectionRange" to="." method="_on_money_collection_range_area_entered"]
 [connection signal="body_entered" from="MoneyCollectionRange" to="." method="_on_money_collection_range_body_entered"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]
 [connection signal="death" from="Hp" to="." method="_on_hp_death"]

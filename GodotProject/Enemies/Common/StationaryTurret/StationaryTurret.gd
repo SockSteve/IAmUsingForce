@@ -17,7 +17,7 @@ func _physics_process(delta):
 	
 func shoot():
 	var bullet = bullet.instantiate()
-	BulletContainer.add_child(bullet)
+	ObjectContainer.add_child(bullet)
 	# Set the bullet's position to the gun's position
 	bullet.global_transform.origin = bullet_spawn_point.global_transform.origin
 	# Apply velocity to the bullet

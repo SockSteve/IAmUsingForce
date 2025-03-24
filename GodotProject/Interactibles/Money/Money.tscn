@@ -1,21 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqb7cfqy5n6oq"]
+[gd_scene load_steps=5 format=3 uid="uid://bqb7cfqy5n6oq"]
 
-[ext_resource type="Script" path="res://Interactibles/Money/money.gd" id="1_pb3dj"]
+[ext_resource type="Script" uid="uid://8xwvfx8yy7kq" path="res://Interactibles/Money/money.gd" id="1_pb3dj"]
 [ext_resource type="ArrayMesh" uid="uid://gvxod6uyyy1j" path="res://Interactibles/Money/SilverMesh.tres" id="2_xaf7e"]
+[ext_resource type="Material" uid="uid://b4i4skljx28b3" path="res://Interactibles/Money/MoneyGold.material" id="3_bm8f3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vmhd2"]
 size = Vector3(0.285, 0.291, 0.257)
 
-[node name="Money" type="RigidBody3D" groups=["money"]]
+[node name="Money" type="Area3D" groups=["money"]]
 collision_layer = 1024
-collision_mask = 96
 script = ExtResource("1_pb3dj")
 
 [node name="MoneyMesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
 mesh = ExtResource("2_xaf7e")
+surface_material_override/0 = ExtResource("3_bm8f3")
 
 [node name="MoneyCollision" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_vmhd2")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, -0.2, 0)
+collision_mask = 96
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

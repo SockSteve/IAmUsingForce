@@ -2,6 +2,7 @@ extends Node
 class_name Hp
 
 signal hp_chaged
+signal stagger
 signal death
 
 @export var max_health : int = 100
@@ -12,7 +13,6 @@ var current_health : int = max_health : set = set_current_health
 
 func set_current_health(new_health: int):
 	current_health = new_health
-	
 
 func take_damage(damage: Damage) -> void:
 	print(damage)
@@ -20,6 +20,9 @@ func take_damage(damage: Damage) -> void:
 
 	current_health -= damage.value
 	clampi(current_health, 0, max_health)
+	
+	if damage.force:
+		stagger.emit(damage.impact_point, damage.force)
 	
 	if current_health <= 0:
 		if death_sfx: death_sfx.play()
