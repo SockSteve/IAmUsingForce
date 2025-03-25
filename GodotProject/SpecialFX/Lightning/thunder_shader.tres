@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=12 format=3 uid="uid://dd8intqyete50"]
 
-[ext_resource type="Texture2D" uid="uid://b7h6h5i7domxh" path="res://SpecialFX/Lightning/thunder_01.png" id="1_s5uv1"]
+[ext_resource type="Texture2D" uid="uid://b2kwbox4b1alu" path="res://SpecialFX/Lightning/thunder_01.png" id="1_s5uv1"]
 
 [sub_resource type="Gradient" id="Gradient_1kjhi"]
 offsets = PackedFloat32Array(0.287736, 0.712264)
@@ -101,7 +101,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-579.782, -97.3712)
 modes/cull = 2
 flags/unshaded = true
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_o6onx")
