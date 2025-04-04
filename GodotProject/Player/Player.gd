@@ -104,7 +104,7 @@ func _ready() -> void:
 	
 func set_up_input():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	_camera_controller.setup(self)
+	#_camera_controller.setup(self)
 
 func _physics_process(delta)-> void:
 	#uncomment the following fr debugging sates
@@ -153,14 +153,31 @@ func _physics_process(delta)-> void:
 
 func _get_camera_oriented_input() -> Vector3:
 	var raw_input := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-
 	var input := Vector3.ZERO
+	
 	# This is to ensure that diagonal input isn't stronger than axis aligned input
-	input.x = -raw_input.x * sqrt(1.0 - raw_input.y * raw_input.y / 2.0)
-	input.z = -raw_input.y * sqrt(1.0 - raw_input.x * raw_input.x / 2.0)
-
-	input = _camera_controller.global_transform.basis * input
-	input.y = 0.0
+	input.x = raw_input.x * sqrt(1.0 - raw_input.y * raw_input.y / 2.0)
+	input.z = raw_input.y * sqrt(1.0 - raw_input.x * raw_input.x / 2.0)
+	
+	# Get only the horizontal rotation from the camera
+	var camera_basis = _camera_controller.camera.global_transform.basis
+	var forward = camera_basis.z
+	var right = camera_basis.x
+	
+	# Project vectors onto the horizontal plane
+	forward.y = 0.0
+	right.y = 0.0
+	
+	# Normalize to maintain consistent length
+	forward = forward.normalized()
+	right = right.normalized()
+	
+	# Create a new horizontal-only basis
+	var horizontal_basis = Basis(right, Vector3.UP, forward)
+	
+	# Use this horizontal basis for movement
+	input = (horizontal_basis * input).normalized()
+	
 	return input
 
 

@@ -14,7 +14,7 @@ func physics_update(delta: float) -> void:
 		player._last_strong_direction = player._move_direction.normalized()
 		
 	if player.is_strafing:
-		player._last_strong_direction = (player._camera_controller.global_transform.basis * Vector3.BACK).normalized()
+		player._last_strong_direction = (player._camera_controller.camera.global_transform.basis * Vector3.FORWARD).normalized()
 
 	player._orient_character_to_direction(player._last_strong_direction, delta)
 	
