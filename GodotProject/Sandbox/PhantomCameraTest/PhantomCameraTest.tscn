@@ -1,0 +1,101 @@
+[gd_scene load_steps=17 format=3 uid="uid://fe4g6pnhuetl"]
+
+[ext_resource type="Texture2D" uid="uid://dk3g261yc4qry" path="res://Assets/Placeholders/Environment/Skyboxes/panorama_image.png" id="1_6grid"]
+[ext_resource type="Script" uid="uid://xdxt2j6rf7i0" path="res://Sandbox/PhantomCameraTest/character_body_3d.gd" id="1_imbff"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="2_e5die"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="3_8e3sb"]
+[ext_resource type="PackedScene" uid="uid://cqw173hvs7ny6" path="res://Assets/Geometry/NogoForestDemo.blend" id="4_e5die"]
+[ext_resource type="Script" uid="uid://b8hhnqsugykly" path="res://addons/phantom_camera/scripts/resources/camera_3d_resource.gd" id="4_vkdd2"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="5_6grid"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_sgkvk"]
+panorama = ExtResource("1_6grid")
+
+[sub_resource type="Sky" id="Sky_uhrh5"]
+sky_material = SubResource("PanoramaSkyMaterial_sgkvk")
+
+[sub_resource type="Environment" id="Environment_5ipob"]
+background_mode = 2
+sky = SubResource("Sky_uhrh5")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Resource" id="Resource_sgkvk"]
+script = ExtResource("3_8e3sb")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Resource" id="Resource_uhrh5"]
+script = ExtResource("4_vkdd2")
+keep_aspect = 1
+cull_mask = 1048575
+h_offset = 0.0
+v_offset = 0.0
+projection = 0
+fov = 75.0
+size = 1.0
+frustum_offset = Vector2(0, 0)
+near = 0.05
+far = 4000.0
+metadata/_custom_type_script = "uid://b8hhnqsugykly"
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_5ipob"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vkdd2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6grid"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_vkdd2"]
+
+[node name="PhantomCameraTest" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5ipob")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.90986, 0)
+script = ExtResource("1_imbff")
+
+[node name="PlayerPhantomCamera3D" type="Node3D" parent="CharacterBody3D" node_paths=PackedStringArray("follow_target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.5)
+script = ExtResource("2_e5die")
+priority = 10
+follow_mode = 6
+follow_target = NodePath("..")
+tween_resource = SubResource("Resource_sgkvk")
+tween_on_load = false
+follow_damping = true
+follow_distance = 3.5
+spring_length = 3.5
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="PlayerAimPhantomCamera3D" type="Node3D" parent="CharacterBody3D" node_paths=PackedStringArray("follow_target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+script = ExtResource("2_e5die")
+follow_mode = 6
+follow_target = NodePath("..")
+tween_resource = SubResource("Resource_sgkvk")
+camera_3d_resource = SubResource("Resource_uhrh5")
+attributes = SubResource("CameraAttributesPractical_5ipob")
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("BoxShape3D_vkdd2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CharacterBody3D"]
+mesh = SubResource("BoxMesh_6grid")
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.5)
+attributes = SubResource("CameraAttributesPractical_vkdd2")
+
+[node name="PhantomCameraHost" type="Node" parent="CharacterBody3D/Camera3D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("5_6grid")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="NogoForestDemo" parent="." instance=ExtResource("4_e5die")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.54177, 0, 1.39137)

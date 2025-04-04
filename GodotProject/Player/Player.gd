@@ -136,7 +136,6 @@ func _physics_process(delta)-> void:
 			handle_quick_select("right")
 		
 		if Input.is_action_just_pressed("quick_select_down"):
-			print(inventory.get_weapons_array_from_quick_select_dir("down"))
 			handle_quick_select("down")
 			
 	if Input.is_action_just_pressed("quick_select_change_panel"):

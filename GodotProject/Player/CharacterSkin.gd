@@ -21,9 +21,9 @@ var arm_transition_request := "parameters/armtransition/transition_request"
 # False : set animation to "idle"
 # True : set animation to "move"
 @onready var moving : bool = false : set = set_moving
-@onready var right_hand: BoneAttachment3D = %RightHand
-@onready var left_hand: BoneAttachment3D = %LeftHand
-@onready var back: BoneAttachment3D = %Back
+@onready var right_hand: Node3D = %RightWeaponSocket
+@onready var left_hand: Node3D = %LeftWeaponSocket
+@onready var back: Node3D = %BackSocket
 
 
 # Blend value between the walk and run cycle. used for walking and crouching.
@@ -45,7 +45,13 @@ var arm_transition_request := "parameters/armtransition/transition_request"
 #state machine for holding weapons
 @onready var sm_armtransitions : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_normal/playback")
 
+@onready var left_arm_ik: GodotIK = $GeneralSkeleton/LeftArm
+@onready var right_arm_ik: GodotIK = $GeneralSkeleton/RightArm
+@onready var grapple_physics: PhysicalBoneSimulator3D = $GeneralSkeleton/GrapplePhysics
+
+
 func _ready():
+	#main_animation_player.get_root_motion_position()
 	animation_tree.active = true
 	#animation_tree.animation_started.connect()
 	#animation_tree.animation_finished.connect()
@@ -109,10 +115,13 @@ func change_weapon(weapon:StringName, groups: Array[StringName]):
 	else:
 		animation_tree.set(ranged_weapon_grip_blend_path, 1)
 	animation_tree.set(arm_transition_request, weapon.to_lower())
+	await animation_tree.animation_finished
+	print("yyadyyyy: " + weapon.to_pascal_case())
+	left_arm_ik.find_child("LH_"+ weapon.to_pascal_case())
 
 func attack(attack_counter:int, weapon_name: StringName = "cutter"):
 	animation_tree.set(state_transition_request, "state_melee")
-	animation_tree.set(weapon_melee_transition_request, weapon_name)
+	animation_tree.set(weapon_melee_transition_request, "melee_" + weapon_name)
 	var current_attack_animation = "attack_" + str(attack_counter)
 	sm_melee_cutter.travel(current_attack_animation)
 

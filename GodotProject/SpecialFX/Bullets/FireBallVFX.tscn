@@ -10,8 +10,8 @@
 render_priority = 0
 shader = ExtResource("1_e7gss")
 shader_parameter/MainTextureSpeed = Vector2(0, 1)
-shader_parameter/MainTexturePow = 4.0
 shader_parameter/MainTexure = ExtResource("2_512v5")
+shader_parameter/MainTexturePow = 4.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sike5"]
 gravity = Vector3(0, 0, 0)
@@ -89,7 +89,7 @@ render_mode blend_add, depth_draw_opaque, cull_disabled, diffuse_lambert, specul
 
 uniform vec2 MainTextureSpeed = vec2(0.000000, 0.000000);
 uniform sampler2D MainTexure;
-uniform float MainTexturePow = 1;
+uniform float MainTexturePow = 1.0;
 
 
 
@@ -177,8 +177,8 @@ nodes/fragment/connections = PackedInt32Array(3, 0, 2, 2, 5, 0, 4, 0, 4, 0, 0, 0
 render_priority = 0
 shader = SubResource("VisualShader_a23sc")
 shader_parameter/MainTextureSpeed = Vector2(1, 0)
-shader_parameter/MainTexturePow = 1.0
 shader_parameter/MainTexure = ExtResource("4_kvqig")
+shader_parameter/MainTexturePow = 1.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jp0a5"]
 gravity = Vector3(0, 0, 0)
@@ -232,7 +232,7 @@ render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specul
 
 uniform vec2 MainTextureSpeed = vec2(0.000000, 0.000000);
 uniform sampler2D MainTexure;
-uniform float MainTexturePow = 1;
+uniform float MainTexturePow = 1.0;
 
 
 
@@ -319,8 +319,8 @@ nodes/fragment/connections = PackedInt32Array(3, 0, 2, 2, 5, 0, 4, 0, 4, 0, 0, 0
 render_priority = 0
 shader = SubResource("VisualShader_e13py")
 shader_parameter/MainTextureSpeed = Vector2(1, 0)
-shader_parameter/MainTexturePow = 1.0
 shader_parameter/MainTexure = ExtResource("4_kvqig")
+shader_parameter/MainTexturePow = 1.0
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_abjqe"]
 gravity = Vector3(0, 0, 0)
