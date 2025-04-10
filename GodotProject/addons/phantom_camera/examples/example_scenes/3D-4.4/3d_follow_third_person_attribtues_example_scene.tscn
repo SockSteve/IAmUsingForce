@@ -59,7 +59,9 @@ dof_blur_near_enabled = true
 dof_blur_near_distance = 1.79
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_fnb35"]
+dof_blur_far_enabled = true
 dof_blur_far_distance = 5.99
+dof_blur_near_enabled = true
 dof_blur_near_distance = 0.05
 
 [sub_resource type="BoxMesh" id="BoxMesh_wsigl"]

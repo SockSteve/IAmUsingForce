@@ -5154,7 +5154,7 @@ metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 [node name="MainCamera" type="Camera3D" parent="CameraController"]
 unique_name_in_owner = true
 physics_interpolation_mode = 1
-transform = Transform3D(-1, 1.51808e-08, -8.60946e-08, 0, 0.984808, 0.173648, 8.74228e-08, 0.173648, -0.984808, -4.30473e-07, 2.36824, -4.92404)
+transform = Transform3D(-1, 1.51808e-08, -8.60947e-08, 0, 0.984808, 0.173648, 8.74228e-08, 0.173648, -0.984808, -4.30473e-07, 2.36824, -4.92404)
 top_level = true
 fov = 50.0
 
@@ -5255,22 +5255,22 @@ body_offset = Transform3D(1, 1.54545e-06, 1.90671e-07, -4.65661e-10, 0.122744, -
 
 [node name="Physical Bone Spine" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="1"]
 transform = Transform3D(1, 0.000805783, 9.84169e-05, 2.32831e-10, 0.121237, -0.992624, -0.000811771, 0.992623, 0.121237, -5.86093e-06, 1.15538, -0.0193845)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11368e-09, -1.76951e-08, 0.0586596)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11413e-09, -1.76951e-08, 0.0586596)
 body_offset = Transform3D(1, 0.000805783, 9.84169e-05, 2.32831e-10, 0.121237, -0.992624, -0.000811771, 0.992623, 0.121237, -5.7742e-06, 0.0582269, -0.0071117)
 
 [node name="Physical Bone Chest" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="2"]
 transform = Transform3D(1, 0.000655409, 7.9789e-05, 0, 0.120847, -0.992671, -0.000660248, 0.992671, 0.120847, -1.7001e-05, 1.28041, -0.0346285)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19599e-09, 8.3819e-09, 0.0672941)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19599e-09, 9.31323e-09, 0.0672941)
 body_offset = Transform3D(1, 0.000655409, 7.9789e-05, 0, 0.120847, -0.992671, -0.000660248, 0.992671, 0.120847, -5.36814e-06, 0.066801, -0.0081323)
 
 [node name="Physical Bone UpperChest" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="3"]
 transform = Transform3D(-0.999999, 0.00162028, 8.54635e-05, -2.32831e-10, 0.0526729, -0.998612, -0.00162253, -0.998611, -0.0526728, -2.88014e-05, 1.42237, -0.0387963)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.72848e-09, -1.02445e-08, 0.0752671)
-body_offset = Transform3D(-0.999999, 0.00162028, 8.54635e-05, -2.32831e-10, 0.0526729, -0.998612, -0.00162253, -0.998611, -0.0526728, -6.42985e-06, 0.0751626, 0.00396452)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.72894e-09, -1.02445e-08, 0.0752671)
+body_offset = Transform3D(-0.999999, 0.00162028, 8.54636e-05, -2.32831e-10, 0.0526729, -0.998612, -0.00162253, -0.99861, -0.0526728, -6.42985e-06, 0.0751626, 0.00396452)
 
 [node name="Physical Bone LeftUpperLeg" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="4"]
 transform = Transform3D(-0.903454, -0.428643, -0.00602617, -1.86265e-09, -0.0140573, 0.999901, -0.428686, 0.903364, 0.0127001, 0.0924677, 0.728378, -0.00313132)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.36206e-08, 1.00117e-08, 0.202997)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3737e-08, 8.84756e-09, 0.202997)
 body_offset = Transform3D(0.903454, 0.428643, 0.00602617, 1.86265e-09, 0.0140573, -0.999901, -0.428686, 0.903364, 0.0127001, -0.00122331, 0.202977, -0.00257809)
 
 [node name="Physical Bone LeftLowerLeg" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="5"]
@@ -5285,7 +5285,7 @@ body_offset = Transform3D(0.99866, 0.0459706, 0.0237585, -7.45058e-09, 0.459128,
 
 [node name="Physical Bone LeftToes" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="7"]
 transform = Transform3D(-0.776766, 0.629629, 0.0142068, 0.629789, 0.776569, 0.0175223, 0, 0.022558, -0.999746, 0.094269, 0.0319605, 0.163352)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74623e-10, -8.73115e-10, 0.05)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.74623e-10, -8.14907e-10, 0.05)
 body_offset = Transform3D(-0.776766, 0.629629, 0.0142068, 0, 0.022558, -0.999746, -0.629789, -0.776569, -0.0175223, -0.000710338, 0.0499873, 0.000876114)
 
 [node name="Physical Bone RightUpperLeg" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="8"]
@@ -5295,17 +5295,17 @@ body_offset = Transform3D(0.902996, -0.429608, -0.00602721, 9.31323e-10, 0.01402
 
 [node name="Physical Bone RightLowerLeg" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="9"]
 transform = Transform3D(-0.993025, -0.117759, -0.00581125, -9.31323e-10, -0.0492888, 0.998785, -0.117902, 0.991818, 0.048945, -0.0924683, 0.315162, -0.015999)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.44472e-09, 2.32831e-08, 0.210495)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.44472e-09, 2.23517e-08, 0.210495)
 body_offset = Transform3D(-0.993025, -0.117759, -0.00581125, 9.31323e-10, 0.0492888, -0.998785, 0.117902, -0.991818, -0.048945, 0.00122324, 0.210239, 0.0103027)
 
 [node name="Physical Bone RightFoot" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="10"]
 transform = Transform3D(-0.99866, 0.0459739, 0.0237602, 0.0517508, 0.88718, 0.458513, -7.45058e-09, 0.459128, -0.88837, -0.0931128, 0.0688793, 0.0435313)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.54832e-08, -5.21541e-08, 0.078608)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55997e-08, -4.84288e-08, 0.078608)
 body_offset = Transform3D(0.99866, -0.0459739, -0.0237602, -7.45058e-09, 0.459128, -0.88837, 0.0517508, 0.88718, 0.458513, 0.00186773, 0.069833, -0.0360427)
 
 [node name="Physical Bone RightToes" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="11"]
 transform = Transform3D(-0.776991, -0.629352, -0.0141791, -0.629512, 0.776794, 0.0175009, -3.72529e-09, 0.022524, -0.999746, -0.0942716, 0.0319614, 0.163352)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.26549e-09, 4.5402e-09, 0.05)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.3237e-09, 4.5402e-09, 0.05)
 body_offset = Transform3D(-0.776991, -0.629352, -0.0141791, -3.72529e-09, 0.022524, -0.999746, 0.629512, -0.776794, -0.0175009, 0.000708953, 0.0499873, 0.000875056)
 
 [node name="PlayerHand" type="Node3D" parent="CharacterRotationRoot/CharacterSkin" node_paths=PackedStringArray("character_skin")]
