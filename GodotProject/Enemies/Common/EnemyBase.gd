@@ -1,4 +1,5 @@
-class_name Enemy extends CharacterBody3D
+#class_name Enemy 
+extends CharacterBody3D
 
 var is_staggered: bool = false  # Flag to prevent movement
 @onready var stagger_timer: Timer = Timer.new()  # Timer to reset movement
