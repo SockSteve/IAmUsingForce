@@ -15,7 +15,7 @@ func physics_update(delta: float) -> void:
 	enemy.move_to_position(enemy.origin, delta)
 	
 	# Check if we've reached the origin
-	if enemy.global_position.distance_to(enemy.origin) < 1.0:
+	if enemy.global_position.distance_to(enemy.origin) < 2.0:
 		origin_reached = true
 
 func on_player_detected(player: Node3D) -> void:

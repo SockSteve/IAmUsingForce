@@ -105,6 +105,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_wm7nl"]
 resource_name = "Take 001"
 length = 1.33333
+loop_mode = 1
 tracks/0/type = "position_3d"
 tracks/0/imported = true
 tracks/0/enabled = true
@@ -404,7 +405,7 @@ script = ExtResource("16_kjoq2")
 [node name="Chase" type="Node" parent="StateMachine"]
 script = ExtResource("17_tboon")
 
-[node name="Attack" type="Node" parent="StateMachine"]
+[node name="MeleeAttack" type="Node" parent="StateMachine"]
 script = ExtResource("18_inxjj")
 
 [node name="ReturnToOrigin" type="Node" parent="StateMachine"]

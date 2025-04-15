@@ -11,6 +11,7 @@ var current_burst_delay: float = 0.0
 func enter() -> void:
 	attack_timer = enemy.ai_config.ranged_cooldown if "ranged_cooldown" in enemy.ai_config else enemy.ai_config.attack_cooldown
 	attack_playing = false
+	enemy.should_stop_movement = false
 	burst_count = 0
 	
 	# Get burst settings if available

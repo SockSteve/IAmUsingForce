@@ -25,10 +25,11 @@ func _ready() -> void:
 
 func attack() -> void:
 	super.attack()
-	
+	velocity.x = 0
+	velocity.z=0
 	# The actual damage will be applied when bite_hitbox enters a player's hurtbox
 	# But we need to set up the damage parameters
-	await get_tree().create_timer(0.3).timeout  # Wait for bite animation to reach attack point
+	await get_tree().create_timer(0.15).timeout  # Wait for bite animation to reach attack point
 	
 	# Skip damage application if we died or got staggered during the animation
 	if is_dead or is_staggered:
@@ -57,7 +58,7 @@ func _on_animation_finished(anim_name: String) -> void:
 			if state_machine and state_machine is EnemyStateMachine:
 				if is_target_in_attack_range() and current_target:
 					# Stay in attack state to bite again
-					state_machine.change_state("Attack")
+					state_machine.change_state("MeleeAttack")
 				else:
 					# Chase if target moved away
 					state_machine.change_state("Chase")
@@ -71,7 +72,7 @@ func _on_animation_finished(anim_name: String) -> void:
 							play_animation("idle")
 						"Roam", "Patrol", "Chase", "ReturnToOrigin":
 							play_animation("walk")
-						"Attack":
+						"MeleeAttack":
 							# The attack state will handle its own animations
 							pass
 	

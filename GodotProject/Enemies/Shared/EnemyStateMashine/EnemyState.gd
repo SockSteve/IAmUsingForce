@@ -37,7 +37,7 @@ func resume_from_stagger() -> void:
 				enemy.play_animation("idle")
 			"Roam", "Patrol", "Chase", "ReturnToOrigin":
 				enemy.play_animation("walk")
-			"Attack":
+			"MeleeAttack", "RangedAttack":
 				# Just let the attack state handle it
 				pass
 			_:

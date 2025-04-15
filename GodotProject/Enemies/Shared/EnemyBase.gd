@@ -24,6 +24,7 @@ extends CharacterBody3D
 @export var burst_delay: float = 0.3  # Delay between shots in a burst
 
 # Stagger parameters
+var should_stop_movement: bool = false
 var is_staggered: bool = false
 var stagger_timer: float = 0.0
 var stagger_immunity_timer: float = 0.0
@@ -109,6 +110,10 @@ func _physics_process(delta: float) -> void:
 			hit_counter = 0
 			hit_counter_reset_timer = 0.0
 	
+	if should_stop_movement and not is_staggered:
+		velocity.x = lerp(velocity.x, 0.0, 0.3)  # Smooth stop
+		velocity.z = lerp(velocity.z, 0.0, 0.3)
+	
 	# Always apply movement at the end, regardless of stagger state
 	# This ensures gravity is always applied
 	move_and_slide()
@@ -191,7 +196,7 @@ func move_to_position(target_pos: Vector3, delta: float) -> void:
 	# Move the character
 	move_and_slide()
 
-func smooth_look_at(target: Vector3, delta: float) -> void:
+func smooth_look_at(target: Vector3, delta: float, up: Vector3 = Vector3(0, 1, 0), use_model_front: bool = true) -> void:
 	var direction = (target - global_position).normalized()
 	direction.y = 0.0  # Ensure rotation only on Y-axis
 	
@@ -199,8 +204,10 @@ func smooth_look_at(target: Vector3, delta: float) -> void:
 		return
 	
 	# Get current and target rotations as quaternions
+	if use_model_front:
+		direction *= -1
 	var current_rotation = Quaternion(global_transform.basis)
-	var target_rotation = Quaternion(Basis.looking_at(direction, Vector3.UP))
+	var target_rotation = Quaternion(Basis.looking_at(direction, up))
 	
 	# Interpolate between the current and target rotation
 	var new_rotation = current_rotation.slerp(target_rotation, rotation_speed * delta)

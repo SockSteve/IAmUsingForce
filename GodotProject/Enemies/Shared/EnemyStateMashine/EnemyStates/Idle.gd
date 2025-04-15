@@ -4,8 +4,15 @@ extends EnemyState
 var idle_timer: float = 0.0
 var idle_duration: float = 1.0
 
+func _ready() -> void:
+	await get_tree().process_frame
+
 func enter() -> void:
 	print("Entering idle state")
+	enemy.should_stop_movement = true
+	
+	# Delay animation slightly to ensure everything is initialized
+	await get_tree().process_frame
 	enemy.play_animation("idle")
 	
 	# Randomize idle duration if we're using it for transitions
