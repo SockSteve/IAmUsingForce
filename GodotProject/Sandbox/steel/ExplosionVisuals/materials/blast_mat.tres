@@ -11,14 +11,14 @@ gradient = SubResource("Gradient_qq71m")
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_n3gbf"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ipuq0"]
-seamless = true
 noise = SubResource("FastNoiseLite_n3gbf")
+seamless = true
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_mlibf"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3jlqm"]
-seamless = true
 noise = SubResource("FastNoiseLite_mlibf")
+seamless = true
 
 [resource]
 resource_local_to_scene = true

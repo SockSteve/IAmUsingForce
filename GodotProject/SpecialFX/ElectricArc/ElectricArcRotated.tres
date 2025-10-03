@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=12 format=3 uid="uid://dfngj30bawpm0"]
 
-[ext_resource type="Texture2D" uid="uid://7o6pqkt0t2y" path="res://SpecialFX/ElectricArc/spark_05_b.png" id="1_xeoyo"]
+[ext_resource type="Texture2D" uid="uid://dqag1dafqsml1" path="res://SpecialFX/ElectricArc/spark_05_b.png" id="1_xeoyo"]
 
 [sub_resource type="Gradient" id="Gradient_1kjhi"]
 offsets = PackedFloat32Array(0.287736, 0.900943)
@@ -41,7 +41,7 @@ default_input_values = [1, 0.0, 2, 1.0, 3, 0.0, 4, 0.8]
 
 [resource]
 code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specular_schlick_ggx, unshaded;
+render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_disabled, diffuse_lambert, specular_schlick_ggx, unshaded;
 
 uniform sampler2D tex_frg_10;
 uniform sampler2D tex_frg_2;

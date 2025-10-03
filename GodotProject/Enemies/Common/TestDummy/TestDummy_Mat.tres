@@ -1,8 +1,8 @@
 [gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://6ww083e45nho"]
 
-[ext_resource type="Texture2D" uid="uid://de4rj1a11cv" path="res://Assets/Animation/DummyModel/Ch36_nonPBR_0.png" id="1_6keyp"]
+[ext_resource type="Texture2D" uid="uid://djlb28bv4igcg" path="res://Assets/Animation/DummyModel/Ch36_nonPBR_0.png" id="1_6keyp"]
 [ext_resource type="Shader" uid="uid://c4u7h8mbn8vfk" path="res://Shader/HitFlashRed.gdshader" id="2_t4e42"]
-[ext_resource type="Texture2D" uid="uid://4wykwve3oi1x" path="res://Assets/Animation/DummyModel/Ch36_nonPBR_3.png" id="2_yk3n3"]
+[ext_resource type="Texture2D" uid="uid://dp05tcw3a1ef4" path="res://Assets/Animation/DummyModel/Ch36_nonPBR_3.png" id="2_yk3n3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gspay"]
 resource_local_to_scene = true

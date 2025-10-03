@@ -7,35 +7,16 @@
 [sub_resource type="Resource" id="Resource_rqq58"]
 script = ExtResource("2_dydew")
 frequency = Vector3(7.065, 1, 1)
-phase = Vector3(1, 1, 1)
 amplitude = Vector3(0.5, 0.5, 0)
-offset = Vector3(0, 0, 0)
-BlendingMode = 0
-fade_in = 0.0
 fade_out = 2.36259
-start_percent = 0.0
-end_percent = 1.0
-_temp_graph = false
-bake_internal = 64
 
 [sub_resource type="Resource" id="Resource_4yuof"]
 script = ExtResource("2_dydew")
 frequency = Vector3(2.94, 1.125, 1)
-phase = Vector3(1, 1, 1)
 amplitude = Vector3(0.053, 0.05, 0.1)
-offset = Vector3(0, 0, 0)
-BlendingMode = 0
-fade_in = 0.0
 fade_out = 2.36259
-start_percent = 0.0
-end_percent = 1.0
-_temp_graph = false
-bake_internal = 64
 
 [resource]
 script = ExtResource("3_1oh1n")
 PositionShake = Array[ExtResource("1_nk16c")]([SubResource("Resource_rqq58")])
 RotationShake = Array[ExtResource("1_nk16c")]([SubResource("Resource_4yuof")])
-ScaleShake = Array[ExtResource("1_nk16c")]([])
-bake_internal = 64
-__follow_timeline = false

@@ -5,8 +5,8 @@
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_g72y7"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5x4dr"]
-seamless = true
 noise = SubResource("FastNoiseLite_g72y7")
+seamless = true
 
 [resource]
 resource_local_to_scene = true

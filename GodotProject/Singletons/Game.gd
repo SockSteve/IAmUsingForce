@@ -38,13 +38,14 @@ func _update_enemy_detection():
 			continue
 			
 		var closest_player = _find_closest_player_in_range(enemy)
-		enemy._on_detection_update(closest_player)
+		enemy._on_distance_update(closest_player)
 
 func _find_closest_player_in_range(enemy: Enemy) -> Node3D:
 	var closest_player: Node3D = null
 	var closest_distance_squared: float = INF
 	var enemy_pos = enemy.global_position
-	var range_squared = enemy.detection_range * enemy.detection_range
+	var detection_radius = enemy.ai_config.detection_radius if enemy.ai_config else 10.0
+	var range_squared = detection_radius * detection_radius
 	
 	for player in players:
 		if not is_instance_valid(player):
@@ -55,8 +56,13 @@ func _find_closest_player_in_range(enemy: Enemy) -> Node3D:
 		if distance_squared <= range_squared and distance_squared < closest_distance_squared:
 			closest_distance_squared = distance_squared
 			closest_player = player
+			enemy.last_distance_to_player = sqrt(distance_squared)
 	
 	return closest_player
+
+# Line of sight checking - called by enemies when needed
+func request_los_check(enemy: Enemy):
+	enemy._perform_los_check()
 
 # Level management
 func load_level(level_scene: PackedScene):
@@ -76,10 +82,14 @@ func _cleanup_current_level():
 		current_level.queue_free()
 
 func _auto_register_entities():
-	# Auto-find and register players
+	# Auto-find and register players (check both possible group names)
 	for player in get_tree().get_nodes_in_group("players"):
 		register_player(player)
+	for player in get_tree().get_nodes_in_group("player"):
+		register_player(player)
 	
-	# Auto-find and register enemies  
+	# Auto-find and register enemies (check both possible group names)
 	for enemy in get_tree().get_nodes_in_group("enemies"):
+		register_enemy(enemy)
+	for enemy in get_tree().get_nodes_in_group("enemy"):
 		register_enemy(enemy)

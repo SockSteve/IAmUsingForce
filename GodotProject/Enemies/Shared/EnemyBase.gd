@@ -47,16 +47,22 @@ func _ready() -> void:
 	
 	origin = global_position
 	
+
+	# Create default AI config if none provided
+	if not ai_config:
+		ai_config = EnemyAIConfig.new()
+	
 	# Create default stagger config if none provided
 	if not stagger_config:
 		stagger_config = StaggerConfig.new()
 	
-	# Setup navigation
-	nav_agent.avoidance_enabled = ai_config.avoid_enemies
-	nav_agent.radius = ai_config.avoid_radius
-	nav_agent.max_neighbors = 10
-	nav_agent.time_horizon = 1.0
-	nav_agent.max_speed = ai_config.move_speed
+	# Setup navigation (check if nav_agent exists)
+	if nav_agent:
+		nav_agent.avoidance_enabled = ai_config.avoid_enemies
+		nav_agent.radius = ai_config.avoid_radius
+		nav_agent.max_neighbors = 10
+		nav_agent.time_horizon = 1.0
+		nav_agent.max_speed = ai_config.move_speed
 	
 	# Connect HP component
 	if hp_component:
@@ -93,7 +99,7 @@ func _on_distance_update(closest_player: Node3D):
 				state_machine.on_player_lost(old_target)
 	
 	# Request line-of-sight check if target in range and on screen
-	if current_target and is_on_screen and last_distance_to_player <= ai_config.detection_radius:
+	if current_target and is_on_screen and ai_config and last_distance_to_player <= ai_config.detection_radius:
 		GameHandler.request_los_check(self)
 
 func _physics_process(delta: float) -> void:
@@ -134,7 +140,7 @@ func _update_stagger_timers(delta: float):
 			hit_counter_reset_timer = 0.0
 
 func move_to_position(target_pos: Vector3, delta: float) -> void:
-	if is_dead or is_staggered:
+	if is_dead or is_staggered or not nav_agent or not ai_config:
 		return
 	
 	nav_agent.target_position = target_pos

@@ -1,11 +1,8 @@
 [gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://lpyetgfpp2oh"]
 
-[ext_resource type="Texture2D" uid="uid://b57pv4kb5slw0" path="res://Enemies/Common/Grut/GrutBeak/Textures/Grut_Metallic.tga" id="2_t4yjw"]
-[ext_resource type="Texture2D" uid="uid://djx580v6vvw3h" path="res://Enemies/Common/Grut/GrutBeak/Textures/Grut_Normal.png" id="4_itkji"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ghwfy"]
-resource_local_to_scene = true
-load_path = "res://.godot/imported/Grut_Albedo.png-79db71da5e0e2c738ca8acd178623f7f.s3tc.ctex"
+[ext_resource type="Texture2D" uid="uid://dt3weju82ptnj" path="res://Enemies/Common/Grut/GrutBeak/Textures/Grut_Albedo.png" id="1_gqq21"]
+[ext_resource type="Texture2D" uid="uid://dsv6vmbsu48sh" path="res://Enemies/Common/Grut/GrutBeak/Textures/Grut_Metallic.tga" id="2_t4yjw"]
+[ext_resource type="Texture2D" uid="uid://b6btkefevn6gv" path="res://Enemies/Common/Grut/GrutBeak/Textures/Grut_Normal.png" id="4_itkji"]
 
 [sub_resource type="Shader" id="Shader_gqq21"]
 resource_local_to_scene = true
@@ -38,7 +35,7 @@ resource_local_to_scene = true
 resource_name = "fastyuidsfdsfsd"
 next_pass = SubResource("ShaderMaterial_exnvw")
 vertex_color_use_as_albedo = true
-albedo_texture = SubResource("CompressedTexture2D_ghwfy")
+albedo_texture = ExtResource("1_gqq21")
 metallic = 1.0
 metallic_texture = ExtResource("2_t4yjw")
 emission_enabled = true

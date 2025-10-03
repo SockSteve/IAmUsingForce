@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=12 format=3 uid="uid://puaw6lkhuv13"]
 
-[ext_resource type="Texture2D" uid="uid://cclj3hc3vaxt6" path="res://SpecialFX/ElectricArc/spark_05_b_rotated.png" id="1_lyhtu"]
+[ext_resource type="Texture2D" uid="uid://dqmnma1sk2gbv" path="res://SpecialFX/ElectricArc/spark_05_b_rotated.png" id="1_lyhtu"]
 
 [sub_resource type="Gradient" id="Gradient_1kjhi"]
 offsets = PackedFloat32Array(0.287736, 0.900943)

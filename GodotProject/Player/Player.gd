@@ -93,6 +93,8 @@ var stored_weapon_on_gadget_use: Item3D #this variable is only assigned with the
 @onready var grip_gloves = preload("res://Gadgets/GripGloves/GripGlovesGadget.tscn").instantiate()
 
 func _ready() -> void:
+	add_to_group("players")  # Register player with GameHandler
+	GameHandler.register_player(self)
 	set_up_input()
 	add_starting_loadout_to_inventory()
 	print("Populating shortcut menu...")
