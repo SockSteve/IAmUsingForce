@@ -14,7 +14,7 @@ func enter(_msg := {}) -> void:
 		attack("down")
 		return
 	
-	player._character_skin.attack(player.combo_step)
+	player.character_skin.attack(player.combo_step)
 	player.combo_step += 1
 	player.move_and_slide()
 
@@ -46,11 +46,11 @@ func attack(air_up_down: StringName=""):
 		player.combo_step = 0 
 	
 	if air_up_down == "up":
-		player._character_skin.air_attack("up")
+		player.character_skin.air_attack("up")
 		player.velocity.y += 3
 		
 	if air_up_down == "down":
-		player._character_skin.air_attack("down")
+		player.character_skin.air_attack("down")
 	
 	player.is_melee = true
 	var advance_distance = 10.0  # Adjust as needed
@@ -62,11 +62,11 @@ func attack(air_up_down: StringName=""):
 	print("attack ",player.combo_step)
 	
 	if player.combo_step < player.currently_held_weapon_or_gadget.max_combo_step:
-		player._character_skin.attack(player.combo_step, player.currently_held_weapon_or_gadget.name)
+		player.character_skin.attack(player.combo_step, player.currently_held_weapon_or_gadget.name)
 		move_character(advance_direction, advance_distance)
 		player.combo_step += 1
 	else:
-		player._character_skin.attack(player.currently_held_weapon_or_gadget.max_combo_step, player.currently_held_weapon_or_gadget.name)
+		player.character_skin.attack(player.currently_held_weapon_or_gadget.max_combo_step, player.currently_held_weapon_or_gadget.name)
 		move_character(advance_direction, advance_distance)
 		player.combo_step = 0
 

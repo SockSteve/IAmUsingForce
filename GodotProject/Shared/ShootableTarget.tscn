@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://camera_shake_target"]
+
+[ext_resource type="Script" path="res://Shared/ShootableTarget.gd" id="1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1"]
+albedo_color = Color(0.8, 0.4, 0.2, 1)
+metallic = 0.3
+roughness = 0.7
+
+[node name="ShootableTarget" type="StaticBody3D"]
+script = ExtResource("1")
+enable_shake = true
+shake_type = 1
+show_hit_effects = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]

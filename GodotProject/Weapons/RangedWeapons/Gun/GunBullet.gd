@@ -29,15 +29,24 @@ func _physics_process(delta):
 
 		var steering_strength = 8.0  # Adjust this to control how quickly the bullet homes in
 		linear_velocity = linear_velocity.lerp(direction_to_target * linear_velocity.length(), steering_strength * delta)
-	
+
 	velocity = linear_velocity * delta
 	move_and_slide()
-	
+
 	if get_slide_collision_count() > 0:
-		on_hit()
+		var collision = get_last_slide_collision()
+		on_hit(collision)
 
 
-func on_hit():
+func on_hit(collision: KinematicCollision3D = null):
+	# Check if we hit a ShootableTarget
+	if collision:
+		var collider = collision.get_collider()
+		if collider and collider.has_method("on_bullet_hit"):
+			var hit_position = collision.get_position()
+			var hit_normal = collision.get_normal()
+			collider.on_bullet_hit(self, hit_position, hit_normal)
+
 	sfx_bullet_explosion.play()
 	bullet_collision.disabled = true
 	bullet_mesh.visible = false

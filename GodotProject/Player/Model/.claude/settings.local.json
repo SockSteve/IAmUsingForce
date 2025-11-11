@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//c/Workspace/Godot/Godot4/IAmUsingForce/GodotProject/Player/States/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

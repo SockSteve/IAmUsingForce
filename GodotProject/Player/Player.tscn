@@ -1,11 +1,15 @@
-[gd_scene load_steps=86 format=3 uid="uid://c0d3bmprmf8q0"]
+[gd_scene load_steps=91 format=3 uid="uid://c0d3bmprmf8q0"]
 
-[ext_resource type="Script" uid="uid://b04agd2xhqbbe" path="res://Player/Player.gd" id="1_ld2le"]
+[ext_resource type="Script" uid="uid://ctac4a3g5n4jj" path="res://Player/Player.gd" id="1_ld2le"]
 [ext_resource type="Script" uid="uid://cn7h6ka6x7lrn" path="res://Player/CameraController.gd" id="2_7jqee"]
-[ext_resource type="Curve" uid="uid://dkhyr34syj1ps" path="res://Player/SlideCurve.tres" id="2_w6n6n"]
+[ext_resource type="Curve" uid="uid://dkhyr34syj1ps" path="res://Player/SlideCurve.tres" id="2_x2ho1"]
+[ext_resource type="Script" uid="uid://cq1ic0b6evob0" path="res://Player/PlayerDebugInjector.gd" id="2_xw4su"]
 [ext_resource type="Script" uid="uid://bnsg8qslttv7b" path="res://Player/States/StateMachine.gd" id="3_5fauu"]
+[ext_resource type="Script" uid="uid://b5qjfypi0wfwx" path="res://Player/PlayerInputHandler.gd" id="3_xw4su"]
 [ext_resource type="Script" uid="uid://dmo4aphlxit4t" path="res://Player/States/Idle.gd" id="4_h88q0"]
+[ext_resource type="Script" uid="uid://bnm7ofks1cjyf" path="res://Player/PlayerCombatManager.gd" id="4_x2ho1"]
 [ext_resource type="Script" uid="uid://05vs1x5gauo0" path="res://Player/States/Run.gd" id="5_dheqf"]
+[ext_resource type="Script" uid="uid://k7xji68vrno6" path="res://Player/ActiveWeaponManager.gd" id="5_eennk"]
 [ext_resource type="Script" uid="uid://dnmnhkfn8478a" path="res://Player/Damaged.gd" id="5_h0rer"]
 [ext_resource type="Script" uid="uid://bhvqppg6xtsyk" path="res://Player/States/Crouch.gd" id="6_q58v3"]
 [ext_resource type="Script" uid="uid://86uucdqewuvk" path="res://Player/States/Grapple.gd" id="6_r5qvj"]
@@ -25,22 +29,23 @@
 [ext_resource type="Script" uid="uid://2bqjon1rlriq" path="res://Player/PlayerHUD.gd" id="20_6xxyk"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="20_o1b5h"]
 [ext_resource type="Theme" uid="uid://d02hntmjt67aj" path="res://UI/UITheme_Base.tres" id="21_13c1r"]
-[ext_resource type="Texture2D" uid="uid://bwo2v53nvfp1o" path="res://Assets/UI/WeaponBarV2L.svg" id="22_86vob"]
+[ext_resource type="Texture2D" uid="uid://jy2vmax0iabe" path="res://Assets/UI/WeaponBarV2L.svg" id="22_86vob"]
 [ext_resource type="Texture2D" uid="uid://dmf404ftfexwl" path="res://Assets/Decals/DropShadow/Shadow.png" id="22_gwf8y"]
-[ext_resource type="Texture2D" uid="uid://pcjnv83mgkat" path="res://Assets/Textures/UI/CutterIconSC.png" id="22_iaxg4"]
+[ext_resource type="Texture2D" uid="uid://cbl0ms55gbbui" path="res://Assets/Textures/UI/CutterIconSC.png" id="22_iaxg4"]
 [ext_resource type="PackedScene" uid="uid://die13hgrm443x" path="res://Shared/HurtBox.tscn" id="22_jvfa1"]
+[ext_resource type="Script" uid="uid://cfjuwhlea3mfv" path="res://Player/DropShadow.gd" id="22_shadow"]
 [ext_resource type="PackedScene" uid="uid://bs5c8uyhmpr0y" path="res://Shared/HP.tscn" id="23_ib3vm"]
-[ext_resource type="Texture2D" uid="uid://cqiv6rrr26qmx" path="res://Assets/Textures/UI/PlaceholderIcon.png" id="23_qxeqk"]
+[ext_resource type="Texture2D" uid="uid://cgo68fl4c4jfp" path="res://Assets/Textures/UI/PlaceholderIcon.png" id="23_qxeqk"]
 [ext_resource type="Script" uid="uid://dwo6qnv8yni5c" path="res://UI/CurrentWeaponUI.gd" id="24_e02xp"]
-[ext_resource type="FontFile" uid="uid://bawngymo25rp5" path="res://Assets/Fonts/SchutzgitterhausGroteskNbpRegular-l5pV.ttf" id="24_vjfmv"]
-[ext_resource type="FontFile" uid="uid://cx307j2obkmaw" path="res://Assets/Fonts/kenvector_future.ttf" id="25_hpuwh"]
-[ext_resource type="Texture2D" uid="uid://bx8lfh6vgwtnk" path="res://Assets/UI/QuickSelectCross.svg" id="25_iehhb"]
-[ext_resource type="Texture2D" uid="uid://cque1s6oa5b10" path="res://Assets/UI/MoneyIconWhite.svg" id="27_4reeb"]
-[ext_resource type="Texture2D" uid="uid://dnrhjt2nuwbnf" path="res://Assets/UI/UIBarR.svg" id="28_gv4ft"]
+[ext_resource type="FontFile" uid="uid://bqr5brhsp8adx" path="res://Assets/Fonts/SchutzgitterhausGroteskNbpRegular-l5pV.ttf" id="24_vjfmv"]
+[ext_resource type="FontFile" uid="uid://bban1dbg5mk2w" path="res://Assets/Fonts/kenvector_future.ttf" id="25_hpuwh"]
+[ext_resource type="Texture2D" uid="uid://brqqeoa2lybu" path="res://Assets/UI/QuickSelectCross.svg" id="25_iehhb"]
+[ext_resource type="Texture2D" uid="uid://drc2788udnpm7" path="res://Assets/UI/MoneyIconWhite.svg" id="27_4reeb"]
+[ext_resource type="Texture2D" uid="uid://cw66b5fw65e25" path="res://Assets/UI/UIBarR.svg" id="28_gv4ft"]
 [ext_resource type="Script" uid="uid://dusp8b6sr1si0" path="res://Player/StartMenu.gd" id="28_r3h2c"]
-[ext_resource type="Texture2D" uid="uid://cu57pg1cqjpqy" path="res://Assets/Textures/UI/BadPrankIcon.png" id="29_sc2yr"]
-[ext_resource type="Texture2D" uid="uid://darrnp03hrxwg" path="res://Assets/UI/MenuBar2.svg" id="30_vhdh7"]
-[ext_resource type="Texture2D" uid="uid://chje5lrkyyvyk" path="res://Assets/UI/MenuBarVertical.svg" id="31_nacso"]
+[ext_resource type="Texture2D" uid="uid://bkqdlx45ftmvq" path="res://Assets/Textures/UI/BadPrankIcon.png" id="29_sc2yr"]
+[ext_resource type="Texture2D" uid="uid://cg60w1catlsel" path="res://Assets/UI/MenuBar2.svg" id="30_vhdh7"]
+[ext_resource type="Texture2D" uid="uid://brqqo63wiridu" path="res://Assets/UI/MenuBarVertical.svg" id="31_nacso"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_p4inm"]
 margin = 4.123
@@ -53,14 +58,14 @@ radius = 0.308594
 
 [sub_resource type="Resource" id="Resource_7w4lt"]
 script = ExtResource("19_o1b5h")
-duration = 0.0
+duration = 1.0
 transition = 0
 ease = 2
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_grq1b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hme5y"]
-size = Vector3(5, 5, 5)
+size = Vector3(8, 8, 8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ib3vm"]
 size = Vector3(0.416409, 1.47901, 0.421371)
@@ -5069,13 +5074,34 @@ floor_stop_on_slope = false
 floor_snap_length = 0.2
 platform_floor_layers = 4294901856
 platform_wall_layers = 16
+safe_margin = 0.08
 script = ExtResource("1_ld2le")
-acceleration = 8.0
-stopping_speed = 9.0
-crouch_acceleration = 3.0
-slide_strength_curve = ExtResource("2_w6n6n")
-slide_strength_curve_time_factor = 3
-starting_loadout = PackedStringArray("res://Weapons/RangedWeapons/Gun/GunWeapon.tscn", "res://Weapons/RangedWeapons/BadPrank/BadPrankWeapon.tscn", "res://Weapons/RangedWeapons/LightningBaller/LightningBallerWeapon.tscn", "res://Weapons/MeleeWeapons/Cutter/CutterWeapon.tscn", "res://Weapons/MeleeWeapons/WavePounder/WavePounderWeapon.tscn", "res://Weapons/MeleeWeapons/MeleeGear/MeleeGearWeapon.tscn", "res://Weapons/RangedWeapons/ShrapnelCannon/ShrapnelCannonWeapon.tscn")
+slide_start_threshold = 1.0
+slide_strength_curve = ExtResource("2_x2ho1")
+starting_loadout = PackedStringArray("res://Weapons/RangedWeapons/Gun/GunWeapon.tscn")
+
+[node name="PlayerDebugInjector" type="Node" parent="."]
+script = ExtResource("2_xw4su")
+auto_inject_on_ready = true
+inject_weapons = true
+weapon_paths = Array[String](["res://Weapons/RangedWeapons/Gun/GunWeapon.tscn", "res://Weapons/MeleeWeapons/Cutter/CutterWeapon.tscn"])
+inject_gadgets = true
+gadget_paths = Array[String](["res://Gadgets/GrapplingHook/GrapplingHookGadget.tscn"])
+
+[node name="PlayerInputHandler" type="Node" parent="." node_paths=PackedStringArray("camera_controller")]
+script = ExtResource("3_xw4su")
+camera_controller = NodePath("../CameraController")
+
+[node name="PlayerCombatManager" type="Node" parent="." node_paths=PackedStringArray("attack_timer", "combo_timer", "weapon_manager")]
+script = ExtResource("4_x2ho1")
+attack_timer = NodePath("../AttackTimer")
+combo_timer = NodePath("../ComboTimer")
+weapon_manager = NodePath("../ActiveWeaponManager")
+
+[node name="ActiveWeaponManager" type="Node" parent="." node_paths=PackedStringArray("character_skin", "inventory")]
+script = ExtResource("5_eennk")
+character_skin = NodePath("../CharacterRotationRoot/CharacterSkin")
+inventory = NodePath("../Inventory")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
@@ -5139,22 +5165,26 @@ top_level = true
 script = ExtResource("2_7jqee")
 
 [node name="PlayerCamera" type="Node3D" parent="CameraController" node_paths=PackedStringArray("follow_target")]
-transform = Transform3D(-1, 1.51808e-08, -8.60946e-08, 0, 0.984808, 0.173648, 8.74228e-08, 0.173648, -0.984808, -4.30473e-07, 2.36824, -4.92404)
+transform = Transform3D(-1, 1.51808e-08, -8.60946e-08, 0, 0.984808, 0.173648, 8.74228e-08, 0.173648, -0.984808, -4.30473e-07, 2.3682399, -4.9240403)
 script = ExtResource("18_rqaa0")
 priority = 10
 follow_mode = 6
 follow_target = NodePath("../..")
 tween_resource = SubResource("Resource_7w4lt")
+tween_on_load = false
 follow_offset = Vector3(0, 1.5, 0)
+follow_damping = true
+follow_damping_value = Vector3(0.15, 0.15, 0.15)
 follow_distance = 5.0
 spring_length = 5.0
+collision_mask = 29
 noise_emitter_layer = 1
 metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 
 [node name="MainCamera" type="Camera3D" parent="CameraController"]
 unique_name_in_owner = true
 physics_interpolation_mode = 1
-transform = Transform3D(-1, 1.51808e-08, -8.60947e-08, 0, 0.984808, 0.173648, 8.74228e-08, 0.173648, -0.984808, -4.30473e-07, 2.36824, -4.92404)
+transform = Transform3D(-1, 1.518079e-08, -8.609465e-08, 0, 0.9848078, 0.17364796, 8.74228e-08, 0.17364796, -0.9848078, -4.30473e-07, 2.3682399, -4.9240403)
 top_level = true
 fov = 50.0
 
@@ -5176,137 +5206,73 @@ collision_mask = 1024
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MoneyCollectionRange"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.164, 2, 0)
 shape = SubResource("BoxShape3D_hme5y")
+debug_color = Color(0.7202739, 0.4801216, 0, 0.41960785)
+debug_fill = false
 
 [node name="CharacterRotationRoot" type="Node3D" parent="."]
 
 [node name="CharacterSkin" parent="CharacterRotationRoot" instance=ExtResource("15_7yrxv")]
 unique_name_in_owner = true
 
-[node name="GeneralSkeleton" parent="CharacterRotationRoot/CharacterSkin" index="0"]
-bones/0/position = Vector3(-6.75701e-08, 0.997919, 4.84474e-07)
-bones/0/rotation = Quaternion(0, 0, 0, 1)
-bones/1/rotation = Quaternion(0, 0, 0, 1)
-bones/2/rotation = Quaternion(0, 0, 0, 1)
-bones/3/rotation = Quaternion(0, 0, 0, 1)
-bones/4/rotation = Quaternion(0, 0, 0, 1)
-bones/5/rotation = Quaternion(0, 0, 0, 1)
-bones/7/rotation = Quaternion(0.5, 0.5, 0.5, -0.5)
-bones/8/rotation = Quaternion(0, 1, 0, 0)
-bones/9/rotation = Quaternion(0, -0.707107, 0, 0.707107)
-bones/10/rotation = Quaternion(0, 0.707107, 0, 0.707107)
-bones/11/rotation = Quaternion(-0.214187, 0.673887, 0.214187, 0.673887)
-bones/12/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
-bones/13/rotation = Quaternion(0, 0, 0, 1)
-bones/15/rotation = Quaternion(0, 0, 0, 1)
-bones/16/rotation = Quaternion(0, 0, 0, 1)
-bones/17/rotation = Quaternion(0, 0, 0, 1)
-bones/19/rotation = Quaternion(0, 0, 0, 1)
-bones/20/rotation = Quaternion(0, 0, 0, 1)
-bones/21/rotation = Quaternion(0, 0, 0, 1)
-bones/23/rotation = Quaternion(0, 0, 0, 1)
-bones/24/rotation = Quaternion(0, 0, 0, 1)
-bones/25/rotation = Quaternion(0, 0, 0, 1)
-bones/27/rotation = Quaternion(0, 0, 0, 1)
-bones/28/rotation = Quaternion(0, 0, 0, 1)
-bones/31/rotation = Quaternion(0.5, -0.5, -0.5, -0.5)
-bones/32/rotation = Quaternion(0, 1, 0, 0)
-bones/33/rotation = Quaternion(0, 0.707107, 0, 0.707107)
-bones/34/rotation = Quaternion(0, -0.707107, 0, 0.707107)
-bones/35/rotation = Quaternion(-0.214187, -0.673887, -0.214187, 0.673887)
-bones/36/rotation = Quaternion(-1.49011e-08, 0, 0, 1)
-bones/37/rotation = Quaternion(0, 0, 0, 1)
-bones/39/rotation = Quaternion(0, 0, 0, 1)
-bones/40/rotation = Quaternion(0, 0, 0, 1)
-bones/41/rotation = Quaternion(0, 0, 0, 1)
-bones/43/rotation = Quaternion(0, 0, 0, 1)
-bones/44/rotation = Quaternion(0, 0, 0, 1)
-bones/45/rotation = Quaternion(0, 0, 0, 1)
-bones/47/rotation = Quaternion(0, 0, 0, 1)
-bones/48/rotation = Quaternion(0, 0, 0, 1)
-bones/49/rotation = Quaternion(0, 0, 0, 1)
-bones/51/rotation = Quaternion(0, 0, 0, 1)
-bones/52/rotation = Quaternion(0, 0, 0, 1)
-bones/53/rotation = Quaternion(0, 0, 0, 1)
-bones/55/rotation = Quaternion(0, 0, 1, 0)
-bones/56/rotation = Quaternion(0, 1, 0, 0)
-bones/57/rotation = Quaternion(0, 0.707107, -0.707107, 0)
-bones/58/rotation = Quaternion(0, 1, 0, 0)
-bones/60/rotation = Quaternion(0, 0, 1, 0)
-bones/61/rotation = Quaternion(0, 1, 0, 0)
-bones/62/rotation = Quaternion(0, 0.707107, -0.707107, 0)
-bones/63/rotation = Quaternion(0, 1, 0, 0)
-
-[node name="Root" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.75701e-08, 0.997919, 4.84474e-07)
-
-[node name="RightWrist" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton" index="1"]
-transform = Transform3D(5.96046e-08, 8.9407e-08, 1, 1, 5.21541e-08, -1.04308e-07, 2.23517e-08, 1, -1.19209e-07, -0.133621, 1.356, 0.499399)
-
-[node name="LeftWrist" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton" index="2"]
-transform = Transform3D(0, 1, 0, 0, 0, -1, -1, 0, 0, 0.737771, 1.43572, -0.0617141)
-
-[node name="Back" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton" index="3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.67256e-08, 1.09715, -0.0122728)
-
 [node name="Physical Bone Hips" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="0"]
-transform = Transform3D(1, 1.54545e-06, 1.90671e-07, -4.65661e-10, 0.122744, -0.992438, -1.55717e-06, 0.992438, 0.122744, -7.50207e-08, 1.04754, -0.00613616)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0821e-09, -3.25963e-09, 0.0499955)
-body_offset = Transform3D(1, 1.54545e-06, 1.90671e-07, -4.65661e-10, 0.122744, -0.992438, -1.55717e-06, 0.992438, 0.122744, -7.45058e-09, 0.0496174, -0.00613664)
+transform = Transform3D(1, 1.5454524e-06, 1.906712e-07, -4.65661e-10, 0.122744046, -0.9924384, -1.55717e-06, 0.9924384, 0.122744046, -7.502068e-08, 1.0475364, -0.006136149)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0820954e-09, -4.1909516e-09, 0.049995396)
+body_offset = Transform3D(1, 1.5454524e-06, 1.906712e-07, -4.65661e-10, 0.122744046, -0.9924384, -1.55717e-06, 0.9924384, 0.122744046, -7.450581e-09, 0.04961735, -0.0061366335)
 
 [node name="Physical Bone Spine" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="1"]
-transform = Transform3D(1, 0.000805783, 9.84169e-05, 2.32831e-10, 0.121237, -0.992624, -0.000811771, 0.992623, 0.121237, -5.86093e-06, 1.15538, -0.0193845)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1155e-09, -1.07102e-08, 0.0586596)
-body_offset = Transform3D(1, 0.000805783, 9.84169e-05, 2.32831e-10, 0.121237, -0.992624, -0.000811771, 0.992623, 0.121237, -5.7742e-06, 0.0582269, -0.0071117)
+transform = Transform3D(0.9999997, 0.0008057828, 9.841692e-05, 2.3283095e-10, 0.12123704, -0.9926236, -0.0008117708, 0.99262327, 0.121236995, -5.8609257e-06, 1.1553806, -0.019384503)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1241355e-09, -3.0733645e-08, 0.05865964)
+body_offset = Transform3D(0.9999997, 0.0008057828, 9.841692e-05, 2.3283095e-10, 0.12123704, -0.9926236, -0.0008117708, 0.99262327, 0.121236995, -5.7742e-06, 0.058226943, -0.007111687)
 
 [node name="Physical Bone Chest" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="2"]
-transform = Transform3D(1, 0.000655409, 7.9789e-05, 0, 0.120847, -0.992671, -0.000660248, 0.992671, 0.120847, -1.7001e-05, 1.28041, -0.0346285)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.19599e-09, -9.31323e-10, 0.0672942)
-body_offset = Transform3D(1, 0.000655409, 7.9789e-05, 0, 0.120847, -0.992671, -0.000660248, 0.992671, 0.120847, -5.36814e-06, 0.066801, -0.0081323)
+transform = Transform3D(0.9999998, 0.00065540907, 7.978897e-05, 0, 0.120847, -0.9926712, -0.00066024787, 0.992671, 0.12084697, -1.7000966e-05, 1.2804086, -0.03462851)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1909833e-09, 9.313226e-10, 0.067294136)
+body_offset = Transform3D(0.9999998, 0.00065540907, 7.978897e-05, 0, 0.120847, -0.9926712, -0.00066024787, 0.992671, 0.12084697, -5.3681406e-06, 0.06680095, -0.008132294)
 
 [node name="Physical Bone UpperChest" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="3"]
-transform = Transform3D(-0.999999, 0.00162028, 8.54635e-05, -2.32831e-10, 0.0526729, -0.998612, -0.00162253, -0.99861, -0.0526728, -2.88014e-05, 1.42237, -0.0387963)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.72576e-09, -7.45058e-09, 0.0752671)
-body_offset = Transform3D(-0.999999, 0.00162028, 8.54635e-05, -2.32831e-10, 0.0526729, -0.998612, -0.00162253, -0.998611, -0.0526728, -6.42985e-06, 0.0751626, 0.00396452)
+transform = Transform3D(-0.99999875, 0.0016202773, 8.5463544e-05, -2.3283095e-10, 0.052672878, -0.99861187, -0.0016225297, -0.99861056, -0.05267281, -2.8801376e-05, 1.4223723, -0.038796306)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.716206e-09, -1.7695129e-08, 0.075267136)
+body_offset = Transform3D(-0.99999875, 0.0016202773, 8.5463544e-05, -2.3283095e-10, 0.052672878, -0.99861187, -0.0016225297, -0.99861056, -0.05267281, -6.429851e-06, 0.07516265, 0.0039645135)
 
 [node name="Physical Bone LeftUpperLeg" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="4"]
-transform = Transform3D(-0.903454, -0.428643, -0.00602617, -1.86265e-09, -0.0140573, 0.999901, -0.428686, 0.903364, 0.0127001, 0.0924677, 0.728378, -0.00313132)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08266e-08, 1.21072e-08, 0.202997)
-body_offset = Transform3D(0.903454, 0.428643, 0.00602617, 1.86265e-09, 0.0140573, -0.999901, -0.428686, 0.903364, 0.0127001, -0.00122331, 0.202977, -0.00257809)
+transform = Transform3D(-0.90345365, -0.42864347, -0.00602617, -1.8626494e-09, -0.014057308, 0.99990124, -0.4286858, 0.9033644, 0.012700126, 0.09246774, 0.7283781, -0.00313133)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8475645e-09, 1.9092113e-08, 0.20299704)
+body_offset = Transform3D(0.90345365, 0.42864347, 0.00602617, 1.8626494e-09, 0.014057308, -0.99990124, -0.4286858, 0.9033644, 0.012700126, -0.0012233108, 0.202977, -0.0025781016)
 
 [node name="Physical Bone LeftLowerLeg" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="5"]
-transform = Transform3D(-0.993014, 0.117857, 0.00581225, -1.39698e-09, -0.0492564, 0.998786, 0.118, 0.991808, 0.0489123, 0.0924676, 0.315162, -0.0160052)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.66247e-09, 2.8871e-08, 0.210495)
-body_offset = Transform3D(-0.993014, 0.117857, 0.00581225, 1.39698e-09, 0.0492564, -0.998786, -0.118, -0.991808, -0.0489123, -0.00122346, 0.210239, 0.0102958)
+transform = Transform3D(-0.9930136, 0.11785672, 0.005812252, -1.3969795e-09, -0.049256407, 0.99878615, 0.117999956, 0.99180824, 0.04891228, 0.09246757, 0.31516212, -0.016005218)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.731149e-09, 3.4458935e-08, 0.21049449)
+body_offset = Transform3D(-0.9930136, 0.11785672, 0.005812252, 1.3969795e-09, 0.049256407, -0.99878615, -0.117999956, -0.99180824, -0.04891228, -0.0012234598, 0.210239, 0.010295799)
 
 [node name="Physical Bone LeftFoot" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="6"]
-transform = Transform3D(-0.99866, -0.0459706, -0.0237585, -0.0517471, 0.88718, 0.458513, -7.45058e-09, 0.459128, -0.88837, 0.0931117, 0.0688793, 0.043532)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.28057e-09, 3.72529e-09, 0.078608)
-body_offset = Transform3D(0.99866, 0.0459706, 0.0237585, -7.45058e-09, 0.459128, -0.88837, -0.0517471, 0.88718, 0.458513, -0.00186761, 0.069833, -0.0360428)
+transform = Transform3D(-0.99866027, -0.04597059, -0.023758538, -0.05174711, 0.88718, 0.45851284, -7.450582e-09, 0.459128, -0.88837016, 0.09311174, 0.06887932, 0.043531984)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.656613e-09, 1.8626451e-08, 0.078608006)
+body_offset = Transform3D(0.99866027, 0.04597059, 0.023758538, -7.450582e-09, 0.459128, -0.88837016, -0.05174711, 0.88718, 0.45851284, -0.0018676072, 0.069833, -0.036042795)
 
 [node name="Physical Bone LeftToes" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="7"]
-transform = Transform3D(-0.776766, 0.629629, 0.0142068, 0.629789, 0.776569, 0.0175223, 0, 0.022558, -0.999746, 0.094269, 0.0319605, 0.163352)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.73115e-10, -1.92085e-09, 0.05)
-body_offset = Transform3D(-0.776766, 0.629629, 0.0142068, 0, 0.022558, -0.999746, -0.629789, -0.776569, -0.0175223, -0.000710338, 0.0499873, 0.000876114)
+transform = Transform3D(-0.7767662, 0.6296289, 0.014206775, 0.6297892, 0.77656853, 0.017522281, 0, 0.022557989, -0.99974555, 0.094269015, 0.031960502, 0.16335225)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7462298e-10, -2.910383e-10, 0.049999986)
+body_offset = Transform3D(-0.7767662, 0.6296289, 0.014206775, 0, 0.022557989, -0.99974555, -0.6297892, -0.77656853, -0.017522281, -0.00071033835, 0.049987264, 0.0008761138)
 
 [node name="Physical Bone RightUpperLeg" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="8"]
-transform = Transform3D(-0.902996, 0.429608, 0.00602721, -9.31323e-10, -0.0140282, 0.999902, 0.42965, 0.902907, 0.0126674, -0.0924681, 0.728378, -0.00312481)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05938e-08, 1.30385e-08, 0.202997)
-body_offset = Transform3D(0.902996, -0.429608, -0.00602721, 9.31323e-10, 0.0140282, -0.999902, 0.42965, 0.902907, 0.0126674, 0.00122352, 0.202977, -0.00257145)
+transform = Transform3D(-0.9029956, 0.42960754, 0.0060272105, -9.313226e-10, -0.014028193, 0.99990165, 0.4296498, 0.9029067, 0.012667399, -0.09246808, 0.728378, -0.0031248033)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3504177e-08, 4.4237822e-09, 0.202997)
+body_offset = Transform3D(0.9029956, -0.42960754, -0.0060272105, 9.313226e-10, 0.014028193, -0.99990165, 0.4296498, 0.9029067, 0.012667399, 0.0012235194, 0.202977, -0.0025714417)
 
 [node name="Physical Bone RightLowerLeg" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="9"]
-transform = Transform3D(-0.993025, -0.117759, -0.00581125, -9.31323e-10, -0.0492888, 0.998785, -0.117902, 0.991818, 0.048945, -0.0924683, 0.315162, -0.015999)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74623e-09, 3.53903e-08, 0.210495)
-body_offset = Transform3D(-0.993025, -0.117759, -0.00581125, 9.31323e-10, 0.0492888, -0.998785, 0.117902, -0.991818, -0.048945, 0.00122324, 0.210239, 0.0103027)
+transform = Transform3D(-0.99302524, -0.11775873, -0.0058112517, -9.313232e-10, -0.049288813, 0.99878454, -0.11790203, 0.9918183, 0.048945032, -0.092468336, 0.315162, -0.01599896)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6775524e-09, 2.142042e-08, 0.21049485)
+body_offset = Transform3D(-0.99302524, -0.11775873, -0.0058112517, 9.313232e-10, 0.049288813, -0.99878454, 0.11790203, -0.9918183, -0.048945032, 0.0012232438, 0.210239, 0.010302698)
 
 [node name="Physical Bone RightFoot" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="10"]
-transform = Transform3D(-0.99866, 0.0459739, 0.0237602, 0.0517508, 0.88718, 0.458513, -7.45058e-09, 0.459128, -0.88837, -0.0931128, 0.0688793, 0.0435313)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.98492e-09, -8.19564e-08, 0.078608)
-body_offset = Transform3D(0.99866, -0.0459739, -0.0237602, -7.45058e-09, 0.459128, -0.88837, 0.0517508, 0.88718, 0.458513, 0.00186773, 0.069833, -0.0360427)
+transform = Transform3D(-0.99866, 0.04597387, 0.023760244, 0.0517508, 0.88717985, 0.4585127, -7.45058e-09, 0.45912793, -0.88837016, -0.09311283, 0.06887929, 0.04353136)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5483238e-08, -5.9604645e-08, 0.07860799)
+body_offset = Transform3D(0.99866, -0.04597387, -0.023760244, -7.45058e-09, 0.45912793, -0.88837016, 0.0517508, 0.88717985, 0.4585127, 0.0018677264, 0.06983302, -0.036042705)
 
 [node name="Physical Bone RightToes" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="11"]
-transform = Transform3D(-0.776991, -0.629352, -0.0141791, -0.629512, 0.776794, 0.0175009, -3.72529e-09, 0.022524, -0.999746, -0.0942716, 0.0319614, 0.163352)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.49832e-09, 7.33417e-09, 0.05)
-body_offset = Transform3D(-0.776991, -0.629352, -0.0141791, -3.72529e-09, 0.022524, -0.999746, 0.629512, -0.776794, -0.0175009, 0.000708953, 0.0499873, 0.000875056)
+transform = Transform3D(-0.7769909, -0.6293522, -0.014179123, -0.62951195, 0.7767938, 0.017500943, -3.7252896e-09, 0.022524, -0.9997463, -0.09427164, 0.03196144, 0.16335166)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.265488e-09, 4.5401976e-09, 0.049999993)
+body_offset = Transform3D(-0.7769909, -0.6293522, -0.014179123, -3.7252896e-09, 0.022524, -0.9997463, 0.62951195, -0.7767938, -0.017500943, 0.00070895255, 0.04998731, 0.0008750558)
 
 [node name="PlayerHand" type="Node3D" parent="CharacterRotationRoot/CharacterSkin" node_paths=PackedStringArray("character_skin")]
 unique_name_in_owner = true
@@ -5343,15 +5309,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19998, 0)
 script = ExtResource("16_kqrv3")
 
 [node name="DropShadow" type="Decal" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.62, 0)
 layers = 96
-size = Vector3(1, 7.27661, 1)
+size = Vector3(1, 0.1, 1)
 texture_albedo = ExtResource("22_gwf8y")
 albedo_mix = 0.8
 upper_fade = 0.0001
 lower_fade = 1.0
 distance_fade_begin = 172.53
 distance_fade_length = 1000.0
+script = ExtResource("22_shadow")
 
 [node name="HurtBox" parent="." node_paths=PackedStringArray("hp_node", "attraction_point") groups=["player"] instance=ExtResource("22_jvfa1")]
 collision_layer = 1
@@ -5792,7 +5758,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Button9" type="Button" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/Panel"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 459.0
 offset_top = 599.0
 offset_right = 654.0
@@ -5800,7 +5766,7 @@ offset_bottom = 641.0
 text = "return (circle)"
 
 [node name="WeaponSelect" type="Panel" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/Panel"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 45.0
 offset_top = 37.0
 offset_right = 549.0
@@ -5825,7 +5791,7 @@ item_0/icon = ExtResource("29_sc2yr")
 item_1/icon = ExtResource("29_sc2yr")
 
 [node name="WeaponInfo" type="Panel" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/Panel"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 576.0
 offset_top = 487.0
 offset_right = 1100.0
@@ -5833,7 +5799,7 @@ offset_bottom = 593.0
 size_flags_horizontal = 4
 
 [node name="Panel3" type="Panel" parent="CanvasLayer/StartMenu/SSMWeaponsAndGadgetsMenu/Panel/WeaponInfo"]
-layout_mode = 2
+layout_mode = 0
 offset_right = 97.0
 offset_bottom = 106.0
 size_flags_horizontal = 4

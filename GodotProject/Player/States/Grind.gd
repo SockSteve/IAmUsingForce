@@ -12,7 +12,7 @@ var path_end: bool = false
 #when we enter this state, we set the corresponding animation, get any grindrail related
 #information and set the initial progress to set the player on the correct point where he starts grinding
 func enter(_msg := {}) -> void:
-	player._character_skin.grind()
+	player.character_skin.grind()
 	path_follow_3d = PathFollow3D.new()
 	path_follow_3d.loop = false
 	path_3d = player.get_inventory().get_gadget("grind_boots").current_grindrail
@@ -90,14 +90,14 @@ func endGrind():
 	grind_jump = false
 	grind_rail_change = false
 	grind_jump_time = 0.0
-	player._character_skin.end_grind()
+	player.character_skin.end_grind()
 	path_follow_3d.queue_free()
 	player.get_inventory().get_gadget("grind_boots").end_grind()
 	player.velocity.y = 0
 	state_machine.transition_to("Air", {do_jump = true})
 
 func change_grindrail(dir):
-	player._character_skin.end_grind()
+	player.character_skin.end_grind()
 	path_follow_3d.queue_free()
 	#print(path_3d == player.get_inventory().get_gadget("GrindBoots").get_side_rail_path3d(dir))
 	path_3d = player.get_inventory().get_gadget("grind_boots").change_current_grindrail_to(dir)

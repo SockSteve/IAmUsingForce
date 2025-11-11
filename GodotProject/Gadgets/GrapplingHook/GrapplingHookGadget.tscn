@@ -1,8 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqhn455src0iq"]
+[gd_scene load_steps=9 format=3 uid="uid://cqhn455src0iq"]
 
 [ext_resource type="Script" uid="uid://dfpbkqti6bfpv" path="res://Gadgets/GrapplingHook/GrapplingHook.gd" id="1_udl8o"]
-[ext_resource type="Texture2D" uid="uid://bixl0hen54b4f" path="res://Gadgets/GrapplingHook/uzi.png" id="3_k28p7"]
-[ext_resource type="ArrayMesh" uid="uid://chh8tj3gh0oue" path="res://Gadgets/GrapplingHook/uzi.obj" id="4_e2e6t"]
+[ext_resource type="Texture2D" uid="uid://c07j6i254k3n5" path="res://Gadgets/GrapplingHook/uzi.png" id="3_k28p7"]
+[ext_resource type="ArrayMesh" uid="uid://dvqfjlwt26ch1" path="res://Gadgets/GrapplingHook/uzi.obj" id="4_e2e6t"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dib0u"]
 
@@ -13,6 +13,9 @@ albedo_color = Color(1, 1, 0, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_n28p7"]
 material = SubResource("StandardMaterial3D_mscdr")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_detection"]
+radius = 20.0
 
 [node name="GrapplingHook" type="Node3D" groups=["active", "gadget"]]
 script = ExtResource("1_udl8o")

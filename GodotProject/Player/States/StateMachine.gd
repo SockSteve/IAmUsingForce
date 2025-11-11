@@ -1,5 +1,6 @@
 # Generic state machine. Initializes states and delegates engine callbacks
 # (_physics_process, _unhandled_input) to the active state.
+# Updated to work with new Player manager system
 extends Node
 class_name StateMachine
 
@@ -11,6 +12,11 @@ signal transitioned(state_name)
 
 # The current active state. At the start of the game, we get the `initial_state`.
 @onready var state: State = get_node(initial_state)
+
+# Coyote time variables
+var coyote_time_duration: float = 0.1
+var coyote_timer: float = 0.0
+var was_on_floor: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,6 +34,7 @@ func _process(delta: float) -> void:
 	state.update(delta)
 	
 func _physics_process(delta: float) -> void:
+	_update_coyote_time(delta)
 	state.physics_update(delta)
 
 # This function calls the current state's exit() function, then changes the active state,
@@ -44,3 +51,44 @@ func transition_to(target_state_name: String, msg: Dictionary = {}) ->void:
 	state = get_node(target_state_name)
 	state.enter(msg)
 	emit_signal("transitioned", state.name)
+
+# Methods for handling input from the new manager system
+func handle_jump() -> void:
+	if state.has_method("handle_jump"):
+		state.handle_jump()
+
+func handle_dodge() -> void:
+	if state.has_method("handle_dodge"):
+		state.handle_dodge()
+
+func handle_crouch() -> void:
+	if state.has_method("handle_crouch"):
+		state.handle_crouch()
+
+func handle_attack(attack_type: String) -> void:
+	if state.has_method("handle_attack"):
+		state.handle_attack(attack_type)
+
+# Coyote time functionality
+func _update_coyote_time(delta: float) -> void:
+	var player = owner as Player
+	if not player:
+		return
+	
+	var is_on_floor = player.is_on_floor()
+	
+	# Start coyote timer when leaving the ground
+	if was_on_floor and not is_on_floor:
+		coyote_timer = coyote_time_duration
+	
+	# Count down coyote timer
+	if coyote_timer > 0:
+		coyote_timer -= delta
+	
+	was_on_floor = is_on_floor
+
+func can_coyote_jump() -> bool:
+	return coyote_timer > 0.0
+
+func use_coyote_jump() -> void:
+	coyote_timer = 0.0

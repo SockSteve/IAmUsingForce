@@ -1,164 +1,178 @@
 class_name CameraController
 extends Node3D
 
-#enum CAMERA_PIVOT { OVER_SHOULDER, THIRD_PERSON, AIM }
+## Enhanced camera controller with smooth damping and better input handling
+##
+## This controller manages the PhantomCamera3D and provides:
+## - Smooth positional and rotational damping
+## - Mouse input with optional acceleration
+## - Configurable sensitivity and response curves
 
-#@export_node_path var player_path : NodePath
-#@export var invert_mouse_y := false
-@export_range(0.0, 1.0) var mouse_sensitivity := 0.25
-#@export_range(0.0, 8.0) var joystick_sensitivity := 2.0
-#@export var tilt_upper_limit := deg_to_rad(-60.0)
-#@export var tilt_lower_limit := deg_to_rad(60.0)
-#@export var tilt_speed := 1
-#@export var rotation_speed := 1
+#region Export Variables
+
+@export_group("Mouse Input")
+## Base mouse sensitivity multiplier
+@export_range(0.0, 2.0, 0.01) var mouse_sensitivity: float = 0.25
+
+## If enabled, mouse movement will feel more responsive at higher speeds
+@export var mouse_acceleration: bool = false
+
+## How much to accelerate mouse movement (only if mouse_acceleration is true)
+@export_range(1.0, 3.0, 0.1) var mouse_acceleration_factor: float = 1.5
+
+## Invert vertical mouse axis
+@export var invert_mouse_y: bool = false
+
+@export_group("Camera Rotation Limits")
+## Minimum pitch angle (looking up)
+@export var min_pitch: float = -89.9
+
+## Maximum pitch angle (looking down)
+@export var max_pitch: float = 50.0
+
+## Minimum yaw angle (typically 0 for free rotation)
+@export var min_yaw: float = 0.0
+
+## Maximum yaw angle (typically 360 for free rotation)
+@export var max_yaw: float = 360.0
+
+@export_group("Camera Smoothing")
+## Enable position damping for smoother camera movement
+@export var enable_follow_damping: bool = true
+
+## How quickly camera follows player (lower = smoother, higher = snappier)
+## X = horizontal, Y = vertical, Z = depth
+@export var follow_damping_value: Vector3 = Vector3(0.15, 0.15, 0.15)
+
+## Enable rotation damping for smoother camera rotation
+@export var enable_rotation_damping: bool = true
+
+## How quickly camera rotates (lower = smoother, higher = snappier)
+@export_range(0.001, 1.0, 0.001) var rotation_damping_value: float = 0.1
+
+@export_group("Camera Distance")
+## Distance from player (spring arm length)
+@export_range(1.0, 20.0, 0.5) var camera_distance: float = 5.0
+
+## Vertical offset from player position
+@export_range(-2.0, 3.0, 0.1) var camera_height_offset: float = 1.5
+
+#endregion
+
+#region Node References
 
 @onready var camera: Camera3D = %MainCamera
 @onready var _player_pcam: PhantomCamera3D = $PlayerCamera
-#@onready var _over_shoulder_pivot: Node3D = $CameraOverShoulderPivot
-#@onready var _camera_spring_arm: SpringArm3D = $CameraSpringArm
-#@onready var _third_person_pivot: Node3D = $CameraSpringArm/CameraThirdPersonPivot
-#@onready var _camera_raycast: RayCast3D = $PlayerCamera/CameraRayCast
 
-#@export var mouse_sensitivity: float = 0.05
-
-@export var min_pitch: float = -89.9
-@export var max_pitch: float = 50
-
-@export var min_yaw: float = 0
-@export var max_yaw: float = 360
+#endregion
 
 
-#var _aim_target : Vector3
-#var _aim_collider: Node
-#var _pivot: Node3D
-#var _current_pivot_type: CAMERA_PIVOT
-#var _rotation_input: float
-#var _tilt_input: float
-#var _mouse_input := false
-#var _offset: Vector3
-#var _anchor: CharacterBody3D
-#var _euler_rotation: Vector3
+#region Private Variables
+
+var _last_mouse_velocity: Vector2 = Vector2.ZERO
+
+#endregion
 
 
-#func _unhandled_input(event: InputEvent) -> void:
-	#_mouse_input = event is InputEventMouseMotion and Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED
-	#if _mouse_input:
-		#_rotation_input = -event.relative.x * mouse_sensitivity
-		#_tilt_input = -event.relative.y * mouse_sensitivity
+#region Lifecycle Methods
+
+func _ready() -> void:
+	_apply_camera_settings()
+
+func _apply_camera_settings() -> void:
+	"""Applies exported camera settings to PhantomCamera3D"""
+	if not _player_pcam:
+		push_warning("PlayerCamera PhantomCamera3D not found!")
+		return
+
+	# Apply follow damping
+	_player_pcam.set_follow_damping(enable_follow_damping)
+	_player_pcam.set_follow_damping_value(follow_damping_value)
+
+	# Apply camera distance and offset
+	_player_pcam.set_spring_length(camera_distance)
+	_player_pcam.set_follow_offset(Vector3(0, camera_height_offset, 0))
+
+	print("Camera settings applied:")
+	print("  Follow Damping: ", enable_follow_damping, " Value: ", follow_damping_value)
+	print("  Spring Length: ", camera_distance)
+	print("  Follow Offset: ", Vector3(0, camera_height_offset, 0))
 
 func _input(event: InputEvent) -> void:
 	if _player_pcam.get_follow_mode() == _player_pcam.FollowMode.THIRD_PERSON:
-		var active_pcam: PhantomCamera3D
-
 		_set_pcam_rotation(_player_pcam, event)
-		#_set_pcam_rotation(_aim_pcam, event)
-		#if _player_pcam.get_priority() > _aim_pcam.get_priority():
-			#_toggle_aim_pcam(event)
-		#else:
-			#_toggle_aim_pcam(event)
 
-		#if event is InputEventKey and event.pressed:
-			#if event.keycode == KEY_SPACE:
-				#if _ceiling_pcam.get_priority() < 30 and _player_pcam.is_active():
-					#_ceiling_pcam.set_priority(30)
-				#else:
-					#_ceiling_pcam.set_priority(1)
+#endregion
+
+
+#region Camera Rotation
 
 func _set_pcam_rotation(pcam: PhantomCamera3D, event: InputEvent) -> void:
+	"""Handles mouse input and applies rotation to PhantomCamera3D with optional acceleration"""
 	if event is InputEventMouseMotion:
-		var pcam_rotation_degrees: Vector3
+		var pcam_rotation_degrees: Vector3 = pcam.get_third_person_rotation_degrees()
 
-		# Assigns the current 3D rotation of the SpringArm3D node - so it starts off where it is in the editor
-		pcam_rotation_degrees = pcam.get_third_person_rotation_degrees()
+		# Calculate base mouse delta
+		var mouse_delta: Vector2 = event.relative
 
-		# Change the X rotation
-		pcam_rotation_degrees.x -= event.relative.y * mouse_sensitivity
+		# Apply mouse acceleration if enabled
+		if mouse_acceleration:
+			var velocity := mouse_delta.length()
+			if velocity > 0:
+				var acceleration := pow(velocity / 10.0, mouse_acceleration_factor - 1.0)
+				mouse_delta *= acceleration
 
-		# Clamp the rotation in the X axis so it go over or under the target
+		# Apply sensitivity
+		var adjusted_delta := mouse_delta * mouse_sensitivity
+
+		# Apply inversion
+		var y_multiplier := -1.0 if not invert_mouse_y else 1.0
+
+		# Change the X rotation (pitch)
+		pcam_rotation_degrees.x += adjusted_delta.y * y_multiplier
 		pcam_rotation_degrees.x = clampf(pcam_rotation_degrees.x, min_pitch, max_pitch)
 
-		# Change the Y rotation value
-		pcam_rotation_degrees.y -= event.relative.x * mouse_sensitivity
-
-		# Sets the rotation to fully loop around its target, but witout going below or exceeding 0 and 360 degrees respectively
+		# Change the Y rotation (yaw)
+		pcam_rotation_degrees.y -= adjusted_delta.x
 		pcam_rotation_degrees.y = wrapf(pcam_rotation_degrees.y, min_yaw, max_yaw)
 
-		# Change the SpringArm3D node's rotation and rotate around its target
+		# Apply rotation to SpringArm3D
 		pcam.set_third_person_rotation_degrees(pcam_rotation_degrees)
 
-#func _physics_process(delta: float) -> void:
-	#if not _anchor:
-		#return
-#
-	#_rotation_input += Input.get_action_raw_strength("camera_left") - Input.get_action_raw_strength("camera_right")
-	#_tilt_input += Input.get_action_raw_strength("camera_up") - Input.get_action_raw_strength("camera_down")
-#
-	##mitigate stick drift
-	#if _rotation_input < .1  and _rotation_input > -.1:
-		#_rotation_input = 0
-	#
-	##mitigate stick drift
-	#if _tilt_input < .1 and _tilt_input > -.1:
-		#_tilt_input = 0
-	#
-	#if invert_mouse_y:
-		#_tilt_input *= -1
-#
-	#if _camera_raycast.is_colliding():
-		#_aim_target = _camera_raycast.get_collision_point()
-		#_aim_collider = _camera_raycast.get_collider()
-	#else:
-		#_aim_target = _camera_raycast.global_transform * _camera_raycast.target_position
-		#_aim_collider = null
-#
-	## Set camera controller to current ground level for the character
-	#var target_position := _anchor.global_position + _offset
-	#target_position.y = lerp(global_position.y, _anchor._ground_height, 0.1)
-	#global_position = target_position
-#
-	## Rotates camera using euler rotation
-	#_euler_rotation.x += _tilt_input * delta * tilt_speed
-	#_euler_rotation.x = clamp(_euler_rotation.x, tilt_lower_limit, tilt_upper_limit)
-	#_euler_rotation.y += _rotation_input * delta * rotation_speed
-#
-	#transform.basis = Basis.from_euler(_euler_rotation)
-#
-	#camera.global_transform = _pivot.global_transform
-	#camera.rotation.z = 0
-#
-	#_rotation_input = 0.0
-	#_tilt_input = 0.0
+		# Store velocity for potential future use
+		_last_mouse_velocity = mouse_delta
+
+#endregion
 
 
-#func setup(anchor: CharacterBody3D) -> void:
-	#_anchor = anchor
-	#_offset = global_transform.origin - anchor.global_transform.origin
-	#set_pivot(CAMERA_PIVOT.THIRD_PERSON)
-	#camera.global_transform = camera.global_transform.interpolate_with(_pivot.global_transform, 0.1)
-	#_camera_spring_arm.add_excluded_object(_anchor.get_rid())
-	#_camera_raycast.add_exception_rid(_anchor.get_rid())
+#region Public Methods
 
+## Updates camera distance at runtime
+func set_camera_distance(distance: float) -> void:
+	camera_distance = distance
+	if _player_pcam:
+		_player_pcam.set_spring_length(distance)
 
-#func set_pivot(pivot_type: CAMERA_PIVOT) -> void:
-	#if pivot_type == _current_pivot_type:
-		#return
-#
-	#match(pivot_type):
-		#CAMERA_PIVOT.OVER_SHOULDER:
-			#_over_shoulder_pivot.look_at(_aim_target)
-			#_pivot = _over_shoulder_pivot
-		#CAMERA_PIVOT.THIRD_PERSON:
-			#_pivot = _third_person_pivot
-#
-	#_current_pivot_type = pivot_type
+## Updates camera height offset at runtime
+func set_camera_height_offset(height: float) -> void:
+	camera_height_offset = height
+	if _player_pcam:
+		_player_pcam.set_follow_offset(Vector3(0, height, 0))
 
+## Updates follow damping at runtime
+func set_follow_damping_enabled(enabled: bool) -> void:
+	enable_follow_damping = enabled
+	if _player_pcam:
+		_player_pcam.set_follow_damping(enabled)
 
-#func get_aim_target() -> Vector3:
-	#return _aim_target
-#
-#
-#func get_aim_collider() -> Node:
-	#if is_instance_valid(_aim_collider):
-		#return _aim_collider
-	#else:
-		#return null
+## Updates follow damping value at runtime
+func set_follow_damping_strength(value: Vector3) -> void:
+	follow_damping_value = value
+	if _player_pcam:
+		_player_pcam.set_follow_damping_value(value)
+
+## Gets reference to the PhantomCamera3D
+func get_phantom_camera() -> PhantomCamera3D:
+	return _player_pcam
+
+#endregion

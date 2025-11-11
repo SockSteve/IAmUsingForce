@@ -1,0 +1,42 @@
+[gd_scene load_steps=3 format=3 uid="uid://breakable_crate_001"]
+
+[ext_resource type="Script" path="res://Interactibles/BreakableCrate.gd" id="1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_crate"]
+size = Vector3(1, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_crate"]
+albedo_color = Color(0.6, 0.4, 0.2, 1)
+roughness = 0.8
+
+[node name="BreakableCrate" type="RigidBody3D"]
+collision_layer = 8
+collision_mask = 352
+mass = 5.0
+gravity_scale = 1.0
+continuous_cd = true
+can_sleep = true
+script = ExtResource("1")
+max_health = 30
+money_amount = 20
+money_scatter_radius = 1.0
+freeze_timeout = 2.0
+freeze_velocity_threshold = 0.1
+freeze_when_off_screen = true
+enable_shake = true
+shake_intensity = 1
+spawn_debris = true
+debris_count = 8
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_crate")
+surface_material_override/0 = SubResource("StandardMaterial3D_crate")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_crate")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_crate"]
+size = Vector3(1, 1, 1)
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+aabb = AABB(-0.5, -0.5, -0.5, 1, 1, 1)

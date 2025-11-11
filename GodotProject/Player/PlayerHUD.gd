@@ -41,8 +41,12 @@ func populate_quick_select_with_weapons(quick_select_index):
 		return
 	
 	var player_node = get_node(player)
-	var current_melee_weapon: Weapon = player_node.current_melee_weapon
-	var current_ranged_weapon: Weapon = player_node.current_ranged_weapon
+	var weapon_manager = player_node.get_weapon_manager()
+	if weapon_manager == null:
+		printerr("Error: weapon_manager is null")
+		return
+	var current_melee_weapon: Weapon = weapon_manager.get_melee_weapon()
+	var current_ranged_weapon: Weapon = weapon_manager.get_ranged_weapon()
 	
 	for shortcut_index in current_quick_select_panel:
 		var sm_icon: TextureRect = get_node(QUICK_SELECT_ICON_PATH + str(shortcut_index))
@@ -60,10 +64,10 @@ func populate_quick_select_with_weapons(quick_select_index):
 			continue
 		
 		sm_icon.texture = weapon_texture
-		
-		if weapon_id == current_melee_weapon.get_id():
+
+		if current_melee_weapon != null and weapon_id == current_melee_weapon.get_id():
 			sm_icon.modulate = Color(1, 0.5, 0)  # Orange for currently held melee weapon
-		elif weapon_id == current_ranged_weapon.get_id():
+		elif current_ranged_weapon != null and weapon_id == current_ranged_weapon.get_id():
 			sm_icon.modulate = Color(0, 0.5, 1)  # Blue for currently held ranged weapon
 		else:
 			sm_icon.modulate = Color(1, 1, 1, disabled_alpha)

@@ -81,7 +81,10 @@ func set_current_quick_selected(dir_1, dir_2):
 		current_quick_selected[0] = dir_1
 
 func make_weapon_array_from_shortcut_indexes(indexes: Array[int])-> Array:
-	var current_panel: Dictionary = weapon_quick_select.get(current_quick_select_panel)
+	var current_panel: Dictionary = weapon_quick_select.get(current_quick_select_panel, {})
+	if current_panel.is_empty():
+		printerr("Error: quick select panel not initialized for panel ", current_quick_select_panel)
+		return [null, null]
 	var weapon_1 = current_panel.get(indexes[0])
 	var weapon_2 = current_panel.get(indexes[1])
 	return [weapons.get(weapon_1),weapons.get(weapon_2)]

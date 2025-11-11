@@ -1,17 +1,19 @@
-
-#This class manages the activation and the end of the grapple state.
-#The actual grapple logic is implemented in the state machine
+## GrapplingHook gadget - Active gadget with centralized grapple point management
+## This class manages all grapple point detection and availability
+## The actual grapple physics logic is in the Grapple state
 
 extends Gadget
 
-var grapple_points : Array = []
-var nearest_grapple_point: GrapplePoint
+# Detected grapple points within range
+var grapple_points: Array[GrapplePoint] = []
+var nearest_grapple_point: GrapplePoint = null
 
-var joint
+# Player reference (set by inventory when gadget is added)
+var player: Player = null
+
+# Rope visual
 var direction_normal_to_origin: Vector3 = Vector3.ZERO
-var player = null #gets initialized as soon as the first grapple point is detected
 
-#physics_process is disabled because there lives our logic for doing pull/swing/tug
 func _ready():
 	set_physics_process(false)
 
@@ -29,9 +31,13 @@ func activate():
 		nearest_grapple_point = grapple_points.front()
 	
 	else:
+		# Find nearest grapple point based on player position
+		# (gadget might not be in tree yet, but player is)
 		nearest_grapple_point = grapple_points.front()
+		var player_pos = player.global_position
+
 		for grapple_point in grapple_points:
-			if self.global_position.distance_to(nearest_grapple_point.global_position) > self.global_position.distance_to(grapple_point.global_position):
+			if player_pos.distance_to(nearest_grapple_point.global_position) > player_pos.distance_to(grapple_point.global_position):
 				nearest_grapple_point = grapple_point
 	
 	#saveguard
@@ -40,8 +46,11 @@ func activate():
 	
 	if not player.is_grappling:
 		player.is_grappling = true
-		player.put_in_hand(self)
-		initialize_grappling_mode()
+		# Put grappling hook in player's hand via weapon manager
+		if player.weapon_manager:
+			player.weapon_manager.equip_item(self)
+		# Don't initialize joint yet - let Grapple state do it after pull-in!
+		# initialize_grappling_mode() is now called from Grapple state
 		set_physics_process(true)
 		$Rope.visible = true
 		update_rope_transform(nearest_grapple_point.global_position)
@@ -56,6 +65,13 @@ func end_grapple():
 	set_physics_process(false)
 	$Rope.visible = false
 
+	# Clear the joint connection
+	if nearest_grapple_point and nearest_grapple_point.grapple_joint:
+		nearest_grapple_point.grapple_joint.node_b = NodePath()
+
+	# Clear the nearest grapple point reference
+	nearest_grapple_point = null
+
 func update_rope_transform(grapple_point_position: Vector3) -> void:
 	var rope = $Rope # Adjust the path
 	var gadget_pos = global_transform.origin
@@ -69,21 +85,26 @@ func update_rope_transform(grapple_point_position: Vector3) -> void:
 	rope.look_at_from_position($Rope.global_position, grapple_point_position, Vector3.UP)
 
 
-#called by the grapple points
-#when player is in reach of a grapple point, it adds itself to the array grapple_points
-func add_grapple_point(grapple_point):
-	grapple_points.append(grapple_point)
+# Called by GrapplePoints when player enters their range
+func add_grapple_point(point: GrapplePoint) -> void:
+	if not grapple_points.has(point):
+		grapple_points.append(point)
+		print("GrapplingHook: Grapple point available - Total: ", grapple_points.size())
 
-#called by the grapple points
-#when player is out of reach of a grapple point, it removes itself to the array grapple_points
-func remove_grapple_point(grapple_point):
-	grapple_points.erase(grapple_point)
+# Called by GrapplePoints when player exits their range
+func remove_grapple_point(point: GrapplePoint) -> void:
+	grapple_points.erase(point)
+	print("GrapplingHook: Grapple point unavailable - Total: ", grapple_points.size())
+
+	# If we lost the currently targeted point, clear it
+	if nearest_grapple_point == point:
+		nearest_grapple_point = null
 
 #when the grappling hook successfully activates this function is called
 #it is responsible for assigning the player to the grapple joint
 func initialize_grappling_mode():
-	nearest_grapple_point.grapple_joint.node_b = player._physics_body.get_path()
-	#joint.node_b = player._physics_body.get_path()
+	nearest_grapple_point.grapple_joint.node_b = player.physics_body.get_path()
+	#joint.node_b = player.physics_body.get_path()
 	
 	#match nearest_grapple_point.grapple_point_type:
 		#

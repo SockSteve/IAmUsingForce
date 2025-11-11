@@ -1,12 +1,15 @@
 class_name CharacterSkin
 extends Node3D
 
+## Manages all character animations and visual feedback for the player
+## Interfaces with movement states, combat system, and weapon changes
+
 signal foot_step
 signal attack_hitbox_state_change(hitbox_state: bool)
 signal lock_player(lock_state: bool)
 
 @onready var general_skeleton: Skeleton3D = %GeneralSkeleton
-@export var main_animation_player : AnimationPlayer
+@export var main_animation_player: AnimationPlayer
 
 #paths to set the moving blend
 var moving_blend_path := "parameters/sm_normal/move/blend_position"
@@ -50,108 +53,139 @@ var arm_transition_request := "parameters/armtransition/transition_request"
 @onready var grapple_physics: PhysicalBoneSimulator3D = $GeneralSkeleton/GrapplePhysics
 
 
-func _ready():
-	#main_animation_player.get_root_motion_position()
+func _ready() -> void:
 	animation_tree.active = true
-	#animation_tree.animation_started.connect()
-	#animation_tree.animation_finished.connect()
-	main_animation_player["playback_default_blend_time"] = 0.1
+	if main_animation_player:
+		main_animation_player["playback_default_blend_time"] = 0.1
 
-#is used in the walking and crouching state
-func set_moving(value : bool):
+# ============================================================================
+# MOVEMENT ANIMATIONS
+# ============================================================================
+
+## Set whether character is moving (used in walking and running states)
+func set_moving(value: bool) -> void:
 	moving = value
 	if moving:
 		state_machine.travel("move")
 	else:
 		state_machine.travel("idle")
 
-func set_crouch_moving(value : bool):
+## Set whether character is moving while crouched
+func set_crouch_moving(value: bool) -> void:
 	moving = value
 	if moving:
 		sm_crouch.travel("move")
 	else:
 		sm_crouch.travel("idle")
 
-func set_moving_speed(value : float):
+## Set movement speed blend (0.0 = walk, 1.0 = run)
+func set_moving_speed(value: float) -> void:
 	move_speed = clamp(value, 0.0, 1.0)
 	animation_tree.set(moving_blend_path, move_speed)
 
-func set_crouch_moving_speed(value : float):
+## Set crouch movement speed blend
+func set_crouch_moving_speed(value: float) -> void:
 	move_speed = clamp(value, 0.0, 1.0)
 	animation_tree.set(crouch_moving_blend_path, move_speed)
 
-func jump():
+## Play jump animation
+func jump() -> void:
 	animation_tree.set(state_transition_request, "state_normal")
 	state_machine.travel("jumpstart")
 
-func fall():
+## Play falling animation
+func fall() -> void:
 	animation_tree.set(state_transition_request, "state_normal")
 	state_machine.travel("falling")
 
-func crouch():
+## Enter crouch state
+func crouch() -> void:
 	animation_tree.set(state_transition_request, "state_crouch")
 	sm_crouch.travel("idle")
 
-func grind():
-	animation_tree.set(state_transition_request, "state_grind")
-	sm_grind.travel("idle")
-
-func end_grind():
+## Exit crouch state
+func uncrouch() -> void:
 	animation_tree.set(state_transition_request, "state_normal")
 	state_machine.travel("idle")
 
-func slide():
+## Play slide animation
+func slide() -> void:
 	animation_tree.set(state_transition_request, "state_crouch")
 	sm_crouch.travel("slide")
 
-func uncrouch():
+# ============================================================================
+# PARKOUR ANIMATIONS
+# ============================================================================
+
+## Enter grind state
+func grind() -> void:
+	animation_tree.set(state_transition_request, "state_grind")
+	sm_grind.travel("idle")
+
+## Exit grind state
+func end_grind() -> void:
 	animation_tree.set(state_transition_request, "state_normal")
 	state_machine.travel("idle")
 
-func change_weapon(weapon:StringName, groups: Array[StringName]):
+## Enter grapple state
+func grapple() -> void:
+	animation_tree.set(state_transition_request, "state_grapple")
+	sm_grapple.travel("mixamograpple_hanginggrapple")
+
+## Grab ledge animation
+func grab_ledge() -> void:
+	animation_tree.set(state_transition_request, "state_ledgehanging")
+	sm_ledgehanging.travel("idle")
+
+## Monkey bar animation (not yet implemented)
+func monkey_bar() -> void:
+	printerr("MONKEYBARS ANIMATION NOT IMPLEMENTED YET!")
+	#animation_tree.set(state_transition_request, "sm_monkeybar")
+	#sm_grapple.travel("idle")
+
+# ============================================================================
+# WEAPON & COMBAT ANIMATIONS
+# ============================================================================
+
+## Change weapon animations based on weapon type
+func change_weapon(weapon: StringName, groups: Array[StringName]) -> void:
 	if groups.has("melee"):
 		animation_tree.set(ranged_weapon_grip_blend_path, 0)
-		return
 	else:
 		animation_tree.set(ranged_weapon_grip_blend_path, 1)
-	animation_tree.set(arm_transition_request, weapon.to_lower())
-	await animation_tree.animation_finished
-	print("yyadyyyy: " + weapon.to_pascal_case())
-	left_arm_ik.find_child("LH_"+ weapon.to_pascal_case())
+		animation_tree.set(arm_transition_request, weapon.to_lower())
+		await animation_tree.animation_finished
+		# Setup IK target for ranged weapon
+		if left_arm_ik:
+			var ik_target = left_arm_ik.find_child("LH_" + weapon.to_pascal_case())
+			if ik_target:
+				print("CharacterSkin: IK target found for ", weapon)
 
-func attack(attack_counter:int, weapon_name: StringName = "cutter"):
+## Play melee attack animation
+func attack(attack_counter: int, weapon_name: StringName = "cutter") -> void:
 	animation_tree.set(state_transition_request, "state_melee")
 	animation_tree.set(weapon_melee_transition_request, "melee_" + weapon_name)
 	var current_attack_animation = "attack_" + str(attack_counter)
 	sm_melee_cutter.travel(current_attack_animation)
 
-func air_attack(up_or_down: StringName):
+## Play air attack animation
+func air_attack(up_or_down: StringName) -> void:
 	animation_tree.set(state_transition_request, "state_melee")
 	animation_tree.set(weapon_melee_transition_request, "melee_cutter")
 	var current_attack_animation = up_or_down + "_air_attack"
 	sm_melee_cutter.travel(current_attack_animation)
 
-func block():
+## Play block/parry animation
+func block() -> void:
 	animation_tree.set(state_transition_request, "state_melee_cutter")
 	sm_melee_cutter.travel("parry")
 
-func return_to_normal():
+## Return to normal idle state
+func return_to_normal() -> void:
 	animation_tree.set(state_transition_request, "state_normal")
 	state_machine.travel("idle")
 
-func grapple():
-	animation_tree.set(state_transition_request, "state_grapple")
-	sm_grapple.travel("mixamograpple_hanginggrapple")
-
-func grab_ledge():
-	animation_tree.set(state_transition_request, "state_ledgehanging")
-	sm_ledgehanging.travel("idle")
-
-func monkey_bar():
-	printerr("MONKEYBARS ANIMATION NOT IMPLEMENTED YET!")
-	#animation_tree.set(state_transition_request, "sm_monkeybar")
-	#sm_grapple.travel("idle")
-
-func take_damage():
+## Play take damage animation
+func take_damage() -> void:
 	animation_tree.set(state_transition_request, "sm_takedamage")
 	animation_tree.set(state_transition_request, "mixamomisc_takedamage")

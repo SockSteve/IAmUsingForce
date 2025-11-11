@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://ccm4gylxb8e7a"]
+
+[ext_resource type="Script" uid="uid://baxv7hwy7eb2f" path="res://Shared/DeathPlane.gd" id="1_deathplane"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_deathplane"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="BoxMesh" id="BoxMesh_deathplane_visual"]
+size = Vector3(100, 0.1, 100)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_deathplane"]
+transparency = 1
+albedo_color = Color(1, 0, 0, 0.3)
+
+[node name="DeathPlane" type="Area3D"]
+collision_layer = 0
+script = ExtResource("1_deathplane")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_deathplane")
+
+[node name="VisualIndicator" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_deathplane_visual")
+surface_material_override/0 = SubResource("StandardMaterial3D_deathplane")
