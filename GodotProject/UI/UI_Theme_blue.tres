@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b6hdbxvmukuts"]
+
+[ext_resource type="Texture2D" uid="uid://8jk1vcvmvnck" path="res://Assets/UI/Selfmade/MenuBarBottom2.svg" id="1_krj66"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h1e1e"]
+texture = ExtResource("1_krj66")
+
+[resource]
+Button/styles/focus = null
+Button/styles/normal = SubResource("StyleBoxTexture_h1e1e")

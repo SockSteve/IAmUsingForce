@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://c0d3bmprmf8q0"]
+[gd_scene load_steps=92 format=3 uid="uid://c0d3bmprmf8q0"]
 
 [ext_resource type="Script" uid="uid://ctac4a3g5n4jj" path="res://Player/Player.gd" id="1_ld2le"]
 [ext_resource type="Script" uid="uid://cn7h6ka6x7lrn" path="res://Player/CameraController.gd" id="2_7jqee"]
@@ -29,7 +29,7 @@
 [ext_resource type="Script" uid="uid://2bqjon1rlriq" path="res://Player/PlayerHUD.gd" id="20_6xxyk"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="20_o1b5h"]
 [ext_resource type="Theme" uid="uid://d02hntmjt67aj" path="res://UI/UITheme_Base.tres" id="21_13c1r"]
-[ext_resource type="Texture2D" uid="uid://jy2vmax0iabe" path="res://Assets/UI/WeaponBarV2L.svg" id="22_86vob"]
+[ext_resource type="Texture2D" uid="uid://jy2vmax0iabe" path="res://Assets/UI/Selfmade/WeaponBarV2L.svg" id="22_86vob"]
 [ext_resource type="Texture2D" uid="uid://dmf404ftfexwl" path="res://Assets/Decals/DropShadow/Shadow.png" id="22_gwf8y"]
 [ext_resource type="Texture2D" uid="uid://cbl0ms55gbbui" path="res://Assets/Textures/UI/CutterIconSC.png" id="22_iaxg4"]
 [ext_resource type="PackedScene" uid="uid://die13hgrm443x" path="res://Shared/HurtBox.tscn" id="22_jvfa1"]
@@ -39,13 +39,14 @@
 [ext_resource type="Script" uid="uid://dwo6qnv8yni5c" path="res://UI/CurrentWeaponUI.gd" id="24_e02xp"]
 [ext_resource type="FontFile" uid="uid://bqr5brhsp8adx" path="res://Assets/Fonts/SchutzgitterhausGroteskNbpRegular-l5pV.ttf" id="24_vjfmv"]
 [ext_resource type="FontFile" uid="uid://bban1dbg5mk2w" path="res://Assets/Fonts/kenvector_future.ttf" id="25_hpuwh"]
-[ext_resource type="Texture2D" uid="uid://brqqeoa2lybu" path="res://Assets/UI/QuickSelectCross.svg" id="25_iehhb"]
-[ext_resource type="Texture2D" uid="uid://drc2788udnpm7" path="res://Assets/UI/MoneyIconWhite.svg" id="27_4reeb"]
-[ext_resource type="Texture2D" uid="uid://cw66b5fw65e25" path="res://Assets/UI/UIBarR.svg" id="28_gv4ft"]
+[ext_resource type="Texture2D" uid="uid://brqqeoa2lybu" path="res://Assets/UI/Selfmade/QuickSelectCross.svg" id="25_iehhb"]
+[ext_resource type="Texture2D" uid="uid://drc2788udnpm7" path="res://Assets/UI/Selfmade/MoneyIconWhite.svg" id="27_4reeb"]
+[ext_resource type="Texture2D" uid="uid://cw66b5fw65e25" path="res://Assets/UI/Selfmade/UIBarR.svg" id="28_gv4ft"]
 [ext_resource type="Script" uid="uid://dusp8b6sr1si0" path="res://Player/StartMenu.gd" id="28_r3h2c"]
 [ext_resource type="Texture2D" uid="uid://bkqdlx45ftmvq" path="res://Assets/Textures/UI/BadPrankIcon.png" id="29_sc2yr"]
-[ext_resource type="Texture2D" uid="uid://cg60w1catlsel" path="res://Assets/UI/MenuBar2.svg" id="30_vhdh7"]
-[ext_resource type="Texture2D" uid="uid://brqqo63wiridu" path="res://Assets/UI/MenuBarVertical.svg" id="31_nacso"]
+[ext_resource type="Texture2D" uid="uid://cg60w1catlsel" path="res://Assets/UI/Selfmade/MenuBar2.svg" id="30_vhdh7"]
+[ext_resource type="Texture2D" uid="uid://brqqo63wiridu" path="res://Assets/UI/Selfmade/MenuBarVertical.svg" id="31_nacso"]
+[ext_resource type="Theme" uid="uid://b6hdbxvmukuts" path="res://UI/UI_Theme_blue.tres" id="45_yyr8h"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_p4inm"]
 margin = 4.123
@@ -58,9 +59,6 @@ radius = 0.308594
 
 [sub_resource type="Resource" id="Resource_7w4lt"]
 script = ExtResource("19_o1b5h")
-duration = 1.0
-transition = 0
-ease = 2
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_grq1b"]
 
@@ -5347,7 +5345,6 @@ inventory_path = NodePath("../../Inventory")
 player = NodePath("../..")
 
 [node name="CurrentWeaponInfoPanel" type="PanelContainer" parent="CanvasLayer/PlayerHUD"]
-visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.161
@@ -5641,7 +5638,6 @@ expand_mode = 1
 [node name="StartMenu" type="Control" parent="CanvasLayer"]
 unique_name_in_owner = true
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -5649,6 +5645,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("45_yyr8h")
 script = ExtResource("28_r3h2c")
 
 [node name="StartMenuMain" type="PanelContainer" parent="CanvasLayer/StartMenu"]
