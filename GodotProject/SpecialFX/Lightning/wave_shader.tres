@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=11 format=3 uid="uid://bin17qe7nojwk"]
+[gd_resource type="VisualShader" format=3 uid="uid://bin17qe7nojwk"]
 
 [ext_resource type="Texture2D" uid="uid://ccnxj0x51revc" path="res://SpecialFX/Lightning/expansive_wave.png" id="1_5vcmm"]
 
@@ -35,55 +35,6 @@ operator = 2
 parameter_name = "Wave_color"
 
 [resource]
-code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
-
-uniform vec4 Wave_color : source_color;
-uniform sampler2D tex_frg_2;
-uniform sampler2D tex_frg_6;
-
-
-
-void fragment() {
-// ColorParameter:8
-	vec4 n_out8p0 = Wave_color;
-
-
-// Input:4
-	vec4 n_out4p0 = COLOR;
-	float n_out4p1 = n_out4p0.r;
-
-
-// VectorOp:5
-	vec2 n_in5p1 = vec2(0.00000, 1.00000);
-	vec2 n_out5p0 = vec2(n_out4p1) * n_in5p1;
-
-
-// UVFunc:3
-	vec2 n_in3p1 = vec2(1.00000, 1.00000);
-	vec2 n_out3p0 = n_out5p0 * n_in3p1 + UV;
-
-
-// Texture2D:2
-	vec4 n_out2p0 = texture(tex_frg_2, n_out3p0);
-	float n_out2p1 = n_out2p0.r;
-
-
-// Texture2D:6
-	vec4 n_out6p0 = texture(tex_frg_6, UV);
-
-
-// FloatOp:7
-	float n_out7p0 = n_out2p1 * n_out6p0.x;
-
-
-// Output:0
-	ALBEDO = vec3(n_out8p0.xyz);
-	ALPHA = n_out7p0;
-
-
-}
-"
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_8372l")
 nodes/fragment/2/position = Vector2(-220, 220)
 nodes/fragment/3/node = SubResource("VisualShaderNodeUVFunc_nvlie")

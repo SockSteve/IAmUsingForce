@@ -1,10 +1,25 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b6hdbxvmukuts"]
+[gd_resource type="Theme" format=3 uid="uid://b6hdbxvmukuts"]
 
-[ext_resource type="Texture2D" uid="uid://8jk1vcvmvnck" path="res://Assets/UI/Selfmade/MenuBarBottom2.svg" id="1_krj66"]
+[ext_resource type="FontFile" uid="uid://bqr5brhsp8adx" path="res://Assets/Fonts/SchutzgitterhausGroteskNbpRegular-l5pV.ttf" id="1_jpmnf"]
+[ext_resource type="Texture2D" uid="uid://8jk1vcvmvnck" path="res://Assets/UI/Handcrafted/MenuBarBottom2.svg" id="1_krj66"]
+[ext_resource type="Texture2D" uid="uid://jy2vmax0iabe" path="res://Assets/UI/Handcrafted/WeaponBarV2L.svg" id="2_yykem"]
+[ext_resource type="Texture2D" uid="uid://cw66b5fw65e25" path="res://Assets/UI/Handcrafted/UIBarR.svg" id="3_yykem"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xstos"]
+texture = ExtResource("2_yykem")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h1e1e"]
 texture = ExtResource("1_krj66")
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1a1aw"]
+texture = ExtResource("3_yykem")
+
 [resource]
-Button/styles/focus = null
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/constants/outline_size = 5
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("1_jpmnf")
+Button/styles/focus = SubResource("StyleBoxTexture_xstos")
 Button/styles/normal = SubResource("StyleBoxTexture_h1e1e")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_1a1aw")

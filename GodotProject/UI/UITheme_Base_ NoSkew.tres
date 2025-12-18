@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=14 format=3 uid="uid://dvspb4esei5oi"]
+[gd_resource type="Theme" format=3 uid="uid://dvspb4esei5oi"]
 
 [ext_resource type="FontFile" uid="uid://b5b7q0oe1bjn7" path="res://Assets/Fonts/keney_vector_future.ttf" id="1_ia5vi"]
 [ext_resource type="StyleBox" uid="uid://dpuowtm0rg7iq" path="res://UI/sbf_btn_disabled.tres" id="2_2cyv4"]

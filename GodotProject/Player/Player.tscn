@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://c0d3bmprmf8q0"]
+[gd_scene load_steps=94 format=3 uid="uid://c0d3bmprmf8q0"]
 
 [ext_resource type="Script" uid="uid://ctac4a3g5n4jj" path="res://Player/Player.gd" id="1_ld2le"]
 [ext_resource type="Script" uid="uid://cn7h6ka6x7lrn" path="res://Player/CameraController.gd" id="2_7jqee"]
@@ -29,29 +29,28 @@
 [ext_resource type="Script" uid="uid://2bqjon1rlriq" path="res://Player/PlayerHUD.gd" id="20_6xxyk"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="20_o1b5h"]
 [ext_resource type="Theme" uid="uid://d02hntmjt67aj" path="res://UI/UITheme_Base.tres" id="21_13c1r"]
-[ext_resource type="Texture2D" uid="uid://jy2vmax0iabe" path="res://Assets/UI/Selfmade/WeaponBarV2L.svg" id="22_86vob"]
-[ext_resource type="Texture2D" uid="uid://dmf404ftfexwl" path="res://Assets/Decals/DropShadow/Shadow.png" id="22_gwf8y"]
+[ext_resource type="Texture2D" uid="uid://jy2vmax0iabe" path="res://Assets/UI/Handcrafted/WeaponBarV2L.svg" id="22_86vob"]
 [ext_resource type="Texture2D" uid="uid://cbl0ms55gbbui" path="res://Assets/Textures/UI/CutterIconSC.png" id="22_iaxg4"]
 [ext_resource type="PackedScene" uid="uid://die13hgrm443x" path="res://Shared/HurtBox.tscn" id="22_jvfa1"]
-[ext_resource type="Script" uid="uid://cfjuwhlea3mfv" path="res://Player/DropShadow.gd" id="22_shadow"]
 [ext_resource type="PackedScene" uid="uid://bs5c8uyhmpr0y" path="res://Shared/HP.tscn" id="23_ib3vm"]
 [ext_resource type="Texture2D" uid="uid://cgo68fl4c4jfp" path="res://Assets/Textures/UI/PlaceholderIcon.png" id="23_qxeqk"]
 [ext_resource type="Script" uid="uid://dwo6qnv8yni5c" path="res://UI/CurrentWeaponUI.gd" id="24_e02xp"]
 [ext_resource type="FontFile" uid="uid://bqr5brhsp8adx" path="res://Assets/Fonts/SchutzgitterhausGroteskNbpRegular-l5pV.ttf" id="24_vjfmv"]
 [ext_resource type="FontFile" uid="uid://bban1dbg5mk2w" path="res://Assets/Fonts/kenvector_future.ttf" id="25_hpuwh"]
-[ext_resource type="Texture2D" uid="uid://brqqeoa2lybu" path="res://Assets/UI/Selfmade/QuickSelectCross.svg" id="25_iehhb"]
-[ext_resource type="Texture2D" uid="uid://drc2788udnpm7" path="res://Assets/UI/Selfmade/MoneyIconWhite.svg" id="27_4reeb"]
-[ext_resource type="Texture2D" uid="uid://cw66b5fw65e25" path="res://Assets/UI/Selfmade/UIBarR.svg" id="28_gv4ft"]
+[ext_resource type="Texture2D" uid="uid://brqqeoa2lybu" path="res://Assets/UI/Handcrafted/QuickSelectCross.svg" id="25_iehhb"]
+[ext_resource type="Texture2D" uid="uid://drc2788udnpm7" path="res://Assets/UI/Handcrafted/MoneyIconWhite.svg" id="27_4reeb"]
+[ext_resource type="Texture2D" uid="uid://cw66b5fw65e25" path="res://Assets/UI/Handcrafted/UIBarR.svg" id="28_gv4ft"]
 [ext_resource type="Script" uid="uid://dusp8b6sr1si0" path="res://Player/StartMenu.gd" id="28_r3h2c"]
 [ext_resource type="Texture2D" uid="uid://bkqdlx45ftmvq" path="res://Assets/Textures/UI/BadPrankIcon.png" id="29_sc2yr"]
-[ext_resource type="Texture2D" uid="uid://cg60w1catlsel" path="res://Assets/UI/Selfmade/MenuBar2.svg" id="30_vhdh7"]
-[ext_resource type="Texture2D" uid="uid://brqqo63wiridu" path="res://Assets/UI/Selfmade/MenuBarVertical.svg" id="31_nacso"]
+[ext_resource type="Texture2D" uid="uid://cg60w1catlsel" path="res://Assets/UI/Handcrafted/MenuBar2.svg" id="30_vhdh7"]
+[ext_resource type="Texture2D" uid="uid://brqqo63wiridu" path="res://Assets/UI/Handcrafted/MenuBarVertical.svg" id="31_nacso"]
+[ext_resource type="LabelSettings" uid="uid://fx60ly7vu8qg" path="res://UI/LabelSettings.tres" id="40_i325y"]
 [ext_resource type="Theme" uid="uid://b6hdbxvmukuts" path="res://UI/UI_Theme_blue.tres" id="45_yyr8h"]
+[ext_resource type="Shader" uid="uid://epiafh6ijwoh" path="res://Shader/DropShadow.gdshader" id="49_eu7rt"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_p4inm"]
-margin = 4.123
-height = 1.8
-radius = 0.3
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i325y"]
+radius = 0.12
+height = 1.2235352
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3srxm"]
 height = 1.75
@@ -61,12 +60,13 @@ radius = 0.308594
 script = ExtResource("19_o1b5h")
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_grq1b"]
+radius = 0.15
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hme5y"]
 size = Vector3(8, 8, 8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ib3vm"]
-size = Vector3(0.416409, 1.47901, 0.421371)
+size = Vector3(0.25226063, 1.1575168, 0.2297324)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t7yn4"]
 texture = ExtResource("22_86vob")
@@ -5054,14 +5054,31 @@ VSlider/styles/slider = SubResource("25")
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c4gey"]
 texture = ExtResource("28_gv4ft")
 
-[sub_resource type="LabelSettings" id="LabelSettings_f431b"]
-outline_size = 2
-outline_color = Color(0, 0, 0, 1)
-
 [sub_resource type="Theme" id="Theme_w7nyr"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lauh3"]
 texture = ExtResource("25_iehhb")
+
+[sub_resource type="LabelSettings" id="LabelSettings_eu7rt"]
+font_size = 32
+font_color = Color(1.353256, 1.353256, 1.353256, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 10
+shadow_color = Color(0, 0, 0, 0.26000002)
+shadow_offset = Vector2(-4.6, 4.405)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nm06d"]
+render_priority = 0
+shader = ExtResource("49_eu7rt")
+shader_parameter/cube_half_size_y = 0.5
+shader_parameter/fade_start = 0.3
+shader_parameter/fade_end = 0.45
+shader_parameter/texture_scale = Vector2(1, 1)
+shader_parameter/decal_offset = Vector2(0, 0)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vhfjx"]
+material = SubResource("ShaderMaterial_nm06d")
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
 collision_mask = 65
@@ -5074,6 +5091,9 @@ platform_floor_layers = 4294901856
 platform_wall_layers = 16
 safe_margin = 0.08
 script = ExtResource("1_ld2le")
+move_speed = 8.0
+acceleration = 8.0
+stopping_speed = 8.0
 slide_start_threshold = 1.0
 slide_strength_curve = ExtResource("2_x2ho1")
 starting_loadout = PackedStringArray("res://Weapons/RangedWeapons/Gun/GunWeapon.tscn")
@@ -5100,10 +5120,6 @@ weapon_manager = NodePath("../ActiveWeaponManager")
 script = ExtResource("5_eennk")
 character_skin = NodePath("../CharacterRotationRoot/CharacterSkin")
 inventory = NodePath("../Inventory")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
-shape = SubResource("CylinderShape3D_p4inm")
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_5fauu")
@@ -5145,25 +5161,36 @@ script = ExtResource("8_82ggy")
 [node name="Magnet" type="Node" parent="StateMachine"]
 script = ExtResource("10_0mhbm")
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.64583737, 0)
+shape = SubResource("CapsuleShape3D_i325y")
+metadata/_edit_lock_ = true
+
 [node name="PhysicsBody" type="RigidBody3D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 0
 mass = 60.0
 freeze = true
 script = ExtResource("16_50cj4")
 player_path = NodePath("..")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PhysicsBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.881389, 0)
 shape = SubResource("CylinderShape3D_3srxm")
 debug_color = Color(0.814482, 0.00199897, 0.977735, 0.42)
+metadata/_edit_lock_ = true
 
 [node name="CameraController" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.99627674, 0)
 top_level = true
 script = ExtResource("2_7jqee")
+follow_damping_value = Vector3(0.05, 0.05, 0.05)
+rotation_damping_value = 0.2
 
 [node name="PlayerCamera" type="Node3D" parent="CameraController" node_paths=PackedStringArray("follow_target")]
-transform = Transform3D(-1, 1.51808e-08, -8.60946e-08, 0, 0.984808, 0.173648, 8.74228e-08, 0.173648, -0.984808, -4.30473e-07, 2.3682399, -4.9240403)
+transform = Transform3D(-1, 1.51808e-08, -8.60946e-08, 0, 0.984808, 0.173648, 8.74228e-08, 0.173648, -0.984808, -4.30473e-07, 1.3719636, -4.9240403)
 script = ExtResource("18_rqaa0")
 priority = 10
 follow_mode = 6
@@ -5182,7 +5209,7 @@ metadata/_custom_type_script = "uid://csjccrhj5wnx7"
 [node name="MainCamera" type="Camera3D" parent="CameraController"]
 unique_name_in_owner = true
 physics_interpolation_mode = 1
-transform = Transform3D(-1, 1.518079e-08, -8.609465e-08, 0, 0.9848078, 0.17364796, 8.74228e-08, 0.17364796, -0.9848078, -4.30473e-07, 2.3682399, -4.9240403)
+transform = Transform3D(-1, 1.518079e-08, -8.609465e-08, 0, 0.9848078, 0.17364796, 8.74228e-08, 0.17364796, -0.9848078, -4.30473e-07, 2.3682404, -4.9240403)
 top_level = true
 fov = 50.0
 
@@ -5193,84 +5220,99 @@ script = ExtResource("20_o1b5h")
 metadata/_custom_type_script = "uid://bd046eokvcnu2"
 
 [node name="GroundShapeCast" type="ShapeCast3D" parent="."]
-visible = false
 shape = SubResource("CylinderShape3D_grq1b")
 debug_shape_custom_color = Color(0, 1, 0, 1)
 
 [node name="MoneyCollectionRange" type="Area3D" parent="."]
 collision_layer = 0
 collision_mask = 1024
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MoneyCollectionRange"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.164, 2, 0)
 shape = SubResource("BoxShape3D_hme5y")
 debug_color = Color(0.7202739, 0.4801216, 0, 0.41960785)
 debug_fill = false
+metadata/_edit_lock_ = true
 
 [node name="CharacterRotationRoot" type="Node3D" parent="."]
+metadata/_edit_lock_ = true
 
 [node name="CharacterSkin" parent="CharacterRotationRoot" instance=ExtResource("15_7yrxv")]
 unique_name_in_owner = true
+metadata/_edit_lock_ = true
+
+[node name="GeneralSkeleton" parent="CharacterRotationRoot/CharacterSkin" index="0"]
+metadata/_edit_lock_ = true
 
 [node name="Physical Bone Hips" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="0"]
-transform = Transform3D(1, 1.5454524e-06, 1.906712e-07, -4.65661e-10, 0.122744046, -0.9924384, -1.55717e-06, 0.9924384, 0.122744046, -7.502068e-08, 1.0475364, -0.006136149)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0820954e-09, -4.1909516e-09, 0.049995396)
-body_offset = Transform3D(1, 1.5454524e-06, 1.906712e-07, -4.65661e-10, 0.122744046, -0.9924384, -1.55717e-06, 0.9924384, 0.122744046, -7.450581e-09, 0.04961735, -0.0061366335)
+transform = Transform3D(1.4285715, 2.2077893e-06, 2.7238744e-07, -6.6523004e-10, 0.17534864, -1.4177692, -2.2245285e-06, 1.4177692, 0.17534864, -7.502068e-08, 1.0475364, -0.006136149)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4574675e-09, -2.3283064e-09, 0.03499678)
+body_offset = Transform3D(1.4285715, 2.2077893e-06, 2.7238744e-07, -6.6523004e-10, 0.17534864, -1.4177692, -2.2245285e-06, 1.4177692, 0.17534864, -7.450581e-09, 0.04961735, -0.0061366335)
 
 [node name="Physical Bone Spine" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="1"]
-transform = Transform3D(0.9999997, 0.0008057828, 9.841692e-05, 2.3283095e-10, 0.12123704, -0.9926236, -0.0008117708, 0.99262327, 0.121236995, -5.8609257e-06, 1.1553806, -0.019384503)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1241355e-09, -3.0733645e-08, 0.05865964)
-body_offset = Transform3D(0.9999997, 0.0008057828, 9.841692e-05, 2.3283095e-10, 0.12123704, -0.9926236, -0.0008117708, 0.99262327, 0.121236995, -5.7742e-06, 0.058226943, -0.007111687)
+transform = Transform3D(1.428571, 0.0011511182, 0.00014059558, 3.326156e-10, 0.17319578, -1.4180337, -0.0011596725, 1.4180332, 0.1731957, -5.8609257e-06, 1.1553806, -0.019384503)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8716766e-10, -2.142042e-08, 0.04106174)
+body_offset = Transform3D(1.428571, 0.0011511182, 0.00014059561, 3.326156e-10, 0.17319578, -1.4180338, -0.0011596725, 1.4180332, 0.17319573, -5.7742e-06, 0.058226943, -0.007111687)
 
 [node name="Physical Bone Chest" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="2"]
-transform = Transform3D(0.9999998, 0.00065540907, 7.978897e-05, 0, 0.120847, -0.9926712, -0.00066024787, 0.992671, 0.12084697, -1.7000966e-05, 1.2804086, -0.03462851)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1909833e-09, 9.313226e-10, 0.067294136)
-body_offset = Transform3D(0.9999998, 0.00065540907, 7.978897e-05, 0, 0.120847, -0.9926712, -0.00066024787, 0.992671, 0.12084697, -5.3681406e-06, 0.06680095, -0.008132294)
+transform = Transform3D(1.4285712, 0.0009362987, 0.00011398424, 0, 0.17263857, -1.4181018, -0.00094321126, 1.4181014, 0.17263852, -1.7000966e-05, 1.2804086, -0.03462851)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.3377927e-10, 1.8626451e-09, 0.047105905)
+body_offset = Transform3D(1.4285712, 0.0009362987, 0.00011398424, 0, 0.17263857, -1.4181017, -0.00094321126, 1.4181014, 0.17263852, -5.3681406e-06, 0.06680095, -0.008132296)
 
 [node name="Physical Bone UpperChest" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="3"]
-transform = Transform3D(-0.99999875, 0.0016202773, 8.5463544e-05, -2.3283095e-10, 0.052672878, -0.99861187, -0.0016225297, -0.99861056, -0.05267281, -2.8801376e-05, 1.4223723, -0.038796306)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.716206e-09, -1.7695129e-08, 0.075267136)
-body_offset = Transform3D(-0.99999875, 0.0016202773, 8.5463544e-05, -2.3283095e-10, 0.052672878, -0.99861187, -0.0016225297, -0.99861056, -0.05267281, -6.429851e-06, 0.07516265, 0.0039645135)
+transform = Transform3D(-1.4285697, 0.0023146821, 0.00012209077, -3.3261566e-10, 0.07524697, -1.4265884, -0.0023178998, -1.4265865, -0.07524688, -2.8801374e-05, 1.4223723, -0.03879631)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8981154e-09, -1.4901161e-08, 0.052686993)
+body_offset = Transform3D(-1.4285697, 0.0023146821, 0.00012209077, -3.3261566e-10, 0.07524697, -1.4265884, -0.0023178998, -1.4265865, -0.07524688, -6.4298492e-06, 0.07516265, 0.00396451)
 
 [node name="Physical Bone LeftUpperLeg" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="4"]
-transform = Transform3D(-0.90345365, -0.42864347, -0.00602617, -1.8626494e-09, -0.014057308, 0.99990124, -0.4286858, 0.9033644, 0.012700126, 0.09246774, 0.7283781, -0.00313133)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8475645e-09, 1.9092113e-08, 0.20299704)
-body_offset = Transform3D(0.90345365, 0.42864347, 0.00602617, 1.8626494e-09, 0.014057308, -0.99990124, -0.4286858, 0.9033644, 0.012700126, -0.0012233108, 0.202977, -0.0025781016)
+transform = Transform3D(-1.2906481, -0.61234784, -0.008608815, -2.6609277e-09, -0.020081868, 1.4284303, -0.61240834, 1.2905205, 0.018143035, 0.09246774, 0.7283781, -0.00313133)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.995389e-09, 1.3504177e-08, 0.14209794)
+body_offset = Transform3D(1.2906481, 0.61234784, 0.008608815, 2.6609277e-09, 0.020081868, -1.4284303, -0.61240834, 1.2905205, 0.018143035, -0.0012233108, 0.202977, -0.0025781016)
 
 [node name="Physical Bone LeftLowerLeg" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="5"]
-transform = Transform3D(-0.9930136, 0.11785672, 0.005812252, -1.3969795e-09, -0.049256407, 0.99878615, 0.117999956, 0.99180824, 0.04891228, 0.09246757, 0.31516212, -0.016005218)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.731149e-09, 3.4458935e-08, 0.21049449)
-body_offset = Transform3D(-0.9930136, 0.11785672, 0.005812252, 1.3969795e-09, 0.049256407, -0.99878615, -0.117999956, -0.99180824, -0.04891228, -0.0012234598, 0.210239, 0.010295799)
+transform = Transform3D(-1.4185909, 0.16836676, 0.008303218, -1.9956852e-09, -0.0703663, 1.4268374, 0.16857137, 1.416869, 0.06987469, 0.09246757, 0.31516212, -0.016005218)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.1118044e-09, 2.4680048e-08, 0.14734614)
+body_offset = Transform3D(-1.4185909, 0.16836676, 0.008303218, 1.9956852e-09, 0.0703663, -1.4268374, -0.16857137, -1.416869, -0.06987469, -0.0012234598, 0.210239, 0.010295799)
 
 [node name="Physical Bone LeftFoot" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="6"]
-transform = Transform3D(-0.99866027, -0.04597059, -0.023758538, -0.05174711, 0.88718, 0.45851284, -7.450582e-09, 0.459128, -0.88837016, 0.09311174, 0.06887932, 0.043531984)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.656613e-09, 1.8626451e-08, 0.078608006)
-body_offset = Transform3D(0.99866027, 0.04597059, 0.023758538, -7.450582e-09, 0.459128, -0.88837016, -0.05174711, 0.88718, 0.45851284, -0.0018676072, 0.069833, -0.036042795)
+transform = Transform3D(-1.4266576, -0.06567226, -0.033940773, -0.073924445, 1.2673999, 0.6550184, -1.06436895e-08, 0.6558971, -1.2691003, 0.09311174, 0.06887932, 0.04353199)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.1432137e-09, 3.7252903e-09, 0.05502561)
+body_offset = Transform3D(1.4266576, 0.06567226, 0.033940773, -1.06436895e-08, 0.6558971, -1.2691003, -0.073924445, 1.2673999, 0.6550184, -0.0018676072, 0.06983301, -0.036042787)
 
 [node name="Physical Bone LeftToes" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="7"]
-transform = Transform3D(-0.7767662, 0.6296289, 0.014206775, 0.6297892, 0.77656853, 0.017522281, 0, 0.022557989, -0.99974555, 0.094269015, 0.031960502, 0.16335225)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7462298e-10, -2.910383e-10, 0.049999986)
-body_offset = Transform3D(-0.7767662, 0.6296289, 0.014206775, 0, 0.022557989, -0.99974555, -0.6297892, -0.77656853, -0.017522281, -0.00071033835, 0.049987264, 0.0008761138)
+transform = Transform3D(-1.109666, 0.89946985, 0.020295393, 0.89969885, 1.1093835, 0.025031827, 0, 0.03222569, -1.428208, 0.094269015, 0.031960502, 0.16335227)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.731149e-11, -1.7462298e-10, 0.034999996)
+body_offset = Transform3D(-1.109666, 0.89946985, 0.020295393, 0, 0.032225695, -1.428208, -0.89969885, -1.1093837, -0.025031827, -0.00071033835, 0.04998727, 0.0008761138)
 
 [node name="Physical Bone RightUpperLeg" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="8"]
-transform = Transform3D(-0.9029956, 0.42960754, 0.0060272105, -9.313226e-10, -0.014028193, 0.99990165, 0.4296498, 0.9029067, 0.012667399, -0.09246808, 0.728378, -0.0031248033)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3504177e-08, 4.4237822e-09, 0.202997)
-body_offset = Transform3D(0.9029956, -0.42960754, -0.0060272105, 9.313226e-10, 0.014028193, -0.99990165, 0.4296498, 0.9029067, 0.012667399, 0.0012235194, 0.202977, -0.0025714417)
+transform = Transform3D(-1.2899938, 0.613725, 0.008610301, -1.3304609e-09, -0.020040276, 1.4284309, 0.61378545, 1.2898668, 0.018096283, -0.09246808, 0.72837806, -0.003124803)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4202669e-08, 5.47152e-09, 0.14209786)
+body_offset = Transform3D(1.2899938, -0.613725, -0.008610299, 1.3304609e-09, 0.020040276, -1.4284309, 0.61378545, 1.2898668, 0.018096281, 0.0012235269, 0.202977, -0.0025714415)
 
 [node name="Physical Bone RightLowerLeg" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="9"]
-transform = Transform3D(-0.99302524, -0.11775873, -0.0058112517, -9.313232e-10, -0.049288813, 0.99878454, -0.11790203, 0.9918183, 0.048945032, -0.092468336, 0.315162, -0.01599896)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6775524e-09, 2.142042e-08, 0.21049485)
-body_offset = Transform3D(-0.99302524, -0.11775873, -0.0058112517, 9.313232e-10, 0.049288813, -0.99878454, 0.11790203, -0.9918183, -0.048945032, 0.0012232438, 0.210239, 0.010302698)
+transform = Transform3D(-1.4186075, -0.16822676, -0.008301789, -1.3304619e-09, -0.07041259, 1.4268352, -0.16843148, 1.4168833, 0.06992148, -0.092468336, 0.315162, -0.01599896)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.9849193e-09, 1.6763806e-08, 0.1473464)
+body_offset = Transform3D(-1.4186075, -0.16822676, -0.008301789, 1.3304619e-09, 0.07041259, -1.4268352, 0.16843148, -1.4168833, -0.06992148, 0.0012232512, 0.210239, 0.010302698)
 
 [node name="Physical Bone RightFoot" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="10"]
-transform = Transform3D(-0.99866, 0.04597387, 0.023760244, 0.0517508, 0.88717985, 0.4585127, -7.45058e-09, 0.45912793, -0.88837016, -0.09311283, 0.06887929, 0.04353136)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5483238e-08, -5.9604645e-08, 0.07860799)
-body_offset = Transform3D(0.99866, -0.04597387, -0.023760244, -7.45058e-09, 0.45912793, -0.88837016, 0.0517508, 0.88717985, 0.4585127, 0.0018677264, 0.06983302, -0.036042705)
+transform = Transform3D(-1.4266572, 0.06567696, 0.03394321, 0.07392972, 1.2673998, 0.6550182, -1.0643686e-08, 0.6558971, -1.2691003, -0.09311283, 0.06887929, 0.043531355)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.094304e-08, -4.656613e-08, 0.055025592)
+body_offset = Transform3D(1.4266572, -0.06567696, -0.03394321, -1.0643686e-08, 0.6558971, -1.2691003, 0.07392972, 1.2673998, 0.6550182, 0.0018677264, 0.06983302, -0.036042705)
 
 [node name="Physical Bone RightToes" parent="CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="11"]
-transform = Transform3D(-0.7769909, -0.6293522, -0.014179123, -0.62951195, 0.7767938, 0.017500943, -3.7252896e-09, 0.022524, -0.9997463, -0.09427164, 0.03196144, 0.16335166)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.265488e-09, 4.5401976e-09, 0.049999993)
-body_offset = Transform3D(-0.7769909, -0.6293522, -0.014179123, -3.7252896e-09, 0.022524, -0.9997463, 0.62951195, -0.7767938, -0.017500943, 0.00070895255, 0.04998731, 0.0008750558)
+transform = Transform3D(-1.1099869, -0.8990746, -0.020255888, -0.8993027, 1.1097053, 0.025001345, -5.321842e-09, 0.03217714, -1.4282091, -0.09427164, 0.03196144, 0.16335166)
+joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.7625584e-09, 3.3760443e-09, 0.034999996)
+body_offset = Transform3D(-1.1099869, -0.8990746, -0.020255888, -5.321842e-09, 0.03217714, -1.4282091, 0.8993027, -1.1097053, -0.025001345, 0.00070895255, 0.04998731, 0.0008750558)
+
+[node name="Model" parent="CharacterRotationRoot/CharacterSkin" index="1"]
+metadata/_edit_lock_ = true
+
+[node name="Alpha_Surface" parent="CharacterRotationRoot/CharacterSkin/Model" index="0"]
+metadata/_edit_lock_ = true
+
+[node name="Alpha_Joints" parent="CharacterRotationRoot/CharacterSkin/Model" index="1"]
+metadata/_edit_lock_ = true
 
 [node name="PlayerHand" type="Node3D" parent="CharacterRotationRoot/CharacterSkin" node_paths=PackedStringArray("character_skin")]
 unique_name_in_owner = true
@@ -5301,31 +5343,23 @@ debug_shape_custom_color = Color(1, 0.403922, 0.545098, 1)
 
 [node name="AttractionPoint" type="Marker3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19998, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.87024665, 0)
 
 [node name="Inventory" type="Node3D" parent="."]
 script = ExtResource("16_kqrv3")
 
-[node name="DropShadow" type="Decal" parent="."]
-layers = 96
-size = Vector3(1, 0.1, 1)
-texture_albedo = ExtResource("22_gwf8y")
-albedo_mix = 0.8
-upper_fade = 0.0001
-lower_fade = 1.0
-distance_fade_begin = 172.53
-distance_fade_length = 1000.0
-script = ExtResource("22_shadow")
-
 [node name="HurtBox" parent="." node_paths=PackedStringArray("hp_node", "attraction_point") groups=["player"] instance=ExtResource("22_jvfa1")]
+visible = false
 collision_layer = 1
 hp_node = NodePath("../Hp")
 attraction_point = NodePath("../AttractionPoint")
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HurtBox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00708965, 0.817952, -0.0130844)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.012121063, 0.6572054, 0.005102124)
 shape = SubResource("BoxShape3D_ib3vm")
 debug_color = Color(0.704822, 0.489308, 5.77569e-07, 0.42)
+metadata/_edit_lock_ = true
 
 [node name="Hp" parent="." instance=ExtResource("23_ib3vm")]
 
@@ -5447,7 +5481,7 @@ alignment = 2
 unique_name_in_owner = true
 layout_mode = 2
 text = "999.999.999.999"
-label_settings = SubResource("LabelSettings_f431b")
+label_settings = ExtResource("40_i325y")
 horizontal_alignment = 2
 
 [node name="MoneyIcon" type="TextureRect" parent="CanvasLayer/PlayerHUD/MoneyPanel/MarginContainer/HBoxContainer"]
@@ -5667,9 +5701,9 @@ mouse_filter = 1
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/StartMenu/StartMenuMain"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
-theme_override_constants/margin_left = 40
+theme_override_constants/margin_left = 160
 theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 40
+theme_override_constants/margin_right = 160
 theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/StartMenu/StartMenuMain/MarginContainer"]
@@ -5679,8 +5713,13 @@ alignment = 1
 
 [node name="PauseMenuLabel" type="Label" parent="CanvasLayer/StartMenu/StartMenuMain/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Pause Menu"
+text = "Pause"
+label_settings = SubResource("LabelSettings_eu7rt")
 horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/StartMenu/StartMenuMain/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
 
 [node name="ResumeGameButton" type="Button" parent="CanvasLayer/StartMenu/StartMenuMain/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -5989,6 +6028,10 @@ one_shot = true
 editor_description = "This Node is used in state melee"
 wait_time = 0.5
 one_shot = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23115563, 0)
+mesh = SubResource("BoxMesh_vhfjx")
 
 [connection signal="area_entered" from="MoneyCollectionRange" to="." method="_on_money_collection_range_area_entered"]
 [connection signal="body_entered" from="MoneyCollectionRange" to="." method="_on_money_collection_range_body_entered"]

@@ -17,6 +17,17 @@ background_mode = 2
 sky = SubResource("Sky_2f5y7")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
+reflected_light_source = 2
+glow_enabled = true
+glow_normalized = true
+fog_light_energy = 5.0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.015
+volumetric_fog_albedo = Color(0.887648, 0.5441465, 0.3477281, 1)
+adjustment_enabled = true
+adjustment_brightness = 1.36
+adjustment_contrast = 1.29
+adjustment_saturation = 1.36
 
 [sub_resource type="BoxMesh" id="BoxMesh_2f5y7"]
 
@@ -28,73 +39,12 @@ size = Vector3(1.0183105, 1.0437012, 1.0099182)
 [node name="Node3D" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_iyogp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.0483475, -10.659629)
+wall_min_slide_angle = 0.5235988
+floor_stop_on_slope = true
+jump_initial_impulse = 10.0
+slide_strength_curve_factor = 0.5
 slide_strength_curve_time_factor = 3.0
-
-[node name="PlayerCamera" parent="Player/CameraController" index="0"]
-transform = Transform3D(-1, 1.51808e-08, -8.60946e-08, 0, 0.984808, 0.173648, 8.74228e-08, 0.173648, -0.984808, -4.30473e-07, 10.36824, -4.9240403)
-
-[node name="MainCamera" parent="Player/CameraController" index="1"]
-transform = Transform3D(-1, 1.518079e-08, -8.609465e-08, 0, 0.9848078, 0.17364796, 8.74228e-08, 0.17364796, -0.9848078, -4.30473e-07, 10.36824, -4.9240403)
-
-[node name="Physical Bone Hips" parent="Player/CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="0"]
-transform = Transform3D(1, 1.5454524e-06, 1.906712e-07, -4.65661e-10, 0.122744046, -0.9924384, -1.55717e-06, 0.9924384, 0.122744046, -7.502068e-08, 1.0475368, -0.0061361557)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.082106e-09, -4.8894435e-08, 0.04999581)
-body_offset = Transform3D(1, 1.5454524e-06, 1.906712e-07, -4.65661e-10, 0.122744046, -0.9924384, -1.55717e-06, 0.9924384, 0.122744046, -7.450581e-09, 0.049617767, -0.00613664)
-
-[node name="Physical Bone Spine" parent="Player/CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="1"]
-transform = Transform3D(0.9999997, 0.0008057828, 9.841692e-05, 2.3283095e-10, 0.12123704, -0.9926236, -0.0008117708, 0.99262327, 0.121236995, -5.8609257e-06, 1.1553802, -0.019384516)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1136763e-09, 2.561137e-08, 0.058659285)
-body_offset = Transform3D(0.9999997, 0.0008057828, 9.841692e-05, 2.3283095e-10, 0.12123704, -0.9926236, -0.0008117708, 0.99262327, 0.121236995, -5.7742e-06, 0.058226585, -0.0071117003)
-
-[node name="Physical Bone Chest" parent="Player/CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="2"]
-transform = Transform3D(0.9999998, 0.00065540907, 7.978897e-05, 0, 0.120847, -0.9926712, -0.00066024787, 0.992671, 0.12084697, -1.7000966e-05, 1.2804089, -0.034628518)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1959855e-09, -5.5879354e-09, 0.067294255)
-body_offset = Transform3D(0.9999998, 0.00065540907, 7.978897e-05, 0, 0.120847, -0.9926712, -0.00066024787, 0.992671, 0.12084697, -5.3681406e-06, 0.06680107, -0.008132301)
-
-[node name="Physical Bone UpperChest" parent="Player/CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="3"]
-transform = Transform3D(-0.99999875, 0.0016202773, 8.5463624e-05, -2.3283095e-10, 0.05267293, -0.99861187, -0.0016225297, -0.99861056, -0.052672863, -2.8801376e-05, 1.4223728, -0.0387963)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.7275746e-09, -2.7008355e-08, 0.075267375)
-body_offset = Transform3D(-0.99999875, 0.0016202773, 8.5463624e-05, -2.3283095e-10, 0.05267293, -0.99861187, -0.0016225297, -0.99861056, -0.052672863, -6.429851e-06, 0.07516289, 0.003964521)
-
-[node name="Physical Bone LeftUpperLeg" parent="Player/CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="4"]
-transform = Transform3D(-0.90345365, -0.42864347, -0.00602617, -1.8626494e-09, -0.014057308, 0.99990124, -0.4286858, 0.9033644, 0.012700126, 0.09246774, 0.7283783, -0.00313133)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8475645e-09, 1.6530976e-08, 0.20299722)
-body_offset = Transform3D(0.90345365, 0.42864347, 0.00602617, 1.8626494e-09, 0.014057308, -0.99990124, -0.4286858, 0.9033644, 0.012700126, -0.0012233108, 0.20297718, -0.0025781016)
-
-[node name="Physical Bone LeftLowerLeg" parent="Player/CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="5"]
-transform = Transform3D(-0.9930136, 0.11785672, 0.005812252, -1.3969795e-09, -0.049256407, 0.99878615, 0.117999956, 0.99180824, 0.04891228, 0.09246757, 0.3151617, -0.016005218)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.731149e-09, 1.3969839e-08, 0.2104949)
-body_offset = Transform3D(-0.9930136, 0.11785672, 0.005812252, 1.3969795e-09, 0.049256407, -0.99878615, -0.117999956, -0.99180824, -0.04891228, -0.0012234598, 0.21023941, 0.010295799)
-
-[node name="Physical Bone LeftFoot" parent="Player/CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="6"]
-transform = Transform3D(-0.99866027, -0.04597059, -0.023758538, -0.05174711, 0.88718, 0.45851284, -7.450582e-09, 0.459128, -0.88837016, 0.09311174, 0.06887913, 0.043531984)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.3981556e-08, 3.46452e-07, 0.07860818)
-body_offset = Transform3D(0.99866027, 0.04597059, 0.023758538, -7.450582e-09, 0.459128, -0.88837016, -0.05174711, 0.88718, 0.45851284, -0.0018676072, 0.069833, -0.036043167)
-
-[node name="Physical Bone LeftToes" parent="Player/CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="7"]
-transform = Transform3D(-0.7767662, 0.6296289, 0.014206775, 0.6297892, 0.77656853, 0.017522281, 0, 0.022557989, -0.99974555, 0.094269015, 0.031960487, 0.16335228)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9726576e-07, 2.4214387e-07, 0.05000002)
-body_offset = Transform3D(-0.7767662, 0.6296289, 0.014206775, 0, 0.022557989, -0.99974555, -0.6297892, -0.77656853, -0.017522281, -0.00071033835, 0.049987294, 0.0008764267)
-
-[node name="Physical Bone RightUpperLeg" parent="Player/CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="8"]
-transform = Transform3D(-0.9029956, 0.42960754, 0.0060272105, -9.313226e-10, -0.014028193, 0.99990165, 0.4296498, 0.9029067, 0.012667399, -0.09246808, 0.72837734, -0.0031248033)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3504177e-08, 1.8626451e-09, 0.20299718)
-body_offset = Transform3D(0.9029956, -0.42960754, -0.0060272105, 9.313226e-10, 0.014028193, -0.99990165, 0.4296498, 0.9029067, 0.012667399, 0.0012235194, 0.20297718, -0.0025714417)
-
-[node name="Physical Bone RightLowerLeg" parent="Player/CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="9"]
-transform = Transform3D(-0.99302524, -0.11775873, -0.0058112517, -9.313232e-10, -0.049288813, 0.99878454, -0.11790203, 0.9918183, 0.048945032, -0.092468336, 0.3151617, -0.01599896)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6775524e-09, 9.313226e-10, 0.21049526)
-body_offset = Transform3D(-0.99302524, -0.11775873, -0.0058112517, 9.313232e-10, 0.049288813, -0.99878454, 0.11790203, -0.9918183, -0.048945032, 0.0012232438, 0.21023941, 0.010302698)
-
-[node name="Physical Bone RightFoot" parent="Player/CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="10"]
-transform = Transform3D(-0.99866, 0.04597387, 0.023760244, 0.0517508, 0.88717985, 0.4585127, -7.45058e-09, 0.45912793, -0.88837016, -0.09311283, 0.06887913, 0.043531343)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.934838e-08, 3.5762787e-07, 0.07860819)
-body_offset = Transform3D(0.99866, -0.04597387, -0.023760244, -7.45058e-09, 0.45912793, -0.88837016, 0.0517508, 0.88717985, 0.4585127, 0.0018677264, 0.069833, -0.036043167)
-
-[node name="Physical Bone RightToes" parent="Player/CharacterRotationRoot/CharacterSkin/GeneralSkeleton/GrapplePhysics" index="11"]
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7089845e-07, 3.2864045e-07, 0.05)
-body_offset = Transform3D(-0.7769909, -0.6293522, -0.014179123, -3.7252896e-09, 0.022524, -0.9997463, 0.62951195, -0.7767938, -0.017500943, 0.00070895255, 0.04998731, 0.000875473)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.714582, -0.605829, -0.349776, 0.699551, -0.618846, -0.357291, 0, -0.5, 0.866025, 0, 15.7845, 0)
@@ -754,7 +704,5 @@ mesh = SubResource("BoxMesh_wv4le")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.009155273, 0.021850586, 0.0049591064)
 shape = SubResource("BoxShape3D_aw26p")
 
-[editable path="Player"]
-[editable path="Player/CharacterRotationRoot/CharacterSkin"]
 [editable path="NogoForestDemo"]
 [editable path="ShootableTarget"]

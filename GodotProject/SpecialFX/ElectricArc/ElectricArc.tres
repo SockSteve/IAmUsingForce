@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=12 format=3 uid="uid://puaw6lkhuv13"]
+[gd_resource type="VisualShader" format=3 uid="uid://puaw6lkhuv13"]
 
 [ext_resource type="Texture2D" uid="uid://dqmnma1sk2gbv" path="res://SpecialFX/ElectricArc/spark_05_b_rotated.png" id="1_lyhtu"]
 
@@ -40,68 +40,6 @@ input_name = "color"
 default_input_values = [1, 0.0, 2, 1.0, 3, 0.0, 4, 0.8]
 
 [resource]
-code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_disabled, diffuse_lambert, specular_schlick_ggx, unshaded;
-
-uniform sampler2D tex_frg_10;
-uniform sampler2D tex_frg_2;
-
-
-
-void fragment() {
-// Texture2D:10
-	vec4 n_out10p0 = texture(tex_frg_10, UV);
-
-
-// Input:8
-	vec4 n_out8p0 = COLOR;
-	float n_out8p1 = n_out8p0.r;
-
-
-	float n_out9p0;
-// Remap:9
-	float n_in9p1 = 0.00000;
-	float n_in9p2 = 1.00000;
-	float n_in9p3 = 0.00000;
-	float n_in9p4 = 0.80000;
-	{
-		float __input_range = n_in9p2 - n_in9p1;
-		float __output_range = n_in9p4 - n_in9p3;
-		n_out9p0 = n_in9p3 + __output_range * ((n_out8p1 - n_in9p1) / __input_range);
-	}
-
-
-// Input:4
-	float n_out4p0 = TIME;
-
-
-// VectorOp:5
-	vec2 n_in5p1 = vec2(-3.00000, 0.00000);
-	vec2 n_out5p0 = vec2(n_out4p0) * n_in5p1;
-
-
-// UVFunc:3
-	vec2 n_in3p1 = vec2(1.00000, 1.00000);
-	vec2 n_out3p0 = n_out5p0 * n_in3p1 + UV;
-
-
-// Texture2D:2
-	vec4 n_out2p0 = texture(tex_frg_2, n_out3p0);
-	float n_out2p1 = n_out2p0.r;
-
-
-// SmoothStep:7
-	float n_in7p1 = 0.80000;
-	float n_out7p0 = smoothstep(n_out9p0, n_in7p1, n_out2p1);
-
-
-// Output:0
-	ALBEDO = vec3(n_out10p0.xyz);
-	ALPHA = n_out7p0;
-
-
-}
-"
 modes/cull = 2
 flags/unshaded = true
 nodes/fragment/0/position = Vector2(480, 20)

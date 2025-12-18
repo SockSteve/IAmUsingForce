@@ -1,4 +1,4 @@
-[gd_resource type="ArrayMesh" load_steps=6 format=4 uid="uid://gvxod6uyyy1j"]
+[gd_resource type="ArrayMesh" format=4 uid="uid://gvxod6uyyy1j"]
 
 [ext_resource type="Texture2D" uid="uid://bw7qnx6f3bgbb" path="res://Assets/Models/Interactibles/SilverNugget_Metal003_2K-JPG_Color.jpg" id="1_teelm"]
 [ext_resource type="Texture2D" uid="uid://hm4ertq5b6jp" path="res://Assets/Models/Interactibles/SilverNugget_Metal003_2K-JPG_Metalness-Metal003_2K-JPG_Roughness.png" id="2_yc6xv"]

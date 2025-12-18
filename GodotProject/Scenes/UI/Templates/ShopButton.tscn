@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dmcowq41mf0wo"]
 
-[ext_resource type="Texture2D" uid="uid://v5wqb5h7avge" path="res://Assets/UI/WeaponBGBtn2.svg" id="1_egtle"]
-[ext_resource type="Texture2D" uid="uid://c8feibihd2amg" path="res://Assets/UI/WeaponBGBtn1.svg" id="2_rkda0"]
+[ext_resource type="Texture2D" uid="uid://djgf30covpxf6" path="res://Assets/UI/Handcrafted/WeaponBGBtn2.svg" id="1_egtle"]
+[ext_resource type="Texture2D" uid="uid://bgmj8kr8knke6" path="res://Assets/UI/Handcrafted/WeaponBGBtn1.svg" id="2_rkda0"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_g8ql2"]
 texture = ExtResource("1_egtle")

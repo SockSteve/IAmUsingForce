@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=4 uid="uid://cfv2ecbe68yfi"]
+[gd_scene format=4 uid="uid://cfv2ecbe68yfi"]
 
 [ext_resource type="Texture2D" uid="uid://dk3g261yc4qry" path="res://Assets/Placeholders/Environment/Skyboxes/panorama_image.png" id="1_fslvx"]
 [ext_resource type="PackedScene" uid="uid://dn3vjoeu551qr" path="res://Assets/Models/Interactibles/MonkeyBarTestModel.blend" id="2_0k45d"]
@@ -23,7 +23,9 @@
 [ext_resource type="Script" uid="uid://dm8jitoqobk0o" path="res://Sandbox/movable_look_object.gd" id="25_rn2nm"]
 [ext_resource type="PackedScene" uid="uid://do6wn85to7hkb" path="res://Sandbox/LookingMan.tscn" id="26_oervn"]
 [ext_resource type="PackedScene" uid="uid://dig6ayx0ausue" path="res://Enemies/Common/Stout/AIGenPHStout.fbx" id="27_f1cld"]
+[ext_resource type="Animation" uid="uid://bbfl4ghtctygs" path="res://Assets/Animation/DummyTestAnims/Hit.res" id="27_smwd8"]
 [ext_resource type="PackedScene" uid="uid://cvo4pacg0es5e" path="res://SpecialFX/ElectricArc/ElectricArc.tscn" id="28_fut23"]
+[ext_resource type="Animation" uid="uid://dqcr4kn0c6aov" path="res://Assets/Animation/DummyTestAnims/TestDummyIdle.res" id="28_iv8af"]
 [ext_resource type="Material" uid="uid://6ww083e45nho" path="res://Enemies/Common/TestDummy/TestDummy_Mat.tres" id="28_m6i3i"]
 [ext_resource type="PackedScene" uid="uid://c03x678frspps" path="res://SpecialFX/Shock/VFXShockV1.tscn" id="29_t1l1n"]
 
@@ -584,7 +586,537 @@ shadow_mesh = SubResource("ArrayMesh_bv6l5")
 [sub_resource type="SphereShape3D" id="SphereShape3D_1mfbe"]
 radius = 1.19323
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_1q30d"]
+[sub_resource type="Animation" id="Animation_ijkoy"]
+resource_name = "Armature_001|test|Anima_Layer"
+length = 0.766667
+tracks/0/type = "rotation_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("%GeneralSkeleton:LeftShoulder")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.5, -0.5, -0.5, 0.5)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("%GeneralSkeleton:LeftUpperArm")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 2.98023e-08, 1, 2.98023e-08, -2.98023e-08)
+tracks/2/type = "scale_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("%GeneralSkeleton:LeftThumbDistal")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 1.00002, 1, 0.999985)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("%GeneralSkeleton:mixamorig_LeftHandPinky1")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 1.49012e-08, 1.49012e-08, 1)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = true
+tracks/4/enabled = true
+tracks/4/path = NodePath("%GeneralSkeleton:LeftLittleProximal")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0, 0, -5.96046e-08, 1)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = true
+tracks/5/enabled = true
+tracks/5/path = NodePath("%GeneralSkeleton:LeftLittleIntermediate")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, -1.49012e-08, 0, -2.98023e-08, 1)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = true
+tracks/6/enabled = true
+tracks/6/path = NodePath("%GeneralSkeleton:RightShoulder")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, 0.5, -0.5, -0.5, -0.5)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = true
+tracks/7/enabled = true
+tracks/7/path = NodePath("%GeneralSkeleton:RightUpperArm")
+tracks/7/interp = 0
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, -7.45058e-08, 1, 1.49012e-08, -2.98023e-08)
+tracks/8/type = "scale_3d"
+tracks/8/imported = true
+tracks/8/enabled = true
+tracks/8/path = NodePath("%GeneralSkeleton:RightThumbDistal")
+tracks/8/interp = 0
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, 1.00002, 1, 0.999984)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = true
+tracks/9/enabled = true
+tracks/9/path = NodePath("%GeneralSkeleton:RightLittleProximal")
+tracks/9/interp = 0
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, 2.98023e-08, 0, 5.96046e-08, 1)
+tracks/10/type = "rotation_3d"
+tracks/10/imported = true
+tracks/10/enabled = true
+tracks/10/path = NodePath("%GeneralSkeleton:RightLittleIntermediate")
+tracks/10/interp = 0
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0, 1, 1.49012e-08, 2.98023e-08, 5.96046e-08, 1)
+tracks/11/type = "rotation_3d"
+tracks/11/imported = true
+tracks/11/enabled = true
+tracks/11/path = NodePath("%GeneralSkeleton:LeftUpperLeg")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/keys = PackedFloat32Array(0, 1, -5.45428e-12, -6.11817e-11, -1, 1.96451e-10)
+tracks/12/type = "rotation_3d"
+tracks/12/imported = true
+tracks/12/enabled = true
+tracks/12/path = NodePath("%GeneralSkeleton:LeftLowerLeg")
+tracks/12/interp = 0
+tracks/12/loop_wrap = true
+tracks/12/keys = PackedFloat32Array(0, 1, 2.32831e-10, 1, 0, -3.63798e-12)
+tracks/13/type = "rotation_3d"
+tracks/13/imported = true
+tracks/13/enabled = true
+tracks/13/path = NodePath("Armature")
+tracks/13/interp = 0
+tracks/13/loop_wrap = true
+tracks/13/keys = PackedFloat32Array(0, 1, 0.707107, -9.41569e-08, 9.41569e-08, 0.707107)
+tracks/14/type = "scale_3d"
+tracks/14/imported = true
+tracks/14/enabled = true
+tracks/14/path = NodePath("Armature")
+tracks/14/interp = 0
+tracks/14/loop_wrap = true
+tracks/14/keys = PackedFloat32Array(0, 1, 0.01, 0.01, 0.01)
+
+[sub_resource type="Animation" id="Animation_3j60b"]
+resource_name = "Armature_002|test|Anima_Layer"
+length = 0.766667
+tracks/0/type = "rotation_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("%GeneralSkeleton:LeftShoulder")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.5, -0.5, -0.5, 0.5)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("%GeneralSkeleton:LeftUpperArm")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 2.98023e-08, 1, 2.98023e-08, -2.98023e-08)
+tracks/2/type = "scale_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("%GeneralSkeleton:LeftThumbDistal")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 1.00002, 1, 0.999985)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("%GeneralSkeleton:mixamorig_LeftHandPinky1")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 1.49012e-08, 1.49012e-08, 1)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = true
+tracks/4/enabled = true
+tracks/4/path = NodePath("%GeneralSkeleton:LeftLittleProximal")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 0, 0, -5.96046e-08, 1)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = true
+tracks/5/enabled = true
+tracks/5/path = NodePath("%GeneralSkeleton:LeftLittleIntermediate")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, -1.49012e-08, 0, -2.98023e-08, 1)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = true
+tracks/6/enabled = true
+tracks/6/path = NodePath("%GeneralSkeleton:RightShoulder")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, 0.5, -0.5, -0.5, -0.5)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = true
+tracks/7/enabled = true
+tracks/7/path = NodePath("%GeneralSkeleton:RightUpperArm")
+tracks/7/interp = 0
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, -7.45058e-08, 1, 1.49012e-08, -2.98023e-08)
+tracks/8/type = "scale_3d"
+tracks/8/imported = true
+tracks/8/enabled = true
+tracks/8/path = NodePath("%GeneralSkeleton:RightThumbDistal")
+tracks/8/interp = 0
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, 1.00002, 1, 0.999984)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = true
+tracks/9/enabled = true
+tracks/9/path = NodePath("%GeneralSkeleton:RightLittleProximal")
+tracks/9/interp = 0
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, 2.98023e-08, 0, 5.96046e-08, 1)
+tracks/10/type = "rotation_3d"
+tracks/10/imported = true
+tracks/10/enabled = true
+tracks/10/path = NodePath("%GeneralSkeleton:RightLittleIntermediate")
+tracks/10/interp = 0
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0, 1, 1.49012e-08, 2.98023e-08, 5.96046e-08, 1)
+tracks/11/type = "rotation_3d"
+tracks/11/imported = true
+tracks/11/enabled = true
+tracks/11/path = NodePath("%GeneralSkeleton:LeftUpperLeg")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/keys = PackedFloat32Array(0, 1, -5.45428e-12, -6.11817e-11, -1, 1.96451e-10)
+tracks/12/type = "rotation_3d"
+tracks/12/imported = true
+tracks/12/enabled = true
+tracks/12/path = NodePath("%GeneralSkeleton:LeftLowerLeg")
+tracks/12/interp = 0
+tracks/12/loop_wrap = true
+tracks/12/keys = PackedFloat32Array(0, 1, 2.32831e-10, 1, 0, -3.63798e-12)
+tracks/13/type = "rotation_3d"
+tracks/13/imported = true
+tracks/13/enabled = true
+tracks/13/path = NodePath("Armature")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = PackedFloat32Array(0, 1, 0.707107, 0, 0, 0.707107)
+tracks/14/type = "scale_3d"
+tracks/14/imported = true
+tracks/14/enabled = true
+tracks/14/path = NodePath("Armature")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = PackedFloat32Array(0, 1, 0.01, 0.01, 0.01)
+
+[sub_resource type="Animation" id="Animation_chdyh"]
+resource_name = "Armature|mixamo_com|Layer0"
+length = 0.0666667
+tracks/0/type = "rotation_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("%GeneralSkeleton:LeftShoulder")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.500032, -0.499969, -0.500032, 0.499968)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("%GeneralSkeleton:LeftUpperArm")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -1.35601e-06, 1, 1.90884e-05, 2.08616e-07)
+tracks/2/type = "scale_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("%GeneralSkeleton:LeftThumbDistal")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 1.00002, 1, 0.999985)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("%GeneralSkeleton:mixamorig_LeftHandPinky1")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -2.75671e-06, 5.96046e-08, -0.000141144, 1)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = true
+tracks/4/enabled = true
+tracks/4/path = NodePath("%GeneralSkeleton:LeftLittleProximal")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 6.25849e-06, -1.49012e-08, 0.000368372, 1)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = true
+tracks/5/enabled = true
+tracks/5/path = NodePath("%GeneralSkeleton:LeftLittleIntermediate")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, -3.53158e-06, -5.96046e-08, -0.000229612, 1)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = true
+tracks/6/enabled = true
+tracks/6/path = NodePath("%GeneralSkeleton:RightShoulder")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, 0.499968, -0.500031, -0.499969, -0.500032)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = true
+tracks/7/enabled = true
+tracks/7/path = NodePath("%GeneralSkeleton:RightUpperArm")
+tracks/7/interp = 0
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, -4.47035e-07, 1, -2.00123e-05, -2.68221e-07)
+tracks/8/type = "scale_3d"
+tracks/8/imported = true
+tracks/8/enabled = true
+tracks/8/path = NodePath("%GeneralSkeleton:RightThumbDistal")
+tracks/8/interp = 0
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, 1.00002, 1, 0.999984)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = true
+tracks/9/enabled = true
+tracks/9/path = NodePath("%GeneralSkeleton:RightLittleProximal")
+tracks/9/interp = 0
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, 1.49012e-07, -8.9407e-08, -1.05202e-05, 1)
+tracks/10/type = "rotation_3d"
+tracks/10/imported = true
+tracks/10/enabled = true
+tracks/10/path = NodePath("%GeneralSkeleton:RightLittleIntermediate")
+tracks/10/interp = 0
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0, 1, -4.47035e-08, 5.96046e-08, 1.05351e-05, 1)
+tracks/11/type = "rotation_3d"
+tracks/11/imported = true
+tracks/11/enabled = true
+tracks/11/path = NodePath("%GeneralSkeleton:LeftUpperLeg")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/keys = PackedFloat32Array(0, 1, -8.25547e-09, -1.02958e-05, -1, 8.81921e-08)
+tracks/12/type = "rotation_3d"
+tracks/12/imported = true
+tracks/12/enabled = true
+tracks/12/path = NodePath("%GeneralSkeleton:LeftLowerLeg")
+tracks/12/interp = 0
+tracks/12/loop_wrap = true
+tracks/12/keys = PackedFloat32Array(0, 1, 1.16415e-09, 1, -1.97911e-05, -5.47043e-08)
+tracks/13/type = "rotation_3d"
+tracks/13/imported = true
+tracks/13/enabled = true
+tracks/13/path = NodePath("Armature")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = PackedFloat32Array(0, 1, 0.707107, 0, 0, 0.707107)
+tracks/14/type = "scale_3d"
+tracks/14/imported = true
+tracks/14/enabled = true
+tracks/14/path = NodePath("Armature")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = PackedFloat32Array(0, 1, 0.01, 0.01, 0.01)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2drmw"]
+_data = {
+&"Armature_001|test|Anima_Layer": SubResource("Animation_ijkoy"),
+&"Armature_002|test|Anima_Layer": SubResource("Animation_3j60b"),
+&"Armature|mixamo_com|Layer0": SubResource("Animation_chdyh")
+}
+
+[sub_resource type="Animation" id="Animation_flbbj"]
+resource_name = "Take 001"
+length = 1.66667
+tracks/0/type = "rotation_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("%GeneralSkeleton:LeftUpperLeg")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -2.30697e-13, 7.61546e-11, 1, -1.52795e-10)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("%GeneralSkeleton:LeftLowerLeg")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 1, 1.86265e-09, 1.81899e-12)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("%GeneralSkeleton:LeftShoulder")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.5, 0.5, 0.5, -0.5)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("%GeneralSkeleton:RightShoulder")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.5, -0.5, -0.5, -0.5)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = true
+tracks/4/enabled = true
+tracks/4/path = NodePath("%GeneralSkeleton:LeftUpperArm")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, -2.98023e-07, 1, 0, 0)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = true
+tracks/5/enabled = true
+tracks/5/path = NodePath("%GeneralSkeleton:RightUpperArm")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 2.98023e-08, 1, 2.98023e-08, 2.98023e-08)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = true
+tracks/6/enabled = true
+tracks/6/path = NodePath("%GeneralSkeleton:LeftLittleProximal")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, 2.98023e-08, -2.98023e-08, 2.38419e-07, 1)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = true
+tracks/7/enabled = true
+tracks/7/path = NodePath("%GeneralSkeleton:LeftLittleIntermediate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, 0, -5.96046e-08, 0, 1)
+tracks/8/type = "rotation_3d"
+tracks/8/imported = true
+tracks/8/enabled = true
+tracks/8/path = NodePath("%GeneralSkeleton:RightLittleIntermediate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, -1.49012e-08, 0, 1.49012e-08, 1)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = true
+tracks/9/enabled = true
+tracks/9/path = NodePath("%GeneralSkeleton:LeftLittleDistal")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, 4.47035e-08, 1.49012e-08, -1.49012e-08, 1)
+tracks/10/type = "rotation_3d"
+tracks/10/imported = true
+tracks/10/enabled = true
+tracks/10/path = NodePath("%GeneralSkeleton:RightLittleDistal")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1)
+tracks/11/type = "scale_3d"
+tracks/11/imported = true
+tracks/11/enabled = true
+tracks/11/path = NodePath("%GeneralSkeleton:mixamorig_LeftHandThumb4")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = PackedFloat32Array(0, 1, 1.00058, 1.00049, 1.00015)
+tracks/12/type = "scale_3d"
+tracks/12/imported = true
+tracks/12/enabled = true
+tracks/12/path = NodePath("%GeneralSkeleton:mixamorig_RightHandThumb4")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = PackedFloat32Array(0, 1, 1.00058, 1.00049, 1.00015)
+
+[sub_resource type="Animation" id="Animation_hydyy"]
+resource_name = "mixamo_com"
+length = 0.0333333
+tracks/0/type = "rotation_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("%GeneralSkeleton:LeftUpperLeg")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -8.25803e-09, -1.02958e-05, -1, 1.05371e-07)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("%GeneralSkeleton:LeftLowerLeg")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 2.79397e-09, 1, -1.97859e-05, -5.46333e-08)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = true
+tracks/2/enabled = true
+tracks/2/path = NodePath("%GeneralSkeleton:LeftShoulder")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.500032, 0.499968, 0.500032, -0.499968)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = true
+tracks/3/enabled = true
+tracks/3/path = NodePath("%GeneralSkeleton:RightShoulder")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, -0.499969, 0.500032, 0.499969, 0.500032)
+tracks/4/type = "rotation_3d"
+tracks/4/imported = true
+tracks/4/enabled = true
+tracks/4/path = NodePath("%GeneralSkeleton:LeftUpperArm")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, -1.35601e-06, 1, 1.90884e-05, 2.08616e-07)
+tracks/5/type = "rotation_3d"
+tracks/5/imported = true
+tracks/5/enabled = true
+tracks/5/path = NodePath("%GeneralSkeleton:RightUpperArm")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, -4.17233e-07, 1, -2.00272e-05, -2.98023e-07)
+tracks/6/type = "rotation_3d"
+tracks/6/imported = true
+tracks/6/enabled = true
+tracks/6/path = NodePath("%GeneralSkeleton:LeftLittleProximal")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = PackedFloat32Array(0, 1, -2.71201e-06, 8.9407e-08, -0.000141069, 1)
+tracks/7/type = "rotation_3d"
+tracks/7/imported = true
+tracks/7/enabled = true
+tracks/7/path = NodePath("%GeneralSkeleton:LeftLittleIntermediate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0, 1, 6.22869e-06, 4.47035e-08, 0.000368282, 1)
+tracks/8/type = "rotation_3d"
+tracks/8/imported = true
+tracks/8/enabled = true
+tracks/8/path = NodePath("%GeneralSkeleton:RightLittleIntermediate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = PackedFloat32Array(0, 1, 1.19209e-07, 0, -1.05202e-05, 1)
+tracks/9/type = "rotation_3d"
+tracks/9/imported = true
+tracks/9/enabled = true
+tracks/9/path = NodePath("%GeneralSkeleton:LeftLittleDistal")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = PackedFloat32Array(0, 1, -3.54648e-06, -2.98023e-08, -0.000229627, 1)
+tracks/10/type = "rotation_3d"
+tracks/10/imported = true
+tracks/10/enabled = true
+tracks/10/path = NodePath("%GeneralSkeleton:RightLittleDistal")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0, 1, -7.45058e-08, 1.19209e-07, 1.055e-05, 1)
+tracks/11/type = "scale_3d"
+tracks/11/imported = true
+tracks/11/enabled = true
+tracks/11/path = NodePath("%GeneralSkeleton:mixamorig_LeftHandThumb4")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = PackedFloat32Array(0, 1, 1.00058, 1.00049, 1.00015)
+tracks/12/type = "scale_3d"
+tracks/12/imported = true
+tracks/12/enabled = true
+tracks/12/path = NodePath("%GeneralSkeleton:mixamorig_RightHandThumb4")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = PackedFloat32Array(0, 1, 1.00058, 1.00049, 1.00015)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u4wno"]
+_data = {
+&"Take 001": SubResource("Animation_flbbj"),
+&"mixamo_com": SubResource("Animation_hydyy")
+}
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_drda0"]
 resource_local_to_scene = true
 resource_name = "Ch36"
 _surfaces = [{
@@ -605,13 +1137,19 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t82mo"]
+_data = {
+&"hit": ExtResource("27_smwd8"),
+&"idle": ExtResource("28_iv8af")
+}
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="Node3D" type="Node3D" unique_id=892452155]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1965883029]
 environment = SubResource("Environment_6axbp")
 camera_attributes = SubResource("CameraAttributesPractical_4bw5o")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=755965566]
 transform = Transform3D(0.588689, -0.214393, 0.779411, -0.80836, -0.156132, 0.567607, 0, -0.964188, -0.26522, 16.6669, 27.6445, 16.6961)
 visible = false
 light_energy = 0.1
@@ -620,9 +1158,9 @@ light_volumetric_fog_energy = 2.524
 light_angular_distance = 9.6
 light_bake_mode = 1
 
-[node name="Map Geometry" type="Node3D" parent="."]
+[node name="Map Geometry" type="Node3D" parent="." unique_id=2131571089]
 
-[node name="MonkeyBarTestModel" parent="Map Geometry" instance=ExtResource("2_0k45d")]
+[node name="MonkeyBarTestModel" parent="Map Geometry" unique_id=1972291075 instance=ExtResource("2_0k45d")]
 transform = Transform3D(-3.1423e-08, 0, 0.70117, 0, 0.668727, 0, -0.718875, 0, -3.06491e-08, -9.54024, 3.76116, 28.8793)
 
 [node name="MonkeyBarTest" parent="Map Geometry/MonkeyBarTestModel" index="0"]
@@ -631,10 +1169,10 @@ transform = Transform3D(3.87244, 0, 0, 0, 2.49162, 0, 0, 0, 1, -7.74387, 0, 5.64
 [node name="StaticBody3D" parent="Map Geometry/MonkeyBarTestModel/MonkeyBarTest" index="0" groups=["monkey_bar"]]
 collision_layer = 192
 
-[node name="CrouchTestObject" parent="Map Geometry" instance=ExtResource("3_1onp7")]
+[node name="CrouchTestObject" parent="Map Geometry" unique_id=1191015888 instance=ExtResource("3_1onp7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.53921, 0.675074, 51.1108)
 
-[node name="FloorBlock_1" type="CSGBox3D" parent="Map Geometry"]
+[node name="FloorBlock_1" type="CSGBox3D" parent="Map Geometry" unique_id=937219111]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.6747, 0.175072, 27.8353)
 layers = 32
 use_collision = true
@@ -642,7 +1180,7 @@ collision_layer = 97
 size = Vector3(100, 1, 100)
 material = SubResource("StandardMaterial3D_owx1c")
 
-[node name="FloorBlock_2" type="CSGBox3D" parent="Map Geometry"]
+[node name="FloorBlock_2" type="CSGBox3D" parent="Map Geometry" unique_id=1062966098]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123.606, 0.175072, 27.8353)
 layers = 32
 use_collision = true
@@ -650,34 +1188,34 @@ collision_layer = 97
 size = Vector3(100, 1, 100)
 material = SubResource("StandardMaterial3D_owx1c")
 
-[node name="Geometry" type="CSGCombiner3D" parent="Map Geometry"]
+[node name="Geometry" type="CSGCombiner3D" parent="Map Geometry" unique_id=329153666]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0110474, -1.48652, 19.2093)
 use_collision = true
 
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Map Geometry/Geometry"]
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="Map Geometry/Geometry" unique_id=368697716]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0598809, 2.20414, -0.292313)
 polygon = PackedVector2Array(0, 0, 0, 1, 3, 0)
 depth = 0.5
 material = SubResource("StandardMaterial3D_oo8sc")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Map Geometry/Geometry"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Map Geometry/Geometry" unique_id=724836195]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.70785, 3.27889, -2.73022)
 layers = 96
 size = Vector3(3.8559, 2.00305, 5.57715)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Map Geometry/Geometry"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map Geometry/Geometry" unique_id=1206136875]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.708, 4.15647, -8.726)
 size = Vector3(3.856, 4, 5.577)
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Map Geometry"]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Map Geometry" unique_id=1332452996]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.568421, 3.52807, 54.9675)
 use_collision = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Map Geometry/CSGCombiner3D" groups=["floor", "magnetized"]]
+[node name="CSGBox3D" type="CSGBox3D" parent="Map Geometry/CSGCombiner3D" unique_id=1675263531 groups=["floor", "magnetized"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.6667, 7.69405, 14.4049)
 size = Vector3(20, 20, 7)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Map Geometry/CSGCombiner3D"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Map Geometry/CSGCombiner3D" unique_id=855949508]
 transform = Transform3D(1.84584, 0, 0, 0, -4.37114e-08, -1.23353, 0, 1, -5.39195e-08, -5.36373, 7.54768, 14.2437)
 operation = 2
 radius = 7.95505
@@ -685,11 +1223,11 @@ height = 8.0
 sides = 30
 smooth_faces = false
 
-[node name="GrindRail_2" type="Path3D" parent="Map Geometry"]
+[node name="GrindRail_2" type="Path3D" parent="Map Geometry" unique_id=850128279]
 transform = Transform3D(0.766044, 0, -0.642787, 0, 1, 0, 0.642787, 0, 0.766044, 24.5103, 2.35705, 37.4143)
 curve = SubResource("Curve3D_pp05w")
 
-[node name="GrindRail_2" type="CSGPolygon3D" parent="Map Geometry/GrindRail_2" groups=["grindRail"]]
+[node name="GrindRail_2" type="CSGPolygon3D" parent="Map Geometry/GrindRail_2" unique_id=2001812226 groups=["grindRail"]]
 use_collision = true
 collision_layer = 128
 collision_mask = 128
@@ -707,11 +1245,11 @@ path_u_distance = 1.0
 path_joined = false
 material = SubResource("StandardMaterial3D_hift0")
 
-[node name="GrindRail_7" type="Path3D" parent="Map Geometry"]
+[node name="GrindRail_7" type="Path3D" parent="Map Geometry" unique_id=409184465]
 transform = Transform3D(0.0471764, 0, -0.998886, 0, 1, 0, 0.998886, 0, 0.0471764, 96.8648, 2.35705, 19.5181)
 curve = SubResource("Curve3D_ljlxt")
 
-[node name="GrindRail_8" type="CSGPolygon3D" parent="Map Geometry/GrindRail_7" groups=["grindRail", "loop"]]
+[node name="GrindRail_8" type="CSGPolygon3D" parent="Map Geometry/GrindRail_7" unique_id=2068629522 groups=["grindRail", "loop"]]
 use_collision = true
 collision_layer = 128
 collision_mask = 128
@@ -730,11 +1268,11 @@ path_joined = true
 smooth_faces = true
 material = SubResource("StandardMaterial3D_hift0")
 
-[node name="GrindRail_5" type="Path3D" parent="Map Geometry"]
+[node name="GrindRail_5" type="Path3D" parent="Map Geometry" unique_id=1989048135]
 transform = Transform3D(0.766044, 0, -0.642787, 0, 1, 0, 0.642787, 0, 0.766044, 24.8167, 2.35705, 34.4128)
 curve = SubResource("Curve3D_nw3ll")
 
-[node name="GrindRail_2" type="CSGPolygon3D" parent="Map Geometry/GrindRail_5" groups=["grindRail"]]
+[node name="GrindRail_2" type="CSGPolygon3D" parent="Map Geometry/GrindRail_5" unique_id=949093243 groups=["grindRail"]]
 use_collision = true
 collision_layer = 128
 collision_mask = 128
@@ -752,11 +1290,11 @@ path_u_distance = 1.0
 path_joined = false
 material = SubResource("StandardMaterial3D_hift0")
 
-[node name="GrindRail_3" type="Path3D" parent="Map Geometry"]
+[node name="GrindRail_3" type="Path3D" parent="Map Geometry" unique_id=655529113]
 transform = Transform3D(0.766044, 0, -0.642787, 0, 1, 0, 0.642787, 0, 0.766044, 22.4622, 2.31297, 43.2257)
 curve = SubResource("Curve3D_lk0p5")
 
-[node name="GrindRail_3" type="CSGPolygon3D" parent="Map Geometry/GrindRail_3" groups=["grindRail", "loop"]]
+[node name="GrindRail_3" type="CSGPolygon3D" parent="Map Geometry/GrindRail_3" unique_id=1639840129 groups=["grindRail", "loop"]]
 use_collision = true
 collision_layer = 128
 collision_mask = 128
@@ -774,11 +1312,11 @@ path_u_distance = 1.0
 path_joined = false
 material = SubResource("StandardMaterial3D_hift0")
 
-[node name="GrindRail_4" type="Path3D" parent="Map Geometry"]
+[node name="GrindRail_4" type="Path3D" parent="Map Geometry" unique_id=1466678452]
 transform = Transform3D(0.766044, 0, -0.642787, 0, 1, 0, 0.642787, 0, 0.766044, 24.5406, 1.70556, 40.4879)
 curve = SubResource("Curve3D_pp05w")
 
-[node name="GrindRail_4" type="CSGPolygon3D" parent="Map Geometry/GrindRail_4" groups=["grindRail"]]
+[node name="GrindRail_4" type="CSGPolygon3D" parent="Map Geometry/GrindRail_4" unique_id=1869046836 groups=["grindRail"]]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
 use_collision = true
 collision_layer = 128
@@ -797,11 +1335,11 @@ path_u_distance = 1.0
 path_joined = false
 material = SubResource("StandardMaterial3D_hift0")
 
-[node name="GrindRail_6" type="Path3D" parent="Map Geometry"]
+[node name="GrindRail_6" type="Path3D" parent="Map Geometry" unique_id=99546310]
 transform = Transform3D(0.766044, 0, -0.642787, 0, 1, 0, 0.642787, 0, 0.766044, 24.5406, 1.70556, 63.9144)
 curve = SubResource("Curve3D_s5tcg")
 
-[node name="GrindRail_4" type="CSGPolygon3D" parent="Map Geometry/GrindRail_6" groups=["grindRail"]]
+[node name="GrindRail_4" type="CSGPolygon3D" parent="Map Geometry/GrindRail_6" unique_id=369138742 groups=["grindRail"]]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 0.999999, 0, 0, 0)
 use_collision = true
 collision_layer = 128
@@ -820,131 +1358,130 @@ path_u_distance = 1.0
 path_joined = false
 material = SubResource("StandardMaterial3D_hift0")
 
-[node name="GrapplePoint" parent="Map Geometry" instance=ExtResource("7_ewbnr")]
+[node name="GrapplePoint" parent="Map Geometry" unique_id=769932371 instance=ExtResource("7_ewbnr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.7181, 10.5414, 47.8072)
-grapple_point_type = 1
 target_distance = 6.0
 
-[node name="Sketchfab_Scene" parent="Map Geometry" instance=ExtResource("8_agwlu")]
+[node name="Sketchfab_Scene" parent="Map Geometry" unique_id=367187498 instance=ExtResource("8_agwlu")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.0368, 1.39886, 57.5848)
 
-[node name="Sketchfab_Scene2" parent="Map Geometry" instance=ExtResource("9_1hai1")]
+[node name="Sketchfab_Scene2" parent="Map Geometry" unique_id=473746860 instance=ExtResource("9_1hai1")]
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 6.25976, 1.39886, 58.9178)
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=1593051718]
 transform = Transform3D(1, 0, 0, 0, 0.00787138, 0.999969, 0, -0.999969, 0.00787138, 19.9591, 59.2034, 30.1538)
 light_energy = 16.0
 light_indirect_energy = 1.355
 spot_range = 95.856
 spot_angle = 58.2169
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1943944758]
 stream = ExtResource("11_g7etk")
 volume_db = -15.928
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1990405429]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.513829, 2.68137, 5.26352)
 mesh = SubResource("BoxMesh_rmle0")
 skeleton = NodePath("StaticBody3D")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D2" unique_id=1681370807]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.0889, -0.889709)
 collision_layer = 48
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D2/StaticBody3D" unique_id=1042227609]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0889, 0.889709)
 shape = SubResource("BoxShape3D_fic72")
 
-[node name="SmTestranged" parent="." instance=ExtResource("12_lah70")]
+[node name="SmTestranged" parent="." unique_id=1534568598 instance=ExtResource("12_lah70")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.7433, 1.59019, -15.3721)
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=2045306657]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7518, 4.88889, -12.5466)
 navigation_mesh = SubResource("NavigationMesh_2evub")
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="NavigationRegion3D"]
+[node name="StaticBody3D2" type="StaticBody3D" parent="NavigationRegion3D" unique_id=1855280024]
 transform = Transform3D(20, 0, 0, 0, 0.2, 0, 0, 0, 10, 3.15808, -3.78376, -3.73501)
 collision_layer = 96
 collision_mask = 0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D2" unique_id=813180638]
 layers = 97
 mesh = SubResource("BoxMesh_llufc")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D2" unique_id=724970455]
 shape = SubResource("BoxShape3D_ibcg5")
 
-[node name="StaticBody3D3" type="StaticBody3D" parent="NavigationRegion3D"]
+[node name="StaticBody3D3" type="StaticBody3D" parent="NavigationRegion3D" unique_id=1475187104]
 transform = Transform3D(20, 0, 0, 0, 0.2, 0, 0, 0, 10, 32.95, -3.78376, -3.735)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D3"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D3" unique_id=647525940]
 mesh = SubResource("BoxMesh_llufc")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D3" unique_id=30461205]
 shape = SubResource("BoxShape3D_ibcg5")
 
-[node name="TestEnemy_1" parent="." instance=ExtResource("14_tic2p")]
+[node name="TestEnemy_1" parent="." unique_id=1237978164 instance=ExtResource("14_tic2p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.4979, 1.94951, -16.8217)
 
-[node name="TestEnemy_3" parent="." instance=ExtResource("14_tic2p")]
+[node name="TestEnemy_3" parent="." unique_id=1632573459 instance=ExtResource("14_tic2p")]
 transform = Transform3D(-0.0046429, 0, 0.999989, 0, 1, 0, -0.999989, 0, -0.0046429, 58.8896, 1.94951, -13.6)
 
-[node name="TestEnemy_4" parent="." instance=ExtResource("14_tic2p")]
+[node name="TestEnemy_4" parent="." unique_id=915165557 instance=ExtResource("14_tic2p")]
 transform = Transform3D(0.565787, 0, 0.824551, 0, 1, 0, -0.824551, 0, 0.565787, 63.4815, 1.94951, -16.4641)
 
-[node name="TestEnemy_5" parent="." instance=ExtResource("14_tic2p")]
+[node name="TestEnemy_5" parent="." unique_id=470888443 instance=ExtResource("14_tic2p")]
 transform = Transform3D(-0.948809, 0, -0.315848, 0, 1, 0, 0.315848, 0, -0.948809, 62.972, 1.94951, -10.2538)
 
-[node name="TestEnemy_2" parent="." instance=ExtResource("15_f2m45")]
+[node name="TestEnemy_2" parent="." unique_id=1226471400 instance=ExtResource("15_f2m45")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7083, 1.59159, 15.2701)
 
-[node name="pointspawner" parent="." instance=ExtResource("16_5mlhr")]
+[node name="pointspawner" parent="." unique_id=1684011339 instance=ExtResource("16_5mlhr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.4345, 1.30768, 14.7864)
 
-[node name="MM_MeleeEnemy" parent="." instance=ExtResource("17_gh4yx")]
+[node name="MM_MeleeEnemy" parent="." unique_id=1181590721 instance=ExtResource("17_gh4yx")]
 transform = Transform3D(0.999999, -0.000898777, 0.000713599, 0.000898467, 0.999999, 0.000419381, -0.00071399, -0.000418715, 1, 24.5195, 1.73462, -12.3167)
 
-[node name="BmBigEnemy" parent="." instance=ExtResource("18_iklwx")]
+[node name="BmBigEnemy" parent="." unique_id=1504832095 instance=ExtResource("18_iklwx")]
 transform = Transform3D(0.993943, 0, -0.10989, 0, 1, 0, 0.10989, 0, 0.993943, 77.3343, 0.678023, -15.131)
 
-[node name="HitBoxArea3D" parent="." instance=ExtResource("19_ibhqo")]
+[node name="HitBoxArea3D" parent="." unique_id=1004596974 instance=ExtResource("19_ibhqo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.6388, 0.678023, -3.26617)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBoxArea3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitBoxArea3D" unique_id=1013892973]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.7177, 1.36892, -10.9883)
 shape = SubResource("BoxShape3D_qidly")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="HitBoxArea3D/CollisionShape3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HitBoxArea3D/CollisionShape3D" unique_id=140774455]
 transform = Transform3D(2.62, 0, 0, 0, 2.62, 0, 0, 0, 2.62, 0, 0, 0)
 mesh = SubResource("BoxMesh_8uuvh")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("StandardMaterial3D_gxsxi")
 
-[node name="Label3D" type="Label3D" parent="."]
+[node name="Label3D" type="Label3D" parent="." unique_id=527562012]
 transform = Transform3D(0.0709229, 0, 0.997482, 0, 1, 0, -0.997482, 0, 0.0709229, -0.914815, 4.8178, 30.3352)
 text = "Monkey Bar Text
 (jump into the ceiling)"
 font_size = 64
 
-[node name="Label3D4" type="Label3D" parent="."]
+[node name="Label3D4" type="Label3D" parent="." unique_id=1660804458]
 transform = Transform3D(0.0709229, 0, 0.997482, 0, 1, 0, -0.997482, 0, 0.0709229, -0.272493, 4.8178, 21.3014)
 text = "Basic Platforming/
 Ledge Hanging 
 Test"
 font_size = 64
 
-[node name="Label3D5" type="Label3D" parent="."]
+[node name="Label3D5" type="Label3D" parent="." unique_id=882647154]
 transform = Transform3D(0.999513, 0, 0.0312188, 0, 1, 0, -0.0312188, 0, 0.999513, -11.5832, 1.75377, -13.4348)
 text = "Damage Area Test"
 font_size = 64
 
-[node name="Label3D6" type="Label3D" parent="."]
+[node name="Label3D6" type="Label3D" parent="." unique_id=1972478441]
 transform = Transform3D(0.999513, 0, 0.0312188, 0, 1, 0, -0.0312188, 0, 0.999513, 19.3475, 1.75377, -10.6371)
 text = "Enemy Playground"
 font_size = 64
 
-[node name="Label3D7" type="Label3D" parent="."]
+[node name="Label3D7" type="Label3D" parent="." unique_id=2093786852]
 transform = Transform3D(0.999513, 0, 0.0312188, 0, 1, 0, -0.0312188, 0, 0.999513, 22.7746, 1.75377, 3.39419)
 text = "Vendor
 (stand near the cube 
@@ -952,7 +1489,7 @@ and press 'e' to
 interact or to exit)"
 font_size = 64
 
-[node name="Label3D2" type="Label3D" parent="."]
+[node name="Label3D2" type="Label3D" parent="." unique_id=1138813757]
 transform = Transform3D(0.0709229, 0, 0.997482, 0, 1, 0, -0.997482, 0, 0.0709229, -1.42515, 4.3588, 47.2203)
 text = "Crouch And Slide Test
 (press 'ctrl' or 'c'
@@ -962,138 +1499,147 @@ move while trying
 to crouch)"
 font_size = 64
 
-[node name="Label3D3" type="Label3D" parent="."]
+[node name="Label3D3" type="Label3D" parent="." unique_id=866241871]
 transform = Transform3D(0.0709229, 0, 0.997482, 0, 1, 0, -0.997482, 0, 0.0709229, -3.54689, 4.3588, 68.1167)
 text = "Magnet Boots Test
 (Not Implemented atm)"
 font_size = 64
 
-[node name="Vendor" parent="." instance=ExtResource("20_rhfpa")]
+[node name="Vendor" parent="." unique_id=1149665317 instance=ExtResource("20_rhfpa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.452, 1.13435, 3.31871)
 
-[node name="VFXExplosion" parent="." instance=ExtResource("21_18a5i")]
+[node name="VFXExplosion" parent="." unique_id=1937728139 instance=ExtResource("21_18a5i")]
 
-[node name="movableLookObject" type="Node3D" parent="."]
+[node name="movableLookObject" type="Node3D" parent="." unique_id=441901711]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.154, 0, -34.0283)
 script = ExtResource("25_rn2nm")
 circle_around = true
 
-[node name="Path3D" type="Path3D" parent="movableLookObject"]
+[node name="Path3D" type="Path3D" parent="movableLookObject" unique_id=1650670544]
 curve = SubResource("Curve3D_pbgo8")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="movableLookObject/Path3D"]
+[node name="PathFollow3D" type="PathFollow3D" parent="movableLookObject/Path3D" unique_id=2108954732]
 transform = Transform3D(0.94099075, 0, -0.3384277, 0, 1, 0, 0.3384277, 0, 0.94099075, 0.836285, 0, -2.76162)
 
-[node name="lookObject" type="Node3D" parent="movableLookObject/Path3D/PathFollow3D"]
+[node name="lookObject" type="Node3D" parent="movableLookObject/Path3D/PathFollow3D" unique_id=1019547769]
 
-[node name="shrooms" type="Node3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject"]
+[node name="shrooms" type="Node3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject" unique_id=599403440]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.617806, 0, -0.0522984)
 
-[node name="ShroomTextureBakery" type="MeshInstance3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject/shrooms"]
+[node name="ShroomTextureBakery" type="MeshInstance3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject/shrooms" unique_id=1045979085]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3, 0, 0)
 mesh = SubResource("ArrayMesh_t76ws")
 skeleton = NodePath("")
 
-[node name="Shroom9" type="MeshInstance3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject/shrooms"]
+[node name="Shroom9" type="MeshInstance3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject/shrooms" unique_id=1612643945]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.645629)
 mesh = SubResource("ArrayMesh_jpctu")
 skeleton = NodePath("")
 
-[node name="Shroom8" type="MeshInstance3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject/shrooms"]
+[node name="Shroom8" type="MeshInstance3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject/shrooms" unique_id=1987628182]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.458399, 0, 0.371944)
 mesh = SubResource("ArrayMesh_krayx")
 skeleton = NodePath("")
 
-[node name="Shroom7" type="MeshInstance3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject/shrooms"]
+[node name="Shroom7" type="MeshInstance3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject/shrooms" unique_id=1559986917]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.3, 0, 0.5)
 mesh = SubResource("ArrayMesh_by3ve")
 skeleton = NodePath("")
 
-[node name="Shroom5" type="MeshInstance3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject/shrooms"]
+[node name="Shroom5" type="MeshInstance3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject/shrooms" unique_id=1672897271]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.469364, 0, 0.041761)
 mesh = SubResource("ArrayMesh_oxc71")
 skeleton = NodePath("")
 
-[node name="Shroom4" type="MeshInstance3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject/shrooms"]
+[node name="Shroom4" type="MeshInstance3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject/shrooms" unique_id=1943113857]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.450266, -0.000966994, -0.0705553)
 mesh = SubResource("ArrayMesh_qydf6")
 skeleton = NodePath("")
 
-[node name="Shroom6" type="MeshInstance3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject/shrooms"]
+[node name="Shroom6" type="MeshInstance3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject/shrooms" unique_id=1244684443]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0.4, 0, 0)
 mesh = SubResource("ArrayMesh_yotwh")
 skeleton = NodePath("")
 
-[node name="Shroom3" type="MeshInstance3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject/shrooms"]
+[node name="Shroom3" type="MeshInstance3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject/shrooms" unique_id=843488010]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1, 0, 0.204262)
 mesh = SubResource("ArrayMesh_tx4qr")
 skeleton = NodePath("")
 
-[node name="Shroom2" type="MeshInstance3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject/shrooms"]
+[node name="Shroom2" type="MeshInstance3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject/shrooms" unique_id=1100788279]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00362128, 0, -0.0182325)
 mesh = SubResource("ArrayMesh_bf0m7")
 skeleton = NodePath("")
 
-[node name="ShroomCylinder" type="MeshInstance3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject/shrooms"]
+[node name="ShroomCylinder" type="MeshInstance3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject/shrooms" unique_id=940574302]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 mesh = SubResource("ArrayMesh_vbb62")
 skeleton = NodePath("")
 
-[node name="Shroom1" type="MeshInstance3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject/shrooms"]
+[node name="Shroom1" type="MeshInstance3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject/shrooms" unique_id=1678238039]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.1, 0, 0.2)
 mesh = SubResource("ArrayMesh_pw2jc")
 skeleton = NodePath("")
 
-[node name="Area3D" type="Area3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject"]
+[node name="Area3D" type="Area3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject" unique_id=1657535523]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="movableLookObject/Path3D/PathFollow3D/lookObject/Area3D" unique_id=536384800]
 shape = SubResource("SphereShape3D_1mfbe")
 
-[node name="RayCast3D" type="RayCast3D" parent="movableLookObject"]
+[node name="RayCast3D" type="RayCast3D" parent="movableLookObject" unique_id=1327834822]
 target_position = Vector3(1, 0, 0)
 
-[node name="looking_man" parent="." instance=ExtResource("26_oervn")]
+[node name="looking_man" parent="." unique_id=1742228822 instance=ExtResource("26_oervn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.5996, -14.8083, -37.1556)
 enemy_to_watch = NodePath("../movableLookObject/Path3D/PathFollow3D/lookObject")
 
 [node name="LookAtModifier3D" parent="looking_man/YBotWeaponReady/Armature/GeneralSkeleton" index="4"]
 target_node = NodePath("../../../../../movableLookObject/Path3D/PathFollow3D/lookObject/shrooms")
 
-[node name="TestDummy" parent="." instance=ExtResource("14_yqcck")]
+[node name="AnimationPlayer" parent="looking_man/YBotWeaponReady" index="1"]
+libraries/ = SubResource("AnimationLibrary_2drmw")
+
+[node name="AnimationPlayer" parent="looking_man/TestMan" index="0"]
+libraries/ = SubResource("AnimationLibrary_u4wno")
+
+[node name="TestDummy" parent="." unique_id=1960403772 instance=ExtResource("14_yqcck")]
 transform = Transform3D(0.998687, 0, -0.0512204, 0, 1, 0, 0.0512204, 0, 0.998687, 17.42, 0.675073, 1.71801)
 
-[node name="TestDummy3" parent="." instance=ExtResource("14_yqcck")]
+[node name="TestDummy3" parent="." unique_id=1875173291 instance=ExtResource("14_yqcck")]
 transform = Transform3D(0.998687, 0, -0.0512204, 0, 1, 0, 0.0512204, 0, 0.998687, -10.0873, 0.675073, 1.71801)
 
-[node name="TestDummy4" parent="." instance=ExtResource("14_yqcck")]
+[node name="TestDummy4" parent="." unique_id=414033477 instance=ExtResource("14_yqcck")]
 transform = Transform3D(0.998687, 0, -0.0512204, 0, 1, 0, 0.0512204, 0, 0.998687, -12.4325, 0.675073, 1.71801)
 
-[node name="TestDummy5" parent="." instance=ExtResource("14_yqcck")]
+[node name="TestDummy5" parent="." unique_id=2042218455 instance=ExtResource("14_yqcck")]
 transform = Transform3D(0.998687, 0, -0.0512204, 0, 1, 0, 0.0512204, 0, 0.998687, -12.4325, 0.675073, -0.910184)
 
-[node name="TestDummy7" parent="." instance=ExtResource("14_yqcck")]
+[node name="TestDummy7" parent="." unique_id=999277783 instance=ExtResource("14_yqcck")]
 transform = Transform3D(0.998687, 0, -0.0512204, 0, 1, 0, 0.0512204, 0, 0.998687, -14.8651, 0.675073, -0.910184)
 
-[node name="TestDummy8" parent="." instance=ExtResource("14_yqcck")]
+[node name="TestDummy8" parent="." unique_id=1248724529 instance=ExtResource("14_yqcck")]
 transform = Transform3D(0.998687, 0, -0.0512204, 0, 1, 0, 0.0512204, 0, 0.998687, -14.8651, 0.675073, 4.95599)
 
-[node name="TestDummy2" parent="." instance=ExtResource("14_yqcck")]
+[node name="TestDummy2" parent="." unique_id=1660777689 instance=ExtResource("14_yqcck")]
 transform = Transform3D(0.998687, 0, -0.0512204, 0, 1, 0, 0.0512204, 0, 0.998687, 13.9033, 0.675073, 1.71801)
 
-[node name="AIGenPHStout" parent="." instance=ExtResource("27_f1cld")]
+[node name="AIGenPHStout" parent="." unique_id=632076609 instance=ExtResource("27_f1cld")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5941, 1.91189, -1.75653)
 
-[node name="ElectricArc" parent="AIGenPHStout" instance=ExtResource("28_fut23")]
+[node name="ElectricArc" parent="AIGenPHStout" unique_id=414451471 instance=ExtResource("28_fut23")]
 transform = Transform3D(6.335, 0, 0, 0, 3, 0, 0, 0, 1.14, -2.97056, 0.555734, 0)
 
-[node name="VfxShock" parent="AIGenPHStout" instance=ExtResource("29_t1l1n")]
+[node name="VfxShock" parent="AIGenPHStout" unique_id=1821531725 instance=ExtResource("29_t1l1n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.128245, 0.415163, -0.120642)
 
-[node name="TestDummy9" parent="." instance=ExtResource("14_yqcck")]
+[node name="TestDummy9" parent="." unique_id=1436012511 instance=ExtResource("14_yqcck")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.8728, 0.675072, 2.12344)
 
 [node name="Ch36" parent="TestDummy9/Skin/GeneralSkeleton" index="0"]
-mesh = SubResource("ArrayMesh_1q30d")
+mesh = SubResource("ArrayMesh_drda0")
+
+[node name="AnimationPlayer" parent="TestDummy9/Skin" index="1"]
+libraries/ = SubResource("AnimationLibrary_t82mo")
 
 [editable path="Map Geometry/MonkeyBarTestModel"]
 [editable path="looking_man"]

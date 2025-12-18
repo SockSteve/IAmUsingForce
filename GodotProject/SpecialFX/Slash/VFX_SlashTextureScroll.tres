@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=14 format=3 uid="uid://wd0vxve8mcx2"]
+[gd_resource type="VisualShader" format=3 uid="uid://wd0vxve8mcx2"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ipgsp"]
 source = 5
@@ -51,72 +51,6 @@ default_value = Vector2(0, -3)
 parameter_name = "GradientTexture"
 
 [resource]
-code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded;
-
-uniform vec2 TextureTiling = vec2(1.000000, 1.000000);
-uniform vec2 Vector2Parameter = vec2(0.000000, -3.000000);
-uniform sampler2D MainTexture;
-uniform sampler2D GradientTexture;
-
-
-
-void fragment() {
-// Input:12
-	vec4 n_out12p0 = COLOR;
-	float n_out12p4 = n_out12p0.a;
-
-
-// Vector2Parameter:5
-	vec2 n_out5p0 = TextureTiling;
-
-
-// Input:7
-	float n_out7p0 = TIME;
-
-
-// Vector2Parameter:8
-	vec2 n_out8p0 = Vector2Parameter;
-
-
-// VectorOp:6
-	vec4 n_out6p0 = vec4(n_out7p0) * vec4(n_out8p0, 0.0, 0.0);
-
-
-// UVFunc:4
-	vec2 n_out4p0 = vec2(n_out6p0.xy) * n_out5p0 + UV;
-
-
-	vec4 n_out3p0;
-// Texture2D:3
-	n_out3p0 = texture(MainTexture, n_out4p0);
-
-
-	vec4 n_out10p0;
-// Texture2D:10
-	n_out10p0 = texture(GradientTexture, UV);
-
-
-// VectorOp:11
-	vec4 n_out11p0 = n_out3p0 * n_out10p0;
-	float n_out11p4 = n_out11p0.a;
-
-
-// VectorOp:13
-	vec4 n_out13p0 = n_out12p0 * n_out11p0;
-
-
-// FloatOp:14
-	float n_out14p0 = n_out12p4 * n_out11p4;
-
-
-// Output:0
-	ALBEDO = vec3(n_out13p0.xyz);
-	ALPHA = n_out14p0;
-
-
-}
-"
 flags/unshaded = true
 nodes/fragment/0/position = Vector2(1420, 200)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture2DParameter_j5xvg")

@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=6 format=3 uid="uid://cs8c0pml7isy3"]
+[gd_resource type="VisualShader" format=3 uid="uid://cs8c0pml7isy3"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_jkjmc"]
 expanded_output_ports = [0]
@@ -18,40 +18,6 @@ operator = 2
 operator = 2
 
 [resource]
-code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, depth_test_default, cull_back, diffuse_lambert, specular_schlick_ggx;
-
-uniform sampler2D Texture2DParameter;
-
-
-
-void fragment() {
-// Input:4
-	vec4 n_out4p0 = COLOR;
-	float n_out4p4 = n_out4p0.a;
-
-
-	vec4 n_out2p0;
-// Texture2D:2
-	n_out2p0 = texture(Texture2DParameter, UV);
-	float n_out2p4 = n_out2p0.a;
-
-
-// VectorOp:5
-	vec3 n_out5p0 = vec3(n_out4p0.xyz) * vec3(n_out2p0.xyz);
-
-
-// FloatOp:6
-	float n_out6p0 = n_out4p4 * n_out2p4;
-
-
-// Output:0
-	ALBEDO = n_out5p0;
-	ALPHA = n_out6p0;
-
-
-}
-"
 nodes/fragment/0/position = Vector2(900, 100)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_jkjmc")
 nodes/fragment/2/position = Vector2(120, 180)

@@ -48,8 +48,8 @@ var arm_transition_request := "parameters/armtransition/transition_request"
 #state machine for holding weapons
 @onready var sm_armtransitions : AnimationNodeStateMachinePlayback = animation_tree.get("parameters/sm_normal/playback")
 
-@onready var left_arm_ik: GodotIK = $GeneralSkeleton/LeftArm
-@onready var right_arm_ik: GodotIK = $GeneralSkeleton/RightArm
+#@onready var left_arm_ik: GodotIK = $GeneralSkeleton/LeftArm
+#@onready var right_arm_ik: GodotIK = $GeneralSkeleton/RightArm
 @onready var grapple_physics: PhysicalBoneSimulator3D = $GeneralSkeleton/GrapplePhysics
 
 
@@ -156,10 +156,10 @@ func change_weapon(weapon: StringName, groups: Array[StringName]) -> void:
 		animation_tree.set(arm_transition_request, weapon.to_lower())
 		await animation_tree.animation_finished
 		# Setup IK target for ranged weapon
-		if left_arm_ik:
-			var ik_target = left_arm_ik.find_child("LH_" + weapon.to_pascal_case())
-			if ik_target:
-				print("CharacterSkin: IK target found for ", weapon)
+		#if left_arm_ik:
+			#var ik_target = left_arm_ik.find_child("LH_" + weapon.to_pascal_case())
+			#if ik_target:
+				#print("CharacterSkin: IK target found for ", weapon)
 
 ## Play melee attack animation
 func attack(attack_counter: int, weapon_name: StringName = "cutter") -> void:
